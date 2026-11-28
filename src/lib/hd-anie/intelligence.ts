@@ -54,6 +54,53 @@ const NON_ENVIRONMENTAL_NOISE_PATTERNS = [
 const STRICT_ECOLOGICAL_ANCHOR_PATTERN =
   /\b(glacier|glaciers|cryosphere|snowfall|snowline|snowmelt|permafrost|glof|avalanche|lake|lakes|dal lake|wular|manasbal|pangong|tsomoriri|wetland|wetlands|ramsar|marsh|waterfowl|migratory birds?|river|jhelum|chenab|indus|lidder|sindh|neelum|tawi|shyok|zanskar|spring|springs|verinag|karst|groundwater|aquifer|flood|floods|flooding|cloudburst|landslide|landslides|drought|heatwave|monsoon|western disturbance|air quality|aqi|pm2\.5|pollution|sewage|effluent|solid waste|plastic|biodiversity|wildlife|hangul|snow leopard|markhor|brown bear|pheasant|monal|trout|schizothorax|forest|forests|deodar|chinar|wildfire|deforestation|afforestation|climate change|warming|ecological|ecosystem|watershed|hydropower|environmental|horticulture|orchard|saffron|pesticide|national park|sanctuary|dachigam|hemis|deosai)\b/i;
 
+function estimateEventDate(
+  combinedText: string,
+  publishedAtIso: string,
+  sourceCategory: AnieSourceRecord['category'],
+  hasDoi: boolean
+): string {
+  // Never conflate scholarly/retrospective publication dates with physical event dates!
+  const isRetrospectiveOrScholarly =
+    hasDoi ||
+    sourceCategory === 'scientific_repository' ||
+    /\b(retrospective|multi-decadal|decadal|long-term|historical|19[789]\d\s*[–-]\s*20\d{2}|20[01]\d\s*[–-]\s*202\d)\b/i.test(
+      combinedText
+    );
+
+  const rangeMatch = combinedText.match(/\b((?:19|20)\d{2})\s*[–-]\s*((?:19|20)\d{2})\b/);
+  if (rangeMatch) {
+    return `${rangeMatch[1]}–${rangeMatch[2]} study window`;
+  }
+
+  if (isRetrospectiveOrScholarly) {
+    const pastYearMatch = combinedText.match(/\b(19[89]\d|200\d|201\d|202[0-4])\b/);
+    if (pastYearMatch) {
+      return `${pastYearMatch[1]} (retrospective study)`;
+    }
+    return `Longitudinal / scholarly record (published ${publishedAtIso.slice(0, 10)})`;
+  }
+
+  const explicitIsoMatch = combinedText.match(/\b(20\d{2}-\d{2}-\d{2})\b/);
+  if (explicitIsoMatch) {
+    return explicitIsoMatch[1];
+  }
+
+  if (/\byesterday\b/i.test(combinedText)) {
+    const dt = new Date(publishedAtIso);
+    if (!Number.isNaN(dt.getTime())) {
+      dt.setUTCDate(dt.getUTCDate() - 1);
+      return dt.toISOString().slice(0, 10);
+    }
+  }
+
+  if (/\b(today|this morning|tonight|overnight)\b/i.test(combinedText)) {
+    return publishedAtIso.slice(0, 10);
+  }
+
+  return `Unspecified (reported ${publishedAtIso.slice(0, 10)})`;
+}
+
 function detectScripts(text: string): string[] {
   const scripts: string[] = [];
   if (/[A-Za-z]/.test(text)) scripts.push('Latin');
@@ -267,14 +314,13 @@ export function analyzeAndNormalizeSignal(
       : 'Insufficient ecological, hydrological, cryospheric, or environmental signal';
   }
 
-  // Differentiate estimated event date vs report date where explicit temporal cues exist
-  let estimatedEventDate = raw.publishedAt.slice(0, 10);
-  const yesterdayMatch = /\byesterday\b/i.test(combinedText);
-  if (yesterdayMatch) {
-    const dt = new Date(raw.publishedAt);
-    dt.setUTCDate(dt.getUTCDate() - 1);
-    estimatedEventDate = dt.toISOString().slice(0, 10);
-  }
+  // Differentiate physical event window from publication date (never stamp paper pubDate as eventDate)
+  const estimatedEventDate = estimateEventDate(
+    combinedText,
+    raw.publishedAt,
+    source.category,
+    Boolean(raw.doi)
+  );
 
   const detectedScripts = detectScripts(combinedText);
   const translatedTitleNote =
@@ -358,9 +404,17 @@ export function clusterSignalsAndScore(
   for (const sig of acceptedSignals) {
     if (assignedSignalIds.has(sig.id)) continue;
 
-    // Try matching an existing cluster within a 14-day window on same primary bureau + domain + token overlap
+    // Try matching an existing cluster within a strict 14-day window on same primary bureau + domain + token overlap
+    const sigTimeMs = new Date(sig.publishedAt).getTime();
     let matchedCluster: AnieStoryCluster | undefined;
     for (const cl of clusters) {
+      const clLatestMs = new Date(cl.latestSignalAt).getTime();
+      const within14DayWindow =
+        Number.isFinite(sigTimeMs) && Number.isFinite(clLatestMs)
+          ? Math.abs(sigTimeMs - clLatestMs) <= 14 * 86_400_000
+          : false;
+      if (!within14DayWindow) continue;
+
       const sameSyndication = cl.clusterKey === sig.syndicationFingerprint;
       const sharedDomain = sig.monitoringDomainIds.some((d) => cl.monitoringDomainIds.includes(d));
       const sharedBureau =
@@ -686,28 +740,35 @@ export function buildEvidenceDossier(
   clusterSignals: AnieRawSignal[]
 ): AnieEvidenceDossier {
   const nowIso = new Date().toISOString();
-  const externalSources: AnieEvidenceSourceItem[] = clusterSignals.map((sig) => ({
-    sourceId: sig.sourceId,
-    signalId: sig.id,
-    url: sig.canonicalUrl,
-    publicationTitle: sig.rawTitle,
-    publisherName: sig.sourceName,
-    authors: sig.authors,
-    publishedAt: sig.publishedAt,
-    eventDate: sig.estimatedEventDate,
-    retrievedAt: sig.retrievedAt,
-    sourceCategory: sig.sourceCategory,
-    originalLanguage: sig.originalLanguage,
-    supportingExcerpt: sig.sanitizedSummary.slice(0, 500),
-    doi: sig.doi,
-    doiVerified: Boolean(sig.doi && sig.sourceCategory === 'scientific_repository'),
-    httpReachable: true,
-    verificationStatus:
-      sig.sourceCategory === 'scientific_repository' || sig.sourceCategory === 'earth_observation'
-        ? 'verified_primary'
-        : 'verified_secondary',
-    licensingRestriction: sig.licenseRestriction,
-  }));
+  const externalSources: AnieEvidenceSourceItem[] = clusterSignals.map((sig) => {
+    const isNoDerivativesFeed =
+      /CC BY-ND|NoDerivatives|prohibited/i.test(sig.licenseRestriction) ||
+      sig.sourceId === 'src-mongabay-india';
+
+    return {
+      sourceId: sig.sourceId,
+      signalId: sig.id,
+      url: sig.canonicalUrl,
+      publicationTitle: sig.rawTitle,
+      publisherName: sig.sourceName,
+      authors: sig.authors,
+      publishedAt: sig.publishedAt,
+      eventDate: sig.estimatedEventDate,
+      retrievedAt: sig.retrievedAt,
+      sourceCategory: sig.sourceCategory,
+      originalLanguage: sig.originalLanguage,
+      // Exclude verbatim feed body excerpts for CC BY-ND sources (bibliographic metadata only)
+      supportingExcerpt: isNoDerivativesFeed ? '' : sig.sanitizedSummary.slice(0, 240),
+      doi: sig.doi,
+      doiVerified: Boolean(sig.doi && sig.sourceCategory === 'scientific_repository'),
+      httpReachable: true,
+      verificationStatus:
+        sig.sourceCategory === 'scientific_repository' || sig.sourceCategory === 'earth_observation'
+          ? 'verified_primary'
+          : 'verified_secondary',
+      licensingRestriction: sig.licenseRestriction,
+    };
+  });
 
   const kewKnowledgeMatches = retrieveKewScientificContext(cluster, clusterSignals, 5);
 

@@ -20,7 +20,7 @@ export default function EnvironmentalMonitoringPage() {
   return (
     <main className="min-h-screen bg-slate-950">
       <Heading
-        breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Pollution & Stress', href: '/risk-monitoring/pollution-stress' }, { label: 'Environmental Monitoring' }]}
+        breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Pollution & Stress', href: '/environmental-monitoring' }, { label: 'Environmental Monitoring' }]}
         title={<>
             <KewBrandIdentity />
             <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Environmental Monitoring</span>
@@ -30,7 +30,7 @@ export default function EnvironmentalMonitoringPage() {
         label="Environmental Health"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500" onClick={() => router.push('/risk-monitoring/pollution-stress')}><ArrowRight className="w-5 h-5 mr-2" />Back to Pollution & Stress</Button>
+            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500" onClick={() => router.push('/environmental-monitoring')}><ArrowRight className="w-5 h-5 mr-2" />Back to Pollution & Stress</Button>
             <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5" onClick={() => router.push('/risk-monitoring')}>Overview</Button>
           </div>
         }

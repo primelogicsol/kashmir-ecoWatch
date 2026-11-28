@@ -566,24 +566,36 @@ export function validateWorkflowTransition(
       };
     }
 
-    // Enforce mandatory review gates before Approved / Scheduled / Published!
+    // Enforce mandatory 10-Stage Publication Gates before Approved / Scheduled / Published!
     if (['approved', 'scheduled', 'published'].includes(targetStatus)) {
       if (manuscript.factCheckRequired && !manuscript.factCheckCompleted) {
         return {
           allowed: false,
-          error: 'Mandatory Gate: Stage 07 Fact-Checking must be completed and signed off before final approval or publication.',
+          error: 'Mandatory Gate (Stage 04 Evidence Verification): Independent fact-checking must be completed and signed off before final approval or publication.',
         };
       }
       if (manuscript.scientificReviewRequired && !manuscript.scientificReviewCompleted) {
         return {
           allowed: false,
-          error: 'Mandatory Gate: Stage 08 Scientific Review is required for substantive technical/scientific claims before publication.',
+          error: 'Mandatory Gate (Stage 05 Scientific Review): Independent scientific review is required for substantive technical/scientific claims before publication.',
+        };
+      }
+      if (!manuscript.copyEditCompleted) {
+        return {
+          allowed: false,
+          error: 'Mandatory Gate (Stage 06 Editorial Review): Editorial and copy review sign-off is required before release.',
+        };
+      }
+      if (!manuscript.visualProductionCompleted) {
+        return {
+          allowed: false,
+          error: 'Mandatory Gate (Stage 07 Copyright & Ethics Review): Visual provenance, licensing, and ethics review must be completed before release.',
         };
       }
       if (manuscript.legalReviewRequired && !manuscript.legalReviewCompleted) {
         return {
           allowed: false,
-          error: 'Mandatory Gate: Stage 09 Legal & Ethical Review (including Right-of-Reply verification) is required for RED/sensitive stories.',
+          error: 'Mandatory Gate (Stage 07/09 Legal & Ethical Review): Right-of-Reply and legal review verification is required for investigative stories.',
         };
       }
     }
@@ -614,18 +626,16 @@ export function validateWorkflowTransition(
   return { allowed: false, error: `Unsupported workflow transition: ${targetStatus}` };
 }
 
+import { getDomainSigningSecret } from '@/lib/seo/admin-session';
+
 // ─── HMAC-SIGNED CROSS-DOMAIN NEWSROOM SESSION TOKENS ───────────────────────
 
 function getHdnSecret(): string {
-  return (
-    process.env.AUTH_SECRET ||
-    process.env.NEXTAUTH_SECRET ||
-    process.env.CRON_SECRET ||
-    'kew-admin-hmac-signing-fallback'
-  );
+  return getDomainSigningSecret('hdn-newsroom');
 }
 
 export interface HdnSessionTokenPayload {
+  v?: 2;
   accountId: string;
   slug: string;
   email: string;
@@ -634,11 +644,12 @@ export interface HdnSessionTokenPayload {
 }
 
 export function signHdnSessionToken(
-  claims: Omit<HdnSessionTokenPayload, 'iat' | 'exp'>,
+  claims: Omit<HdnSessionTokenPayload, 'iat' | 'exp' | 'v'>,
   ttlSeconds = 12 * 60 * 60
 ): string {
   const now = Math.floor(Date.now() / 1000);
   const payload: HdnSessionTokenPayload = {
+    v: 2,
     ...claims,
     iat: now,
     exp: now + ttlSeconds,
@@ -671,6 +682,7 @@ export function verifyHdnSessionToken(token?: string | null): HdnSessionTokenPay
     const parsed = JSON.parse(
       Buffer.from(encoded, 'base64url').toString('utf8')
     ) as HdnSessionTokenPayload;
+    if (parsed.v !== 2) return null;
     if (!parsed.exp || parsed.exp < Math.floor(Date.now() / 1000)) return null;
     if (!parsed.slug) return null;
     return parsed;

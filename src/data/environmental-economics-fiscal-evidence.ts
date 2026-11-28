@@ -296,7 +296,7 @@ export const HISTORICAL_FISCAL_PERIODS_2000_2027: HistoricalFiscalPeriod[] = [
     constitutionalRegime: 'UT of Jammu & Kashmir (excl. Ladakh)',
     analyticalSignificance: 'Current fiscal baseline: ₹1,13,767 cr Total Budgeted Expenditure, ₹3,15,822 cr GSDP, ₹25,236 cr Capital Outlay, ₹58,218 cr Central Grants-in-Aid.',
     deflationAndBoundaryProtocol: 'Extract Demand-wise environmental vs development allocations and track live e-Tendering / PFMS implementation.',
-    auditDataStatus: 'Documented Macro BE (jakfinance-jk.com & PRS); Demand-level environmental extraction active in Scoping.',
+    auditDataStatus: 'Documented Macro BE (Official J&K Finance Dept jakfinance.nic.in & PRS Legislative Research); Demand-level environmental extraction active in Scoping.',
   },
 ];
 
@@ -360,7 +360,7 @@ export const SEEA_EXPENDITURE_CLASSIFICATION: SeeaExpenditureCategory[] = [
     categoryName: 'Direct Environmental Protection Expenditure',
     seeaAlignment: 'UN SEEA Classification of Environmental Protection Activities (CEPA)',
     scopeDescription: 'Outlays whose primary purpose is preventing, reducing, or eliminating pollution and habitat degradation.',
-    illustrativeJkHeads: ['JKPCC air/water/noise monitoring & labs', 'Municipal/UEED sewage treatment (STPs) & científica SWM remediation', 'Protected Area & Hangul habitat protection', 'EIA/EMP statutory compliance cells'],
+    illustrativeJkHeads: ['JKPCC air/water/noise monitoring & labs', 'Municipal/UEED sewage treatment (STPs) & scientific SWM remediation', 'Protected Area & Hangul habitat protection', 'EIA/EMP statutory compliance cells'],
     doubleCountingGuardrail: 'Net out Central Pollution Control / NCAP / SBM-U grants passed through UT Departments to ULBs so each rupee is counted once at final spender level.',
   },
   {
@@ -428,7 +428,7 @@ export const INSTITUTIONAL_CAPACITY_PARAMETERS: InstitutionalCapacityParameter[]
   { parameter: 'Enforcement & Inspection Capacity', requiredAssessment: 'Inspections per officer, show-cause notices, environmental compensation recovery, and compliance follow-through.', diagnosticPurpose: 'Separates statutory adequacy on paper from field regulatory deterrence.', verificationSource: 'JKPCC Annual Reports, NGT Compliance Filings & High Court Status Reports' },
   { parameter: 'Operational & Maintenance (O&M) Funding', requiredAssessment: 'Non-salary O&M provision for STP electricity/reagents, desilting basin clearing, sensor calibration, and patrol rations.', diagnosticPurpose: 'Explains why capital infrastructure degrades rapidly after commissioning ("build-neglect-rebuild" cycle).', verificationSource: 'Revenue Budget Object Heads (O&M / Energy / Materials) vs Installed Capex' },
   { parameter: 'Digital & Geospatial Infrastructure', requiredAssessment: 'Enterprise GIS, real-time public APIs, digitized gazette/cadastral archives, and PFMS-linked asset tracking.', diagnosticPurpose: 'Assesses institutional readiness for reproducible SEEA accounting and cumulative EIA screening.', verificationSource: 'DEERS, NIC J&K Portals & Open Data Readiness Audits' },
-  { parameter: 'Public Scientific & Financial Transparency', requiredAssessment: 'Timely machine-readable publication of DPRs, EIAs, monitoring raw series, utilization certificates, and audit action-taken notes.', diagnosticPurpose: 'Measures public accountability and independent scientific verifiability.', verificationSource: 'Official Departmental Portals, PARIVESH, jktenders & jakfinance-jk.com' },
+  { parameter: 'Public Scientific & Financial Transparency', requiredAssessment: 'Timely machine-readable publication of DPRs, EIAs, monitoring raw series, utilization certificates, and audit action-taken notes.', diagnosticPurpose: 'Measures public accountability and independent scientific verifiability.', verificationSource: 'Official Departmental Portals, PARIVESH, jktenders.gov.in, jakfinance.nic.in & PRS Legislative Research' },
 ];
 
 // ─── 8. TEN UN SEEA NATURAL CAPITAL ASSET ACCOUNTS FOR JAMMU & KASHMIR ────────
@@ -491,7 +491,7 @@ export const INTERVENTION_RETURN_BCR_MATRIX: InterventionReturnBenchmark[] = [
 
 // ─── 12. THIRTEEN AUTHORITATIVE FINANCIAL & SCIENTIFIC DATA REPOSITORIES ─────
 export const PRIMARY_FISCAL_AND_ECONOMIC_SOURCES: FiscalEvidenceSourceRepo[] = [
-  { sourceName: 'J&K Finance Department Budget Portal (FY 2026–27)', custodianBody: 'Finance Department, Govt. of Jammu & Kashmir', requiredInformation: 'Budget speeches, Annual Financial Statements, Detailed Demands for Grants, FRBM statements, and 2025–26 RE / 2024–25 Actuals.', officialUrl: 'https://jakfinance-jk.com/budget2026-27.html', geographicCoverage: 'UT of Jammu & Kashmir (UT-wide & Divisional Heads)' },
+  { sourceName: 'J&K Finance Department Official Portal (FY 2026–27)', custodianBody: 'Finance Department, Govt. of Jammu & Kashmir', requiredInformation: 'Budget speeches, Annual Financial Statements, Detailed Demands for Grants, FRBM statements, and 2025–26 RE / 2024–25 Actuals (cross-verified with PRS Legislative Research J&K Budget Analysis 2026–27).', officialUrl: 'https://jakfinance.nic.in/', geographicCoverage: 'UT of Jammu & Kashmir (UT-wide & Divisional Heads)' },
   { sourceName: 'CAG J&K Financial Audit Report (2024–25)', custodianBody: 'Comptroller and Auditor General of India', requiredInformation: 'Audited UT Finance Accounts, Appropriation Accounts, unspent balances, utilization certificates, and fiscal liabilities.', officialUrl: 'https://cag.gov.in/en/audit-report/details/125155', geographicCoverage: 'UT of Jammu & Kashmir' },
   { sourceName: 'CAG Jammu & Kashmir Departmental & Performance Audits', custodianBody: 'CAG Accountant General (Audit) J&K', requiredInformation: 'Historical State (2000–2019) and UT (2019–2026) compliance and performance audits across water, forests, urban, and mining.', officialUrl: 'https://cag.gov.in/ag/jammu-kashmir/en/audit-report', geographicCoverage: 'Former J&K State & UT of Jammu & Kashmir' },
   { sourceName: 'CAG Performance Audit on Conservation of Dal & Wular Lakes', custodianBody: 'Comptroller and Auditor General of India', requiredInformation: 'Audited conservation expenditure, ₹28.01 cr de-weeding seasonality breakdown, discontinued works, research deficits, and EIA gaps.', officialUrl: 'https://www.cag.gov.in/en/audit-report/details/125068', geographicCoverage: 'Dal–Nigeen & Wular Catchments (Kashmir Division)' },

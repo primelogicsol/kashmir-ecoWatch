@@ -14,7 +14,14 @@ const PRIVATE_AND_RESTRICTED_PATHS = [
   '/webinars/create',
   '/webinars/room/',
   '/ngo-impact/submit',
+  '/environmental-investigations/submit',
   '/sectoral-eia/assessment/new',
+  '/protected-network/reports-and-plans/request',
+  '/protected-network/trails-and-sightings/request',
+  '/himalayan-dispatch/newsroom',
+  '/himalayan-dispatch/editorial-cms',
+  '/himalayan-dispatch/journalist-sign-in',
+  '/himalayan-dispatch/pitch',
   '/images/hazard-intelligence/DRINKING*',
 ];
 

@@ -26,14 +26,15 @@ const VALUE_CARDS = [
 ];
 
 const TRUSTED_NETWORK = [
-  { name: 'Dr. Kumar Foundation USA', type: 'Institution', domain: 'Institutional Support', geography: 'United States', role: 'Primary Supporter', badge: 'Supporting Institution' },
+  { name: 'Dr. Kumar Foundation USA', type: 'Institution', domain: 'Institutional Support', geography: 'United States', role: 'Primary Philanthropic Supporter', badge: 'Supporting Institution' },
   { name: 'Kumar Trust USA', type: 'Trust', domain: 'Philanthropic Trust & Stewardship', geography: 'United States', role: 'Institutional Supporter', badge: 'Supporting Trust' },
-  { name: 'University of Kashmir — Environmental Science', type: 'Institution', domain: 'Environmental Research', geography: 'Srinagar, Kashmir', role: 'Academic Collaboration', badge: 'Research Partner' },
-  { name: 'SKUAST-Kashmir', type: 'Institution', domain: 'Agricultural & Environmental Sciences', geography: 'Kashmir', role: 'Research & Data Contribution', badge: 'Research Partner' },
-  { name: 'J&K Pollution Control Committee', type: 'Authority', domain: 'Environmental Governance', geography: 'Jammu & Kashmir', role: 'Authority Reference', badge: 'Government Authority' },
-  { name: 'J&K Lake Conservation & Management Authority', type: 'Authority', domain: 'Lake & Wetland Management', geography: 'Srinagar, Kashmir', role: 'Authority Reference', badge: 'Government Authority' },
-  { name: 'NASA Earthdata', type: 'Global System', domain: 'Earth Observation', geography: 'Global', role: 'Reference System', badge: 'Global Reference' },
-  { name: 'ICIMOD', type: 'Regional System', domain: 'Mountain & Himalayan Knowledge', geography: 'South Asia', role: 'Regional Knowledge', badge: 'Regional Reference' },
+  { name: 'University of Kashmir — Environmental & Earth Sciences', type: 'Academic Ecosystem Reference', domain: 'Published Himalayan Environmental Literature', geography: 'Srinagar, Kashmir', role: 'Regional Scientific Ecosystem Reference (Formal Institutional MoU Not Claimed)', badge: 'Regional Scientific Ecosystem Reference (Formal Institutional MoU Not Claimed)' },
+  { name: 'SKUAST-Kashmir', type: 'Academic Ecosystem Reference', domain: 'Published Agricultural & Ecological Literature', geography: 'Kashmir', role: 'Regional Scientific Ecosystem Reference (Formal Institutional MoU Not Claimed)', badge: 'Regional Scientific Ecosystem Reference (Formal Institutional MoU Not Claimed)' },
+  { name: 'NIT Srinagar', type: 'Academic Ecosystem Reference', domain: 'Published Hydrological & Civil Engineering Literature', geography: 'Srinagar, Kashmir', role: 'Regional Scientific Ecosystem Reference (Formal Institutional MoU Not Claimed)', badge: 'Regional Scientific Ecosystem Reference (Formal Institutional MoU Not Claimed)' },
+  { name: 'J&K Pollution Control Committee', type: 'Authority', domain: 'Environmental Governance', geography: 'Jammu & Kashmir', role: 'Statutory Authority Reference (No Affiliation Claimed)', badge: 'Government Authority Reference' },
+  { name: 'J&K Lake Conservation & Management Authority', type: 'Authority', domain: 'Lake & Wetland Management', geography: 'Srinagar, Kashmir', role: 'Statutory Authority Reference (No Affiliation Claimed)', badge: 'Government Authority Reference' },
+  { name: 'NASA Earthdata', type: 'Global System', domain: 'Earth Observation', geography: 'Global', role: 'Upstream Satellite Reference System', badge: 'Global Reference' },
+  { name: 'ICIMOD', type: 'Regional System', domain: 'Mountain & Himalayan Knowledge', geography: 'South Asia', role: 'Regional Knowledge Reference', badge: 'Regional Reference' },
   { name: 'GBIF — Global Biodiversity Information Facility', type: 'Global System', domain: 'Biodiversity Data', geography: 'Global', role: 'Biodiversity Reference', badge: 'Global Reference' },
 ];
 
@@ -260,9 +261,9 @@ export default function PartnersPage() {
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
             <Badge variant="info">Directory</Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mt-4 mb-3">Trusted Network Directory</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mt-4 mb-3">Institutional Patronage &amp; Scientific Ecosystem Reference Directory</h2>
             <p className="text-slate-400 max-w-3xl leading-relaxed">
-              Explore public-facing institutions, experts, and approved collaborators already onboarded within the Kashmir EcoWatch ecosystem.
+              Distinguishing formal philanthropic patrons of Kashmir EcoWatch from statutory authorities, upstream global observation systems, and regional universities whose published scientific literature informs the platform (reference listing does not claim a formal bilateral institutional MoU).
             </p>
           </motion.div>
 

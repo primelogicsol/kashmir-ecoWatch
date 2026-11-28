@@ -1,30 +1,38 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import {
-  Map as MapIcon, Layers, Search, Plus, Minus,
-  Crosshair, Maximize2, ChevronRight,
-  MapPin, Droplets, Mountain, AlertTriangle
+  Map as MapIcon,
+  Layers,
+  Search,
+  Plus,
+  Minus,
+  Crosshair,
+  Maximize2,
+  ChevronRight,
+  MapPin,
+  Droplets,
+  Mountain,
+  AlertTriangle,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
+import { KashmirValleyTopoPreview } from '@/components/maps/KashmirValleyTopoPreview';
+import type { BaselineTelemetryData } from '@/lib/telemetry/getBaselineTelemetry';
 
-const AtlasMap = dynamic(
-  () => import('@/components/maps/AtlasMap').then((m) => m.AtlasMap),
+const InteractiveAtlasCanvas = dynamic(
+  () =>
+    import('@/components/maps/InteractiveAtlasCanvas').then(
+      (m) => m.InteractiveAtlasCanvas
+    ),
   {
     ssr: false,
-    loading: () => (
-      <div className="h-full w-full bg-slate-950 flex flex-col items-center justify-center text-slate-400 gap-4">
-        <div className="w-10 h-10 border-2 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin" />
-        <p className="text-xs font-mono tracking-widest uppercase">Loading Kashmir Geospatial Intelligence...</p>
-      </div>
-    )
+    loading: () => null,
   }
 );
-import { DistrictLayer, ProtectedAreaLayer, WaterBodyLayer, HazardLayer } from '@/components/maps/layers';
 
 const mapLayers = [
   { id: 'protected-areas', label: 'Protected Areas', color: 'bg-emerald-500', visible: true, count: 14 },
@@ -34,7 +42,25 @@ const mapLayers = [
   { id: 'districts', label: 'Districts', color: 'bg-slate-500', visible: true, count: 10 },
 ];
 
-const selectedFeatures = [
+interface SpatialFeatureSummary {
+  id: string;
+  name: string;
+  type: 'wetland' | 'protected';
+  district: string;
+  status: string;
+  statusColor: 'success' | 'warning' | 'info';
+  area: string;
+  wqi?: number;
+  bloomRisk?: string;
+  birdCount?: string;
+  species?: number;
+  hangulPopulation?: string;
+  alerts: number;
+  coordinates: string;
+  detailHref: string;
+}
+
+const allFeatures: SpatialFeatureSummary[] = [
   {
     id: 'dal-lake',
     name: 'Dal Lake',
@@ -47,6 +73,7 @@ const selectedFeatures = [
     bloomRisk: 'Moderate',
     alerts: 2,
     coordinates: '34.1150°N, 74.8650°E',
+    detailHref: '/water-systems/lakes/dal-lake',
   },
   {
     id: 'dachigam',
@@ -57,9 +84,10 @@ const selectedFeatures = [
     statusColor: 'success',
     area: '141 km²',
     species: 650,
-    hangulPopulation: '~180',
+    hangulPopulation: '~289',
     alerts: 0,
     coordinates: '34.1372°N, 74.9382°E',
+    detailHref: '/protected-areas/dachigam-national-park',
   },
   {
     id: 'hokersar',
@@ -69,25 +97,83 @@ const selectedFeatures = [
     status: 'Bird Migration Active',
     statusColor: 'info',
     area: '13.75 km²',
+    wqi: 68,
+    bloomRisk: 'Low-Moderate',
     birdCount: '12,000+',
     species: 89,
     alerts: 1,
     coordinates: '34.0950°N, 74.7040°E',
+    detailHref: '/water-systems/wetlands/hokersar-wetland',
+  },
+  {
+    id: 'wular-lake',
+    name: 'Wular Lake & Ramsar Basin',
+    type: 'wetland',
+    district: 'Bandipora / Baramulla',
+    status: 'Ramsar Flood Reservoir',
+    statusColor: 'info',
+    area: '130 km²',
+    wqi: 71,
+    bloomRisk: 'Moderate',
+    birdCount: '45,000+',
+    alerts: 1,
+    coordinates: '34.3600°N, 74.5600°E',
+    detailHref: '/water-systems/lakes/wular-lake',
+  },
+  {
+    id: 'kolahoi',
+    name: 'Kolahoi Glacier Snout',
+    type: 'protected',
+    district: 'Anantnag',
+    status: 'Cryosphere Watch',
+    statusColor: 'warning',
+    area: '11.2 km²',
+    species: 112,
+    hangulPopulation: 'Alpine Zone',
+    alerts: 1,
+    coordinates: '34.1900°N, 75.3300°E',
+    detailHref: '/water-systems/glaciers/kolahoi-glacier',
+  },
+  {
+    id: 'zoji-la',
+    name: 'Zoji La High-Altitude Corridor',
+    type: 'protected',
+    district: 'Ganderbal / Kargil',
+    status: 'Pass Telemetry Active',
+    statusColor: 'warning',
+    area: '3,528 m ASL',
+    species: 94,
+    hangulPopulation: 'Subalpine',
+    alerts: 1,
+    coordinates: '34.2800°N, 75.5000°E',
+    detailHref: '/hazard-intelligence/avalanches',
   },
 ];
 
-export function MapIntelligenceCore() {
+const featuredCards = allFeatures.slice(0, 3);
+
+export interface MapIntelligenceCoreProps {
+  initialData?: BaselineTelemetryData;
+}
+
+export function MapIntelligenceCore({ initialData }: MapIntelligenceCoreProps = {}) {
   const [layers, setLayers] = useState(mapLayers);
   const [zoom, setZoom] = useState(9);
   const [showLayers, setShowLayers] = useState(true);
   const [selectedFeature, setSelectedFeature] = useState<string | null>('dal-lake');
   const [showMiniDrawer, setShowMiniDrawer] = useState(true);
   const [mapInstance, setMapInstance] = useState<any>(null);
+  const [isMapReady, setIsMapReady] = useState(false);
+
+  const handleMapReady = useCallback((map: any) => {
+    setMapInstance(map);
+    setIsMapReady(true);
+  }, []);
 
   const toggleLayer = (id: string) => {
-    setLayers(layers.map(layer =>
-      layer.id === id ? { ...layer, visible: !layer.visible } : layer
-    ));
+    setLayers((prev) =>
+      prev.map((layer) => (layer.id === id ? { ...layer, visible: !layer.visible } : layer))
+    );
   };
 
   const handleZoom = (direction: 'in' | 'out') => {
@@ -95,26 +181,28 @@ export function MapIntelligenceCore() {
       const currentZoom = mapInstance.getZoom();
       mapInstance.setZoom(direction === 'in' ? currentZoom + 1 : currentZoom - 1);
     }
-    setZoom(prev => direction === 'in' ? prev + 1 : prev - 1);
+    setZoom((prev) => (direction === 'in' ? prev + 1 : prev - 1));
   };
 
   const handleFeatureClick = (feature: any) => {
-    // Map feature types to our demo features
     const featureMap: Record<string, string> = {
-      'district': 'dal-lake',
-      'protected_area': 'dachigam',
-      'water_body': 'hokersar',
+      district: 'dal-lake',
+      protected_area: 'dachigam',
+      water_body: 'hokersar',
     };
-    const mappedId = featureMap[feature.type] || feature.slug || 'dal-lake';
+    const mappedId = featureMap[feature?.type] || feature?.slug || 'dal-lake';
     setSelectedFeature(mappedId);
     setShowMiniDrawer(true);
   };
 
-  const getFeatureData = (id: string) => selectedFeatures.find(f => f.id === id);
+  const getFeatureData = (id: string) =>
+    allFeatures.find((f) => f.id === id) || allFeatures[0];
   const currentFeature = selectedFeature ? getFeatureData(selectedFeature) : null;
 
-  const visibleLayerCount = layers.filter(l => l.visible).length;
-  const totalFeatures = layers.filter(l => l.visible).reduce((sum, l) => sum + l.count, 0);
+  const visibleLayerCount = layers.filter((l) => l.visible).length;
+  const totalFeatures = layers
+    .filter((l) => l.visible)
+    .reduce((sum, l) => sum + l.count, 0);
 
   return (
     <section className="pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-8 sm:pb-12 md:pb-16 bg-slate-900 relative">
@@ -130,11 +218,18 @@ export function MapIntelligenceCore() {
           transition={{ duration: 0.6 }}
           className="mb-6 sm:mb-8 md:mb-10"
         >
-          <div className="flex items-center gap-2 mb-2 sm:mb-3">
-            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-glacier-500 rounded-full signal-pulse" />
-            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-slate-400">
-              Spatial Intelligence
-            </span>
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-2 sm:mb-3">
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-glacier-500 rounded-full signal-pulse" />
+              <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-slate-400">
+                Spatial Intelligence
+              </span>
+            </div>
+            {initialData && (
+              <span className="text-[11px] text-emerald-400 font-medium">
+                Water Systems pH {initialData.waterQuality.avgPh.toFixed(1)} · {initialData.waterQuality.stations} Stations Verified
+              </span>
+            )}
           </div>
           <div className="flex flex-col gap-3 sm:gap-4">
             <div>
@@ -151,7 +246,7 @@ export function MapIntelligenceCore() {
                 size="sm"
                 className="bg-gradient-to-r from-forest-600 to-forest-500 text-xs sm:text-sm"
                 icon={<Maximize2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
-                onClick={() => window.location.href = '/atlas'}
+                onClick={() => (window.location.href = '/atlas')}
               >
                 <span className="hidden xs:inline">Open Full Atlas</span>
                 <span className="xs:hidden">Open Atlas</span>
@@ -160,7 +255,7 @@ export function MapIntelligenceCore() {
           </div>
         </motion.div>
 
-        {/* Map container - Real embedded Atlas preview */}
+        {/* Map container - Immediate SSR Kashmir Valley topological preview + seamless live Leaflet hydration */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -168,29 +263,35 @@ export function MapIntelligenceCore() {
           transition={{ duration: 0.7 }}
           className="relative"
         >
-          {/* Main map area */}
           <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-            {/* Real Leaflet Map - responsive height */}
-            <div className="h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] w-full">
-              <AtlasMap onMapReady={setMapInstance}>
-                {/* Real GIS Layers */}
-                <DistrictLayer
-                  visible={layers.find(l => l.id === 'districts')?.visible || false}
-                  onFeatureClick={handleFeatureClick}
+            <div className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] w-full bg-slate-950">
+              {/* Instant Frame-1 Topological & Hotspot Visual (SSR-rendered, zero loading text) */}
+              <div
+                className={`absolute inset-0 transition-opacity duration-500 ${
+                  isMapReady ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                }`}
+              >
+                <KashmirValleyTopoPreview
+                  selectedFeatureId={selectedFeature}
+                  onSelectFeature={(id) => {
+                    setSelectedFeature(id);
+                    setShowMiniDrawer(true);
+                  }}
                 />
-                <ProtectedAreaLayer
-                  visible={layers.find(l => l.id === 'protected-areas')?.visible || false}
+              </div>
+
+              {/* Interactive Leaflet GIS Canvas hydrating seamlessly on top */}
+              <div
+                className={`absolute inset-0 transition-opacity duration-500 ${
+                  isMapReady ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}
+              >
+                <InteractiveAtlasCanvas
+                  layers={layers}
                   onFeatureClick={handleFeatureClick}
+                  onMapReady={handleMapReady}
                 />
-                <WaterBodyLayer
-                  visible={layers.find(l => l.id === 'lakes')?.visible || layers.find(l => l.id === 'wetlands')?.visible || false}
-                  onFeatureClick={handleFeatureClick}
-                />
-                <HazardLayer
-                  visible={layers.find(l => l.id === 'hazards')?.visible || false}
-                  onFeatureClick={handleFeatureClick}
-                />
-              </AtlasMap>
+              </div>
             </div>
 
             {/* Map controls - Top right */}
@@ -228,7 +329,9 @@ export function MapIntelligenceCore() {
               <Card className="glass-intense border-white/10 p-0.5" padding="none">
                 <button
                   onClick={() => setShowLayers(!showLayers)}
-                  className={`p-2 sm:p-2.5 md:p-3 rounded-lg transition-colors ${showLayers ? 'bg-forest-500/20 text-forest-400' : 'hover:bg-white/5 text-white'}`}
+                  className={`p-2 sm:p-2.5 md:p-3 rounded-lg transition-colors ${
+                    showLayers ? 'bg-forest-500/20 text-forest-400' : 'hover:bg-white/5 text-white'
+                  }`}
                   aria-label="Toggle layers"
                 >
                   <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -238,7 +341,10 @@ export function MapIntelligenceCore() {
 
             {/* Search - Top center */}
             <div className="absolute top-2 right-12 left-12 sm:top-3 sm:right-16 sm:left-16 md:top-4 md:left-1/2 md:-translate-x-1/2 md:right-auto z-[400] px-2 sm:px-4">
-              <Card className="glass-intense border-white/10 min-w-[180px] sm:min-w-[240px] md:min-w-[320px] lg:min-w-[400px]" padding="none">
+              <Card
+                className="glass-intense border-white/10 min-w-[180px] sm:min-w-[240px] md:min-w-[320px] lg:min-w-[400px]"
+                padding="none"
+              >
                 <div className="flex items-center gap-2 px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3">
                   <Search className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 flex-shrink-0" />
                   <input
@@ -246,7 +352,9 @@ export function MapIntelligenceCore() {
                     placeholder="Search locations, lakes..."
                     className="flex-1 bg-transparent border-none outline-none text-xs sm:text-sm text-white placeholder:text-slate-500 min-w-0"
                   />
-                  <Badge variant="info" size="sm" className="hidden sm:inline-flex flex-shrink-0">GIS</Badge>
+                  <Badge variant="info" size="sm" className="hidden sm:inline-flex flex-shrink-0">
+                    GIS
+                  </Badge>
                 </div>
               </Card>
             </div>
@@ -254,9 +362,8 @@ export function MapIntelligenceCore() {
             {/* Layer panel - Right side */}
             {showLayers && (
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
+                initial={false}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
                 className="absolute top-14 sm:top-16 md:top-20 right-2 sm:right-3 md:right-4 w-[260px] sm:w-72 md:w-80 max-w-[calc(100vw-1rem)] glass-intense border border-white/10 rounded-lg sm:rounded-xl overflow-hidden z-[400]"
               >
                 <div className="p-2.5 sm:p-3 md:p-4 border-b border-white/10">
@@ -268,20 +375,28 @@ export function MapIntelligenceCore() {
                       </span>
                     </div>
                     <Badge variant="info" size="sm" className="text-[10px] sm:text-xs">
-                      {visibleLayerCount}/{mapLayers.length}
+                      {visibleLayerCount}/{layers.length}
                     </Badge>
                   </div>
                 </div>
                 <div className="p-1.5 sm:p-2 md:p-3 space-y-1 max-h-56 sm:max-h-64 md:max-h-72 overflow-y-auto">
-                  {mapLayers.map(layer => (
+                  {layers.map((layer) => (
                     <div
                       key={layer.id}
                       className="flex items-center justify-between gap-2 sm:gap-3 p-2 sm:p-2.5 rounded-lg hover:bg-white/5 cursor-pointer transition-colors group"
                       onClick={() => toggleLayer(layer.id)}
                     >
                       <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
-                        <div className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded ${layer.color} ${layer.visible ? '' : 'opacity-30'}`} />
-                        <span className={`text-xs sm:text-sm truncate ${layer.visible ? 'text-white' : 'text-slate-500'}`}>
+                        <div
+                          className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded ${layer.color} ${
+                            layer.visible ? '' : 'opacity-30'
+                          }`}
+                        />
+                        <span
+                          className={`text-xs sm:text-sm truncate ${
+                            layer.visible ? 'text-white' : 'text-slate-500'
+                          }`}
+                        >
                           {layer.label}
                         </span>
                       </div>
@@ -302,7 +417,7 @@ export function MapIntelligenceCore() {
             )}
 
             {/* Mini Feature Drawer - Left side */}
-            <AnimatePresence>
+            <AnimatePresence initial={false}>
               {showMiniDrawer && currentFeature && (
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -311,11 +426,15 @@ export function MapIntelligenceCore() {
                   className="absolute top-20 sm:top-24 md:top-28 left-2 sm:left-3 md:left-4 w-[280px] sm:w-72 md:w-80 max-w-[calc(100vw-1rem)] glass-intense border border-white/10 rounded-lg sm:rounded-xl overflow-hidden z-[400]"
                 >
                   {/* Drawer header */}
-                  <div className={`p-2.5 sm:p-3 md:p-4 bg-gradient-to-r ${
-                    currentFeature.type === 'wetland' ? 'from-blue-600/20 to-blue-800/10' :
-                    currentFeature.type === 'protected' ? 'from-emerald-600/20 to-emerald-800/10' :
-                    'from-slate-600/20 to-slate-800/10'
-                  }`}>
+                  <div
+                    className={`p-2.5 sm:p-3 md:p-4 bg-gradient-to-r ${
+                      currentFeature.type === 'wetland'
+                        ? 'from-blue-600/20 to-blue-800/10'
+                        : currentFeature.type === 'protected'
+                          ? 'from-emerald-600/20 to-emerald-800/10'
+                          : 'from-slate-600/20 to-slate-800/10'
+                    }`}
+                  >
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-2 sm:gap-3">
                         {currentFeature.type === 'wetland' ? (
@@ -326,8 +445,12 @@ export function MapIntelligenceCore() {
                           <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
                         )}
                         <div className="min-w-0 flex-1">
-                          <h3 className="text-sm sm:text-base font-bold text-white truncate">{currentFeature.name}</h3>
-                          <p className="text-[10px] sm:text-xs text-slate-400 truncate">{currentFeature.district} District</p>
+                          <h3 className="text-sm sm:text-base font-bold text-white truncate">
+                            {currentFeature.name}
+                          </h3>
+                          <p className="text-[10px] sm:text-xs text-slate-400 truncate">
+                            {currentFeature.district} District
+                          </p>
                         </div>
                       </div>
                       <button
@@ -343,8 +466,11 @@ export function MapIntelligenceCore() {
                     <div className="mt-2 sm:mt-3">
                       <Badge
                         variant={
-                          currentFeature.statusColor === 'success' ? 'success' :
-                          currentFeature.statusColor === 'warning' ? 'warning' : 'info'
+                          currentFeature.statusColor === 'success'
+                            ? 'success'
+                            : currentFeature.statusColor === 'warning'
+                              ? 'warning'
+                              : 'info'
                         }
                         size="sm"
                         className="text-[10px] sm:text-xs"
@@ -360,32 +486,51 @@ export function MapIntelligenceCore() {
                     <div className="grid grid-cols-2 gap-2">
                       <div className="p-2 sm:p-2.5 rounded-lg glass-light border border-white/5">
                         <div className="text-[10px] sm:text-xs text-slate-500 mb-1">Area</div>
-                        <div className="text-sm sm:text-base font-bold text-white">{currentFeature.area}</div>
+                        <div className="text-sm sm:text-base font-bold text-white">
+                          {currentFeature.area}
+                        </div>
                       </div>
                       <div className="p-2 sm:p-2.5 rounded-lg glass-light border border-white/5">
                         <div className="text-[10px] sm:text-xs text-slate-500 mb-1">Coordinates</div>
-                        <div className="text-[10px] sm:text-xs font-mono text-white break-words">{currentFeature.coordinates}</div>
+                        <div className="text-[10px] sm:text-xs font-mono text-white break-words">
+                          {currentFeature.coordinates}
+                        </div>
                       </div>
                     </div>
 
                     {/* Feature-specific metrics */}
                     {currentFeature.type === 'wetland' && (
                       <div className="space-y-2">
-                        <div className="flex justify-between text-xs sm:text-sm">
-                          <span className="text-slate-400">Water Quality Index</span>
-                          <span className={`font-bold ${
-                            currentFeature.wqi >= 70 ? 'text-emerald-400' :
-                            currentFeature.wqi >= 50 ? 'text-amber-400' : 'text-red-400'
-                          }`}>{currentFeature.wqi}</span>
-                        </div>
-                        <div className="flex justify-between text-xs sm:text-sm">
-                          <span className="text-slate-400">Bloom Risk</span>
-                          <Badge variant="warning" size="sm">{currentFeature.bloomRisk}</Badge>
-                        </div>
+                        {typeof currentFeature.wqi === 'number' && (
+                          <div className="flex justify-between text-xs sm:text-sm">
+                            <span className="text-slate-400">Water Quality Index</span>
+                            <span
+                              className={`font-bold ${
+                                currentFeature.wqi >= 70
+                                  ? 'text-emerald-400'
+                                  : currentFeature.wqi >= 50
+                                    ? 'text-amber-400'
+                                    : 'text-red-400'
+                              }`}
+                            >
+                              {currentFeature.wqi}
+                            </span>
+                          </div>
+                        )}
+                        {currentFeature.bloomRisk && (
+                          <div className="flex justify-between text-xs sm:text-sm">
+                            <span className="text-slate-400">Bloom Risk</span>
+                            <Badge variant="warning" size="sm">
+                              {currentFeature.bloomRisk}
+                            </Badge>
+                          </div>
+                        )}
                         {currentFeature.birdCount && (
                           <div className="flex justify-between text-xs sm:text-sm">
                             <span className="text-slate-400">Bird Count</span>
-                            <span className="text-blue-400 font-bold">{currentFeature.birdCount}</span>
+                            <span className="text-blue-400 font-bold">
+                              {currentFeature.birdCount}
+                            </span>
                           </div>
                         )}
                       </div>
@@ -395,11 +540,15 @@ export function MapIntelligenceCore() {
                       <div className="space-y-2">
                         <div className="flex justify-between text-xs sm:text-sm">
                           <span className="text-slate-400">Species Count</span>
-                          <span className="text-emerald-400 font-bold">{currentFeature.species}</span>
+                          <span className="text-emerald-400 font-bold">
+                            {currentFeature.species}
+                          </span>
                         </div>
                         <div className="flex justify-between text-xs sm:text-sm">
-                          <span className="text-slate-400">Hangul Population</span>
-                          <span className="text-amber-400 font-bold">{currentFeature.hangulPopulation}</span>
+                          <span className="text-slate-400">Indicator Zone</span>
+                          <span className="text-amber-400 font-bold">
+                            {currentFeature.hangulPopulation}
+                          </span>
                         </div>
                       </div>
                     )}
@@ -408,7 +557,9 @@ export function MapIntelligenceCore() {
                     {currentFeature.alerts > 0 && (
                       <div className="flex items-center gap-2 p-2 sm:p-3 rounded-lg bg-red-500/10 border border-red-500/20">
                         <AlertTriangle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-400" />
-                        <span className="text-xs sm:text-sm text-red-400">{currentFeature.alerts} active alert(s)</span>
+                        <span className="text-xs sm:text-sm text-red-400">
+                          {currentFeature.alerts} active alert(s)
+                        </span>
                       </div>
                     )}
 
@@ -417,7 +568,7 @@ export function MapIntelligenceCore() {
                       <Button
                         size="sm"
                         className="flex-1 bg-gradient-to-r from-forest-600 to-forest-500 text-xs"
-                        onClick={() => window.location.href = `/water-systems/lakes/${currentFeature.id}`}
+                        onClick={() => (window.location.href = currentFeature.detailHref)}
                       >
                         View Details
                       </Button>
@@ -425,7 +576,7 @@ export function MapIntelligenceCore() {
                         size="sm"
                         variant="outline"
                         className="border-white/20 text-white hover:border-forest-400 p-2"
-                        onClick={() => window.location.href = '/atlas'}
+                        onClick={() => (window.location.href = '/atlas')}
                       >
                         <MapIcon className="w-4 h-4" />
                       </Button>
@@ -465,14 +616,17 @@ export function MapIntelligenceCore() {
           transition={{ duration: 0.8 }}
           className="mt-6 sm:mt-8 md:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6"
         >
-          {selectedFeatures.map((feature, i) => (
+          {featuredCards.map((feature, i) => (
             <motion.div
               key={feature.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              onClick={() => { setSelectedFeature(feature.id); setShowMiniDrawer(true); }}
+              onClick={() => {
+                setSelectedFeature(feature.id);
+                setShowMiniDrawer(true);
+              }}
               className="cursor-pointer"
             >
               <Card className="glass-intense border-white/10 p-2.5 sm:p-3 md:p-4 lg:p-5 hover:border-forest-400/50 transition-colors">
@@ -490,8 +644,11 @@ export function MapIntelligenceCore() {
                   </div>
                   <Badge
                     variant={
-                      feature.statusColor === 'success' ? 'success' :
-                      feature.statusColor === 'warning' ? 'warning' : 'info'
+                      feature.statusColor === 'success'
+                        ? 'success'
+                        : feature.statusColor === 'warning'
+                          ? 'warning'
+                          : 'info'
                     }
                     size="sm"
                   >

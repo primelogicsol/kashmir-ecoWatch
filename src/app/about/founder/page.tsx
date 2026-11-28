@@ -22,16 +22,6 @@ export default function FounderPage() {
   const [projectSearchQuery, setProjectSearchQuery] = useState<string>('');
   const [projectDisplayMode, setProjectDisplayMode] = useState<'all' | 'featured'>('all');
 
-  // Executive Stats
-  const stats = [
-    { value: '25+', label: 'Years Experience', sub: 'Environmental Science & Disaster Resilience', color: 'text-emerald-400' },
-    { value: '600+', label: 'Technical Teams Led', sub: 'Across 7 Indian states in flagship water programs', color: 'text-sky-400' },
-    { value: '50+', label: 'Federal & UN Certifications', sub: 'FEMA APS, UN, US EPA, AWWA, NASA', color: 'text-amber-400' },
-    { value: '15', label: 'UN Accreditations', sub: 'Water security, IWRM & freshwater monitoring', color: 'text-purple-400' },
-    { value: '2005', label: 'Landmark Satellite Survey', sub: 'Post-Earthquake remote sensing assessment', color: 'text-rose-400' },
-    { value: '100%', label: 'Non-Commercial Mission', sub: 'Knowledge Return System for Kashmir', color: 'text-teal-400' },
-  ];
-
   // Degrees and Education
   const education = [
     {
@@ -520,32 +510,6 @@ export default function FounderPage() {
         {/* ─── Section 1: Executive Profile & Professional Summary ──────────────── */}
         <section id="founder-governance" className="relative scroll-mt-24">
           <div className="max-w-5xl mx-auto">
-            <div className="flex items-center gap-2 mb-3">
-              <Sparkles className="w-4 h-4 text-emerald-400" />
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Founder &amp; Scientific Directorate</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-6">
-              A Life Dedicated to Water Resilience &amp; Science
-            </h2>
-
-            {/* Founder Milestone Metrics */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
-              {stats.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="p-3.5 sm:p-4 rounded-lg border border-white/10 bg-slate-900/60 flex flex-col justify-between"
-                >
-                  <span className={`text-xl sm:text-2xl font-black tracking-tight mb-1 ${item.color}`}>
-                    {item.value}
-                  </span>
-                  <div>
-                    <p className="text-xs font-bold text-white leading-snug">{item.label}</p>
-                    <p className="text-[10px] text-slate-400 leading-tight mt-0.5 line-clamp-2">{item.sub}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
             <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-white/10 bg-slate-900/50 shadow-2xl relative overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 

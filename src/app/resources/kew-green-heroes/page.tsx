@@ -269,19 +269,19 @@ function ScientistDossierCard({ scientist, onExamine }: ScientistDossierCardProp
   );
 }
 
-function GreenHeroesPortalContent() {
+function GreenHeroesUrlTabSync({ onTabChange }: { onTabChange: (tab: string) => void }) {
   const searchParams = useSearchParams();
-  const router = useRouter();
-
-  const initialTab = searchParams.get('tab') || 'overview';
-  const [activeTab, setActiveTab] = useState<string>(initialTab);
-
   useEffect(() => {
     const tabParam = searchParams.get('tab');
-    if (tabParam && tabParam !== activeTab) {
-      setActiveTab(tabParam);
+    if (tabParam) {
+      onTabChange(tabParam);
     }
-  }, [searchParams, activeTab]);
+  }, [searchParams, onTabChange]);
+  return null;
+}
+
+function GreenHeroesPortalContent() {
+  const [activeTab, setActiveTab] = useState<string>('overview');
 
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
@@ -711,6 +711,9 @@ function GreenHeroesPortalContent() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+      <Suspense fallback={null}>
+        <GreenHeroesUrlTabSync onTabChange={setActiveTab} />
+      </Suspense>
       {/* ── 1. MODULE HERO HEADER ─── */}
       <Heading
         label="KEW · RESOURCES / ENVIRONMENTAL LEADERSHIP & ADVOCACY"
@@ -6457,18 +6460,5 @@ function GreenHeroesPortalContent() {
 }
 
 export default function KewGreenHeroesPage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center">
-          <div className="text-center space-y-3">
-            <Sparkles className="w-8 h-8 text-emerald-400 animate-pulse mx-auto" />
-            <p className="text-sm font-semibold text-slate-300">Loading KEW Green Heroes Directory...</p>
-          </div>
-        </div>
-      }
-    >
-      <GreenHeroesPortalContent />
-    </Suspense>
-  );
+  return <GreenHeroesPortalContent />;
 }

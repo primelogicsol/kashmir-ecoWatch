@@ -391,7 +391,7 @@ export default function SectoralEiaHomePage() {
               </div>
               <div className="mt-4 pt-3 border-t border-white/10 flex items-center gap-1.5 text-xs text-teal-300">
                 <FileText className="w-3.5 h-3.5" />
-                <span>Peer-Reviewed Dossiers</span>
+                <span>Desk-Synthesized Research Dossiers (External Peer Review Pending)</span>
               </div>
             </div>
           </div>
@@ -629,7 +629,7 @@ export default function SectoralEiaHomePage() {
                 Active Assessment Dossiers ({filteredAssessments.length})
               </h2>
               <p className="text-xs text-slate-400 mt-0.5">
-                Peer-reviewed pilot assessments and verified enterprise submissions across Kashmir.
+                Desk-Synthesized Research Dossiers (External Peer Review Pending) and structured pilot assessments across Kashmir.
               </p>
             </div>
             <Link

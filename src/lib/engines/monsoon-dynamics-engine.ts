@@ -35,6 +35,48 @@ function maxHazard(levels: HazardLevel[]): HazardLevel {
   );
 }
 
+function computeMonthlyClimatologicalWeeklyNormalMm(
+  st: {
+    normalJulAugWeeklyRainMm: number;
+    normalNovWeeklyRainMm: number;
+    subRegion: DisplaySubRegion;
+  },
+  monthIdx: number
+): number {
+  // monthIdx: 0=Jan .. 11=Dec
+  // Jun–Sep (5..8): Indian Summer Monsoon climatological window (Jun/Sep shoulder = 0.72x peak Jul–Aug)
+  if (monthIdx === 6 || monthIdx === 7) return st.normalJulAugWeeklyRainMm;
+  if (monthIdx === 5 || monthIdx === 8) {
+    return Number((st.normalJulAugWeeklyRainMm * 0.72).toFixed(1));
+  }
+  // Oct–Nov (9..10): Post-monsoon dry autumn minimum
+  if (monthIdx === 9 || monthIdx === 10) return st.normalNovWeeklyRainMm;
+
+  // Dec–May: Western Disturbance winter/spring precipitation regime across the Western Himalaya.
+  // Kashmir, Gilgit, Azad Kashmir, and Pir Panjal receive peak synoptic WD precipitation in Feb–Apr
+  // (~2.6x–3.4x dry November baseline), whereas Shivalik Jammu is monsoon-dominated.
+  const isWdDominated = st.subRegion !== 'Jammu';
+  const wdMultiplierByMonth: Record<number, number> = isWdDominated
+    ? {
+        11: 1.6, // Dec
+        0: 2.2, // Jan
+        1: 3.0, // Feb
+        2: 3.4, // Mar (peak spring WD)
+        3: 2.9, // Apr
+        4: 2.1, // May
+      }
+    : {
+        11: 1.4, // Dec
+        0: 2.0, // Jan
+        1: 2.3, // Feb
+        2: 2.4, // Mar
+        3: 1.8, // Apr
+        4: 1.6, // May
+      };
+  const mult = wdMultiplierByMonth[monthIdx] ?? 1.5;
+  return Number(Math.max(1.5, st.normalNovWeeklyRainMm * mult).toFixed(1));
+}
+
 function formatIsoDateUtc(ms: number): string {
   return new Date(ms).toISOString().slice(0, 10);
 }
@@ -220,7 +262,7 @@ export async function buildMonsoonDynamicsPayload(opts: BuildMonsoonPayloadOptio
     const era5Agg = aggregateNullableSeries(era5DailyArr, 7, 1, 80);
     const era5Past7Rain = era5Agg.sum;
 
-    const normal7d = isMonsoonSeason ? st.normalJulAugWeeklyRainMm : st.normalNovWeeklyRainMm;
+    const normal7d = computeMonthlyClimatologicalWeeklyNormalMm(st, monthIdx);
     const anomalyMm =
       era5Past7Rain !== null ? Number((era5Past7Rain - normal7d).toFixed(1)) : null;
     const anomalyPct =

@@ -13,6 +13,9 @@ import {
   WEBSITE_ENTITY_ID,
 } from './entity-identity';
 
+export const KEW_DATASET_NONCOMMERCIAL_LICENSE_URL =
+  'https://creativecommons.org/licenses/by-nc/4.0/';
+
 export function toAbsoluteCanonicalUrl(pathOrUrl: string): string {
   if (!pathOrUrl || pathOrUrl === '/') return CANONICAL_HOMEPAGE_URL;
   if (/^https?:\/\//i.test(pathOrUrl)) {
@@ -91,7 +94,7 @@ export function buildRootEntityGraph() {
         knowsAbout: [...KEW_IDENTITY.knowsAbout],
         sameAs: [...KEW_IDENTITY.officialSocialProfiles],
         publishingPrinciples: `${CANONICAL_SITE_URL}/about/methodology`,
-        ethicsPolicy: `${CANONICAL_SITE_URL}/about/governance`,
+        ethicsPolicy: `${CANONICAL_SITE_URL}/governance`,
         diversityPolicy: `${CANONICAL_SITE_URL}/accessibility`,
       },
       {
@@ -231,7 +234,7 @@ export function buildScholarlyArticleJsonLd(input: ScholarlyReportJsonLdInput) {
     mainEntityOfPage: canonicalUrl,
     inLanguage: 'en',
     isAccessibleForFree: true,
-    license: KEW_IDENTITY.defaultLicenseUrl,
+    license: KEW_DATASET_NONCOMMERCIAL_LICENSE_URL,
     author: authorEntities,
     publisher: {
       '@id': ORGANIZATION_ENTITY_ID,
@@ -290,7 +293,7 @@ export function buildScholarlyArticleJsonLd(input: ScholarlyReportJsonLdInput) {
             name: `${input.title} — Companion Structured Dataset`,
             description: `Machine-readable companion environmental dataset for ${input.title}, curated by ${KEW_IDENTITY.extendedName}.`,
             url: canonicalUrl,
-            license: KEW_IDENTITY.defaultLicenseUrl,
+            license: KEW_DATASET_NONCOMMERCIAL_LICENSE_URL,
             isAccessibleForFree: true,
             creator: { '@id': ORGANIZATION_ENTITY_ID },
             distribution: [
@@ -364,7 +367,7 @@ export function buildDatasetJsonLd(input: DatasetJsonLdInput) {
     identifier: input.id,
     inLanguage: 'en',
     isAccessibleForFree: true,
-    license: KEW_IDENTITY.defaultLicenseUrl,
+    license: KEW_DATASET_NONCOMMERCIAL_LICENSE_URL,
     creator: {
       '@id': ORGANIZATION_ENTITY_ID,
     },

@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound, permanentRedirect } from 'next/navigation';
@@ -11,17 +12,29 @@ import { ForthcomingEditionSpread } from '@/components/himalayan-dispatch/Forthc
 import { EditorialBreadcrumbs } from '@/components/himalayan-dispatch/EditorialBreadcrumbs';
 import {
   CANONICAL_DISPATCH_URL,
+  CANONICAL_KEW_PLATFORM_URL,
   DEPARTMENT_ID_TO_ROUTE_SLUG,
   DISPATCH_IDENTITY,
   HD_ROUTES,
+  IS_DISPATCH_SUBDOMAIN_LIVE,
   toCanonicalIssueSlug,
   toDispatchCanonicalUrl,
+  toInternalDispatchPath,
 } from '@/lib/himalayan-dispatch-routes';
+import { KewContentShare } from '@/components/common/KewContentShare';
+import { isHimalayanDispatchMonograph } from '@/lib/sharing/kew-content-sharing';
 import { JsonLd } from '@/components/seo/JsonLd';
 import {
   HIMALAYAN_DISPATCH_FOUNDING_PHILOSOPHY,
   HIMALAYAN_DISPATCH_FOUNDING_STORY,
 } from '@/data/himalayan-dispatch-founding-story';
+import {
+  BEYOND_THE_CONFERENCE_DEFINING_PRINCIPLE,
+  BEYOND_THE_CONFERENCE_SERIES_META,
+  CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META,
+  CIVIL_SOCIETY_DEFINING_PRINCIPLE,
+  HIMALAYAN_DISPATCH_COMPLETE_EDITORIAL_ARCHITECTURE,
+} from '@/data/himalayan-dispatch-beyond-conference';
 
 export function generateStaticParams() {
   return getPublicEditions()
@@ -79,18 +92,29 @@ export default async function HimalayanDispatchMonthlyIssuePage({
     );
   }
 
+  const isMonograph = isHimalayanDispatchMonograph(edition);
+  const canonicalIssuePath = HD_ROUTES.issue(canonicalIssueSlug);
+  const activeIssueOrigin = IS_DISPATCH_SUBDOMAIN_LIVE
+    ? CANONICAL_DISPATCH_URL
+    : CANONICAL_KEW_PLATFORM_URL;
+  const canonicalIssueFullUrl = IS_DISPATCH_SUBDOMAIN_LIVE
+    ? toDispatchCanonicalUrl(canonicalIssuePath)
+    : `${CANONICAL_KEW_PLATFORM_URL}${toInternalDispatchPath(`/issues/${canonicalIssueSlug}`)}`;
+
   const issueSchema = {
     '@context': 'https://schema.org',
     '@type': 'PublicationIssue',
     issueNumber: edition.volumeLabel,
     name: `${edition.title} (${edition.volumeLabel})`,
     datePublished: edition.publishedIsoDate,
-    url: toDispatchCanonicalUrl(HD_ROUTES.issue(canonicalIssueSlug)),
+    url: canonicalIssueFullUrl,
     isPartOf: {
       '@type': 'Periodical',
-      '@id': `${CANONICAL_DISPATCH_URL}/#periodical`,
+      '@id': `${activeIssueOrigin}/#periodical`,
       name: DISPATCH_IDENTITY.officialName,
-      url: DISPATCH_IDENTITY.canonicalHomepageUrl,
+      url: IS_DISPATCH_SUBDOMAIN_LIVE
+        ? DISPATCH_IDENTITY.canonicalHomepageUrl
+        : `${CANONICAL_KEW_PLATFORM_URL}/himalayan-dispatch`,
       publisher: DISPATCH_IDENTITY.publisherName,
     },
   };
@@ -143,21 +167,32 @@ export default async function HimalayanDispatchMonthlyIssuePage({
             <p className="hd-folio-meta">
               {edition.publicationDateLabel} &nbsp;·&nbsp; COVER PLATE: {edition.coverLocation}
             </p>
-            {stories[0] && (
-              <div className="pt-2 flex flex-wrap items-center gap-4">
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              {stories[0] && (
                 <Link
                   href={HD_ROUTES.issueArticle(canonicalIssueSlug, stories[0].slug)}
                   className="hd-font-sans inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7]"
                   style={{ backgroundColor: 'var(--hd-copper-solid)' }}
                 >
-                  <span>Read Cover Inquiry</span>
+                  <span>{isMonograph ? 'Read Monograph' : 'Read Cover Inquiry'}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
-                <Link href={HD_ROUTES.archive} className="hd-kicker hover:underline">
-                  All Editions →
-                </Link>
-              </div>
-            )}
+              )}
+
+              <KewContentShare
+                variant="editorial-button"
+                label={isMonograph ? 'Share This Monograph' : 'Share This Issue'}
+                title={`${edition.title} — ${edition.volumeLabel} | Himalayan Dispatch`}
+                description={edition.subtitle}
+                canonicalPath={canonicalIssuePath}
+                editionStatus={edition.status}
+                isPublished
+              />
+
+              <Link href={HD_ROUTES.archive} className="hd-kicker hover:underline">
+                All Editions →
+              </Link>
+            </div>
           </div>
         </header>
 
@@ -246,71 +281,180 @@ export default async function HimalayanDispatchMonthlyIssuePage({
               <span className="hd-folio-meta">PERMANENT ISSUE URLS</span>
             </div>
 
+            {canonicalIssueSlug === 'volume-01-issue-01' && (
+              <div
+                className="py-6 grid grid-cols-1 sm:grid-cols-3 gap-4"
+                style={{ borderColor: 'var(--hd-rule)' }}
+              >
+                {HIMALAYAN_DISPATCH_COMPLETE_EDITORIAL_ARCHITECTURE.map((arch) => (
+                  <div
+                    key={arch.dispatches}
+                    className="p-4 border space-y-1"
+                    style={{
+                      borderColor: 'var(--hd-rule)',
+                      backgroundColor: 'var(--hd-bg-elevated)',
+                    }}
+                  >
+                    <p className="hd-folio-meta" style={{ color: 'var(--hd-copper)' }}>
+                      DISPATCHES {arch.dispatches}
+                    </p>
+                    <p className="hd-font-display text-lg font-semibold" style={{ color: 'var(--hd-fg)' }}>
+                      {arch.series}
+                    </p>
+                    <p className="hd-font-body text-xs" style={{ color: 'var(--hd-fg-secondary)' }}>
+                      {arch.primaryFocus}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+
             {stories.map((st, idx) => {
               const articleHref = HD_ROUTES.issueArticle(canonicalIssueSlug, st.slug);
               const deptSlug = DEPARTMENT_ID_TO_ROUTE_SLUG[st.departmentId];
+              const beyondMeta = BEYOND_THE_CONFERENCE_SERIES_META[st.slug];
+              const civilMeta = CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META[st.slug];
+              const isFirstBeyondSeries =
+                canonicalIssueSlug === 'volume-01-issue-01' &&
+                st.slug === 'science-has-diagnosed-the-valley-who-will-prescribe-its-governance';
+              const isFirstCivilSeries =
+                canonicalIssueSlug === 'volume-01-issue-01' &&
+                st.slug === 'six-years-of-warnings-and-kashmir-still-cannot-breathe';
               return (
-                <article
-                  key={st.id}
-                  className="py-7 grid grid-cols-1 sm:grid-cols-12 gap-6 items-center"
-                  style={{ borderColor: 'var(--hd-rule)' }}
-                >
-                  <Link href={articleHref} className="sm:col-span-4 hd-plate-group block">
-                    <div className="hd-plate-frame aspect-[16/10] w-full">
-                      <img
-                        src={st.heroImage}
-                        alt={st.heroCaption}
-                        className={`w-full h-full object-cover ${
-                          st.heroMonochrome ? 'grayscale contrast-125' : ''
-                        }`}
-                      />
-                    </div>
-                  </Link>
-
-                  <div className="sm:col-span-8 space-y-2">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <Link
-                        href={HD_ROUTES.department(deptSlug)}
-                        className="hd-kicker hover:underline"
-                      >
-                        0{idx + 1} · {st.departmentRubric}
-                      </Link>
-                      <span className="hd-folio-meta">{st.readingTimeMinutes} MIN READ</span>
-                    </div>
-
-                    <Link href={articleHref} className="block group">
+                <React.Fragment key={st.id}>
+                  {isFirstBeyondSeries && (
+                    <div
+                      className="py-8 space-y-2.5"
+                      style={{ borderColor: 'var(--hd-rule-strong)' }}
+                    >
+                      <p className="hd-kicker">{BEYOND_THE_CONFERENCE_DEFINING_PRINCIPLE.kicker}</p>
                       <h3
-                        className="hd-font-display text-2xl sm:text-3xl font-semibold leading-snug group-hover:underline underline-offset-4"
+                        className="hd-font-display text-2xl sm:text-3xl font-semibold"
                         style={{ color: 'var(--hd-fg)' }}
                       >
-                        {st.title}
+                        {BEYOND_THE_CONFERENCE_DEFINING_PRINCIPLE.headline}
                       </h3>
+                      <p
+                        className="hd-font-body text-sm sm:text-base leading-relaxed"
+                        style={{ color: 'var(--hd-fg-secondary)' }}
+                      >
+                        {BEYOND_THE_CONFERENCE_DEFINING_PRINCIPLE.standfirst}
+                      </p>
+                    </div>
+                  )}
+                  {isFirstCivilSeries && (
+                    <div
+                      className="py-8 space-y-2.5"
+                      style={{ borderColor: 'var(--hd-rule-strong)' }}
+                    >
+                      <p className="hd-kicker">{CIVIL_SOCIETY_DEFINING_PRINCIPLE.kicker}</p>
+                      <h3
+                        className="hd-font-display text-2xl sm:text-3xl font-semibold"
+                        style={{ color: 'var(--hd-fg)' }}
+                      >
+                        {CIVIL_SOCIETY_DEFINING_PRINCIPLE.headline}
+                      </h3>
+                      <p
+                        className="hd-font-body text-sm sm:text-base leading-relaxed"
+                        style={{ color: 'var(--hd-fg-secondary)' }}
+                      >
+                        {CIVIL_SOCIETY_DEFINING_PRINCIPLE.standfirst}
+                      </p>
+                    </div>
+                  )}
+                  <article
+                    className="py-7 grid grid-cols-1 sm:grid-cols-12 gap-6 items-center"
+                    style={{ borderColor: 'var(--hd-rule)' }}
+                  >
+                    <Link href={articleHref} className="sm:col-span-4 hd-plate-group block">
+                      <div className="hd-plate-frame aspect-[16/10] w-full">
+                        <img
+                          src={st.heroImage}
+                          alt={st.heroCaption}
+                          className={`w-full h-full object-cover ${
+                            st.heroMonochrome ? 'grayscale contrast-125' : ''
+                          }`}
+                        />
+                      </div>
                     </Link>
 
-                    <p
-                      className="hd-font-body text-sm sm:text-base leading-relaxed"
-                      style={{ color: 'var(--hd-fg-secondary)' }}
-                    >
-                      {st.excerpt}
-                    </p>
+                    <div className="sm:col-span-8 space-y-2">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <Link
+                          href={HD_ROUTES.department(deptSlug)}
+                          className="hd-kicker hover:underline"
+                        >
+                          {String(idx + 1).padStart(2, '0')} · {st.departmentRubric}
+                        </Link>
+                        <span className="hd-folio-meta">
+                          {st.departmentId === 'photo-essays'
+                            ? `${st.readingTimeMinutes} MIN READ · ${st.estimatedViewingMinutes || 7} MIN VIEW (${st.wordCount.toLocaleString()} WORDS)`
+                            : `${st.readingTimeMinutes} MIN READ (${st.wordCount.toLocaleString()} WORDS)`}
+                        </span>
+                      </div>
 
-                    <div className="pt-1 flex items-center justify-between">
-                      <Link
-                        href={HD_ROUTES.journalistPortfolio(st.journalistSlug)}
-                        className="hd-folio-meta hover:underline"
-                      >
-                        BY {st.bylineDisplay}
+                      <Link href={articleHref} className="block group">
+                        <h3
+                          className="hd-font-display text-2xl sm:text-3xl font-semibold leading-snug group-hover:underline underline-offset-4"
+                          style={{ color: 'var(--hd-fg)' }}
+                        >
+                          {st.title}
+                        </h3>
                       </Link>
-                      <Link
-                        href={articleHref}
-                        className="hd-kicker inline-flex items-center gap-1"
+
+                      {beyondMeta && (
+                        <p
+                          className="hd-font-display text-base sm:text-lg italic"
+                          style={{ color: 'var(--hd-copper)' }}
+                        >
+                          {st.subtitle} — Proposed Framework: {beyondMeta.proposedFramework}
+                        </p>
+                      )}
+
+                      {civilMeta && (
+                        <p
+                          className="hd-font-display text-base sm:text-lg italic"
+                          style={{ color: 'var(--hd-copper)' }}
+                        >
+                          {civilMeta.centralQuestion} — Advancement: {civilMeta.proposedFramework}
+                        </p>
+                      )}
+
+                      <p
+                        className="hd-font-body text-sm sm:text-base leading-relaxed"
+                        style={{ color: 'var(--hd-fg-secondary)' }}
                       >
-                        <span>Read Article</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </Link>
+                        {st.excerpt}
+                      </p>
+
+                      <div className="pt-1 flex flex-wrap items-center justify-between gap-3">
+                        <Link
+                          href={HD_ROUTES.journalistPortfolio(st.journalistSlug)}
+                          className="hd-folio-meta hover:underline"
+                        >
+                          BY {st.bylineDisplay}
+                        </Link>
+                        <div className="inline-flex items-center gap-3">
+                          <Link
+                            href={articleHref}
+                            className="hd-kicker inline-flex items-center gap-1"
+                          >
+                            <span>Read Article</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
+                          <KewContentShare
+                            variant="toc-icon"
+                            title={st.title}
+                            description={st.excerpt || st.subtitle}
+                            canonicalPath={articleHref}
+                            isPublished={st.isPublished}
+                            workflowStage={st.workflowStage}
+                          />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </article>
+                  </article>
+                </React.Fragment>
               );
             })}
           </div>

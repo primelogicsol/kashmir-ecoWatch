@@ -72,7 +72,7 @@ export default function FloodFlashFloodPage() {
             <Button
               size="lg"
               className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-blue-600 hover:to-cyan-700 text-white shadow-xl"
-              onClick={() => router.push('/risk-monitoring/live-alerts')}
+              onClick={() => router.push('/risk-monitoring/live-alerts-advisories')}
             >
               <AlertTriangle className="w-5 h-5 mr-2" />
               View Flood Alerts

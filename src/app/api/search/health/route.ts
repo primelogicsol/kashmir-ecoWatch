@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { verifyAdminRequest } from '@/lib/seo/admin-session';
 import {
   getCompiledSearchCorpus,
   invalidateSearchCorpusCache,
@@ -46,6 +47,13 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  const authCheck = await verifyAdminRequest(req);
+  if (!authCheck.authorized) {
+    return NextResponse.json(
+      { error: 'Unauthorized: Administrator session required to trigger search index rebuild.' },
+      { status: 401 }
+    );
+  }
   const trigger = req.nextUrl.searchParams.get('trigger') || 'manual-api-sync';
   invalidateSearchCorpusCache();
   const corpus = getCompiledSearchCorpus(true);

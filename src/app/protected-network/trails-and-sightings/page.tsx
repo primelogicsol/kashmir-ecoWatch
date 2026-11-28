@@ -1059,7 +1059,13 @@ return (
                           </div>
 
                           <div className="mt-4 pt-3 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-[10px] text-slate-500">
-                            <span>Coords: {obs.latitude.toFixed(3)}°N, {obs.longitude.toFixed(3)}°E ({obs.public_visibility})</span>
+                            <span>
+                              {obs.public_visibility === 'Hidden' || obs.sensitivity_level === 'Critical'
+                                ? `Coords: Masked for Species Protection (${obs.district_or_region} Protected Grid)`
+                                : obs.public_visibility === 'Generalized'
+                                ? `Coords: ~${obs.latitude.toFixed(1)}°N, ${obs.longitude.toFixed(1)}°E (10 km Generalized Grid)`
+                                : `Coords: ${obs.latitude.toFixed(2)}°N, ${obs.longitude.toFixed(2)}°E (${obs.public_visibility})`}
+                            </span>
                             <span className="text-emerald-400 font-semibold cursor-pointer hover:underline">Inspect Metadata ↗</span>
                           </div>
                         </Card>

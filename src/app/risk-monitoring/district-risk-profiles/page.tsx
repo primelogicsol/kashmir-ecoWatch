@@ -37,7 +37,7 @@ export default function DistrictRiskProfilesPage() {
         label="District-Wise Operational Risk"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/live-alerts')}>
+            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/live-alerts-advisories')}>
               <Bell className="w-5 h-5 mr-2" />View Live Alerts
             </Button>
             <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5" onClick={() => router.push('/risk-monitoring')}>Back to Overview</Button>

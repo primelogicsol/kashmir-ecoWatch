@@ -46,7 +46,7 @@ export const GREEN_HEROES_TABS: GreenHeroTabItem[] = [
     label: 'All Green Heroes',
     shortLabel: 'Directory',
     icon: Users,
-    badge: '24 Profiles',
+    badge: '21 Profiles',
     badgeColor: 'bg-blue-500/20 text-blue-300 border-blue-500/30'
   },
   {
@@ -126,7 +126,7 @@ export const GREEN_HEROES_TABS: GreenHeroTabItem[] = [
     label: 'Regional & District Directory',
     shortLabel: '5 Regions',
     icon: MapPin,
-    badge: '42 Districts',
+    badge: '46 Districts',
     badgeColor: 'bg-violet-500/20 text-violet-300 border-violet-500/30'
   },
   {
@@ -177,22 +177,6 @@ interface GreenHeroesSubNavProps {
 }
 
 export function GreenHeroesSubNav({ activeTab, onTabChange }: GreenHeroesSubNavProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <div className="w-full bg-slate-900/90 border-y border-slate-800 sticky top-16 z-30 py-2.5 px-4">
-        <div className="container mx-auto flex items-center justify-between text-xs text-slate-400">
-          <span>Loading KEW Green Heroes workbench...</span>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="w-full bg-slate-900/95 backdrop-blur-md border-y border-slate-800/80 sticky top-16 z-30 shadow-lg">
       <div className="container mx-auto">

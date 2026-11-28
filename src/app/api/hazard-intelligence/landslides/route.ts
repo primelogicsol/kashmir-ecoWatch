@@ -38,18 +38,16 @@ export async function GET() {
     const weatherData = await weatherRes.json();
     const results = Array.isArray(weatherData) ? weatherData : [weatherData];
 
-    // Compute NASA LHASA 2.0-style rainfall nowcast
-    const enhancedRecords: LandslideRecord[] = landslideData.map((record, index) => {
+    // Compute Open-Meteo Gridded NWP rainfall + site susceptibility screening heuristic
+    const enhancedRecords: Array<LandslideRecord & { telemetryStatus?: string }> = landslideData.map((record, index) => {
       const locData = results[index];
       if (!locData || !locData.current || !locData.daily) {
         return {
           ...record,
-          live_soil_moisture: 0.32,
-          live_precipitation_24h: 4.2,
-          live_precipitation_72h: 12.0,
           live_risk_level: 'Low',
-          dominant_trigger: 'Antecedent Baseline Moisture',
-          last_updated: `Live Telemetry (${timeStr})`,
+          dominant_trigger: 'Telemetry Unavailable — Static Susceptibility Baseline Only',
+          last_updated: 'Telemetry Unavailable',
+          telemetryStatus: 'UNAVAILABLE',
         };
       }
 
@@ -58,23 +56,37 @@ export async function GET() {
       const precip24h = Number((dailyPrecip.length > 0 ? dailyPrecip[dailyPrecip.length - 1] : 0).toFixed(1));
       const precip72h = Number((dailyPrecip.slice(-3).reduce((acc, v) => acc + (v || 0), 0)).toFixed(1));
 
-      // NASA LHASA 2.0 Nowcast Heuristic
+      // Combine coarse NWP precipitation/moisture with site geological susceptibility_class
+      const susceptibility = String(
+        (record as unknown as { susceptibility_class?: string }).susceptibility_class || record.risk_level || 'Moderate'
+      );
+      const isHighSusceptibility =
+        susceptibility === 'Very High' || susceptibility === 'Critical' || susceptibility === 'High';
+      const isLowSusceptibility = susceptibility === 'Low';
+
       let nowcastLevel: NowcastHazardLevel = 'Low';
-      let triggerDesc = 'Normal Soil Moisture & Dry Canopy';
+      let triggerDesc = 'Baseline Conditions (Below Screening Threshold)';
 
-      const isHighSaturation = soilMoisture > 0.38;
-      const isExtremePrecip = precip72h > 35 || precip24h > 25;
-      const isModeratePrecip = precip72h > 15 || precip24h > 10;
+      const highRainThreshold72h = isHighSusceptibility ? 28 : isLowSusceptibility ? 50 : 38;
+      const highRainThreshold24h = isHighSusceptibility ? 18 : isLowSusceptibility ? 35 : 25;
+      const modRainThreshold72h = isHighSusceptibility ? 12 : isLowSusceptibility ? 25 : 16;
+      const modRainThreshold24h = isHighSusceptibility ? 8 : isLowSusceptibility ? 16 : 10;
 
-      if (isHighSaturation && isExtremePrecip) {
+      const isHighSaturation = soilMoisture > (isHighSusceptibility ? 0.36 : 0.40);
+      const isExtremePrecip = precip72h > highRainThreshold72h || precip24h > highRainThreshold24h;
+      const isModeratePrecip = precip72h > modRainThreshold72h || precip24h > modRainThreshold24h;
+
+      if ((isHighSaturation && isExtremePrecip) || (isHighSusceptibility && precip72h > 45)) {
         nowcastLevel = 'High';
-        triggerDesc = 'High Antecedent Rain + Saturated Subsurface';
-      } else if (isHighSaturation || isModeratePrecip) {
+        triggerDesc = `NWP Screening: Heavy Rain + Saturated Soil (${susceptibility} Susceptibility Slope)`;
+      } else if (isModeratePrecip || (isHighSaturation && precip72h > 5 && !isLowSusceptibility)) {
         nowcastLevel = 'Moderate';
-        triggerDesc = isHighSaturation ? 'High Subsurface Moisture' : 'Moderate Rainfall Runoff';
+        triggerDesc = isModeratePrecip
+          ? `NWP Screening: Moderate 72h Rainfall (${susceptibility} Susceptibility)`
+          : 'NWP Screening: Elevated Subsurface Moisture + Recent Rain';
       } else {
         nowcastLevel = 'Low';
-        triggerDesc = 'Baseline Conditions (Below Threshold)';
+        triggerDesc = 'NWP Screening: Below Rainfall Trigger Threshold';
       }
 
       return {
@@ -84,7 +96,8 @@ export async function GET() {
         live_precipitation_72h: precip72h,
         live_risk_level: nowcastLevel,
         dominant_trigger: triggerDesc,
-        last_updated: `Live Telemetry (${timeStr})`,
+        last_updated: `Open-Meteo NWP Grid (${timeStr})`,
+        telemetryStatus: 'MODEL_SCREENING',
       };
     });
 
@@ -96,19 +109,21 @@ export async function GET() {
 
       return {
         ...corridor,
-        lastUpdated: `Audit Synchronized (${timeStr})`,
+        lastUpdated: `NWP Screening (${timeStr})`,
         environmentalSusceptibilityNotice: hasHighNowcast
-          ? 'Elevated meteorological runoff & soil moisture detected along watershed slopes. Commuters advised of heightened rockfall susceptibility.'
-          : 'Normal baseline antecedent moisture. High-altitude pass freeze-thaw and localized geological factors apply.',
+          ? 'Elevated modeled rainfall & soil moisture indicated along watershed slopes (Open-Meteo ~9 km grid). Commuters should verify official BRO / Traffic Police advisories.'
+          : 'Normal modeled antecedent moisture. High-altitude pass freeze-thaw and localized geological factors apply.',
       };
     });
 
     const highNowcastCount = enhancedRecords.filter(r => r.live_risk_level === 'High').length;
     const activeOfficialBulletins = officialBulletinsData.filter(b => b.warningLevel === 'Warning' || b.warningLevel === 'Watch').length;
+    const anyAvailable = enhancedRecords.some(r => r.telemetryStatus === 'MODEL_SCREENING');
 
     return NextResponse.json(
       {
         success: true,
+        telemetryStatus: anyAvailable ? 'MODEL_SCREENING' : 'UNAVAILABLE',
         records: enhancedRecords,
         roadCorridors: liveCorridors,
         officialBulletins: officialBulletinsData,
@@ -117,17 +132,16 @@ export async function GET() {
           activeCorridorsCount: liveCorridors.length,
           officialWarningsCount: activeOfficialBulletins,
           highNowcastCount,
-          lastTelemetrySync: timeStr,
+          lastTelemetrySync: anyAvailable ? `Open-Meteo NWP (${timeStr})` : 'UNAVAILABLE',
         },
         meta: {
           sources: [
-            'Geological Survey of India (GSI Bhusanket National Landslide Forecasting Centre)',
-            'NASA LHASA 2.0 (Landslide Hazard Assessment for Situational Awareness)',
-            'India Meteorological Department (IMD) Rainfall & AWS Grids',
-            'Border Roads Organisation (BRO Project Beacon & Vijayak)',
-            'National Disaster Management Authority (NDMA Pakistan)',
+            'Geological Survey of India (GSI Bhusanket Published Susceptibility Reference)',
+            'Open-Meteo Gridded NWP Screening Heuristic (~9–11 km Precipitation & Soil Moisture)',
+            'Border Roads Organisation (BRO Published Corridor Reference)',
           ],
-          citation: 'Kashmir EcoWatch Multi-Layer Landslide Intelligence Engine (Decoupled Scientific Architecture)',
+          modelClassification: 'Open-Meteo Gridded NWP Screening Heuristic (Zero In-Situ Rain Gauge / Piezometer Telemetry)',
+          citation: 'Kashmir EcoWatch Landslide Susceptibility & NWP Screening Synthesis',
           timestamp: now.toISOString(),
         },
       },
@@ -140,17 +154,28 @@ export async function GET() {
       }
     );
   } catch (err: any) {
-    console.warn('[Landslides API] Fallback to verified baseline snapshot:', err?.message);
+    console.warn('[Landslides API] Upstream NWP unavailable; returning static susceptibility baseline:', err?.message);
     const snapshot = getInitialLandslideSnapshot();
+    const sanitizedRecords = snapshot.records.map(r => ({
+      ...r,
+      last_updated: 'Telemetry Unavailable — Static Susceptibility Baseline',
+      telemetryStatus: 'UNAVAILABLE' as const,
+    }));
     return NextResponse.json({
       success: true,
-      records: snapshot.records,
+      telemetryStatus: 'UNAVAILABLE',
+      records: sanitizedRecords,
       roadCorridors: snapshot.roadCorridors,
       officialBulletins: snapshot.officialBulletins,
-      summary: snapshot.summary,
+      summary: {
+        ...snapshot.summary,
+        lastTelemetrySync: 'UNAVAILABLE',
+      },
       meta: {
-        sources: ['GSI Bhusanket Inventory', 'NASA LHASA 2.0 Baseline', 'BRO Archives'],
+        sources: ['GSI Bhusanket Static Susceptibility Inventory', 'BRO Published Corridor Reference'],
+        modelClassification: 'Telemetry Unavailable — Static Geological Susceptibility Baseline Only',
         isFallback: true,
+        telemetryStatus: 'UNAVAILABLE',
         timestamp: now.toISOString(),
       },
     });

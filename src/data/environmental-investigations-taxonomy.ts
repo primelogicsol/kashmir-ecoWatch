@@ -302,7 +302,7 @@ export const INVESTIGATION_DOMAINS: InvestigationDomainDef[] = [
   },
 ];
 
-// ─── 3. INTEGRATED SCIENTIFIC DISCIPLINES (6 CLUSTERS · 36 DISCIPLINES) ──────
+// ─── 3. INTEGRATED SCIENTIFIC DISCIPLINES (7 CLUSTERS · 46 DISCIPLINES) ──────
 export const DISCIPLINE_CLUSTERS: DisciplineClusterDef[] = [
   {
     id: 'earth-geological',
@@ -392,8 +392,8 @@ export const DISCIPLINE_CLUSTERS: DisciplineClusterDef[] = [
         clusterId: 'water-aquatic',
         clusterName: 'Water & Aquatic Sciences',
         analyticalMethods: ['Trophic State Index (Carlson TSI)', 'Internal benthic phosphorus release auditing', 'Hypolimnetic DO profiling'],
-        governingEquationOrModel: 'Vollenweider Phosphorus Loading: L_p = (P_lake · z_mean) · (1 / τ_w + σ_p)',
-        equationVariablesNote: 'L_p = areal P load (g/m²/yr); z_mean = mean depth (m); τ_w = hydraulic residence time (yr); σ_p = sedimentation loss coefficient',
+        governingEquationOrModel: 'Vollenweider Phosphorus Loading: L_p = 10⁻³ · P_lake · z_mean · (1 / τ_w + σ_p)',
+        equationVariablesNote: 'L_p = areal P load (g/m²/yr); P_lake = in-lake TP (µg/L = mg/m³); 10⁻³ converts mg to g; z_mean = mean depth (m); τ_w = hydraulic residence time (yr); σ_p = sedimentation loss coefficient',
         coreParameters: ['Total Phosphorus (µg/L)', 'Chlorophyll-a (µg/L)', 'Secchi transparency (m)', 'Benthic DO (mg/L)'],
         himalayanLiteratureAnchor: 'Zutshi & Vass (1978, 1982); Trisal (1987) foundational trophic and macrophyte nutrient budgets of Kashmir lakes',
       },
@@ -522,8 +522,8 @@ export const DISCIPLINE_CLUSTERS: DisciplineClusterDef[] = [
         clusterId: 'biological-ecological',
         clusterName: 'Biological & Ecological Sciences',
         analyticalMethods: ['Faecal coliform / E. coli membrane filtration', 'Cyanobacterial bloom toxigenicity screening', 'High-altitude psychrotrophic pathogen persistence'],
-        governingEquationOrModel: 'Chick–Watson Solar/Thermal Die-Off: dN/dt = -k_T · N,  k_T = k_20 · θ^(T - 20)',
-        equationVariablesNote: 'At cold alpine water temperatures (T = 4–8 °C in Sheshnag/Lidder), enteric bacterial die-off k_T is markedly slower than at 20 °C',
+        governingEquationOrModel: 'Arrhenius / van ’t Hoff Thermal Rate Correction: k_T = k_20 · θ^(T - 20);  Chick–Watson Disinfection: ln(N_t / N_0) = -Λ · C^n · t',
+        equationVariablesNote: 'At cold alpine water temperatures (T = 4–8 °C in Sheshnag/Lidder), microbial rate constant k_T slows markedly relative to 20 °C; Chick–Watson governs chemical CT disinfection inactivation',
         coreParameters: ['Faecal Coliform (MPN/100mL)', 'Cyanobacterial cell density (cells/mL)', 'Cold-water pathogen survival'],
         himalayanLiteratureAnchor: 'University of Kashmir CORD & JKPCC microbial water-quality surveillance across Dal-Nigeen and Lidder pilgrimage routes',
       },
@@ -1024,7 +1024,7 @@ export const INVESTIGATION_WORKFLOW_STAGES: WorkflowStageDef[] = [
     summary: 'Identify relevant applied sciences and analytical methods',
     inputs: ['Investigation domain profile', 'Physical/ecological system typology'],
     outputs: ['Assigned scientific disciplines', 'Governing equations & required empirical parameters'],
-    aiAssistanceScope: 'Maps domain stressors to applicable disciplines across the 6 KEW scientific clusters.',
+    aiAssistanceScope: 'Maps domain stressors to applicable disciplines across the 7 KEW scientific clusters (46 disciplines).',
     scientificIntegrityGuardrail: 'Irrelevant disciplines and report sections are dynamically suppressed rather than padded.',
   },
   {
@@ -1143,11 +1143,11 @@ export const GLOBAL_PRECEDENT_CASE_STUDIES: PrecedentCaseStudy[] = [
     biomeCategory: 'Asian Lacustrine',
     environmentalChallenge: 'Hypereutrophic shallow subtropical/plateau lakes subjected to multi-million-cubic-metre Suction/Mechanical Environmental Dredging campaigns.',
     interventionTested: 'Precision thin-layer dredging (15–30 cm) vs bulk excavation, paired with post-dredging sediment-water nutrient flux monitoring.',
-    scientificOutcome: 'Peer-reviewed evaluations (Jing et al., 2019; Chen et al., 2018) showed that where external catchment sewage/agricultural P loads remained high or dredging exposed deeper anoxic NH₄⁺/PO₄³⁻ porewaters and destroyed submerged macrophytes, internal nutrient suppression lasted only 1–3 years before trophic rebound.',
+    scientificOutcome: 'Peer-reviewed multi-year follow-up evaluations (Jing et al., 2019) showed that where external catchment sewage/agricultural P loads remained high or dredging disturbed submerged macrophytes, ecosystem health improvements were short-lived over a five-year post-dredging horizon.',
     transferableLessonForKashmir: 'Directly parallels Dal Lake: mechanical excavation without functional Telbal desilting and tertiary sewage interception destroys benthic macrophyte nutrient sinks while failing to prevent rapid silt/nutrient rebound.',
     structuralDifferencesNote: 'Dal Lake has higher sub-lacustrine karst spring inflow and colder winter stratification dynamics than shallow wind-mixed Lake Taihu.',
     linkedInvestigationCodes: ['KEW-INV-0001', 'KEW-INV-0003'],
-    keyReference: 'Chen et al. (2018) Water Research; Jing et al. (2019) Science of the Total Environment — Long-term effectiveness of sediment dredging in eutrophic lakes',
+    keyReference: 'Jing et al. (2019) Science of the Total Environment, 686, 753–763 (10.1016/j.scitotenv.2019.05.133) — Five-year follow-up of dredging effects at Lake Taihu',
   },
   {
     id: 'prec-tsho-rolpa-imja-nepal',

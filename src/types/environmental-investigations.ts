@@ -4,7 +4,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 export type InvestigationStatus =
-  | 'published'            // Peer-verified & administratively approved investigation
+  | 'published'            // Desk-verified canonical record (external peer review pending)
   | 'active_investigation' // Evidence compilation & scientific validation underway
   | 'scoping_review'       // Boundary definition, baseline audit & literature synthesis
   | 'proposed'             // Proposed investigation subject (no predetermined findings)

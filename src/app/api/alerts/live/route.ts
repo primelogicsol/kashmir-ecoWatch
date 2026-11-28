@@ -1,430 +1,581 @@
 import { NextResponse } from 'next/server';
-import { AlertItem, alertRegistry } from '@/data/alert-registry';
+import { AlertItem, getActiveAlerts } from '@/data/alert-registry';
+import { allowForcedUpstreamRefresh } from '@/lib/seo/admin-session';
 
-export const revalidate = 60; // 1-minute server-side caching
+export const dynamic = 'force-dynamic';
 
-export async function GET() {
-  const now = new Date();
-  const liveAlerts: AlertItem[] = [];
+const CACHE_TTL_MS = 90_000;
+let cachedAlertsPayload: Record<string, unknown> | null = null;
+let cachedAlertsAt = 0;
+let inFlightAlertsJob: Promise<Record<string, unknown>> | null = null;
 
-  // Helper with 4-second timeout to prevent stalling
-  const fetchWithTimeout = async (url: string, timeoutMs = 4000) => {
-    const controller = new AbortController();
-    const id = setTimeout(() => controller.abort(), timeoutMs);
-    try {
-      const response = await fetch(url, {
-        signal: controller.signal,
-        next: { revalidate: 60 }
-      });
-      clearTimeout(id);
-      return response;
-    } catch (err) {
-      clearTimeout(id);
-      return null;
+/**
+ * Canonical 46 Western Himalayan Operational District Centroids
+ * Used for exact Haversine nearest-centroid geocoding of USGS regional earthquakes.
+ */
+const CANONICAL_DISTRICT_CENTROIDS: ReadonlyArray<{ name: string; lat: number; lng: number }> = [
+  // Kashmir Valley (10)
+  { name: 'Srinagar', lat: 34.0837, lng: 74.7973 },
+  { name: 'Ganderbal', lat: 34.2262, lng: 74.7748 },
+  { name: 'Budgam', lat: 33.9349, lng: 74.6400 },
+  { name: 'Anantnag', lat: 33.7311, lng: 75.1487 },
+  { name: 'Kulgam', lat: 33.6446, lng: 75.0197 },
+  { name: 'Pulwama', lat: 33.8716, lng: 74.8946 },
+  { name: 'Shopian', lat: 33.7172, lng: 74.8343 },
+  { name: 'Baramulla', lat: 34.1990, lng: 74.3636 },
+  { name: 'Bandipora', lat: 34.4173, lng: 74.6431 },
+  { name: 'Kupwara', lat: 34.5262, lng: 74.2546 },
+  // Jammu Region (10)
+  { name: 'Jammu', lat: 32.7266, lng: 74.8570 },
+  { name: 'Samba', lat: 32.5624, lng: 75.1199 },
+  { name: 'Kathua', lat: 32.3866, lng: 75.5173 },
+  { name: 'Udhampur', lat: 32.9150, lng: 75.1416 },
+  { name: 'Reasi', lat: 33.0804, lng: 74.8361 },
+  { name: 'Rajouri', lat: 33.3773, lng: 74.3152 },
+  { name: 'Poonch', lat: 33.7670, lng: 74.0921 },
+  { name: 'Doda', lat: 33.1457, lng: 75.5480 },
+  { name: 'Ramban', lat: 33.2428, lng: 75.2357 },
+  { name: 'Kishtwar', lat: 33.3136, lng: 75.7673 },
+  // Ladakh (2)
+  { name: 'Leh', lat: 34.1526, lng: 77.5771 },
+  { name: 'Kargil', lat: 34.5539, lng: 76.1349 },
+  // Azad Jammu & Kashmir (10)
+  { name: 'Muzaffarabad', lat: 34.3700, lng: 73.4711 },
+  { name: 'Neelum', lat: 34.5880, lng: 73.9070 },
+  { name: 'Jhelum Valley', lat: 34.1830, lng: 73.7500 },
+  { name: 'Bagh', lat: 33.9811, lng: 73.7761 },
+  { name: 'Haveli', lat: 33.9500, lng: 73.9000 },
+  { name: 'Poonch (AJK)', lat: 33.8578, lng: 73.7604 },
+  { name: 'Sudhnoti', lat: 33.7200, lng: 73.6500 },
+  { name: 'Kotli', lat: 33.5156, lng: 73.9019 },
+  { name: 'Mirpur', lat: 33.1482, lng: 73.7519 },
+  { name: 'Bhimber', lat: 32.9747, lng: 74.0789 },
+  // Gilgit-Baltistan (14)
+  { name: 'Gilgit', lat: 35.9208, lng: 74.3080 },
+  { name: 'Hunza', lat: 36.3167, lng: 74.6500 },
+  { name: 'Nagar', lat: 36.2667, lng: 74.7333 },
+  { name: 'Ghizer', lat: 36.1736, lng: 73.7636 },
+  { name: 'Gupis-Yasin', lat: 36.2000, lng: 73.4000 },
+  { name: 'Diamer', lat: 35.4206, lng: 74.0969 },
+  { name: 'Darel', lat: 35.6200, lng: 73.7200 },
+  { name: 'Tangir', lat: 35.6500, lng: 73.5200 },
+  { name: 'Astore', lat: 35.3575, lng: 74.8563 },
+  { name: 'Skardu', lat: 35.2971, lng: 75.6333 },
+  { name: 'Shigar', lat: 35.4306, lng: 75.7364 },
+  { name: 'Kharmang', lat: 34.9400, lng: 76.2167 },
+  { name: 'Roundu', lat: 35.5400, lng: 75.4500 },
+  { name: 'Ghanche', lat: 35.1667, lng: 76.3333 },
+];
+
+function haversineDistanceKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
+  const R = 6371;
+  const toRad = (deg: number) => (deg * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  return 2 * R * Math.asin(Math.min(1, Math.sqrt(a)));
+}
+
+function findNearestCanonicalDistrict(lat: number, lon: number): { district: string; distanceKm: number } {
+  let best = CANONICAL_DISTRICT_CENTROIDS[0];
+  let bestDist = Infinity;
+  for (const c of CANONICAL_DISTRICT_CENTROIDS) {
+    const d = haversineDistanceKm(lat, lon, c.lat, c.lng);
+    if (d < bestDist) {
+      bestDist = d;
+      best = c;
     }
-  };
+  }
+  return { district: best.name, distanceKm: Math.round(bestDist) };
+}
 
+async function fetchWithTimeout(url: string, timeoutMs = 4500) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    // 1. Fetch live telemetry in parallel
-    const [airQualityRes, floodRes, usgsQuakesRes, weatherSrinagarRes, weatherRambanRes, weatherZojilaRes] = await Promise.all([
-      // Air Quality (Srinagar)
-      fetchWithTimeout('https://air-quality-api.open-meteo.com/v1/air-quality?latitude=34.0837&longitude=74.7973&current=pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,us_aqi,european_aqi&timezone=Asia%2FKolkata'),
-      // Flood / River Discharge (Jhelum Basin)
-      fetchWithTimeout('https://flood-api.open-meteo.com/v1/flood?latitude=34.08&longitude=74.80&daily=river_discharge,river_discharge_mean,river_discharge_max&forecast_days=3'),
-      // USGS Earthquakes (Kashmir / Ladakh / Hindu Kush seismic belt, M2.5+, past 7 days)
-      fetchWithTimeout('https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=2.5&minlatitude=31.5&maxlatitude=37.5&minlongitude=72.0&maxlongitude=80.0&limit=3'),
-      // Weather Srinagar (Valley Floor)
-      fetchWithTimeout('https://api.open-meteo.com/v1/forecast?latitude=34.0837&longitude=74.7973&current=temperature_2m,relative_humidity_2m,precipitation,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Asia%2FKolkata'),
-      // Landslide Corridor: Ramban / Banihal (NH-44)
-      fetchWithTimeout('https://api.open-meteo.com/v1/forecast?latitude=33.24&longitude=75.19&current=temperature_2m,precipitation,weather_code,wind_speed_10m&daily=precipitation_sum,precipitation_probability_max&timezone=Asia%2FKolkata'),
-      // Avalanche Pass: Zoji La / Dras
-      fetchWithTimeout('https://api.open-meteo.com/v1/forecast?latitude=34.28&longitude=75.50&current=temperature_2m,precipitation,weather_code,wind_speed_10m&daily=temperature_2m_min,precipitation_sum&timezone=Asia%2FKolkata'),
-    ]);
+    const response = await fetch(url, {
+      signal: controller.signal,
+      cache: 'no-store',
+    });
+    return response;
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(id);
+  }
+}
 
-    // ──────────────────────────────────────────────────────────────────────────
-    // 2. Process Live Air Quality
-    // ──────────────────────────────────────────────────────────────────────────
-    if (airQualityRes && airQualityRes.ok) {
-      const aqiData = await airQualityRes.json();
-      const current = aqiData.current;
-      if (current) {
-        const pm25 = Math.round(current.pm2_5 * 10) / 10;
-        const pm10 = Math.round(current.pm10 * 10) / 10;
-        const usAqi = current.us_aqi;
-        
-        let severity: 'low' | 'moderate' | 'high' | 'critical' = 'low';
-        let statusText = 'Good';
-        if (usAqi > 150 || pm25 > 55) {
-          severity = 'high';
-          statusText = 'Unhealthy';
-        } else if (usAqi > 100 || pm25 > 35) {
-          severity = 'moderate';
-          statusText = 'Moderate to Unhealthy for Sensitive Groups';
-        } else if (usAqi > 50 || pm25 > 15) {
-          severity = 'moderate';
-          statusText = 'Moderate Air Quality';
-        }
+export async function GET(request: Request) {
+  const nowMs = Date.now();
+  const { searchParams } = new URL(request.url);
+  const rawRefresh = searchParams.get('refresh') === '1';
+  const forceRefresh = rawRefresh && allowForcedUpstreamRefresh(request, 'alerts-live', 60_000);
 
-        liveAlerts.push({
-          id: 'live-air-srinagar',
-          title: `Live Air Quality: ${statusText} — Srinagar`,
-          category: 'air-quality',
-          severity: severity,
-          status: 'active',
-          district: 'Srinagar',
-          affectedArea: 'Srinagar Urban Agglomeration & Dal Lake Basin',
-          issued: new Date().toISOString(),
-          updated: new Date().toISOString(),
-          expires: new Date(Date.now() + 24 * 3600 * 1000).toISOString(),
-          source: 'institutional',
-          issuedBy: 'Open-Meteo / Copernicus Atmospheric Service (CAMS) Live',
-          summary: `Real-time atmospheric sensor telemetry reports US AQI at ${usAqi} (${statusText}) in Srinagar. PM2.5 concentration is ${pm25} µg/m³ and PM10 is ${pm10} µg/m³.`,
-          cause: `Live satellite and surface dispersion models detect atmospheric particulate concentrations driven by local inversion and ambient emissions.`,
-          guidance: {
-            summary: severity === 'high' 
-              ? 'Sensitive groups should avoid prolonged outdoor exertion. Wear N95 filtration masks in traffic corridors.'
-              : 'Air quality is within acceptable parameters. Sensitive individuals should monitor respiratory comfort during morning hours.',
-            actions: [
-              `Current Live PM2.5: ${pm25} µg/m³ (WHO 24h benchmark: 15 µg/m³)`,
-              `Current Live PM10: ${pm10} µg/m³ · US AQI Index: ${usAqi}`,
-              'Keep residential windows closed during early morning temperature inversion hours',
-              'Avoid agricultural biomass open burning in peri-urban orchard belts'
-            ],
-            travelImpact: 'None. Urban visibility and transit routes operating normally.',
-            urgency: severity === 'high' ? 'urgent' : 'precautionary'
-          },
-          relatedModule: 'environmental-monitoring',
-          relatedModulePath: '/environmental-monitoring',
-          updates: [
-            { timestamp: new Date().toISOString(), action: 'Live API Telemetry Received', note: `Automated live sensor reading: PM2.5 ${pm25} µg/m³, AQI ${usAqi}.` }
-          ],
-          tags: ['air-quality', 'srinagar', 'live-api', 'pm25', 'telemetry', 'aqi']
-        });
-      }
-    }
-
-    // ──────────────────────────────────────────────────────────────────────────
-    // 3. Process Live River Discharge & Flood Telemetry
-    // ──────────────────────────────────────────────────────────────────────────
-    if (floodRes && floodRes.ok) {
-      const floodData = await floodRes.json();
-      const discharges = floodData.daily?.river_discharge || [];
-      const currentDischarge = discharges[0] ? Math.round(discharges[0] * 10) / 10 : null;
-      const maxForecast = floodData.daily?.river_discharge_max?.[0] ? Math.round(floodData.daily.river_discharge_max[0] * 10) / 10 : null;
-
-      if (currentDischarge !== null) {
-        let severity: 'low' | 'moderate' | 'high' | 'critical' = 'low';
-        let stageText = 'Normal Base Flow';
-        if (currentDischarge > 150) {
-          severity = 'critical';
-          stageText = 'High Flood Inundation Warning';
-        } else if (currentDischarge > 80) {
-          severity = 'high';
-          stageText = 'Elevated Flood Alert Stage';
-        } else if (currentDischarge > 40) {
-          severity = 'moderate';
-          stageText = 'Moderate Hydrological Advisory';
-        }
-
-        liveAlerts.push({
-          id: 'live-flood-jhelum',
-          title: `Live Hydrological Telemetry: ${stageText} — Jhelum Basin`,
-          category: 'flood',
-          severity: severity,
-          status: 'active',
-          district: 'Srinagar',
-          affectedArea: 'Jhelum River Channel, Sangam to Ram Munshi Bagh & Wular Lake Outflow',
-          corridor: 'Jhelum River Drainage Basin',
-          issued: new Date().toISOString(),
-          updated: new Date().toISOString(),
-          expires: new Date(Date.now() + 48 * 3600 * 1000).toISOString(),
-          source: 'institutional',
-          issuedBy: 'Global Flood Awareness System (GloFAS) / Open-Meteo Live',
-          summary: `Real-time hydrological streamflow models report Jhelum River discharge at ${currentDischarge} m³/s (Peak 24h forecast: ${maxForecast || currentDischarge} m³/s). Water levels remain within ${stageText.toLowerCase()}.`,
-          cause: `Catchment runoff and upstream meltwater dynamics across Pir Panjal and Great Himalayan tributaries contributing to current channel volume.`,
-          guidance: {
-            summary: severity === 'low'
-              ? 'River discharge is at normal seasonal levels. Routine riverside recreation and boat transit operating normally.'
-              : 'Elevated water volume detected. Avoid proximity to low embankments and unsecured riverbank walkways.',
-            actions: [
-              `Current Live Discharge: ${currentDischarge} m³/s`,
-              `Projected Max Flow (24h): ${maxForecast || currentDischarge} m³/s`,
-              'Monitor key gauge markers at Sangam, Ram Munshi Bagh, and Asham',
-              'Fishermen and shikara operators advised to secure watercraft'
-            ],
-            travelImpact: 'Riverside roads clear. No bridge or causeway closures in place.',
-            urgency: severity === 'low' ? 'advisory' : 'urgent'
-          },
-          relatedModule: 'water-systems',
-          relatedModulePath: '/water-systems',
-          mapLink: '/atlas?layer=flood-risk&basin=jhelum',
-          updates: [
-            { timestamp: new Date().toISOString(), action: 'Live Streamflow Telemetry Updated', note: `Measured stream discharge rate at ${currentDischarge} m³/s.` }
-          ],
-          tags: ['flood', 'jhelum', 'hydrology', 'river-discharge', 'glofas', 'live-api']
-        });
-      }
-    }
-
-    // ──────────────────────────────────────────────────────────────────────────
-    // 4. Process Real Live Earthquakes from USGS
-    // ──────────────────────────────────────────────────────────────────────────
-    if (usgsQuakesRes && usgsQuakesRes.ok) {
-      const quakeData = await usgsQuakesRes.json();
-      const features = quakeData.features || [];
-
-      features.slice(0, 2).forEach((f: any, idx: number) => {
-        const props = f.properties;
-        const mag = props.mag;
-        const place = props.place;
-        const time = new Date(props.time).toISOString();
-        const depth = f.geometry?.coordinates?.[2] || 10;
-        
-        const severity: 'low' | 'moderate' | 'high' | 'critical' = 
-          mag >= 6.0 ? 'critical' : mag >= 5.0 ? 'high' : mag >= 4.0 ? 'moderate' : 'low';
-
-        liveAlerts.push({
-          id: `live-quake-${props.code || idx}`,
-          title: `Live Seismic Event: M${mag.toFixed(1)} Earthquake — ${place}`,
-          category: 'earthquake',
-          severity: severity,
-          status: 'active',
-          district: place.includes('India') || place.includes('Kashmir') ? 'Kargil' : 'Baramulla',
-          affectedArea: `${place} (Lat: ${f.geometry.coordinates[1].toFixed(2)}°, Lon: ${f.geometry.coordinates[0].toFixed(2)}°)`,
-          issued: time,
-          updated: new Date().toISOString(),
-          expires: new Date(Date.now() + 72 * 3600 * 1000).toISOString(),
-          source: 'institutional',
-          issuedBy: 'USGS Real-Time Earthquake Hazards Program',
-          summary: `A magnitude ${mag.toFixed(1)} earthquake occurred at a depth of ${depth} km at ${place}. Recorded live by international seismic monitoring networks.`,
-          cause: `Tectonic stress release along the active Main Boundary Thrust / Pamir-Hindukush convergent plate boundary.`,
-          guidance: {
-            summary: mag >= 4.5 
-              ? 'Seismic tremors recorded in the region. Inspect masonry and structural components for fissures. Report aftershocks.'
-              : 'Minor regional seismic event detected by USGS telemetry. No immediate tsunami or major building damage reported.',
-            actions: [
-              `Official Magnitude: M${mag.toFixed(1)} · Focal Depth: ${depth} km`,
-              `Event Timestamp: ${new Date(props.time).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST`,
-              'Follow standard earthquake safety guidelines: Drop, Cover, and Hold On during active shaking',
-              'Report local structural damage to district emergency operation centres'
-            ],
-            travelImpact: 'Regional highway tunnels and passes operating normally unless local rockfall reported.',
-            urgency: severity === 'high' || severity === 'critical' ? 'urgent' : 'precautionary'
-          },
-          relatedModule: 'hazard-intelligence',
-          relatedModulePath: '/hazard-intelligence',
-          updates: [
-            { timestamp: time, action: 'USGS Live Event Detected', note: `Automated seismic detection: M${mag.toFixed(1)} at depth ${depth}km.` }
-          ],
-          tags: ['earthquake', 'seismic', 'usgs', 'live-api', 'tectonics']
-        });
-      });
-    }
-
-    // ──────────────────────────────────────────────────────────────────────────
-    // 5. Process Live Landslide Corridor Weather (Ramban NH-44 / Z-Morh)
-    // ──────────────────────────────────────────────────────────────────────────
-    if (weatherRambanRes && weatherRambanRes.ok) {
-      const rambanData = await weatherRambanRes.json();
-      const cur = rambanData.current;
-      const dailySum = rambanData.daily?.precipitation_sum?.[0] || 0;
-      const temp = cur?.temperature_2m || 15;
-      const rain = cur?.precipitation || 0;
-
-      let severity: 'low' | 'moderate' | 'high' | 'critical' = 'low';
-      let riskLabel = 'Low Landslide Probability';
-
-      if (dailySum > 35 || rain > 10) {
-        severity = 'critical';
-        riskLabel = 'Critical Landslide & Shooting Stone Warning';
-      } else if (dailySum > 15 || rain > 4) {
-        severity = 'high';
-        riskLabel = 'Elevated Slope Instability Warning';
-      } else if (dailySum > 5 || rain > 1) {
-        severity = 'moderate';
-        riskLabel = 'Moderate Slope Moisture Advisory';
-      }
-
-      liveAlerts.push({
-        id: 'live-landslide-ramban',
-        title: `Live Geotechnical Monitor: ${riskLabel} — Ramban-Banihal NH-44`,
-        category: 'landslide',
-        severity: severity,
-        status: 'active',
-        district: 'Ramban',
-        affectedArea: 'NH-44 Jammu-Srinagar Highway, Cafeteria Morh, Mehar, Panthyal & Dalwas',
-        corridor: 'NH-44 Strategic Highway Corridor',
-        issued: new Date().toISOString(),
-        updated: new Date().toISOString(),
-        expires: new Date(Date.now() + 24 * 3600 * 1000).toISOString(),
-        source: 'expert-verified',
-        issuedBy: 'Open-Meteo Telemetry / J&K Traffic Police Highway Monitor',
-        summary: `Live meteorological telemetry at Ramban reports current temperature at ${temp}°C, current precipitation rate at ${rain} mm/h, and 24h rainfall sum at ${dailySum} mm. Slope risk index: ${riskLabel}.`,
-        cause: `Precipitation saturation across fragmented Murree and Subathu sedimentary formations triggering localized shooting stones and clay slips.`,
-        guidance: {
-          summary: severity === 'critical' || severity === 'high'
-            ? 'Highway subject to periodic blockades. Non-essential vehicular transit should be suspended until clearance.'
-            : 'NH-44 corridor currently navigable. Exercise caution near known shooting stone zones between Nashri and Banihal.',
-          actions: [
-            `Live Temperature: ${temp}°C · Precipitation Rate: ${rain} mm/h`,
-            `24-Hour Accumulated Rainfall: ${dailySum} mm`,
-            'Check live J&K Traffic Police status before commencing journey between Jammu and Srinagar',
-            'Avoid stopping vehicles beneath active rock-shed and vulnerable sheer escarpments'
-          ],
-          travelImpact: severity === 'critical' ? 'Heavy disruptions and convoy delays.' : 'Normal vehicular movement with cautious driving.',
-          urgency: severity === 'critical' || severity === 'high' ? 'urgent' : 'advisory'
-        },
-        relatedModule: 'risk-monitoring',
-        relatedModulePath: '/risk-monitoring',
-        mapLink: '/atlas?layer=landslide-risk&corridor=nh44',
-        updates: [
-          { timestamp: new Date().toISOString(), action: 'Live Weather Telemetry Logged', note: `Recorded ${dailySum}mm 24h rainfall sum and ${temp}°C ambient temperature.` }
-        ],
-        tags: ['landslide', 'nh44', 'ramban', 'traffic', 'rainfall', 'live-api']
-      });
-    }
-
-    // ──────────────────────────────────────────────────────────────────────────
-    // 6. Process Live Mountain Pass / Avalanche Telemetry (Zoji La / Kargil)
-    // ──────────────────────────────────────────────────────────────────────────
-    if (weatherZojilaRes && weatherZojilaRes.ok) {
-      const zojilaData = await weatherZojilaRes.json();
-      const cur = zojilaData.current;
-      const minTemp = zojilaData.daily?.temperature_2m_min?.[0] || 0;
-      const precip = zojilaData.daily?.precipitation_sum?.[0] || 0;
-      const currentTemp = cur?.temperature_2m || 0;
-      const windSpeed = cur?.wind_speed_10m || 0;
-
-      let severity: 'low' | 'moderate' | 'high' | 'critical' = 'low';
-      let avLabel = 'Low Avalanche Danger';
-
-      if (currentTemp < 0 && precip > 15) {
-        severity = 'critical';
-        avLabel = 'High Avalanche Danger (Heavy Snowfall)';
-      } else if (currentTemp < 2 && precip > 5) {
-        severity = 'high';
-        avLabel = 'Moderate to High Snowpack Instability';
-      } else if (currentTemp < 0) {
-        severity = 'moderate';
-        avLabel = 'Sub-Zero Icy Road & Freezing Surface Advisory';
-      }
-
-      liveAlerts.push({
-        id: 'live-avalanche-zojila',
-        title: `Live Mountain Pass Telemetry: ${avLabel} — Zoji La (NH-1)`,
-        category: 'avalanche',
-        severity: severity,
-        status: 'active',
-        district: 'Kargil',
-        affectedArea: 'Zoji La Pass (3,528m), Gumri, Minamarg & Captain Morh',
-        corridor: 'Srinagar-Leh NH-1 Strategic Corridor',
-        issued: new Date().toISOString(),
-        updated: new Date().toISOString(),
-        expires: new Date(Date.now() + 36 * 3600 * 1000).toISOString(),
-        source: 'institutional',
-        issuedBy: 'Open-Meteo High-Altitude Telemetry / SASE Reference',
-        summary: `Live alpine weather station telemetry at Zoji La reports ambient temperature at ${currentTemp}°C (Min: ${minTemp}°C), wind speed at ${windSpeed} km/h, and 24h precipitation at ${precip} mm. Pass condition: ${avLabel}.`,
-        cause: `High-elevation orographic cooling and freeze-thaw cycles inducing road icing and high-angle slope snow instability.`,
-        guidance: {
-          summary: 'Extreme high-altitude conditions. Ensure vehicles are winterized with tire anti-skid chains and emergency cold-weather kits.',
-          actions: [
-            `Live Temperature: ${currentTemp}°C · Overnight Low: ${minTemp}°C`,
-            `Wind Velocity: ${windSpeed} km/h · 24h Precipitation: ${precip} mm`,
-            'Mandatory anti-skid chains for commercial and private passenger transit',
-            'Travel strictly restricted to daylight operating windows (06:00 to 17:00 IST)'
-          ],
-          travelImpact: severity === 'critical' ? 'Pass closed for snow clearance.' : 'Pass open subject to weather clearance and convoy timings.',
-          urgency: severity === 'critical' ? 'urgent' : 'advisory'
-        },
-        relatedModule: 'risk-monitoring',
-        relatedModulePath: '/risk-monitoring',
-        mapLink: '/atlas?layer=avalanche-risk&pass=zoji-la',
-        updates: [
-          { timestamp: new Date().toISOString(), action: 'Pass Weather Recorded', note: `Live telemetry: Temp ${currentTemp}°C, Wind ${windSpeed}km/h, Precip ${precip}mm.` }
-        ],
-        tags: ['avalanche', 'zoji-la', 'nh1', 'snow', 'kargil', 'live-api']
-      });
-    }
-
-    // ──────────────────────────────────────────────────────────────────────────
-    // 7. Process Live Valley Weather / Heat or Cold Wave (Srinagar)
-    // ──────────────────────────────────────────────────────────────────────────
-    if (weatherSrinagarRes && weatherSrinagarRes.ok) {
-      const srinagarData = await weatherSrinagarRes.json();
-      const cur = srinagarData.current;
-      const maxTemp = srinagarData.daily?.temperature_2m_max?.[0] || 20;
-      const minTemp = srinagarData.daily?.temperature_2m_min?.[0] || 5;
-      const currentTemp = cur?.temperature_2m || 15;
-      const humidity = cur?.relative_humidity_2m || 60;
-      const wind = cur?.wind_speed_10m || 5;
-
-      // Determine Fire or Thermal condition
-      let category: 'fire' | 'heatwave' | 'storm' = 'fire';
-      let title = 'Live Environmental Telemetry — Kashmir Valley';
-      let severity: 'low' | 'moderate' | 'high' | 'critical' = 'low';
-
-      if (currentTemp > 32 || maxTemp > 34) {
-        category = 'heatwave';
-        severity = 'moderate';
-        title = `Live Temperature Advisory: Elevated Heatwave Conditions — Srinagar (${currentTemp}°C)`;
-      } else if (currentTemp > 24 && humidity < 35 && wind > 15) {
-        category = 'fire';
-        severity = 'moderate';
-        title = `Live Forest Fire Risk: Elevated Dry Slope Index — Pir Panjal Range`;
-      } else {
-        category = 'fire';
-        severity = 'low';
-        title = `Live Fire Weather & Thermal Telemetry: Low Risk — Pir Panjal & Valley`;
-      }
-
-      liveAlerts.push({
-        id: 'live-weather-valley',
-        title: title,
-        category: category,
-        severity: severity,
-        status: 'active',
-        district: 'Kulgam',
-        affectedArea: 'Valley Floor and surrounding Pir Panjal foothills',
-        issued: new Date().toISOString(),
-        updated: new Date().toISOString(),
-        expires: new Date(Date.now() + 24 * 3600 * 1000).toISOString(),
-        source: 'platform-reviewed',
-        issuedBy: 'Open-Meteo High-Resolution Weather Model / Kashmir EcoWatch',
-        summary: `Live ambient sensors report temperature at ${currentTemp}°C (Max today: ${maxTemp}°C, Min: ${minTemp}°C), relative humidity at ${humidity}%, and wind speed at ${wind} km/h. Fire and thermal hazard index remains ${severity.toUpperCase()}.`,
-        cause: `Current synoptic atmospheric conditions maintaining stable barometric pressure with low to moderate fire danger risk across coniferous stands.`,
-        guidance: {
-          summary: 'Ambient conditions are favorable. Follow routine ecological safeguards in forested and agricultural belts.',
-          actions: [
-            `Current Live Temperature: ${currentTemp}°C · Relative Humidity: ${humidity}%`,
-            `Wind Velocity: ${wind} km/h · Daily High: ${maxTemp}°C`,
-            'Ensure campfires and smoking materials are fully extinguished in forest buffer zones',
-            'Report any unpermitted agricultural stubble or orchard pruning fires'
-          ],
-          travelImpact: 'None. All tourist trails and ecological routes open.',
-          urgency: 'precautionary'
-        },
-        relatedModule: 'environmental-monitoring',
-        relatedModulePath: '/environmental-monitoring',
-        updates: [
-          { timestamp: new Date().toISOString(), action: 'Live Valley Telemetry Received', note: `Current readings: ${currentTemp}°C, ${humidity}% RH, wind ${wind}km/h.` }
-        ],
-        tags: ['weather', 'fire', 'telemetry', 'temperature', 'live-api', 'pir-panjal']
-      });
-    }
-
-  } catch (err) {
-    console.error('Error fetching live environmental APIs:', err);
+  if (!forceRefresh && cachedAlertsPayload && nowMs - cachedAlertsAt < CACHE_TTL_MS) {
+    return NextResponse.json(cachedAlertsPayload);
   }
 
-  // If for any reason all APIs failed to connect (e.g. offline machine), fallback gracefully to baseline alertRegistry
-  const finalAlerts = liveAlerts.length > 0 ? liveAlerts : alertRegistry;
+  if (!inFlightAlertsJob) {
+    inFlightAlertsJob = (async () => {
+      const now = new Date();
+      const nowIso = now.toISOString();
+      const liveAlerts: AlertItem[] = [];
 
-  return NextResponse.json({
-    success: true,
-    source: liveAlerts.length > 0 ? 'live-api' : 'baseline-cache',
-    liveCount: liveAlerts.length,
-    totalCount: finalAlerts.length,
-    fetchedAt: now.toISOString(),
-    alerts: finalAlerts
-  });
+      try {
+        // Batch all 3 NWP forecast points (Srinagar, Ramban NH-44, Zoji La Pass) into ONE Open-Meteo call
+        // to eliminate partial 429 drops that previously caused 6 vs 7 alert count drift!
+        const [airQualityRes, floodRes, usgsQuakesRes, multiWeatherRes] = await Promise.all([
+          fetchWithTimeout(
+            'https://air-quality-api.open-meteo.com/v1/air-quality?latitude=34.0837&longitude=74.7973&current=pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,us_aqi,european_aqi&timezone=UTC'
+          ),
+          fetchWithTimeout(
+            'https://flood-api.open-meteo.com/v1/flood?latitude=34.08&longitude=74.80&daily=river_discharge,river_discharge_mean,river_discharge_max&forecast_days=3&timezone=UTC'
+          ),
+          fetchWithTimeout(
+            'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=2.5&minlatitude=31.5&maxlatitude=37.5&minlongitude=72.0&maxlongitude=80.0&limit=2'
+          ),
+          fetchWithTimeout(
+            'https://api.open-meteo.com/v1/forecast?latitude=34.0837,33.24,34.28&longitude=74.7973,75.19,75.50&current=temperature_2m,relative_humidity_2m,precipitation,snow_depth,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,snowfall_sum&past_days=2&forecast_days=1&timezone=UTC'
+          ),
+        ]);
+
+        // ──────────────────────────────────────────────────────────────────────
+        // 1. Air Quality Model Screening (Srinagar CAMS 11 km Grid)
+        // ──────────────────────────────────────────────────────────────────────
+        if (airQualityRes && airQualityRes.ok) {
+          const aqiData = await airQualityRes.json();
+          const current = aqiData?.current;
+          if (current) {
+            const pm25 = Math.round((current.pm2_5 ?? 0) * 10) / 10;
+            const pm10 = Math.round((current.pm10 ?? 0) * 10) / 10;
+            const usAqi = Math.round(current.us_aqi ?? 0);
+
+            let severity: 'low' | 'moderate' | 'high' | 'critical' = 'low';
+            let statusText = 'Good';
+            if (usAqi > 200 || pm25 > 120) {
+              severity = 'critical';
+              statusText = 'Very Unhealthy';
+            } else if (usAqi > 150 || pm25 > 55) {
+              severity = 'high';
+              statusText = 'Unhealthy';
+            } else if (usAqi > 100 || pm25 > 35) {
+              severity = 'moderate';
+              statusText = 'Unhealthy for Sensitive Groups';
+            } else if (usAqi > 50 || pm25 > 15) {
+              severity = 'low';
+              statusText = 'Moderate';
+            }
+
+            liveAlerts.push({
+              id: 'live-air-srinagar',
+              title: `CAMS Atmospheric Model Screening: ${statusText} (US AQI ${usAqi}) — Srinagar`,
+              category: 'air-quality',
+              severity,
+              status: 'active',
+              district: 'Srinagar',
+              affectedArea: 'Srinagar Basin ~11 km CAMS Grid Cell',
+              issued: nowIso,
+              updated: nowIso,
+              expires: new Date(now.getTime() + 24 * 3600 * 1000).toISOString(),
+              source: 'platform-reviewed',
+              issuedBy: 'Copernicus CAMS Gridded Model (via Open-Meteo, ~11 km)',
+              summary: `ECMWF Copernicus CAMS (~11 km gridded atmospheric model) estimates instantaneous US AQI ${usAqi} (${statusText}) in Srinagar (modeled PM2.5: ${pm25} µg/m³, PM10: ${pm10} µg/m³). Non-regulatory screening only.`,
+              cause: 'Gridded atmospheric composition reanalysis assimilating satellite aerosol optical depth and synoptic meteorology.',
+              guidance: {
+                summary:
+                  severity === 'high' || severity === 'critical'
+                    ? 'Elevated particulate concentrations indicated by model screening. Sensitive groups should limit prolonged outdoor exertion.'
+                    : 'Model-screened particulate concentrations remain within seasonal baseline bounds.',
+                actions: [
+                  `Modeled PM2.5 (CAMS 11 km): ${pm25} µg/m³`,
+                  `Modeled PM10 (CAMS 11 km): ${pm10} µg/m³ · US AQI: ${usAqi}`,
+                  'Ventilate indoor spaces after midday boundary-layer mixing',
+                  'Avoid open burning of orchard prunings and biomass',
+                ],
+                travelImpact: 'None.',
+                urgency: severity === 'high' || severity === 'critical' ? 'urgent' : 'advisory',
+              },
+              relatedModule: 'environmental-monitoring',
+              relatedModulePath: '/environmental-monitoring/air-pollution',
+              updates: [
+                {
+                  timestamp: nowIso,
+                  action: 'CAMS Model Cycle Evaluated',
+                  note: `Gridded model estimate: PM2.5 ${pm25} µg/m³, US AQI ${usAqi}.`,
+                },
+              ],
+              tags: ['air-quality', 'srinagar', 'cams-model', 'pm25', 'screening'],
+            });
+          }
+        }
+
+        // ──────────────────────────────────────────────────────────────────────
+        // 2. Srinagar Jhelum River Discharge Screening (Copernicus GloFAS v4)
+        //    Calibrated to Jhelum physical hydrology: >= 650 m³/s warning, >= 950 m³/s critical
+        // ──────────────────────────────────────────────────────────────────────
+        if (floodRes && floodRes.ok) {
+          const floodData = await floodRes.json();
+          const discharges: number[] = floodData?.daily?.river_discharge || [];
+          const currentDischarge =
+            typeof discharges[0] === 'number' ? Math.round(discharges[0] * 10) / 10 : null;
+          const maxForecast =
+            typeof floodData?.daily?.river_discharge_max?.[0] === 'number'
+              ? Math.round(floodData.daily.river_discharge_max[0] * 10) / 10
+              : currentDischarge;
+
+          if (currentDischarge !== null) {
+            let severity: 'low' | 'moderate' | 'high' | 'critical' = 'low';
+            let stageText = 'Normal Seasonal Flow';
+            if (currentDischarge >= 950) {
+              severity = 'critical';
+              stageText = 'Critical Modeled Flood Discharge Screening (≥950 m³/s)';
+            } else if (currentDischarge >= 650) {
+              severity = 'high';
+              stageText = 'Elevated Modeled Flood Screening Warning (≥650 m³/s)';
+            } else if (currentDischarge >= 450) {
+              severity = 'moderate';
+              stageText = 'High Snowmelt / Bankfull Watch (≥450 m³/s)';
+            }
+
+            liveAlerts.push({
+              id: 'live-flood-jhelum',
+              title: `Copernicus GloFAS v4 Modeled Discharge: ${stageText} — Jhelum Basin`,
+              category: 'flood',
+              severity,
+              status: 'active',
+              district: 'Srinagar',
+              affectedArea: 'Jhelum River (~5 km GloFAS Grid Cell near Srinagar)',
+              corridor: 'Jhelum River Drainage Basin',
+              issued: nowIso,
+              updated: nowIso,
+              expires: new Date(now.getTime() + 48 * 3600 * 1000).toISOString(),
+              source: 'platform-reviewed',
+              issuedBy: 'Copernicus GloFAS v4 Modeled Discharge (~5 km Grid via Open-Meteo)',
+              summary: `Copernicus GloFAS v4 (~5 km hydrological model) estimates Jhelum discharge at ${currentDischarge} m³/s (24h ensemble max: ${maxForecast ?? currentDischarge} m³/s) — ${stageText}. Modeled screening only; live CWC / J&K I&FC physical staff-gauge heights are not connected.`,
+              cause: 'Gridded LISFLOOD hydrological routing driven by ECMWF meteorological forcing across upper Jhelum catchments.',
+              guidance: {
+                summary:
+                  severity === 'critical' || severity === 'high'
+                    ? 'Modeled river discharge exceeds flood-screening thresholds (≥650 m³/s). Consult official J&K Irrigation & Flood Control (I&FC) and CWC flood bulletins immediately.'
+                    : 'Modeled discharge is below Jhelum flood-screening thresholds (<650 m³/s). Consult J&K I&FC for official staff-gauge stages.',
+                actions: [
+                  `Modeled Discharge (GloFAS v4): ${currentDischarge} m³/s`,
+                  `24h Ensemble Max (GloFAS v4): ${maxForecast ?? currentDischarge} m³/s`,
+                  'Screening thresholds: ≥650 m³/s Warning · ≥950 m³/s Critical (Modeled)',
+                  'Verify physical river stages via official J&K I&FC / CWC bulletins',
+                ],
+                travelImpact:
+                  severity === 'critical' || severity === 'high'
+                    ? 'Potential low-lying floodplain inundation if corroborated by official I&FC gauges.'
+                    : 'None indicated by hydrological screening model.',
+                urgency: severity === 'critical' || severity === 'high' ? 'urgent' : 'advisory',
+              },
+              relatedModule: 'hazard-intelligence',
+              relatedModulePath: '/hazard-intelligence/floods',
+              mapLink: '/atlas?layer=flood-risk&basin=jhelum',
+              updates: [
+                {
+                  timestamp: nowIso,
+                  action: 'GloFAS v4 Daily Grid Evaluated',
+                  note: `Modeled discharge: ${currentDischarge} m³/s (~5 km grid).`,
+                },
+              ],
+              tags: ['flood', 'jhelum', 'glofas', 'modeled-discharge', 'screening'],
+            });
+          }
+        }
+
+        // ──────────────────────────────────────────────────────────────────────
+        // 3. Official USGS Regional Earthquakes (Haversine Nearest Canonical District)
+        // ──────────────────────────────────────────────────────────────────────
+        if (usgsQuakesRes && usgsQuakesRes.ok) {
+          const quakeData = await usgsQuakesRes.json();
+          const features = Array.isArray(quakeData?.features) ? quakeData.features : [];
+
+          features.slice(0, 2).forEach((f: any, idx: number) => {
+            const props = f.properties || {};
+            const coords = f.geometry?.coordinates || [74.8, 34.08, 10];
+            const lon = Number(coords[0]);
+            const lat = Number(coords[1]);
+            const depth = Math.round(Math.abs(Number(coords[2] ?? 10)));
+            const mag = Number(props.mag ?? 0);
+            const place = String(props.place || 'Western Himalayan Region');
+            const eventTimeIso = props.time ? new Date(props.time).toISOString() : nowIso;
+
+            const nearest = findNearestCanonicalDistrict(lat, lon);
+            const severity: 'low' | 'moderate' | 'high' | 'critical' =
+              mag >= 6.0 ? 'critical' : mag >= 5.0 ? 'high' : mag >= 4.0 ? 'moderate' : 'low';
+
+            liveAlerts.push({
+              id: `live-quake-${props.code || f.id || idx}`,
+              title: `Official Seismic Catalog: M${mag.toFixed(1)} Earthquake — ${place}`,
+              category: 'earthquake',
+              severity,
+              status: 'active',
+              district: nearest.district,
+              affectedArea: `${place} (${lat.toFixed(2)}°N, ${lon.toFixed(2)}°E · ~${nearest.distanceKm} km from ${nearest.district})`,
+              issued: eventTimeIso,
+              updated: nowIso,
+              expires: new Date(now.getTime() + 72 * 3600 * 1000).toISOString(),
+              source: 'institutional',
+              issuedBy: 'USGS ANSS Comprehensive Earthquake Catalog (ComCat)',
+              summary: `Magnitude ${mag.toFixed(1)} seismic event recorded at ${depth} km focal depth near ${place} (nearest KEW baseline district: ${nearest.district}, ~${nearest.distanceKm} km).`,
+              cause: 'Tectonic strain release within the Western Himalayan / Hindu Kush–Pamir collision zone.',
+              guidance: {
+                summary:
+                  mag >= 4.5
+                    ? 'Moderate-to-strong regional tremor recorded. Inspect unreinforced masonry for cracks and remain alert for aftershocks.'
+                    : 'Minor regional earthquake cataloged by USGS. No widespread structural impact expected at this magnitude.',
+                actions: [
+                  `Catalog Magnitude: M${mag.toFixed(1)} · Focal Depth: ${depth} km`,
+                  `Nearest District Centroid: ${nearest.district} (~${nearest.distanceKm} km)`,
+                  'Practice Drop, Cover, and Hold On during active ground shaking',
+                  'Consult NCS India / SDMA for official civil damage assessments',
+                ],
+                travelImpact: 'Monitor mountain highway corridors for localized rockfall following M4.5+ shaking.',
+                urgency: severity === 'high' || severity === 'critical' ? 'urgent' : 'precautionary',
+              },
+              relatedModule: 'hazard-intelligence',
+              relatedModulePath: '/hazard-intelligence/earthquakes',
+              updates: [
+                {
+                  timestamp: eventTimeIso,
+                  action: 'USGS ComCat Event Logged',
+                  note: `M${mag.toFixed(1)} at ${depth} km depth (${lat.toFixed(2)}°N, ${lon.toFixed(2)}°E).`,
+                },
+              ],
+              tags: ['earthquake', 'seismic', 'usgs', 'official-catalog'],
+            });
+          });
+        }
+
+        // ──────────────────────────────────────────────────────────────────────
+        // 4. Batched Gridded NWP Screening (Srinagar Valley, Ramban NH-44, Zoji La)
+        //    Strictly labeled 'Open-Meteo Gridded NWP Screening Model'
+        // ──────────────────────────────────────────────────────────────────────
+        if (multiWeatherRes && multiWeatherRes.ok) {
+          const rawWeather = await multiWeatherRes.json();
+          const weatherArr = Array.isArray(rawWeather) ? rawWeather : [rawWeather];
+          const [srinagarData, rambanData, zojilaData] = weatherArr;
+
+          // 4A. Ramban NH-44 Rainfall Slope Screening
+          if (rambanData?.current) {
+            const precipArr: number[] = rambanData.daily?.precipitation_sum || [];
+            const dailySum = Number((precipArr[precipArr.length - 1] ?? 0).toFixed(1));
+            const precip72h = Number(precipArr.slice(-3).reduce((a, b) => a + (b || 0), 0).toFixed(1));
+            const temp = Number((rambanData.current.temperature_2m ?? 15).toFixed(1));
+            const rain = Number((rambanData.current.precipitation ?? 0).toFixed(1));
+
+            let severity: 'low' | 'moderate' | 'high' | 'critical' = 'low';
+            let riskLabel = 'Low Rainfall-Induced Slope Screening';
+            if (precip72h >= 65 || dailySum >= 40 || rain >= 12) {
+              severity = 'critical';
+              riskLabel = 'High NWP Rainfall Slope-Saturation Screening';
+            } else if (precip72h >= 30 || dailySum >= 20 || rain >= 5) {
+              severity = 'high';
+              riskLabel = 'Elevated NWP Rainfall Slope Screening';
+            } else if (precip72h >= 12 || dailySum >= 8) {
+              severity = 'moderate';
+              riskLabel = 'Moderate NWP Slope Moisture Advisory';
+            }
+
+            liveAlerts.push({
+              id: 'live-landslide-ramban',
+              title: `NWP Slope Rainfall Screening: ${riskLabel} — Ramban Corridor`,
+              category: 'landslide',
+              severity,
+              status: 'active',
+              district: 'Ramban',
+              affectedArea: 'Ramban–Banihal NH-44 Grid Cell (~9–11 km NWP)',
+              corridor: 'NH-44 Jammu-Srinagar Corridor',
+              issued: nowIso,
+              updated: nowIso,
+              expires: new Date(now.getTime() + 24 * 3600 * 1000).toISOString(),
+              source: 'platform-reviewed',
+              issuedBy: 'Open-Meteo Gridded NWP Screening Model',
+              summary: `Open-Meteo gridded NWP model (~9–11 km) estimates ${temp}°C, ${rain} mm/h current precipitation, and ${precip72h} mm 72h rainfall across the Ramban grid cell (${riskLabel}). Not an official highway traffic or GSI geotechnical sensor.`,
+              cause: 'Coarse-grid NWP precipitation screening over steep Murree/Ramban shale-slate terrain.',
+              guidance: {
+                summary:
+                  severity === 'critical' || severity === 'high'
+                    ? 'Elevated NWP rainfall totals modeled over the Ramban sector. Verify official NH-44 road status directly with J&K Traffic Police before travel.'
+                    : 'Modeled NWP precipitation is currently low. Always verify live highway status with J&K Traffic Police before transit.',
+                actions: [
+                  `Modeled 24h Rain: ${dailySum} mm · 72h Rain: ${precip72h} mm (NWP Grid)`,
+                  `Modeled Temp: ${temp}°C · Hourly Rate: ${rain} mm/h`,
+                  'Consult official J&K Traffic Police bulletins for real-time NH-44 closures',
+                ],
+                travelImpact: 'Refer exclusively to J&K Traffic Police advisories for official road open/closed status.',
+                urgency: severity === 'critical' || severity === 'high' ? 'urgent' : 'advisory',
+              },
+              relatedModule: 'hazard-intelligence',
+              relatedModulePath: '/hazard-intelligence/landslides',
+              mapLink: '/atlas?layer=landslide-risk&corridor=nh44',
+              updates: [
+                {
+                  timestamp: nowIso,
+                  action: 'NWP Grid Cycle Evaluated',
+                  note: `Modeled 72h precipitation: ${precip72h} mm, 24h: ${dailySum} mm.`,
+                },
+              ],
+              tags: ['landslide', 'nh44', 'ramban', 'nwp-screening'],
+            });
+          }
+
+          // 4B. Zoji La Pass Snowpack & Cryosphere NWP Screening
+          if (zojilaData?.current) {
+            const minTempArr: number[] = zojilaData.daily?.temperature_2m_min || [];
+            const snowfallArr: number[] = zojilaData.daily?.snowfall_sum || [];
+            const minTemp = Number((minTempArr[minTempArr.length - 1] ?? 0).toFixed(1));
+            const snowfall72hCm = Number(snowfallArr.slice(-3).reduce((a, b) => a + (b || 0), 0).toFixed(1));
+            const snowDepthM = Number((zojilaData.current.snow_depth ?? 0).toFixed(2));
+            const currentTemp = Number((zojilaData.current.temperature_2m ?? 0).toFixed(1));
+            const windSpeed = Number((zojilaData.current.wind_speed_10m ?? 0).toFixed(1));
+            const hasSnowpack = snowDepthM >= 0.15 || snowfall72hCm >= 5;
+
+            let severity: 'low' | 'moderate' | 'high' | 'critical' = 'low';
+            let avLabel = 'Low NWP Snowpack Screening';
+
+            if (hasSnowpack && snowfall72hCm >= 35) {
+              severity = 'critical';
+              avLabel = 'High NWP Snowfall Accumulation Screening';
+            } else if (hasSnowpack && (snowfall72hCm >= 15 || (snowDepthM >= 0.5 && windSpeed >= 45))) {
+              severity = 'high';
+              avLabel = 'Elevated NWP Snow & Wind-Drift Screening';
+            } else if (currentTemp < 0) {
+              severity = 'moderate';
+              avLabel = 'Sub-Zero NWP Pass Temperature Screening';
+            }
+
+            liveAlerts.push({
+              id: 'live-avalanche-zojila',
+              title: `NWP Pass Screening: ${avLabel} (${currentTemp}°C) — Zoji La Grid`,
+              category: 'avalanche',
+              severity,
+              status: 'active',
+              district: 'Kargil',
+              affectedArea: 'Zoji La Sector (~9–11 km Open-Meteo NWP Grid Cell)',
+              corridor: 'Srinagar-Kargil-Leh NH-1 Corridor',
+              issued: nowIso,
+              updated: nowIso,
+              expires: new Date(now.getTime() + 36 * 3600 * 1000).toISOString(),
+              source: 'platform-reviewed',
+              issuedBy: 'Open-Meteo Gridded NWP Screening Model',
+              summary: `Open-Meteo gridded NWP model estimates ${currentTemp}°C (min ${minTemp}°C), wind ${windSpeed} km/h, modeled snow depth ${snowDepthM} m, and 72h snowfall ${snowfall72hCm} cm near Zoji La. Coarse-grid model estimate only — not an in-situ DGRE/SASE weather station.`,
+              cause: 'Gridded numerical weather model temperature, snowfall, and wind fields across the Zoji La crest.',
+              guidance: {
+                summary:
+                  'Refer to official DGRE (DRDO) avalanche bulletins and BRO / Traffic Police advisories before high-pass transit.',
+                actions: [
+                  `Modeled Temp: ${currentTemp}°C (Min: ${minTemp}°C) · Wind: ${windSpeed} km/h`,
+                  `Modeled Snow Depth: ${snowDepthM} m · 72h Snowfall: ${snowfall72hCm} cm`,
+                  'Verify official DGRE avalanche warnings and BRO pass clearance',
+                ],
+                travelImpact: 'Check official BRO / Traffic Police bulletins for Zoji La transit status.',
+                urgency: severity === 'critical' || severity === 'high' ? 'urgent' : 'advisory',
+              },
+              relatedModule: 'hazard-intelligence',
+              relatedModulePath: '/hazard-intelligence/avalanches',
+              mapLink: '/atlas?layer=avalanche-risk&pass=zoji-la',
+              updates: [
+                {
+                  timestamp: nowIso,
+                  action: 'NWP Cryosphere Grid Evaluated',
+                  note: `Modeled ${currentTemp}°C, snow depth ${snowDepthM} m, 72h snowfall ${snowfall72hCm} cm.`,
+                },
+              ],
+              tags: ['avalanche', 'zoji-la', 'kargil', 'nwp-screening'],
+            });
+          }
+
+          // 4C. Valley Thermal & Dry-Slope NWP Screening
+          if (srinagarData?.current) {
+            const maxTempArr: number[] = srinagarData.daily?.temperature_2m_max || [];
+            const minTempArr: number[] = srinagarData.daily?.temperature_2m_min || [];
+            const maxTemp = Number((maxTempArr[maxTempArr.length - 1] ?? 20).toFixed(1));
+            const minTemp = Number((minTempArr[minTempArr.length - 1] ?? 5).toFixed(1));
+            const currentTemp = Number((srinagarData.current.temperature_2m ?? 15).toFixed(1));
+            const humidity = Math.round(srinagarData.current.relative_humidity_2m ?? 60);
+            const wind = Number((srinagarData.current.wind_speed_10m ?? 5).toFixed(1));
+
+            let category: 'fire' | 'heatwave' | 'storm' = 'fire';
+            let title = 'NWP Fire-Weather & Thermal Screening: Nominal — Kashmir Valley';
+            let severity: 'low' | 'moderate' | 'high' | 'critical' = 'low';
+
+            if (maxTemp >= 35 || currentTemp >= 33) {
+              category = 'heatwave';
+              severity = 'moderate';
+              title = `NWP Thermal Screening: Elevated Daytime Temperature (${maxTemp}°C) — Srinagar`;
+            } else if (currentTemp >= 25 && humidity <= 32 && wind >= 18) {
+              category = 'fire';
+              severity = 'moderate';
+              title = 'NWP Fire-Weather Screening: Dry Slope Conditions — Kashmir Valley';
+            }
+
+            liveAlerts.push({
+              id: 'live-weather-valley',
+              title,
+              category,
+              severity,
+              status: 'active',
+              district: 'Srinagar',
+              affectedArea: 'Kashmir Valley Floor (~9–11 km NWP Grid)',
+              issued: nowIso,
+              updated: nowIso,
+              expires: new Date(now.getTime() + 24 * 3600 * 1000).toISOString(),
+              source: 'platform-reviewed',
+              issuedBy: 'Open-Meteo Gridded NWP Screening Model',
+              summary: `Open-Meteo gridded NWP model estimates ${currentTemp}°C (daily range ${minTemp}°C to ${maxTemp}°C), ${humidity}% RH, and ${wind} km/h wind across the Srinagar valley grid.`,
+              cause: 'Synoptic NWP boundary-layer temperature, humidity, and surface wind conditions.',
+              guidance: {
+                summary: 'Follow official IMD Srinagar meteorological bulletins and J&K Forest Department fire advisories.',
+                actions: [
+                  `Modeled Temp: ${currentTemp}°C (High: ${maxTemp}°C, Low: ${minTemp}°C)`,
+                  `Modeled RH: ${humidity}% · Wind: ${wind} km/h`,
+                  'Prohibit open flames or stubble burning near dry forest margins',
+                ],
+                travelImpact: 'None.',
+                urgency: 'precautionary',
+              },
+              relatedModule: 'hazard-intelligence',
+              relatedModulePath: '/hazard-intelligence/forest-fires',
+              updates: [
+                {
+                  timestamp: nowIso,
+                  action: 'NWP Valley Grid Evaluated',
+                  note: `Modeled ${currentTemp}°C, ${humidity}% RH, wind ${wind} km/h.`,
+                },
+              ],
+              tags: ['weather', 'fire', 'srinagar', 'nwp-screening'],
+            });
+          }
+        }
+      } catch (err) {
+        console.error('Error evaluating external alert feeds:', err);
+      }
+
+      const fallbackActive = getActiveAlerts();
+      const finalAlerts = liveAlerts.length > 0 ? liveAlerts : fallbackActive;
+
+      const payload: Record<string, unknown> = {
+        success: true,
+        source: liveAlerts.length > 0 ? 'live-api' : 'baseline-cache',
+        liveCount: liveAlerts.length,
+        totalCount: finalAlerts.length,
+        fetchedAt: nowIso,
+        alerts: finalAlerts,
+      };
+
+      cachedAlertsPayload = payload;
+      cachedAlertsAt = Date.now();
+      return payload;
+    })().finally(() => {
+      inFlightAlertsJob = null;
+    });
+  }
+
+  const result = await inFlightAlertsJob;
+  return NextResponse.json(result);
 }

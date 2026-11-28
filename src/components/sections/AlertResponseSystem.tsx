@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 import { useLiveAlerts } from '@/hooks/useLiveAlerts';
+import type { BaselineTelemetryData } from '@/lib/telemetry/getBaselineTelemetry';
 import {
   AlertTriangle, Bell, MapPin, Calendar, Clock, ChevronRight,
   Filter, CheckCircle2, Shield, Zap, Radio, Activity, ExternalLink,
@@ -13,9 +14,13 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export function AlertResponseSystem() {
+export interface AlertResponseSystemProps {
+  initialData?: BaselineTelemetryData;
+}
+
+export function AlertResponseSystem({ initialData }: AlertResponseSystemProps = {}) {
   const router = useRouter();
-  const { alerts, isLoading, isLive, lastUpdated, refetch } = useLiveAlerts();
+  const { alerts, isLoading, isLive, lastUpdated, refetch } = useLiveAlerts(initialData?.alerts);
   const [activeFilter, setActiveFilter] = useState<'all' | 'high' | 'medium' | 'low'>('all');
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -101,24 +106,24 @@ export function AlertResponseSystem() {
               <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full signal-pulse" />
             </div>
             <span className="text-xs font-semibold uppercase tracking-widest text-slate-400">
-              Live Monitoring
+              External Public Feeds &amp; Model Screening (0 KEW Sensors)
             </span>
           </div>
           <div className="flex flex-col gap-6">
             <div>
               <div className="flex flex-wrap items-center gap-3 mb-3 sm:mb-4">
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white tracking-tight">
-                  Alert & Response System
+                  Alert &amp; Screening System
                 </h2>
                 {isLive ? (
                   <Badge variant="success" size="sm" className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5 py-1">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    Live Telemetry Active
+                    Live Feed Active
                   </Badge>
                 ) : (
                   <Badge variant="default" size="sm" className="bg-slate-800 text-slate-300 border border-slate-700 flex items-center gap-1.5 py-1">
-                    <span className="w-2 h-2 rounded-full bg-amber-400" />
-                    Baseline Telemetry
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    Baseline Telemetry Verified · Auto-updating
                   </Badge>
                 )}
                 {isLoading && (
@@ -126,8 +131,7 @@ export function AlertResponseSystem() {
                 )}
               </div>
               <p className="text-slate-400 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed">
-                Real-time environmental alerts, hazard warnings, and monitoring
-                anomalies with severity classification and response tracking.
+                Aggregating official USGS seismic catalogs with Copernicus GloFAS v4 (~5 km) and Open-Meteo gridded NWP screening advisories. Statutory CWC / J&amp;K I&amp;FC river stage gauges are referenced as historical thresholds only.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">{/* responsive-md-fix */}
@@ -296,17 +300,14 @@ export function AlertResponseSystem() {
                     ))}
                   </div>
 
-                  <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/5">
-                    <div className="flex items-center justify-between mb-3 sm:mb-4">
-                      <span className="text-xs sm:text-sm text-slate-400">Resolved (24h)</span>
-                      <span className="flex items-center gap-2 text-base sm:text-lg font-bold text-emerald-400">
-                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5" />
-                        12
-                      </span>
+                  <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/5 space-y-2 text-xs">
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-400">KEW Hardware Sensors</span>
+                      <span className="font-bold text-slate-200 font-mono">0 (External Feeds)</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs sm:text-sm text-slate-400">Avg Response Time</span>
-                      <span className="text-base sm:text-lg font-bold text-white">2.4h</span>
+                      <span className="text-slate-400">River Stage Benchmarks</span>
+                      <span className="font-semibold text-amber-300">Statutory Thresholds Only</span>
                     </div>
                   </div>
                 </CardContent>
@@ -355,7 +356,7 @@ export function AlertResponseSystem() {
               </Card>
             </motion.div>
 
-            {/* Verification status */}
+            {/* Provenance disclosure */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -365,24 +366,12 @@ export function AlertResponseSystem() {
               <Card className="glass-light border-white/5" padding="md">
                 <CardContent>
                   <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-500" />
-                    <h3 className="text-base sm:text-lg font-bold text-white">Data Verification</h3>
+                    <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-500" />
+                    <h3 className="text-base sm:text-lg font-bold text-white">Provenance Disclosure</h3>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-400 mb-3 sm:mb-4 leading-relaxed">
-                    All alerts are verified through multiple sources including
-                    monitoring stations, field reports, and satellite data.
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                    Seismic events originate from official USGS/EMSC/NCS catalogs. Meteorological and river discharge advisories represent coarse-grid Open-Meteo NWP (~9–11 km) and Copernicus GloFAS v4 (~5 km) model screenings — never a substitute for statutory IMD, SASE, CWC, or J&amp;K I&amp;FC civil bulletins.
                   </p>
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="flex -space-x-2">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <div
-                          key={i}
-                          className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-slate-900 border-2 border-slate-900"
-                        />
-                      ))}
-                    </div>
-                    <span className="text-[10px] sm:text-xs text-slate-500">+23 verifiers active</span>
-                  </div>
                 </CardContent>
               </Card>
             </motion.div>

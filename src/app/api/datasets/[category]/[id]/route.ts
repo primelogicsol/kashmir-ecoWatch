@@ -16,10 +16,18 @@ import {
   restorationSites,
   type WaterEntity,
 } from '@/data/water-systems';
+import {
+  DATASET_LICENSE_POLICIES,
+  resolveLicenseForLibraryOwner,
+} from '@/data/dataset-licensing-registry';
 import { CANONICAL_SITE_URL, KEW_IDENTITY } from '@/lib/seo/entity-identity';
 import { isVerifiedRealDoi } from '@/lib/seo/structured-data';
 
 export const runtime = 'nodejs';
+
+const CC_BY_NC_POLICY = DATASET_LICENSE_POLICIES['CC-BY-NC-4.0'];
+const RESTRICTED_POLICY = DATASET_LICENSE_POLICIES['RESTRICTED-CONSERVATION-SENSITIVE'];
+const THIRD_PARTY_POLICY = DATASET_LICENSE_POLICIES['THIRD-PARTY-STATUTORY-OR-AGENCY'];
 
 const ALL_WATER_ENTITIES: WaterEntity[] = [
   ...lakesData,
@@ -58,6 +66,7 @@ function buildBibtex(opts: {
   institution: string;
   url: string;
   doi?: string;
+  licenseNote: string;
 }): string {
   const cleanKey = opts.citeKey.replace(/[^a-zA-Z0-9_-]/g, '_');
   const authorStr = (opts.authors.length ? opts.authors : [KEW_IDENTITY.extendedName]).join(' and ');
@@ -67,11 +76,11 @@ function buildBibtex(opts: {
     `  title = {${opts.title}},`,
     `  author = {${authorStr}},`,
     `  institution = {${opts.institution}},`,
-    `  publisher = {${KEW_IDENTITY.extendedName}},`,
+    `  publisher = {${opts.institution}},`,
     `  year = {${opts.year}},`,
     `  url = {${opts.url}},`,
     ...(validDoi ? [`  doi = {${validDoi}},`] : []),
-    `  note = {Published by ${KEW_IDENTITY.extendedName} (${KEW_IDENTITY.canonicalUrl}) under CC BY 4.0}`,
+    `  note = {${opts.licenseNote}}`,
     `}`,
   ].join('\n');
 }
@@ -84,6 +93,7 @@ function buildRis(opts: {
   url: string;
   abstract?: string;
   doi?: string;
+  licenseNote?: string;
 }): string {
   const authors = opts.authors.length ? opts.authors : [KEW_IDENTITY.extendedName];
   const validDoi = isVerifiedRealDoi(opts.doi) ? opts.doi : undefined;
@@ -97,6 +107,7 @@ function buildRis(opts: {
     `UR  - ${opts.url}`,
     ...(validDoi ? [`DO  - ${validDoi}`] : []),
     ...(opts.abstract ? [`AB  - ${opts.abstract}`] : []),
+    ...(opts.licenseNote ? [`N1  - ${opts.licenseNote}`] : []),
     'ER  - ',
   ].join('\n');
 }
@@ -108,7 +119,7 @@ export async function GET(
   const { category, id } = await context.params;
   const format = (request.nextUrl.searchParams.get('format') || 'json').toLowerCase();
 
-  // 1. Water Systems Entity Dataset & Citation Export
+  // 1. Water Systems Entity Dataset & Citation Export (KEW-Authored Synthesis — CC BY-NC 4.0)
   if (category === 'water') {
     const slug = id === 'haigam-wetland' ? 'hygam-wetland' : id;
     const entity = ALL_WATER_ENTITIES.find((w) => w.slug === slug || w.id === slug);
@@ -129,15 +140,17 @@ export async function GET(
         : 'lakes';
     const canonicalUrl = `${CANONICAL_SITE_URL}/water-systems/${seg}/${entity.slug}`;
     const pubDate = (entity.updatedAt || entity.createdAt || '2026-06-18').split('T')[0];
+    const kewLicenseNote = `KEW-authored synthesis licensed under ${CC_BY_NC_POLICY.name} (${CC_BY_NC_POLICY.url}); upstream statutory/agency references retain original copyright.`;
 
     if (format === 'bib') {
       const bib = buildBibtex({
         citeKey: `kew_${entity.slug}_${pubDate.slice(0, 4)}`,
-        title: `${entity.name}: Hydrological, Limnological and Ecological Baseline Assessment`,
+        title: `${entity.name}: Hydrological, Limnological and Ecological Baseline Synthesis`,
         authors: [KEW_IDENTITY.extendedName],
         year: pubDate.slice(0, 4),
         institution: KEW_IDENTITY.extendedName,
         url: canonicalUrl,
+        licenseNote: kewLicenseNote,
       });
       return new NextResponse(bib, {
         headers: {
@@ -149,12 +162,13 @@ export async function GET(
 
     if (format === 'ris') {
       const ris = buildRis({
-        title: `${entity.name}: Hydrological, Limnological and Ecological Baseline Assessment`,
+        title: `${entity.name}: Hydrological, Limnological and Ecological Baseline Synthesis`,
         authors: [KEW_IDENTITY.extendedName],
         date: pubDate,
         institution: KEW_IDENTITY.extendedName,
         url: canonicalUrl,
         abstract: entity.description,
+        licenseNote: kewLicenseNote,
       });
       return new NextResponse(ris, {
         headers: {
@@ -169,7 +183,9 @@ export async function GET(
         ['dataset_id', `KEW-HYDRO-${entity.slug.toUpperCase()}`],
         ['publisher', KEW_IDENTITY.extendedName],
         ['canonical_url', canonicalUrl],
-        ['license', KEW_IDENTITY.defaultLicenseLabel],
+        ['license', CC_BY_NC_POLICY.name],
+        ['license_url', CC_BY_NC_POLICY.url],
+        ['third_party_carveout', THIRD_PARTY_POLICY.shortBadge],
         ['entity_name', entity.name],
         ['type', entity.type],
         ['category', entity.category],
@@ -194,7 +210,7 @@ export async function GET(
         ['conservation_status', entity.conservationStatus ?? ''],
         ['biodiversity_taxa', (entity.biodiversity || []).join('; ')],
         ['documented_threats', (entity.threats || []).join('; ')],
-        ['verification_status', entity.verificationStatus ?? 'verified'],
+        ['verification_status', entity.verificationStatus ?? 'desk_verified'],
         ['updated_at', pubDate],
       ]);
       return new NextResponse(csv, {
@@ -210,19 +226,33 @@ export async function GET(
       publisher: KEW_IDENTITY.extendedName,
       organizationId: KEW_IDENTITY.entityId,
       canonicalUrl,
-      license: KEW_IDENTITY.defaultLicenseUrl,
-      citation: `${KEW_IDENTITY.extendedName} (${pubDate.slice(0, 4)}). ${entity.name}: Hydrological, Limnological and Ecological Baseline Assessment. Retrieved from ${canonicalUrl}`,
+      license: CC_BY_NC_POLICY.name,
+      licenseUrl: CC_BY_NC_POLICY.url,
+      commercialUsePermitted: false,
+      carveOuts: {
+        thirdPartySources: THIRD_PARTY_POLICY.shortBadge,
+        sensitiveCoordinates: RESTRICTED_POLICY.shortBadge,
+      },
+      citation: `${KEW_IDENTITY.extendedName} (${pubDate.slice(0, 4)}). ${entity.name}: Hydrological, Limnological and Ecological Baseline Synthesis. Licensed under CC BY-NC 4.0 (Non-Commercial). Retrieved from ${canonicalUrl}`,
       record: entity,
     });
   }
 
-  // 2. Evidence & Scientific Publications Library Export
+  // 2. Evidence & Scientific Publications Library Export (Preserves Third-Party Rights!)
   if (category === 'evidence') {
     const item = evidenceRegistry.find((e) => e.id === id);
     if (!item) {
       return NextResponse.json({ error: 'Scientific evidence item not found' }, { status: 404 });
     }
     const canonicalUrl = `${CANONICAL_SITE_URL}/library/${item.id}`;
+    const isKewAuthored = Boolean(
+      item.organization && /kashmir ecowatch/i.test(item.organization) && !/reference|isro|wii|bsi|cpcb|jkspcb/i.test(item.organization)
+    );
+    const licensePolicy = resolveLicenseForLibraryOwner(isKewAuthored);
+    const licenseNote = isKewAuthored
+      ? `Licensed under ${CC_BY_NC_POLICY.name} (${CC_BY_NC_POLICY.url})`
+      : `${THIRD_PARTY_POLICY.shortBadge}: Original statutory agency or journal publisher copyright terms apply; KEW provides bibliographic metadata only.`;
+
     if (format === 'bib') {
       const bib = buildBibtex({
         citeKey: `kew_${item.id}_${item.publishedDate.slice(0, 4)}`,
@@ -232,6 +262,7 @@ export async function GET(
         institution: item.organization || KEW_IDENTITY.extendedName,
         url: canonicalUrl,
         doi: item.doi,
+        licenseNote,
       });
       return new NextResponse(bib, {
         headers: {
@@ -249,6 +280,7 @@ export async function GET(
         url: canonicalUrl,
         abstract: item.abstract,
         doi: item.doi,
+        licenseNote,
       });
       return new NextResponse(ris, {
         headers: {
@@ -265,7 +297,7 @@ export async function GET(
         ['subtype', item.subtype],
         ['authors', item.authors.join('; ')],
         ['source_organization', item.organization || KEW_IDENTITY.extendedName],
-        ['published_by', KEW_IDENTITY.extendedName],
+        ['cataloged_by', KEW_IDENTITY.extendedName],
         ['published_date', item.publishedDate],
         ['last_updated', item.lastUpdated],
         ['confidence_tier', item.confidence],
@@ -273,7 +305,9 @@ export async function GET(
         ['keywords', item.keywords.join('; ')],
         ['abstract', item.abstract],
         ['canonical_url', canonicalUrl],
-        ['license', KEW_IDENTITY.defaultLicenseLabel],
+        ['license', licensePolicy.name],
+        ['license_badge', licensePolicy.shortBadge],
+        ['license_url', licensePolicy.url ?? ''],
       ]);
       return new NextResponse(csv, {
         headers: {
@@ -285,9 +319,13 @@ export async function GET(
 
     return NextResponse.json({
       archivalId: item.id,
-      publisher: KEW_IDENTITY.extendedName,
+      catalogedBy: KEW_IDENTITY.extendedName,
       canonicalUrl,
-      license: KEW_IDENTITY.defaultLicenseUrl,
+      license: licensePolicy.name,
+      licenseBadge: licensePolicy.shortBadge,
+      licenseUrl: licensePolicy.url ?? null,
+      commercialUsePermitted: licensePolicy.commercialUsePermitted,
+      rightsNotice: licensePolicy.summary,
       evidence: item,
     });
   }
@@ -299,6 +337,10 @@ export async function GET(
       return NextResponse.json({ error: 'Field report not found' }, { status: 404 });
     }
     const canonicalUrl = `${CANONICAL_SITE_URL}/field-reports/${report.id}`;
+    const isKewSource = /kashmir ecowatch|kew/i.test(report.source || '');
+    const policy = isKewSource ? CC_BY_NC_POLICY : THIRD_PARTY_POLICY;
+    const licenseNote = `${policy.shortBadge}: ${policy.summary}`;
+
     if (format === 'bib') {
       const bib = buildBibtex({
         citeKey: `kew_${report.id}_${report.date.slice(0, 4)}`,
@@ -307,6 +349,7 @@ export async function GET(
         year: report.date.slice(0, 4),
         institution: KEW_IDENTITY.extendedName,
         url: canonicalUrl,
+        licenseNote,
       });
       return new NextResponse(bib, {
         headers: {
@@ -323,6 +366,7 @@ export async function GET(
         institution: KEW_IDENTITY.extendedName,
         url: canonicalUrl,
         abstract: report.summary,
+        licenseNote,
       });
       return new NextResponse(ris, {
         headers: {
@@ -348,7 +392,8 @@ export async function GET(
         ['summary', report.summary],
         ['canonical_url', canonicalUrl],
         ['publisher', KEW_IDENTITY.extendedName],
-        ['license', KEW_IDENTITY.defaultLicenseLabel],
+        ['license', policy.name],
+        ['license_url', policy.url ?? ''],
       ]);
       return new NextResponse(csv, {
         headers: {
@@ -361,7 +406,10 @@ export async function GET(
       reportId: report.id,
       publisher: KEW_IDENTITY.extendedName,
       canonicalUrl,
-      license: KEW_IDENTITY.defaultLicenseUrl,
+      license: policy.name,
+      licenseBadge: policy.shortBadge,
+      licenseUrl: policy.url ?? null,
+      commercialUsePermitted: false,
       report,
     });
   }
@@ -375,12 +423,20 @@ export async function GET(
     if (items.length === 0) {
       return NextResponse.json({ error: 'Open data category not found' }, { status: 404 });
     }
+
+    const resolveCategoryLicenseBadge = (status: string) => {
+      if (status === 'Restricted') return RESTRICTED_POLICY.shortBadge;
+      if (status === 'No Dataset Available' || status === 'In Development') return 'No Published Dataset Yet';
+      return `${CC_BY_NC_POLICY.shortBadge} (KEW Synthesis) / ${THIRD_PARTY_POLICY.shortBadge}`;
+    };
+
     if (format === 'csv') {
       const header = [
         'id',
         'title',
         'domainId',
         'status',
+        'licenseScope',
         'geographicScope',
         'updateFrequency',
         'formats',
@@ -393,6 +449,7 @@ export async function GET(
           csvEscape(c.title),
           csvEscape(c.domainId),
           csvEscape(c.status),
+          csvEscape(resolveCategoryLicenseBadge(c.status)),
           csvEscape((c.geographicCoverage || []).join('; ')),
           csvEscape(c.updateFrequency),
           csvEscape((c.formats || []).join('; ')),
@@ -408,11 +465,22 @@ export async function GET(
       });
     }
     return NextResponse.json({
-      catalog: 'Kashmir EcoWatch Western Himalayan Open Environmental Data Catalog',
+      catalog: 'Kashmir EcoWatch Western Himalayan Environmental Data Catalog',
       publisher: KEW_IDENTITY.extendedName,
-      license: KEW_IDENTITY.defaultLicenseUrl,
+      defaultKewSynthesisLicense: CC_BY_NC_POLICY.name,
+      defaultKewSynthesisLicenseUrl: CC_BY_NC_POLICY.url,
+      commercialUsePermitted: false,
+      carveOuts: {
+        thirdPartyPublications: THIRD_PARTY_POLICY.shortBadge,
+        sensitiveWildlifeCoordinates: RESTRICTED_POLICY.shortBadge,
+        culturalWorks: DATASET_LICENSE_POLICIES['CULTURAL-ARTIST-RIGHTS-RESERVED'].shortBadge,
+        platformSoftware: '© 2026 Kashmir EcoWatch. All rights reserved',
+      },
       count: items.length,
-      categories: items,
+      categories: items.map((c) => ({
+        ...c,
+        resolvedLicenseScope: resolveCategoryLicenseBadge(c.status),
+      })),
     });
   }
 

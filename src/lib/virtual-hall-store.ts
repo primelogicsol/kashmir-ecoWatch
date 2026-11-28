@@ -379,14 +379,13 @@ function getRuntimeMap(): Map<string, LiveRoomRuntime> {
   return globalForHall.__kewVirtualHallRuntime.rooms;
 }
 
+import { getDomainSigningSecret } from '@/lib/seo/admin-session';
+
 function getSigningSecret(): string {
-  return (
-    process.env.VIRTUAL_HALL_SECRET ||
-    process.env.AUTH_SECRET ||
-    process.env.NEXTAUTH_SECRET ||
-    process.env.CRON_SECRET ||
-    'kew-virtual-scientific-hall-hmac-secret-2026'
-  );
+  if (process.env.VIRTUAL_HALL_SECRET && process.env.VIRTUAL_HALL_SECRET.trim().length >= 16) {
+    return process.env.VIRTUAL_HALL_SECRET.trim();
+  }
+  return getDomainSigningSecret('virtual-scientific-hall');
 }
 
 export function mintHallAccessToken(
@@ -401,11 +400,11 @@ export function mintHallAccessToken(
   };
   const encoded = Buffer.from(JSON.stringify(fullClaims), 'utf8').toString('base64url');
   const sig = crypto.createHmac('sha256', getSigningSecret()).update(encoded).digest('base64url');
-  return `kew_vh1.${encoded}.${sig}`;
+  return `kew_vh2.${encoded}.${sig}`;
 }
 
 export function verifyHallAccessToken(token?: string | null): HallAccessTokenClaims | null {
-  if (!token || !token.startsWith('kew_vh1.')) return null;
+  if (!token || !token.startsWith('kew_vh2.')) return null;
   const parts = token.split('.');
   if (parts.length !== 3) return null;
   const [, encoded, providedSig] = parts;

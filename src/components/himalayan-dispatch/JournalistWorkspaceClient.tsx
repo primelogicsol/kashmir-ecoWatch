@@ -1707,7 +1707,7 @@ export function JournalistWorkspaceClient() {
                   </h2>
                   <p className="hd-font-body text-sm mt-1" style={{ color: 'var(--hd-fg-secondary)' }}>
                     Register documentary photographs, field audio, documentary film reels, and
-                    cartographic plates under Danish Wani’s Visual Editions ethics protocol.
+                    cartographic plates under the Himalayan Dispatch Visual Editions governance protocol.
                   </p>
                 </div>
 

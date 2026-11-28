@@ -26,7 +26,7 @@ import {
 } from 'lucide-react';
 import { useHdnSession } from './HdnNewsroomProvider';
 import { HDN_ROUTES } from '@/lib/hdn/routes';
-import { HD_ROUTES } from '@/lib/himalayan-dispatch-routes';
+import { HD_ROUTES, toKewPlatformUrl } from '@/lib/himalayan-dispatch-routes';
 import { StoryReaderClient } from '@/components/himalayan-dispatch/StoryReaderClient';
 import { DispatchThemeProvider } from '@/components/himalayan-dispatch/DispatchThemeContext';
 import type {
@@ -807,7 +807,12 @@ export function HdnStoryPreviewView({ manuscriptId }: { manuscriptId: string }) 
       <div className="rounded-xl overflow-hidden border border-slate-300 shadow-xl">
         <DispatchThemeProvider>
           <div className="bg-[#F6F3EC] text-[#161514]">
-            <StoryReaderClient story={story} journalist={null} nextStory={null} />
+            <StoryReaderClient
+              story={story}
+              journalist={null}
+              nextStory={null}
+              disablePublicSharing
+            />
           </div>
         </DispatchThemeProvider>
       </div>
@@ -1024,9 +1029,14 @@ export function HdnResearchAiLabView() {
                 <div key={k.entityId} className="p-3 rounded-lg border border-slate-200 space-y-1 text-xs">
                   <div className="flex items-center justify-between">
                     <span className="font-bold">{k.title}</span>
-                    <Link href={k.href} target="_blank" className="text-[#8C3125] underline">
+                    <a
+                      href={toKewPlatformUrl(k.href)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#8C3125] underline"
+                    >
                       Open Module ↗
-                    </Link>
+                    </a>
                   </div>
                   <p className="text-slate-600">{k.verifiedSummary}</p>
                 </div>
@@ -1377,6 +1387,29 @@ export function HdnMediaLibraryView() {
               <div className="text-[11px] text-slate-400">
                 Credit: {a.photographerOrCreator} · {a.locationAndElevation}
               </div>
+              {(a.generationWorkflow || a.evidentiarySuitability || a.publicCaptionPolicyNote) && (
+                <div className="pt-2 mt-2 border-t border-slate-100 space-y-1 text-[11px] bg-slate-50 p-2.5 rounded">
+                  <div className="font-mono text-[10px] uppercase font-semibold text-slate-600">
+                    Admin Provenance Ledger · EXIF: {a.exifPresent ? 'Present' : 'None'} · C2PA/SynthID:{' '}
+                    {a.c2paSynthIdDetected ? 'Detected' : 'Not Detected'}
+                  </div>
+                  {a.evidentiarySuitability && (
+                    <div className="text-slate-700">
+                      <strong>Suitability:</strong> {a.evidentiarySuitability.replace(/_/g, ' ')}
+                    </div>
+                  )}
+                  {a.generationWorkflow && (
+                    <div className="text-slate-600">
+                      <strong>Workflow:</strong> {a.generationWorkflow}
+                    </div>
+                  )}
+                  {a.publicCaptionPolicyNote && (
+                    <div className="text-[#8C3125]">
+                      <strong>Governance Note:</strong> {a.publicCaptionPolicyNote}
+                    </div>
+                  )}
+                </div>
+              )}
               {canApprove && a.editorialApprovalStatus === 'pending_review' && (
                 <div className="flex gap-2 pt-1">
                   <button

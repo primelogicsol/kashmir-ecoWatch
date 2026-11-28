@@ -92,6 +92,12 @@ export async function POST(request: NextRequest) {
     if (!rec) {
       return NextResponse.json({ ok: false, error: 'Recording session record not found.' }, { status: 404 });
     }
+    if (!adminCheck.authorized && claims?.roomId !== rec.roomId) {
+      return NextResponse.json(
+        { ok: false, code: 'FORBIDDEN_RECORDING_ROOM', error: 'Room token does not match the target recording session.' },
+        { status: 403 }
+      );
+    }
 
     const buffer = blob ? Buffer.from(await blob.arrayBuffer()) : Buffer.alloc(0);
     const usedBytes = getInstitutionUsedStorageBytes(store, rec.institutionId);
@@ -273,6 +279,9 @@ export async function POST(request: NextRequest) {
     const recordingId = String(body.recordingId || '');
     const rec = store.recordings.find((r) => r.id === recordingId);
     if (!rec) return NextResponse.json({ ok: false, error: 'Recording not found.' }, { status: 404 });
+    if (!adminCheck.authorized && claims?.roomId !== rec.roomId) {
+      return NextResponse.json({ ok: false, error: 'Room token does not match recording room.' }, { status: 403 });
+    }
     rec.endedAt = new Date().toISOString();
     rec.durationSeconds = Math.max(1, Number(body.durationSeconds || rec.durationSeconds || 1));
     if (rec.status === 'recording') rec.status = 'archived_private';
@@ -304,6 +313,9 @@ export async function POST(request: NextRequest) {
   if (action === 'delete_recording') {
     const rec = store.recordings.find((r) => r.id === String(body.recordingId || ''));
     if (!rec) return NextResponse.json({ ok: false, error: 'Recording not found.' }, { status: 404 });
+    if (!adminCheck.authorized && claims?.roomId !== rec.roomId) {
+      return NextResponse.json({ ok: false, error: 'Room token does not match recording room.' }, { status: 403 });
+    }
     if (rec.fileName) {
       const fp = path.join(RECORDINGS_DIR, rec.fileName);
       if (fs.existsSync(fp)) {

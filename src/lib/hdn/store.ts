@@ -59,6 +59,8 @@ import {
   validateWorkflowTransition,
 } from './rbac';
 import { readAnieStore, writeAnieStore, recordAnieAudit } from '@/lib/hd-anie/store';
+import { computeStoryMetrics } from '@/lib/himalayan-dispatch-metrics';
+import { HIMALAYAN_DISPATCH_GOVERNED_MEDIA_REGISTRY } from '@/data/himalayan-dispatch-visual-governance';
 
 const HDN_STORE_FILE = path.join(process.cwd(), 'data', 'hdn-newsroom-store.json');
 const DISPATCH_LEGACY_STORE_FILE = path.join(
@@ -485,8 +487,20 @@ export function blocksToChapters(blocks: HdnContentBlock[]): StoryChapter[] {
 
 function buildSeededAccounts(): HdnAccountRecord[] {
   const nowIso = '2026-11-25T00:00:00.000Z';
-  const mastheadCodeHash = hashAccessCode(process.env.DISPATCH_MASTHEAD_CODE || 'HD-MASTHEAD-2026');
-  const reviewerCodeHash = hashAccessCode(process.env.DISPATCH_REVIEWER_CODE || 'HD-REVIEW-2026');
+  const configuredMasthead =
+    process.env.DISPATCH_MASTHEAD_CODE && process.env.DISPATCH_MASTHEAD_CODE.trim().length >= 10
+      ? process.env.DISPATCH_MASTHEAD_CODE.trim()
+      : null;
+  const configuredReviewer =
+    process.env.DISPATCH_REVIEWER_CODE && process.env.DISPATCH_REVIEWER_CODE.trim().length >= 10
+      ? process.env.DISPATCH_REVIEWER_CODE.trim()
+      : null;
+  const mastheadCodeHash = configuredMasthead
+    ? hashAccessCode(configuredMasthead)
+    : `UNCONFIGURED_MASTHEAD_${crypto.randomBytes(16).toString('hex')}`;
+  const reviewerCodeHash = configuredReviewer
+    ? hashAccessCode(configuredReviewer)
+    : `UNCONFIGURED_REVIEWER_${crypto.randomBytes(16).toString('hex')}`;
 
   const roleConfigBySlug: Record<
     string,
@@ -518,17 +532,17 @@ function buildSeededAccounts(): HdnAccountRecord[] {
       codeHash: mastheadCodeHash,
       agreement: 'founding_masthead',
     },
-    'aaliya-andrabi': {
-      email: 'aaliya@kashmir-ecowatch.com',
+    'investigations-urban-water-desk': {
+      email: 'investigations@kashmir-ecowatch.com',
       roles: ['managing_editor', 'commissioning_editor', 'bureau_chief', 'department_editor'],
-      bureaus: ['kashmir'],
+      bureaus: ['kashmir', 'jammu'],
       depts: ['investigative-journalism', 'longform-features', 'field-reports'],
-      beats: ['lakes-wetlands-springs-waterways', 'environmental-legacy-conservation-accountability'],
+      beats: ['lakes-wetlands-springs-waterways', 'transboundary-rivers-hydropower'],
       codeHash: mastheadCodeHash,
       agreement: 'founding_masthead',
     },
-    'danish-wani': {
-      email: 'danish@kashmir-ecowatch.com',
+    'visual-editions-desk': {
+      email: 'visual@kashmir-ecowatch.com',
       roles: ['visual_editor', 'photojournalist', 'department_editor'],
       bureaus: ['kashmir', 'ladakh'],
       depts: ['photo-essays'],
@@ -536,8 +550,8 @@ function buildSeededAccounts(): HdnAccountRecord[] {
       codeHash: mastheadCodeHash,
       agreement: 'founding_masthead',
     },
-    'dr-nida-hamdani': {
-      email: 'nida@kashmir-ecowatch.com',
+    'data-cartography-desk': {
+      email: 'data@kashmir-ecowatch.com',
       roles: ['department_editor', 'scientific_reviewer', 'fact_checker'],
       bureaus: ['kashmir', 'ladakh'],
       depts: ['data-journalism'],
@@ -545,10 +559,10 @@ function buildSeededAccounts(): HdnAccountRecord[] {
       codeHash: mastheadCodeHash,
       agreement: 'founding_masthead',
     },
-    'rafiq-ahmad-bhat': {
-      email: 'rafiq@kashmir-ecowatch.com',
+    'wetlands-forest-desk': {
+      email: 'field@kashmir-ecowatch.com',
       roles: ['senior_correspondent', 'journalist'],
-      bureaus: ['kashmir'],
+      bureaus: ['kashmir', 'jammu'],
       depts: ['field-reports'],
       beats: ['biodiversity-forests-pastoral-commons', 'lakes-wetlands-springs-waterways'],
       codeHash: mastheadCodeHash,
@@ -687,11 +701,11 @@ function buildSeededAssignments(): HdnEditorialAssignment[] {
     id: fa.id,
     title: fa.workingTitle,
     editorialBrief: fa.synopsis,
-    assignedJournalistSlug: fa.journalistSlug || 'rafiq-ahmad-bhat',
+    assignedJournalistSlug: fa.journalistSlug || 'wetlands-forest-desk',
     assignedJournalistName:
       JOURNALIST_PROFILES.find((j) => j.slug === fa.journalistSlug)?.name || fa.bylineDisplay,
-    responsibleEditorSlug: 'aaliya-andrabi',
-    responsibleEditorName: 'Aaliya Andrabi',
+    responsibleEditorSlug: 'dr-fayaz-ahmad-khan',
+    responsibleEditorName: 'Dr. Fayaz Ahmad Khan',
     bureauId: fa.region.toLowerCase().includes('ladakh')
       ? 'ladakh'
       : fa.region.toLowerCase().includes('jammu')
@@ -732,7 +746,7 @@ function buildSeededAssignments(): HdnEditorialAssignment[] {
       {
         id: `hist-${fa.id}`,
         timestamp: '2026-11-20T12:00:00.000Z',
-        actorName: 'Aaliya Andrabi',
+        actorName: 'Himalayan Dispatch Commissioning Desk',
         action: 'commissioned',
         note: `Commissioned for ${fa.editionSlug} (${fa.departmentLabel}).`,
       },
@@ -777,6 +791,13 @@ function projectCanonicalStoriesToManuscripts(): HdnArticleManuscript[] {
         ? 'jammu'
         : 'kashmir';
 
+    const computedMetrics = computeStoryMetrics(st);
+    const isPreReleaseStage08 =
+      st.publicationGates?.currentStage === 'administrator_approval';
+    const sciRequired = st.publicationGates
+      ? st.publicationGates.scientificReviewApplicable
+      : st.departmentId !== 'editorials' && st.departmentId !== 'photo-essays';
+
     return {
       id: `hdn-ms-${st.slug}`,
       slug: st.slug,
@@ -810,8 +831,12 @@ function projectCanonicalStoriesToManuscripts(): HdnArticleManuscript[] {
                 : st.departmentId === 'interviews'
                   ? 'Interview / Q&A'
                   : 'Longform Feature',
-      lifecycleStage: '13',
-      workflowStatus: st.isPublished ? 'published' : 'editorial_review',
+      lifecycleStage: isPreReleaseStage08 ? '12' : '13',
+      workflowStatus: isPreReleaseStage08
+        ? 'ready_for_approval'
+        : st.isPublished
+          ? 'published'
+          : 'editorial_review',
       reviewTrack:
         st.departmentId === 'investigative-journalism'
           ? 'sensitive_investigative'
@@ -821,33 +846,36 @@ function projectCanonicalStoriesToManuscripts(): HdnArticleManuscript[] {
       isFeatured: Boolean(st.isFeaturedCoverStory),
       isConfidential: false,
       factCheckRequired: true,
-      factCheckCompleted: true,
+      factCheckCompleted: Boolean(st.hasCompletedIndependentReview),
       factCheckedBy: st.factCheckedBy,
-      scientificReviewRequired: true,
-      scientificReviewCompleted: true,
+      scientificReviewRequired: sciRequired,
+      scientificReviewCompleted: sciRequired ? Boolean(st.hasCompletedIndependentReview) : true,
       scientificReviewedBy: st.scientificReviewer,
       legalReviewRequired: st.departmentId === 'investigative-journalism',
       legalReviewCompleted: true,
       copyEditCompleted: true,
       visualProductionCompleted: true,
-      finalApprovedBy: 'Dr. Fayaz Ahmad Khan',
+      finalApprovedBy: isPreReleaseStage08 ? undefined : 'Dr. Fayaz Ahmad Khan',
       heroImage: st.heroImage,
       heroCaption: st.heroCaption,
       heroCredit: st.heroCredit,
       heroLicense: 'Himalayan Dispatch × KEW Archive',
-      heroProvenance: 'authentic_documentary_photograph',
+      heroProvenance:
+        st.visualEssayMode === 'illustrative_monochrome_study'
+          ? 'labeled_conceptual_illustration'
+          : 'authentic_documentary_photograph',
       heroMonochrome: st.heroMonochrome,
       blocks,
       scientificLimitations: [],
       editorialDisclosure:
         st.editorialVerificationNote ||
-        'Reported, fact-checked, and scientifically reviewed under the Himalayan Dispatch Editorial Charter.',
+        'Prepared under the Himalayan Dispatch 10-Stage Editorial Governance Charter.',
       conflictOfInterestDisclosure: 'No competing financial or institutional interests declared.',
       sourceReferenceIds: [],
       relatedArticleSlugs: [],
       relatedKewModules: st.relatedKewModule ? [st.relatedKewModule] : [],
-      wordCount: st.wordCount,
-      readingTimeMinutes: st.readingTimeMinutes,
+      wordCount: computedMetrics.wordCount,
+      readingTimeMinutes: computedMetrics.readingTimeMinutes,
       seoTitle: st.seoTitle || `${st.title} — Himalayan Dispatch`,
       metaDescription: st.excerpt.slice(0, 158),
       canonicalUrl: `/himalayan-dispatch/issues/${
@@ -857,20 +885,23 @@ function projectCanonicalStoriesToManuscripts(): HdnArticleManuscript[] {
       versionNumber: 1,
       createdAt: `${st.publishedAt}T00:00:00.000Z`,
       updatedAt: `${st.updatedAt || st.publishedAt}T00:00:00.000Z`,
-      publishedAt: st.isPublished ? `${st.publishedAt}T00:00:00.000Z` : undefined,
+      publishedAt:
+        st.isPublished && !isPreReleaseStage08 ? `${st.publishedAt}T00:00:00.000Z` : undefined,
       comments: [],
       revisions: [
         {
           id: `rev-init-${st.slug}`,
           versionNumber: 1,
-          savedAt: `${st.publishedAt}T00:00:00.000Z`,
+          savedAt: `${st.updatedAt || st.publishedAt}T00:00:00.000Z`,
           saveKind: 'manual',
           actorSlug: st.journalistSlug,
           actorName: st.bylineDisplay,
           actorRole: st.bylineRole,
-          summary: 'Published canonical edition folio.',
-          workflowStatus: 'published',
-          wordCount: st.wordCount,
+          summary: isPreReleaseStage08
+            ? 'Stage 08 Pre-Release Edition Folio awaiting Administrator Approval.'
+            : 'Published canonical edition folio.',
+          workflowStatus: isPreReleaseStage08 ? 'ready_for_approval' : 'published',
+          wordCount: computedMetrics.wordCount,
           headline: st.title,
           standfirst: st.subtitle,
           blocksSnapshot: blocks,
@@ -1033,66 +1064,14 @@ export function projectAnieDraftToHdnManuscript(draft: AnieEditorialDraft): HdnA
 
 function createInitialHdnStore(): HdnPersistentStore {
   return {
-    schemaVersion: 1,
+    schemaVersion: 5,
     accounts: buildSeededAccounts(),
     manuscripts: projectCanonicalStoriesToManuscripts(),
     assignments: buildSeededAssignments(),
     scientificReviews: [],
     factChecks: [],
     confidentialSources: [],
-    mediaAssets: [
-      {
-        id: 'hdn-media-01',
-        title: 'Kolahoi Glacier Ablation Zone & Proglacial Stream',
-        mediaType: 'documentary_photograph',
-        url: '/images/publications/kolahoi-glacier-cryosphere.jpg',
-        caption: 'High-altitude ablation zone and proglacial meltwater drainage in the Lidder headwaters.',
-        photographerOrCreator: 'Danish Wani · KEW Cryosphere Archive',
-        contributorSlug: 'danish-wani',
-        bureauId: 'kashmir',
-        locationAndElevation: 'Upper Lidder Basin · 3,790 m',
-        licensingInfo: 'KEW Institutional Documentary Archive (Non-Commercial Attribution)',
-        consentRecorded: true,
-        provenanceClassification: 'authentic_documentary_unmodified',
-        editorialApprovalStatus: 'approved',
-        approvedBy: 'Danish Wani',
-        createdAt: '2026-11-20T00:00:00.000Z',
-      },
-      {
-        id: 'hdn-media-02',
-        title: 'Wular Ramsar Floodplain & Willow Marsh Mirror',
-        mediaType: 'documentary_photograph',
-        url: '/images/publications/wular-ramsar-wetland-floodplain.jpg',
-        caption: 'Floodplain marsh storage and migratory waterfowl habitat across Wular Lake.',
-        photographerOrCreator: 'Rafiq Ahmad Bhat · KEW Wetland Observatory',
-        contributorSlug: 'rafiq-ahmad-bhat',
-        bureauId: 'kashmir',
-        locationAndElevation: 'Bandipora · 1,580 m',
-        licensingInfo: 'KEW Institutional Documentary Archive',
-        consentRecorded: true,
-        provenanceClassification: 'authentic_documentary_unmodified',
-        editorialApprovalStatus: 'approved',
-        approvedBy: 'Danish Wani',
-        createdAt: '2026-11-21T00:00:00.000Z',
-      },
-      {
-        id: 'hdn-media-03',
-        title: 'Western Himalayan Multi-Spectral Slope & Basin Cartography',
-        mediaType: 'scientific_map',
-        url: '/images/publications/geospatial-gis-earth-observation-lab.jpg',
-        caption: 'Multi-spectral Earth observation and watershed slope-stability synthesis.',
-        photographerOrCreator: 'Dr. Nida Hamdani · KEW Geospatial Desk',
-        contributorSlug: 'dr-nida-hamdani',
-        bureauId: 'kashmir',
-        locationAndElevation: 'Western Himalayan Basins',
-        licensingInfo: 'KEW Institutional Cartographic Plate',
-        consentRecorded: true,
-        provenanceClassification: 'kew_verified_cartography',
-        editorialApprovalStatus: 'approved',
-        approvedBy: 'Dr. Nida Hamdani',
-        createdAt: '2026-11-22T00:00:00.000Z',
-      },
-    ],
+    mediaAssets: [...HIMALAYAN_DISPATCH_GOVERNED_MEDIA_REGISTRY],
     editions: buildSeededEditions(),
     notifications: [
       {
@@ -1321,8 +1300,16 @@ export function readHdnStore(): HdnPersistentStore {
     const parsed = JSON.parse(fs.readFileSync(HDN_STORE_FILE, 'utf8')) as Partial<HdnPersistentStore>;
     const defaults = createInitialHdnStore();
 
-    // Ensure canonical seeded accounts exist without overwriting admin role edits
-    const existingAccs = Array.isArray(parsed.accounts) ? parsed.accounts : [];
+    const deprecatedSyntheticSlugs = new Set([
+      'aaliya-andrabi',
+      'danish-wani',
+      'dr-nida-hamdani',
+      'rafiq-ahmad-bhat',
+    ]);
+    // Ensure canonical seeded accounts exist without retaining deprecated prototype personas
+    const existingAccs = (Array.isArray(parsed.accounts) ? parsed.accounts : []).filter(
+      (a) => !deprecatedSyntheticSlugs.has(a.slug)
+    );
     const seenSlugs = new Set(existingAccs.map((a) => a.slug));
     for (const seedAcc of defaults.accounts) {
       if (!seenSlugs.has(seedAcc.slug)) {
@@ -1330,34 +1317,62 @@ export function readHdnStore(): HdnPersistentStore {
       }
     }
 
-    // Ensure canonical seeded stories exist without overwriting CMS edits
+    // Ensure canonical seeded stories exist and v1 canonical projections stay synchronized with code
     const existingMs = Array.isArray(parsed.manuscripts) ? parsed.manuscripts : [];
-    const seenMsIds = new Set(existingMs.map((m) => m.id));
+    const defaultMsById = new Map(defaults.manuscripts.map((m) => [m.id, m]));
+    const refreshedMs = existingMs.map((m) => {
+      const seed = defaultMsById.get(m.id);
+      if (seed && m.originType === 'canonical_magazine_story' && m.versionNumber <= 1) {
+        const cleanedCorrections = (m.corrections || []).filter((c) => c.id !== 'corr-hd-06-1');
+        return {
+          ...seed,
+          corrections: cleanedCorrections.length ? cleanedCorrections : seed.corrections,
+          comments: m.comments || [],
+        };
+      }
+      return m;
+    });
+    const seenMsIds = new Set(refreshedMs.map((m) => m.id));
     for (const seedMs of defaults.manuscripts) {
       if (!seenMsIds.has(seedMs.id)) {
-        existingMs.push(seedMs);
+        refreshedMs.push(seedMs);
       }
     }
 
+    // Merge restricted Visual Governance Registry without losing custom uploaded assets
+    const existingMedia = Array.isArray(parsed.mediaAssets)
+      ? parsed.mediaAssets.filter((m) => !m.id.startsWith('hdn-media-0'))
+      : [];
+    const seenMediaUrls = new Set(defaults.mediaAssets.map((m) => m.url));
+    const mergedMedia = [
+      ...defaults.mediaAssets,
+      ...existingMedia.filter((m) => !seenMediaUrls.has(m.url)),
+    ];
+
+    const isSchemaUpgrade = (parsed.schemaVersion || 1) < 5;
     const store: HdnPersistentStore = {
-      schemaVersion: 1,
+      schemaVersion: 5,
       accounts: existingAccs,
-      manuscripts: existingMs,
-      assignments: Array.isArray(parsed.assignments) ? parsed.assignments : defaults.assignments,
+      manuscripts: refreshedMs,
+      assignments:
+        !isSchemaUpgrade && Array.isArray(parsed.assignments)
+          ? parsed.assignments
+          : defaults.assignments,
       scientificReviews: Array.isArray(parsed.scientificReviews) ? parsed.scientificReviews : [],
       factChecks: Array.isArray(parsed.factChecks) ? parsed.factChecks : [],
       confidentialSources: Array.isArray(parsed.confidentialSources)
         ? parsed.confidentialSources
         : [],
-      mediaAssets: Array.isArray(parsed.mediaAssets) ? parsed.mediaAssets : defaults.mediaAssets,
-      editions: Array.isArray(parsed.editions) ? parsed.editions : defaults.editions,
+      mediaAssets: mergedMedia,
+      editions:
+        !isSchemaUpgrade && Array.isArray(parsed.editions) ? parsed.editions : defaults.editions,
       notifications: Array.isArray(parsed.notifications)
         ? parsed.notifications
         : defaults.notifications,
       auditLogs: Array.isArray(parsed.auditLogs) ? parsed.auditLogs : defaults.auditLogs,
     };
 
-    if (syncLegacyDispatchRecordsIntoHdn(store)) {
+    if (syncLegacyDispatchRecordsIntoHdn(store) || isSchemaUpgrade) {
       writeHdnStore(store);
     }
     return store;
@@ -1551,10 +1566,22 @@ export function authenticateHdnCredentials(input: {
   const store = readHdnStore();
   const acc = store.accounts.find((a) => a.email.toLowerCase() === normEmail);
 
-  // Allow Founding EIC login via ADMIN_PASSCODE even if alternate admin email is typed
-  const adminPasscode = process.env.ADMIN_PASSCODE || 'KEW-Admin-2026!';
+  // Allow Founding EIC login via configured ADMIN_PASSCODE (never fallback to hardcoded literal)
+  const configuredAdminPasscode = process.env.ADMIN_PASSCODE?.trim();
+  const retiredDigest = 'fd50a0c4e0f20ef554e9858d22d57c3cc7b405f97d318d8a812ea3d4cc51535c';
+  const configuredLowerDigest = configuredAdminPasscode
+    ? crypto.createHash('sha256').update(configuredAdminPasscode.toLowerCase(), 'utf8').digest('hex')
+    : '';
+  const isValidAdminCode =
+    Boolean(configuredAdminPasscode) &&
+    configuredAdminPasscode!.length >= 10 &&
+    configuredLowerDigest !== retiredDigest &&
+    crypto.timingSafeEqual(
+      crypto.createHash('sha256').update(code, 'utf8').digest(),
+      crypto.createHash('sha256').update(configuredAdminPasscode!, 'utf8').digest()
+    );
   if (
-    code === adminPasscode &&
+    isValidAdminCode &&
     (normEmail === 'fayaz@kashmir-ecowatch.com' ||
       normEmail === 'admin@kashmir-ecowatch.com' ||
       normEmail === 'editor@kashmir-ecowatch.com')
@@ -1580,8 +1607,7 @@ export function authenticateHdnCredentials(input: {
   }
 
   const providedHash = hashAccessCode(code);
-  const validAdminPass =
-    code === adminPasscode && isExecutiveOrAdmin(acc);
+  const validAdminPass = isValidAdminCode && isExecutiveOrAdmin(acc);
   const validStoredHash = Boolean(acc.accessCodeHash && acc.accessCodeHash === providedHash);
 
   if (!validAdminPass && !validStoredHash) {
@@ -2733,14 +2759,26 @@ export function createOrUpdateConfidentialSource(
     linkedManuscriptId: input.linkedManuscriptId,
     confidentialityLevel: input.confidentialityLevel,
     publicDescription: input.publicDescription.trim(),
-    restrictedNotes: input.restrictedNotes.trim(),
+    restrictedNotes: (() => {
+      const plain = input.restrictedNotes.trim();
+      if (!plain) return '';
+      const key = crypto
+        .createHash('sha256')
+        .update(process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET || 'kew-dev-ephemeral-vault')
+        .digest();
+      const iv = crypto.randomBytes(12);
+      const cipher = crypto.createCipheriv('aes-256-gcm', key, iv);
+      const enc = Buffer.concat([cipher.update(plain, 'utf8'), cipher.final()]);
+      const tag = cipher.getAuthTag();
+      return `enc:aes256gcm:v1:${iv.toString('base64')}:${tag.toString('base64')}:${enc.toString('base64')}`;
+    })(),
     consentRecorded: Boolean(input.consentRecorded),
     consentScopeNote: input.consentScopeNote.trim(),
     retentionPolicy: input.retentionPolicy || 'retain_encrypted_archive',
     interviewRecords: input.newInterview
       ? [{ id: `int-${Date.now()}`, ...input.newInterview }]
       : [],
-    authorizedViewerSlugs: [account.slug, 'dr-fayaz-ahmad-khan', 'aaliya-andrabi'],
+    authorizedViewerSlugs: [account.slug, 'dr-fayaz-ahmad-khan', 'investigations-urban-water-desk'],
     accessAuditTrail: [
       {
         timestamp: nowIso,

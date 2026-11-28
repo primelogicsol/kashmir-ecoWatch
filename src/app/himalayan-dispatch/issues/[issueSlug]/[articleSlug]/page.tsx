@@ -11,11 +11,14 @@ import { StoryReaderClient } from '@/components/himalayan-dispatch/StoryReaderCl
 import { EditorialBreadcrumbs } from '@/components/himalayan-dispatch/EditorialBreadcrumbs';
 import {
   CANONICAL_DISPATCH_URL,
+  CANONICAL_KEW_PLATFORM_URL,
   DISPATCH_IDENTITY,
   HD_ROUTES,
+  IS_DISPATCH_SUBDOMAIN_LIVE,
   resolveCanonicalStoryUrl,
   toCanonicalIssueSlug,
   toDispatchCanonicalUrl,
+  toInternalDispatchPath,
 } from '@/lib/himalayan-dispatch-routes';
 import { JsonLd } from '@/components/seo/JsonLd';
 
@@ -84,7 +87,12 @@ export default async function IssueArticlePage({
       ? issueStories[(idx + 1) % issueStories.length]
       : null;
 
-  const canonicalUrl = toDispatchCanonicalUrl(resolveCanonicalStoryUrl(story));
+  const activeOrigin = IS_DISPATCH_SUBDOMAIN_LIVE
+    ? CANONICAL_DISPATCH_URL
+    : CANONICAL_KEW_PLATFORM_URL;
+  const canonicalUrl = IS_DISPATCH_SUBDOMAIN_LIVE
+    ? toDispatchCanonicalUrl(resolveCanonicalStoryUrl(story))
+    : `${CANONICAL_KEW_PLATFORM_URL}${toInternalDispatchPath(resolveCanonicalStoryUrl(story))}`;
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
@@ -92,22 +100,33 @@ export default async function IssueArticlePage({
     description: story.excerpt,
     datePublished: story.publishedAt,
     dateModified: story.updatedAt || story.publishedAt,
-    image: [`${CANONICAL_DISPATCH_URL}${story.heroImage}`],
+    wordCount: story.wordCount,
+    image: [`${activeOrigin}${story.heroImage}`],
     author: {
-      '@type': 'Person',
+      '@type': story.bylineDisplay.includes('Desk') || story.bylineDisplay.includes('Board')
+        ? 'Organization'
+        : 'Person',
       name: story.bylineDisplay,
-      url: toDispatchCanonicalUrl(HD_ROUTES.journalistPortfolio(story.journalistSlug)),
+      url: IS_DISPATCH_SUBDOMAIN_LIVE
+        ? toDispatchCanonicalUrl(HD_ROUTES.journalistPortfolio(story.journalistSlug))
+        : `${CANONICAL_KEW_PLATFORM_URL}${toInternalDispatchPath(
+            `/journalists/${story.journalistSlug}`
+          )}`,
     },
     isPartOf: {
       '@type': 'PublicationIssue',
       issueNumber: story.editionLabel,
-      url: toDispatchCanonicalUrl(HD_ROUTES.issue(expectedIssueSlug)),
+      url: IS_DISPATCH_SUBDOMAIN_LIVE
+        ? toDispatchCanonicalUrl(HD_ROUTES.issue(expectedIssueSlug))
+        : `${CANONICAL_KEW_PLATFORM_URL}${toInternalDispatchPath(`/issues/${expectedIssueSlug}`)}`,
     },
     publisher: {
       '@type': 'NewsMediaOrganization',
-      '@id': `${CANONICAL_DISPATCH_URL}/#organization`,
+      '@id': `${activeOrigin}/#organization`,
       name: DISPATCH_IDENTITY.officialName,
-      url: DISPATCH_IDENTITY.canonicalHomepageUrl,
+      url: IS_DISPATCH_SUBDOMAIN_LIVE
+        ? DISPATCH_IDENTITY.canonicalHomepageUrl
+        : `${CANONICAL_KEW_PLATFORM_URL}/himalayan-dispatch`,
     },
     mainEntityOfPage: canonicalUrl,
   };

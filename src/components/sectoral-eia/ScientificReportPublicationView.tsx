@@ -1751,7 +1751,7 @@ export function ScientificReportPublicationView({
                       </a>
                     )}
                     <Link
-                      href="/gis-mapping"
+                      href="/atlas"
                       className="inline-flex items-center gap-1.5 rounded-md border border-slate-700 bg-slate-950 px-3 py-1.5 text-xs font-medium text-slate-200 hover:text-white"
                     >
                       Open KEW GIS Observatory

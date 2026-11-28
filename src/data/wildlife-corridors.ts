@@ -218,18 +218,35 @@ export const generateDistrictCorridorMetrics = (districts: string[]): DistrictCo
     const speciesSet = new Set<string>();
     linkedCorridors.forEach(c => c.target_species.forEach(s => speciesSet.add(s)));
     
-    // Simple math for mock data if zero corridors, just to have baseline metrics
     const count = linkedCorridors.length;
     const isUrban = ['Srinagar', 'Jammu', 'Mirpur'].includes(district);
     const isBorder = ['Kupwara', 'Bandipora', 'Poonch', 'Kargil', 'Neelum'].includes(district);
-    
+
+    const statusWeights: Record<WildlifeCorridor['status'], number> = {
+      Functional: 85,
+      Threatened: 58,
+      'Restoration Required': 42,
+      Severed: 24,
+    };
+    const rawConnectivity =
+      count === 0
+        ? 18
+        : Math.round(
+            linkedCorridors.reduce((acc, curr) => acc + statusWeights[curr.status], 0) / count +
+              Math.min(10, (count - 1) * 3)
+          );
+    const connectivityScore = Math.max(
+      10,
+      Math.min(95, rawConnectivity - (isUrban ? 10 : 0) - (isBorder ? 6 : 0))
+    );
+
     return {
       District_ID: `DIST-${district.substring(0, 3).toUpperCase()}`,
       District_Name: district,
       Corridor_Count: count,
-      Corridor_Length_km: linkedCorridors.reduce((acc, curr) => acc + curr.length_km, 0) / (count || 1), // Average or approx length within district
+      Corridor_Length_km: linkedCorridors.reduce((acc, curr) => acc + curr.length_km, 0) / (count || 1),
       Protected_Area_Linkage: count > 0 ? `Linked to ${count} PA networks` : 'Isolated',
-      Connectivity_Score: count === 0 ? Math.floor(Math.random() * 20) + 10 : Math.floor(Math.random() * 30) + 60 + (count * 5),
+      Connectivity_Score: connectivityScore,
       Fragmentation_Risk: isUrban ? 'Critical' : isBorder ? 'High' : 'Medium',
       Barrier_Count: count * 2 + (isBorder ? 5 : 0) + (isUrban ? 10 : 0),
       Road_Impact: isUrban ? 'Severe' : count > 1 ? 'High' : 'Medium',

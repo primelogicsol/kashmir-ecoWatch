@@ -156,7 +156,7 @@ export default function ScientificDossiersPage() {
               <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
                 <span className="text-xs text-slate-400 flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  Peer-Reviewed & Digitally Certified
+                  Desk-Synthesized Research Dossiers (External Peer Review Pending)
                 </span>
 
                 <div className="flex items-center gap-2">

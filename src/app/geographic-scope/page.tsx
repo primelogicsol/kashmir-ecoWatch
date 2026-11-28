@@ -34,7 +34,10 @@ import {
   GEOGRAPHIC_SCOPE_TIERS,
   LADAKH_DISTRICTS_REGISTRY,
   OFFICIAL_ADMIN_SOURCES,
+  VERIFIED_WESTERN_HIMALAYAN_RAMSAR_SITES,
 } from '@/data/geography';
+import { PLATFORM_METRICS } from '@/data/platform-metrics';
+import { VERIFIED_SPECIES_COUNTS } from '@/data/species';
 import { districtsData as activeDistrictProfiles } from '@/data/districts-intelligence';
 import { groundStationsRegistry, airQualityRegistry } from '@/data/air-quality-registry';
 
@@ -111,30 +114,30 @@ export default function GeographicScopePage() {
       color: 'text-emerald-400',
     },
     {
-      value: `${verifiedTelemetry.tier2TotalNotified} Districts`,
+      value: `${verifiedTelemetry.tier2TotalBaseline} (+5 Notified)`,
       title: 'Tier 2 · Jammu & Ladakh',
-      desc: `${verifiedTelemetry.tier2JammuDistricts} Jammu + ${verifiedTelemetry.tier2LadakhNotified} Ladakh (${verifiedTelemetry.tier2LadakhBaseline} baseline + 6 notified 2026)`,
+      desc: `${verifiedTelemetry.tier2JammuDistricts} Jammu + ${verifiedTelemetry.tier2LadakhBaseline} Ladakh operational (+5 Aug 2024 notified)`,
       icon: Mountain,
       color: 'text-sky-400',
     },
     {
-      value: `${verifiedTelemetry.tier3TotalDistricts} + 5 Basins`,
+      value: `${verifiedTelemetry.tier3TotalDistricts} Districts`,
       title: 'Tier 3 · Transboundary',
-      desc: '10 AJK + 14 Gilgit-Baltistan districts & 5 cross-border macro corridors',
+      desc: '10 AJ&K + 14 Gilgit-Baltistan operational districts & 5 macro corridors',
       icon: Globe,
       color: 'text-amber-400',
     },
     {
-      value: `${verifiedTelemetry.totalActiveProfiles} / ${verifiedTelemetry.totalNotifiedDistricts}`,
-      title: 'Verified District Dossiers',
-      desc: `${verifiedTelemetry.totalActiveProfiles} deep district profiles (${verifiedTelemetry.totalBaselineUnits} baseline GIS/registry units)`,
+      value: `${verifiedTelemetry.totalBaselineUnits} (${verifiedTelemetry.totalNotifiedDistricts} Notified)`,
+      title: 'Operational Baseline Units',
+      desc: `46 operational districts across 5 subregions (+5 Aug 2024 Ladakh = 51 notified)`,
       icon: Layers,
       color: 'text-purple-400',
     },
     {
-      value: '1,333',
-      title: 'Water & Cryosphere Records',
-      desc: '553 master lakes, 374 watersheds, 127 rivers, 100 springs, 99 glaciers & 80 wetlands',
+      value: `${VERIFIED_WESTERN_HIMALAYAN_RAMSAR_SITES.length} Ramsar · 28 Basins`,
+      title: 'Verified Hydro-Registry',
+      desc: '7 RSIS Ramsar sites, 553 master lakes & 28 verified river basins/sub-basins',
       icon: Droplets,
       color: 'text-teal-400',
     },
@@ -158,13 +161,13 @@ export default function GeographicScopePage() {
       borderColor: 'hover:border-sky-500/40',
       bgGlow: 'from-sky-500/10 to-transparent',
       summary:
-        'Empirical hydrological inventory spanning 1,333 cataloged freshwater and cryospheric records across the three tiers.',
+        'Empirical hydrological inventory spanning 553 cataloged lakes, 28 verified river basins/sub-basins, and 7 official RSIS Ramsar sites.',
       layers: [
-        '553-lake Western Himalayan Master Registry plus 80 NWIA-standardized wetlands and 374 delineated watersheds',
-        '127 mapped rivers and mountain streams with 12 live hydrometric gauge feeds (9 Jhelum/Valley, 1 Chenab, 2 cross-border)',
-        'Ramsar wetlands across Tier 1 (Wular, Hokersar, Shallabugh, Hygam), Tier 2 (Surinsar-Mansar, Tso Moriri, Tso Kar) & Tier 3 (Mangla)',
+        '553-lake Western Himalayan Master Registry, ISRO NWIA 42,663 ha reconciled 10-district Kashmir Valley baseline (391,501 ha J&K + Ladakh), and 28 verified river basins/sub-basins',
+        '127 mapped rivers and mountain streams across the Upper Indus, Jhelum, Chenab, Shyok–Nubra, Zanskar–Suru, Gilgit–Hunza, Neelum & Poonch systems',
+        'Exact 7 RSIS-inscribed Ramsar sites: Wular (#461), Tsomoriri (#1213), Hokera (#1570), Surinsar-Mansar (#1573), Tso Kar (#2443), Shallbugh (#2488) & Hygam (#2496) — zero Ramsar sites in Tier 3 (Mangla & Mirgund are non-Ramsar)',
         '100 documented karst & mountain springs (naags/chashmas) supporting drinking water and baseflow resilience',
-        'High-altitude oligotrophic & endorheic basins (Gangabal, Tarsar-Marsar, Sheshnag, Pangong Tso)',
+        'High-altitude oligotrophic & endorheic basins (Gangabal, Tarsar-Marsar, Sheshnag, Kausarnag, Pangong Tso)',
       ],
     },
     {
@@ -194,13 +197,13 @@ export default function GeographicScopePage() {
       borderColor: 'hover:border-emerald-500/40',
       bgGlow: 'from-emerald-500/10 to-transparent',
       summary:
-        '422 cataloged protected-network, wildlife sanctuary, conservation reserve, trail, and corridor records.',
+        `${PLATFORM_METRICS.protectedAreasVerifiedCount.value} verified in-scope statutory protected areas alongside mapped wildlife corridors and Important Bird Areas.`,
       layers: [
-        'Tier 1 Kashmir Core sanctuaries: Dachigam National Park, Overa-Aru, Gulmarg, Hirpora & Salim Ali National Park',
-        'Tier 2 Jammu & Ladakh reserves: Kishtwar National Park, Hemis National Park, Changthang & Karakoram Wildlife Sanctuaries',
+        'Tier 1 Kashmir Core sanctuaries: Dachigam National Park, Kazinag National Park, Overa-Aru, Gulmarg, Hirpora & Thajwas Wildlife Sanctuaries',
+        'Tier 2 Jammu & Ladakh reserves: Kishtwar High Altitude National Park, Tata Kutti WLS (Poonch), Hemis National Park, Changthang & Karakoram Wildlife Sanctuaries',
         'Tier 3 cross-border landscapes: Central Karakoram, Deosai, Khunjerab & Machiara National Parks',
-        'Wetland & Conservation Reserves: Brain-Nishat, Khrew, Wangat, Khiram, Shikargah, Gharana & Surinsar-Mansar',
-        'Connectivity corridors linking Hangul, Snow Leopard, Himalayan Brown Bear, and Pir Panjal Markhor habitats',
+        'Wetland & Conservation Reserves: Brain-Nishat, Khrew, Wangat, Khiram, Shikargah, Mirgund (Baramulla/Budgam), Gharana & Surinsar-Mansar',
+        'Connectivity corridors linking Hangul, Snow Leopard, Himalayan Brown Bear, and Flare-horned Markhor habitats (out-of-scope Himachal Pradesh parks excluded)',
       ],
     },
     {
@@ -212,13 +215,13 @@ export default function GeographicScopePage() {
       borderColor: 'hover:border-teal-500/40',
       bgGlow: 'from-teal-500/10 to-transparent',
       summary:
-        '2,739 curated taxonomic records aligned with Darwin Core schemas and IUCN Red List assessments.',
+        `${VERIFIED_SPECIES_COUNTS.totalCoreVerified} taxonomically verified core species profiles plus ${VERIFIED_SPECIES_COUNTS.medicinalPlants} ethnobotanical flora & ${VERIFIED_SPECIES_COUNTS.threatenedProfiles} threatened species dossiers.`,
       layers: [
-        '1,834 vascular plant taxa, 601 avian species, 127 medicinal flora profiles, 111 mammals & 66 native/coldwater fish records',
-        '60 dedicated IUCN threatened species dossiers led by Kashmir Stag (Hangul), Snow Leopard, Markhor & Black-necked Crane',
-        'Central Asian Flyway (CAF) migratory waterfowl phenology linking Changthang, Hokersar, Wular, Gharana & Mangla staging grounds',
-        'Endemic Western Himalayan alpine & medicinal flora (Saussurea costus/Kuth, Arnebia, Picrorhiza, Aconitum)',
-        'Coordinate sensitivity masking on threatened wildlife observations to prevent poaching disturbance',
+        `${VERIFIED_SPECIES_COUNTS.mammals} mammals, ${VERIFIED_SPECIES_COUNTS.birds} unique verified birds, ${VERIFIED_SPECIES_COUNTS.fish} true Actinopterygii freshwater fishes & ${VERIFIED_SPECIES_COUNTS.plants} reference vascular flora (${VERIFIED_SPECIES_COUNTS.quarantinedTotal.toLocaleString()} synthetic/misclassified placeholder records quarantined)`,
+        '60 dedicated IUCN threatened species dossiers led by Hangul, Snow Leopard, Flare-horned Markhor & Leh-breeding Black-necked Crane',
+        'Central Asian Flyway (CAF) migratory waterfowl phenology linking Changthang, Hokersar, Shallabugh, Hygam, Wular & Gharana staging grounds',
+        'Endemic Western Himalayan alpine & medicinal flora (Saussurea costus, Arnebia benthamii, Picrorhiza kurrooa, Aconitum heterophyllum)',
+        'Elevation- and bioregion-verified canonical district occurrence envelopes preventing alpine/plains taxonomic cross-contamination',
       ],
     },
     {
@@ -486,11 +489,12 @@ export default function GeographicScopePage() {
                     Environmental Boundaries, Not Political Boundaries
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                    Our three-tier classification reflects operational and ecological coupling: Tier
-                    1 covers the 10-district Kashmir Valley core; Tier 2 unites the contiguous
-                    regional divisions of Jammu (10 districts) and UT of Ladakh (8 notified
-                    districts); Tier 3 tracks cross-border Indus, Neelum–Jhelum, Karakoram, and
-                    flyway systems.
+                    Our five-subregion, three-tier framework reflects operational and ecological coupling:
+                    Tier 1 covers the 10-district Kashmir Valley core; Tier 2 unites the contiguous
+                    regional divisions of Jammu Region (10 districts) and UT of Ladakh (2 operational
+                    baseline + 5 Aug 2024 notified districts); Tier 3 tracks the 24 operational
+                    cross-border districts of Azad Jammu &amp; Kashmir (10) and Gilgit-Baltistan (14)
+                    across the Upper Indus, Neelum–Jhelum, Karakoram, and Central Asian Flyway systems.
                   </p>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
                     This scientific convention aligns with UNEP, IUCN, Darwin Core, and Ramsar

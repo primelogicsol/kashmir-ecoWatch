@@ -12,11 +12,33 @@ interface SachetAlert {
   severity?: string;
 }
 
-const HIMALAYAN_GLOF_KEYWORDS = [
-  'glacial', 'glof', 'lake', 'flash flood', 'cloudburst', 'dam breach',
-  'kashmir', 'ladakh', 'leh', 'kargil', 'ganderbal', 'anantnag', 'kishtwar',
-  'hunza', 'gilgit', 'skardu', 'neelum', 'shisper', 'passu', 'harmukh'
-];
+const JK_LADAKH_SPECIFIC_DISTRICTS = [
+  'srinagar', 'leh', 'kargil', 'anantnag', 'baramulla', 'kupwara', 'ganderbal',
+  'kishtwar', 'doda', 'ramban', 'poonch', 'rajouri', 'udhampur', 'reasi',
+  'kathua', 'samba', 'pulwama', 'shopian', 'kulgam', 'budgam', 'bandipora',
+] as const;
+
+const JK_LADAKH_REGIONAL_NAMES = ['jammu', 'kashmir', 'ladakh'] as const;
+
+const GLOF_HAZARD_KEYWORDS = [
+  'glacial', 'glof', 'outburst', 'moraine', 'dam breach', 'flash flood', 'cloudburst',
+] as const;
+
+function extractJkLadakhDistrict(text: string): string | null {
+  for (const dist of JK_LADAKH_SPECIFIC_DISTRICTS) {
+    if (new RegExp(`\\b${dist}\\b`, 'i').test(text)) {
+      return dist.charAt(0).toUpperCase() + dist.slice(1);
+    }
+  }
+  for (const reg of JK_LADAKH_REGIONAL_NAMES) {
+    if (new RegExp(`\\b${reg}\\b`, 'i').test(text)) {
+      if (reg === 'ladakh') return 'Ladakh';
+      if (reg === 'kashmir') return 'Kashmir';
+      return 'Jammu';
+    }
+  }
+  return null;
+}
 
 async function fetchSachetGlofAlerts(): Promise<{ alerts: SachetAlert[]; status: 'Connected' | 'Unreachable' }> {
   try {
@@ -25,7 +47,7 @@ async function fetchSachetGlofAlerts(): Promise<{ alerts: SachetAlert[]; status:
 
     const res = await fetch('https://sachet.ndma.gov.in/cap_public_website/rss/rss_india.xml', {
       headers: {
-        'User-Agent': 'KashmirEcoWatch-GLOFSentinel/2.0 (Stateless Real-Time Engine)'
+        'User-Agent': 'KashmirEcoWatch-GLOFSentinel/2.0 (Stateless Screening Engine)'
       },
       signal: controller.signal,
       next: { revalidate: 60 }
@@ -50,16 +72,21 @@ async function fetchSachetGlofAlerts(): Promise<{ alerts: SachetAlert[]; status:
       const pubDate = pubDateMatch ? pubDateMatch[1].trim() : '';
       const link = linkMatch ? linkMatch[1].trim() : '';
 
-      const lowerTitle = title.toLowerCase();
-      const matched = HIMALAYAN_GLOF_KEYWORDS.find(k => lowerTitle.includes(k));
+      const matchedDistrict = extractJkLadakhDistrict(title);
+      if (!matchedDistrict) continue;
 
-      if (matched && (lowerTitle.includes('flood') || lowerTitle.includes('dam') || lowerTitle.includes('lake') || lowerTitle.includes('breach'))) {
+      const lowerTitle = title.toLowerCase();
+      const hasGlofHazardKeyword = GLOF_HAZARD_KEYWORDS.some(k => lowerTitle.includes(k));
+
+      if (hasGlofHazardKeyword) {
         matchingAlerts.push({
           title,
           pubDate,
           link,
-          district: matched.toUpperCase(),
-          severity: lowerTitle.includes('flash') || lowerTitle.includes('severe') ? 'Critical' : 'Moderate'
+          district: matchedDistrict,
+          severity: lowerTitle.includes('glof') || lowerTitle.includes('breach') || lowerTitle.includes('severe') || lowerTitle.includes('red')
+            ? 'Critical'
+            : 'Moderate'
         });
       }
     }
@@ -80,7 +107,8 @@ async function fetchOpenMeteoGlacialMelt(records: GLOFRecord[]) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 7000);
 
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,snowfall_sum&timezone=auto&past_days=7&forecast_days=1`;
+    // 7-day rolling window: past_days=6 + forecast_days=1 = 7 daily steps
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,snowfall_sum&timezone=auto&past_days=6&forecast_days=1`;
 
     const res = await fetch(url, {
       signal: controller.signal,
@@ -114,42 +142,57 @@ export async function GET() {
 
   const enrichedRecords = glofRegistry.map((record) => {
     const matchingAlert = sachetResult.alerts.find(a =>
-      a.district && record.district.toUpperCase().includes(a.district)
+      a.district && record.district.toLowerCase().includes(a.district.toLowerCase())
     );
 
     const validIndex = validRecords.findIndex(r => r.id === record.id);
     const locData = validIndex !== -1 && weatherResults ? weatherResults[validIndex] : null;
     const daily = locData?.daily;
+    const hasTelemetry = Boolean(daily && Array.isArray(daily.temperature_2m_max) && daily.temperature_2m_max.length > 0);
 
-    let tempMax = 8;
-    let precip7d = 5;
+    const tempMax = hasTelemetry
+      ? (daily.temperature_2m_max[daily.temperature_2m_max.length - 1] ?? 0)
+      : 0;
+    const precip7d = hasTelemetry
+      ? (daily.precipitation_sum?.slice(-7).reduce((a: number, b: number) => a + (b || 0), 0) ?? 0)
+      : 0;
 
-    if (daily && daily.temperature_2m_max) {
-      tempMax = daily.temperature_2m_max[daily.temperature_2m_max.length - 1] ?? 8;
-      precip7d = daily.precipitation_sum?.reduce((a: number, b: number) => a + (b || 0), 0) ?? 5;
-    }
-
-    // High-Altitude Cryospheric Melting Degree-Days (MDD) Index
+    // Coarse-grid NWP thermal + 7-day precipitation screening heuristic
     let calculatedRisk: 'Critical' | 'High' | 'Moderate' | 'Low' = 'Low';
-    let trigger = 'Stable Glacial Cryosphere Conditions';
+    let trigger = 'Cryospheric Baseline (Sub-freezing / Stable Moraine)';
 
-    const isRapidMelt = tempMax > 18;
-    const isModerateMelt = tempMax > 12;
-    const isHeavyRainOnIce = precip7d > 40;
-    const isModerateRainOnIce = precip7d > 20;
+    const susceptibility = String(
+      (record as unknown as { susceptibility_class?: string }).susceptibility_class || record.risk_level || 'Moderate'
+    );
+    const isHighSusceptibilityDam =
+      record.dam_type === 'Ice' ||
+      record.dam_type === 'Moraine' ||
+      susceptibility === 'Very High' ||
+      susceptibility === 'Critical' ||
+      susceptibility === 'High';
 
-    if (isRapidMelt && isHeavyRainOnIce && (record.dam_type === 'Ice' || record.dam_type === 'Moraine')) {
-      calculatedRisk = 'Critical';
-      trigger = 'Accelerated Moraine Ablation & Severe Rain-on-Ice Surcharge';
-    } else if ((isRapidMelt && isModerateRainOnIce) || (isModerateMelt && isHeavyRainOnIce)) {
-      calculatedRisk = 'High';
-      trigger = 'Elevated Supraglacial Melt & Inflow Accumulation';
-    } else if (isModerateMelt || isModerateRainOnIce) {
-      calculatedRisk = 'Moderate';
-      trigger = 'Seasonal Diurnal Ablation Surge';
-    } else {
+    if (!hasTelemetry) {
       calculatedRisk = 'Low';
-      trigger = 'Cryospheric Baseline (Sub-freezing / Stable Moraine)';
+      trigger = 'Telemetry Unavailable — Static Susceptibility Baseline Only';
+    } else {
+      const isRapidMelt = tempMax > 18;
+      const isModerateMelt = tempMax > 12;
+      const isHeavyRainOnIce = precip7d > 40;
+      const isModerateRainOnIce = precip7d > 20;
+
+      if (isRapidMelt && isHeavyRainOnIce && isHighSusceptibilityDam) {
+        calculatedRisk = 'Critical';
+        trigger = 'NWP Screening: High Thermal Anomaly + 7-Day Heavy Precipitation on Unconsolidated Dam';
+      } else if ((isRapidMelt && isModerateRainOnIce) || (isModerateMelt && isHeavyRainOnIce && isHighSusceptibilityDam)) {
+        calculatedRisk = 'High';
+        trigger = 'NWP Screening: Elevated Warmth & 7-Day Rain Accumulation';
+      } else if (isModerateMelt || isModerateRainOnIce) {
+        calculatedRisk = 'Moderate';
+        trigger = 'NWP Screening: Seasonal Warmth / Moderate Catchment Precipitation';
+      } else {
+        calculatedRisk = 'Low';
+        trigger = 'NWP Screening: Sub-Freezing / Low Precipitation Conditions';
+      }
     }
 
     let statusLabel = 'Stable';
@@ -163,12 +206,13 @@ export async function GET() {
 
     return {
       ...record,
-      live_temperature_max: Number(tempMax.toFixed(1)),
-      live_precipitation_7d: Number(precip7d.toFixed(1)),
+      live_temperature_max: hasTelemetry ? Number(tempMax.toFixed(1)) : undefined,
+      live_precipitation_7d: hasTelemetry ? Number(precip7d.toFixed(1)) : undefined,
       live_risk_level: calculatedRisk,
       dominant_trigger: trigger,
       current_status: statusLabel as any,
-      last_updated: timestamp,
+      last_updated: hasTelemetry ? timestamp : 'Telemetry Unavailable',
+      telemetryStatus: hasTelemetry ? 'MODEL_SCREENING' : 'UNAVAILABLE',
       provenance: {
         official_warning: matchingAlert ? {
           is_active: true,
@@ -180,7 +224,7 @@ export async function GET() {
           is_active: false,
           authority: 'NDMA SACHET (No Active Glacial Outburst Alerts)'
         },
-        cryosphere_model: 'Open-Meteo High-Altitude Melting Degree-Days (MDD) Model',
+        cryosphere_model: 'Open-Meteo Gridded NWP Screening Heuristic',
         is_official_government_alert: !!matchingAlert
       }
     };
@@ -189,6 +233,7 @@ export async function GET() {
   return NextResponse.json({
     success: true,
     timestamp,
+    telemetryStatus: weatherResults ? 'MODEL_SCREENING' : 'UNAVAILABLE',
     vps_disk_usage_bytes: 0, // Stateless streaming
     monitored_lakes: enrichedRecords.length,
     official_alerts_count: sachetResult.alerts.length,

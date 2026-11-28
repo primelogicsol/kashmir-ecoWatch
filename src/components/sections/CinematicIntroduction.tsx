@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { ArrowDown, Compass } from 'lucide-react';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 import { CinematicCarouselController } from '@/components/ui/CinematicCarouselController';
+import { PLATFORM_METRICS } from '@/data/platform-metrics';
 import styles from './CinematicIntroduction.module.css';
 
 interface CinematicScene {
@@ -40,16 +41,16 @@ const CINEMATIC_SCENES: readonly CinematicScene[] = [
     formattedHeadline: 'Seeing Beyond the\u00A0Visible.',
     desktopHeadlineLines: ['Seeing Beyond', 'the\u00A0Visible.'],
     description:
-      'Continuous satellite Earth observation, alpine GNSS stations, and real-time sensor networks track glaciers, watersheds, atmospheric chemistry, and multi-hazard signals across the Western Himalaya.',
+      'An environmental synthesis observatory integrating public satellite archives, gridded NWP and hydrological models, multi-agency seismic catalogs, and statutory scientific literature across the Western Himalaya.',
     ecosystemTags: [
-      'Scientific Intelligence',
-      'Environmental Monitoring',
-      'Satellite & GIS Telemetry',
+      'Environmental Synthesis',
+      'Public Satellite Archives',
+      'Gridded NWP & Seismic Catalogs',
     ],
-    locationCaption: 'High-Altitude Cryosphere & GNSS Station · Western Himalaya',
+    locationCaption: 'High-Altitude Cryosphere & Glacial Basin · Western Himalaya',
     imageSrc: '/images/earth-human-impact/ehii-cryosphere-glacier-station.jpg',
     imageAlt:
-      'Western Himalayan field glaciologists operating GNSS and telemetry instruments above an alpine glacial tarn',
+      'Western Himalayan field glaciologists conducting cryosphere survey observations above an alpine glacial tarn',
     focalLandscape: { x: '64%', y: '42%' },
     focalPortrait: { x: '62%', y: '36%' },
     scrimStrength: 0.86,
@@ -62,7 +63,7 @@ const CINEMATIC_SCENES: readonly CinematicScene[] = [
     formattedHeadline: 'Every Ecosystem Has a\u00A0Story.',
     desktopHeadlineLines: ['Every Ecosystem', 'Has a\u00A0Story.'],
     description:
-      'Multidisciplinary research connects snowpack hydrology, Ramsar wetlands, temperate forests, seasonal phenology, Sectoral EIA studies, and 2,847+ Himalayan species into one living scientific record.',
+      `Multidisciplinary synthesis connects snowpack hydrology, ${PLATFORM_METRICS.ramsarWetlandsCount.formattedValue} designated Ramsar wetlands, ${PLATFORM_METRICS.mappedWaterbodiesCount.formattedValue} cataloged waterbodies, temperate forests, and ${PLATFORM_METRICS.verifiedSpeciesProfilesCount.formattedValue} verified Himalayan species profiles into one provenance-audited record.`,
     ecosystemTags: [
       'Ecological Research',
       'Biodiversity Science',
@@ -138,7 +139,7 @@ const CINEMATIC_SCENES: readonly CinematicScene[] = [
     locationCaption: 'Himalayan Science Exchange & EcoVoices Cultural Studio',
     imageSrc: '/images/environmental-calendar/calendar-hero-ecovoices-studio.jpg',
     imageAlt:
-      'Researchers, writers, and musicians collaborating beside Kashmir EcoWatch lake telemetry displays overlooking a mountain valley',
+      'Researchers, writers, and musicians collaborating across Kashmir EcoWatch environmental synthesis briefings overlooking a mountain valley',
     focalLandscape: { x: '66%', y: '40%' },
     focalPortrait: { x: '64%', y: '36%' },
     scrimStrength: 0.8,
@@ -151,11 +152,11 @@ const CINEMATIC_SCENES: readonly CinematicScene[] = [
     formattedHeadline: 'What We Protect Defines\u00A0Us.',
     desktopHeadlineLines: ['What We Protect', 'Defines\u00A0Us.'],
     description:
-      'Across 182 protected and bird areas, grassroots conservation NGOs, Green Heroes, CSR fellowships, and mountain communities unite empirical science with enduring habitat restoration and stewardship.',
+      `Across ${PLATFORM_METRICS.protectedAreasVerifiedCount.formattedValue} verified protected areas and ${PLATFORM_METRICS.operationalDistrictsCount.formattedValue} Western Himalayan districts, grassroots conservation NGOs, Green Heroes, and mountain communities unite empirical science with habitat restoration.`,
     ecosystemTags: [
       'Biodiversity Conservation',
       'Community Stewardship',
-      '182 Protected & Bird Areas',
+      `${PLATFORM_METRICS.protectedAreasVerifiedCount.formattedValue} Verified Protected Areas`,
     ],
     locationCaption: 'Upper Catchment Reforestation & Stream Quality Stewardship',
     imageSrc: '/images/green-heroes/stewardship-action.jpg',

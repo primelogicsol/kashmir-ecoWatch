@@ -96,7 +96,7 @@ export default function AdminDashboardPage() {
       .catch(() => null);
   }, []);
 
-  const isAuthorized = (isLoggedIn && user?.role === 'administrator') || isMasterUnlocked;
+  const isAuthorized = isMasterUnlocked;
 
   const handleUnlockWithPasscode = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,15 +110,13 @@ export default function AdminDashboardPage() {
           actor: user?.name || user?.email || 'KEW Administrator',
         }),
       });
-      if (res.ok) {
+      const payload = await res.json().catch(() => ({}));
+      if (res.ok && payload?.authenticated) {
         setIsMasterUnlocked(true);
-        if (typeof window !== 'undefined') {
-          sessionStorage.setItem('kew_admin_authenticated', 'true');
-        }
         setPasscode('');
         setPasscodeError(null);
       } else {
-        setPasscodeError('Invalid Administrator Passcode. Access denied.');
+        setPasscodeError(payload?.error || 'Invalid Administrator Passcode. Access denied.');
       }
     } catch {
       setPasscodeError('Unable to verify administrator session with server.');
@@ -127,20 +125,17 @@ export default function AdminDashboardPage() {
 
   const handleLockDashboard = async () => {
     setIsMasterUnlocked(false);
-    if (typeof window !== 'undefined') {
-      sessionStorage.removeItem('kew_admin_authenticated');
-    }
     await fetch('/api/admin/session', {
       method: 'DELETE',
       credentials: 'include',
     }).catch(() => null);
   };
 
-  // Fetch real operations from unified API
+  // Fetch real operations from unified API (requires active admin session)
   const fetchOperations = async () => {
     setLoadingOps(true);
     try {
-      const res = await fetch('/api/operations');
+      const res = await fetch('/api/operations', { credentials: 'same-origin' });
       const json = await res.json();
       if (json.success && Array.isArray(json.data)) {
         setOperations(json.data);
@@ -153,7 +148,9 @@ export default function AdminDashboardPage() {
   };
 
   useEffect(() => {
-    fetchOperations();
+    if (isMasterUnlocked) {
+      fetchOperations();
+    }
     fetch('/api/health/db')
       .then((r) => r.json())
       .then((d) => setLiveDbHealth({ apiDb: d.apiDb || 'disconnected', latencyMs: d.latencyMs || 0 }))

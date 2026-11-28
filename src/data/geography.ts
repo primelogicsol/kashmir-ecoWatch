@@ -1,3 +1,18 @@
+import {
+  CANONICAL_DISTRICTS,
+  CANONICAL_SUBREGIONS,
+  LADAKH_2024_NOTIFIED_DISTRICTS,
+  SUB_DISTRICT_TO_CANONICAL_DISTRICT,
+  VERIFIED_WESTERN_HIMALAYAN_RAMSAR_SITES,
+} from './geographic-registry';
+
+export {
+  CANONICAL_DISTRICTS,
+  CANONICAL_SUBREGIONS,
+  LADAKH_2024_NOTIFIED_DISTRICTS,
+  VERIFIED_WESTERN_HIMALAYAN_RAMSAR_SITES,
+};
+
 export const GEOGRAPHY = {
   scopes: ['All', 'Kashmir Core', 'Trans-Divisional', 'Transboundary / Extended'] as const,
   regions: {
@@ -34,7 +49,7 @@ export const GEOGRAPHY = {
     AJK: [
       'Muzaffarabad',
       'Neelum',
-      'Hattian Bala',
+      'Jhelum Valley',
       'Bagh',
       'Haveli',
       'Poonch (AJK)',
@@ -67,31 +82,26 @@ export type Region = keyof typeof GEOGRAPHY.units;
 export type AdminUnit = (typeof GEOGRAPHY.units)[Region][number];
 
 /**
- * Official UT of Ladakh Administrative District Registry (Verified 2026).
- * - Baseline Census / GIS / ISFR Parent Districts (2): Leh, Kargil
- * - Newly Notified Districts under UT of Ladakh Revenue Dept. S.O. 180 (27 Apr 2026,
- *   following MHA approval of 26 Aug 2024): Sham, Nubra, Changthang, Zanskar, Drass (5)
- * - Additional Notified District under S.O. 284 (16 Oct 2026): Sankoo (1)
- * Keeping `GEOGRAPHY.units.Ladakh` anchored to the 2 parent baseline polygons preserves
- * backward compatibility with ISFR 2023 tables, Census baselines, and 42-feature GIS layers,
- * while exposing all 8 official notified districts for authoritative geographic-scope reporting.
+ * Official UT of Ladakh Administrative District Registry:
+ * - Operational Baseline Parent Districts (2): Leh, Kargil (used across Census 2011, ISRO NWIA, FSI ISFR, and GIS layers)
+ * - Newly Announced / Notified Districts (Aug 2024 MHA announcement — 5 districts):
+ *   Zanskar, Drass, Sham, Nubra, Changthang (= 7 Ladakh notified districts; 51 total across 5 subregions vs 46 operational baseline units).
  */
 export interface LadakhDistrictRecord {
   name: string;
   headquarters: string;
   parentDistrict: 'Leh' | 'Kargil';
-  status: 'Baseline Parent District' | 'Notified District (S.O. 180 · Apr 2026)' | 'Notified District (S.O. 284 · Oct 2026)';
+  status: 'Baseline Parent District' | 'Newly Notified District (MHA Aug 2024)';
 }
 
 export const LADAKH_DISTRICTS_REGISTRY: readonly LadakhDistrictRecord[] = [
   { name: 'Leh', headquarters: 'Leh', parentDistrict: 'Leh', status: 'Baseline Parent District' },
   { name: 'Kargil', headquarters: 'Kargil', parentDistrict: 'Kargil', status: 'Baseline Parent District' },
-  { name: 'Nubra', headquarters: 'Diskit', parentDistrict: 'Leh', status: 'Notified District (S.O. 180 · Apr 2026)' },
-  { name: 'Sham', headquarters: 'Khaltse', parentDistrict: 'Leh', status: 'Notified District (S.O. 180 · Apr 2026)' },
-  { name: 'Changthang', headquarters: 'Nyoma', parentDistrict: 'Leh', status: 'Notified District (S.O. 180 · Apr 2026)' },
-  { name: 'Zanskar', headquarters: 'Padum', parentDistrict: 'Kargil', status: 'Notified District (S.O. 180 · Apr 2026)' },
-  { name: 'Drass', headquarters: 'Drass-Ranbirpura', parentDistrict: 'Kargil', status: 'Notified District (S.O. 180 · Apr 2026)' },
-  { name: 'Sankoo', headquarters: 'Sankoo', parentDistrict: 'Kargil', status: 'Notified District (S.O. 284 · Oct 2026)' },
+  { name: 'Nubra', headquarters: 'Diskit', parentDistrict: 'Leh', status: 'Newly Notified District (MHA Aug 2024)' },
+  { name: 'Sham', headquarters: 'Khalatse', parentDistrict: 'Leh', status: 'Newly Notified District (MHA Aug 2024)' },
+  { name: 'Changthang', headquarters: 'Nyoma', parentDistrict: 'Leh', status: 'Newly Notified District (MHA Aug 2024)' },
+  { name: 'Zanskar', headquarters: 'Padum', parentDistrict: 'Kargil', status: 'Newly Notified District (MHA Aug 2024)' },
+  { name: 'Drass', headquarters: 'Drass', parentDistrict: 'Kargil', status: 'Newly Notified District (MHA Aug 2024)' },
 ] as const;
 
 const LADAKH_NOTIFIED_UNIT_ALIASES = new Set([
@@ -101,7 +111,6 @@ const LADAKH_NOTIFIED_UNIT_ALIASES = new Set([
   'zanskar',
   'drass',
   'dras',
-  'sankoo',
 ]);
 
 export interface OfficialAdministrativeSource {
@@ -114,39 +123,39 @@ export interface OfficialAdministrativeSource {
 
 export const OFFICIAL_ADMIN_SOURCES: readonly OfficialAdministrativeSource[] = [
   {
-    region: 'Kashmir Division (Kashmir Valley)',
+    region: 'Kashmir Valley (Kashmir Division)',
     tier: 'Tier 1',
-    districtCountSummary: '10 Official Districts',
-    authority: 'Government of J&K General Administration Dept. (GAD) & Integrated Government Online Directory (IGOD)',
-    verificationNote: 'All 10 central valley districts carry active KEW district intelligence dossiers and GIS boundaries.',
+    districtCountSummary: '10 Operational Districts',
+    authority: 'Government of J&K General Administration Dept. (GAD) & Census of India 2011 Baseline',
+    verificationNote: 'All 10 Valley districts carry verified KEW district dossiers and GIS boundaries (sub-district towns like Pampore are nested under Pulwama).',
   },
   {
-    region: 'Jammu Division',
+    region: 'Jammu Region (Jammu Division)',
     tier: 'Tier 2',
-    districtCountSummary: '10 Official Districts',
-    authority: 'Government of J&K GAD & Divisional Commissioner Jammu (divcomjammu.gov.in / IGOD)',
-    verificationNote: '10 GIS district boundaries; 6 mountain-interface districts have dedicated KEW district intelligence dossiers.',
+    districtCountSummary: '10 Operational Districts',
+    authority: 'Government of J&K GAD & Census of India 2011 Baseline',
+    verificationNote: 'All 10 Jammu Region districts carry harmonized area, elevation, headquarters, and watershed baselines.',
   },
   {
     region: 'Union Territory of Ladakh',
     tier: 'Tier 2',
-    districtCountSummary: '8 Notified Districts (2 Baseline Parent + 6 Notified in 2026)',
-    authority: 'Ministry of Home Affairs (26 Aug 2024) & UT of Ladakh Revenue Dept. Notifications S.O. 180 (27 Apr 2026) & S.O. 284 (16 Oct 2026)',
-    verificationNote: 'Historical/GIS/ISFR datasets aggregate by parent districts Leh & Kargil; 6 newly notified 2026 districts tracked within parent watershed baselines.',
+    districtCountSummary: '2 Operational Baseline Districts (+ 5 Notified Aug 2024 = 7)',
+    authority: 'Census of India 2011 & Ministry of Home Affairs Notification (26 Aug 2024: Zanskar, Drass, Sham, Nubra, Changthang)',
+    verificationNote: 'Statutory GIS, Census, NWIA, and ISFR datasets aggregate by operational parent districts Leh & Kargil pending demarcated boundary gazettes for the 5 newly notified districts.',
   },
   {
     region: 'Azad Jammu & Kashmir (Cross-Border Basins)',
     tier: 'Tier 3',
-    districtCountSummary: '10 Administrative Districts (Muzaffarabad, Poonch & Mirpur Divisions)',
-    authority: 'Official Administrative Directory & KEW Spatial Gazetteer',
-    verificationNote: '10 GIS boundaries; tracked via satellite remote sensing, CAMS atmospheric reanalysis, Muzaffarabad EPA & Neelum-Jhelum gauge feeds.',
+    districtCountSummary: '10 Operational Districts (Muzaffarabad, Poonch & Mirpur Divisions)',
+    authority: 'Pakistan Bureau of Statistics (2017/2023 Census) & Transboundary Jhelum–Neelum–Poonch Basin Gazetteer',
+    verificationNote: '10 operational districts tracked via satellite remote sensing, gridded atmospheric reanalysis, and public hydrometric references.',
   },
   {
     region: 'Gilgit-Baltistan (Cross-Border Cryosphere & Upper Indus)',
     tier: 'Tier 3',
-    districtCountSummary: '14 Administrative Districts (Gilgit, Baltistan & Diamer Divisions)',
-    authority: 'Official Administrative Directory & KEW Spatial Gazetteer',
-    verificationNote: '10 parent GIS boundaries (4 newer carved-out districts aggregated within parent basins); tracked via orbital cryosphere/GLOF observation, Gilgit EPA & gauge feeds.',
+    districtCountSummary: '14 Operational Districts (Gilgit, Baltistan & Diamer Divisions)',
+    authority: 'Gilgit-Baltistan Planning & Development Department & Upper Indus Basin Gazetteer',
+    verificationNote: '14 operational districts tracked via orbital cryosphere/GLOF observation and gridded reanalysis.',
   },
 ] as const;
 
@@ -186,32 +195,32 @@ export const GEOGRAPHIC_SCOPE_TIERS: readonly GeographicScopeTierDefinition[] = 
     badge: 'Tier 1 · Primary Valley Basin (10 Districts)',
     badgeColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
     tagline:
-      'Primary environmental focus area encompassing the alluvial valley floor, Karewa terraces, Ramsar floodplains, and inner Himalayan catchments.',
+      'Primary environmental focus area encompassing the alluvial valley floor, karewa terraces, 4 Ramsar floodplains, and inner Himalayan catchments.',
     description:
-      'Kashmir Core represents the contiguous geographic and ecological heartland of the Kashmir Valley (15,948 km²). Bounded by the Pir Panjal range to the south and west and the Greater Himalayas to the north and east, this enclosed intermontane basin functions as a tightly coupled hydrological, limnological, and winter atmospheric amphitheater.',
-    coverageSummaryLabel: '10 Official Districts · 10 GIS Polygons',
+      'Kashmir Core represents the contiguous geographic and ecological heartland of the Kashmir Valley (15,948 km² across 10 operational districts). Bounded by the Pir Panjal range to the south and west and the Greater Himalayas to the north and east, this enclosed intermontane basin functions as a tightly coupled hydrological, limnological, and winter atmospheric amphitheater.',
+    coverageSummaryLabel: '10 Operational Districts · 4 Official Ramsar Sites',
     monitoringSummaryLabel:
-      '10/10 District Dossiers · 1 Physical CAAQMS + 10 CAMS Grids · 9 River Gauges',
+      'External Public CAAQMS/CWC Feeds + 10 CAMS Grids + Sentinel-2/Landsat Optical Retrievals (0 KEW-Owned Physical Sensors)',
     administrativeGroups: [
       {
-        groupLabel: 'Kashmir Division — 10 Official Districts',
-        regionNote: '100% active district intelligence profiles & spatial boundaries',
+        groupLabel: 'Kashmir Valley — 10 Operational Baseline Districts',
+        regionNote: '100% canonical district coverage (sub-district tehsils such as Pampore are nested under Pulwama)',
         items: GEOGRAPHY.units['Kashmir Core'],
       },
     ],
     keyLandmarks: [
-      'River Jhelum (Vyeth) Mainstem & 24 Major Inflow Tributaries (Lidder, Sindh, Pohru, Vishav, Rambiara, Doodhganga)',
-      'Dal Lake, Nigeen Lake, Wular Lake (Ramsar #461), Manasbal Lake & High-Altitude Alpine Lakes (Gangabal, Tarsar-Marsar, Sheshnag)',
-      'Hokersar (Ramsar #1570), Shallabugh (Ramsar #2487), Hygam (Ramsar #2486) & Mirgund Floodplain Wetland Reserves',
-      'Dachigam National Park (Primary Hangul Habitat), Overa-Aru, Gulmarg, Hirpora & Thajwas Wildlife Sanctuaries',
-      'Pampore Karewa Plateaus, Temperate Conifer Forests & Subterranean Karst Springs (Verinag, Achabal, Kokernag)',
+      'River Jhelum (Vyeth) Mainstem & Major Tributary Sub-Basins (Lidder, Sind, Pohru, Vishow, Rambiara, Dudhganga, Sukhnag, Erin, Madhumati)',
+      '4 RSIS-Inscribed Ramsar Sites in Kashmir Valley: Wular Lake (#461), Hokera / Hokersar Wetland (#1570), Shallbugh Wetland (#2488) & Hygam Wetland (#2496)',
+      'Dal Lake, Nigeen Lake, Manasbal Lake, Anchar Lake, Mirgund Wetland Conservation Reserve (Baramulla / Budgam; non-Ramsar) & High-Altitude Alpine Lakes (Gangabal, Tarsar–Marsar, Sheshnag, Kausarnag)',
+      'Dachigam National Park (Primary Hangul Habitat), Kazinag National Park, Overa-Aru, Gulmarg, Hirpora & Thajwas Wildlife Sanctuaries',
+      'Pulwama (Pampore Karewa Saffron Plateaus & Chatlam–Kranchoo Wetlands), Temperate Conifer Forests & Karst Springs (Verinag, Achabal, Kokernag)',
     ],
     monitoringFocus: [
-      'Verified ground-truth air quality at Srinagar CAAQMS paired with 10 district CAMS/Open-Meteo atmospheric cells during winter inversions',
-      '9 live hydrometric flood-routing gauge stations along the Jhelum mainstem and major valley tributaries',
-      'Limnological trophy, wetland perimeter, and algal-bloom remote sensing (Sentinel-2 MSI & Landsat 8/9) across 553 cataloged lakes',
-      'Municipal solid waste, sewage treatment (STP) BOD/nutrient loads, and riparian encroachment audits across all 10 valley districts',
-      'Endangered Hangul corridor connectivity, seasonal waterfowl stopover counts, and Chinar heritage tree monitoring',
+      'External public CPCB/JKPCC CAAQMS station feed at Srinagar paired with 10 district CAMS/Open-Meteo gridded reanalysis cells',
+      'Published CWC / I&FC flood-routing benchmark stages along the Jhelum mainstem and major Valley tributaries',
+      'Limnological trophic status synthesis and archived satellite optical retrievals (Sentinel-2 MSI & Landsat 8/9) across Valley waterbodies',
+      'Statutory CAG, JKPCC, and LCMA municipal waste and sewage treatment (STP) design/audit benchmark tracking',
+      'Endangered Hangul corridor connectivity, Central Asian Flyway waterfowl census synthesis, and Chinar heritage tree inventory',
     ],
   },
   {
@@ -220,53 +229,52 @@ export const GEOGRAPHIC_SCOPE_TIERS: readonly GeographicScopeTierDefinition[] = 
     tierLabel: 'Tier 2',
     name: 'Trans-Divisional / Regional',
     tabLabel: 'Tier 2 · Trans-Divisional / Regional',
-    subtitle: 'Jammu Division Watersheds & Union Territory of Ladakh Cold-Desert Cryosphere',
+    subtitle: 'Jammu Region Watersheds & Union Territory of Ladakh Cold-Desert Cryosphere',
     badge: 'Tier 2 · Regional Coupled Bioregions (Jammu & Ladakh)',
     badgeColor: 'bg-sky-500/10 text-sky-400 border-sky-500/20',
     tagline:
-      'Regional mountain, foothill, and Trans-Himalayan ecosystems encompassing all official districts of Jammu Division and the Union Territory of Ladakh.',
+      'Regional mountain, foothill, and Trans-Himalayan ecosystems encompassing all 10 districts of Jammu Region and UT of Ladakh (2 operational baseline + 5 Aug 2024 notified districts).',
     description:
-      'Tier 2 (Trans-Divisional / Regional) unites the two contiguous regional realms ecologically coupled to the Kashmir Valley: Jammu Division across the Pir Panjal crest, Chenab–Tawi–Ravi watersheds, and Shivalik wetland fringes, together with the Union Territory of Ladakh across the Zojila divide, Zanskar–Suru–Drass glaciated valleys, Nubra–Shyok cryosphere, and Changthang high-altitude endorheic lakes.',
+      'Tier 2 (Trans-Divisional / Regional) unites the two contiguous subregions ecologically coupled to the Kashmir Valley: Jammu Region across the Pir Panjal crest, Chenab–Tawi–Ravi watersheds, and Shivalik wetland fringes, together with the Union Territory of Ladakh across the Zoji La divide, Zanskar–Suru–Drass glaciated valleys, Nubra–Shyok cryosphere, and Changthang endorheic Ramsar lakes.',
     transboundaryLinkageNote:
-      'Ladakh holds its primary geographic classification in Tier 2. Specific Ladakh hydrological and cryospheric systems (Upper Indus–Shyok–Nubra river continuity, Pangong Tso endorheic basin, Siachen–Karakoram icefields, and Central Asian Flyway stopovers) also participate in cross-border processes referenced in Tier 3.',
+      'Ladakh holds its primary geographic classification in Tier 2. Specific Ladakh hydrological and cryospheric systems (Upper Indus–Shyok–Nubra river continuity, Pangong Tso endorheic basin, Siachen–Karakoram icefields, and Central Asian Flyway stopovers) also connect with cross-border processes referenced in Tier 3.',
     coverageSummaryLabel:
-      '18 Official Notified Districts (10 Jammu + 8 Ladakh · 12 Baseline Parent Units)',
+      '12 Operational Baseline Districts (10 Jammu + 2 Ladakh) · +5 Newly Notified Aug 2024 Ladakh Districts · 3 Official Ramsar Sites',
     monitoringSummaryLabel:
-      '6 Jammu District Dossiers · 2 Physical CAAQMS (Jammu, Leh) + 12 CAMS Grids · 1 Chenab Gauge + Orbital Cryosphere',
+      'External Public Stations + 12 CAMS Reanalysis Grids + Orbital Cryosphere Retrievals (0 KEW-Owned Physical Sensors)',
     administrativeGroups: [
       {
-        groupLabel: 'Jammu Division — 10 Official Districts',
-        regionNote:
-          '6 mountain-interface districts carry dedicated KEW dossiers (Doda, Kishtwar, Ramban, Rajouri, Poonch, Kathua); all 10 covered by GIS, CAMS & satellite layers',
+        groupLabel: 'Jammu Region — 10 Operational Baseline Districts',
+        regionNote: 'Shivalik plains, Pir Panjal valleys, and Kishtwar Greater Himalayan catchments',
         items: GEOGRAPHY.units.Jammu,
       },
       {
-        groupLabel: 'UT of Ladakh — 2 Baseline Parent Districts (Census / GIS / ISFR)',
-        regionNote: 'Primary spatial polygon & historical statistical aggregation units',
+        groupLabel: 'UT of Ladakh — 2 Operational Baseline Districts (Census / NWIA / ISFR / GIS)',
+        regionNote: 'Primary spatial polygon & statutory statistical aggregation units',
         items: GEOGRAPHY.units.Ladakh,
       },
       {
-        groupLabel: 'UT of Ladakh — 6 Newly Notified Administrative Districts (2026)',
+        groupLabel: 'UT of Ladakh — 5 Newly Notified Districts (MHA Announcement · Aug 2024)',
         regionNote:
-          'Notified via UT of Ladakh Revenue Dept. S.O. 180 (27 Apr 2026) & S.O. 284 (16 Oct 2026); ecological records currently aggregated within Leh & Kargil parent watersheds',
+          'Zanskar, Drass, Sham, Nubra & Changthang (= 51 total notified districts across 5 subregions); aggregated under Leh & Kargil pending boundary gazettes',
         items: LADAKH_DISTRICTS_REGISTRY.filter((d) => d.status !== 'Baseline Parent District').map(
-          (d) => `${d.name} (HQ: ${d.headquarters})`
+          (d) => `${d.name} (Parent: ${d.parentDistrict})`
         ),
       },
     ],
     keyLandmarks: [
-      'Chenab, Tawi & Ravi Drainage Systems (Marusudar, Ans, Poonch River) & Shivalik Wetlands (Surinsar-Mansar Ramsar #1573, Gharana)',
-      'Pir Panjal & Great Himalayan Passes (Banihal, Peer Ki Gali, Sinthan Top, Zojila, Penzi La, Khardung La)',
-      'Kishtwar High Altitude National Park, Ramnagar, Jasrota, Nandini & Rajparian Wildlife Sanctuaries',
+      '3 RSIS-Inscribed Ramsar Sites in Tier 2: Surinsar-Mansar Lakes (#1573 in Jammu/Samba/Udhampur), Tsomoriri (#1213 in Leh) & Tso Kar Wetland Complex (#2443 in Leh)',
+      'Chenab, Marusudar, Tawi, Munawar Tawi, Poonch & Ravi Foothill Drainage Systems and Gharana Wetland Conservation Reserve (non-Ramsar)',
+      'Kishtwar High Altitude National Park, Tata Kutti (Poonch), Ramnagar, Jasrota & Nandini Wildlife Sanctuaries',
       'Ladakh Trans-Himalayan Protected Network: Hemis National Park, Changthang Cold Desert & Karakoram Wildlife Sanctuaries',
-      'Ladakh Cryosphere & Endorheic Ramsar Lakes: Drang-Drung, Parkachik, Nun-Kun & Machoi Glaciers; Tso Moriri (Ramsar #1213), Tso Kar (Ramsar #2443) & Western Pangong Tso',
+      'Ladakh Cryosphere & Endorheic Basins: Siachen, Drang-Drung, Parkachik, Nun-Kun & Machoi Glaciers; Western Pangong Tso (non-Ramsar)',
     ],
     monitoringFocus: [
-      'Physical ambient air baseline stations at Jammu (Bikram Chowk CAAQMS) and Leh Observatory, complemented by 12 CAMS/Open-Meteo regional grid cells across Jammu (10) and Ladakh (2)',
-      'Live Chenab river gauge tracking (Akhnoor) and reservoir sedimentation/hydrological assessment across Baglihar, Salal, and Dul Hasti corridors',
-      'Satellite glacier-terminus, Snow Water Equivalent (SWE), permafrost, and moraine-dammed GLOF susceptibility tracking across Zanskar, Suru-Drass, and Shyok-Nubra basins',
-      'Landslide, cloudburst, and highway slope-stability hazard intelligence along NH-44 (Ramban–Banihal), Mughal Road, and Zojila corridors, plus NASA FIRMS forest-fire hotspots',
-      'High-altitude cold-desert biodiversity conservation (Snow Leopard, Tibetan Wild Ass/Kiang, Black-necked Crane, Pashmina rangeland ecology)',
+      'External public ambient air feeds and 12 CAMS/Open-Meteo gridded atmospheric reanalysis cells across Jammu (10) and Ladakh (2)',
+      'Chenab, Tawi, Zanskar, Suru, and Upper Indus hydrographic basin synthesis and hydropower cascade impact tracking',
+      'Satellite glacier-terminus, Snow Water Equivalent (SWE), permafrost, and moraine-dammed GLOF susceptibility screening across Zanskar, Suru–Drass, and Shyok–Nubra',
+      'Landslide, cloudburst, and slope-stability hazard screening along NH-44 (Ramban–Banihal), Mughal Road, and Zoji La, plus NASA FIRMS thermal anomalies',
+      'High-altitude Trans-Himalayan biodiversity (Snow Leopard, Asiatic Ibex, Kiang, and Leh-breeding Black-necked Crane)',
     ],
   },
   {
@@ -276,35 +284,35 @@ export const GEOGRAPHIC_SCOPE_TIERS: readonly GeographicScopeTierDefinition[] = 
     name: 'Transboundary / Extended',
     tabLabel: 'Tier 3 · Transboundary / Extended',
     subtitle: 'Cross-Border Watersheds, Karakoram Cryosphere, Atmospheric Rivers & Avian Flyways',
-    badge: 'Tier 3 · Cross-Border Basins & Macro-Corridors (24 Districts + 5 Corridors)',
+    badge: 'Tier 3 · Cross-Border Subregions (24 Operational Districts + 5 Macro Corridors)',
     badgeColor: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
     tagline:
-      'Cross-border ecological systems spanning Azad Jammu & Kashmir, Gilgit-Baltistan, the Upper Indus basin, Karakoram icefields, westerly jet streams, and international flyways.',
+      'Cross-border ecological systems spanning Azad Jammu & Kashmir (10 districts) and Gilgit-Baltistan (14 districts), the Upper Indus basin, Karakoram icefields, and Central Asian Flyway.',
     description:
-      'Environmental processes—river discharge, glacier mass balance, seismic fault rupture, atmospheric moisture transport, and continental bird migration—operate continuously across administrative boundaries. Tier 3 encompasses cross-border watersheds in Azad Jammu & Kashmir and Gilgit-Baltistan alongside macro-scale transboundary Earth systems linking the Western Himalayas, Karakoram, Hindu Kush, and Tibetan Plateau.',
+      'Environmental processes—river discharge, glacier mass balance, seismic fault rupture, atmospheric moisture transport, and continental bird migration—operate continuously across administrative lines. Tier 3 encompasses the 24 operational cross-border districts of Azad Jammu & Kashmir and Gilgit-Baltistan alongside macro-scale transboundary Earth systems linking the Western Himalayas, Karakoram, Hindu Kush, and Tibetan Plateau.',
     transboundaryLinkageNote:
-      'Cross-border Earth systems in Tier 3 connect hydrologically and ecologically with Tier 2 Ladakh watersheds (where the Indus, Shyok, and Pangong basins cross administrative lines) and Tier 1 Jhelum–Kishanganga outflows, without classifying Ladakh itself exclusively as transboundary.',
+      'Tier 3 contains 0 RSIS-designated Ramsar sites within its 24 districts (note: Mangla Reservoir in Mirpur is a major hydropower impoundment and waterbird wintering body, NOT a Ramsar site; all 7 official Western Himalayan Ramsar sites lie in Tier 1 [4] and Tier 2 [3]).',
     coverageSummaryLabel:
-      '24 Cross-Border Districts (10 AJK + 14 Gilgit-Baltistan) · 5 Macro Corridors',
+      '24 Operational Districts (10 AJ&K + 14 Gilgit-Baltistan) · 0 Ramsar Sites',
     monitoringSummaryLabel:
-      'Satellite, Reanalysis & Public Agency Feeds · 2 EPA Reference Nodes + 22 CAMS Grids · 2 Basin Gauges (Zero Direct KEW Field Sensors)',
+      'Satellite Remote Sensing, USGS/EMSC Seismic & 24 CAMS/Open-Meteo Reanalysis Grids (0 KEW-Owned Physical Sensors)',
     administrativeGroups: [
       {
-        groupLabel: 'Azad Jammu & Kashmir — 10 Cross-Border Basin Districts',
-        regionNote: 'Neelum–Kishanganga, Middle Jhelum, Poonch & Mangla catchments (satellite & public hydrological/EPA feeds)',
+        groupLabel: 'Azad Jammu & Kashmir — 10 Operational Baseline Districts',
+        regionNote: 'Neelum–Kishanganga, Jhelum Valley, Poonch & Mirpur–Bhimber catchments',
         items: GEOGRAPHY.units.AJK,
       },
       {
-        groupLabel: 'Gilgit-Baltistan — 14 Cross-Border Cryosphere & Indus Districts',
-        regionNote: 'Gilgit, Baltistan & Diamer divisions (10 spatial GIS polygons; orbital cryosphere, GLOF & EPA feeds)',
+        groupLabel: 'Gilgit-Baltistan — 14 Operational Baseline Districts',
+        regionNote: 'Gilgit, Baltistan & Diamer divisions across the Karakoram–Nanga Parbat–Upper Indus cryosphere',
         items: GEOGRAPHY.units['Gilgit-Baltistan'],
       },
       {
         groupLabel: 'Transboundary Macro-Ecological Corridors & Shared Processes',
-        regionNote: 'Cross-border Earth systems linking Tier 1, Tier 2 (including shared Ladakh basins), and international corridors',
+        regionNote: 'Cross-border Earth systems linking Tier 1, Tier 2, and international corridors',
         items: [
-          'Upper Indus Transboundary River Corridor (Tibetan Plateau – Ladakh – Baltistan – Indus Gorge)',
-          'Karakoram–Himalayan Cryosphere & Siachen–Baltoro–Hispar–Batura Glacial Complex',
+          'Upper Indus Transboundary River Corridor (Ladakh – Baltistan – Diamer Gorge)',
+          'Karakoram–Himalayan Cryosphere & Baltoro–Biafo–Hispar–Batura Glacial Complex',
           'Neelum–Kishanganga & Lower Jhelum–Mangla Transboundary Watersheds',
           'Subtropical Westerly Jet & Western Disturbance Moisture Corridors',
           'Central Asian Flyway (CAF) Continental Migratory Avian Corridor',
@@ -312,18 +320,18 @@ export const GEOGRAPHIC_SCOPE_TIERS: readonly GeographicScopeTierDefinition[] = 
       },
     ],
     keyLandmarks: [
-      'Central Karakoram National Park & Major Cryospheric Complexes (Baltoro, Biafo, Hispar, Batura, Passu, Shisper & Nanga Parbat Massif)',
-      'Deosai Alpine Plateau, Khunjerab National Park, Machiara National Park & Gurez–Neelum Transboundary Wildlife Corridor',
-      'Upper Indus, Gilgit, Hunza, Shigar, Shyok & Neelum–Jhelum Transboundary River Confluences and Mangla Reservoir (Ramsar #820)',
-      'Shared Cross-Border High-Altitude Basins linking Tier 2 Ladakh & Tier 3 Systems (Pangong Tso Transboundary Basin, Shyok–Indus Continuity)',
-      'Central Asian Flyway Breeding-to-Wintering Staging Chain (Siberia/Central Asia to Himalayan & Indus Wetlands)',
+      'Central Karakoram National Park & Major Cryospheric Complexes (K2, Baltoro, Biafo, Hispar, Batura, Passu, Shisper & Nanga Parbat Massif)',
+      'Deosai National Park (Sheosar Lake), Khunjerab National Park, Machiara National Park & Gurez–Neelum Wildlife Corridor',
+      'Upper Indus, Gilgit, Hunza, Shigar, Astore & Neelum–Jhelum Confluences and Mangla Reservoir (Mirpur; major non-Ramsar impoundment)',
+      'Shared Cross-Border High-Altitude Basins linking Tier 2 Ladakh & Tier 3 Systems (Shyok–Indus & Suru–Shingo Continuity)',
+      'Central Asian Flyway Staging Chain linking Changthang, Kashmir Valley Ramsar Wetlands, and Indus Foothill Reservoirs',
     ],
     monitoringFocus: [
-      'Orbital optical/SAR cryosphere observation (Sentinel-1/2, Landsat 8/9, Copernicus DEM) tracking glacier surge dynamics and 27 regional GLOF moraine-lake hazard zones',
-      '22 Copernicus CAMS / Open-Meteo gridded atmospheric cells supplemented by public EPA reference feeds at Muzaffarabad and Gilgit (no direct KEW physical field deployments)',
-      'Downstream & cross-border hydrometric context via Muzaffarabad (Neelum–Jhelum) and Gilgit basin gauge references',
-      'Synoptic atmospheric tracking of Western Disturbances, 250 hPa subtropical jet circulation, and transboundary aerosol/dust transport',
-      'International IUCN/CAF migratory bird flyway phenology and USGS instrumental seismic monitoring across the Western Himalayan syntaxis',
+      'Orbital optical/SAR cryosphere observation (Sentinel-1/2, Landsat 8/9, Copernicus DEM) tracking glacier surge dynamics and moraine-lake GLOF hazard zones',
+      'Gridded Copernicus CAMS / Open-Meteo atmospheric and GloFAS hydrological model series (explicitly labeled as coarse-grid models, never ground stations)',
+      'Instrumental earthquake catalog tracking via USGS and EMSC public feeds across the Western Himalayan syntaxis',
+      'Synoptic atmospheric tracking of Western Disturbances, 250 hPa subtropical jet circulation, and transboundary aerosol transport',
+      'IUCN Red List and peer-reviewed range envelopes for Flare-horned Markhor, Snow Leopard, Himalayan Brown Bear, and Western Tragopan',
     ],
   },
 ] as const;
@@ -334,27 +342,29 @@ export function getUnitsForScope(scope: Scope): string[] {
     return Object.values(GEOGRAPHY.units).flat();
   }
 
-  // Find regions belonging to this scope
-  const regions = (GEOGRAPHY.regions as any)[scope] as string[];
+  const regions = (GEOGRAPHY.regions as Record<string, readonly string[]>)[scope];
   if (!regions) return [];
 
-  // Collect units for those regions
   let units: string[] = [];
   for (const region of regions) {
     if (region in GEOGRAPHY.units) {
-      units = [...units, ...(GEOGRAPHY.units as any)[region]];
+      units = [...units, ...(GEOGRAPHY.units as Record<string, readonly string[]>)[region]];
     }
   }
   return units;
 }
 
-// Helper to determine scope from a given unit, supporting slashed districts, normalized names, and 2026 Ladakh districts
+// Helper to determine scope from a given unit, supporting slashed districts, sub-district aliases (e.g., Pampore -> Pulwama), and Aug 2024 Ladakh districts
 export function getScopeForUnit(unit: string): Scope {
   if (!unit) return 'All';
 
   const normalize = (u: string) => {
     const trimmed = u.trim();
-    if (trimmed === 'Jhelum Valley') return 'Hattian Bala';
+    const lower = trimmed.toLowerCase();
+    if (SUB_DISTRICT_TO_CANONICAL_DISTRICT[lower]) {
+      return SUB_DISTRICT_TO_CANONICAL_DISTRICT[lower];
+    }
+    if (trimmed === 'Hattian Bala') return 'Jhelum Valley';
     return trimmed;
   };
 
@@ -378,7 +388,6 @@ export function getScopeForUnit(unit: string): Scope {
   return 'All';
 }
 
-// Helper to get available districts in entities for a given scope, splitting combined names
 export function getAvailableDistrictsForScope(
   entities: { district: string }[],
   scope: Scope
@@ -388,24 +397,25 @@ export function getAvailableDistrictsForScope(
   if (scope === 'All') {
     entities.forEach((e) => {
       if (!e.district) return;
-      e.district.split('/').forEach((d) => districtNames.add(d.trim()));
+      e.district.split('/').forEach((d) => {
+        const trimmed = d.trim();
+        const mapped = SUB_DISTRICT_TO_CANONICAL_DISTRICT[trimmed.toLowerCase()] || trimmed;
+        districtNames.add(mapped);
+      });
     });
   } else {
-    // Collect all units for this scope
     const units = getUnitsForScope(scope);
     units.forEach((u) => districtNames.add(u));
 
-    // Also scan entities to include any split segments matching this scope
     entities.forEach((e) => {
       if (!e.district) return;
-      e.district
-        .split('/')
-        .map((d) => d.trim())
-        .forEach((part) => {
-          if (getScopeForUnit(part) === scope) {
-            districtNames.add(part);
-          }
-        });
+      e.district.split('/').forEach((part) => {
+        const trimmed = part.trim();
+        const mapped = SUB_DISTRICT_TO_CANONICAL_DISTRICT[trimmed.toLowerCase()] || trimmed;
+        if (getScopeForUnit(mapped) === scope) {
+          districtNames.add(mapped);
+        }
+      });
     });
   }
 

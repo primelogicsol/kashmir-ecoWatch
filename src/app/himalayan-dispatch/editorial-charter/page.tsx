@@ -4,6 +4,15 @@ import { ArrowRight } from 'lucide-react';
 import { buildPageMetadata } from '@/lib/seo/route-metadata';
 import { EDITORIAL_CHARTER_COMMITMENTS } from '@/data/himalayan-dispatch';
 import { HIMALAYAN_DISPATCH_FOUNDING_PHILOSOPHY } from '@/data/himalayan-dispatch-founding-story';
+import {
+  BEYOND_THE_CONFERENCE_DEFINING_PRINCIPLE,
+  CIVIL_SOCIETY_DEFINING_PRINCIPLE,
+  HIMALAYAN_DISPATCH_COMPLETE_EDITORIAL_ARCHITECTURE,
+  HIMALAYAN_DISPATCH_EDITORIAL_DIFFERENCE_ROWS,
+  HIMALAYAN_DISPATCH_FOUR_RESPONSIBILITY_LEVELS,
+  HIMALAYAN_DISPATCH_PERMANENT_RESPONSIBILITIES,
+  HIMALAYAN_DISPATCH_ULTIMATE_ECOLOGICAL_MEASURE,
+} from '@/data/himalayan-dispatch-beyond-conference';
 import { EditorialBreadcrumbs } from '@/components/himalayan-dispatch/EditorialBreadcrumbs';
 import { HD_ROUTES } from '@/lib/himalayan-dispatch-routes';
 
@@ -127,6 +136,161 @@ export default function EditorialCharterPage() {
                 </li>
               ))}
             </ol>
+          </div>
+        </section>
+
+        {/* Five Permanent Responsibilities & The Editorial Difference */}
+        <section
+          className="pt-12 border-t space-y-10"
+          style={{ borderColor: 'var(--hd-rule-strong)' }}
+        >
+          <div className="max-w-3xl space-y-3">
+            <p className="hd-kicker">STRATEGIC POSITIONING OF HIMALAYAN DISPATCH</p>
+            <h2 className="hd-font-display text-3xl sm:text-5xl font-semibold leading-tight">
+              Five Permanent Responsibilities
+            </h2>
+            <p
+              className="hd-font-display text-xl sm:text-2xl italic"
+              style={{ color: 'var(--hd-copper)' }}
+            >
+              “{BEYOND_THE_CONFERENCE_DEFINING_PRINCIPLE.epigraph}”
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {HIMALAYAN_DISPATCH_PERMANENT_RESPONSIBILITIES.map((resp) => (
+              <div
+                key={resp.number}
+                className="p-5 border space-y-2"
+                style={{
+                  borderColor: 'var(--hd-rule)',
+                  backgroundColor: 'var(--hd-bg-elevated)',
+                }}
+              >
+                <div
+                  className="hd-font-display text-3xl font-semibold"
+                  style={{ color: 'var(--hd-copper)' }}
+                >
+                  {resp.number}
+                </div>
+                <h3 className="hd-font-display text-xl font-semibold">{resp.title}</h3>
+                <p
+                  className="hd-font-body text-xs sm:text-sm leading-relaxed"
+                  style={{ color: 'var(--hd-fg-secondary)' }}
+                >
+                  {resp.mandate}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div
+            className="border overflow-hidden"
+            style={{
+              borderColor: 'var(--hd-rule-strong)',
+              backgroundColor: 'var(--hd-bg-elevated)',
+            }}
+          >
+            <div className="px-6 py-4 border-b" style={{ borderColor: 'var(--hd-rule)' }}>
+              <p className="hd-kicker">THE EDITORIAL DIFFERENCE</p>
+              <p className="hd-font-display text-xl italic mt-0.5">
+                Advancing scientific, engineering, and institutional discourse beyond event coverage
+              </p>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b" style={{ borderColor: 'var(--hd-rule-strong)' }}>
+                    <th className="py-3 px-6 hd-folio-meta">Conventional conference reporting</th>
+                    <th className="py-3 px-6 hd-folio-meta">Himalayan Dispatch</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
+                  {HIMALAYAN_DISPATCH_EDITORIAL_DIFFERENCE_ROWS.map((row, idx) => (
+                    <tr key={idx}>
+                      <td
+                        className="py-3 px-6 hd-font-body text-sm"
+                        style={{ color: 'var(--hd-fg-muted)' }}
+                      >
+                        {row.conventional}
+                      </td>
+                      <td
+                        className="py-3 px-6 hd-font-body text-sm font-semibold"
+                        style={{ color: 'var(--hd-fg)' }}
+                      >
+                        {row.himalayanDispatch}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Four Levels of Environmental Responsibility & Non-Exemption Clause */}
+          <div className="pt-8 space-y-6">
+            <div className="max-w-3xl space-y-2">
+              <p className="hd-kicker">UNIVERSAL ACCOUNTABILITY &amp; NON-EXEMPTION STANDARD</p>
+              <h3 className="hd-font-display text-2xl sm:text-4xl font-semibold leading-tight">
+                Four Levels of Environmental Responsibility
+              </h3>
+              <p
+                className="hd-font-body text-sm sm:text-base leading-relaxed"
+                style={{ color: 'var(--hd-fg-secondary)' }}
+              >
+                {CIVIL_SOCIETY_DEFINING_PRINCIPLE.nonExemptionClause}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {HIMALAYAN_DISPATCH_FOUR_RESPONSIBILITY_LEVELS.map((lvl) => (
+                <div
+                  key={lvl.number}
+                  className="p-5 border space-y-2"
+                  style={{
+                    borderColor: 'var(--hd-rule)',
+                    backgroundColor: 'var(--hd-bg-elevated)',
+                  }}
+                >
+                  <div
+                    className="hd-font-display text-3xl font-semibold"
+                    style={{ color: 'var(--hd-copper)' }}
+                  >
+                    {lvl.number}
+                  </div>
+                  <h4 className="hd-font-display text-xl font-semibold">{lvl.actor}</h4>
+                  <p
+                    className="hd-font-body text-xs sm:text-sm leading-relaxed"
+                    style={{ color: 'var(--hd-fg-secondary)' }}
+                  >
+                    {lvl.question}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div
+              className="p-6 border flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+              style={{
+                borderColor: 'var(--hd-rule-strong)',
+                backgroundColor: 'var(--hd-bg-elevated)',
+              }}
+            >
+              <div>
+                <p className="hd-kicker">ULTIMATE MEASURE: ECOLOGICAL OUTCOMES</p>
+                <p className="hd-font-display text-xl sm:text-2xl italic mt-1">
+                  {HIMALAYAN_DISPATCH_ULTIMATE_ECOLOGICAL_MEASURE}
+                </p>
+              </div>
+              <div className="sm:text-right shrink-0">
+                <p className="hd-folio-meta">INAUGURAL ARCHITECTURE</p>
+                <p className="hd-font-body text-xs" style={{ color: 'var(--hd-fg-secondary)' }}>
+                  {HIMALAYAN_DISPATCH_COMPLETE_EDITORIAL_ARCHITECTURE.map(
+                    (a) => `${a.series} (${a.dispatches})`
+                  ).join(' · ')}
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 

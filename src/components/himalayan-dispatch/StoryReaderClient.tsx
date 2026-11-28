@@ -16,16 +16,27 @@ import {
   toCanonicalIssueSlug,
   toKewPlatformUrl,
 } from '@/lib/himalayan-dispatch-routes';
+import { getPublicStoryGateBadge } from '@/lib/himalayan-dispatch-metrics';
+import {
+  KewChapterAnchorCopyButton,
+  KewContentShare,
+} from '@/components/common/KewContentShare';
+import {
+  formatChapterAnchorId,
+  isHimalayanDispatchMonograph,
+} from '@/lib/sharing/kew-content-sharing';
 import { EditorialDataGraphic } from './EditorialDataGraphic';
 
 export function StoryReaderClient({
   story,
   journalist,
   nextStory,
+  disablePublicSharing = false,
 }: {
   story: MagazineStory;
   journalist: JournalistProfile | null;
   nextStory: MagazineStory | null;
+  disablePublicSharing?: boolean;
 }) {
   const [progress, setProgress] = useState(0);
   const [rollFilter, setRollFilter] = useState<'ALL' | 'JK_FOREST' | 'SERVICE' | 'SUPPORTING'>('ALL');
@@ -47,6 +58,25 @@ export function StoryReaderClient({
 
   const isPhotoEssay = story.departmentId === 'photo-essays';
   const isInterview = story.departmentId === 'interviews';
+  const gateBadge = getPublicStoryGateBadge(story);
+  const isPreReleaseStage08 = story.publicationGates?.currentStage === 'administrator_approval';
+  const viewingMins =
+    story.estimatedViewingMinutes ||
+    Math.max(2, Math.round((story.photoPlates?.length || 6) * 0.65));
+
+  const canonicalStoryPath = resolveCanonicalStoryUrl(story);
+  const isMonographStory = isHimalayanDispatchMonograph({
+    slug: story.editionSlug,
+    volumeLabel: story.editionLabel,
+  });
+  const shareDescription = story.excerpt || story.subtitle;
+  const shareableChapters = story.chapters.map((ch) => ({
+    id: formatChapterAnchorId(ch.numberRoman),
+    label:
+      ch.numberRoman === 'PROLOGUE' || ch.numberRoman === 'EPILOGUE'
+        ? `${ch.numberRoman} — ${ch.title}`
+        : `Chapter ${ch.numberRoman} — ${ch.title}`,
+  }));
 
   return (
     <article>
@@ -71,7 +101,7 @@ export function StoryReaderClient({
                 <span>{story.editionLabel}</span>
               </Link>
               <span className="hd-font-sans text-[11px] tracking-[0.22em] uppercase text-[#A39B8B]">
-                {story.folioCode} &nbsp;·&nbsp; {story.readingTimeMinutes} MIN PORTFOLIO
+                {story.folioCode} &nbsp;·&nbsp; {story.readingTimeMinutes} MIN TEXT READ ({story.wordCount.toLocaleString()} WORDS) &nbsp;·&nbsp; {viewingMins} MIN PLATE VIEWING
               </span>
             </div>
 
@@ -85,20 +115,40 @@ export function StoryReaderClient({
               <p className="hd-font-body text-xl sm:text-2xl text-[#F2EFE7]/82 leading-relaxed">
                 {story.subtitle}
               </p>
-              <p className="hd-font-sans text-xs tracking-[0.2em] uppercase text-[#A39B8B] pt-2">
-                PHOTOGRAPHS &amp; TEXT BY{' '}
-                {journalist ? (
-                  <Link
-                    href={HD_ROUTES.journalistPortfolio(journalist.slug)}
-                    className="text-[#F2EFE7] underline underline-offset-4"
-                  >
-                    {story.bylineDisplay}
-                  </Link>
-                ) : (
-                  story.bylineDisplay
-                )}
-              </p>
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <p className="hd-font-sans text-xs tracking-[0.2em] uppercase text-[#A39B8B]">
+                  {story.visualEssayMode === 'illustrative_monochrome_study'
+                    ? 'VISUAL EDITION & TEXT BY '
+                    : 'PHOTOGRAPHS & TEXT BY '}
+                  {journalist ? (
+                    <Link
+                      href={HD_ROUTES.journalistPortfolio(journalist.slug)}
+                      className="text-[#F2EFE7] underline underline-offset-4"
+                    >
+                      {story.bylineDisplay}
+                    </Link>
+                  ) : (
+                    story.bylineDisplay
+                  )}
+                </p>
+                <span className="px-2.5 py-1 border border-[#D8C3A5]/40 text-[10px] hd-font-sans tracking-[0.16em] uppercase text-[#D8C3A5]">
+                  {gateBadge.label}
+                </span>
+              </div>
             </div>
+
+            <KewContentShare
+              variant="article-toolbar"
+              surfaceTone="darkplate"
+              label={isMonographStory ? 'Share This Monograph' : 'Share This Dispatch'}
+              title={story.title}
+              description={shareDescription}
+              canonicalPath={canonicalStoryPath}
+              chapters={shareableChapters}
+              isPublished={story.isPublished}
+              isPreviewMode={disablePublicSharing}
+              workflowStage={story.workflowStage}
+            />
 
             <div className="aspect-[16/9] w-full overflow-hidden border border-[#F2EFE7]/20">
               <img
@@ -110,6 +160,14 @@ export function StoryReaderClient({
             <p className="hd-font-body text-xs sm:text-sm italic text-[#A39B8B]">
               {story.heroCaption} — {story.heroCredit}
             </p>
+            {story.visualEssayMode === 'illustrative_monochrome_study' && story.editorialVerificationNote && (
+              <div className="p-4 sm:p-5 border border-[#D8C3A5]/35 bg-[#F2EFE7]/5 text-xs sm:text-sm hd-font-body leading-relaxed text-[#F2EFE7]/85">
+                <strong className="hd-font-sans text-[10px] tracking-[0.2em] uppercase text-[#D8C3A5] block mb-1">
+                  CURATORIAL &amp; VISUAL PROVENANCE CLARIFICATION
+                </strong>
+                {story.editorialVerificationNote}
+              </div>
+            )}
           </div>
         </header>
       ) : (
@@ -160,7 +218,9 @@ export function StoryReaderClient({
             >
               <div className="space-y-1">
                 <div className="hd-font-sans text-xs font-semibold tracking-[0.18em] uppercase" style={{ color: 'var(--hd-fg)' }}>
-                  BY{' '}
+                  {story.dialogueMode === 'constructed_editorial_dialogue'
+                    ? 'EDITORIAL DIALOGUE SYNTHESIS BY '
+                    : 'BY '}
                   {journalist ? (
                     <Link
                       href={HD_ROUTES.journalistPortfolio(journalist.slug)}
@@ -175,17 +235,42 @@ export function StoryReaderClient({
                   {story.photographyByline && (
                     <span style={{ color: 'var(--hd-fg-muted)' }}>
                       {' '}
-                      &nbsp;·&nbsp; PHOTOGRAPHS BY {story.photographyByline}
+                      &nbsp;·&nbsp; VISUAL PLATES: {story.photographyByline}
                     </span>
                   )}
                 </div>
                 <div className="hd-folio-meta">
-                  PUBLISHED {story.publishedAt} &nbsp;·&nbsp; {story.readingTimeMinutes} MIN READ ({story.wordCount.toLocaleString()} WORDS)
+                  {story.updatedAt && story.updatedAt !== story.publishedAt
+                    ? `ORIGINALLY PUBLISHED ${story.publishedAt} · EXPANDED & REVISED ${story.updatedAt}`
+                    : `${isPreReleaseStage08 ? 'EDITION FOLIO DATE' : 'PUBLISHED'} ${story.publishedAt}`}{' '}
+                  &nbsp;·&nbsp; {story.readingTimeMinutes} MIN READ ({story.wordCount.toLocaleString()} WORDS)
                 </div>
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                {story.publicationStatusNote && (
+                {story.dialogueMode === 'constructed_editorial_dialogue' && (
+                  <div
+                    className="inline-flex items-center gap-2 px-3 py-1.5 border text-[10px] hd-font-sans tracking-[0.14em] uppercase"
+                    style={{
+                      borderColor: 'var(--hd-copper)',
+                      color: 'var(--hd-copper)',
+                      backgroundColor: 'var(--hd-bg-elevated)',
+                    }}
+                  >
+                    <span>Constructed Editorial Dialogue</span>
+                  </div>
+                )}
+                {gateBadge.isVerifiedRelease &&
+                story.hasCompletedIndependentReview &&
+                Boolean(story.scientificReviewer) ? (
+                  <div
+                    className="inline-flex items-center gap-2 px-3 py-1.5 border text-[10px] hd-font-sans tracking-[0.15em] uppercase"
+                    style={{ borderColor: 'var(--hd-rule)', color: 'var(--hd-fg-muted)' }}
+                  >
+                    <CheckCircle2 className="w-3.5 h-3.5" style={{ color: 'var(--hd-copper)' }} />
+                    <span>{gateBadge.label}</span>
+                  </div>
+                ) : (
                   <div
                     className="inline-flex items-center gap-2 px-3 py-1.5 border text-[10px] hd-font-sans tracking-[0.14em] uppercase"
                     style={{
@@ -195,15 +280,24 @@ export function StoryReaderClient({
                     }}
                   >
                     <Clock className="w-3.5 h-3.5 shrink-0" />
-                    <span>{story.publicationStatusNote}</span>
+                    <span>{gateBadge.label}</span>
                   </div>
                 )}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 border text-[10px] hd-font-sans tracking-[0.15em] uppercase" style={{ borderColor: 'var(--hd-rule)', color: 'var(--hd-fg-muted)' }}>
-                  <CheckCircle2 className="w-3.5 h-3.5" style={{ color: 'var(--hd-copper)' }} />
-                  <span>Fact-Checked &amp; Scientifically Reviewed</span>
-                </div>
               </div>
             </div>
+
+            {/* Editorial Sharing Toolbar — Below Byline, Metadata & Verification, Before Cover Photograph */}
+            <KewContentShare
+              variant="article-toolbar"
+              label={isMonographStory ? 'Share This Monograph' : 'Share This Dispatch'}
+              title={story.title}
+              description={shareDescription}
+              canonicalPath={canonicalStoryPath}
+              chapters={shareableChapters}
+              isPublished={story.isPublished}
+              isPreviewMode={disablePublicSharing}
+              workflowStage={story.workflowStage}
+            />
 
             {/* Full-Width Hero Plate */}
             <figure className="space-y-3">
@@ -241,7 +335,7 @@ export function StoryReaderClient({
                   {story.chapters.map((ch) => (
                     <li key={ch.numberRoman}>
                       <a
-                        href={`#chapter-${ch.numberRoman}`}
+                        href={`#${formatChapterAnchorId(ch.numberRoman)}`}
                         className="hd-font-body text-sm block hover:underline underline-offset-4"
                         style={{ color: 'var(--hd-fg-secondary)' }}
                       >
@@ -257,15 +351,35 @@ export function StoryReaderClient({
                 {/* Verification Colophon */}
                 <div className="pt-6 mt-6 border-t space-y-2.5" style={{ borderColor: 'var(--hd-rule)' }}>
                   <p className="hd-kicker">VERIFICATION LEDGER</p>
+                  {story.publicationGates && (
+                    <p className="hd-font-body text-xs leading-relaxed" style={{ color: 'var(--hd-copper)' }}>
+                      <strong>Publication Gate:</strong> Stage {story.publicationGates.currentStageNumber} (
+                      {story.publicationGates.currentStage.replace(/_/g, ' ')})
+                    </p>
+                  )}
                   <p className="hd-font-body text-xs leading-relaxed" style={{ color: 'var(--hd-fg-muted)' }}>
-                    <strong>Fact-Checking:</strong> {story.factCheckedBy}
+                    <strong>Evidence Desk:</strong> {story.factCheckedBy}
                   </p>
                   <p className="hd-font-body text-xs leading-relaxed" style={{ color: 'var(--hd-fg-muted)' }}>
-                    <strong>Scientific Review:</strong> {story.scientificReviewer}
+                    <strong>Scientific Status:</strong>{' '}
+                    {story.scientificReviewer ||
+                      'Desk Baseline Correlation Only (Independent Specialist Review Not Claimed)'}
                   </p>
                   <p className="hd-font-body text-xs leading-relaxed" style={{ color: 'var(--hd-fg-muted)' }}>
                     <strong>Region:</strong> {story.region}
                   </p>
+                  {story.supplementaryDatasetUrl && (
+                    <p className="hd-font-body text-xs leading-relaxed pt-1">
+                      <a
+                        href={toKewPlatformUrl(story.supplementaryDatasetUrl)}
+                        className="inline-flex items-center gap-1 font-semibold underline underline-offset-2"
+                        style={{ color: 'var(--hd-copper)' }}
+                      >
+                        <span>{story.supplementaryDatasetLabel || 'Download Supplementary Dataset (CSV)'}</span>
+                        <ArrowUpRight className="w-3 h-3" />
+                      </a>
+                    </p>
+                  )}
                   {story.reportingBeatLabel && (
                     <p className="hd-font-body text-xs leading-relaxed" style={{ color: 'var(--hd-fg-muted)' }}>
                       <strong>Beat:</strong>{' '}
@@ -313,41 +427,101 @@ export function StoryReaderClient({
 
           {/* Right 9 Cols: Literary Narrative Column */}
           <div className="lg:col-span-9 order-1 lg:order-2 space-y-14 max-w-[740px]">
+            {/* Prominent AI / Automated Research Synthesis Disclosure Banner */}
+            {(story.isAiAssisted || story.aiAssistanceDisclosure) && (
+              <div
+                role="note"
+                aria-label="Automated Research Synthesis Disclosure"
+                className="p-5 sm:p-6 border-l-4 space-y-2"
+                style={{
+                  borderColor: 'var(--hd-copper)',
+                  backgroundColor: 'var(--hd-bg-elevated)',
+                }}
+              >
+                <p className="hd-kicker">
+                  AUTOMATED MULTI-SOURCE RESEARCH SYNTHESIS · DESK REVIEWED
+                </p>
+                <p
+                  className="hd-font-body text-xs sm:text-sm leading-relaxed"
+                  style={{ color: 'var(--hd-fg-secondary)' }}
+                >
+                  {story.aiAssistanceDisclosure ||
+                    'This dispatch was compiled via the Himalayan Dispatch Autonomous Newsroom Intelligence Engine (HD-ANIE) from cited external bibliographic/feed records and Kashmir EcoWatch scientific baselines, and desk-reviewed prior to publication. No firsthand field visit or spoken interview is represented.'}
+                </p>
+              </div>
+            )}
+
+            {/* Prominent Inaugural / Conceptual Editorial Synthesis Disclosure */}
+            {story.conceptualFolioDisclosure && (
+              <div
+                role="note"
+                aria-label="Inaugural Editorial Synthesis Disclosure"
+                className="p-5 sm:p-6 border space-y-1.5"
+                style={{
+                  borderColor: 'var(--hd-rule-strong)',
+                  backgroundColor: 'var(--hd-bg-elevated)',
+                }}
+              >
+                <p className="hd-kicker">
+                  INAUGURAL EDITORIAL FOLIO · DESK &amp; OBSERVATORY SYNTHESIS
+                </p>
+                <p
+                  className="hd-font-body text-xs sm:text-sm leading-relaxed"
+                  style={{ color: 'var(--hd-fg-secondary)' }}
+                >
+                  {story.conceptualFolioDisclosure}
+                </p>
+              </div>
+            )}
+
             {/* Optional Embedded Editorial Data Graphic */}
             {story.dataVisualization && (
               <EditorialDataGraphic spec={story.dataVisualization} />
             )}
 
             {/* Chapters */}
-            {story.chapters.map((ch, chIdx) => (
-              <section
-                key={ch.numberRoman}
-                id={`chapter-${ch.numberRoman}`}
-                className="space-y-6 scroll-mt-24"
-              >
-                {(story.chapters.length > 1 || ch.title) && (
-                  <div className="space-y-1.5 pb-2">
-                    <span className="hd-kicker">
-                      {ch.numberRoman === 'PROLOGUE' || ch.numberRoman === 'EPILOGUE'
-                        ? ch.numberRoman
-                        : `CHAPTER ${ch.numberRoman}`}
-                    </span>
-                    <h2
-                      className="hd-font-display text-3xl sm:text-4xl font-semibold leading-tight"
-                      style={{ color: 'var(--hd-fg)' }}
-                    >
-                      {ch.title}
-                    </h2>
-                    {ch.subtitle && (
-                      <p
-                        className="hd-font-display text-lg sm:text-xl italic"
-                        style={{ color: 'var(--hd-fg-muted)' }}
-                      >
-                        {ch.subtitle}
-                      </p>
-                    )}
-                  </div>
-                )}
+            {story.chapters.map((ch, chIdx) => {
+              const chapterAnchorId = formatChapterAnchorId(ch.numberRoman);
+              return (
+                <section
+                  key={ch.numberRoman}
+                  id={chapterAnchorId}
+                  className="space-y-6 scroll-mt-24"
+                >
+                  {(story.chapters.length > 1 || ch.title) && (
+                    <div className="space-y-1.5 pb-2">
+                      <span className="hd-kicker">
+                        {ch.numberRoman === 'PROLOGUE' || ch.numberRoman === 'EPILOGUE'
+                          ? ch.numberRoman
+                          : `CHAPTER ${ch.numberRoman}`}
+                      </span>
+                      <div className="flex items-baseline justify-between gap-3">
+                        <h2
+                          className="hd-font-display text-3xl sm:text-4xl font-semibold leading-tight"
+                          style={{ color: 'var(--hd-fg)' }}
+                        >
+                          {ch.title}
+                        </h2>
+                        <KewChapterAnchorCopyButton
+                          canonicalPath={canonicalStoryPath}
+                          chapterAnchor={ch.numberRoman}
+                          chapterTitle={ch.title}
+                          isPublished={story.isPublished}
+                          isPreviewMode={disablePublicSharing}
+                          workflowStage={story.workflowStage}
+                          className="shrink-0"
+                        />
+                      </div>
+                      {ch.subtitle && (
+                        <p
+                          className="hd-font-display text-lg sm:text-xl italic"
+                          style={{ color: 'var(--hd-fg-muted)' }}
+                        >
+                          {ch.subtitle}
+                        </p>
+                      )}
+                    </div>
+                  )}
 
                 <div className="hd-prose">
                   {ch.paragraphs.map((p, pIdx) => (
@@ -566,11 +740,35 @@ export function StoryReaderClient({
                   </figure>
                 )}
               </section>
-            ))}
+              );
+            })}
 
-            {/* Interview Q&A Exchanges (Paris Review / New Yorker Style) */}
+            {/* Interview / Constructed Editorial Dialogue Q&A Exchanges */}
             {isInterview && story.interviewExchanges && (
               <section className="space-y-8 pt-4 border-t" style={{ borderColor: 'var(--hd-rule)' }}>
+                {story.dialogueMode === 'constructed_editorial_dialogue' && (
+                  <div
+                    className="p-5 border-l-2 space-y-1.5"
+                    style={{
+                      borderColor: 'var(--hd-copper)',
+                      backgroundColor: 'var(--hd-bg-elevated)',
+                    }}
+                  >
+                    <p className="hd-kicker">
+                      FORMAT CLASSIFICATION · CONSTRUCTED EDITORIAL DIALOGUE
+                    </p>
+                    <p
+                      className="hd-font-body text-xs sm:text-sm leading-relaxed"
+                      style={{ color: 'var(--hd-fg-secondary)' }}
+                    >
+                      This feature is a structured editorial question-and-answer synthesis of
+                      peer-reviewed Himalayan glaciological, hydrological, and statutory hydropower
+                      literature. It is not a verbatim transcript of a single spoken interview, and
+                      no statement is attributed to an uninterviewed living individual.
+                    </p>
+                  </div>
+                )}
+
                 {story.interviewSubjectBio && (
                   <p
                     className="hd-font-body text-sm italic p-4 border"
@@ -605,6 +803,17 @@ export function StoryReaderClient({
                     >
                       {item.text}
                     </p>
+                    {item.editorialAnnotation && (
+                      <p
+                        className="hd-font-body text-xs italic pl-4 border-l"
+                        style={{
+                          borderColor: 'var(--hd-rule-strong)',
+                          color: 'var(--hd-fg-muted)',
+                        }}
+                      >
+                        {item.editorialAnnotation}
+                      </p>
+                    )}
                   </div>
                 ))}
               </section>
@@ -851,14 +1060,14 @@ export function StoryReaderClient({
                         <tr key={idx}>
                           <td className="py-3 px-5 text-sm hd-font-body font-semibold">
                             {src.url.startsWith('/') ? (
-                              <Link
-                                href={src.url}
+                              <a
+                                href={toKewPlatformUrl(src.url)}
                                 className="inline-flex items-center gap-1.5 underline underline-offset-4"
                                 style={{ color: 'var(--hd-copper)' }}
                               >
                                 <span>{src.label}</span>
                                 <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
-                              </Link>
+                              </a>
                             ) : (
                               <a
                                 href={src.url}
@@ -886,8 +1095,8 @@ export function StoryReaderClient({
               </section>
             )}
 
-            {/* Editorial Publication Metadata & Verification Colophon */}
-            {(story.editorialMetadataTable || story.editorialVerificationNote) && (
+            {/* Editorial Publication Metadata & 10-Stage Gate Colophon */}
+            {(story.editorialMetadataTable || story.editorialVerificationNote || story.publicationGates) && (
               <section
                 aria-label="Editorial Publication Metadata"
                 className="border space-y-5 p-5 sm:p-6"
@@ -896,7 +1105,51 @@ export function StoryReaderClient({
                   backgroundColor: 'var(--hd-bg-elevated)',
                 }}
               >
-                <p className="hd-kicker">EDITORIAL PUBLICATION METADATA</p>
+                <p className="hd-kicker">EDITORIAL PUBLICATION METADATA &amp; 10-STAGE GATE LEDGER</p>
+                {story.publicationGates && (
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="border-b" style={{ borderColor: 'var(--hd-rule-strong)' }}>
+                          <th className="py-2 pr-3 hd-folio-meta">Gate</th>
+                          <th className="py-2 px-3 hd-folio-meta">Status</th>
+                          <th className="py-2 pl-3 hd-folio-meta">Record / Scope</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
+                        {story.publicationGates.gates.map((g) => (
+                          <tr key={g.stageId}>
+                            <td
+                              className="py-2 pr-3 text-xs hd-font-body font-semibold whitespace-nowrap"
+                              style={{ color: 'var(--hd-fg)' }}
+                            >
+                              {g.stageNumber} · {g.label}
+                            </td>
+                            <td
+                              className="py-2 px-3 text-[10px] hd-font-sans uppercase tracking-[0.14em] whitespace-nowrap"
+                              style={{
+                                color:
+                                  g.status === 'completed'
+                                    ? 'var(--hd-fg)'
+                                    : g.status === 'in_progress'
+                                      ? 'var(--hd-copper)'
+                                      : 'var(--hd-fg-muted)',
+                              }}
+                            >
+                              {g.status.replace(/_/g, ' ')}
+                            </td>
+                            <td
+                              className="py-2 pl-3 text-xs hd-font-body"
+                              style={{ color: 'var(--hd-fg-secondary)' }}
+                            >
+                              {g.notes || g.verifiedBy || '—'}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
                 {story.editorialMetadataTable && (
                   <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
@@ -975,6 +1228,19 @@ export function StoryReaderClient({
                 ))}
               </section>
             )}
+
+            {/* Article Conclusion Sharing Control — Before Author Portfolio & Next-Article Navigation */}
+            <KewContentShare
+              variant="article-toolbar"
+              label={isMonographStory ? 'Share This Monograph' : 'Share This Dispatch'}
+              title={story.title}
+              description={shareDescription}
+              canonicalPath={canonicalStoryPath}
+              chapters={shareableChapters}
+              isPublished={story.isPublished}
+              isPreviewMode={disablePublicSharing}
+              workflowStage={story.workflowStage}
+            />
 
             {/* Journalist Bio Box */}
             {journalist && (

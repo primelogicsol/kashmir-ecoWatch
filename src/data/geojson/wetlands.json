@@ -1,39 +1,41 @@
 {
   "type": "FeatureCollection",
   "name": "kashmir_wetlands",
-  "description": "Major wetlands of Kashmir Valley including Ramsar sites",
+  "description": "Major wetlands of the Kashmir Valley with RSIS-verified Ramsar designations and statutory Conservation Reserves",
   "features": [
     {
       "type": "Feature",
       "properties": {
         "id": "hokersar-wetland",
         "name": "Hokersar Wetland",
+        "officialRsisName": "Hokera Wetland",
         "type": "wetland",
         "category": "Ramsar Wetland",
         "area_km2": 13.75,
-        "elevation_m": 1585,
-        "district": "Srinagar",
+        "elevation_m": 1584,
+        "district": "Srinagar / Budgam",
         "watershed": "Jhelum Basin",
-        "waterQualityStatus": "good",
+        "waterQualityStatus": "moderate",
         "ramsarSite": true,
+        "rsisNumber": 1570,
+        "ramsarSiteNumber": 1570,
+        "designationDate": "2005-11-08",
         "slug": "hokersar-wetland",
         "canonicalId": "wetland-hokersar-wetland",
         "verificationStatus": "VERIFIED_BOUNDARY",
-        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
-        "sourceDate": "2024",
+        "source": "Ramsar Sites Information Service (RSIS #1570) & J&K Wildlife Protection Department",
+        "sourceDate": "2026-11-27",
         "componentWaterbodies": [
           "lake-hokersar"
         ],
         "isParentComplex": true,
-        "ramsarSiteNumber": 1570,
-        "designationDate": "2005-11-08",
-        "relationshipNote": "Parent Ramsar wetland reserve (13.75 km²) containing the core open water basin and peripheral reedbeds."
+        "relationshipNote": "Official Ramsar Site #1570 (13.75 km² / 1,375 ha) spanning Srinagar and Budgam."
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          74.704,
-          34.095
+          74.715,
+          34.105
         ]
       }
     },
@@ -42,27 +44,29 @@
       "properties": {
         "id": "shallabugh-wetland",
         "name": "Shallabugh Wetland",
+        "officialRsisName": "Shallbugh Wetland Conservation Reserve",
         "type": "wetland",
         "category": "Ramsar Wetland",
-        "area_km2": 7.5,
-        "elevation_m": 1585,
-        "district": "Ganderbal",
+        "area_km2": 16.75,
+        "elevation_m": 1580,
+        "district": "Ganderbal / Srinagar",
         "watershed": "Jhelum Basin",
-        "waterQualityStatus": "good",
+        "waterQualityStatus": "moderate",
         "ramsarSite": true,
+        "rsisNumber": 2488,
+        "ramsarSiteNumber": 2488,
+        "designationDate": "2022-06-08",
         "slug": "shallabugh-wetland",
         "canonicalId": "wetland-shallabugh-wetland",
         "verificationStatus": "VERIFIED_BOUNDARY",
-        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
-        "sourceDate": "2024",
-        "ramsarSiteNumber": 2490,
-        "designationDate": "2022-06-08"
+        "source": "Ramsar Sites Information Service (RSIS #2488) & J&K Wildlife Protection Department",
+        "sourceDate": "2026-11-27"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          74.717,
-          34.167
+          74.725,
+          34.16
         ]
       }
     },
@@ -71,27 +75,29 @@
       "properties": {
         "id": "hygam-wetland",
         "name": "Hygam Wetland",
+        "officialRsisName": "Hygam Wetland Conservation Reserve",
         "type": "wetland",
-        "category": "Conservation Wetland",
-        "area_km2": 5.2,
-        "elevation_m": 1585,
+        "category": "Ramsar Wetland",
+        "area_km2": 8.02,
+        "elevation_m": 1580,
         "district": "Baramulla",
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "moderate",
-        "ramsarSite": false,
+        "ramsarSite": true,
+        "rsisNumber": 2496,
+        "ramsarSiteNumber": 2496,
+        "designationDate": "2022-06-08",
         "slug": "hygam-wetland",
         "canonicalId": "wetland-hygam-wetland",
         "verificationStatus": "VERIFIED_BOUNDARY",
-        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
-        "sourceDate": "2024",
-        "ramsarSiteNumber": 2489,
-        "designationDate": "2022-06-08"
+        "source": "Ramsar Sites Information Service (RSIS #2496) & J&K Wildlife Protection Department",
+        "sourceDate": "2026-11-27"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          74.517,
-          34.25
+          74.525,
+          34.242
         ]
       }
     },
@@ -100,32 +106,34 @@
       "properties": {
         "id": "wular-wetland",
         "name": "Wular Wetland System",
+        "officialRsisName": "Wular Lake",
         "type": "wetland",
         "category": "Ramsar Wetland",
-        "area_km2": 189,
-        "elevation_m": 1575,
-        "district": "Bandipora",
+        "area_km2": 189.0,
+        "elevation_m": 1580,
+        "district": "Bandipora / Baramulla",
         "watershed": "Jhelum Basin",
-        "waterQualityStatus": "good",
+        "waterQualityStatus": "moderate",
         "ramsarSite": true,
+        "rsisNumber": 461,
+        "ramsarSiteNumber": 461,
+        "designationDate": "1990-03-23",
         "slug": "wular-wetland-system",
         "canonicalId": "wetland-wular-wetland",
         "verificationStatus": "VERIFIED_BOUNDARY",
-        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
-        "sourceDate": "2024",
+        "source": "Ramsar Sites Information Service (RSIS #461) & J&K Wildlife Protection Department",
+        "sourceDate": "2026-11-27",
         "componentWaterbodies": [
           "lake-wular"
         ],
         "isParentComplex": true,
-        "ramsarSiteNumber": 461,
-        "designationDate": "1990-03-23",
-        "relationshipNote": "Parent Ramsar wetland system (189 km²) containing Wular Lake, peripheral marshes, and inflow channels."
+        "relationshipNote": "Official Ramsar Site #461 (189.0 km² / 18,900 ha) spanning Bandipora and Baramulla."
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          74.6,
-          34.3333
+          74.56,
+          34.36
         ]
       }
     },
@@ -135,24 +143,24 @@
         "id": "mirgund-wetland",
         "name": "Mirgund Wetland",
         "type": "wetland",
-        "category": "Conservation Wetland",
-        "area_km2": 2.1,
+        "category": "Wetland Conservation Reserve",
+        "area_km2": 4.0,
         "elevation_m": 1580,
-        "district": "Srinagar",
+        "district": "Baramulla / Budgam",
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "moderate",
         "ramsarSite": false,
         "slug": "mirgund-wetland",
         "canonicalId": "wetland-mirgund-wetland",
         "verificationStatus": "VERIFIED_BOUNDARY",
-        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
-        "sourceDate": "2024"
+        "source": "J&K Wildlife Protection Department (Domestic Wetland Conservation Reserve — Non-Ramsar)",
+        "sourceDate": "2026-11-27"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          74.633,
-          34.133
+          74.642,
+          34.135
         ]
       }
     },
@@ -172,8 +180,8 @@
         "slug": "kalgochh-wetland",
         "canonicalId": "wetland-kalgochh-wetland",
         "verificationStatus": "VERIFIED_BOUNDARY",
-        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
-        "sourceDate": "2024"
+        "source": "J&K Wildlife Protection Department & ISRO NWIA (2011)",
+        "sourceDate": "2026-11-27"
       },
       "geometry": {
         "type": "Point",
@@ -199,41 +207,41 @@
         "slug": "kheer-bhawani-wetland",
         "canonicalId": "wetland-kheer-bhawani",
         "verificationStatus": "VERIFIED_BOUNDARY",
-        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
-        "sourceDate": "2024"
+        "source": "ISRO NWIA (2011) & J&K Jal Shakti Spring Inventory",
+        "sourceDate": "2026-11-27"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          74.81,
-          34.21
+          74.73,
+          34.222
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": "malchibugh-wetland",
-        "name": "Malchibugh Wetland",
+        "id": "malgam-wetland",
+        "name": "Malgam Wetland",
         "type": "wetland",
-        "category": "Conservation Wetland",
+        "category": "Wetland Conservation Reserve",
         "area_km2": 3.2,
-        "elevation_m": 1582,
-        "district": "Srinagar",
+        "elevation_m": 1580,
+        "district": "Bandipora",
         "watershed": "Jhelum Basin",
         "waterQualityStatus": "moderate",
         "ramsarSite": false,
-        "slug": "malchibugh-wetland",
-        "canonicalId": "wetland-malchibugh-wetland",
+        "slug": "malgam-wetland",
+        "canonicalId": "wetland-malgam-wetland",
         "verificationStatus": "VERIFIED_BOUNDARY",
-        "source": "Ramsar Sites Information Service (RSIS) & J&K Wildlife Protection Department",
-        "sourceDate": "2024"
+        "source": "J&K Wildlife Protection Department (Domestic Wetland Conservation Reserve — Non-Ramsar)",
+        "sourceDate": "2026-11-27"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          74.84,
-          34.21
+          74.635,
+          34.342
         ]
       }
     }

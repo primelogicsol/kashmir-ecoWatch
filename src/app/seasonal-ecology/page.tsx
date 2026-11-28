@@ -242,14 +242,20 @@ const HABITAT_CONFIGS: Record<string, {
   }
 };
 
+function SeasonalHabitatUrlSync({ onHabitat }: { onHabitat: (key: string) => void }) {
+  const searchParams = useSearchParams();
+  React.useEffect(() => {
+    const habitatParam = searchParams.get('habitat');
+    if (habitatParam) {
+      onHabitat(HABITAT_CONFIGS[habitatParam] ? habitatParam : habitatParam === 'all' ? 'all' : habitatParam);
+    }
+  }, [searchParams, onHabitat]);
+  return null;
+}
+
 function SeasonalEcologyHubContent() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const habitatParam = searchParams.get('habitat');
-
-  const [selectedHabitat, setSelectedHabitat] = useState<string>(
-    habitatParam && HABITAT_CONFIGS[habitatParam] ? habitatParam : (habitatParam === 'all' ? 'all' : (habitatParam || 'all'))
-  );
+  const [selectedHabitat, setSelectedHabitat] = useState<string>('all');
 
   const [activeSeasonTab, setActiveSeasonTab] = useState<'spring' | 'summer' | 'autumn' | 'winter'>('spring');
 
@@ -315,7 +321,7 @@ function SeasonalEcologyHubContent() {
         return desc.includes('forest') || name.includes('rhododendron') || desc.includes('chestnut') || desc.includes('conifer') || desc.includes('understory') || name.includes('spring');
       }
       if (selectedHabitat === 'alpine-meadow') {
-        return desc.includes('alpine') || name.includes('alpine') || desc.includes('meadow') || (bloom.elevationMin && bloom.elevationMin >= 2800);
+        return desc.includes('alpine') || name.includes('alpine') || desc.includes('meadow') || (bloom.elevationRange !== undefined && bloom.elevationRange.min >= 2800);
       }
       if (selectedHabitat === 'wetland') {
         return desc.includes('water') || desc.includes('lake') || name.includes('lotus') || desc.includes('wetland');
@@ -414,6 +420,9 @@ function SeasonalEcologyHubContent() {
 
   return (
     <main className="min-h-screen bg-slate-950">
+      <Suspense fallback={null}>
+        <SeasonalHabitatUrlSync onHabitat={setSelectedHabitat} />
+      </Suspense>
       {/* Hero Section */}
       <Heading
         breadcrumbs={[
@@ -977,16 +986,5 @@ function SeasonalEcologyHubContent() {
 }
 
 export default function SeasonalEcologyHubPage() {
-  return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
-        <div className="text-center">
-          <Icons.Sun className="w-8 h-8 text-emerald-400 animate-spin mx-auto mb-2" />
-          <p className="text-slate-400 text-sm">Loading seasonal ecology intelligence...</p>
-        </div>
-      </div>
-    }>
-      <SeasonalEcologyHubContent />
-    </Suspense>
-  );
+  return <SeasonalEcologyHubContent />;
 }

@@ -27,7 +27,8 @@ export async function GET() {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 6500);
 
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lngs}&daily=temperature_2m_max,precipitation_sum,wind_speed_10m_max,shortwave_radiation_sum&past_days=7&forecast_days=1&timezone=auto`;
+    // 7-day rolling window: past_days=6 + forecast_days=1 = 7 daily steps
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lngs}&daily=temperature_2m_max,precipitation_sum,wind_speed_10m_max,shortwave_radiation_sum&past_days=6&forecast_days=1&timezone=auto`;
 
     const res = await fetch(url, {
       signal: controller.signal,
@@ -41,21 +42,21 @@ export async function GET() {
       meteoResults = Array.isArray(data) ? data : [data];
     }
 
-    // Enrich waterbodies with live hydro-thermal parameters and matched satellite/lab data
+    // Enrich waterbodies with modeled meteorology and UNMODIFIED static archived satellite observations
     const enrichedWaterbodies: MonitoredWaterbody[] = primaryMonitoredWaterbodies.map((wb, idx) => {
       const locData = meteoResults[idx];
       const daily = locData?.daily;
+      const hasMeteo = Boolean(daily && Array.isArray(daily.temperature_2m_max) && daily.temperature_2m_max.length > 0);
 
-      const tempMax = daily?.temperature_2m_max?.[daily.temperature_2m_max.length - 1] ?? (wb.subRegion === 'Ladakh' ? 5.2 : 18.5);
-      const windSpeed = daily?.wind_speed_10m_max?.[daily.wind_speed_10m_max.length - 1] ?? 7.5;
-      const precip7d = daily?.precipitation_sum?.reduce((a: number, b: number) => a + (b || 0), 0) ?? 8.2;
-      const solarRad = daily?.shortwave_radiation_sum?.[daily.shortwave_radiation_sum.length - 1] ?? 16.0;
+      const tempMax = hasMeteo ? (daily.temperature_2m_max[daily.temperature_2m_max.length - 1] ?? 18.5) : 0;
+      const windSpeed = hasMeteo ? (daily.wind_speed_10m_max?.[daily.wind_speed_10m_max.length - 1] ?? 7.5) : 0;
+      const precip7d = hasMeteo ? (daily.precipitation_sum?.slice(-7).reduce((a: number, b: number) => a + (b || 0), 0) ?? 0) : 0;
+      const solarRad = hasMeteo ? (daily.shortwave_radiation_sum?.[daily.shortwave_radiation_sum.length - 1] ?? 16.0) : 0;
 
-      const isStagnant = windSpeed < 10;
-      const isWarm = tempMax > 22;
+      const isStagnant = hasMeteo && windSpeed < 10;
       const isEutrophic = wb.trophicStatus === 'Eutrophic' || wb.trophicStatus === 'Hypereutrophic';
 
-      // Correlate with static scientific catalogs
+      // Correlate with static scientific catalogs (NEVER mutate archived Sentinel-2 Chl-a by live weather!)
       const sat = satelliteObservationsCatalog.find(s => s.waterbodyId === wb.id);
       const inst = institutionalRecordsCatalog.find(i => i.waterbodyName === wb.name);
       const lab = laboratoryCyanotoxinCatalog.find(l => l.waterbodyName === wb.name);
@@ -63,7 +64,7 @@ export async function GET() {
 
       // Determine evidence-based bloom classification
       let classification: BloomClassification = wb.currentBloomClassification;
-      if (lab && lab.toxinSafetyStatus.includes('Exceedance')) {
+      if (lab && lab.chainOfCustodyVerified && lab.toxinSafetyStatus.includes('Exceedance')) {
         classification = 'Laboratory-Confirmed Harmful Bloom';
       } else if (sat && sat.surfaceScumDetected && isEutrophic) {
         classification = 'Probable Bloom';
@@ -76,22 +77,19 @@ export async function GET() {
       return {
         ...wb,
         currentBloomClassification: classification,
-        satelliteObservation: sat
-          ? {
-              ...sat,
-              chlorophyllAEstimateUgL: sat.ndciIndex > 0.2 ? Number((sat.chlorophyllAEstimateUgL + (isWarm ? 2.5 : 0)).toFixed(1)) : sat.chlorophyllAEstimateUgL,
-            }
-          : undefined,
+        satelliteObservation: sat ? { ...sat } : undefined,
         institutionalRecord: inst,
         laboratoryRecord: lab,
         forecast: fc,
-        liveMeteorology: {
-          tempMaxC: Number(tempMax.toFixed(1)),
-          windSpeedKmH: Number(windSpeed.toFixed(1)),
-          solarRadiationMjM2: Number(solarRad.toFixed(1)),
-          precip7dMm: Number(precip7d.toFixed(1)),
-          stratificationState: isStagnant ? 'Stagnant Surface Layer (<10 km/h)' : 'Well-Mixed Surface Layer',
-        },
+        liveMeteorology: hasMeteo
+          ? {
+              tempMaxC: Number(tempMax.toFixed(1)),
+              windSpeedKmH: Number(windSpeed.toFixed(1)),
+              solarRadiationMjM2: Number(solarRad.toFixed(1)),
+              precip7dMm: Number(precip7d.toFixed(1)),
+              stratificationState: isStagnant ? 'Low-Wind Surface Layer (<10 km/h NWP)' : 'Mixed Surface Layer (NWP)',
+            }
+          : undefined,
       };
     });
 
@@ -102,6 +100,7 @@ export async function GET() {
     return NextResponse.json(
       {
         success: true,
+        telemetryStatus: meteoResults.length > 0 ? 'MODEL_SCREENING' : 'UNAVAILABLE',
         waterbodies: enrichedWaterbodies,
         satelliteObservations: satelliteObservationsCatalog,
         institutionalRecords: institutionalRecordsCatalog,
@@ -116,18 +115,18 @@ export async function GET() {
           activeOcemsStps: lcmaStpEffluentCatalog.length,
           laboratoryAssays: laboratoryCyanotoxinCatalog.length,
           activeBloomAlerts,
-          lastSyncTime: timeStr,
+          lastSyncTime: meteoResults.length > 0 ? `Open-Meteo NWP (${timeStr})` : 'Archival Reference Snapshot',
         },
         meta: {
-          satelliteEngine: 'Copernicus Sentinel-2 MSI (L2A) Red-Edge NDCI (B5 705nm / B4 665nm)',
-          meteorologyEngine: 'Open-Meteo High-Resolution Solar Radiation & Thermal Stratification Grids',
+          satelliteEngine: 'Copernicus Sentinel-2 MSI (L2A) Archived Red-Edge NDCI Screening (Mishra & Mishra 2012 Polynomial, ±12 µg/L Uncalibrated)',
+          meteorologyEngine: 'Open-Meteo Gridded Solar Radiation & Surface Meteorology (~9–11 km NWP)',
           institutionalBaselines: [
-            'CPCB National Water Quality Monitoring Programme (NWQMP)',
-            'J&K Pollution Control Committee (JKPCC)',
-            'J&K Lakes Conservation and Management Authority (LCMA OCEMS)',
-            'University of Kashmir Department of Environmental Science',
+            'CPCB National Water Quality Monitoring Programme (NWQMP Published Archives)',
+            'J&K Pollution Control Committee (JKPCC Published Reports)',
+            'J&K Lakes Conservation and Management Authority (LCMA — Published Audit / Design Capacity Reference, Non-Live)',
+            'Published Limnological Literature (University of Kashmir / Peer-Reviewed Studies)',
           ],
-          disclaimer: 'Satellite Chl-a is an optical biomass proxy and does NOT prove cyanotoxin presence. Laboratory assays (ELISA / HPLC) remain mandatory for public health certification.',
+          disclaimer: 'Satellite Chl-a is an uncalibrated optical biomass proxy (±12 µg/L uncertainty) tied to archived overpass dates and does NOT prove cyanotoxin presence. Laboratory ELISA/LC-MS cyanotoxin feed is pending institutional MoU.',
           timestamp: now.toISOString(),
         },
       },

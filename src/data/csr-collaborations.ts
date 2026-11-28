@@ -3,7 +3,7 @@
  * Evidence-Based Environmental Intelligence & Research Funding Directory
  * 
  * Reviewed November 2026 for Statutory Compliance, MCA Schedule VII Alignment,
- * U.S. 501(c)(3) Non-Conduit Governance, and Cross-Border FCRA Regulatory Standards.
+ * U.S. Non-Commercial Philanthropic Trust Governance, and Cross-Border FCRA Regulatory Standards.
  */
 
 export interface FundingPathway {
@@ -95,10 +95,10 @@ export const FUNDING_PATHWAYS: FundingPathway[] = [
   {
     id: 'us-international-philanthropy',
     name: 'U.S. & International Philanthropy',
-    regulatoryJurisdiction: 'Internal Revenue Service (IRS), United States & Ministry of Home Affairs (MHA), India',
-    governingStatute: 'U.S. Internal Revenue Code Section 501(c)(3) & Indian Foreign Contribution (Regulation) Act (FCRA) 2010',
-    recipientEligibility: 'Dr. Kumar Foundation USA / Kumar Trust USA (501(c)(3) public charity status pending / documented agreement) exercising independent charitable discretion. Cross-border disbursements to India require receiving partners to hold an active MHA FCRA registration or project-specific prior permission.',
-    taxDeductibility: 'U.S. federal income tax deductions are available for qualifying gifts to eligible U.S. 501(c)(3) entities. Contributions must not be ear-marked or designated as a pass-through conduit under IRS Rev. Rul. 63-252.',
+    regulatoryJurisdiction: 'United States Philanthropic Trust Governance & Ministry of Home Affairs (MHA), India',
+    governingStatute: 'Applicable U.S. Philanthropic Trust / Non-Profit Law & Indian Foreign Contribution (Regulation) Act (FCRA) 2010',
+    recipientEligibility: 'Dr. Kumar Foundation USA / Kumar Trust USA exercising independent philanthropic stewardship under documented grant agreements (no unverified statutory tax-exempt determination is claimed on this portal). Cross-border disbursements to India require receiving partners to hold an active MHA FCRA registration or project-specific prior permission.',
+    taxDeductibility: 'Prospective donors must verify applicable tax treatment directly with independent legal/tax counsel and the receiving entity prior to disbursement; contributions are never accepted as earmarked pass-through conduits.',
     compliancePrerequisites: [
       'Independent board approval and charitable expenditure oversight by the U.S. foundation.',
       'Documented grant agreement between the U.S. entity and the executing Indian scientific partner.',
@@ -514,6 +514,6 @@ export const SCIENTIFIC_INDEPENDENCE_COVENANT = {
     'Zero Commercial Editorial Influence: Corporate sponsorship, philanthropic funding, and research grants provide funding for equipment, logistics, and data infrastructure. Sponsors possess zero authority or editorial rights to alter, suppress, or influence scientific observations, water quality readings, hazard alerts, or biodiversity threat indexes.',
     'FAIR Open Science Standard: All telemetry, sensor logs, and species censuses generated through sponsored programs must be published openly under the FAIR principles (Findable, Accessible, Interoperable, and Reusable) for public benefit.',
     'SEBI BRSR Scope Disclosure: Kashmir EcoWatch produces raw, verified, and transparent environmental evidence supporting corporate sustainability reporting. Kashmir EcoWatch is an open research platform and does not claim statutory status as an accredited SEBI ESG assurance provider under the March 28, 2025 circular.',
-    'Non-Conduit Policy: All funding agreements strictly adhere to IRS non-conduit rules for U.S. 501(c)(3) entities and Indian Foreign Contribution Regulation Act (FCRA) provisions, ensuring full statutory compliance across international borders.'
+    'Non-Conduit Policy: All cross-border funding agreements strictly prohibit earmarked pass-through conduits and adhere to applicable U.S. philanthropic governance standards and Indian Foreign Contribution Regulation Act (FCRA) provisions.'
   ]
 };

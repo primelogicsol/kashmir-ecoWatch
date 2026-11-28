@@ -61,22 +61,20 @@ import {
   FileSpreadsheet
 } from 'lucide-react';
 
-function EnvironmentalPilPortalContent() {
+function PilUrlTabSync({ onTabChange }: { onTabChange: (tab: string) => void }) {
   const searchParams = useSearchParams();
-  const router = useRouter();
-
-  // Tab State: default to 'overview'
-  const rawTab = searchParams.get('tab') || 'overview';
-  const initialTab = rawTab === 'data-sources' ? 'overview' : rawTab;
-  const [activeTab, setActiveTab] = useState<string>(initialTab);
-
-  // Synchronize tab state with URL query parameters
   useEffect(() => {
     const tabParam = searchParams.get('tab');
-    if (tabParam && tabParam !== activeTab) {
-      setActiveTab(tabParam === 'data-sources' ? 'overview' : tabParam);
+    if (tabParam) {
+      onTabChange(tabParam === 'data-sources' ? 'overview' : tabParam);
     }
-  }, [searchParams, activeTab]);
+  }, [searchParams, onTabChange]);
+  return null;
+}
+
+function EnvironmentalPilPortalContent() {
+  // Tab State: default synchronously to 'overview' so full SSR HTML pre-renders with zero Suspense bailout
+  const [activeTab, setActiveTab] = useState<string>('overview');
 
   // Filter States for Inventory
   const [selectedRegion, setSelectedRegion] = useState<string>('ALL');
@@ -278,6 +276,9 @@ function EnvironmentalPilPortalContent() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+      <Suspense fallback={null}>
+        <PilUrlTabSync onTabChange={setActiveTab} />
+      </Suspense>
       {/* ── 1. MODULE HERO HEADER ─── */}
       <Heading
         label="KEW · RESOURCES / ENVIRONMENTAL JUDICIAL INTELLIGENCE"
@@ -779,9 +780,13 @@ function EnvironmentalPilPortalContent() {
                             {c.courtRecordedQuantitativeClaims.length} Court Claims Audited
                           </span>
                         )}
-                        {c.cnrNumber && (
+                        {c.cnrNumber ? (
                           <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-slate-950 text-slate-400 border border-slate-800 hidden sm:inline">
                             CNR: {c.cnrNumber}
+                          </span>
+                        ) : (
+                          <span className="text-[10px] px-2 py-0.5 rounded-[4px] bg-amber-950/50 text-amber-300/90 border border-amber-800/40 hidden sm:inline">
+                            Pending Official Court Registry Verification
                           </span>
                         )}
                         <span className="text-[10px] px-2 py-0.5 rounded-[4px] bg-slate-800 text-slate-300 border border-slate-700">
@@ -1647,9 +1652,13 @@ function EnvironmentalPilPortalContent() {
                   <span className="font-mono text-xs font-bold text-emerald-400 bg-emerald-950/80 px-2.5 py-0.5 rounded-[4px] border border-emerald-800/40">
                     {selectedCase.caseNumber}
                   </span>
-                  {selectedCase.cnrNumber && (
+                  {selectedCase.cnrNumber ? (
                     <span className="font-mono text-xs text-slate-400 bg-slate-950 px-2 py-0.5 rounded-[4px] border border-slate-800">
                       CNR: {selectedCase.cnrNumber}
+                    </span>
+                  ) : (
+                    <span className="text-xs text-amber-300 bg-amber-950/60 px-2.5 py-0.5 rounded-[4px] border border-amber-700/50">
+                      Pending Official Court Registry Verification
                     </span>
                   )}
                   <span className="text-xs px-2.5 py-0.5 rounded-[4px] bg-slate-800 text-slate-200">
@@ -1880,17 +1889,38 @@ function EnvironmentalPilPortalContent() {
 
 export default function EnvironmentalPilPortalPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center">
-          <div className="text-center space-y-3">
-            <Scale className="w-8 h-8 text-emerald-400 animate-pulse mx-auto" />
-            <p className="text-sm font-semibold text-slate-300">Loading Environmental PIL Portal &amp; Judicial Inventory...</p>
-          </div>
-        </div>
-      }
-    >
+    <>
+      {/* Complete SSR-indexed Judicial Docket Register for non-JS crawlers and archival verification */}
+      <section className="sr-only" aria-label="Complete Environmental PIL Judicial Docket Inventory">
+        <h2>Western Himalayan Environmental Public Interest Litigation (PIL) Judicial Docket ({ENVIRONMENTAL_CASES_DATA.length} Cases)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Case Number</th>
+              <th>Title</th>
+              <th>Jurisdiction</th>
+              <th>Region</th>
+              <th>Environmental Asset</th>
+              <th>Court Registry / CNR Status</th>
+              <th>Judicial Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ENVIRONMENTAL_CASES_DATA.map((c) => (
+              <tr key={c.id}>
+                <td>{c.caseNumber}</td>
+                <td>{c.caseTitle}</td>
+                <td>{c.jurisdiction}</td>
+                <td>{c.region}</td>
+                <td>{c.environmentalAsset}</td>
+                <td>{c.cnrNumber || 'Pending Official Court Registry Verification'}</td>
+                <td>{c.currentJudicialStatus}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
       <EnvironmentalPilPortalContent />
-    </Suspense>
+    </>
   );
 }

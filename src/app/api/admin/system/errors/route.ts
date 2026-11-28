@@ -1,14 +1,15 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { telemetryStore, IncidentStatus } from '@/lib/error-telemetry';
+import { verifyAdminRequest } from '@/lib/seo/admin-session';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   try {
-    const adminKey = request.headers.get('x-admin-key');
-    if (adminKey !== 'KEW-Admin-2026!') {
+    const authCheck = await verifyAdminRequest(request);
+    if (!authCheck.authorized) {
       return NextResponse.json(
-        { success: false, error: 'Unauthorized: Administrator authentication key required.' },
+        { success: false, error: 'Unauthorized: Active administrator session required.' },
         { status: 401 }
       );
     }
@@ -105,12 +106,12 @@ export async function GET(request: Request) {
   }
 }
 
-export async function PATCH(request: Request) {
+export async function PATCH(request: NextRequest) {
   try {
-    const adminKey = request.headers.get('x-admin-key');
-    if (adminKey !== 'KEW-Admin-2026!') {
+    const authCheck = await verifyAdminRequest(request);
+    if (!authCheck.authorized) {
       return NextResponse.json(
-        { success: false, error: 'Unauthorized: Administrator authentication key required.' },
+        { success: false, error: 'Unauthorized: Active administrator session required.' },
         { status: 401 }
       );
     }

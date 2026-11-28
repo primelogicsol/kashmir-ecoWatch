@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Public Editor & Editorial Ombudsperson — Himalayan Dispatch',
   description:
-    'Independent Office of the Public Editor & Editorial Ombudsperson evaluating reader concerns, fairness, conflicts of interest, and charter compliance.',
+    'Public Editor & Editorial Accountability docket evaluating reader concerns, fairness, conflicts of interest, right-of-reply standards, and charter compliance.',
   canonicalPath: '/himalayan-dispatch/public-editor',
 });
 
@@ -32,14 +32,14 @@ export default function PublicEditorPage() {
 
         <header className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b items-start" style={{ borderColor: 'var(--hd-rule-strong)' }}>
           <div className="lg:col-span-8 space-y-4">
-            <p className="hd-kicker">INDEPENDENT READER ACCOUNTABILITY</p>
+            <p className="hd-kicker">READER ACCOUNTABILITY &amp; STANDARDS REVIEW</p>
             <h1 className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.02]">
               Public Editor &amp; Ombudsperson
             </h1>
             <p className="hd-font-body text-lg sm:text-xl leading-relaxed" style={{ color: 'var(--hd-fg-secondary)' }}>
-              Functionally independent of routine commissioning and line editing, the Office of the
-              Public Editor examines serious reader petitions concerning fairness, undisclosed
-              conflicts of interest, right-of-reply compliance, and adherence to the{' '}
+              Dedicated to reader accountability outside routine story commissioning, the Public Editor
+              mandate examines substantive reader petitions concerning fairness, undisclosed conflicts
+              of interest, right-of-reply compliance, automated synthesis disclosures, and adherence to the{' '}
               <Link href={HD_ROUTES.editorialCharter} className="underline">
                 Editorial Charter
               </Link>
@@ -53,11 +53,17 @@ export default function PublicEditorPage() {
           >
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4" style={{ color: 'var(--hd-copper)' }} />
-              <span className="hd-kicker">STRUCTURAL INDEPENDENCE</span>
+              <span className="hd-kicker">DOCKET GOVERNANCE DISCLOSURE</span>
             </div>
             <p className="hd-font-body text-sm leading-relaxed" style={{ color: 'var(--hd-fg-secondary)' }}>
-              The Public Editor does not preview manuscripts prior to publication and may publish
-              independent assessments where systemic standards issues arise.
+              Petitions submitted below are recorded in the Himalayan Dispatch editorial accountability
+              intake queue (`public_editor_petition`) for review under the Editorial Charter. Substantiated
+              factual or fairness findings result in timestamped entries appended directly to the article
+              and the{' '}
+              <Link href={HD_ROUTES.corrections} className="underline">
+                Public Corrections Register
+              </Link>
+              .
             </p>
           </aside>
         </header>
@@ -77,11 +83,11 @@ export default function PublicEditorPage() {
 
         <EditorialInquiryFormClient
           category="public_editor_petition"
-          kicker="INDEPENDENT OMBUDSPERSON DOCKET"
-          heading="Petition the Office of the Public Editor"
-          description="Use this docket for substantive ethical, fairness, right-of-reply, or charter-compliance reviews. For routine typographical or numerical corrections, use Corrections & Clarifications."
+          kicker="ACCOUNTABILITY & OMBUDSPERSON DOCKET"
+          heading="Submit a Petition for Editorial Charter Review"
+          description="Use this docket for substantive ethical, fairness, right-of-reply, or charter-compliance reviews. Do not include confidential whistleblower identities in web forms. For typographical or numerical corrections, use Corrections & Clarifications."
           showArticleUrlField
-          submitLabel="Submit Petition to Public Editor"
+          submitLabel="Submit Accountability Petition"
         />
       </div>
     </div>

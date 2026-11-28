@@ -103,15 +103,22 @@ export async function POST(
   }
 
   if (action === 'mint_token_with_passcode') {
+    const { checkAuthRateLimit, verifyWebinarAdminPasscode } = await import('@/lib/seo/admin-session');
+    const rate = checkAuthRateLimit(request, 'webinar-room-mint', 10, 15 * 60 * 1000);
+    if (!rate.allowed) {
+      return NextResponse.json(
+        { ok: false, code: 'RATE_LIMITED', error: 'Too many passcode attempts. Please retry later.' },
+        { status: 429, headers: { 'Retry-After': String(rate.retryAfterSeconds) } }
+      );
+    }
     const passcode = String(body.passcode || '').trim();
-    const expected =
-      process.env.WEBINAR_ADMIN_PASSCODE || process.env.ADMIN_PASSCODE || 'KEW-Admin-2026!';
     const safeAdmin = await verifyAdminRequest(request).catch(() => ({
       authorized: false,
       actor: 'anonymous',
     }));
+    const passcodeCheck = verifyWebinarAdminPasscode(passcode);
 
-    if (!safeAdmin.authorized && (!passcode || passcode !== expected)) {
+    if (!safeAdmin.authorized && !passcodeCheck.valid) {
       return NextResponse.json(
         {
           ok: false,
@@ -273,12 +280,18 @@ export async function POST(
   }
 
   const runtime = getLiveRoomRuntime(roomId, requestedEnv);
-  const existingPeerId =
+  let existingPeerId =
     verifiedTokenClaims?.roomId === roomId
       ? verifiedTokenClaims.peerId
       : body.peerId && typeof body.peerId === 'string'
       ? body.peerId.slice(0, 48)
       : `peer_${crypto.randomBytes(5).toString('hex')}`;
+
+  // Prevent unauthenticated clients from colliding with an existing verified/privileged participant peerId
+  const candidateExisting = runtime.participants.get(existingPeerId);
+  if (candidateExisting && candidateExisting.isVerifiedIdentity && !isVerifiedIdentity) {
+    existingPeerId = `peer_${crypto.randomBytes(5).toString('hex')}`;
+  }
 
   const existingParticipant = runtime.participants.get(existingPeerId);
 

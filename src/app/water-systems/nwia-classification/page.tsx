@@ -444,9 +444,9 @@ function OverviewTab({
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-xl font-bold text-white flex items-center gap-2">
             <Mountain className="w-5 h-5 text-slate-400" />
-            High Altitude Lakes of Kashmir
+            High Altitude Wetlands (J&amp;K + Ladakh NWIA Baseline)
           </h3>
-          <Badge variant="info" size="lg">{NWIA_HIGH_ALTITUDE_LAKES_SUMMARY.totalCount.toLocaleString()} lakes</Badge>
+          <Badge variant="info" size="lg">{NWIA_HIGH_ALTITUDE_LAKES_SUMMARY.totalCount.toLocaleString()} wetlands (~315 Kashmir Valley)</Badge>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
           {Object.entries(NWIA_HIGH_ALTITUDE_LAKES_SUMMARY.districts).map(([district, data]: [string, any]) => (
@@ -719,11 +719,11 @@ function LakesTab({ searchTerm, setSearchTerm, filteredLakes, getClassColor }: a
               <span>{lake.district}</span>
             </div>
 
-            {lake.area && (
+            {(lake.areaHa || lake.area) && (
               <div className="grid grid-cols-2 gap-3 mb-4">
                 <div className="p-3 rounded-lg bg-slate-800/50">
                   <div className="text-xs text-slate-500">Area</div>
-                  <div className="text-lg font-bold text-white">{lake.area.toLocaleString()} ha</div>
+                  <div className="text-lg font-bold text-white">{(lake.areaHa ?? lake.area).toLocaleString()} ha</div>
                 </div>
                 <div className="p-3 rounded-lg bg-slate-800/50">
                   <div className="text-xs text-slate-500">Elevation</div>

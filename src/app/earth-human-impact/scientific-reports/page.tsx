@@ -27,57 +27,57 @@ export default function ScientificReportsRegistryPage() {
   const reports = [
     {
       title: 'Decadal Climate Shifts in the Kashmir Himalaya: Cryospheric and Precipitation Trends',
-      authors: 'IMD Climatology Cell & Himalayan Cryosphere Group',
+      authors: 'KEW Desk Synthesis — Anchored in IMD Synoptic Climatology & Peer-Reviewed Literature',
       year: '2025',
-      type: 'Climatological Monograph',
-      confidence: 'Grade A (Station Verified)',
-      description: 'Comprehensive analysis of 40-year daily temperature and precipitation records from 14 synoptic stations, establishing the +1.42°C warming trend and 18% winter chill hour decline.',
-      citations: '48 Peer Citations'
+      type: 'Desk-Synthesized Climatology Brief',
+      confidence: 'Secondary Literature & Station Synthesis',
+      description: 'Desk synthesis of published 40-year daily temperature and precipitation trend analyses across regional synoptic stations, examining elevation-dependent warming and winter chill-hour decline.',
+      citations: 'External Peer Review Pending'
     },
     {
-      title: 'State of Forests in Jammu & Kashmir: Remote Sensing Canopy Density Audit',
-      authors: 'Forest Survey of India (FSI) & Department of Ecology',
+      title: 'State of Forests in Jammu & Kashmir: Remote Sensing Canopy Density Synthesis',
+      authors: 'Referenced Statutory Source: Forest Survey of India (FSI ISFR)',
       year: '2024',
-      type: 'Statutory Biennial Audit',
-      confidence: 'Grade A (1:50,000 Remote Sensing)',
-      description: 'LISS-III and Sentinel-2 calibrated forest cover assessment examining very dense canopy attrition and fragmentation corridors across 10 Kashmir valley forest divisions.',
-      citations: 'Statutory Baseline'
+      type: 'Statutory Biennial Reference',
+      confidence: 'Statutory Agency Baseline (Third-Party Rights Retained)',
+      description: 'Summary of LISS-III and Sentinel-2 calibrated forest cover assessments examining canopy density classes and fragmentation corridors across Kashmir Valley forest divisions.',
+      citations: 'Statutory Reference'
     },
     {
       title: 'CAG Performance Audit on Conservation of Waterbodies & Wetlands in J&K',
-      authors: 'Comptroller and Auditor General of India',
+      authors: 'Referenced Statutory Source: Comptroller and Auditor General of India',
       year: '2025',
-      type: 'Statutory Audit Report No. 3',
-      confidence: 'Grade A (Government Audit)',
-      description: 'Official inspection uncovering 48% contraction of flood-retention basins, sewage diversion failures, and unpermitted earth-filling across Hokersar, Anchar, and Wular wetlands.',
+      type: 'Statutory Audit Report No. 4 of 2025',
+      confidence: 'Government Statutory Audit (Report ID 125068)',
+      description: 'Official statutory performance audit examining flood-retention basin contraction, sewage interception gaps, de-weeding seasonality, and wetland encroachment across Dal–Nigeen and Wular.',
       citations: 'Statutory Audit'
     },
     {
-      title: 'Geomorphic Impact of Quaternary Karewa Strip-Mining in Central Kashmir',
-      authors: 'Centre of Research for Development (CORD) & GSI',
+      title: 'Geomorphic Impact of Quaternary Karewa Excavation in Central Kashmir',
+      authors: 'KEW Desk Synthesis — Anchored in Quaternary Geology Literature & Sentinel-2 Archives',
       year: '2025',
-      type: 'Earth Systems Monograph',
-      confidence: 'Grade B+ (Field Corroborated)',
-      description: 'Quantifying 42.6 km² of Pleistocene Karewa lacustrine plateau excavation for railway embankment fill, tracking soil loss, saffron decline, and sediment yields.',
-      citations: '32 Peer Citations'
+      type: 'Desk-Synthesized Earth Systems Dossier',
+      confidence: 'Satellite & Published Literature Synthesis',
+      description: 'Desk synthesis of Pleistocene Karewa fluvio-lacustrine plateau excavation footprints, soil-loss susceptibility, GI saffron tableland vulnerability, and tributary sediment yields.',
+      citations: 'External Peer Review Pending'
     },
     {
       title: 'Riverbed Mineral Extraction and Channel Incision Dynamics in Jhelum Tributaries',
-      authors: 'National Green Tribunal Expert Oversight Committee',
+      authors: 'KEW Desk Synthesis — Anchored in NGT Tributary Proceedings & Fluvial Literature',
       year: '2026',
-      type: 'Tribunal Technical Report',
-      confidence: 'Grade A (Bathymetric Feeds)',
-      description: 'Hydrographic surveying of 118 km of riverbed in Doodhganga, Rambiara, and Vaishaw streams showing widespread incision exceeding statutory 1-meter extraction depths.',
-      citations: 'Legal Benchmark'
+      type: 'Desk-Synthesized Fluvial Dossier',
+      confidence: 'Judicial Docket & Remote Sensing Synthesis',
+      description: 'Documentary synthesis of National Green Tribunal compliance records and fluvial geomorphic studies across Doodhganga, Rambiara, and Vishow gravel-extraction reaches.',
+      citations: 'Judicial & Literature Synthesis'
     },
     {
-      title: 'Urban Heat Island Microclimate Mapping of Srinagar Metropolitan Area',
-      authors: 'Department of Geoinformatics & Town Planning Organization',
+      title: 'Urban Heat Island Microclimate Screening of Srinagar Metropolitan Area',
+      authors: 'KEW Desk Synthesis — Anchored in Landsat 8/9 TIRS Surface Temperature Archives',
       year: '2025',
-      type: 'Urban Science Dossier',
-      confidence: 'Grade A (Landsat TIRS LST)',
-      description: 'Multi-temporal thermal infrared assessment documenting +3.8°C surface temperature differential in downtown core relative to peri-urban agricultural perimeter.',
-      citations: '24 Peer Citations'
+      type: 'Desk-Synthesized Urban Climate Dossier',
+      confidence: 'Landsat TIRS Remote Sensing Retrieval',
+      description: 'Multi-temporal thermal infrared screening of land surface temperature differentials between Srinagar’s impervious urban core and peri-urban vegetated/lacustrine margins.',
+      citations: 'External Peer Review Pending'
     }
   ];
 
@@ -85,11 +85,11 @@ export default function ScientificReportsRegistryPage() {
     <div className="min-h-screen bg-slate-950 text-slate-100">
       {/* Canonical Institutional Hero Section */}
       <Heading
-        label="Peer-Reviewed Evidence Dossiers • Western Himalaya"
+        label="Desk-Synthesized Research Dossiers (External Peer Review Pending)"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Earth & Human Impact', href: '/earth-human-impact' },
-          { label: 'Peer-Reviewed Scientific Reports & Dossiers' }
+          { label: 'Desk-Synthesized Research Dossiers' }
         ]}
         icon={<FileText className="w-6 h-6 text-teal-400" />}
         title={
@@ -97,12 +97,12 @@ export default function ScientificReportsRegistryPage() {
             <KewBrandIdentity />
             <div className="leading-[1.15] overflow-visible pr-8">
               <span className="inline-block bg-gradient-to-r from-teal-400 via-emerald-300 to-cyan-400 bg-clip-text text-transparent pr-6 tracking-normal">
-                Peer-Reviewed Scientific Reports & Dossiers
+                Desk-Synthesized Research Dossiers (External Peer Review Pending)
               </span>
             </div>
           </div>
         }
-        subtitle="Every metric, boundary, and threshold in the Earth & Human Impact Intelligence module is derived from peer-reviewed scientific publications, statutory government audits, and spaceborne telemetry."
+        subtitle="Desk-synthesized research summaries integrating published scientific literature, statutory government audits, and spaceborne remote-sensing retrievals — transparently distinguished from externally peer-reviewed primary monographs."
         images={[
           '/images/protected-network.png',
           '/images/bear.png',

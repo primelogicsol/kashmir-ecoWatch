@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import pool from '@/lib/db';
+import { verifyAdminRequest } from '@/lib/seo/admin-session';
 
 export interface SubmissionPayload {
   title: string;
@@ -11,9 +12,16 @@ export interface SubmissionPayload {
   details: string;
 }
 
-// GET /api/submissions: Fetch submissions (filtered by email or all for admin)
+// GET /api/submissions: Fetch submissions (Admin session required to protect contributor PII)
 export async function GET(req: NextRequest) {
   try {
+    const authCheck = await verifyAdminRequest(req);
+    if (!authCheck.authorized) {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized: Administrator session required to list contributor submissions.' },
+        { status: 401 }
+      );
+    }
     const { searchParams } = new URL(req.url);
     const email = searchParams.get('email');
 
@@ -113,10 +121,10 @@ export async function POST(req: NextRequest) {
 // PATCH /api/submissions: Admin approves or rejects a submission (Protected)
 export async function PATCH(req: NextRequest) {
   try {
-    const adminKey = req.headers.get('x-admin-key');
-    if (adminKey !== 'KEW-Admin-2026!') {
+    const authCheck = await verifyAdminRequest(req);
+    if (!authCheck.authorized) {
       return NextResponse.json(
-        { success: false, error: 'Unauthorized: Admin authentication key required.' },
+        { success: false, error: 'Unauthorized: Active administrator session required.' },
         { status: 401 }
       );
     }

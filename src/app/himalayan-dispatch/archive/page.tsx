@@ -11,6 +11,8 @@ import {
   HD_ROUTES,
   toCanonicalIssueSlug,
 } from '@/lib/himalayan-dispatch-routes';
+import { KewContentShare } from '@/components/common/KewContentShare';
+import { isHimalayanDispatchMonograph } from '@/lib/sharing/kew-content-sharing';
 
 export const dynamic = 'force-dynamic';
 
@@ -142,6 +144,22 @@ export default function HimalayanDispatchArchivePage() {
                       </span>
                       <ArrowRight className="w-3.5 h-3.5" style={{ color: 'var(--hd-copper)' }} />
                     </Link>
+
+                    {ed.status !== 'forthcoming' && (
+                      <KewContentShare
+                        variant="editorial-button"
+                        label={
+                          isHimalayanDispatchMonograph(ed)
+                            ? 'Share This Monograph'
+                            : 'Share This Issue'
+                        }
+                        title={`${ed.title} — ${ed.volumeLabel} | Himalayan Dispatch`}
+                        description={ed.subtitle}
+                        canonicalPath={targetHref}
+                        editionStatus={ed.status}
+                        isPublished
+                      />
+                    )}
 
                     {ed.status === 'current' && (
                       <Link href={HD_ROUTES.currentIssue} className="hd-kicker hover:underline">

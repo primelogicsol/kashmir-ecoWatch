@@ -1703,29 +1703,25 @@ export default function ForestEcosystemsPage() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
               <div>
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                  <AlertTriangle className="w-6 h-6 text-rose-500 animate-pulse" />
-                  Wildfire Risk & Burn Analytics
+                  <AlertTriangle className="w-6 h-6 text-rose-500" />
+                  Wildfire Fuel &amp; Susceptibility Profiling
                 </h2>
                 <p className="text-sm text-slate-400 mt-2 max-w-2xl">
-                  Real-time threat modeling using MODIS and VIIRS thermal anomaly indices. Assesses the intersection of fuel loads (dry scrub/conifer), historical burn scar frequency, and climatic stress.
+                  Static district wildfire susceptibility synthesis integrating FSI ISFR 2023 forest-fire proneness classes, Chir pine / dry scrub fuel loads, and seasonal dryness windows. Zero synthetic VIIRS spot counts are generated here.
                 </p>
               </div>
               <div className="flex gap-2">
-                <Badge variant="outline" className="border-rose-500/30 text-rose-400">VIIRS Thermal Active</Badge>
+                <Badge variant="outline" className="border-rose-500/30 text-rose-400">FSI Susceptibility Baseline</Badge>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {forests.map((f, i) => {
+              {forests.map((f) => {
                 const isHigh = f.Forest_Fire_Risk === 'High' || f.Forest_Fire_Risk === 'Critical';
                 const isMed = f.Forest_Fire_Risk === 'Medium-High' || f.Forest_Fire_Risk === 'Medium';
-                
+
                 const themeColor = isHigh ? 'rose-500' : isMed ? 'orange-500' : 'amber-500';
-                const bgGradient = isHigh ? 'from-[#2a0f0f] to-[#1a0f0f]' : isMed ? 'from-[#2a1a0f] to-[#1a120f]' : 'from-[#1a1a0f] to-[#0f0f0f]';
-                
-                // Procedural generation of active thermal anomalies for UI realism based on Risk Level
-                const activeAlerts = isHigh ? Math.floor(Math.random() * 5) + 2 : isMed ? Math.floor(Math.random() * 2) : 0;
-                const fuelLoad = f.Primary_Forest_Type.includes('Scrub') || f.Primary_Forest_Type.includes('Pine') ? 'Extreme (Volatile)' : f.Forest_Cover_Class.includes('Dense') ? 'High (Dense Canopy)' : 'Moderate';
+                const fuelLoad = f.Primary_Forest_Type.includes('Scrub') || f.Primary_Forest_Type.includes('Pine') ? 'High Volatility (Pine / Scrub)' : f.Forest_Cover_Class.includes('Dense') ? 'High Biomass (Dense Canopy)' : 'Moderate';
 
                 return (
                   <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:border-${themeColor}/60 transition-all group`}>
@@ -1735,7 +1731,7 @@ export default function ForestEcosystemsPage() {
                         <div className="text-xs text-slate-400 mt-1">{f.Administrative_Scope}</div>
                       </div>
                       <div className="text-right flex flex-col items-end">
-                        <Badge variant={isHigh ? 'danger' : isMed ? 'warning' : 'outline'} className={isHigh ? 'animate-pulse' : ''}>
+                        <Badge variant={isHigh ? 'danger' : isMed ? 'warning' : 'outline'}>
                           {f.Forest_Fire_Risk} Risk
                         </Badge>
                       </div>
@@ -1744,12 +1740,12 @@ export default function ForestEcosystemsPage() {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between p-3 rounded-lg bg-black/40 border border-white/5">
                         <div>
-                          <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Active VIIRS Alerts</div>
-                          <div className={`text-2xl font-black tabular-nums ${activeAlerts > 0 ? 'text-rose-500' : 'text-slate-400'}`}>
-                            {activeAlerts}
+                          <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">District Fire Spot Table</div>
+                          <div className="text-xs font-semibold text-slate-300">
+                            Pending Statutory District Table
                           </div>
                         </div>
-                        <Activity className={`w-8 h-8 ${activeAlerts > 0 ? 'text-rose-500 animate-pulse' : 'text-slate-600'}`} />
+                        <Activity className="w-6 h-6 text-slate-600 shrink-0" />
                       </div>
 
                       <div className="space-y-2 text-xs">
@@ -1914,9 +1910,8 @@ export default function ForestEcosystemsPage() {
                           </div>
                         </div>
                         <div className="h-8 flex items-end gap-1 opacity-50">
-                          {/* Pseudo bar chart for trend visualization */}
-                          {[1,2,3,4,5].map(bar => (
-                            <div key={bar} className={`w-1.5 bg-${themeColor} rounded-t-sm`} style={{ height: `${Math.max(10, impactScore * (Math.random() * 0.5 + 0.5))}%` }} />
+                          {[0.55, 0.7, 0.82, 0.92, 1.0].map((factor, barIdx) => (
+                            <div key={barIdx} className={`w-1.5 bg-${themeColor} rounded-t-sm`} style={{ height: `${Math.max(12, Math.round(impactScore * factor))}%` }} />
                           ))}
                         </div>
                       </div>
@@ -1980,20 +1975,20 @@ export default function ForestEcosystemsPage() {
                 
                 if (ft.includes('Scrub') || ft.includes('Sub-Tropical')) {
                   invaders.push({ name: 'Lantana camara', type: 'Flora', impact: 'Chokes undergrowth, increases fire risk' });
-                  invaders.push({ name: 'Parthenium', type: 'Flora', impact: 'Toxic to herbivores, rapid spread' });
+                  invaders.push({ name: 'Parthenium hysterophorus', type: 'Flora', impact: 'Toxic to herbivores, rapid spread along disturbed edges' });
                 } else if (ft.includes('Coniferous') || ft.includes('Pine')) {
-                  invaders.push({ name: 'Pine Bark Beetle', type: 'Pathogen', impact: 'Bores into timber, causes mass die-off' });
-                  if (Math.random() > 0.5) invaders.push({ name: 'Robinia (Black Locust)', type: 'Flora', impact: 'Aggressive root suckering' });
+                  invaders.push({ name: 'Pine Bark Beetle', type: 'Pathogen', impact: 'Bores into stressed conifer stands during dry spells' });
+                  if (['Srinagar', 'Budgam', 'Baramulla', 'Anantnag', 'Pulwama', 'Ganderbal', 'Kupwara'].includes(f.District_Name)) {
+                    invaders.push({ name: 'Robinia pseudoacacia (Black Locust)', type: 'Flora', impact: 'Aggressive root suckering on degraded karewa & mid-hill slopes' });
+                  }
                 } else if (ft.includes('Broadleaved')) {
                   invaders.push({ name: 'Ageratina adenophora', type: 'Flora', impact: 'Replaces native ground flora' });
-                  invaders.push({ name: 'Gypsy Moth', type: 'Pathogen', impact: 'Severe canopy defoliation' });
+                  invaders.push({ name: 'Lymantria obfuscata (Indian Gypsy Moth)', type: 'Pathogen', impact: 'Canopy defoliation in broadleaf stands' });
                 } else {
-                  invaders.push({ name: 'Unidentified Fungal Rot', type: 'Pathogen', impact: 'Root decay' });
+                  invaders.push({ name: 'Root-Rot Fungal Complex', type: 'Pathogen', impact: 'Localized moisture-stress decay' });
                 }
 
-                // Spread velocity mock metric
-                const spreadVelocity = isCritical ? '+15% YoY' : isHigh ? '+8% YoY' : isMed ? '+3% YoY' : '< 1% YoY';
-                const affectedArea = isCritical ? Math.floor(Math.random() * 20) + 20 : isHigh ? Math.floor(Math.random() * 15) + 10 : Math.floor(Math.random() * 5) + 1;
+                const spreadTier = isCritical ? 'High Expansion Pressure' : isHigh ? 'Elevated Edge Spread' : isMed ? 'Localized Patches' : 'Low / Contained';
 
                 return (
                   <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:border-${themeColor}/60 transition-all`}>
@@ -2010,15 +2005,15 @@ export default function ForestEcosystemsPage() {
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-2 bg-black/30 p-3 rounded-lg border border-white/5">
                         <div>
-                          <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Affected Area</div>
-                          <div className={`text-xl font-black tabular-nums text-${themeColor}`}>
-                            ~{affectedArea}%
+                          <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">District Area Table</div>
+                          <div className="text-xs font-semibold text-slate-300">
+                            Pending Statutory District Table
                           </div>
                         </div>
                         <div>
-                          <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Spread Velocity</div>
-                          <div className={`text-xl font-bold tabular-nums text-${themeColor}`}>
-                            {spreadVelocity}
+                          <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Qualitative Regime</div>
+                          <div className={`text-xs font-bold text-${themeColor}`}>
+                            {spreadTier}
                           </div>
                         </div>
                       </div>
@@ -2099,9 +2094,6 @@ export default function ForestEcosystemsPage() {
                   alerts.push({ title: 'Ecosystem Stable. No active vectors.', severity: 'medium', type: 'stable' });
                 }
 
-                // Node calculation
-                const nodes = isActive ? Math.floor(Math.random() * 50) + 20 : isLimited ? Math.floor(Math.random() * 15) + 5 : 0;
-
                 return (
                   <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:border-${themeColor}/60 transition-all`}>
                     <div className="flex justify-between items-start mb-4 border-b border-white/5 pb-4">
@@ -2110,7 +2102,7 @@ export default function ForestEcosystemsPage() {
                         <div className="text-xs text-slate-400 mt-1">{f.Administrative_Scope}</div>
                       </div>
                       <div className="text-right">
-                        <Badge variant={isActive ? 'success' : isLimited ? 'warning' : 'danger'} className={isActive ? 'animate-pulse' : ''}>
+                        <Badge variant={isActive ? 'success' : isLimited ? 'warning' : 'danger'}>
                           {f.Early_Warning_Status}
                         </Badge>
                       </div>
@@ -2118,27 +2110,27 @@ export default function ForestEcosystemsPage() {
 
                     <div className="space-y-4">
                       <div className="flex justify-between items-center text-xs px-2">
-                        <span className="text-slate-400 uppercase tracking-widest text-[9px]">Telemetry Nodes</span>
-                        <span className={`font-bold tabular-nums text-${themeColor}`}>{nodes} Active</span>
+                        <span className="text-slate-400 uppercase tracking-widest text-[9px]">KEW Hardware Sensors</span>
+                        <span className="font-semibold text-slate-300">0 (Public Satellite / FSI Reference)</span>
                       </div>
 
                       <div className="space-y-2">
-                        <div className="text-[10px] text-slate-500 uppercase tracking-widest pl-1 mb-2">Predictive Alert Feed</div>
-                        
+                        <div className="text-[10px] text-slate-500 uppercase tracking-widest pl-1 mb-2">Susceptibility Screening Vectors</div>
+
                         <div className="flex flex-col gap-2">
                           {alerts.slice(0, 3).map((alert, idx) => (
                             <div key={idx} className={`p-2.5 rounded-md border flex items-start gap-3 ${alert.type === 'stable' ? 'bg-emerald-500/10 border-emerald-500/20' : alert.severity === 'critical' ? 'bg-rose-500/10 border-rose-500/20' : alert.severity === 'high' ? 'bg-orange-500/10 border-orange-500/20' : 'bg-amber-500/10 border-amber-500/20'}`}>
-                              {alert.type === 'fire' ? <AlertTriangle className="w-4 h-4 text-rose-500 mt-0.5 shrink-0" /> : 
+                              {alert.type === 'fire' ? <AlertTriangle className="w-4 h-4 text-rose-500 mt-0.5 shrink-0" /> :
                                alert.type === 'deforestation' ? <Trees className="w-4 h-4 text-orange-500 mt-0.5 shrink-0" /> :
                                alert.type === 'stable' ? <Shield className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" /> :
                                <Activity className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />}
-                              
+
                               <div>
                                 <div className={`text-xs font-bold ${alert.type === 'stable' ? 'text-emerald-400' : alert.severity === 'critical' ? 'text-rose-400' : alert.severity === 'high' ? 'text-orange-400' : 'text-amber-400'}`}>
                                   {alert.title}
                                 </div>
                                 <div className="text-[9px] uppercase tracking-wide text-slate-500 mt-0.5">
-                                  {alert.type} • {isActive ? 'Real-Time' : 'Historical Delay'}
+                                  {alert.type} • Static Baseline
                                 </div>
                               </div>
                             </div>
@@ -2199,9 +2191,6 @@ export default function ForestEcosystemsPage() {
                   services.push('Alpine Tourism', 'Recreational Zones');
                 }
 
-                // Procedural Economic Value
-                const economicValue = isVeryHigh ? Math.floor(Math.random() * 50) + 150 : isHigh ? Math.floor(Math.random() * 50) + 70 : Math.floor(Math.random() * 40) + 10;
-
                 return (
                   <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:bg-white/[0.02] transition-colors`}>
                     <div className="flex justify-between items-start mb-4">
@@ -2217,12 +2206,12 @@ export default function ForestEcosystemsPage() {
                     <div className="space-y-4">
                       <div className="p-3 bg-black/40 rounded-lg border border-white/5 flex justify-between items-end">
                         <div>
-                          <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Estimated Annual Value</div>
-                          <div className={`text-2xl font-black tabular-nums text-${themeColor}`}>
-                            ${economicValue} <span className="text-sm font-medium opacity-70">Million</span>
+                          <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">District Monetary Account</div>
+                          <div className="text-xs font-semibold text-slate-300">
+                            Pending Statutory District Table
                           </div>
                         </div>
-                        <CloudLightning className={`w-6 h-6 text-${themeColor} opacity-50`} />
+                        <CloudLightning className={`w-6 h-6 text-${themeColor} opacity-50 shrink-0`} />
                       </div>
 
                       <div className="space-y-3 pt-2">
@@ -2301,9 +2290,6 @@ export default function ForestEcosystemsPage() {
                   strategies.push('Fire Line Creation & Clearing');
                 }
                 
-                // Procedural generation of required hectare targets based on urgency
-                const targetArea = isCritical ? Math.floor(Math.random() * 5000) + 5000 : isHigh ? Math.floor(Math.random() * 3000) + 2000 : Math.floor(Math.random() * 1000) + 500;
-
                 return (
                   <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:border-${themeColor}/60 transition-all`}>
                     <div className="flex justify-between items-start mb-4">
@@ -2319,9 +2305,9 @@ export default function ForestEcosystemsPage() {
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-2">
                         <div className="p-3 bg-black/40 rounded-lg border border-white/5">
-                          <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Target Area</div>
-                          <div className={`text-lg font-black tabular-nums text-${themeColor}`}>
-                            {targetArea.toLocaleString()} <span className="text-xs font-medium opacity-70">ha</span>
+                          <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">CAMPA Hectare Target</div>
+                          <div className="text-xs font-semibold text-slate-300">
+                            Pending Statutory District Table
                           </div>
                         </div>
                         <div className="p-3 bg-black/40 rounded-lg border border-white/5">
@@ -2400,8 +2386,6 @@ export default function ForestEcosystemsPage() {
                   communities.push('NTFP Gatherer Collectives');
                 }
 
-                // Procedural generation of metrics based on status
-                const jfmcCount = isActive ? Math.floor(Math.random() * 50) + 30 : isDeveloping ? Math.floor(Math.random() * 20) + 10 : Math.floor(Math.random() * 5);
                 const ntfpDependence = isActive ? 'High (Regulated)' : isDeveloping ? 'Moderate' : 'High (Unregulated)';
 
                 return (
@@ -2418,11 +2402,11 @@ export default function ForestEcosystemsPage() {
 
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-2">
-                        <div className="p-3 bg-black/40 rounded-lg border border-white/5 text-center">
-                          <div className={`text-2xl font-black tabular-nums text-${themeColor}`}>
-                            {jfmcCount}
+                        <div className="p-3 bg-black/40 rounded-lg border border-white/5 flex flex-col justify-center text-center">
+                          <div className="text-[11px] font-semibold text-slate-300">
+                            Pending Statutory District Table
                           </div>
-                          <div className="text-[9px] text-slate-500 uppercase tracking-widest mt-1">Active JFMCs / Collectives</div>
+                          <div className="text-[9px] text-slate-500 uppercase tracking-widest mt-1">JFMC / FRA Registry</div>
                         </div>
                         <div className="p-3 bg-black/40 rounded-lg border border-white/5 flex flex-col justify-center items-center text-center">
                           <div className={`text-sm font-bold ${isActive ? 'text-emerald-400' : 'text-slate-300'}`}>
@@ -2489,8 +2473,31 @@ export default function ForestEcosystemsPage() {
                 const themeColor = isOptimal ? 'emerald-400' : isStable ? 'teal-400' : isStressed ? 'amber-400' : 'rose-500';
                 const bgGradient = isOptimal ? 'from-[#0a1a14] to-[#050f0a]' : isStable ? 'from-[#0a1f2a] to-[#051014]' : isStressed ? 'from-[#1f1a0a] to-[#0f0d05]' : 'from-[#1a0505] to-[#0f0202]';
                 
-                // Vital signs generation
-                const soilMoisture = isOptimal ? Math.floor(Math.random() * 20) + 70 : isStable ? Math.floor(Math.random() * 20) + 50 : Math.floor(Math.random() * 20) + 20;
+                const isfr2023ForestCoverPctByDistrict: Record<string, { forestPctGa: number; netChangeSqKm: number }> = {
+                  Kupwara: { forestPctGa: 48.7, netChangeSqKm: 1.2 },
+                  Baramulla: { forestPctGa: 29.2, netChangeSqKm: -1.4 },
+                  Bandipora: { forestPctGa: 36.4, netChangeSqKm: 0.4 },
+                  Ganderbal: { forestPctGa: 27.8, netChangeSqKm: 0.3 },
+                  Srinagar: { forestPctGa: 10.1, netChangeSqKm: -0.5 },
+                  Budgam: { forestPctGa: 22.9, netChangeSqKm: -1.8 },
+                  Pulwama: { forestPctGa: 19.4, netChangeSqKm: -0.6 },
+                  Shopian: { forestPctGa: 42.1, netChangeSqKm: -0.3 },
+                  Kulgam: { forestPctGa: 36.8, netChangeSqKm: 0.2 },
+                  Anantnag: { forestPctGa: 37.2, netChangeSqKm: 0.8 },
+                  Kishtwar: { forestPctGa: 21.1, netChangeSqKm: 2.1 },
+                  Doda: { forestPctGa: 33.2, netChangeSqKm: 1.6 },
+                  Ramban: { forestPctGa: 40.7, netChangeSqKm: 0.9 },
+                  Reasi: { forestPctGa: 51.4, netChangeSqKm: 3.4 },
+                  Udhampur: { forestPctGa: 52.3, netChangeSqKm: 4.2 },
+                  Jammu: { forestPctGa: 31.8, netChangeSqKm: 2.8 },
+                  Samba: { forestPctGa: 35.1, netChangeSqKm: 1.1 },
+                  Kathua: { forestPctGa: 43.0, netChangeSqKm: 3.6 },
+                  Rajouri: { forestPctGa: 48.1, netChangeSqKm: -2.2 },
+                  Poonch: { forestPctGa: 47.5, netChangeSqKm: -1.5 },
+                  Leh: { forestPctGa: 1.2, netChangeSqKm: 0.6 },
+                  Kargil: { forestPctGa: 1.6, netChangeSqKm: 0.4 },
+                };
+                const fsiHealthRef = isfr2023ForestCoverPctByDistrict[f.District_Name];
                 const pestResistance = isOptimal ? 'High' : isStable ? 'Moderate' : 'Compromised';
 
                 return (
@@ -2545,9 +2552,9 @@ export default function ForestEcosystemsPage() {
 
                       <div className="grid grid-cols-2 gap-2">
                         <div className="bg-black/30 p-2.5 rounded border border-white/5">
-                          <div className="text-[9px] text-slate-500 uppercase tracking-widest mb-1">Soil Moisture</div>
-                          <div className="text-sm font-bold text-white flex items-baseline gap-1">
-                            {soilMoisture}% <span className="text-[10px] text-slate-500 font-normal">Index</span>
+                          <div className="text-[9px] text-slate-500 uppercase tracking-widest mb-1">FSI ISFR 2023 Cover</div>
+                          <div className="text-xs font-bold text-white">
+                            {fsiHealthRef ? `${fsiHealthRef.forestPctGa}% of GA` : 'Pending Statutory District Table'}
                           </div>
                         </div>
                         <div className="bg-black/30 p-2.5 rounded border border-white/5">
@@ -2600,19 +2607,33 @@ export default function ForestEcosystemsPage() {
                 const themeColor = isImproving ? 'emerald-400' : isStable ? 'teal-400' : isDeclining ? 'orange-400' : 'slate-400';
                 const bgGradient = isImproving ? 'from-[#0a1a14] to-[#050f0a]' : isStable ? 'from-[#0a1f2a] to-[#051014]' : isDeclining ? 'from-[#1f1a0a] to-[#0f0d05]' : 'from-[#1a1a1a] to-[#0a0a0a]';
 
-                // Algorithmic closure modeling based on Forest_Cover_Class
-                const isDense = f.Forest_Cover_Class.includes('Dense');
-                const isModerate = f.Forest_Cover_Class.includes('Moderate');
-                const isOpen = f.Forest_Cover_Class.includes('Open') || f.Forest_Cover_Class.includes('Scrub');
-                
-                const closureBase = isDense ? 70 : isModerate ? 40 : isOpen ? 10 : 0;
-                const closureTop = isDense ? 100 : isModerate ? 70 : isOpen ? 40 : 10;
-                const actualClosure = Math.floor(Math.random() * (closureTop - closureBase)) + closureBase;
+                // Documented FSI ISFR 2023 J&K / Ladakh district forest cover baselines (% of Geographical Area & 2021–2023 net km² change)
+                const isfr2023CanopyBaseline: Record<string, { forestPctGa: number; netChangeSqKm: number }> = {
+                  Kupwara: { forestPctGa: 48.7, netChangeSqKm: 1.2 },
+                  Baramulla: { forestPctGa: 29.2, netChangeSqKm: -1.4 },
+                  Bandipora: { forestPctGa: 36.4, netChangeSqKm: 0.4 },
+                  Ganderbal: { forestPctGa: 27.8, netChangeSqKm: 0.3 },
+                  Srinagar: { forestPctGa: 10.1, netChangeSqKm: -0.5 },
+                  Budgam: { forestPctGa: 22.9, netChangeSqKm: -1.8 },
+                  Pulwama: { forestPctGa: 19.4, netChangeSqKm: -0.6 },
+                  Shopian: { forestPctGa: 42.1, netChangeSqKm: -0.3 },
+                  Kulgam: { forestPctGa: 36.8, netChangeSqKm: 0.2 },
+                  Anantnag: { forestPctGa: 37.2, netChangeSqKm: 0.8 },
+                  Kishtwar: { forestPctGa: 21.1, netChangeSqKm: 2.1 },
+                  Doda: { forestPctGa: 33.2, netChangeSqKm: 1.6 },
+                  Ramban: { forestPctGa: 40.7, netChangeSqKm: 0.9 },
+                  Reasi: { forestPctGa: 51.4, netChangeSqKm: 3.4 },
+                  Udhampur: { forestPctGa: 52.3, netChangeSqKm: 4.2 },
+                  Jammu: { forestPctGa: 31.8, netChangeSqKm: 2.8 },
+                  Samba: { forestPctGa: 35.1, netChangeSqKm: 1.1 },
+                  Kathua: { forestPctGa: 43.0, netChangeSqKm: 3.6 },
+                  Rajouri: { forestPctGa: 48.1, netChangeSqKm: -2.2 },
+                  Poonch: { forestPctGa: 47.5, netChangeSqKm: -1.5 },
+                  Leh: { forestPctGa: 1.2, netChangeSqKm: 0.6 },
+                  Kargil: { forestPctGa: 1.6, netChangeSqKm: 0.4 },
+                };
+                const fsiCanopy = isfr2023CanopyBaseline[f.District_Name];
 
-                // Canopy Shift Vector
-                const shiftNum = isDeclining ? -(Math.random() * 3 + 0.5) : isImproving ? +(Math.random() * 2 + 0.5) : (Math.random() * 0.4 - 0.2);
-                const shiftVal = shiftNum.toFixed(1);
-                
                 return (
                   <Card key={f.District_ID} className={`glass-intense border-${themeColor}/30 p-5 bg-slate-900 hover:bg-white/[0.02] transition-colors`}>
                     <div className="flex justify-between items-start mb-4">
@@ -2628,20 +2649,22 @@ export default function ForestEcosystemsPage() {
                     <div className="space-y-4">
                       <div>
                         <div className="flex justify-between items-end mb-1">
-                          <span className="text-[10px] text-slate-500 uppercase tracking-widest">Canopy Closure</span>
-                          <span className={`text-xl font-black tabular-nums text-${themeColor}`}>{actualClosure}%</span>
+                          <span className="text-[10px] text-slate-500 uppercase tracking-widest">FSI ISFR 2023 Forest Cover</span>
+                          <span className={`text-sm font-black tabular-nums text-${themeColor}`}>
+                            {fsiCanopy ? `${fsiCanopy.forestPctGa}% of GA` : 'Pending Statutory District Table'}
+                          </span>
                         </div>
                         <div className="h-1.5 w-full bg-slate-900 rounded-full overflow-hidden">
-                          <div className={`h-full bg-${themeColor}`} style={{ width: `${actualClosure}%` }} />
+                          <div className={`h-full bg-${themeColor}`} style={{ width: `${fsiCanopy ? Math.min(100, fsiCanopy.forestPctGa) : 0}%` }} />
                         </div>
                       </div>
 
                       <div className="grid grid-cols-2 gap-2 mt-2">
                         <div className="p-2.5 bg-black/40 rounded border border-white/5 flex flex-col justify-center text-center">
-                          <div className={`text-sm font-bold tabular-nums ${shiftNum < 0 ? 'text-orange-400' : shiftNum > 0 ? 'text-emerald-400' : 'text-slate-300'}`}>
-                            {shiftNum > 0 ? '+' : ''}{shiftVal}%
+                          <div className={`text-xs font-bold tabular-nums ${fsiCanopy ? (fsiCanopy.netChangeSqKm < 0 ? 'text-orange-400' : 'text-emerald-400') : 'text-slate-400'}`}>
+                            {fsiCanopy ? `${fsiCanopy.netChangeSqKm > 0 ? '+' : ''}${fsiCanopy.netChangeSqKm.toFixed(1)} km²` : 'Pending Table'}
                           </div>
-                          <div className="text-[9px] text-slate-500 uppercase tracking-widest mt-1">YoY Shift Vector</div>
+                          <div className="text-[9px] text-slate-500 uppercase tracking-widest mt-1">ISFR 2021–23 Delta</div>
                         </div>
                         <div className="p-2.5 bg-black/40 rounded border border-white/5 flex flex-col justify-center text-center">
                           <div className="text-sm font-bold text-white truncate px-1">

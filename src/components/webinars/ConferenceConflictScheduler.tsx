@@ -27,8 +27,8 @@ export function ConferenceConflictScheduler() {
   const [date, setDate] = useState<string>('2027-05-28');
   const [startTime, setStartTime] = useState<string>('11:00');
   const [endTime, setEndTime] = useState<string>('12:00');
-  const [speakersInput, setSpeakersInput] = useState<string>('Dr. M. Farooq');
-  const [moderatorInput, setModeratorInput] = useState<string>('Prof. Elena Rostova');
+  const [speakersInput, setSpeakersInput] = useState<string>('Invited Session Chair / Speaker Slot (Confirmation Pending)');
+  const [moderatorInput, setModeratorInput] = useState<string>('Invited Session Chair / Speaker Slot (Confirmation Pending)');
   const [validationResult, setValidationResult] = useState<ScheduleConflictResult | null>(null);
 
   const currentConf = CONFERENCES_DETAILED.find(c => c.id === selectedConfId) || CONFERENCES_DETAILED[0];
@@ -149,19 +149,19 @@ export function ConferenceConflictScheduler() {
           <input
             type="text"
             required
-            placeholder="e.g. Dr. M. Farooq, Prof. Elena Rostova"
+            placeholder="e.g. Invited Session Chair / Speaker Slot (Confirmation Pending)"
             value={speakersInput}
             onChange={(e) => setSpeakersInput(e.target.value)}
             className="w-full px-3 py-2 bg-slate-800 border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
           />
-          <span className="text-[10px] text-slate-400 mt-1 block">Try typing &apos;Dr. M. Farooq&apos; between 09:30-10:30 to test conflict detection.</span>
+          <span className="text-[10px] text-slate-400 mt-1 block">Test overlapping room or speaker slot assignments between 09:30-10:30 on 2027-05-27.</span>
         </div>
 
         <div>
           <label className="block text-xs font-medium text-slate-300 mb-1">Assigned Moderator / Chair</label>
           <input
             type="text"
-            placeholder="e.g. Prof. Elena Rostova"
+            placeholder="e.g. Invited Session Chair / Speaker Slot (Confirmation Pending)"
             value={moderatorInput}
             onChange={(e) => setModeratorInput(e.target.value)}
             className="w-full px-3 py-2 bg-slate-800 border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
@@ -173,12 +173,12 @@ export function ConferenceConflictScheduler() {
             type="button"
             onClick={() => {
               // Pre-fill a known conflict to demonstrate intelligence
-              setDate('2027-05-28');
+              setDate('2027-05-27');
               setStartTime('09:45');
               setEndTime('10:15');
               setRoomCode('CRYO-ROOM-A');
-              setSpeakersInput('Dr. M. Farooq');
-              setModeratorInput('Prof. Elena Rostova');
+              setSpeakersInput('Invited Session Chair / Speaker Slot (Confirmation Pending)');
+              setModeratorInput('Invited Session Chair / Speaker Slot (Confirmation Pending)');
             }}
             className="text-xs text-amber-400 hover:text-amber-300 underline font-mono"
           >

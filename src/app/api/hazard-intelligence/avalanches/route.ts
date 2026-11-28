@@ -18,11 +18,36 @@ interface GulmargReport {
   link: string;
 }
 
-const HIMALAYAN_AVALANCHE_KEYWORDS = [
-  'avalanche', 'snow', 'blizzard', 'zojila', 'gulmarg', 'razdan', 'sadhna',
-  'kashmir', 'ladakh', 'ganderbal', 'bandipora', 'kupwara', 'baramulla',
-  'leh', 'kargil', 'doda', 'kishtwar', 'ramban', 'poonch', 'neelum', 'gilgit', 'hunza', 'skardu'
-];
+const JK_LADAKH_SPECIFIC_DISTRICTS = [
+  'srinagar', 'leh', 'kargil', 'anantnag', 'baramulla', 'kupwara', 'ganderbal',
+  'kishtwar', 'doda', 'ramban', 'poonch', 'rajouri', 'udhampur', 'reasi',
+  'kathua', 'samba', 'pulwama', 'shopian', 'kulgam', 'budgam', 'bandipora',
+] as const;
+
+const JK_LADAKH_REGIONAL_NAMES = ['jammu', 'kashmir', 'ladakh'] as const;
+
+const AVALANCHE_HAZARD_KEYWORDS = ['avalanche', 'snow', 'blizzard', 'snowstorm'] as const;
+
+function extractJkLadakhDistrict(text: string): string | null {
+  for (const dist of JK_LADAKH_SPECIFIC_DISTRICTS) {
+    if (new RegExp(`\\b${dist}\\b`, 'i').test(text)) {
+      return dist.charAt(0).toUpperCase() + dist.slice(1);
+    }
+  }
+  if (/\bgulmarg\b/i.test(text)) return 'Baramulla';
+  if (/\bzojila\b|\bzoji la\b/i.test(text)) return 'Ganderbal';
+  if (/\brazdan\b/i.test(text)) return 'Bandipora';
+  if (/\bsadhna\b/i.test(text)) return 'Kupwara';
+
+  for (const reg of JK_LADAKH_REGIONAL_NAMES) {
+    if (new RegExp(`\\b${reg}\\b`, 'i').test(text)) {
+      if (reg === 'ladakh') return 'Ladakh';
+      if (reg === 'kashmir') return 'Kashmir';
+      return 'Jammu';
+    }
+  }
+  return null;
+}
 
 async function fetchSachetAlerts(): Promise<{ alerts: SachetAlert[]; status: 'Connected' | 'Unreachable' }> {
   try {
@@ -31,7 +56,7 @@ async function fetchSachetAlerts(): Promise<{ alerts: SachetAlert[]; status: 'Co
 
     const res = await fetch('https://sachet.ndma.gov.in/cap_public_website/rss/rss_india.xml', {
       headers: {
-        'User-Agent': 'KashmirEcoWatch-CryosphereSentinel/2.0 (Stateless Real-Time Engine)'
+        'User-Agent': 'KashmirEcoWatch-CryosphereSentinel/2.0 (Stateless Screening Engine)'
       },
       signal: controller.signal,
       next: { revalidate: 60 }
@@ -56,15 +81,18 @@ async function fetchSachetAlerts(): Promise<{ alerts: SachetAlert[]; status: 'Co
       const pubDate = pubDateMatch ? pubDateMatch[1].trim() : '';
       const link = linkMatch ? linkMatch[1].trim() : '';
 
-      const lowerTitle = title.toLowerCase();
-      const matched = HIMALAYAN_AVALANCHE_KEYWORDS.find(k => lowerTitle.includes(k));
+      const matchedDistrict = extractJkLadakhDistrict(title);
+      if (!matchedDistrict) continue;
 
-      if (matched && (lowerTitle.includes('avalanche') || lowerTitle.includes('snow') || lowerTitle.includes('warning'))) {
+      const lowerTitle = title.toLowerCase();
+      const hasAvalancheKeyword = AVALANCHE_HAZARD_KEYWORDS.some(k => lowerTitle.includes(k));
+
+      if (hasAvalancheKeyword) {
         matchingAlerts.push({
           title,
           pubDate,
           link,
-          district: matched.toUpperCase(),
+          district: matchedDistrict,
           severity: lowerTitle.includes('high') || lowerTitle.includes('critical') || lowerTitle.includes('red') ? 'Critical' : 'Moderate'
         });
       }
@@ -129,7 +157,8 @@ async function fetchOpenMeteoSnowfall(records: AvalancheRecord[]) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 7000);
 
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lngs}&hourly=snowfall,snow_depth,wind_speed_10m,temperature_2m&current=wind_speed_10m,temperature_2m,snow_depth,snowfall&forecast_days=1&timezone=auto`;
+    // 72h snowfall window (past_days=2 + forecast_days=1 = 72 hourly steps) + snow_depth gate
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lngs}&hourly=snowfall,snow_depth,wind_speed_10m,temperature_2m&current=wind_speed_10m,temperature_2m,snow_depth,snowfall&past_days=2&forecast_days=1&timezone=auto`;
 
     const res = await fetch(url, {
       signal: controller.signal,
@@ -163,41 +192,52 @@ export async function GET() {
   const enrichedRecords = avalancheData.map((record, index) => {
     // Check if official alert matches this corridor or district
     const matchingAlert = sachetResult.alerts.find(a =>
-      a.district && record.district.toUpperCase().includes(a.district)
+      a.district && record.district.toLowerCase().includes(a.district.toLowerCase())
     );
 
     const locData = forecastResults ? forecastResults[index] : null;
     const current = locData?.current;
     const hourly = locData?.hourly;
+    const hasTelemetry = Boolean(locData && (current || hourly));
 
     let live_snowfall_24h = 0;
-    if (hourly && hourly.snowfall) {
-      live_snowfall_24h = hourly.snowfall.reduce((a: number, b: number) => a + (b || 0), 0);
-    } else if (current && current.snowfall) {
+    let snowfall72hCm = 0;
+    if (hourly && Array.isArray(hourly.snowfall) && hourly.snowfall.length > 0) {
+      snowfall72hCm = hourly.snowfall.reduce((a: number, b: number) => a + (b || 0), 0);
+      live_snowfall_24h = hourly.snowfall.slice(-24).reduce((a: number, b: number) => a + (b || 0), 0);
+    } else if (current && typeof current.snowfall === 'number') {
       live_snowfall_24h = current.snowfall * 24;
+      snowfall72hCm = live_snowfall_24h;
     }
 
-    const live_snow_depth = current?.snow_depth ?? 0;
-    const live_wind_speed = current?.wind_speed_10m ?? 0;
-    const live_temperature = current?.temperature_2m ?? 0;
+    const snowDepthM = typeof current?.snow_depth === 'number' ? current.snow_depth : 0;
+    const windMaxKmh = typeof current?.wind_speed_10m === 'number' ? current.wind_speed_10m : 0;
+    const live_temperature = typeof current?.temperature_2m === 'number' ? current.temperature_2m : 0;
 
-    // Scientific KEW Terrain Susceptibility Calculation
-    // (Combining Slope Angle, Aspect, Forecast Snowfall, and Wind Loading)
+    // Mandatory active-snowpack gate: summer winds on bare rock must NEVER trigger avalanche warnings
+    const hasActiveSnowpack = snowDepthM >= 0.15 || snowfall72hCm >= 5;
+
     let calculatedRisk: 'Critical' | 'High' | 'Moderate' | 'Low' = 'Low';
-    let trigger = 'Stable Cryospheric Conditions';
+    let trigger = 'Dry / Bare Slope or Stable Cryospheric Conditions';
 
-    if (live_snowfall_24h > 40 || (live_wind_speed > 55 && record.slope_angle_deg > 35)) {
+    if (!hasTelemetry) {
+      calculatedRisk = 'Low';
+      trigger = 'Telemetry Unavailable — Static Terrain Baseline Only';
+    } else if (!hasActiveSnowpack && live_snowfall_24h < 5) {
+      calculatedRisk = 'Low';
+      trigger = 'Insufficient Snowpack (<15 cm snow depth & <5 cm 72h snowfall)';
+    } else if (live_snowfall_24h > 40 || (hasActiveSnowpack && windMaxKmh > 55 && record.slope_angle_deg > 35)) {
       calculatedRisk = 'Critical';
-      trigger = live_snowfall_24h > 40 ? 'Heavy Fresh Snow Loading Forecast' : 'Severe Ridge Wind Loading';
-    } else if ((live_snowfall_24h > 20 && live_wind_speed > 35) || (live_temperature > 4 && live_snow_depth > 0.8)) {
+      trigger = live_snowfall_24h > 40 ? 'Heavy Fresh Snow Loading Forecast' : 'Severe Ridge Wind-Slab Loading on Active Snowpack';
+    } else if ((hasActiveSnowpack && live_snowfall_24h > 20 && windMaxKmh > 35) || (live_temperature > 4 && snowDepthM > 0.8)) {
       calculatedRisk = 'High';
-      trigger = live_snowfall_24h > 20 ? 'Substantial Fresh Snowpack Accumulation' : 'Thermal Destabilization / Rapid Warming';
-    } else if (live_snowfall_24h >= 8 || live_wind_speed > 25) {
+      trigger = live_snowfall_24h > 20 ? 'Substantial Fresh Snowpack Accumulation' : 'Wet-Snow Thermal Destabilization on Deep Snowpack';
+    } else if (live_snowfall_24h >= 8 || (hasActiveSnowpack && windMaxKmh > 25)) {
       calculatedRisk = 'Moderate';
-      trigger = live_snowfall_24h >= 8 ? 'Moderate Fresh Snowfall' : 'Moderate Ridge Wind Drift';
+      trigger = live_snowfall_24h >= 8 ? 'Moderate Fresh Snowfall' : 'Moderate Ridge Wind Drift on Active Snowpack';
     } else {
       calculatedRisk = 'Low';
-      trigger = 'Dry / Cold Stable Snowpack';
+      trigger = 'Cold / Stable Snowpack Screening';
     }
 
     // Truthful Status Assignment
@@ -207,28 +247,31 @@ export async function GET() {
     } else if (calculatedRisk === 'Critical' || calculatedRisk === 'High') {
       statusLabel = 'Watch';
     } else {
-      statusLabel = record.season === 'Nov-Mar' || record.season === 'Dec-Feb' ? 'Seasonal' : 'Normal';
+      statusLabel = hasActiveSnowpack && (record.season === 'Nov-Mar' || record.season === 'Dec-Feb') ? 'Seasonal' : 'Normal';
     }
 
-    // Truthful Verification Assignment
-    let verificationLabel = 'NWP Cryosphere Monitored';
-    if (record.district.toLowerCase() === 'baramulla' || record.name.toLowerCase().includes('gulmarg') || record.name.toLowerCase().includes('affarwat')) {
-      verificationLabel = 'GAC Field Monitored Sector';
-    } else if (record.elevation_m >= 4500) {
-      verificationLabel = 'High-Altitude Pass (Satellite Grid)';
+    // Truthful Verification Assignment (never claim DGRE/SASE telemetry)
+    let verificationLabel = 'Open-Meteo Gridded NWP Screening';
+    if (
+      gulmargResult.report &&
+      (record.name.toLowerCase().includes('gulmarg') || record.name.toLowerCase().includes('affarwat'))
+    ) {
+      verificationLabel = 'Gulmarg Avalanche Center RSS Advisory + NWP Grid';
     }
 
     return {
       ...record,
       live_snowfall_24h: Math.round(live_snowfall_24h * 10) / 10,
-      live_snow_depth: typeof live_snow_depth === 'number' ? Math.round(live_snow_depth * 100) / 100 : 0,
-      live_wind_speed: Math.round(live_wind_speed),
+      live_snowfall_72h: Math.round(snowfall72hCm * 10) / 10,
+      live_snow_depth: Math.round(snowDepthM * 100) / 100,
+      live_wind_speed: Math.round(windMaxKmh),
       live_temperature: Math.round(live_temperature * 10) / 10,
       live_risk_level: calculatedRisk,
       dominant_trigger: trigger,
       current_status: statusLabel,
       verification_status: verificationLabel,
-      last_updated: timestamp,
+      last_updated: hasTelemetry ? timestamp : 'Telemetry Unavailable',
+      telemetryStatus: hasTelemetry ? 'MODEL_SCREENING' : 'UNAVAILABLE',
 
       // 100% Truthful Provenance Metadata
       provenance: {
@@ -243,12 +286,12 @@ export async function GET() {
           authority: 'NDMA SACHET (No Active Avalanche Bulletins Issued for Sector)'
         },
         gulmarg_center: record.name.toLowerCase().includes('gulmarg') || record.name.toLowerCase().includes('affarwat') ? {
-          is_monitored: true,
-          latest_field_report: gulmargResult.report?.title || 'Seasonal Field Monitoring Active',
+          is_monitored: Boolean(gulmargResult.report),
+          latest_field_report: gulmargResult.report?.title || 'No Live Gulmarg AC RSS Bulletin Retrieved',
           report_date: gulmargResult.report?.pubDate,
           report_link: gulmargResult.report?.link || 'https://gulmargac.in/observations'
         } : null,
-        nwp_model: 'Open-Meteo High-Resolution Alpine Cryosphere Model (ECMWF/GFS)',
+        nwp_model: 'Open-Meteo Gridded NWP Screening Heuristic',
         is_official_government_alert: !!matchingAlert
       }
     };
@@ -257,6 +300,7 @@ export async function GET() {
   return NextResponse.json({
     success: true,
     timestamp,
+    telemetryStatus: forecastResults ? 'MODEL_SCREENING' : 'UNAVAILABLE',
     vps_disk_usage_bytes: 0, // Stateless streaming - 0 bytes on VPS disk
     monitored_corridors: enrichedRecords.length,
     official_alerts_count: sachetResult.alerts.length,

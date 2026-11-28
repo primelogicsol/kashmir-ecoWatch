@@ -415,7 +415,7 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
     code: 'KEW-INV-0010',
     slug: 'dal-lake-mechanized-manual-deweeding-effectiveness',
     title: 'Three Decades of Aquatic Vegetation Management in Dal Lake: Ecological Effectiveness, Sediment Disturbance and Limnological Consequences',
-    subtitle: 'Evaluating mechanized harvester cutting, manual skimming, ₹28.01 Cr audited expenditure (2016–2022), benthic biodiversity impacts, and macrophyte nutrient-sink dynamics',
+    subtitle: 'Evaluating mechanized harvester cutting, manual skimming, ₹28.01 Cr audited expenditure (2016–2022), phytophilous macroinvertebrate impacts, and macrophyte nutrient-sink dynamics',
     shortTitle: 'Dal Lake: Mechanized & Manual De-weeding',
     seriesId: 'dal-lake-interventions',
     seriesTitle: 'Dal Lake Ecological Interventions',
@@ -447,12 +447,12 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
     centralQuestion: 'If aquatic vegetation has been removed repeatedly for decades, why does excessive vegetation growth continue, and has the intervention addressed its underlying nutrient sources?',
     scopingQuestions: [
       'Why was ₹16.18 crore (57.8% of ₹28.01 crore audited de-weeding expenditure during 2016–2022) incurred outside prescribed harvesting months, and how did off-season cutting affect regrowth and fish spawning?',
-      'Does indiscriminate mechanical cutting shift Dal Lake basins from clear-water submerged macrophyte states toward turbid phytoplankton/Azolla dominance while depleting benthic macroinvertebrates?',
+      'Does indiscriminate mechanical cutting shift Dal Lake basins from clear-water submerged macrophyte states toward turbid phytoplankton/Azolla dominance while depleting phytophilous (macrophyte-associated) macroinvertebrates?',
       'What mass of nitrogen and phosphorus (tonnes/yr) is permanently exported from the Dal watershed in harvested biomass versus leached back from shoreline dumping?',
     ],
     executiveKeyFindings: [
-      'CAG lake conservation audit records document ₹28.01 crore in de-weeding expenditure between 2016 and 2022, of which ₹16.18 crore (57.8%) occurred outside prescribed seasonal windows, alongside undocumented retention of undisturbed fish-spawning and waterfowl-feeding zones.',
-      'Peer-reviewed University of Kashmir research (2014) documented significantly lower benthic macroinvertebrate densities in mechanically de-weeded Dal Lake sectors compared with undisturbed reference sites, extending foundational harvester impact studies by Zutshi & Ticku (1990, 1991, 1993).',
+      'CAG lake conservation audit records (Report No. 4 of 2025) document ₹28.01 crore in de-weeding expenditure between 2016 and 2022, of which ₹16.18 crore (57.8%) occurred outside prescribed seasonal windows, alongside undocumented retention of undisturbed fish-spawning and waterfowl-feeding zones.',
+      'Peer-reviewed University of Kashmir research by Habib & Yousuf (2014, Environmental Science and Pollution Research) documented significantly altered and depleted phytophilous (macrophyte-associated) macroinvertebrate communities in mechanically de-weeded Dal Lake sectors compared with undisturbed reference sites, extending foundational harvester impact studies by Zutshi & Ticku (1990, 1991, 1993).',
     ],
     callouts: [
       { label: 'Audited De-weeding Outlay', value: '₹28.01 Cr', unit: '2016–2022', sourceTag: 'CAG Lake Conservation Audit' },
@@ -462,7 +462,7 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
     ],
     chronology: [
       { period: '1990–1993', eventTitle: 'Early Mechanical Harvester Impact Studies', documentedRecord: 'Zutshi & Ticku evaluated ecological effects of mechanical de-weeding on Dal Lake macrophyte guilds and water chemistry.', sourceRef: 'REF-DW-03', significance: 'Baseline' },
-      { period: '2014', eventTitle: 'University of Kashmir Benthic Biodiversity Study', documentedRecord: 'Published comparative field study found lower macroinvertebrate densities in mechanically de-weeded areas vs reference zones.', sourceRef: 'REF-DW-02', significance: 'Ecological Shift' },
+      { period: '2014', eventTitle: 'Habib & Yousuf (2014) Phytophilous Macroinvertebrate De-weeding Study', documentedRecord: 'Published comparative field study in Environmental Science and Pollution Research found significantly depleted phytophilous (macrophyte-associated) macroinvertebrate communities in mechanically de-weeded areas vs reference zones.', sourceRef: 'REF-DW-02', significance: 'Ecological Shift' },
       { period: '2016–2022', eventTitle: 'CAG Performance Audit of De-weeding Expenditure', documentedRecord: 'Audited ₹28.01 Cr expenditure; flagged ₹16.18 Cr (57.8%) spent outside prescribed months and missing documentation on selective spawning-refuge retention.', sourceRef: 'REF-DW-01', significance: 'Audit / Judicial' },
       { period: '2026–2027', eventTitle: 'Continuing Manual De-weeding & Skimming Contracts', documentedRecord: 'Government procurement tenders confirm ongoing manual de-weeding and floating-waste skimming operations.', sourceRef: 'REF-DW-04', significance: 'Intervention' },
     ],
@@ -472,18 +472,18 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
     disciplineFindings: [
       {
         disciplineId: 'aquatic-ecology',
-        disciplineName: 'Aquatic Ecology & Benthic Biology',
+        disciplineName: 'Aquatic Ecology & Phytophilous Macroinvertebrate Biology',
         clusterName: 'Water & Aquatic Sciences',
-        methodologyApplied: 'Before-After-Control-Impact (BACI) comparison of macrophyte guild structure and benthic macroinvertebrate density.',
+        methodologyApplied: 'Before-After-Control-Impact (BACI) comparison of macrophyte guild structure and phytophilous (macrophyte-associated) macroinvertebrate density and diversity.',
         equationOrMetricUsed: 'Beer–Lambert Photic Depth I(z) = I_0 e^(-K_d z) & Shannon Diversity H′',
-        empiricalFinding: 'Mechanical cutter blades disturb soft surficial silt, stripping epiphytic/benthic invertebrates and releasing porewater orthophosphate.',
+        empiricalFinding: 'Mechanical harvester cutting strips host submerged macrophytes and their phytophilous (plant-associated) macroinvertebrate assemblages (Habib & Yousuf, 2014) while disturbing surficial silt and porewater orthophosphate.',
         uncertaintyAndLimitations: 'Basin-wide GPS harvester track logs and wet-to-dry biomass elemental N/P assays are required from LCMA.',
         verificationClass: 'Documented',
       },
     ],
     assertions: [
-      { suffix: '01', assertion: 'Between 2016 and 2022, ₹16.18 crore (57.8%) of ₹28.01 crore audited Dal Lake de-weeding expenditure was incurred outside prescribed seasonal harvesting windows, with inadequate documentation of undisturbed spawning/feeding refuges.', sourceCategory: 'Government Audit Records', classification: 'Documented', basis: 'Established in CAG Performance Audit on Conservation and Management of Lakes in J&K.', citationIds: ['REF-DW-01'] },
-      { suffix: '02', assertion: 'Mechanically de-weeded plots in Dal Lake exhibited lower benthic macroinvertebrate densities than non-de-weeded reference plots in published empirical sampling.', sourceCategory: 'Scientific Literature', classification: 'Documented', basis: 'Documented in peer-reviewed University of Kashmir aquatic ecology study (2014) indexed in PubMed.', citationIds: ['REF-DW-02'] },
+      { suffix: '01', assertion: 'Between 2016 and 2022, ₹16.18 crore (57.8%) of ₹28.01 crore audited Dal Lake de-weeding expenditure was incurred outside prescribed seasonal harvesting windows, with inadequate documentation of undisturbed spawning/feeding refuges.', sourceCategory: 'Government Audit Records', classification: 'Documented', basis: 'Established in CAG Performance Audit on Conservation and Management of Lakes in J&K (Report No. 4 of 2025).', citationIds: ['REF-DW-01'] },
+      { suffix: '02', assertion: 'Mechanically de-weeded plots in Dal Lake exhibited significantly depleted phytophilous (macrophyte-associated) macroinvertebrate communities compared with undisturbed reference plots in published empirical sampling.', sourceCategory: 'Scientific Literature', classification: 'Documented', basis: 'Documented by Habib & Yousuf (2014), Environmental Science and Pollution Research, 21(8), 5653–5659 (DOI: 10.1007/s11356-013-2470-7).', citationIds: ['REF-DW-02'] },
       { suffix: '03', assertion: 'Shoreline stacking and unlined disposal of harvested Dal macrophyte biomass leaches a significant fraction of sequestered phosphorus back into shallow littoral channels during rainfall.', sourceCategory: 'Field Survey Protocol', classification: 'Unverified', basis: 'Biogeochemically plausible leachability pathway requiring weighed truckload logs and disposal-site leachate P assays.', citationIds: ['REF-DW-01'], methodReq: 'Quantify dry-matter N/P content of harvested biomass and monitor leachate runoff at designated LCMA disposal sites.' },
     ],
     accountability: [
@@ -500,8 +500,8 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
       { suffix: '01', horizon: 'Immediate (0–12 Months)', title: 'Publish Seasonal De-weeding Calendar, GPS Trackers & Spawning Refuge Maps', spec: 'Mandate GPS telemetry on all mechanical harvesters and publish seasonal exclusion polygons for Schizothorax/carp spawning and winter waterfowl.', target: 'LCMA & Fisheries Department', justification: 'Addresses CAG audit findings on off-season expenditure and habitat disturbance.', indicator: '0% non-emergency harvester expenditure outside notified phenological windows.' },
     ],
     references: [
-      { id: 'REF-DW-01', authorsOrBody: 'Comptroller and Auditor General of India (CAG)', year: 2024, title: 'Performance Audit on Conservation and Management of Lakes in Jammu & Kashmir (Audit Report Details 125068)', publicationOrSeries: 'SAI India / Government of India', referenceType: 'Statutory Audit (CAG)', externalUrl: 'https://www.cag.gov.in/en/audit-report/details/125068', provenanceNote: 'Establishes ₹28.01 Cr de-weeding outlay (2016–2022) and ₹16.18 Cr (57.8%) off-season expenditure.' },
-      { id: 'REF-DW-02', authorsOrBody: 'Mir, Z. A., Bakhtiyar, Y., & Arafat, M. Y. / University of Kashmir', year: 2014, title: 'Impact of mechanical deweeding on macroinvertebrate community structure in Dal Lake, Kashmir', publicationOrSeries: 'PubMed Indexed Aquatic Ecology Study', referenceType: 'Peer-Reviewed Journal', provenanceNote: 'Documents lower benthic macroinvertebrate densities in mechanically de-weeded zones.' },
+      { id: 'REF-DW-01', authorsOrBody: 'Comptroller and Auditor General of India (CAG)', year: 2025, title: 'Performance Audit on Conservation and Management of Lakes in Jammu & Kashmir (Report No. 4 of 2025 · Audit Report Details 125068)', publicationOrSeries: 'SAI India / Government of India', referenceType: 'Statutory Audit (CAG)', externalUrl: 'https://www.cag.gov.in/en/audit-report/details/125068', provenanceNote: 'Establishes ₹28.01 Cr de-weeding outlay (2016–2022) and ₹16.18 Cr (57.8%) off-season expenditure.' },
+      { id: 'REF-DW-02', authorsOrBody: 'Habib, S., & Yousuf, A. R.', year: 2014, title: 'Impact of mechanical deweeding on the phytophilous macroinvertebrate community of an eutrophic lake', publicationOrSeries: 'Environmental Science and Pollution Research, 21(8), 5653–5659', referenceType: 'Peer-Reviewed Journal', doiOrOfficialRef: '10.1007/s11356-013-2470-7', externalUrl: 'https://doi.org/10.1007/s11356-013-2470-7', provenanceNote: 'Documents depletion of phytophilous (macrophyte-associated) macroinvertebrate communities in mechanically de-weeded Dal Lake sectors.' },
       { id: 'REF-DW-03', authorsOrBody: 'Zutshi, D. P., & Ticku, A.', year: 1991, title: 'Impact of mechanical deweeding on Dal Lake ecosystem (1990–1993 series)', publicationOrSeries: 'Hydrobiologia / Centre of Research for Development', referenceType: 'Peer-Reviewed Journal', provenanceNote: 'Foundational empirical evaluation of mechanical weed harvesting in Dal Lake.' },
       { id: 'REF-DW-04', authorsOrBody: 'Government of Jammu & Kashmir e-Procurement Portal (JKTenders)', year: 2026, title: 'LCMA Manual De-weeding, Lily Cutting and Floating Waste Skimming Tender Records (2026–2027)', publicationOrSeries: 'jktenders.gov.in Official Procurement Archive', referenceType: 'Technical Institute Report', externalUrl: 'https://jktenders.gov.in/', provenanceNote: 'Confirms continuation of manual de-weeding and skimming in 2026–2027 management cycle.' },
     ],
@@ -586,7 +586,7 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
       { suffix: '01', horizon: 'Immediate (0–12 Months)', title: 'Execute Radial Sonde Audit (DO, NTU, TP, Chl-a) & Energy Metering Across All Units', spec: 'Publish pump-on/pump-off radial water-quality transects and kWh electricity logs for every Dal and Brari Nambal fountain/aerator.', target: 'LCMA & NIT Srinagar / KU Limnology', justification: 'Separates ornamental water features from scientifically effective oxygenation.', indicator: '100% of active units audited across all 11 limnological & engineering parameters.' },
     ],
     references: [
-      { id: 'REF-AER-01', authorsOrBody: 'Comptroller and Auditor General of India (CAG)', year: 2024, title: 'Audit Report on Conservation and Management of Lakes in Jammu & Kashmir', publicationOrSeries: 'SAI India Report 125068', referenceType: 'Statutory Audit (CAG)', externalUrl: 'https://www.cag.gov.in/en/audit-report/details/125068', provenanceNote: 'Audits Dal–Nigeen and Brari Nambal conservation components and water-quality outcomes.' },
+      { id: 'REF-AER-01', authorsOrBody: 'Comptroller and Auditor General of India (CAG)', year: 2025, title: 'Audit Report on Conservation and Management of Lakes in Jammu & Kashmir (Report No. 4 of 2025)', publicationOrSeries: 'SAI India Report 125068', referenceType: 'Statutory Audit (CAG)', externalUrl: 'https://www.cag.gov.in/en/audit-report/details/125068', provenanceNote: 'Audits Dal–Nigeen and Brari Nambal conservation components and water-quality outcomes.' },
       { id: 'REF-AER-02', authorsOrBody: 'Gächter, R., & Wehrli, B.', year: 1998, title: 'Ten years of artificial mixing and oxygenation: No effect on the internal phosphorus loading of two eutrophic lakes', publicationOrSeries: 'Environmental Science & Technology, 32(23), 3659–3665', referenceType: 'Peer-Reviewed Journal', doiOrOfficialRef: '10.1021/es980418l', externalUrl: 'https://doi.org/10.1021/es980418l', provenanceNote: 'Benchmark empirical test of artificial lake oxygenation vs external P control.' },
     ],
     dataGaps: ['Unit-by-unit motor rating (kW), submergence depth, electricity bills, and concentric DO/resuspension measurements.'],
@@ -666,8 +666,8 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
       { suffix: '01', horizon: 'Immediate (0–12 Months)', title: 'Establish Public Dal Restoration Financial-to-Ecological Outcome Ledger', spec: 'Reconcile all NLCP, PMDP, AMRUT, and UT outlays against station-wise Carlson TSI trends.', target: 'HUDD, LCMA & Finance Department', justification: 'Distinguishes financial disbursement from ecological restoration.', indicator: 'Annual audited ₹-to-ΔTSI report published openly.' },
     ],
     references: [
-      { id: 'REF-INT-01', authorsOrBody: 'Comptroller and Auditor General of India (CAG)', year: 2024, title: 'Performance Audit on Conservation and Management of Lakes in Jammu & Kashmir', publicationOrSeries: 'SAI India Report 125068', referenceType: 'Statutory Audit (CAG)', externalUrl: 'https://www.cag.gov.in/en/audit-report/details/125068', provenanceNote: 'Primary statutory financial and operational audit anchor.' },
-      { id: 'REF-INT-02', authorsOrBody: 'Rashid, I., Romshoo, S. A., Amin, M., et al.', year: 2017, title: 'Linking human-biophysical interactions with the trophic status of Dal Lake, Kashmir Himalaya', publicationOrSeries: 'Limnologica, 62, 84–96', referenceType: 'Peer-Reviewed Journal', doiOrOfficialRef: '10.1016/j.limno.2016.11.008', provenanceNote: 'Multi-decadal spatial and limnological outcome trajectory.' },
+      { id: 'REF-INT-01', authorsOrBody: 'Comptroller and Auditor General of India (CAG)', year: 2025, title: 'Performance Audit on Conservation and Management of Lakes in Jammu & Kashmir (Report No. 4 of 2025)', publicationOrSeries: 'SAI India Report 125068', referenceType: 'Statutory Audit (CAG)', externalUrl: 'https://www.cag.gov.in/en/audit-report/details/125068', provenanceNote: 'Primary statutory financial and operational audit anchor.' },
+      { id: 'REF-INT-02', authorsOrBody: 'Rashid, I., Romshoo, S. A., Amin, M., et al.', year: 2017, title: 'Linking human-biophysical interactions with the trophic status of Dal Lake, Kashmir Himalaya', publicationOrSeries: 'Limnologica, 62, 84–96', referenceType: 'Peer-Reviewed Journal', doiOrOfficialRef: '10.1016/j.limno.2016.11.008', externalUrl: 'https://doi.org/10.1016/j.limno.2016.11.008', provenanceNote: 'Multi-decadal spatial and limnological outcome trajectory.' },
     ],
     dataGaps: ['Consolidated scheme-wise audited expenditure statements (1997–2026) across LCMA, UEED, and Forest Department.'],
     regulatoryLead: 'Environment Protection Act 1986, Water Act 1974, Wetlands Rules 2017 & J&K High Court PIL 159/2002.',
@@ -1158,7 +1158,7 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
     ],
     references: [
       { id: 'REF-SAL-01', authorsOrBody: 'Wildlife Institute of India (WII) — National Wildlife Database Cell', year: 2019, title: 'Protected Area Gazette Notifications Database: Jammu & Kashmir — City Forest (Salim Ali) National Park Entry', publicationOrSeries: 'Wildlife Institute of India, Dehradun', referenceType: 'Technical Institute Report', externalUrl: 'https://v1.wii.gov.in/protectedareagazette_jammu_kashmir', provenanceNote: 'Primary institutional archival anchor confirming official PA gazette entry.' },
-      { id: 'REF-SAL-02', authorsOrBody: 'Bombay Natural History Society (BNHS) / Buceros & Sanctuary Archival Conservation Records', year: 2001, title: 'Archival Documentation on City Forest (Salim Ali) National Park Conversion to Royal Springs Golf Course, Srinagar', publicationOrSeries: 'Indian Ornithological & Protected Area Conservation Archives', referenceType: 'Peer-Reviewed Journal', provenanceNote: 'Documents contemporary conservation objections and historical ornithological significance.' },
+      { id: 'REF-SAL-02', authorsOrBody: 'Bombay Natural History Society (BNHS) — Scoping Archival Literature Target', year: 2001, title: 'Scoping Literature Review Target: Archival Documentation on City Forest (Salim Ali) National Park Conversion to Royal Springs Golf Course, Srinagar', publicationOrSeries: 'Scoping Literature Review Target (BNHS Buceros / Sanctuary Archival Retrieval Pending)', referenceType: 'Technical Institute Report', provenanceNote: 'Scoping literature review target; exact archival volume/issue pagination queued for primary verification.' },
     ],
     dataGaps: ['Certified copies of J&K Gazette SRO notifications (1986–2002), EIA/clearance files, and pre-conversion species relocation logs.'],
     hydrologyApplicable: false,
@@ -1387,7 +1387,7 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
       },
     ],
     assertions: [
-      { suffix: '01', assertion: 'Peer-reviewed University of Kashmir surveillance in Srinagar and Ganderbal detected bacterial/coliform contamination in sampled drinking-water sources, including subsets of treated tap samples, demonstrating localized post-treatment or disinfection vulnerability.', sourceCategory: 'Scientific Literature', classification: 'Documented', basis: 'Reported in PubMed-indexed University of Kashmir drinking-water microbiological assessment; strictly scoped to sampled sites rather than Valley-wide extrapolation.', citationIds: ['REF-DWQ-03'] },
+      { suffix: '01', assertion: 'Regional drinking-water bacteriological surveillance studies in Srinagar and Ganderbal report localized coliform detections in subsets of sampled sources, warranting systematic 10-district tap-level verification.', sourceCategory: 'Scientific Literature', classification: 'Provisionally Supported', basis: 'Scoping literature synthesis pending full bibliographic DOI indexing of localized Srinagar/Ganderbal bacteriological studies alongside JJM WQMIS district logs.', citationIds: ['REF-DWQ-02', 'REF-DWQ-03'], methodReq: 'Compile DOI-verified regional bacteriological studies and cross-audit against stratified 10-district JJM WQMIS consumer-tap test records.' },
       { suffix: '02', assertion: 'Orchard fungicide/organophosphate residues and trace heavy metals (As, Pb, Cr, Cd) exceed BIS IS 10500:2012 acceptable limits in rural South and North Kashmir public tap supplies.', sourceCategory: 'Field Survey Protocol', classification: 'Unverified', basis: 'Routine district FTK/basic lab tests rarely screen pesticides or trace ICP-MS metals; requires accredited GC-MS/MS and ICP-MS seasonal tap assays.', citationIds: ['REF-DWQ-01', 'REF-DWQ-02'], methodReq: 'Stratified 10-district GC-MS/MS pesticide and ICP-MS trace-metal tap-water screening during spray and post-monsoon windows.' },
     ],
     accountability: [
@@ -1403,7 +1403,7 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
     references: [
       { id: 'REF-DWQ-01', authorsOrBody: 'Bureau of Indian Standards (BIS)', year: 2012, title: 'IS 10500:2012 — Indian Standard Drinking Water Specification (Second Revision & Amendments)', publicationOrSeries: 'Government of India Statutory Standard', referenceType: 'Technical Institute Report', provenanceNote: 'Enforceable national benchmark for microbiological, physical, chemical, and toxic drinking-water limits.' },
       { id: 'REF-DWQ-02', authorsOrBody: 'Ministry of Jal Shakti — Jal Jeevan Mission', year: 2026, title: 'Water Quality Management Information System (WQMIS) — Contaminant-Wise & Remedial Action Portals', publicationOrSeries: 'ejalshakti.gov.in Official Repository', referenceType: 'Technical Institute Report', externalUrl: 'https://ejalshakti.gov.in/WQMIS', provenanceNote: 'Official repository for district laboratory and FTK water-quality surveillance.' },
-      { id: 'REF-DWQ-03', authorsOrBody: 'University of Kashmir — Environmental Science / Microbiology Research Group', year: 2023, title: 'Assessment of bacteriological and physicochemical drinking water quality across Srinagar and Ganderbal supply sources', publicationOrSeries: 'PubMed Indexed Regional Drinking Water Study', referenceType: 'Peer-Reviewed Journal', provenanceNote: 'Documents localized coliform detections in sampled sources including treated water samples.' },
+      { id: 'REF-DWQ-03', authorsOrBody: 'Scoping Literature Review Target — Kashmir Drinking-Water Bacteriological Studies', year: 2023, title: 'Scoping Literature Review Target: Bacteriological and physicochemical drinking water quality assessments across Srinagar and Ganderbal supply sources', publicationOrSeries: 'Scoping Literature Review Target (Exact Primary Journal/DOI Verification Pending)', referenceType: 'Technical Institute Report', provenanceNote: 'Reclassified from generic journal placeholder to scoping literature target pending primary DOI verification.' },
     ],
     dataGaps: ['Ward/village-level consumer-tap free residual chlorine, ICP-MS heavy metal, and GC-MS/MS pesticide residue datasets across all 10 districts.'],
     regulatoryLead: 'BIS IS 10500:2012 (enforceable national specification), J&K Water Resources Act 2010 & WHO Guidelines (4th ed., international health benchmark).',
@@ -1631,7 +1631,7 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
       },
     ],
     assertions: [
-      { suffix: '01', assertion: 'Isotopic and hydrograph investigations confirm that major South Kashmir karst springs depend heavily on winter snowpack recharge and exhibit rapid conduit transport vulnerable to surface contamination.', sourceCategory: 'Scientific Literature', classification: 'Documented', basis: 'Established by Jeelani et al. (2010, 2017) peer-reviewed hydrogeological studies in the Kashmir Valley.', citationIds: ['REF-SPR-01'] },
+      { suffix: '01', assertion: 'Isotopic and hydrograph investigations indicate that major South Kashmir karst springs depend heavily on winter snowpack recharge and exhibit rapid conduit transport vulnerable to surface contamination.', sourceCategory: 'Scientific Literature', classification: 'Provisionally Supported', basis: 'Supported by regional Kashmir karst hydrogeology scoping literature (Jeelani et al. series); exact article-level DOI links queued for scoping consolidation.', citationIds: ['REF-SPR-01', 'REF-SPR-02'], methodReq: 'Attach exact DOI-verified karst spring isotope hydrograph records across Verinag, Kokernag, Achabal, and Martand.' },
       { suffix: '02', assertion: 'Unregulated private orchard/domestic borewells and Karewa excavation have lowered perched water tables enough to permanently dry >200 traditional village Nags across Pulwama, Shopian, and Budgam.', sourceCategory: 'Hydrological & Telemetry Series', classification: 'Unverified', basis: 'Widely reported by communities; requires systematic 10-district spring census reconciled against CGWB piezometer records.', citationIds: ['REF-SPR-02'], methodReq: 'District-by-district georeferenced spring census (perennial vs seasonal vs dried) paired with CGWB piezometric water-level trends.' },
     ],
     accountability: [
@@ -1645,7 +1645,7 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
       { suffix: '01', horizon: 'Medium-Term (1–3 Years)', title: 'Build Open Georeferenced Inventory of Drinking-Water Springs & Instrument 50 Sentinel Nags', spec: 'Map all drinking-water springs across 10 districts with seasonal discharge (L/s), EC, NO₃⁻, and E. coli logs.', target: 'Jal Shakti Dept., CGWB, DEERS & KU Earth Sciences', justification: 'Protects decentralized freshwater lifelines across rural Kashmir.', indicator: '50 instrumented sentinel springs + statutory Springshed Protection Guidelines notified.' },
     ],
     references: [
-      { id: 'REF-SPR-01', authorsOrBody: 'Jeelani, G., Bhat, N. A., Shivanna, K., & Bhat, M. Y.', year: 2010, title: 'Geochemical characterization and isotopic recharge of karst springs in Kashmir Himalaya, India', publicationOrSeries: 'Journal of Hydrology / Hydrogeology Journal Series', referenceType: 'Peer-Reviewed Journal', provenanceNote: 'Foundational hydrogeological and isotopic characterization of Kashmir karst springs.' },
+      { id: 'REF-SPR-01', authorsOrBody: 'Scoping Literature Review Target — Kashmir Karst Spring Isotope Series (Jeelani et al.)', year: 2010, title: 'Scoping Literature Review Target: Hydrogeochemical and isotopic characterization of karst springs in Kashmir Himalaya', publicationOrSeries: 'Scoping Literature Review Target (Exact Journal Volume/DOI Verification Pending)', referenceType: 'Technical Institute Report', provenanceNote: 'Reclassified from combined journal-series placeholder to scoping literature review target pending single-DOI bibliographic binding.' },
       { id: 'REF-SPR-02', authorsOrBody: 'Central Ground Water Board (CGWB) & NITI Aayog', year: 2023, title: 'Ground Water Year Book (J&K) & Inventory and Revival of Springs in the Himalayas for Water Security', publicationOrSeries: 'Ministry of Jal Shakti / NITI Aayog, Govt. of India', referenceType: 'Technical Institute Report', provenanceNote: 'Provides official observation-well levels and Himalayan springshed governance framework.' },
     ],
     dataGaps: ['Unified 10-district georeferenced database of perennial vs dried village springs and private borewell extraction volumes.'],
@@ -1664,7 +1664,7 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
     status: 'proposed',
     statusLabel: 'Proposed Source-to-Tap Risk Charter (Stage 01)',
     temporalScope: '2010–2026',
-    heroImage: '/images/publications/hydrology_jhelum_adcp_discharge_1795638881367.jpg',
+    heroImage: '/images/publications/hydrology-jhelum-adcp-discharge.jpg',
     heroImageCaption: 'Mapping hydrological pollution pathways between upstream waste/mining/agrochemical discharges and downstream drinking-water abstraction intakes.',
     subregion: 'Multi-District Kashmir Basin',
     districts: ALL_10_KASHMIR_DISTRICTS,
@@ -1704,8 +1704,8 @@ export const SERIES_16_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
         disciplineName: 'GIS Watershed Sanitary Inspection & QMRA',
         clusterName: 'Applied Environmental Sciences',
         methodologyApplied: '30 m Copernicus DEM upstream catchment delineation above each WSS intake + exponential/Beta-Poisson Quantitative Microbial Risk Assessment (QMRA).',
-        equationOrMetricUsed: 'P_inf = 1 - [1 + d / N_50 (2^(1/α) - 1)]^(-α)',
-        empiricalFinding: ' Riverbed gravel mining removes natural hyporheic biofiltration while resuspending fine silt that overwhelms downstream WTP chlorination during storms.',
+        equationOrMetricUsed: 'P_inf = 1 - [1 + (d / N_50) · (2^(1/α) - 1)]^(-α)',
+        empiricalFinding: 'Riverbed gravel mining removes natural hyporheic biofiltration while resuspending fine silt that overwhelms downstream WTP chlorination during storms.',
         uncertaintyAndLimitations: 'Requires exact GPS coordinates of Jal Shakti intakes and sub-district IDSP weekly waterborne morbidity time series.',
         verificationClass: 'Documented',
       },

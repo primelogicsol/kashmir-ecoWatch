@@ -376,9 +376,9 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
     status: 'proposed',
     isPeerReviewed: false,
     scientificCommittee: [
-      { name: 'Prof. M. Farooq (Nominated Co-Chair)', affiliation: 'University of Kashmir', role: 'Proposed Summit Co-Chair' },
-      { name: 'Prof. Elena Rostova (Nominated Director)', affiliation: 'ETH Zurich / ICIMOD Affiliate', role: 'Proposed Program Director' },
-      { name: 'Dr. Tariq Ahmad (Nominated Lead)', affiliation: 'SKUAST-Kashmir', role: 'Proposed Hydrological Tracks Lead' }
+      { name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', affiliation: 'Glaciology & Earth Sciences Track', role: 'Proposed Summit Co-Chair Slot' },
+      { name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', affiliation: 'Mountain Cryosphere & Remote Sensing Track', role: 'Proposed Program Track Slot' },
+      { name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', affiliation: 'Watershed & Agricultural Hydrology Track', role: 'Proposed Hydrological Tracks Slot' }
     ],
     tracks: [
       {
@@ -441,29 +441,29 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
     featuredSpeakers: [
       {
         id: 'spk-1',
-        name: 'Prof. M. Farooq (Nominated / Invited)',
-        title: 'Professor & Head of Earth Sciences',
-        institution: 'University of Kashmir',
+        name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+        title: 'Glaciology & Geodetic Remote Sensing Keynote Slot',
+        institution: 'Speaker Invitation Open (Written Consent & ORCID Required)',
         avatar: '/images/avatars/academic-silhouette.svg',
-        bio: 'Senior glaciologist with extensive field and satellite geodetic mass balance research across Western Himalayan glacier basins.',
+        bio: 'Reserved keynote slot for verified Western Himalayan glacier mass balance and satellite geodetic research.',
         status: 'Invited'
       },
       {
         id: 'spk-2',
-        name: 'Prof. Elena Rostova (Nominated / Invited)',
-        title: 'Senior Cryosphere Research Fellow',
-        institution: 'ETH Zurich & ICIMOD Affiliate',
+        name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+        title: 'Supraglacial Debris & UAV Cryosphere Physics Slot',
+        institution: 'Speaker Invitation Open (Written Consent & ORCID Required)',
         avatar: '/images/avatars/academic-silhouette.svg',
-        bio: 'Specialist in supraglacial debris thermal physics, high-altitude UAV photogrammetry, and Hindu Kush-Himalayan cryospheric ablation modeling.',
+        bio: 'Reserved technical slot for supraglacial debris thermal physics, high-altitude UAV photogrammetry, and cryospheric ablation modeling.',
         status: 'Invited'
       },
       {
         id: 'spk-3',
-        name: 'Dr. Tariq Ahmad (Nominated / Invited)',
-        title: 'Associate Professor of Agricultural Hydrology',
-        institution: 'SKUAST-Kashmir',
+        name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+        title: 'Karewa Springshed & Watershed Hydrology Slot',
+        institution: 'Speaker Invitation Open (Written Consent & ORCID Required)',
         avatar: '/images/avatars/academic-silhouette.svg',
-        bio: 'Researcher on Karewa springshed hydraulics, watershed water budgets, and high-density horticultural irrigation resilience.',
+        bio: 'Reserved technical slot for Karewa springshed hydraulics, watershed water budgets, and horticultural irrigation resilience.',
         status: 'Invited'
       }
     ],
@@ -501,8 +501,8 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
     status: 'proposed',
     isPeerReviewed: false,
     scientificCommittee: [
-      { name: 'Er. Asif Qadri (Nominated Director)', affiliation: 'Wetlands International South Asia', role: 'Proposed Symposium Director' },
-      { name: 'Dr. Bushra Nazir (Nominated Chair)', affiliation: 'KU Limnology Centre', role: 'Proposed Scientific Chair' }
+      { name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', affiliation: 'Wetland Hydrology & Restoration Track', role: 'Proposed Symposium Director Slot' },
+      { name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', affiliation: 'Freshwater Limnology & Avifauna Track', role: 'Proposed Scientific Chair Slot' }
     ],
     tracks: [
       {
@@ -541,11 +541,11 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
     featuredSpeakers: [
       {
         id: 'spk-4',
-        name: 'Dr. Bushra Nazir (Nominated / Invited)',
-        title: 'Senior Limnologist & Wetland Ecologist',
-        institution: 'Limnology Research Centre, Srinagar',
+        name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+        title: 'Limnology & Wetland Ecology Keynote Slot',
+        institution: 'Speaker Invitation Open (Written Consent & ORCID Required)',
         avatar: '/images/avatars/academic-silhouette.svg',
-        bio: 'Researches benthic macro-invertebrate biotic indexing and waterbird carrying-capacity audits across J&K wetlands.',
+        bio: 'Reserved keynote slot for macroinvertebrate biotic indexing and waterbird carrying-capacity assessments across Ramsar wetlands.',
         status: 'Invited'
       }
     ],
@@ -583,7 +583,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
     status: 'proposed',
     isPeerReviewed: false,
     scientificCommittee: [
-      { name: 'Dr. Tariq Ahmad (Nominated Chair)', affiliation: 'SKUAST-K', role: 'Proposed Conference Chair' }
+      { name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', affiliation: 'Fluvial Geomorphology & Hydraulics Track', role: 'Proposed Conference Chair Slot' }
     ],
     tracks: [
       {
@@ -613,11 +613,11 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
     featuredSpeakers: [
       {
         id: 'spk-3',
-        name: 'Dr. Tariq Ahmad (Nominated / Invited)',
-        title: 'Associate Professor of Agricultural Hydrology',
-        institution: 'SKUAST-Kashmir',
+        name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+        title: 'Fluvial Geomorphology & Sediment Equilibrium Slot',
+        institution: 'Speaker Invitation Open (Written Consent & ORCID Required)',
         avatar: '/images/avatars/academic-silhouette.svg',
-        bio: 'Lead researcher on fluvial geomorphology, sediment budgets, and river corridor restoration.',
+        bio: 'Reserved technical slot for fluvial geomorphology, sediment budgets, and river corridor restoration.',
         status: 'Invited'
       }
     ],
@@ -652,7 +652,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
     status: 'proposed',
     isPeerReviewed: false,
     scientificCommittee: [
-      { name: 'Dr. Khursheed Ahmad (Nominated Chair)', affiliation: 'SKUAST-K', role: 'Proposed Conference Chair' }
+      { name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', affiliation: 'Alpine Wildlife & Protected Areas Track', role: 'Proposed Conference Chair Slot' }
     ],
     tracks: [
       {
@@ -679,7 +679,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
       { dayNumber: 2, date: 'September 24, 2027', title: 'Day 2: Ethnobotany, Pollinators & Community Forestry', highlight: 'Alpine Flora and Pollinator Baselines' }
     ],
     featuredSpeakers: [
-      { id: 'spk-bio-1', name: 'Dr. Khursheed Ahmad (Invited)', title: 'Head of Wildlife Sciences', institution: 'SKUAST-K', avatar: '/images/avatars/academic-silhouette.svg', bio: 'Senior wildlife biologist specializing in high-altitude ungulates.', status: 'Invited' }
+      { id: 'spk-bio-1', name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', title: 'High-Altitude Ungulate & Corridor Ecology Slot', institution: 'Speaker Invitation Open (Written Consent & ORCID Required)', avatar: '/images/avatars/academic-silhouette.svg', bio: 'Reserved keynote slot for high-altitude ungulate conservation and protected landscape connectivity.', status: 'Invited' }
     ],
     abstractSubmissionsOpen: true,
     abstractDeadline: 'August 15, 2027',
@@ -708,7 +708,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
     status: 'proposed',
     isPeerReviewed: false,
     scientificCommittee: [
-      { name: 'Er. R. K. Raina (Nominated Chair)', affiliation: 'Disaster Management Authority', role: 'Proposed Chair' }
+      { name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', affiliation: 'Multi-Hazard & Slope Stability Track', role: 'Proposed Chair Slot' }
     ],
     tracks: [
       {
@@ -736,7 +736,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
       { dayNumber: 3, date: 'March 18, 2028', title: 'Day 3: Seismic Hazard & Community Preparedness', highlight: 'Disaster Risk Reduction Policy Matrix' }
     ],
     featuredSpeakers: [
-      { id: 'spk-haz-1', name: 'Er. R. K. Raina (Invited)', title: 'Chief Hazard Specialist', institution: 'Disaster Authority', avatar: '/images/avatars/academic-silhouette.svg', bio: 'Expert in mountain slope stabilization and compound hazard mitigation.', status: 'Invited' }
+      { id: 'spk-haz-1', name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', title: 'Mountain Slope Stabilization & Compound Hazard Slot', institution: 'Speaker Invitation Open (Written Consent & ORCID Required)', avatar: '/images/avatars/academic-silhouette.svg', bio: 'Reserved keynote slot for mountain slope stabilization and compound hazard mitigation.', status: 'Invited' }
     ],
     abstractSubmissionsOpen: true,
     abstractDeadline: 'February 1, 2028',
@@ -765,7 +765,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
     status: 'proposed',
     isPeerReviewed: false,
     scientificCommittee: [
-      { name: 'Dr. M. S. Wani (Nominated Chair)', affiliation: 'Ecological Economics Faculty', role: 'Proposed Chair' }
+      { name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', affiliation: 'Ecological Economics & Sectoral EIA Track', role: 'Proposed Chair Slot' }
     ],
     tracks: [
       {
@@ -792,7 +792,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
       { dayNumber: 2, date: 'June 16, 2028', title: 'Day 2: Agriculture, Horticulture & Craft Lifecycles', highlight: 'Sectoral Cumulative Mitigation Dossiers' }
     ],
     featuredSpeakers: [
-      { id: 'spk-eia-1', name: 'Dr. M. S. Wani (Invited)', title: 'Director of Environmental Economics', institution: 'SKUAST-K', avatar: '/images/avatars/academic-silhouette.svg', bio: 'Pioneered carrying-capacity modeling for alpine resort destinations.', status: 'Invited' }
+      { id: 'spk-eia-1', name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', title: 'Environmental Economics & Carrying Capacity Slot', institution: 'Speaker Invitation Open (Written Consent & ORCID Required)', avatar: '/images/avatars/academic-silhouette.svg', bio: 'Reserved keynote slot for carrying-capacity modeling across alpine resort destinations and orchard watersheds.', status: 'Invited' }
     ],
     abstractSubmissionsOpen: true,
     abstractDeadline: 'May 1, 2028',
@@ -821,7 +821,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
     status: 'proposed',
     isPeerReviewed: false,
     scientificCommittee: [
-      { name: 'Prof. Nighat Ara (Nominated Chair)', affiliation: 'Educational Pedagogy Institute', role: 'Proposed Chair' }
+      { name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', affiliation: 'Environmental Pedagogy & Youth Science Track', role: 'Proposed Chair Slot' }
     ],
     tracks: [
       {
@@ -848,7 +848,7 @@ export const CONFERENCES_DETAILED: ConferenceDetailed[] = [
       { dayNumber: 2, date: 'September 22, 2028', title: 'Day 2: NGO Impact Verification & EcoVoices', highlight: 'Civil Society Restoration Accreditation' }
     ],
     featuredSpeakers: [
-      { id: 'spk-edu-1', name: 'Prof. Nighat Ara (Invited)', title: 'Dean of Environmental Pedagogy', institution: 'University of Kashmir', avatar: '/images/avatars/academic-silhouette.svg', bio: 'Champion of experiential outdoor classroom learning in montane high schools.', status: 'Invited' }
+      { id: 'spk-edu-1', name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)', title: 'Experiential Environmental Pedagogy Slot', institution: 'Speaker Invitation Open (Written Consent & ORCID Required)', avatar: '/images/avatars/academic-silhouette.svg', bio: 'Reserved keynote slot for experiential outdoor classroom field learning in montane schools.', status: 'Invited' }
     ],
     abstractSubmissionsOpen: true,
     abstractDeadline: 'August 1, 2028',
@@ -934,21 +934,21 @@ export const SESSIONS_DETAILED: ConferenceSessionDetailed[] = [
     roomName: 'Virtual Auditorium A (In Planning)',
     moderator: {
       id: 'spk-1',
-      name: 'Prof. M. Farooq (Nominated / Invited)',
-      title: 'Professor & Head of Earth Sciences',
-      institution: 'University of Kashmir',
+      name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+      title: 'Glaciology Plenary Moderator Slot',
+      institution: 'Speaker Invitation Open (Confirmation Pending)',
       avatar: '/images/avatars/academic-silhouette.svg',
-      bio: 'Senior glaciologist with extensive field and satellite geodetic mass balance research.',
+      bio: 'Reserved plenary moderator slot for geodetic mass balance research.',
       status: 'Invited'
     },
     speakers: [
       {
         id: 'spk-1',
-        name: 'Prof. M. Farooq (Nominated / Invited)',
-        title: 'Professor & Head of Earth Sciences',
-        institution: 'University of Kashmir',
+        name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+        title: 'Glaciology Plenary Speaker Slot',
+        institution: 'Speaker Invitation Open (Confirmation Pending)',
         avatar: '/images/avatars/academic-silhouette.svg',
-        bio: 'Senior glaciologist with extensive field and satellite geodetic mass balance research.',
+        bio: 'Reserved plenary speaker slot for Western Himalayan geodetic mass balance research.',
         status: 'Invited'
       }
     ],
@@ -1001,11 +1001,11 @@ export const SESSIONS_DETAILED: ConferenceSessionDetailed[] = [
     roomName: 'Virtual Auditorium (Wetlands)',
     moderator: {
       id: 'spk-5',
-      name: 'Er. Asif Qadri (Nominated / Invited)',
-      title: 'Ecological Hydrology Consultant',
-      institution: 'Wetlands International South Asia',
+      name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+      title: 'Wetland Restoration Moderator Slot',
+      institution: 'Speaker Invitation Open (Confirmation Pending)',
       avatar: '/images/avatars/academic-silhouette.svg',
-      bio: 'Hydrological consultant on wetland water control and dredge designs.'
+      bio: 'Reserved moderator slot for wetland water control and bathymetric restoration.'
     },
     speakers: [],
     abstract: 'Proposed presentation evaluating sediment infilling in Hokersar and the northern littoral zones of Wular Lake, examining how mechanized dredge spoils must be repurposed.',
@@ -1147,3 +1147,12 @@ export function formatTimeWithTimezone(timeString: string, targetTimezoneCode: s
   }
   return `${timeString} (${tz.code})`;
 }
+
+// QUARANTINED_ARCHIVE_METADATA
+export const QUARANTINED_CONFERENCE_SPEAKER_SLOTS = {
+  datasetId: 'institutional-academic-profiles',
+  quarantinedDate: '2026-11-27',
+  quarantinedCount: 9,
+  reason:
+    'Quarantined 1 fictional academic persona ("Prof. Elena Rostova") and 8 unconfirmed named faculty speaker/chair nominations pending signed speaker consent and verified ORCID iD.',
+} as const;

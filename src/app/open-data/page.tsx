@@ -20,15 +20,21 @@ import {
   OpenDataCategory,
   ScientificDomain
 } from '@/data/open-data-catalog';
+import {
+  DATASET_LICENSE_POLICIES,
+  DATASET_CATEGORY_LICENSE_MAPPINGS
+} from '@/data/dataset-licensing-registry';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { CANONICAL_SITE_URL, KEW_IDENTITY, ORGANIZATION_ENTITY_ID } from '@/lib/seo/entity-identity';
+import { CANONICAL_SITE_URL, ORGANIZATION_ENTITY_ID } from '@/lib/seo/entity-identity';
+
+const TOTAL_CATALOG_CATEGORIES = openDataCategories.length;
 
 /* ─── Section index ────────────────────────────────────────────────────── */
 
 const sections = [
   { id: 'overview',        label: 'Overview' },
-  { id: 'principles',      label: 'Open Data Principles' },
-  { id: 'categories',      label: 'Data Catalog (50 Categories)' },
+  { id: 'principles',      label: 'Data Governance Principles' },
+  { id: 'categories',      label: `Data Catalog (${TOTAL_CATALOG_CATEGORIES} Categories)` },
   { id: 'dataset-info',    label: 'Dataset Information' },
   { id: 'formats',         label: 'Supported Formats' },
   { id: 'sources',         label: 'Data Sources' },
@@ -369,38 +375,44 @@ export default function OpenDataPortalPage() {
     }
   };
 
-  const openDataCatalogJsonLd = useMemo(() => ({
-    '@context': 'https://schema.org',
-    '@type': 'DataCatalog',
-    '@id': `${CANONICAL_SITE_URL}/open-data#catalog`,
-    name: 'Kashmir EcoWatch Western Himalayan Open Environmental Data Catalog',
-    description: 'FAIR-compliant open environmental datasets covering hydrology, alpine lakes, Ramsar wetlands, glaciers, Red Data Book species, pollution monitoring, and GIS vectors across the Western Himalaya.',
-    url: `${CANONICAL_SITE_URL}/open-data`,
-    license: KEW_IDENTITY.defaultLicenseUrl,
-    publisher: { '@id': ORGANIZATION_ENTITY_ID },
-    dataset: openDataCategories.slice(0, 20).map((cat) => ({
-      '@type': 'Dataset',
-      name: cat.title,
-      description: cat.description,
-      url: `${CANONICAL_SITE_URL}${cat.targetModule}`,
-      identifier: cat.id,
-      license: KEW_IDENTITY.defaultLicenseUrl,
-      isAccessibleForFree: cat.status !== 'Restricted',
-      creator: { '@id': ORGANIZATION_ENTITY_ID },
-      distribution: [
-        {
-          '@type': 'DataDownload',
-          encodingFormat: 'text/csv',
-          contentUrl: `${CANONICAL_SITE_URL}/api/datasets/open-data/${cat.id}?format=csv`,
-        },
-        {
-          '@type': 'DataDownload',
-          encodingFormat: 'application/json',
-          contentUrl: `${CANONICAL_SITE_URL}/api/datasets/open-data/${cat.id}?format=json`,
-        },
-      ],
-    })),
-  }), []);
+  const openDataCatalogJsonLd = useMemo(() => {
+    const eligibleDatasets = openDataCategories.filter(
+      (cat) => cat.status === 'Available' || cat.status === 'Limited Coverage'
+    );
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'DataCatalog',
+      '@id': `${CANONICAL_SITE_URL}/open-data#catalog`,
+      name: 'Kashmir EcoWatch Western Himalayan Environmental Data Catalog',
+      description:
+        'FAIR-aligned environmental synthesis datasets covering hydrology, alpine lakes, Ramsar wetlands, glaciers, species checklists, and GIS reference layers across the Western Himalaya. Eligible KEW-authored syntheses licensed under CC BY-NC 4.0 (Non-Commercial); third-party agency and journal sources retain original copyright.',
+      url: `${CANONICAL_SITE_URL}/open-data`,
+      license: DATASET_LICENSE_POLICIES['CC-BY-NC-4.0'].url,
+      publisher: { '@id': ORGANIZATION_ENTITY_ID },
+      dataset: eligibleDatasets.slice(0, 20).map((cat) => ({
+        '@type': 'Dataset',
+        name: cat.title,
+        description: cat.description,
+        url: `${CANONICAL_SITE_URL}${cat.targetModule}`,
+        identifier: cat.id,
+        license: DATASET_LICENSE_POLICIES['CC-BY-NC-4.0'].url,
+        isAccessibleForFree: true,
+        creator: { '@id': ORGANIZATION_ENTITY_ID },
+        distribution: [
+          {
+            '@type': 'DataDownload',
+            encodingFormat: 'text/csv',
+            contentUrl: `${CANONICAL_SITE_URL}/api/datasets/open-data/${cat.id}?format=csv`,
+          },
+          {
+            '@type': 'DataDownload',
+            encodingFormat: 'application/json',
+            contentUrl: `${CANONICAL_SITE_URL}/api/datasets/open-data/${cat.id}?format=json`,
+          },
+        ],
+      })),
+    };
+  }, []);
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
@@ -411,9 +423,9 @@ export default function OpenDataPortalPage() {
           <span className="block whitespace-normal break-words leading-[1.12] overflow-visible pb-2">Open Data</span>
           <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Portal</span>
         </>}
-        subtitle="Open Environmental Intelligence for Research, Conservation, and Public Benefit across the Western Himalaya."
+        subtitle="Non-Commercial Environmental Intelligence (CC BY-NC 4.0 for Eligible KEW Syntheses) for Research, Conservation, and Public Benefit across the Western Himalaya."
         icon={<Database className="w-6 h-6 text-emerald-400" />}
-        label="FAIR Open Science · 10 Domains · 50 Categories"
+        label={`FAIR Data Governance · ${scientificDomains.length} Domains · ${TOTAL_CATALOG_CATEGORIES} Categories · CC BY-NC 4.0`}
       />
 
       <section className="py-8 md:py-12">
@@ -450,7 +462,7 @@ export default function OpenDataPortalPage() {
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div>
                         <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400">
-                          Verified Open Geospatial &amp; Limnological Release · CC BY 4.0
+                          Desk-Verified Geospatial &amp; Limnological Synthesis · CC BY-NC 4.0 (Non-Commercial)
                         </span>
                         <h3 className="text-base font-bold text-white mt-0.5">
                           Kashmir Division Master Lake Inventory &amp; Source Reconciliation Package (KEW-SR-2026-101)
@@ -493,7 +505,7 @@ export default function OpenDataPortalPage() {
 
                   <div className="border-t border-white/5" />
 
-                  {/* ─── DATA CATEGORIES (10 Domains & 50 Categories) ───────── */}
+                  {/* ─── DATA CATEGORIES (10 Domains & 52 Categories) ───────── */}
                   <div id="categories" className="scroll-mt-28 space-y-6">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-[6px] bg-blue-500/10 flex items-center justify-center flex-shrink-0 border border-white/5">
@@ -501,13 +513,13 @@ export default function OpenDataPortalPage() {
                       </div>
                       <div>
                         <h2 className="text-base font-bold text-white">Scientific Data Catalog</h2>
-                        <p className="text-xs text-slate-400">10 Scientific Domains · 50 Authoritative Data Categories</p>
+                        <p className="text-xs text-slate-400">{scientificDomains.length} Scientific Domains · {TOTAL_CATALOG_CATEGORIES} Authoritative Data Categories</p>
                       </div>
                     </div>
 
                     <div className="pl-0 sm:pl-11 space-y-6">
                       <p className="text-sm text-slate-300 leading-relaxed">
-                        The Open Data Catalog organizes Western Himalayan environmental intelligence into a hierarchical scientific taxonomy. Each category documents actual dataset availability, observation methodologies, provenance, and direct gateway links into corresponding live analytical modules:
+                        The Data Catalog organizes Western Himalayan environmental intelligence into a hierarchical scientific taxonomy. Each category documents actual dataset availability, observation methodologies, provenance, licensing scope, and direct gateway links into corresponding analytical modules:
                       </p>
 
                       {/* Domain Filter Bar */}
@@ -517,7 +529,7 @@ export default function OpenDataPortalPage() {
                             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
                             <input
                               type="text"
-                              placeholder="Search 50 categories (e.g. InSAR, springs, PM2.5, saffron, wetlands, Hangul)..."
+                              placeholder={`Search ${TOTAL_CATALOG_CATEGORIES} categories (e.g. InSAR, springs, PM2.5, saffron, wetlands, Hangul)...`}
                               value={searchQuery}
                               onChange={(e) => setSearchQuery(e.target.value)}
                               className="w-full bg-slate-950 border border-white/10 rounded-[4px] pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50"
@@ -562,9 +574,11 @@ export default function OpenDataPortalPage() {
                                 : 'bg-slate-950 text-slate-400 hover:text-white border border-white/5'
                             }`}
                           >
-                            All Domains (50)
+                            All Domains ({TOTAL_CATALOG_CATEGORIES})
                           </button>
-                          {scientificDomains.map(d => (
+                          {scientificDomains.map(d => {
+                            const domainActualCount = openDataCategories.filter(c => c.domainId === d.id).length;
+                            return (
                             <button
                               key={d.id}
                               type="button"
@@ -576,9 +590,10 @@ export default function OpenDataPortalPage() {
                               }`}
                             >
                               <span>{d.shortTitle}</span>
-                              <span className="ml-1 text-[10px] opacity-75">({d.count})</span>
+                              <span className="ml-1 text-[10px] opacity-75">({domainActualCount})</span>
                             </button>
-                          ))}
+                            );
+                          })}
                         </div>
 
                         {/* Status Filter Badges */}
@@ -603,8 +618,8 @@ export default function OpenDataPortalPage() {
 
                       {/* Filter Results Counter */}
                       <div className="flex items-center justify-between text-xs text-slate-400 px-1 font-mono">
-                        <span>Showing {filteredCategories.length} of 50 Categories</span>
-                        <span>FAIR Standard Compliant</span>
+                        <span>Showing {filteredCategories.length} of {TOTAL_CATALOG_CATEGORIES} Categories</span>
+                        <span>Tiered Licensing · CC BY-NC 4.0 &amp; Source Carve-Outs</span>
                       </div>
 
                       {/* Categories Cards Grid */}
@@ -748,23 +763,42 @@ export default function OpenDataPortalPage() {
                   <div className="border-t border-white/5" />
 
                   {/* Licensing */}
-                  <Section id="licensing" icon={Lock} title="Licensing &amp; Access Terms" accent="text-amber-400" bg="bg-amber-500/10">
-                    <p>Datasets published through the Open Data Portal are authorized for legitimate public-benefit applications:</p>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
-                      {[
-                        'Academic Research', 'Educational Use', 'Ecological Conservation',
-                        'Non-commercial Analysis', 'Disaster Preparedness', 'Scientific Collaboration',
-                      ].map(use => (
-                        <div key={use} className="flex items-center gap-2 text-xs text-slate-300 rounded-[4px] bg-emerald-500/5 border border-emerald-500/10 px-3 py-2">
-                          <CheckCircle className="w-3 h-3 text-emerald-400 flex-shrink-0" />
-                          {use}
+                  <Section id="licensing" icon={Lock} title="Tiered Licensing &amp; Access Governance (CC BY-NC 4.0)" accent="text-amber-400" bg="bg-amber-500/10">
+                    <p>
+                      Eligible <strong className="text-white">KEW-authored synthesis datasets, taxonomic/geographic reference tables, and desk-verified reports</strong> are published under{' '}
+                      <a
+                        href={DATASET_LICENSE_POLICIES['CC-BY-NC-4.0'].url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-emerald-400 hover:text-emerald-300 underline font-semibold"
+                      >
+                        CC BY-NC 4.0 (Creative Commons Attribution-NonCommercial 4.0 International)
+                      </a>
+                      . Commercial reuse is reserved and requires prior written permission; CC BY-NC 4.0 applies exclusively to original KEW synthesis compilations and comes with explicit legal and conservation carve-outs:
+                    </p>
+                    <div className="space-y-2.5 mt-3">
+                      {Object.values(DATASET_LICENSE_POLICIES).map((policy) => (
+                        <div key={policy.code} className="rounded-[6px] bg-slate-900/80 border border-white/10 p-3.5 space-y-1">
+                          <div className="flex flex-wrap items-center justify-between gap-2">
+                            <span className="text-xs font-bold text-white">{policy.name}</span>
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                              {policy.shortBadge}
+                            </span>
+                          </div>
+                          <p className="text-xs text-slate-300 leading-relaxed">{policy.summary}</p>
                         </div>
                       ))}
                     </div>
-                    <div className="rounded-[6px] bg-amber-950/20 border border-amber-500/20 p-4 mt-3">
-                      <p className="text-xs text-slate-300 leading-relaxed">
-                        Third-party datasets remain subject to the licensing covenants of their originating agencies. Users must comply with applicable licence terms.
-                      </p>
+                    <div className="rounded-[6px] bg-amber-950/20 border border-amber-500/20 p-4 mt-3 space-y-2">
+                      <div className="text-xs font-bold text-amber-300">Dataset Category License Mapping</div>
+                      <ul className="space-y-1.5 text-xs text-slate-300">
+                        {DATASET_CATEGORY_LICENSE_MAPPINGS.map((m) => (
+                          <li key={m.categorySlug}>
+                            <strong className="text-white">{m.title}:</strong>{' '}
+                            <span className="font-mono text-amber-300">[{DATASET_LICENSE_POLICIES[m.licenseCode].shortBadge}]</span> — {m.redistributionScope}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </Section>
 

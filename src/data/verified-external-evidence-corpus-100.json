@@ -6,20 +6,23 @@
     "reportsCovered": 100,
     "totalLiveApiQueriesExecuted": 600,
     "totalRawScholarlyAndDatasetHits": 243869284,
-    "totalRetainedReportLiteratureEntries": 694,
-    "uniqueVerifiedDoisAcrossCorpus": 632,
+    "totalRetainedReportLiteratureEntries": 634,
+    "uniqueVerifiedDoisAcrossCorpus": 574,
     "accessDepthBreakdown": {
-      "openAccessFullTextAvailable": 369,
-      "abstractVerified": 211,
-      "metadataVerifiedOnly": 114
+      "openAccessFullTextAvailable": 325,
+      "abstractVerified": 200,
+      "metadataVerifiedOnly": 109
     },
     "geographicalTierBreakdown": {
-      "Tier A": 259,
-      "Tier B": 88,
-      "Tier C": 80,
-      "Tier D": 113,
-      "Tier E": 154
-    }
+      "Tier A": 249,
+      "Tier B": 84,
+      "Tier C": 70,
+      "Tier D": 108,
+      "Tier E": 123
+    },
+    "quarantinedOffTopicLiteratureCount": 60,
+    "quarantinedOffTopicDataCiteCount": 43,
+    "reclassifiedPreprintsCount": 45
   },
   "reports": [
     {
@@ -73,7 +76,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 4522762,
         "deduplicatedCandidatesInspected": 21,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -102,7 +105,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Health Risk Assessment of Potentially Toxic Element Uptake by Lotus (&lt;i&gt;Nelumbo nucifera&lt;/i&gt;) in Floating Lake Gardens",
+          "title": "Health Risk Assessment of Potentially Toxic Element Uptake by Lotus (Nelumbo nucifera) in Floating Lake Gardens",
           "authors": "Elbagory M, Moghanm FS, Mohamed I, El-Nahrawy S, Omara AE, Goala M, Kumar P, Mioč B, Andabaka Ž, Širić I",
           "year": 2025,
           "venue": "Toxics",
@@ -127,12 +130,12 @@
           "title": "Assessing the Impact of Pollution on Water Quality – A Case Study of Brar-i-Nambal and Jhelum, Srinagar, Jammu and Kashmir, India",
           "authors": "Shah MI",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-9463761/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-9463761/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
@@ -205,24 +208,6 @@
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "The study found similar trends in micro-mineral concentrations in macrophytes from other lakes."
-        },
-        {
-          "repository": "Zenodo",
-          "title": "Sisyra mierae Monserrat 1981",
-          "authors": "Wachkoo, Aijaz Ahmad; Kaur, Simarjit; Akbar, Shahid Ali",
-          "year": 2024,
-          "venue": "Catalog of the Neuropterida of India (Insecta: Neuroptera, Megaloptera, Raphidioptera), pp. 1-128 in Zootaxa",
-          "doi": "10.5281/zenodo.14592578",
-          "sourceUrl": "https://zenodo.org/records/14592578",
-          "oaFullTextUrl": "https://zenodo.org/records/14592578",
-          "citedByCount": 0,
-          "publicationType": "publication",
-          "license": "cc-zero",
-          "geographicalTier": "Tier A",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "* Sisyra mierae Monserrat, 1981 Sisyra mierae Monserrat, 1981: 172."
         }
       ],
       "retrievedDataCiteDatasets": [],
@@ -303,7 +288,7 @@
       "retrievedLiterature": [
         {
           "repository": "Crossref",
-          "title": "Butterfly fauna (Lepidoptera: Rhopalocera) in and around Hirpora Wildlife Sanctuary, Shopian Kashmir, J&amp;K UT, India",
+          "title": "Butterfly fauna (Lepidoptera: Rhopalocera) in and around Hirpora Wildlife Sanctuary, Shopian Kashmir, J&K UT, India",
           "authors": "RİYAZ, M.",
           "year": 2022,
           "venue": "Biological Diversity and Conservation",
@@ -615,7 +600,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Phytotoxic Effects of Textile Wastewater Contaminants on &lt;i&gt;Lepidium sativum&lt;/i&gt;: Impact of Ozone-Based Treatment",
+          "title": "Phytotoxic Effects of Textile Wastewater Contaminants on Lepidium sativum: Impact of Ozone-Based Treatment",
           "authors": "Bilińska M, Kędzierska-Sar A, Kapica R, Gmurek M, Bilińska L",
           "year": 2026,
           "venue": "Molecules (Basel, Switzerland)",
@@ -981,7 +966,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 2217146,
         "deduplicatedCandidatesInspected": 13,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -1027,27 +1012,6 @@
           "extractedFindingSnippet": "- An attempt has been made to study the slope suitability and agricultural production of Lidder valley.Slope as an important geomorphic aspect has profound influenceon the production of different food crops of the region."
         },
         {
-          "repository": "Zenodo",
-          "title": "Trichodromeus sulcicollis Shavrin 2024, comb. n.",
-          "authors": "Shavrin, Alexey V.",
-          "year": 2024,
-          "venue": "Review of Hygrogeus Mulsant & Rey, 1880 and Trichodromeus Luze, 1903, with descriptions of three new genera from the eastern Palaearctic Region (Coleoptera: Staphylinidae: Anthophagini: Omaliinae), pp. 1-62 in Zootaxa",
-          "doi": "10.5281/zenodo.14023115",
-          "sourceUrl": "https://zenodo.org/records/14023115",
-          "oaFullTextUrl": "https://zenodo.org/records/14023115",
-          "citedByCount": 0,
-          "publicationType": "publication",
-          "license": "cc-zero",
-          "geographicalTier": "Tier A",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "800 m",
-            "6.0 mm"
-          ],
-          "extractedFindingSnippet": "Trichodromeus sulcicollis (Coiffait, 1983) comb."
-        },
-        {
           "repository": "Crossref",
           "title": "Assessing changes in the above ground biomass and carbon stocks of Lidder valley, Kashmir Himalaya, India",
           "authors": "Rashid, I.; Bhat, M. A.; Romshoo, S. A.",
@@ -1070,7 +1034,7 @@
           "title": "Food and feeding habits of snow trout, Schizothorax plagiostomus in River Lidder, from Kashmir Himalaya",
           "authors": "Jan, M.; Jan, N.; Khan, I. A.",
           "year": 2018,
-          "venue": "Bulletin of Pure &amp; Applied Sciences- Zoology",
+          "venue": "Bulletin of Pure & Applied Sciences- Zoology",
           "doi": "10.5958/2320-3188.2018.00001.3",
           "sourceUrl": "https://doi.org/10.5958/2320-3188.2018.00001.3",
           "oaFullTextUrl": null,
@@ -1193,7 +1157,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 931456,
         "deduplicatedCandidatesInspected": 19,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -1241,7 +1205,7 @@
           "title": "Pir Panjal and the Politics of Erasure in Jammu and Kashmir",
           "authors": "Tarif Sohail; Asifa Zunaidha",
           "year": 2026,
-          "venue": "Economic &amp; Political Weekly",
+          "venue": "Economic & Political Weekly",
           "doi": "10.71279/epw.v61i24.48651",
           "sourceUrl": "https://doi.org/10.71279/epw.v61i24.48651",
           "oaFullTextUrl": null,
@@ -1289,24 +1253,6 @@
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "Vegetation types of Gulmarg Wildlife Sanctuary, Kashmir Himalaya A) coniferous temperate mountain forests (Pinus wallichiana), B) sub-alpine forests of Silver Fir (Abies pindrow) C) sub-alpine forests of Himalayan Birch (Betula utilis), D) alpine scrubs and E) alpine meadows."
-        },
-        {
-          "repository": "Crossref",
-          "title": "Clinical and Histopathological Correlation of Cutaneous Leishmaniasis in Pir Panjal region of Jammu and Kashmir, India",
-          "authors": "Bhatti, M. R.; Sarfraz, S.; Rather, P. A.",
-          "year": 2019,
-          "venue": "International Journal of Contemporary Medical Research [IJCMR]",
-          "doi": "10.21276/ijcmr.2019.6.6.16",
-          "sourceUrl": "https://doi.org/10.21276/ijcmr.2019.6.6.16",
-          "oaFullTextUrl": null,
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Publisher Standard Terms",
-          "geographicalTier": "Tier A",
-          "accessClassification": "Metadata-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": null
         },
         {
           "repository": "Crossref",
@@ -1868,7 +1814,7 @@
           "title": "Environmental Compulsions of Pesticide Application in Kashmir and its Impacts on Orchardists",
           "authors": "Mayer, I. A.; Lone, B. A.; Wani, M. A.; Lone, S. A.",
           "year": 2023,
-          "venue": "Environment and Health in Jammu &amp; Kashmir and Ladakh",
+          "venue": "Environment and Health in Jammu & Kashmir and Ladakh",
           "doi": "10.4324/9781003329459-9",
           "sourceUrl": "https://doi.org/10.4324/9781003329459-9",
           "oaFullTextUrl": null,
@@ -2093,12 +2039,12 @@
           "title": "Elevational Filtering Drives Pollinator Community Disassembly in the Mountain Orchards of Doda, Indian Himalayas",
           "authors": "Rohit, Dhar A",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-8979944/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-8979944/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
@@ -2287,7 +2233,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 7201627,
         "deduplicatedCandidatesInspected": 23,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 5
       },
       "retrievedLiterature": [
         {
@@ -2309,24 +2255,6 @@
             "1°C"
           ],
           "extractedFindingSnippet": "Abstract Recent apple-related recall and outbreak events have exposed a need for better food safety controls along the supply chain."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Postharvest Quality Deterioration Mechanisms and Preservation Technologies of Tea (&lt;i&gt;Camellia sinensis&lt;/i&gt;): A Review",
-          "authors": "Guo X",
-          "year": 2026,
-          "venue": "Foods (Basel, Switzerland)",
-          "doi": "10.3390/foods15203766",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13704486",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13704486",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier C",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Tea, a globally important cash crop with abundant bioactive constituents, suffers widespread postharvest quality deterioration that causes substantial economic losses."
         },
         {
           "repository": "Europe PMC",
@@ -2390,24 +2318,6 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Construction and Verification of a Mathematical Model of Storage Time With Respiratory Heat Transfer",
-          "authors": "Duan L, Liu H, Fu Z, Huang L, Wang Y",
-          "year": 2026,
-          "venue": "International journal of food science",
-          "doi": "10.1155/ijfo/4258197",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13343370",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13343370",
-          "citedByCount": 1,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Cold chain containers are extensively applied to the fruit transport sector, and the storage time is a key performance indicator."
-        },
-        {
-          "repository": "Europe PMC",
           "title": "Orchard and storage-dependent metabolic and transcriptional regulation of superficial scald in 'Packham's Triumph' pears",
           "authors": "Lwin HP, Yoo J, Zhang H, Hargarten H, Honaas L, Rudell DR, Defilippi BG, Mejía N, Torres CA",
           "year": 2026,
@@ -2425,26 +2335,7 @@
           "extractedFindingSnippet": "Gene expression analysis showed that storage atmosphere regulated stress- and senescence-related genes, with antioxidant-associated genes (GST and GPx) generally enhanced under CA and SWC, while lipid degradation- and senescence-associated genes (LPS, LOX, and SGR) exhibited storage- and orchard-dependent responses."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Project Zion",
-          "creators": "Finnegan, Angel",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.24523857",
-          "url": "https://doi.org/10.5281/zenodo.24523857"
-        },
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Project Zion",
-          "creators": "Finnegan, Angel",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.23841271",
-          "url": "https://doi.org/10.5281/zenodo.23841271"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "J&K Horticulture Planning & Marketing Controlled-Atmosphere (CA) Storage Capacity Inventory",
@@ -2523,7 +2414,7 @@
           "title": "Biochemical Diversity and Genetic Variability among Walnut (Juglans regia L.) Genotypes from Jammu and Kashmir, India",
           "authors": "Lone, S. F.",
           "year": 2025,
-          "venue": "Journal of Advances in Biology &amp; Biotechnology",
+          "venue": "Journal of Advances in Biology & Biotechnology",
           "doi": "10.9734/jabb/2025/v28i123451",
           "sourceUrl": "https://doi.org/10.9734/jabb/2025/v28i123451",
           "oaFullTextUrl": null,
@@ -2580,10 +2471,10 @@
         },
         {
           "repository": "Crossref",
-          "title": "A Case report on Walnut (Juglans regia L.) from Jammu &amp; Kashmir",
+          "title": "A Case report on Walnut (Juglans regia L.) from Jammu & Kashmir",
           "authors": "Sharma, M.",
           "year": 2022,
-          "venue": "Journal of Biotechnology &amp; Bioresearch",
+          "venue": "Journal of Biotechnology & Bioresearch",
           "doi": "10.31031/jbb.2022.04.000586",
           "sourceUrl": "https://doi.org/10.31031/jbb.2022.04.000586",
           "oaFullTextUrl": null,
@@ -2637,12 +2528,12 @@
           "title": "Comprehensive Genetic Diversity Assessment of Promising Walnut (Juglans regia L.) Genotypes Using RAPD, ISSR, and iPBS Markers",
           "authors": "Başak, İ.; Muradoğlu, F.; Özer, G.; Güler, E.",
           "year": 2024,
-          "venue": "Springer Science and Business Media LLC",
+          "venue": "Springer Science and Business Media LLC (Preprint — Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-4946835/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-4946835/v1",
           "oaFullTextUrl": "https://www.researchsquare.com/article/rs-4946835/v1",
           "citedByCount": 1,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "https://creativecommons.org/licenses/by/4.0/",
           "geographicalTier": "Tier E",
           "accessClassification": "Open-Access Full Text Available",
@@ -2987,93 +2878,12 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 59969,
         "deduplicatedCandidatesInspected": 8,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 1
       },
       "retrievedLiterature": [
         {
           "repository": "Europe PMC",
-          "title": "Sustainable Development and Polymer-Based Functional Innovation in the Lacquer Industry: Resources, Technologies, and Industrialization Pathways",
-          "authors": "Qian Y, Wu X, Liu Y, Feng X, Liu X",
-          "year": 2026,
-          "venue": "Polymers",
-          "doi": "10.3390/polym18131578",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13364186",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13364186",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier C",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "20-30 °C",
-            "83%"
-          ],
-          "extractedFindingSnippet": "Furthermore, most high-performance modification systems reported in the literature are demonstrated only on laboratory scale, with scalability, substrate compatibility, and lifecycle performance remaining largely unvalidated."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Genome-wide identification, transcriptome dynamics, and expression regulation of the key lignin biosynthesis gene families PAL and CAD in black walnut shell",
-          "authors": "Zhou H, Liu H, Ma J, Yue M, Wang Y, Zhao P, Chen Z",
-          "year": 2025,
-          "venue": "BMC plant biology",
-          "doi": "10.1186/s12870-025-06884-1",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC12224815",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC12224815",
-          "citedByCount": 4,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Results Based on RNA sequencing of shells and kernels from black walnut (Juglans nigra) among three development stages, S1 (80 days after flowering, DAF), S2 (111 DAF), and S3(140 DAF) in black walnut shells and kernels, we found the genes related to lignin biosynthesis."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Commodity risk assessment of oak and walnut logs from the US",
-          "authors": "EFSA Panel on Plant Health (PLH), Vicent Civera A, Baptista P, Berlin A, Chatzivassiliou E, Cubero J, Cunniffe N, de la Peña E, Desneux N, Di Serio F, Filipiak A, Hasiów-Jaroszewska B, Jactel H, Landa BB, Maistrello L, Makowski D, Milonas P, Papadopoulos NT, Potting R, Susi H, van Der Gaag DJ, Battisti A, Bragard C, Mas H, Rigling D, Faccoli M, Mikulová A, Stergulc F, Mosbach-Schulz O, Streissl F, Gonthier P",
-          "year": 2026,
-          "venue": "EFSA journal. European Food Safety Authority",
-          "doi": "10.2903/j.efsa.2026.9806",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC12796515",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC12796515",
-          "citedByCount": 1,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "56°C",
-            "5 cm",
-            "95%"
-          ],
-          "extractedFindingSnippet": "The EKE indicated with 95% certainty that between 9021 and 10,000 treated Q."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "&lt;i&gt;Phytophthora plurivora&lt;/i&gt;: A Serious Challenge for English Walnut (&lt;i&gt;Juglans regia&lt;/i&gt;) Cultivation in Europe",
-          "authors": "Benigno A, Papini V, La Spada F, Rizzo D, Cacciola SO, Moricca S",
-          "year": 2025,
-          "venue": "Microorganisms",
-          "doi": "10.3390/microorganisms13092094",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC12472084",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC12472084",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "20 cm"
-          ],
-          "extractedFindingSnippet": "regia trees was observed recently in orchards located in three geographically distinct areas of Tuscany, central Italy."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Genome-Wide Identification of the Chalcone Synthase Gene Family in &lt;i&gt;Phoebe zhennan&lt;/i&gt; and Its Association with Golden-Thread Wood Color Formation and Drought Response",
+          "title": "Genome-Wide Identification of the Chalcone Synthase Gene Family in Phoebe zhennan and Its Association with Golden-Thread Wood Color Formation and Drought Response",
           "authors": "Yan K, He S, Peng J, Qian J, Gu Y, Guo H, Zhang S, Wei Y, Wang R, Zhou Y, Yang H",
           "year": 2026,
           "venue": "Genes",
@@ -3088,64 +2898,9 @@
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "Physicochemical analyses indicated that most PzCHS proteins were hydrophilic."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Genome-wide identification of NAC gene family in pecan and its expression patterns during graft healing",
-          "authors": "Niu M, Wu Y, Xu Y, Zheng Q, Xu X, Wang M, Zhu K, Tan P, Peng F",
-          "year": 2026,
-          "venue": "BMC plant biology",
-          "doi": "10.1186/s12870-026-09080-x",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13412314",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13412314",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "The results showed that, except for CiNAC24, the other five genes were significantly upregulated in stem tissues."
-        },
-        {
-          "repository": "Zenodo",
-          "title": "FIGURES 1–4 in Isometopus anlasi sp. nov. (Heteroptera: Miridae) from Turkey",
-          "authors": "Çerçi, Bariş; Dursun, Ahmet",
-          "year": 2017,
-          "venue": "Zootaxa",
-          "doi": "10.5281/zenodo.1065285",
-          "sourceUrl": "https://zenodo.org/records/1065285",
-          "oaFullTextUrl": "https://zenodo.org/records/1065285",
-          "citedByCount": 0,
-          "publicationType": "image",
-          "license": "notspecified",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "1, 2—(Dorsal view), ♂ on Juglans regia L.; Fig."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "DataCite",
-          "title": "Color-changes_wood_specimen-scans-data",
-          "creators": "Lenz, Claudia",
-          "year": 2026,
-          "publisher": "Eberswalde University for Sustainable Development",
-          "doi": "10.48702/dwwnwmqy61mmjv7d",
-          "url": "https://doi.org/10.48702/dwwnwmqy61mmjv7d"
-        },
-        {
-          "repository": "DataCite",
-          "title": "Thousand Cankers Disease of Eastern Black Walnut: Ecological Interactions in the Holobiont of a Bark Beetle-Fungal Disease",
-          "creators": "Williams, Geoffrey M",
-          "year": 2021,
-          "publisher": "Purdue University Graduate School",
-          "doi": "10.25394/pgs.15057828.v1",
-          "url": "https://doi.org/10.25394/pgs.15057828.v1"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "Jammu & Kashmir Preservation of Specified Trees Act, 1969 & Forest Transit Pass Rules",
@@ -3215,12 +2970,12 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 1430163,
         "deduplicatedCandidatesInspected": 16,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 3
       },
       "retrievedLiterature": [
         {
           "repository": "Europe PMC",
-          "title": "Health Risk Assessment of Potentially Toxic Element Uptake by Lotus (&lt;i&gt;Nelumbo nucifera&lt;/i&gt;) in Floating Lake Gardens",
+          "title": "Health Risk Assessment of Potentially Toxic Element Uptake by Lotus (Nelumbo nucifera) in Floating Lake Gardens",
           "authors": "Elbagory M, Moghanm FS, Mohamed I, El-Nahrawy S, Omara AE, Goala M, Kumar P, Mioč B, Andabaka Ž, Širić I",
           "year": 2025,
           "venue": "Toxics",
@@ -3264,25 +3019,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "New species and new records of genus Melampsora (Melampsoraceae) from Pakistan using electron microscopy and DNA barcoding techniques",
-          "authors": "Afshan NU, Ahmad MA, Jabeen M, Binyameen S, Khalid AN",
-          "year": 2025,
-          "venue": "BMC plant biology",
-          "doi": "10.1186/s12870-025-06593-9",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC12495641",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC12495641",
-          "citedByCount": 1,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier C",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "The genus Melampsora, known for its significant role as a plant pathogen, exhibits a rich species diversity."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Seasonal Dietary Patterns of Tarim Red Deer (&lt;i&gt;Cervus hanglu yarkandensis&lt;/i&gt;) Revealed by the &lt;i&gt;trnL&lt;/i&gt; Sequencing Approach in the Tarim River Basin (Xinjiang, China)",
+          "title": "Seasonal Dietary Patterns of Tarim Red Deer (Cervus hanglu yarkandensis) Revealed by the trnL Sequencing Approach in the Tarim River Basin (Xinjiang, China)",
           "authors": "Qi C, Tian X, Cui Y, Zhu L, Focardi S, Zhong L",
           "year": 2025,
           "venue": "Ecology and evolution",
@@ -3303,63 +3040,6 @@
             "4.67%"
           ],
           "extractedFindingSnippet": "The Tarim red deer ( Cervus hanglu yarkandensis ) is a flagship species inhabiting the Euphrates poplar ( Populus euphratica ) riparian forests along the Tarim River in China."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Insights to the taxonomy and phylogeny of the genus Ptilagrostis worldwide (Poaceae, Stipeae) with a key to species identification, checklist and outlines for further studies",
-          "authors": "Krzempek M, Klichowska E, Nobis M",
-          "year": 2024,
-          "venue": "PhytoKeys",
-          "doi": "10.3897/phytokeys.249.128729",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC11584906",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC11584906",
-          "citedByCount": 2,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "1 mm",
-            "0.3 mm"
-          ],
-          "extractedFindingSnippet": "Ptilagrostis (false needlegrass) is a genus of high-mountain grasses distributed in Central and North-East Asia, as well as in North America."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Sex chromosome evolution mediated by a large inversion and a possible switch of the sex determination gene",
-          "authors": "Mao X, Rafati N, Tellgren-Roth C, Ingvarsson PK, Karrenberg S",
-          "year": 2026,
-          "venue": "Genome biology",
-          "doi": "10.1186/s13059-026-04038-6",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13064059",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13064059",
-          "citedByCount": 1,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Such PISTILLATA pseudogenes are also found in other Salix species with ZW sex determination but not in those with XY sex determination."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Volume 6 Indexes",
-          "authors": "Zhou J, Xie G, Yan X",
-          "year": 2010,
-          "venue": "Encyclopedia of Traditional Chinese Medicines - Molecular Structures, Pharmacological Activities, Natural Sources and ApplicationsVol. 6: Indexes",
-          "doi": null,
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC7123364",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC7123364",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "This index lists all 3367 normalized pharmacological activity terms appeared in the encyclopedia in alphabetical order and a number code sequence of the related compounds follows the bold term immediately."
         }
       ],
       "retrievedDataCiteDatasets": [],
@@ -3433,7 +3113,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 6890211,
         "deduplicatedCandidatesInspected": 17,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -3496,24 +3176,6 @@
           "extractedFindingSnippet": "Due to the increasing pressure on environmentally friendly approaches and sustainable production processes, the textile dyeing industry has focused on natural colorants."
         },
         {
-          "repository": "Europe PMC",
-          "title": "Handloomed fabrics recognition with deep learning",
-          "authors": "Mahanta LB, Mahanta DR, Rahman T, Chakraborty C",
-          "year": 2024,
-          "venue": "Scientific reports",
-          "doi": "10.1038/s41598-024-58750-z",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC10994934",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC10994934",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier C",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Notably, the existing models showed challenges in generalizing to unseen data and raised concerns about practical deployment due to computational expenses."
-        },
-        {
           "repository": "Zenodo",
           "title": "A Study of the Recent Trends in Indian Carpet Industry and Roadmap Ahead",
           "authors": "Smita Bagai",
@@ -3568,17 +3230,7 @@
           "extractedFindingSnippet": null
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Carpets Store Dubai: A Gateway to Luxury and Style",
-          "creators": "Carpets Store Dubai",
-          "year": 2025,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.16089358",
-          "url": "https://doi.org/10.5281/zenodo.16089358"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "Indian Institute of Carpet Technology (IICT) Srinagar Technical & Eco-Testing Records",
@@ -3699,12 +3351,12 @@
           "title": "Tracing agrochemical footprints: heavy‑metal contamination and esophageal squamous cell carcinoma Risk in Kashmir- the northernmost state of India",
           "authors": "Sheikh AN, Bhat GA, Mudassar S, Kumar S",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-11153114/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-11153114/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier B",
           "accessClassification": "Abstract-Verified",
@@ -3758,7 +3410,7 @@
         },
         {
           "repository": "Crossref",
-          "title": "Dynamics of Land Use and Land Cover Change in Jammu &amp; Kashmir",
+          "title": "Dynamics of Land Use and Land Cover Change in Jammu & Kashmir",
           "authors": "Opast Group LLC",
           "year": 2022,
           "venue": "Journal of Agriculture and Horticulture Research",
@@ -4426,7 +4078,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Microbial feedback drives soil carbon fixation and nutrient transformation during &lt;i&gt;Euphorbia jolkinii&lt;/i&gt; expansion in subalpine meadows",
+          "title": "Microbial feedback drives soil carbon fixation and nutrient transformation during Euphorbia jolkinii expansion in subalpine meadows",
           "authors": "Ma LX, Xiao X, Niu QM, Zhang JG, Zhao ZL, Yang Y, Lu JQ, Chu XH, Shan GL",
           "year": 2026,
           "venue": "Frontiers in microbiology",
@@ -4569,7 +4221,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 1073506,
         "deduplicatedCandidatesInspected": 17,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -4684,46 +4336,9 @@
             "1.08 km2"
           ],
           "extractedFindingSnippet": "EPA, Region 5, sampled sediments within the Federal Navigation Project at Indiana Harbor, IN."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "XVI International Symposium on Marine Natural Products|XI European Conference on Marine Natural Products",
-          "authors": "Pedrosa R, P Gaudêncio S, Vasconcelos V",
-          "year": 2020,
-          "venue": "Marine drugs",
-          "doi": "10.3390/md18010040",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC7024214",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC7024214",
-          "citedByCount": 7,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "The International Symposium on Marine Natural Products (MaNaPro) happened for the first time in 1975 in the city of Aberdeen, Scotland, organized by Professor Ronald H [...]."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Semantic and Geo-Mythological Correlation between Mediterranean Sapropel S1 and Plato's \"Unnavigable Mud\": An Ontological Approach to the Sardinian-Corsican Atlantis",
-          "creators": "Usai, Luigi",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.19716043",
-          "url": "https://doi.org/10.5281/zenodo.19716043"
-        },
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Semantic and Geo-Mythological Correlation between Mediterranean Sapropel S1 and Plato's \"Unnavigable Mud\": An Ontological Approach to the Sardinian-Corsican Atlantis",
-          "creators": "Usai, Luigi",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.19716044",
-          "url": "https://doi.org/10.5281/zenodo.19716044"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "CAG Audit Reports & NGT Expert Committee Assessments on Dal–Nigeen Lake Conservation & Dredging Expenditure",
@@ -4818,7 +4433,7 @@
             "47.04%",
             "19.10%"
           ],
-          "extractedFindingSnippet": "Among the various physicochemical parameters, low dissolved oxygen (DO) was observed in the LULC class which has the highest percentage of agricultural land (47.04%; r = 0.688 P &lt; 0.05) followed by horticultural land (19.10%; r = 0.554; P &lt; 0.01) in its catchment."
+          "extractedFindingSnippet": "Among the various physicochemical parameters, low dissolved oxygen (DO) was observed in the LULC class which has the highest percentage of agricultural land (47.04%; r = 0.688 P < 0.05) followed by horticultural land (19.10%; r = 0.554; P < 0.01) in its catchment."
         },
         {
           "repository": "Crossref",
@@ -5008,7 +4623,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 3721051,
         "deduplicatedCandidatesInspected": 15,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 5
       },
       "retrievedLiterature": [
         {
@@ -5055,42 +4670,6 @@
             "6.2%"
           ],
           "extractedFindingSnippet": "WQI ranged from 23 (excellent water) to 537 (water unsuitable for drinking)."
-        },
-        {
-          "repository": "Zenodo",
-          "title": "Fig. 16 in Notes on the Nebria subgenus Epinebriola K. DANIEL, 1904 with the description of Barbonebriola subgen. nov. and 13 new species from the Himalaya-Tibet orogen (Coleoptera, Carabidae, Nebriini)",
-          "authors": "Huber, Charles; Schmidt, Joachim",
-          "year": 2017,
-          "venue": "Contributions to Natural History",
-          "doi": "10.5281/zenodo.6285752",
-          "sourceUrl": "https://zenodo.org/records/6285752",
-          "oaFullTextUrl": "https://zenodo.org/records/6285752",
-          "citedByCount": 0,
-          "publicationType": "image",
-          "license": "cc-by-4.0",
-          "geographicalTier": "Tier B",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "16: Locations with occurrences of Nebria (Barbonebriola sp."
-        },
-        {
-          "repository": "Zenodo",
-          "title": "Assara pinivora Cateremna",
-          "authors": "Singh, Navneet; Ranjan, Rahul; Talukdar, Avishek",
-          "year": 2022,
-          "venue": "A catalogue of Indian Pyraloidea (Lepidoptera), pp. 1-423 in Zootaxa",
-          "doi": "10.5281/zenodo.10549242",
-          "sourceUrl": "https://zenodo.org/records/10549242",
-          "oaFullTextUrl": "https://zenodo.org/records/10549242",
-          "citedByCount": 0,
-          "publicationType": "publication",
-          "license": "cc-zero",
-          "geographicalTier": "Tier B",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Assara pinivora (Meyrick, 1933: 390) ( Cateremna ) Type locality: India, Kashmir, Hutmara, 6000 ft Distribution."
         },
         {
           "repository": "Europe PMC",
@@ -5220,7 +4799,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 3472994,
         "deduplicatedCandidatesInspected": 14,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -5246,12 +4825,12 @@
           "title": "Assessing the Impact of Pollution on Water Quality – A Case Study of Brar-i-Nambal and Jhelum, Srinagar, Jammu and Kashmir, India",
           "authors": "Shah MI",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-9463761/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-9463761/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
@@ -5267,7 +4846,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Molecular phylogenetics of Kashmir catfish (&lt;i&gt;Glyptothorax kashmirensis&lt;/i&gt;): Genetic identity, conservation units, and basin connectivity",
+          "title": "Molecular phylogenetics of Kashmir catfish (Glyptothorax kashmirensis): Genetic identity, conservation units, and basin connectivity",
           "authors": "Gilani N, Nichols RA, Rafique M, Akhter S, Ahmad S, Shoaib A, Qureshi H, Anwar T, Hassanien H, Toshova N, Almalki IM, Quvatov A, Alenize M, Székely Á",
           "year": 2026,
           "venue": "iScience",
@@ -5330,36 +4909,18 @@
           "title": "Hybrid SVM-PSO model to Predict flood discharge in the Jhelum River basin: A case study",
           "authors": "Samantaray, S.; Hamid, H.",
           "year": 2024,
-          "venue": "Copernicus GmbH",
+          "venue": "Copernicus GmbH (Preprint — Not Peer-Reviewed)",
           "doi": "10.5194/egusphere-egu24-130",
           "sourceUrl": "https://doi.org/10.5194/egusphere-egu24-130",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Publisher Standard Terms",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "SVM-PSO showed a remarkable ability in our study, achieving an R2 value of 0.9483, demonstrating that they were able to capture intricate non-linear associations within the dataset."
-        },
-        {
-          "repository": "Zenodo",
-          "title": "FIGURE 9 in The water striders of Pakistan (Hemiptera: Heteroptera: Gerridae): new records from Punjab and first checklist for the country",
-          "authors": "Cianferoni, Fabio; Saleem, Rukhshanda; Afsheen, Sumera",
-          "year": 2021,
-          "venue": "Zootaxa",
-          "doi": "10.5281/zenodo.5074743",
-          "sourceUrl": "https://zenodo.org/records/5074743",
-          "oaFullTextUrl": "https://zenodo.org/records/5074743",
-          "citedByCount": 0,
-          "publicationType": "image",
-          "license": "notspecified",
-          "geographicalTier": "Tier A",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Sampling site at River Jhelum, Grand Trunk Road - Gujrat District (photo by R."
         }
       ],
       "retrievedDataCiteDatasets": [
@@ -5645,7 +5206,7 @@
           "accessClassification": "Abstract-Verified",
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
-          "extractedFindingSnippet": "&amp;lt;p&amp;gt;Human disturbances may alter the dynamic equilibrium state of a river system, which infers a balance between processes and forms."
+          "extractedFindingSnippet": "Human disturbances may alter the dynamic equilibrium state of a river system, which infers a balance between processes and forms."
         },
         {
           "repository": "Europe PMC",
@@ -5735,15 +5296,6 @@
           "publisher": "Stuttgart : Universität Stuttgart, Institute for Modelling Hydraulic and Environmental Systems",
           "doi": "10.18419/opus-16398",
           "url": "https://doi.org/10.18419/opus-16398"
-        },
-        {
-          "repository": "DataCite",
-          "title": "Social ecology of artisanal sand mining in the Niger River around Bamako, Mali",
-          "creators": "Hemmler, Katharina Salomea, Camara, Bouraima, Bürkert, Andreas",
-          "year": 2025,
-          "publisher": "KOBRA Universität Kassel",
-          "doi": "10.17170/kobra-2025021110905",
-          "url": "https://doi.org/10.17170/kobra-2025021110905"
         }
       ],
       "verifiedInstitutionalDatasets": [
@@ -5767,7 +5319,7 @@
       "internationalComparativeCase": {
         "benchmarkSite": "Alpine Gravel Budget Management (Drôme & Arve Rivers, France) & New Zealand Gravel-Envelope Extraction Limits",
         "mechanismCompared": "Heavy excavator pit mining exceeding natural bedload replenishment, triggering upstream headcut migration, bridge pier undermining, and water-table drop",
-        "interventionCompared": " strict ban on wet-channel heavy excavators, LiDAR/DEM annual bedload replenishment accounting, dry-bar skimming above low-flow stage only, and crushed tunnel-muck substitution",
+        "interventionCompared": "strict ban on wet-channel heavy excavators, LiDAR/DEM annual bedload replenishment accounting, dry-bar skimming above low-flow stage only, and crushed tunnel-muck substitution",
         "outcomeAndLimitation": "Halted 1.5–3 m thalweg incision and saved irrigation intake weirs; requires real-time weighbridge + satellite boundary enforcement."
       }
     },
@@ -6089,7 +5641,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Health Risk Assessment of Potentially Toxic Element Uptake by Lotus (&lt;i&gt;Nelumbo nucifera&lt;/i&gt;) in Floating Lake Gardens",
+          "title": "Health Risk Assessment of Potentially Toxic Element Uptake by Lotus (Nelumbo nucifera) in Floating Lake Gardens",
           "authors": "Elbagory M, Moghanm FS, Mohamed I, El-Nahrawy S, Omara AE, Goala M, Kumar P, Mioč B, Andabaka Ž, Širić I",
           "year": 2025,
           "venue": "Toxics",
@@ -6298,12 +5850,12 @@
           "title": "From Hazard to Heritage: Landslides Risks, Geoheritage Potential, and Geotourism Opportunities along NH-44 corridor, Jammu and Kashmir, India",
           "authors": "Mir RA, null H, Khan S, Asgher Ms",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-10751621/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-10751621/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
@@ -6850,12 +6402,12 @@
           "title": "Urban Expansion and Thermal Vulnerability in a Himalayan Foothill City: Evidence from Abbottabad, Pakistan",
           "authors": "Shah SU, Shakoor M",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-9656288/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-9656288/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier D",
           "accessClassification": "Abstract-Verified",
@@ -7191,7 +6743,7 @@
       "retrievedLiterature": [
         {
           "repository": "Europe PMC",
-          "title": "Assessment of stable carbon isotope ratios and source characterization of aerosols in ambient PM&lt;sub&gt;2.5&lt;/sub&gt; from the Indian COALESCE network",
+          "title": "Assessment of stable carbon isotope ratios and source characterization of aerosols in ambient PM2.5 from the Indian COALESCE network",
           "authors": "Paul D, Singh GK, Gupta T, Chatterjee A, Saikia BK, Sunder Raman R, Habib G, Phuleria H, Venkataraman C",
           "year": 2025,
           "venue": "Scientific reports",
@@ -7505,7 +7057,7 @@
           "title": "Breeding Strategies and Conservation Techniques for Improvement of Buck Wheat under Cold Arid and High Altitude Conditions of Ladakh, Jammu and Kashmir",
           "authors": "Mountain Agriculture Research & Extension Station, Kargil Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir, Shalimar",
           "year": 2018,
-          "venue": "International Journal of Pure &amp; Applied Bioscience",
+          "venue": "International Journal of Pure & Applied Bioscience",
           "doi": "10.18782/2320-7051.5961",
           "sourceUrl": "https://doi.org/10.18782/2320-7051.5961",
           "oaFullTextUrl": null,
@@ -7628,12 +7180,12 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 2858156,
         "deduplicatedCandidatesInspected": 18,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
           "repository": "Europe PMC",
-          "title": "Atmospheric trace elements in PM&lt;sub&gt;2.5&lt;/sub&gt; at a regional background site in the western Himalaya: source identification and risk implications",
+          "title": "Atmospheric trace elements in PM2.5 at a regional background site in the western Himalaya: source identification and risk implications",
           "authors": "Najar TA, Haswani D, Ishfaq S, Subair MY, Bhat R, Habib G, Jehangir A",
           "year": 2026,
           "venue": "Environmental science and pollution research international",
@@ -7674,7 +7226,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Satellite or ground-based measurements for air pollutants (PM&lt;sub&gt;2.5&lt;/sub&gt;, PM&lt;sub&gt;10&lt;/sub&gt;, SO&lt;sub&gt;2&lt;/sub&gt;, NO&lt;sub&gt;2&lt;/sub&gt;, O&lt;sub&gt;3&lt;/sub&gt;) data and their health hazards: which is most accurate and why?",
+          "title": "Satellite or ground-based measurements for air pollutants (PM2.5, PM10, SO2, NO2, O3) data and their health hazards: which is most accurate and why?",
           "authors": "Mushtaq Z, Bangotra P, Gautam AS, Sharma M, Suman, Gautam S, Singh K, Kumar Y, Jain P",
           "year": 2024,
           "venue": "Environmental monitoring and assessment",
@@ -7711,7 +7263,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Association between PM&lt;sub&gt;2.5&lt;/sub&gt; exposure and child mortality from lower respiratory infections (LRIs) in India: a systematic analysis of the global burden of disease study (1990-2021)",
+          "title": "Association between PM2.5 exposure and child mortality from lower respiratory infections (LRIs) in India: a systematic analysis of the global burden of disease study (1990-2021)",
           "authors": "Roy C, Ghosh P, Sati VP, Marzo RR, Kumar S, Pandey K",
           "year": 2026,
           "venue": "Archives of public health = Archives belges de sante publique",
@@ -7729,24 +7281,6 @@
             "74%"
           ],
           "extractedFindingSnippet": "RESULTS: The trend analysis indicates that NMR and U5MR declined significantly by 66% and 74%, respectively from 1990 to 2021 in India."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Beyond the prescription: Addressing socio-clinical determinants of asthma care in India",
-          "authors": "Koul PA, Saydain G",
-          "year": 2026,
-          "venue": "The Indian journal of medical research",
-          "doi": "10.25259/ijmr_1285_2026",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13235577",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13235577",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier D",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": null
         },
         {
           "repository": "Crossref",
@@ -7839,7 +7373,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 6242661,
         "deduplicatedCandidatesInspected": 22,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 5
       },
       "retrievedLiterature": [
         {
@@ -7920,31 +7454,8 @@
           "extractedFindingSnippet": "Rapid urbanization and growing dependence on private motorized transport have intensified traffic congestion and air pollution in Indian metropolitan cities."
         },
         {
-          "repository": "Zenodo",
-          "title": "ELECTRIC BUSES AND SUSTAINABLE MOBILITY: A STUDY OF STUDENTS' DAILY TRAVEL BEHAVIOUR IN NAVI MUMBAI",
-          "authors": "Hital Mhatre, Samiksha Bhaiyen and Asst. Prof. Bisini Vinaykumar",
-          "year": 2026,
-          "venue": "International Journal of Advance and Innovative Research",
-          "doi": "10.5281/zenodo.20591578",
-          "sourceUrl": "https://zenodo.org/records/20591578",
-          "oaFullTextUrl": "https://zenodo.org/records/20591578",
-          "citedByCount": 0,
-          "publicationType": "publication",
-          "license": "cc-by-4.0",
-          "geographicalTier": "Tier D",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "82%",
-            "58%",
-            "24%",
-            "85%"
-          ],
-          "extractedFindingSnippet": "Urban transport electrification is central to sustainable mobility transitions in emerging economies."
-        },
-        {
           "repository": "Europe PMC",
-          "title": "Meteorological drivers of ambient PM&lt;sub&gt;2.5&lt;/sub&gt; pollution at urban traffic intersections in Accra, Ghana",
+          "title": "Meteorological drivers of ambient PM2.5 pollution at urban traffic intersections in Accra, Ghana",
           "authors": "Ayensu-Ntim A, Adu-Poku D, Kumi S, Nyantakyi JA",
           "year": 2026,
           "venue": "Environmental monitoring and assessment",
@@ -7959,29 +7470,6 @@
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "Median PM 2.5 concentrations of 54.90 μg/m 3 at high-density, 34.26 μg/m 3 at commercial/business, and 16.75 μg/m 3 at low-density traffic areas were recorded."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Smart city traffic optimization using IoD and IoT integration",
-          "authors": "Yusuf A, Sheltami TR, Mahmoud A, Imam M",
-          "year": 2026,
-          "venue": "Scientific reports",
-          "doi": "10.1038/s41598-026-42334-0",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13069036",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13069036",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "40.99%",
-            "32.05%",
-            "48.78%",
-            "43.92%"
-          ],
-          "extractedFindingSnippet": "Urban traffic congestion, along with the resulting fuel waste and pollution, poses increasing challenges as city populations grow."
         }
       ],
       "retrievedDataCiteDatasets": [
@@ -7993,15 +7481,6 @@
           "publisher": "Universidad Técnica Federico Santa María",
           "doi": "10.71959/szsa-ma89",
           "url": "https://doi.org/10.71959/szsa-ma89"
-        },
-        {
-          "repository": "DataCite",
-          "title": "ELECTRIC BUSES AND SUSTAINABLE MOBILITY: A STUDY OF STUDENTS' DAILY TRAVEL BEHAVIOUR IN NAVI MUMBAI",
-          "creators": "Hital Mhatre, Samiksha Bhaiyen and Asst. Prof. Bisini Vinaykumar",
-          "year": 2026,
-          "publisher": "International Journal of Advance and Innovative Research",
-          "doi": "10.5281/zenodo.20591577",
-          "url": "https://doi.org/10.5281/zenodo.20591577"
         }
       ],
       "verifiedInstitutionalDatasets": [
@@ -8169,7 +7648,7 @@
         },
         {
           "repository": "Crossref",
-          "title": "Solid Waste Management Practices in the Jammu &amp; Kashmir Towns - A Case Study of Kupwara Town of North Kashmir",
+          "title": "Solid Waste Management Practices in the Jammu & Kashmir Towns - A Case Study of Kupwara Town of North Kashmir",
           "authors": "Khalid Ahmad, S.; Ahmad, P.; A Farooqi, R., et al.",
           "year": 2025,
           "venue": "International Journal of Science and Research (IJSR)",
@@ -8302,7 +7781,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 4471972,
         "deduplicatedCandidatesInspected": 14,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -8347,26 +7826,6 @@
             "80%"
           ],
           "extractedFindingSnippet": "Results indicated a distinct spatial gradient, with Dal Lake exhibiting the highest pollution load."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Sustainable hybrid technologies for diclofenac disposal: from innovation to commercial feasibility",
-          "authors": "Gutiérrez-Ramírez R, El Omari S, Mennani M, Azaryouh L, Laabd M, Kassab Z, Fernández-Luqueño F, Abdellaoui Y",
-          "year": 2026,
-          "venue": "RSC advances",
-          "doi": "10.1039/d6ra05914g",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13568930",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13568930",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier C",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "90%"
-          ],
-          "extractedFindingSnippet": "Hybrid approaches integrating adsorption, membrane filtration, advanced oxidation processes (AOPs), and biological treatments have demonstrated superior removal efficiencies, often exceeding 90%, due to their synergistic effects."
         },
         {
           "repository": "Zenodo",
@@ -8570,12 +8029,12 @@
           "title": "Forest fragmentation, anthropogenic land use, and climate shape sand fly community composition in central Panama",
           "authors": "Hoyos J, Rigg C, Chaves LF, Vasquez V, Perea M, Calzada JE, Saldaña A, Pineda V, Gonzalez K, Altizer S, de Brito RN, Reina A, Schmidt JP, Tanner S, Runk JV, Gottdenker NL",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "bioRxiv Preprint Server (Not Peer-Reviewed)",
           "doi": "10.64898/2026.10.26.761809",
           "sourceUrl": "https://doi.org/10.64898/2026.10.26.761809",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
@@ -8643,7 +8102,7 @@
         },
         {
           "repository": "Crossref",
-          "title": "Woody Flora of Poonch District in Pir Panjal Himalaya (Jammu &amp; Kashmir), India",
+          "title": "Woody Flora of Poonch District in Pir Panjal Himalaya (Jammu & Kashmir), India",
           "authors": "Mughal, R.; Malik, A. H.; Dar, G. H.; Khuroo, A. A.",
           "year": 2017,
           "venue": "Pleione",
@@ -8752,7 +8211,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 315826,
         "deduplicatedCandidatesInspected": 11,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -8873,24 +8332,6 @@
         },
         {
           "repository": "Zenodo",
-          "title": "Fig. 16 in Notes on the Nebria subgenus Epinebriola K. DANIEL, 1904 with the description of Barbonebriola subgen. nov. and 13 new species from the Himalaya-Tibet orogen (Coleoptera, Carabidae, Nebriini)",
-          "authors": "Huber, Charles; Schmidt, Joachim",
-          "year": 2017,
-          "venue": "Contributions to Natural History",
-          "doi": "10.5281/zenodo.6285752",
-          "sourceUrl": "https://zenodo.org/records/6285752",
-          "oaFullTextUrl": "https://zenodo.org/records/6285752",
-          "citedByCount": 0,
-          "publicationType": "image",
-          "license": "cc-by-4.0",
-          "geographicalTier": "Tier B",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "16: Locations with occurrences of Nebria (Barbonebriola sp."
-        },
-        {
-          "repository": "Zenodo",
           "title": "Ecological and Anthropogenic Factors Shaping Fish Survival in Streams of the Kashmir Himalaya",
           "authors": "Yaseen, Sayar; Khalid, Monowar Alam; Zargar Department, U. R.",
           "year": 2025,
@@ -8982,7 +8423,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 3968096,
         "deduplicatedCandidatesInspected": 19,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 5
       },
       "retrievedLiterature": [
         {
@@ -9074,46 +8515,6 @@
             "5.1%"
           ],
           "extractedFindingSnippet": "Supraglacial debris modulates the thermal regime and alters glacial melt rates depending on its thickness."
-        },
-        {
-          "repository": "Zenodo",
-          "title": "FIGURES 1–6 in Review of Hygrogeus Mulsant & Rey, 1880 and Trichodromeus Luze, 1903, with descriptions of three new genera from the eastern Palaearctic Region (Coleoptera: Staphylinidae: Anthophagini: Omaliinae)",
-          "authors": "Shavrin, Alexey V.",
-          "year": 2024,
-          "venue": "Zootaxa",
-          "doi": "10.5281/zenodo.14023035",
-          "sourceUrl": "https://zenodo.org/records/14023035",
-          "oaFullTextUrl": "https://zenodo.org/records/14023035",
-          "citedByCount": 0,
-          "publicationType": "image",
-          "license": "notspecified",
-          "geographicalTier": "Tier A",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "1.0 mm"
-          ],
-          "extractedFindingSnippet": "FIGURES 1–6. Habitus of Hygrogeus (Fig. 1) and Trichodromeus (Figs 2–6): 1—H. aemulus (Tirol), 2—T. armatus (Kashmir: Baltal), 3—T. armatus (Kashmir: Kolahoi Glacier), 4—T. ketmeniensis (Kyrgyzstan: Chatkal Mts.), 5—T. ovchinnikovi (holotype), 6—T. kumaonensis"
-        },
-        {
-          "repository": "Zenodo",
-          "title": "FIGURES 39–46 in Review of Hygrogeus Mulsant & Rey, 1880 and Trichodromeus Luze, 1903, with descriptions of three new genera from the eastern Palaearctic Region (Coleoptera: Staphylinidae: Anthophagini: Omaliinae)",
-          "authors": "Shavrin, Alexey V.",
-          "year": 2024,
-          "venue": "Zootaxa",
-          "doi": "10.5281/zenodo.14023043",
-          "sourceUrl": "https://zenodo.org/records/14023043",
-          "oaFullTextUrl": "https://zenodo.org/records/14023043",
-          "citedByCount": 0,
-          "publicationType": "image",
-          "license": "notspecified",
-          "geographicalTier": "Tier A",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "0.1 mm"
-          ],
-          "extractedFindingSnippet": "armatus (Kashmir: Kolahoi Glacier), Figs 41–42: T."
         },
         {
           "repository": "Crossref",
@@ -9436,7 +8837,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 33688,
         "deduplicatedCandidatesInspected": 10,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -9459,25 +8860,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Pigment production by cold-adapted bacteria and fungi: colorful tale of cryosphere with wide range applications",
-          "authors": "Sajjad W, Din G, Rafiq M, Iqbal A, Khan S, Zada S, Ali B, Kang S",
-          "year": 2020,
-          "venue": "Extremophiles : life under extreme conditions",
-          "doi": "10.1007/s00792-020-01180-2",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC7266124",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC7266124",
-          "citedByCount": 75,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier C",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Pigments are an essential part of everyday life on Earth with rapidly growing industrial and biomedical applications."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Investigating the first case of permafrost degraded subsidence in Lahaul &amp; Spiti region of Tethyan Himalayas",
+          "title": "Investigating the first case of permafrost degraded subsidence in Lahaul & Spiti region of Tethyan Himalayas",
           "authors": "Mahanta KK, Pradhan IP, Dhiman N, Singh A, Shukla DP",
           "year": 2025,
           "venue": "Scientific reports",
@@ -9542,12 +8925,12 @@
           "title": "Planetary Energy Imbalance, ENSO Variability and Cryospheric Instability: A Multi-Scale Analysis of Himalayan Climate Risk and the 2026 Nepal Flood",
           "authors": "Raj CS",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-11201060/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-11201060/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier D",
           "accessClassification": "Abstract-Verified",
@@ -9734,12 +9117,12 @@
           "title": "Future scenarios of albedo and radiative forcing resulting from changes in snow depth in Austria",
           "authors": "Kiem, J.; Hammerle, A.; Montagnani, L.; Wohlfahrt, G.",
           "year": 2024,
-          "venue": "Copernicus GmbH",
+          "venue": "Copernicus GmbH (Preprint — Not Peer-Reviewed)",
           "doi": "10.5194/egusphere-2024-881",
           "sourceUrl": "https://doi.org/10.5194/egusphere-2024-881",
           "oaFullTextUrl": null,
           "citedByCount": 1,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "https://creativecommons.org/licenses/by/4.0/",
           "geographicalTier": "Tier E",
           "accessClassification": "Abstract-Verified",
@@ -9806,26 +9189,7 @@
           "extractedFindingSnippet": "Cryospheric regions are no exception to microplastic ubiquity."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "DeHoLTZ(tau) v21: A Zero-Parameter Deterministic Derivation Database and Framework Built from a Single Lacunary Seed ∑ cos(π (√2)ⁿ τ) / 2ⁿ (1600+ DB posts)",
-          "creators": "Jacobson, Mark",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.18233709",
-          "url": "https://doi.org/10.5281/zenodo.18233709"
-        },
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "DeHoLTZ(tau) v21: A Zero-Parameter Deterministic Derivation Database and Framework Built from a Single Lacunary Seed ∑ cos(π (√2)ⁿ τ) / 2ⁿ (1600+ DB posts)",
-          "creators": "Jacobson, Mark",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.23352136",
-          "url": "https://doi.org/10.5281/zenodo.23352136"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "NASA MERRA-2 Black Carbon / Dust Deposition Flux & MODIS MOD10A1 Snow Albedo over Western Himalaya",
@@ -9942,7 +9306,7 @@
           "title": "Spatio-Temporal Variations in Hydrochemical Characteristics of Lidder and Vishav Tributaries within the Jhelum River Basin, Kashmir Himalaya",
           "authors": "Yaseen, S.; Khalid, M. A.; Zargar, U. R.",
           "year": 2026,
-          "venue": "Water, Air, &amp; Soil Pollution",
+          "venue": "Water, Air, & Soil Pollution",
           "doi": "10.1007/s11270-026-09444-x",
           "sourceUrl": "https://doi.org/10.1007/s11270-026-09444-x",
           "oaFullTextUrl": null,
@@ -10242,12 +9606,12 @@
           "title": "Glacier retreat reshapes trophic networks: interaction turnover outpaces species turnover over space-time",
           "authors": "Tu BN, Mas-Carrió E, Hodecek J, Khelidj N, Casartelli M, Rasmann S, Fumagalli L, Losapio G",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "bioRxiv Preprint Server (Not Peer-Reviewed)",
           "doi": "10.64898/2026.04.13.718237",
           "sourceUrl": "https://doi.org/10.64898/2026.04.13.718237",
           "oaFullTextUrl": "https://doi.org/10.64898/2026.04.13.718237",
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Open Access (Europe PMC)",
           "geographicalTier": "Tier E",
           "accessClassification": "Open-Access Full Text Available",
@@ -10484,15 +9848,6 @@
         }
       ],
       "retrievedDataCiteDatasets": [
-        {
-          "repository": "DataCite",
-          "title": "Systematics and biogeography of the Holarctic dragonfly genus Somatochlora (Anisoptera: Corduliidae)",
-          "creators": "Goodman, Aaron, Abbott, John, Breinholt, Jessie",
-          "year": 2025,
-          "publisher": "Dryad",
-          "doi": "10.5061/dryad.prr4xgxw5",
-          "url": "https://doi.org/10.5061/dryad.prr4xgxw5"
-        },
         {
           "repository": "DataCite",
           "title": "A growing threat of multi-hazard cascades highlighted by the Birch Glacier collapse and Blatten landslide in the Swiss Alps",
@@ -10780,7 +10135,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 1356406,
         "deduplicatedCandidatesInspected": 11,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -10912,24 +10267,6 @@
             "8000–8500 ha"
           ],
           "extractedFindingSnippet": "Overall, we estimated that during late winter and early spring, private properties that were enrolled in the California Waterfowl Habitat Program (8000–8500 ha each year) supported 480,000 birds per day during extreme drought conditions in 2022 and 280,000 birds per day in more normal, non‐drought conditions in 2023."
-        },
-        {
-          "repository": "Zenodo",
-          "title": "load deflection data of beams",
-          "authors": "iman sadrinejad",
-          "year": 2023,
-          "venue": "Zenodo Open Scientific Archive",
-          "doi": "10.5281/zenodo.7497935",
-          "sourceUrl": "https://zenodo.org/records/7497935",
-          "oaFullTextUrl": null,
-          "citedByCount": 0,
-          "publicationType": "dataset",
-          "license": "Restricted",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Abstract-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "load deflection data of corroded beams that strengthened with various method by using GFRP bars"
         }
       ],
       "retrievedDataCiteDatasets": [],
@@ -11454,7 +10791,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 3976029,
         "deduplicatedCandidatesInspected": 15,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 5
       },
       "retrievedLiterature": [
         {
@@ -11474,24 +10811,6 @@
           "studyPeriodDetected": "2022–2023",
           "extractedMeasurements": [],
           "extractedFindingSnippet": "We found that trace metal concentrations in the mainstream of the Watarase River have decreased remarkably since the 1960s."
-        },
-        {
-          "repository": "Crossref",
-          "title": "Beta diversity of Ephemeroptera, Plecoptera and Trichoptera on multiples spatial extents in Xingu River rapids",
-          "authors": "Barreiros, N. M.; Giarrizzo, T.; Godoy, B. S.",
-          "year": 2023,
-          "venue": "Acta Limnologica Brasiliensia",
-          "doi": "10.1590/s2179-975x2923",
-          "sourceUrl": "https://doi.org/10.1590/s2179-975x2923",
-          "oaFullTextUrl": null,
-          "citedByCount": 3,
-          "publicationType": "journal-article",
-          "license": "http://creativecommons.org/licenses/by/4.0/",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Abstract-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "In lotic ecosystems, the spatial extent is extremely relevant in studies of diversity accumulation, because it encompasses environmental variation that causes changes in the observed communities."
         },
         {
           "repository": "Europe PMC",
@@ -11566,24 +10885,6 @@
             "52.2 μg/L"
           ],
           "extractedFindingSnippet": "Arsenic, cadmium, and lead frequently exceeded guideline values for the protection of aquatic life, with maximum water-phase concentrations of 141, 2.90, and 52.2 μg/L, respectively."
-        },
-        {
-          "repository": "Crossref",
-          "title": "Beta diversity of aquatic insects (Ephemeroptera, Plecoptera and Trichoptera) across stream microhabitats",
-          "authors": "Santos, J. S. d.; Oliveira, R. C. d.; Duarte, T.; Peres, C. K.",
-          "year": 2025,
-          "venue": "Acta Limnologica Brasiliensia",
-          "doi": "10.1590/s2179-975x7524",
-          "sourceUrl": "https://doi.org/10.1590/s2179-975x7524",
-          "oaFullTextUrl": null,
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "http://creativecommons.org/licenses/by/4.0/",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Abstract-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Results We recorded a significant change in EPT composition among the microhabitats evaluated and different genera associated with each substrate category."
         }
       ],
       "retrievedDataCiteDatasets": [
@@ -11678,7 +10979,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 482494,
         "deduplicatedCandidatesInspected": 11,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -11686,12 +10987,12 @@
           "title": "Intestinal Parasitic Infections, Nutritional Status and Drinking-Water Quality among School children in the Dal Lake Area of Srinagar, Kashmir, India",
           "authors": "Sheikh JH, Aakila A, Ashaq M, Kouser S, Dar FA",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-10767664/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-10767664/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
@@ -11782,7 +11083,7 @@
           "accessClassification": "Abstract-Verified",
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
-          "extractedFindingSnippet": "HYDROQUALIX-4&trade; Multi-Method Water Quality Index (WQI) Automation Engine ( Version 1.0 &ndash; Initial Public Release) HYDROQUALIX-4&trade; is an integrated spreadsheet-based analytical platform developed for the automated assessment, evaluation, and classification of water quality across diverse hydrological environments."
+          "extractedFindingSnippet": "HYDROQUALIX-4&trade; Multi-Method Water Quality Index (WQI) Automation Engine ( Version 1.0 – Initial Public Release) HYDROQUALIX-4&trade; is an integrated spreadsheet-based analytical platform developed for the automated assessment, evaluation, and classification of water quality across diverse hydrological environments."
         },
         {
           "repository": "Zenodo",
@@ -11801,26 +11102,6 @@
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "Along with the pH around 11 parameters were tested with respect to river waters and we found variations in each parameter."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Geochemical decoupling between dissolved uranium and gamma radiation",
-          "authors": "Rani A, Sharma SK, Sharma A, Sharma S, Parashar K, Tiwari KK, Sajwan RS, Jindal MK",
-          "year": 2026,
-          "venue": "Journal of hazardous materials",
-          "doi": "10.1016/j.jhazmat.2026.143641",
-          "sourceUrl": "https://doi.org/10.1016/j.jhazmat.2026.143641",
-          "oaFullTextUrl": null,
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Abstract-Indexed",
-          "geographicalTier": "Tier D",
-          "accessClassification": "Abstract-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "0.51-51.3 μg/L"
-          ],
-          "extractedFindingSnippet": "The analysis of 96 groundwater samples spanning Precambrian metamorphic, granitic, and sedimentary geological formations revealed that dissolved uranium varied nearly 100-fold (0.51-51.3 μg/L) whereas ambient gamma radiation showed relatively limited variability (65-131 nSv/h, mean 93.6 ± 13.8 nSv/h)."
         }
       ],
       "retrievedDataCiteDatasets": [
@@ -11966,12 +11247,12 @@
           "title": "Conserving the critically endangered Hangul (Cervus hanglu hanglu) - Future distribution and efficiency of protected areas under climate change: Implications for the conservation of Dachigam landscape",
           "authors": "Haq, S. M.; Waheed, M.; Walas, Ł., et al.",
           "year": 2024,
-          "venue": "Research Square Platform LLC",
+          "venue": "Research Square Platform LLC (Preprint — Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-3874320/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-3874320/v1",
           "oaFullTextUrl": "https://www.researchsquare.com/article/rs-3874320/v1",
           "citedByCount": 0,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "https://creativecommons.org/licenses/by/4.0/",
           "geographicalTier": "Tier A",
           "accessClassification": "Open-Access Full Text Available",
@@ -11985,7 +11266,7 @@
         },
         {
           "repository": "Crossref",
-          "title": "Conservation Prospects of the Kashmir Red Deer (&lt;i&gt;Cervus hanglu hanglu&lt;/i&gt;) beyond Dachigam National Park, in Jammu and Kashmir, India",
+          "title": "Conservation Prospects of the Kashmir Red Deer (Cervus hanglu hanglu) beyond Dachigam National Park, in Jammu and Kashmir, India",
           "authors": "Kaul, R.; Chatterjee, M.; Bhattacharya, T., et al.",
           "year": 2018,
           "venue": "Current Science",
@@ -12382,7 +11663,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 2098522,
         "deduplicatedCandidatesInspected": 22,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -12495,24 +11776,6 @@
             "72%"
           ],
           "extractedFindingSnippet": "This study further contributes to the estimation of global population trends, and hence this site requires further conservation action plans both regionally and internationally, as 72% of the species recorded here show a declining global trend."
-        },
-        {
-          "repository": "Crossref",
-          "title": "Effect of wind farms on wintering ducks at an important wintering ground in China along the East Asian–Australasian Flyway",
-          "authors": "Zhao, S.; Xu, H.; Song, N., et al.",
-          "year": 2020,
-          "venue": "Ecology and Evolution",
-          "doi": "10.1002/ece3.6701",
-          "sourceUrl": "https://doi.org/10.1002/ece3.6701",
-          "oaFullTextUrl": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2Fece3.6701",
-          "citedByCount": 14,
-          "publicationType": "journal-article",
-          "license": "http://creativecommons.org/licenses/by/4.0/",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Furthermore, grid‐based analysis showed overlaps between ducks and wind farms, with greater overlap at night than during the day."
         }
       ],
       "retrievedDataCiteDatasets": [],
@@ -12732,15 +11995,6 @@
           "publisher": "The Global Biodiversity Information Facility",
           "doi": "10.15468/dl.8q7uhs",
           "url": "https://doi.org/10.15468/dl.8q7uhs"
-        },
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Valeriana umbellifera A. Cadiz-Veliz, A. E. Villarroel & Nic. Garcia 2026, sp. nov.",
-          "creators": "Ca ́ Diz-Ve ́ Liz, Aro ́ N, Garci ́ A, Nicola ́ S, Villarroel, Alejandro E.",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.24514399",
-          "url": "https://doi.org/10.5281/zenodo.24514399"
         }
       ],
       "verifiedInstitutionalDatasets": [
@@ -12843,12 +12097,12 @@
           "title": "Habitat dynamic and elevational gradient influences the phenotypic attributes of Aconitum chasmanthum Stapf ex Holmes",
           "authors": "Rafiq S, Hadi A, Mehdi M, Wagay NA, Ali S, Kaloo ZA",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-9951329/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-9951329/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier B",
           "accessClassification": "Abstract-Verified",
@@ -12896,7 +12150,7 @@
           "accessClassification": "Open-Access Full Text Available",
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
-          "extractedFindingSnippet": "&amp;Kir.) Nevski is reported for the first time from Kashmir Himalaya, India."
+          "extractedFindingSnippet": "&Kir.) Nevski is reported for the first time from Kashmir Himalaya, India."
         },
         {
           "repository": "Zenodo",
@@ -12918,7 +12172,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Divergent Effects of Climate Change on the Potential Habitats of Two Medicinally Important &lt;i&gt;Aconitum&lt;/i&gt; Species in the Hindu Kush Himalaya",
+          "title": "Divergent Effects of Climate Change on the Potential Habitats of Two Medicinally Important Aconitum Species in the Hindu Kush Himalaya",
           "authors": "Shrestha UB, Maharjan S, Tiwari A, Luo Y, Phuentsho, Ghimire SK, Shrestha BB",
           "year": 2026,
           "venue": "Ecology and evolution",
@@ -13326,7 +12580,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Mapping Habitat Suitability of the Asiatic Black Bear (&lt;i&gt;Ursus thibetanus&lt;/i&gt;) in the Kalam Valley, Pakistan: An Ensemble Modelling Approach",
+          "title": "Mapping Habitat Suitability of the Asiatic Black Bear (Ursus thibetanus) in the Kalam Valley, Pakistan: An Ensemble Modelling Approach",
           "authors": "Ali A, Rahim A, Farooq M, Bosso L",
           "year": 2026,
           "venue": "Animals : an open access journal from MDPI",
@@ -13349,12 +12603,12 @@
           "title": "Identifying Corridors for Asiatic Black Bear (Ursus thibetanus) in a part of Eastern Himalayas, India",
           "authors": "Bhattacharya M, Sarkar D, Pandey S, Mondal I, Sathyakumar S, Kumar RS, Talukdar G",
           "year": 2024,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-3940022/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-3940022/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
@@ -13421,15 +12675,6 @@
         }
       ],
       "retrievedDataCiteDatasets": [
-        {
-          "repository": "DataCite",
-          "title": "Retraction notice to “Altitudinal distribution and seasonal migration of asiatic black bear (Ursus thibetanus) in kaghan and Siran Valleys, Pakistan” [Heliyon 9 (2023) e18052](S240584402305260X)(10.1016/j.heliyon.2023.e18052)",
-          "creators": "Zaib Ullah, A Said, AM Khan",
-          "year": 2026,
-          "publisher": "Deakin University",
-          "doi": "10.26187/deakin.33194841",
-          "url": "https://doi.org/10.26187/deakin.33194841"
-        },
         {
           "repository": "DataCite",
           "title": "Avoidance or coexistence? Exploring spatio-temporal niche overlap between two sympatric ungulates barking deer and Himalayan goral in a multi-use landscape of Uttarkashi district, Western Himalaya",
@@ -13512,7 +12757,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 7623804,
         "deduplicatedCandidatesInspected": 23,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -13532,24 +12777,6 @@
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "Context Crop foraging by wildlife near protected areas presents a critical yet under-addressed challenge to both biodiversity conservation and rural livelihoods."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Dialogue, inclusion, and adaptation in a remote marine sanctuary: evidence from Flower Garden Banks",
-          "authors": "Dunning KH, Morris D, Bowles N, Camus C, Castruccio F, Cherian D, Cole D, Collins J, Furland T, Kleypas J, Krumhardt K, Luchauer G, Miranda Paez A, Moulton M, Wheeler I, Willoughby JR",
-          "year": 2026,
-          "venue": "Environmental management",
-          "doi": "10.1007/s00267-026-02515-z",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13221398",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13221398",
-          "citedByCount": 1,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier C",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Interdisciplinary, stakeholder-engaged research is increasingly being used for managing climate change in social-ecological systems."
         },
         {
           "repository": "Europe PMC",
@@ -13596,12 +12823,12 @@
           "title": "Evaluation of Forest Fire Anomalies with Novel Metrics and Management Effectiveness: Evidence from 14 Central Indian Tiger Reserves",
           "authors": "Patil SR, Mirza S, Bhawar R, Bawankule V, Singh A, Borkar S, Kamdi H",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-11479816/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-11479816/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier D",
           "accessClassification": "Abstract-Verified",
@@ -13646,26 +12873,7 @@
           "extractedFindingSnippet": null
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "DataCite",
-          "title": "Reserve Forests, Protected Areas and Sanctuaries, Meghalaya",
-          "creators": "Forest Department, Government of Meghalaya",
-          "year": 2026,
-          "publisher": "Climateverse India",
-          "doi": "10.71646/tqkytc",
-          "url": "https://doi.org/10.71646/tqkytc"
-        },
-        {
-          "repository": "DataCite",
-          "title": "Reptiles of Tripura, Northeastern India: A Review of Diversity, Distribution, Taxonomic Advances, and Conservation Status",
-          "creators": "Choudhury, Bikash",
-          "year": 2026,
-          "publisher": "Exegium Scholarly Press",
-          "doi": "10.5281/zenodo.23619126",
-          "url": "https://doi.org/10.5281/zenodo.23619126"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "Wildlife Institute of India (WII) National Wildlife Database & Management Effectiveness Evaluation (MEE) of National Parks & Sanctuaries",
@@ -13799,12 +13007,12 @@
           "title": "Comparative Assessment of Tree Biomass and Carbon Stocks in ALA and Ogbese Forest Reserve Using Allometric Method",
           "authors": "Akintunde-Alo DA, Ogunrinu OF",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-11485689/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-11485689/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier C",
           "accessClassification": "Abstract-Verified",
@@ -13883,26 +13091,7 @@
           "extractedFindingSnippet": "Deodar is typically gregarious and is usually found in pure stands."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "DataCite",
-          "title": "Estimating Mangrove Carbon Stock in the Everglades National Park with LiDAR, Multi-spectral Imagery, and GEOBIA",
-          "creators": "Fazzino, A., Gaertner, B.",
-          "year": 2026,
-          "publisher": "Penn State Data Commons",
-          "doi": "10.26208/hrb5-k735",
-          "url": "https://doi.org/10.26208/hrb5-k735"
-        },
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Mapping aboveground biomass and carbon of the annual halophyte Suaeda japonica in Garorim Bay, Korea, with a parsimonious Sentinel-2 model",
-          "creators": "Bae, Seongjun",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.22749338",
-          "url": "https://doi.org/10.5281/zenodo.22749338"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "Forest Survey of India (FSI) Forest Carbon Stock Assessment for Jammu & Kashmir (ISFR Chapter 9)",
@@ -14019,12 +13208,12 @@
           "title": "Habitat Suitability, Regeneration Dynamics, and Conservation Priorities for Betula utilis in the Western Himalaya, Nepal",
           "authors": "Timalsina N, Ale G, Maharjan SR, Khadka S, Neupane R, Shrestha S, Rauniyar SK, Shrestha SB, Shrestha S",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-9706381/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-9706381/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier C",
           "accessClassification": "Abstract-Verified",
@@ -14058,7 +13247,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Transcriptome analysis unveils the intricate dynamics of senescence responses in Himalayan treeline species, &lt;i&gt;Betula utilis&lt;/i&gt;",
+          "title": "Transcriptome analysis unveils the intricate dynamics of senescence responses in Himalayan treeline species, Betula utilis",
           "authors": "Sharma V, Gadri HS, Chowdhary A, Roy S, Bhardwaj P",
           "year": 2025,
           "venue": "Journal of genetics",
@@ -14185,7 +13374,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 3051772,
         "deduplicatedCandidatesInspected": 21,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -14295,12 +13484,12 @@
           "title": "Fire Radiative Power Dynamics in Nepal Himalayan Forests: Spatiotemporal Drivers and Machine Learning Characterization of Fire Combustion Intensity (2012–2024)",
           "authors": "Gauli P",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-9716417/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-9716417/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
@@ -14311,31 +13500,13 @@
             "50%"
           ],
           "extractedFindingSnippet": "Marked inter annual anomalies were identified: 2015 recorded the fewest events of the study period (n = 442, approximately 50% below the 13 year mean), coinciding with the Gorkha earthquake (Mw 7.8), while 2021 recorded the highest event count (n = 1,198), consistent with documented extreme fire activity across the HKH."
-        },
-        {
-          "repository": "Zenodo",
-          "title": "FIGURES 15–23. Dilar vartianorum H in A review of the pleasing lacewing genus Dilar Rambur (Neuroptera, Dilaridae) from Central Asia",
-          "authors": "Li, Di; Aspöck, Horst; Aspöck, Ulrike",
-          "year": 2019,
-          "venue": "Zootaxa",
-          "doi": "10.5281/zenodo.3450204",
-          "sourceUrl": "https://zenodo.org/records/3450204",
-          "oaFullTextUrl": "https://zenodo.org/records/3450204",
-          "citedByCount": 0,
-          "publicationType": "image",
-          "license": "notspecified",
-          "geographicalTier": "Tier A",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "15: holotype, Afghanistan: 25 km N Barikot; Fig."
         }
       ],
       "retrievedDataCiteDatasets": [
         {
           "repository": "Zenodo / DataCite",
           "title": "Anthropogenic Drivers of Forest Fire Incidence and Ecological Restoration Strategies in Chir Pine Forests of Nowshera Forest Range, Rajouri District, UT of Jammu & Kashmir",
-          "creators": "Mr. Neeraj Sharma phd student                                Dept.of Environmental sciences  Bhagwant university Sikar Road, ajmer , Rajasthan .         E-mail: neerajsharma.evs@gmail.com",
+          "creators": "Mr. Neeraj Sharma phd student Dept.of Environmental sciences Bhagwant university Sikar Road, ajmer , Rajasthan . E-mail: neerajsharma.evs@gmail.com",
           "year": 2026,
           "publisher": "Zenodo",
           "doi": "10.5281/zenodo.21259547",
@@ -14344,7 +13515,7 @@
         {
           "repository": "Zenodo / DataCite",
           "title": "Anthropogenic Drivers of Forest Fire Incidence and Ecological Restoration Strategies in Chir Pine Forests of Nowshera Forest Range, Rajouri District, UT of Jammu & Kashmir",
-          "creators": "Mr. Neeraj Sharma phd student                                Dept.of Environmental sciences  Bhagwant university Sikar Road, ajmer , Rajasthan .         E-mail: neerajsharma.evs@gmail.com",
+          "creators": "Mr. Neeraj Sharma phd student Dept.of Environmental sciences Bhagwant university Sikar Road, ajmer , Rajasthan . E-mail: neerajsharma.evs@gmail.com",
           "year": 2026,
           "publisher": "Zenodo",
           "doi": "10.5281/zenodo.21259548",
@@ -14423,7 +13594,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 16894,
         "deduplicatedCandidatesInspected": 10,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 5
       },
       "retrievedLiterature": [
         {
@@ -14520,70 +13691,9 @@
             "81%"
           ],
           "extractedFindingSnippet": "Street and park trees often endure harsher conditions, including increased temperatures and drier soil and air, than those found in urban or natural forests."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Isolation and Characterization of &lt;i&gt;Globisporangium glomeratum&lt;/i&gt; (syn. &lt;i&gt;Pythium glomeratum&lt;/i&gt;) from Declining Holm Oak in a Historical Garden",
-          "authors": "Vettraino AM, Narduzzi M, Antonelli C",
-          "year": 2025,
-          "venue": "Pathogens (Basel, Switzerland)",
-          "doi": "10.3390/pathogens14100960",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC12567531",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC12567531",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "This study reports the isolation and identification of a Pythium -like organism from declining Quercus ilex specimens in a historical garden, where affected trees showed symptoms of root rot and sucker dieback."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Oomycetes found in wild and cultivated areas of Vietnam",
-          "authors": "Pfeufer EE, Groben G, Harrison L, Quang Thu P, Widmer T, Puig AS",
-          "year": 2026,
-          "venue": "Frontiers in microbiology",
-          "doi": "10.3389/fmicb.2026.1606112",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC12913451",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC12913451",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "66.5%",
-            "31%",
-            "2.4%",
-            "24.5%",
-            "93%"
-          ],
-          "extractedFindingSnippet": "To determine the diversity of oomycetes in Vietnam, particularly in the presumed center of origin of most Phytophthora taxa, isolates were collected from rivers, agricultural soils, and forested areas."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "DataCite",
-          "title": "The Miracle Tree of Shigri Bala: Faith and Martyrdom of Baltistan",
-          "creators": "Syed muhammad ali shah",
-          "year": 2024,
-          "publisher": "Universität Kassel",
-          "doi": "10.48662/daks-198",
-          "url": "https://doi.org/10.48662/daks-198"
-        },
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Coptacrinae Brunner von Wattenwyl 1893",
-          "creators": "Sultana, Riffat, Song, Hojun",
-          "year": 2024,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.13332465",
-          "url": "https://doi.org/10.5281/zenodo.13332465"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "JKFRI / Dept. of Floriculture & DEERS Geo-Tagged Chinar Tree Census (\"Digital Tree Aadhar\") Records",
@@ -14751,12 +13861,12 @@
           "title": "What district damage statistics can identify: joint Bayesian inference of intensity and masonry vulnerability after the 2005 Kashmir earthquake",
           "authors": "Hussain SS",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-11509792/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-11509792/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
@@ -14909,12 +14019,12 @@
           "title": "Flood Forecasting in the Sparsely Gauged Jhelum River Basin of Greater Himalayas Using Integrated Hydrological and Hydraulic Modelling Approach",
           "authors": "Parvaze, S.; Khan, J. N.; Kumar, R.; Allaie, S. P.",
           "year": 2021,
-          "venue": "Research Square Platform LLC",
+          "venue": "Research Square Platform LLC (Preprint — Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-461873/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-461873/v1",
           "oaFullTextUrl": "https://www.researchsquare.com/article/rs-461873/v1",
           "citedByCount": 2,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "https://creativecommons.org/licenses/by/4.0/",
           "geographicalTier": "Tier A",
           "accessClassification": "Open-Access Full Text Available",
@@ -15135,7 +14245,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 28594,
         "deduplicatedCandidatesInspected": 7,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 4
       },
       "retrievedLiterature": [
         {
@@ -15197,72 +14307,18 @@
           "title": "Environmental and Economic Impact of Cloudburst Triggered Debris Flows and Flash Floods in the Himalaya: A Case Study",
           "authors": "Sati VP, Dubey SK",
           "year": 2021,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-924043/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-924043/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier D",
           "accessClassification": "Abstract-Verified",
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "Abstract This paper examines the environmental and economic impact of cloudburst triggered debris flows and flash floods in the Himalaya."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Construction of a national natural hazard interaction framework: The case of Sweden",
-          "authors": "Sköld Gustafsson V, Hjerpe M, Strandberg G",
-          "year": 2023,
-          "venue": "iScience",
-          "doi": "10.1016/j.isci.2023.106501",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC10106512",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC10106512",
-          "citedByCount": 5,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Recent multiple natural hazards and compound climate events studies have identified a range of interaction types and examined natural hazard interactions in various locations."
-        },
-        {
-          "repository": "Zenodo",
-          "title": "Procedure per i rilievi post-evento delle piene improvvise. Progetto APPARE – Analisi e documentazione di Piene imProvvise per una Aumentata REsilienza in zone montane.",
-          "authors": "Marchi, Lorenzo; Crema, Stefano; Piantini, Marco",
-          "year": 2025,
-          "venue": "Zenodo Open Scientific Archive",
-          "doi": "10.5281/zenodo.20328946",
-          "sourceUrl": "https://zenodo.org/records/20328946",
-          "oaFullTextUrl": "https://zenodo.org/records/20328946",
-          "citedByCount": 0,
-          "publicationType": "publication",
-          "license": "cc-by-4.0",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Il presente documento ha l&rsquo;obiettivo di descrivere procedure per la documentazione di piene improvvise causate da precipitazioni intense."
-        },
-        {
-          "repository": "Zenodo",
-          "title": "Rapporto Finale - Progetto \"APPARE: Analisi e documentazione di Piene imProvvise per una Aumentata REsilienza in zone montane\"",
-          "authors": "Marchi, Lorenzo; Crema, Stefano; Sarretta, Alessandro",
-          "year": 2025,
-          "venue": "Zenodo Open Scientific Archive",
-          "doi": "10.5281/zenodo.20328677",
-          "sourceUrl": "https://zenodo.org/records/20328677",
-          "oaFullTextUrl": "https://zenodo.org/records/20328677",
-          "citedByCount": 0,
-          "publicationType": "publication",
-          "license": "cc-by-4.0",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": "2011–2022",
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Si &egrave; proceduto alla raccolta e rianalisi di dati su piene improvvise avvenute in Italia tra il 2011 e il 2022 per le quali il CNR IRPI, spesso in collaborazione con altre istituzioni, ha condotto indagini post-evento."
         }
       ],
       "retrievedDataCiteDatasets": [
@@ -15365,12 +14421,12 @@
           "title": "From Hazard to Heritage: Landslides Risks, Geoheritage Potential, and Geotourism Opportunities along NH-44 corridor, Jammu and Kashmir, India",
           "authors": "Mir RA, null H, Khan S, Asgher Ms",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-10751621/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-10751621/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
@@ -15846,12 +14902,12 @@
           "title": "Understanding Glacial Lake Evolution and the Associated GLOF Hazard in Shyok Catchment of Upper Indus Basin",
           "authors": "Rather, A. F.; Ahmed, R.; Bateni, S. M., et al.",
           "year": 2023,
-          "venue": "Research Square Platform LLC",
+          "venue": "Research Square Platform LLC (Preprint — Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-2453096/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-2453096/v1",
           "oaFullTextUrl": "https://www.researchsquare.com/article/rs-2453096/v1",
           "citedByCount": 3,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "https://creativecommons.org/licenses/by/4.0/",
           "geographicalTier": "Tier A",
           "accessClassification": "Open-Access Full Text Available",
@@ -15864,12 +14920,12 @@
           "title": "Glacial Lake Outburst Flood Hazard Assessment in the Upper Indus Basin, Ladakh Himalaya Using Remote Sensing and Hydrodynamic Modeling",
           "authors": "Angmo, J.",
           "year": 2026,
-          "venue": "Copernicus GmbH",
+          "venue": "Copernicus GmbH (Preprint — Not Peer-Reviewed)",
           "doi": "10.5194/egusphere-2026-5906",
           "sourceUrl": "https://doi.org/10.5194/egusphere-2026-5906",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "https://creativecommons.org/licenses/by/4.0/",
           "geographicalTier": "Tier B",
           "accessClassification": "Abstract-Verified",
@@ -15904,7 +14960,7 @@
             "60%",
             "100%"
           ],
-          "extractedFindingSnippet": "The present study focuses on a comprehensive, multi-scenario-based GLOF hazard assessment for Gya Lake (33°37&amp;apos;3.99\"N, 77°36&amp;apos;49.01\"E) in the Ladakh Himalaya, India."
+          "extractedFindingSnippet": "The present study focuses on a comprehensive, multi-scenario-based GLOF hazard assessment for Gya Lake (33°37'3.99\"N, 77°36'49.01\"E) in the Ladakh Himalaya, India."
         },
         {
           "repository": "Crossref",
@@ -15982,26 +15038,7 @@
           "extractedFindingSnippet": "The ice-dammed lake area at the glacier's snout was delineated using MNDWI-based water body extraction from Landsat-8 OLI imagery, and lake volume was estimated using a depth-area empirical scaling relationship, consistent with established methodologies for ice-dammed lakes in the Karakoram."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Pan-Andean glacial lake inventory and GLOF susceptibility transfer tests (1985–2025)",
-          "creators": "Vilca-Solorzano, Richar Andre, Torres-Cruz, Fred, Fuentes-Navarro, Eduardo Leuman",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.24451531",
-          "url": "https://doi.org/10.5281/zenodo.24451531"
-        },
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Pan-Andean glacial lake inventory and GLOF susceptibility transfer tests (1985–2025)",
-          "creators": "Vilca-Solorzano, Richar Andre, Torres-Cruz, Fred, Fuentes-Navarro, Eduardo Leuman",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.24451530",
-          "url": "https://doi.org/10.5281/zenodo.24451530"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "NRSC ISRO Glacial Lake Atlas of Indus & Ganga River Basins (>=0.25 ha Inventory) & CWC Glacial Lake Monitoring",
@@ -16080,12 +15117,12 @@
           "title": "From Hazard Co-occurrence to Risk Mechanisms: Climate–Anthropogenic Interactions in Multi-Hazard Risk Formation",
           "authors": "Thankappan¹ N, Varghese² S",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-10866341/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-10866341/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier C",
           "accessClassification": "Abstract-Verified",
@@ -16208,7 +15245,7 @@
           "accessClassification": "Open-Access Full Text Available",
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
-          "extractedFindingSnippet": "The deposited materials support the observed-damage capture analysis, asset-dependency treatment, recovery&ndash;redamage reconstruction, road-exposure analysis, topographic analysis, and associated sensitivity checks."
+          "extractedFindingSnippet": "The deposited materials support the observed-damage capture analysis, asset-dependency treatment, recovery–redamage reconstruction, road-exposure analysis, topographic analysis, and associated sensitivity checks."
         }
       ],
       "retrievedDataCiteDatasets": [
@@ -16329,12 +15366,12 @@
           "title": "Long-term Climate Change Trends: 43-Year Analysis of Climatic Data in Gangotri National Park, Western Himalaya",
           "authors": "Bansal, D.; Talukdar, G.",
           "year": 2024,
-          "venue": "Springer Science and Business Media LLC",
+          "venue": "Springer Science and Business Media LLC (Preprint — Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-5401487/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-5401487/v1",
           "oaFullTextUrl": "https://www.researchsquare.com/article/rs-5401487/v1",
           "citedByCount": 1,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "https://creativecommons.org/licenses/by/4.0/",
           "geographicalTier": "Tier C",
           "accessClassification": "Open-Access Full Text Available",
@@ -16346,7 +15383,7 @@
             "0.057 mm",
             "0.016 mm"
           ],
-          "extractedFindingSnippet": "The analysis revealed that T max significantly decreased during the monsoon season, with an average decline of 0.01°C per year (p &lt; 0.005), while T min increased during both the monsoon and post-monsoon seasons by 0.04°C per year and by 0.02°C per year in summer (p &lt; 0.05)."
+          "extractedFindingSnippet": "The analysis revealed that T max significantly decreased during the monsoon season, with an average decline of 0.01°C per year (p < 0.005), while T min increased during both the monsoon and post-monsoon seasons by 0.04°C per year and by 0.02°C per year in summer (p < 0.05)."
         },
         {
           "repository": "Crossref",
@@ -16422,7 +15459,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Seasonal predictability of winter PM&lt;sub&gt;2.5&lt;/sub&gt; pollution severity in India through a strong pollution-extratropical storm connection",
+          "title": "Seasonal predictability of winter PM2.5 pollution severity in India through a strong pollution-extratropical storm connection",
           "authors": "Xie Y, Hunt KMR, Gupta R, Goswami G, Zhou M, Dong W, Mauzerall DL",
           "year": 2026,
           "venue": "Science advances",
@@ -16450,15 +15487,6 @@
           "publisher": "Dryad",
           "doi": "10.5061/dryad.2rbnzs853",
           "url": "https://doi.org/10.5061/dryad.2rbnzs853"
-        },
-        {
-          "repository": "DataCite",
-          "title": "Fuel-reduction thinning enhances Scots pine growth during the 2022 drought in the south-western Alps",
-          "creators": "Piermattei, Alma, Maimone, Francesco, Ascoli, Davide",
-          "year": 2026,
-          "publisher": "Elsevier",
-          "doi": "10.3929/ethz-c-000805643",
-          "url": "https://doi.org/10.3929/ethz-c-000805643"
         }
       ],
       "verifiedInstitutionalDatasets": [
@@ -16535,7 +15563,7 @@
       "retrievedLiterature": [
         {
           "repository": "Crossref",
-          "title": "A Contribution to the flora of Rajouri and Poonch districts in the Pir Panjal Himalaya (Jammu &amp;amp; Kashmir), India",
+          "title": "A Contribution to the flora of Rajouri and Poonch districts in the Pir Panjal Himalaya (Jammu & Kashmir), India",
           "authors": "Dar, G. H.; Malik, A. H.; Khuroo, A. A.",
           "year": 2014,
           "venue": "Check List",
@@ -16661,7 +15689,7 @@
         },
         {
           "repository": "Crossref",
-          "title": "Woody Flora of Poonch District in Pir Panjal Himalaya (Jammu &amp; Kashmir), India",
+          "title": "Woody Flora of Poonch District in Pir Panjal Himalaya (Jammu & Kashmir), India",
           "authors": "Mughal, R.; Malik, A. H.; Dar, G. H.; Khuroo, A. A.",
           "year": 2017,
           "venue": "Pleione",
@@ -17014,12 +16042,12 @@
           "title": "Projected Warming and Extreme Precipitation Changes across the Himalayan Arc Using WRF Regional Climate Simulations",
           "authors": "SHARMA K, Singh V, Bisht DS, Kumar S, Islam S, Sajeed M, Bulusu R",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-9650448/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-9650448/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
@@ -17102,12 +16130,12 @@
           "title": "Glacier surface temperature warming in the Himalaya-Karakoram: Implications for glacier mass loss",
           "authors": "Mandal, A.; Vishwakarma, B. D.",
           "year": 2025,
-          "venue": "Copernicus GmbH",
+          "venue": "Copernicus GmbH (Preprint — Not Peer-Reviewed)",
           "doi": "10.5194/egusphere-egu25-9239",
           "sourceUrl": "https://doi.org/10.5194/egusphere-egu25-9239",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Publisher Standard Terms",
           "geographicalTier": "Tier C",
           "accessClassification": "Abstract-Verified",
@@ -17116,25 +16144,25 @@
             "4300-5300 m",
             "3%"
           ],
-          "extractedFindingSnippet": "In the Eastern Himalaya, rising GST has significantly increased the annual positive GST area ratio (fraction of glacierised area with &gt; 0 &amp;#176;C GST) by ~3% of total glacierised area, contributing to the region's steeper glacier mass loss than other subregions."
+          "extractedFindingSnippet": "In the Eastern Himalaya, rising GST has significantly increased the annual positive GST area ratio (fraction of glacierised area with > 0 °C GST) by ~3% of total glacierised area, contributing to the region's steeper glacier mass loss than other subregions."
         },
         {
           "repository": "Crossref",
           "title": "Climate hazard indices projections based on CORDEX-CORE, CMIP5 and CMIP6 ensemble.",
           "authors": "Coppola, E.; CORDEX-CORE",
           "year": 2020,
-          "venue": "Copernicus GmbH",
+          "venue": "Copernicus GmbH (Preprint — Not Peer-Reviewed)",
           "doi": "10.5194/egusphere-egu2020-15001",
           "sourceUrl": "https://doi.org/10.5194/egusphere-egu2020-15001",
           "oaFullTextUrl": null,
           "citedByCount": 6,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Publisher Standard Terms",
           "geographicalTier": "Tier D",
           "accessClassification": "Abstract-Verified",
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
-          "extractedFindingSnippet": "&amp;lt;p&amp;gt;Under the CORDEX umbrella the CORDEX-CORE initiative has been developed that was able to produce an ensemble of two RCMs at 0.22&amp;amp;#176; resolution downscaling 3 GCMs for each of the 9 CORDEX domains for two climate scenarios the RCP2.6 and the RCP8.5."
+          "extractedFindingSnippet": "Under the CORDEX umbrella the CORDEX-CORE initiative has been developed that was able to produce an ensemble of two RCMs at 0.22° resolution downscaling 3 GCMs for each of the 9 CORDEX domains for two climate scenarios the RCP2.6 and the RCP8.5."
         },
         {
           "repository": "Europe PMC",
@@ -17161,26 +16189,7 @@
           "extractedFindingSnippet": "Reliable regional climate projections are essential for adaptation in climate-sensitive regions such as Odisha, India."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "21st-century projections by the HCLIM43-ALADIN regional climate model over Europe in the EURO-CORDEX-CMIP6 framework",
-          "creators": "Kuma, Peter, Nikulin, Grigory, Wang, Fuxing",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.24278219",
-          "url": "https://doi.org/10.5281/zenodo.24278219"
-        },
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "21st-century projections by the HCLIM43-ALADIN regional climate model over Europe in the EURO-CORDEX-CMIP6 framework",
-          "creators": "Kuma, Peter, Nikulin, Grigory, Wang, Fuxing",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.24278218",
-          "url": "https://doi.org/10.5281/zenodo.24278218"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "NASA NEX-GDDP-CMIP6 (0.25 deg Bias-Corrected Daily Projections) & IPCC AR6 WGI Interactive Atlas",
@@ -17291,7 +16300,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Phenology of &lt;i&gt;Lippia lasiocalycina&lt;/i&gt; Cham.: A Wild Medicinal Species Native to Brazil",
+          "title": "Phenology of Lippia lasiocalycina Cham.: A Wild Medicinal Species Native to Brazil",
           "authors": "Rocha MCAL, de Oliveira LM, Gonzaga ML",
           "year": 2026,
           "venue": "Plants (Basel, Switzerland)",
@@ -17309,7 +16318,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Phenology-Dependent Sex Identification in Mature &lt;i&gt;Ginkgo biloba&lt;/i&gt; Using Hyperspectral Imaging",
+          "title": "Phenology-Dependent Sex Identification in Mature Ginkgo biloba Using Hyperspectral Imaging",
           "authors": "Zhao Z, Zhang J, Wang T, Liu S, Yi Z, Wang X, Chen X, Sun Q, Sun H",
           "year": 2026,
           "venue": "Plants (Basel, Switzerland)",
@@ -17391,26 +16400,7 @@
           "extractedFindingSnippet": "However, it remains unclear which process has predominantly driven Earth's greening, as the mechanisms underlying increased maximum greenness and growing season extension are distinct."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "DataCite",
-          "title": "Autecological and Phenological Study of Kigelia Pinnata (Jacq.) DC. at Chhatarpur District (M.P.)",
-          "creators": "Kushwaha, Chandni, Arjariya, Amita",
-          "year": 2026,
-          "publisher": "Social Research Foundation Kanpur India",
-          "doi": "10.5281/zenodo.21874837",
-          "url": "https://doi.org/10.5281/zenodo.21874837"
-        },
-        {
-          "repository": "DataCite",
-          "title": "Autecological and Phenological Study of Kigelia Pinnata (Jacq.) DC. at Chhatarpur District (M.P.)",
-          "creators": "Kushwaha, Chandni, Arjariya, Amita",
-          "year": 2026,
-          "publisher": "Social Research Foundation Kanpur India",
-          "doi": "10.5281/zenodo.21874838",
-          "url": "https://doi.org/10.5281/zenodo.21874838"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "NASA MODIS MCD12Q2 / VIIRS VNP22Q2 Land Surface Phenology (2001–2024) across Kashmir Elevation Bands",
@@ -17486,7 +16476,7 @@
       "retrievedLiterature": [
         {
           "repository": "Crossref",
-          "title": "Physical Analysis of Water from Various Associated Hospitals of Government Medical College Srinagar (Jammu &amp; Kashmir)",
+          "title": "Physical Analysis of Water from Various Associated Hospitals of Government Medical College Srinagar (Jammu & Kashmir)",
           "authors": "Aziz Lone, A.",
           "year": 2022,
           "venue": "International Journal of Science and Research (IJSR)",
@@ -17507,7 +16497,7 @@
           "title": "Evaluation of Environmental Noise Pollution (Traffic, Schools, Hospitals) and Noise Perception",
           "authors": "Kasagıcı, B.; Ates, N.",
           "year": 2021,
-          "venue": "ENERGY, ENVIRONMENT &amp; STORAGE",
+          "venue": "ENERGY, ENVIRONMENT & STORAGE",
           "doi": "10.52924/ywkd5166",
           "sourceUrl": "https://doi.org/10.52924/ywkd5166",
           "oaFullTextUrl": null,
@@ -17586,7 +16576,7 @@
         {
           "repository": "Europe PMC",
           "title": "Urban environment and socioeconomic inequalities in childhood excess weight: a cross-sectional study in Geneva, Switzerland",
-          "authors": "Richard V, De Ridder D, Héritier H, Lorthe E, Dumont R, Bovio N, Nehme M, Barbe RP, Posfay-Barbe KM, McDade TW, Vuilleumier N, Guessous I, Stringhini S, SEROCoV-KIDS Study Group\n",
+          "authors": "Richard V, De Ridder D, Héritier H, Lorthe E, Dumont R, Bovio N, Nehme M, Barbe RP, Posfay-Barbe KM, McDade TW, Vuilleumier N, Guessous I, Stringhini S, SEROCoV-KIDS Study Group",
           "year": 2026,
           "venue": "European journal of public health",
           "doi": "10.1093/eurpub/ckag197",
@@ -17622,26 +16612,7 @@
           "extractedFindingSnippet": "Environmental noise is a pervasive but under-recognized cardiovascular and metabolic risk factor."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Science and Medicine Reinterpretation Under Host Absolute Authorship and High-Fidelity Mitosis Lineage Dominance by Sam Coole",
-          "creators": "Sam, Coole",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.22036524",
-          "url": "https://doi.org/10.5281/zenodo.22036524"
-        },
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Science and Medicine Reinterpretation Under Host Absolute Authorship and High-Fidelity Mitosis Lineage Dominance by Sam Coole",
-          "creators": "Sam, Coole",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.22036525",
-          "url": "https://doi.org/10.5281/zenodo.22036525"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "CPCB National Ambient Noise Monitoring Network (NANMN) & JKPCC Silence/Commercial Zone Noise Bulletins",
@@ -17712,7 +16683,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 5869216,
         "deduplicatedCandidatesInspected": 22,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -17815,33 +16786,15 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Public perceptions and (lack of) support for mitigation of artificial light at night in coastal cities",
-          "authors": "Rendon Thompson OR, Jahnsen Guzmán N, Duarte C, Estévez RA",
-          "year": 2026,
-          "venue": "Ambio",
-          "doi": "10.1007/s13280-026-02478-9",
-          "sourceUrl": "https://doi.org/10.1007/s13280-026-02478-9",
-          "oaFullTextUrl": null,
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Abstract-Indexed",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Abstract-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Respondents demonstrated asymmetric environmental literacy, recognising the societal benefits of lighting while showing limited awareness of its ecological consequences, particularly for coastal-marine ecosystems."
-        },
-        {
-          "repository": "Europe PMC",
           "title": "Biological Footprint of Artificial Light at Night in Rural and Developing Areas",
           "authors": "Boyles JG, Merritt BJ, Koen E, Minnaar C",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "bioRxiv Preprint Server (Not Peer-Reviewed)",
           "doi": "10.64898/2026.07.13.737561",
           "sourceUrl": "https://doi.org/10.64898/2026.07.13.737561",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier E",
           "accessClassification": "Abstract-Verified",
@@ -17852,26 +16805,7 @@
           "extractedFindingSnippet": "Context Artificial light at night (ALAN) has profound impacts on individual organisms and entire communities."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "DataCite",
-          "title": "Light-induced bird strikes on vessels in Southwest Greenland. Technical Report No. 84",
-          "creators": "Merkel, Flemming Ravn",
-          "year": 2010,
-          "publisher": "Greenland Institute of Natural Resources",
-          "doi": "10.5281/zenodo.17701364",
-          "url": "https://doi.org/10.5281/zenodo.17701364"
-        },
-        {
-          "repository": "DataCite",
-          "title": "Light-induced bird strikes on vessels in Southwest Greenland. Technical Report No. 84",
-          "creators": "Merkel, Flemming Ravn",
-          "year": 2010,
-          "publisher": "Greenland Institute of Natural Resources",
-          "doi": "10.5281/zenodo.17701365",
-          "url": "https://doi.org/10.5281/zenodo.17701365"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "NASA Black Marble (VNP46A4 Annual) & Earth Observation Group (EOG) VIIRS DNB Nighttime Lights (2012–2025)",
@@ -17941,7 +16875,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 4285831,
         "deduplicatedCandidatesInspected": 16,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 5
       },
       "retrievedLiterature": [
         {
@@ -17967,24 +16901,6 @@
             "1.40 µg/L"
           ],
           "extractedFindingSnippet": "Azithromycin showed the greatest pollution burden across the monitoring sites investigated, whereas levofloxacin exhibited comparatively limited contamination."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Endocrine Disruptors, Gut Microbiota, and Type 2 Diabetes: Bridging Mechanisms to Probiotic-Based Therapeutic Approaches",
-          "authors": "Cheung SM, Cheng CY, Ponnusamy VK, Tsai KF, Kung CT, Huang WT, You HL, Li SH, Lee WC, Cheng FJ, Chaithanya V",
-          "year": 2026,
-          "venue": "Diabetes, metabolic syndrome and obesity : targets and therapy",
-          "doi": "10.2147/dmso.s636877",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13654283",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13654283",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier C",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Growing evidence implicates endocrine-disrupting chemicals (EDCs) found in plastics, pesticides, food packaging, industrial products, and contaminated water as significant environmental contributors to metabolic dysfunction."
         },
         {
           "repository": "Zenodo",
@@ -18057,46 +16973,9 @@
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "Biomass-based CDs constitute a rapidly developing, eco-friendly category of nanomaterials engineered mainly for ecological biosensing applications."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Cardiovascular disease risk screening for endocrine-disrupting chemicals based on machine learning",
-          "authors": "Zhang J, Yang H, He H, Li Y, Wang W",
-          "year": 2026,
-          "venue": "Environmental research",
-          "doi": "10.1016/j.envres.2026.126150",
-          "sourceUrl": "https://doi.org/10.1016/j.envres.2026.126150",
-          "oaFullTextUrl": null,
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Abstract-Indexed",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Abstract-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Endocrine-disrupting chemicals (EDCs) interfere with human and animal endocrine systems and are common in plastics, personal care products, and pesticides."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "DataCite",
-          "title": "Pharmaceutical Residues in Sewage Sludge from Jordan's Largest Wastewater Treatment Plant: Implications for Sustainable Biosolids Management and Circular Economy",
-          "creators": "Othman Almashaqbeh, Hazem Assi, Anas Khateeb",
-          "year": 2026,
-          "publisher": "Hellenic Mediterranean University, School of Agricultural Sciences, Department of Agriculture",
-          "doi": "10.5281/zenodo.23678080",
-          "url": "https://doi.org/10.5281/zenodo.23678080"
-        },
-        {
-          "repository": "DataCite",
-          "title": "Pharmaceutical Residues in Sewage Sludge from Jordan's Largest Wastewater Treatment Plant: Implications for Sustainable Biosolids Management and Circular Economy",
-          "creators": "Othman Almashaqbeh, Hazem Assi, Anas Khateeb",
-          "year": 2026,
-          "publisher": "Hellenic Mediterranean University, School of Agricultural Sciences, Department of Agriculture",
-          "doi": "10.5281/zenodo.23678081",
-          "url": "https://doi.org/10.5281/zenodo.23678081"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "Wilkinson et al. (PNAS 2022) Global Monitoring of Pharmaceuticals in World Rivers & Indian Subcontinent Synthesis",
@@ -18227,7 +17106,7 @@
             "30.0–44.3%",
             "41.5%"
           ],
-          "extractedFindingSnippet": "Multidrug resistance occurred in 88.4% of isolates, and multiple antibiotic resistance index values exceeded the epidemiological risk threshold (&gt;0.2) in 88.4%, suggesting sustained antimicrobial selection pressure, although carbapenem susceptibility remained preserved."
+          "extractedFindingSnippet": "Multidrug resistance occurred in 88.4% of isolates, and multiple antibiotic resistance index values exceeded the epidemiological risk threshold (>0.2) in 88.4%, suggesting sustained antimicrobial selection pressure, although carbapenem susceptibility remained preserved."
         },
         {
           "repository": "Crossref",
@@ -18291,7 +17170,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Carbapenem-Resistant &lt;i&gt;Klebsiella pneumoniae&lt;/i&gt; in Healthcare-Associated Infections: Global and Regional Epidemiology, Resistance Mechanisms, and Therapeutic Strategies, with Particular Attention to Romania and Eastern Europe (2020-2025)",
+          "title": "Carbapenem-Resistant Klebsiella pneumoniae in Healthcare-Associated Infections: Global and Regional Epidemiology, Resistance Mechanisms, and Therapeutic Strategies, with Particular Attention to Romania and Eastern Europe (2020-2025)",
           "authors": "Ioniţă OE, Cernat RC, Militaru NM, Vodarici ME, Fulina M, Pițigoi D, Mocanu E, Severin B, Cambrea CS, Dumitru IM",
           "year": 2026,
           "venue": "Microorganisms",
@@ -18314,26 +17193,7 @@
           "extractedFindingSnippet": "Pooled mortality among patients infected with CRKP has been estimated in a separate meta-analysis at 42.14%, compared with 21.16% among patients infected with carbapenem-susceptible strains, rising to 54.30% in bloodstream infections."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Gram-negative bacterial contamination of mobile phones of Level 400 Medical Laboratory Science students, Accra Technical University",
-          "creators": "Ackesseh, Dominic, Gbinu, Emmanuel, Smith, Charity",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.24486115",
-          "url": "https://doi.org/10.5281/zenodo.24486115"
-        },
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Gram-negative bacterial contamination of mobile phones of Level 400 Medical Laboratory Science students, Accra Technical University",
-          "creators": "Ackesseh, Dominic, Gbinu, Emmanuel, Smith, Charity",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.24486116",
-          "url": "https://doi.org/10.5281/zenodo.24486116"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "ICMR Antimicrobial Resistance Research & Surveillance Network (AMRSN) & National Action Plan on AMR (NAP-AMR)",
@@ -18542,15 +17402,6 @@
       ],
       "retrievedDataCiteDatasets": [
         {
-          "repository": "Zenodo / DataCite",
-          "title": "Wissenschaftliche Dokumentation zur Fraktale Kausale Geometrie (FKG) (Zenodo V17 Update)",
-          "creators": "Kurzer, Dennis",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.22866917",
-          "url": "https://doi.org/10.5281/zenodo.22866917"
-        },
-        {
           "repository": "DataCite",
           "title": "Microbial Monitoring",
           "creators": "Principal Investigator: Pierson, Duane",
@@ -18632,27 +17483,9 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 114143,
         "deduplicatedCandidatesInspected": 7,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 1
       },
       "retrievedLiterature": [
-        {
-          "repository": "Crossref",
-          "title": "Jammu and Kashmir Assembly Factbook™: Pampore Assembly Constituency",
-          "authors": "Datanet India Pvt. Ltd.",
-          "year": 2026,
-          "venue": "Datanet India Pvt. Ltd.",
-          "doi": "10.66889/pampore_assembly_constituency",
-          "sourceUrl": "https://doi.org/10.66889/pampore_assembly_constituency",
-          "oaFullTextUrl": null,
-          "citedByCount": 0,
-          "publicationType": "monograph",
-          "license": "Publisher Standard Terms",
-          "geographicalTier": "Tier B",
-          "accessClassification": "Abstract-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "The Jammu and Kashmir Assembly Factbook™: Pampore Assembly Constituency provides a comprehensive demographic and electoral profile of the constituency."
-        },
         {
           "repository": "Zenodo",
           "title": "Flood Management of Jhelum Basin",
@@ -18670,96 +17503,6 @@
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "Because of its geological structure and position, the Kashmir valley is particularly prone to flooding."
-        },
-        {
-          "repository": "Zenodo",
-          "title": "Figure 5 in The historical biogeography of the southern group of the sucker genus Moxostoma (Teleostei: Catostomidae) and the colonization of central Mexico",
-          "authors": "Perez-Rodriguez, Rodolfo; Dominguez-Dominguez, Omar; Mar-Silva, Adan Fernando",
-          "year": 2016,
-          "venue": "Zoological Journal of the Linnean Society",
-          "doi": "10.5281/zenodo.5365379",
-          "sourceUrl": "https://zenodo.org/records/5365379",
-          "oaFullTextUrl": "https://zenodo.org/records/5365379",
-          "citedByCount": 0,
-          "publicationType": "image",
-          "license": "notspecified",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Ancient scenarios that determined the evolution and the current biegeographic pattern of the southern group."
-        },
-        {
-          "repository": "Crossref",
-          "title": "Magnetostratigraphy of the Baoji loess-paleosol section in the north-central China Loess Plateau",
-          "authors": "Rutter, N.; Zhongli, D.; Evans, M.; Yuchun, W.",
-          "year": 1990,
-          "venue": "Quaternary International",
-          "doi": "10.1016/1040-6182(90)90043-4",
-          "sourceUrl": "https://doi.org/10.1016/1040-6182(90)90043-4",
-          "oaFullTextUrl": null,
-          "citedByCount": 78,
-          "publicationType": "journal-article",
-          "license": "Publisher Standard Terms",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Metadata-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": null
-        },
-        {
-          "repository": "Crossref",
-          "title": "Magnetostratigraphy and magnetic susceptibility of the Las Carreras loess–paleosol sequence in Valle de Tafı́, Tucumán, NW-Argentina",
-          "authors": "Schellenberger, A.; Heller, F.; Veit, H.",
-          "year": 2003,
-          "venue": "Quaternary International",
-          "doi": "10.1016/s1040-6182(02)00170-2",
-          "sourceUrl": "https://doi.org/10.1016/s1040-6182(02)00170-2",
-          "oaFullTextUrl": null,
-          "citedByCount": 31,
-          "publicationType": "journal-article",
-          "license": "Publisher Standard Terms",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Metadata-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": null
-        },
-        {
-          "repository": "Crossref",
-          "title": "Figure 2: Histogram of Chunhua loess-paleosol profile with detailed description of basic characteristics of loess and paleosol layers.",
-          "authors": "PeerJ",
-          "year": 2023,
-          "venue": "PeerJ",
-          "doi": "10.7717/peerj.4611/fig-2",
-          "sourceUrl": "https://doi.org/10.7717/peerj.4611/fig-2",
-          "oaFullTextUrl": null,
-          "citedByCount": 0,
-          "publicationType": "component",
-          "license": "Publisher Standard Terms",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Metadata-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": null
-        },
-        {
-          "repository": "Crossref",
-          "title": "Figure 5: The distribution characteristics of soil grain size in paleosol layers (filled symbols) and loess layers (open symbols) of Chunhua loess-paleosol profile.",
-          "authors": "PeerJ",
-          "year": 2023,
-          "venue": "PeerJ",
-          "doi": "10.7717/peerj.4611/fig-5",
-          "sourceUrl": "https://doi.org/10.7717/peerj.4611/fig-5",
-          "oaFullTextUrl": null,
-          "citedByCount": 0,
-          "publicationType": "component",
-          "license": "Publisher Standard Terms",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Metadata-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": null
         }
       ],
       "retrievedDataCiteDatasets": [
@@ -18854,7 +17597,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 5610789,
         "deduplicatedCandidatesInspected": 23,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -18873,7 +17616,7 @@
           "accessClassification": "Abstract-Verified",
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
-          "extractedFindingSnippet": ": A comprehensive methodology that integrates Revised Universal Soil Loss Equation (RUSLE) model and Geographic Information System (GIS) techniques was adopted to determine that soil erosion vulnerability of micro-watershed in J&amp;K India."
+          "extractedFindingSnippet": ": A comprehensive methodology that integrates Revised Universal Soil Loss Equation (RUSLE) model and Geographic Information System (GIS) techniques was adopted to determine that soil erosion vulnerability of micro-watershed in J&K India."
         },
         {
           "repository": "Europe PMC",
@@ -18916,24 +17659,6 @@
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "Vulnerability to soil erosion risk in the watershed revealed that 24.16 percent of area from RUSLE model, and 20.21 percent of area from SATEEC GIS system was in high soil erosion risk zone."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Comparative Evaluation of Catchment Prioritization Using SYI and RUSLE Models: A Case Study of the Swarna Reservoir Catchment",
-          "authors": "Sumith KV",
-          "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
-          "doi": "10.21203/rs.3.rs-10763530/v1",
-          "sourceUrl": "https://doi.org/10.21203/rs.3.rs-10763530/v1",
-          "oaFullTextUrl": null,
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Abstract-Indexed",
-          "geographicalTier": "Tier D",
-          "accessClassification": "Abstract-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Abstract Soil erosion is a major contributor to sedimentation in many reservoirs in India."
         },
         {
           "repository": "Crossref",
@@ -18979,12 +17704,12 @@
           "title": "Impact of Cover-Management Factor Estimation Methods on RUSLE-Based Soil Erosion and Sediment Yield in the Gilgel Abay Catchment, Lake Tana Basin, Northwestern Ethiopia",
           "authors": "NARAYANA BV",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-11319207/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-11319207/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier E",
           "accessClassification": "Abstract-Verified",
@@ -19119,7 +17844,7 @@
         },
         {
           "repository": "Crossref",
-          "title": "Extreme value analysis of precipitation and temperature over Jammu &amp; Kashmir and Ladakh in western Himalaya, India",
+          "title": "Extreme value analysis of precipitation and temperature over Jammu & Kashmir and Ladakh in western Himalaya, India",
           "authors": "AHUJA, V.; PANDEY, C. P.; JOSHI, L. K., et al.",
           "year": 2023,
           "venue": "MAUSAM",
@@ -19173,10 +17898,10 @@
         },
         {
           "repository": "Crossref",
-          "title": "Environment and Health in Jammu &amp; Kashmir and Ladakh",
+          "title": "Environment and Health in Jammu & Kashmir and Ladakh",
           "authors": "Akhtar, R.",
           "year": 2023,
-          "venue": "Environment and Health in Jammu &amp; Kashmir and Ladakh",
+          "venue": "Environment and Health in Jammu & Kashmir and Ladakh",
           "doi": "10.4324/9781003329459-1",
           "sourceUrl": "https://doi.org/10.4324/9781003329459-1",
           "oaFullTextUrl": null,
@@ -19315,7 +18040,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 2908172,
         "deduplicatedCandidatesInspected": 21,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -19353,30 +18078,6 @@
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": null
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Fine-grained sugarcane varietal classification using high-resolution PRSS-1 satellite imagery: a field-validated dataset and a spatial context-aware deep learning framework",
-          "authors": "Khan SA, Ahmed M, Fiaz N, Alam M, Naseer A, Khan SD, Afridi H, Ullah M",
-          "year": 2026,
-          "venue": "Frontiers in plant science",
-          "doi": "10.3389/fpls.2026.1981795",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13789967",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13789967",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier C",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "3 m",
-            "1 m",
-            "95.2%",
-            "90.5%",
-            "92.5%"
-          ],
-          "extractedFindingSnippet": "The results demonstrated that Center-pixel only Transformer achieved highest overall accuracy of 88.59%, followed by Tabular Transformer (87.63%), 1D-CNN (87.10%) and proposed Transformer (3x3) (86.99%)."
         },
         {
           "repository": "Crossref",
@@ -19639,12 +18340,12 @@
           "title": "A Multi-Temporal National Census of Brick Kilns in Bangladesh from 2000 to 2023",
           "authors": "Abedin J, Sabrina S, Shadik J, Akter H",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-11255983/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-11255983/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier E",
           "accessClassification": "Abstract-Verified",
@@ -19659,12 +18360,12 @@
           "title": "Brick kilns, child respiratory symptoms and blood lead in Bangladesh: a national geospatial analysis of the 2025 Multiple Indicator Cluster Survey",
           "authors": "Hoque SMAU, Hasan MK, Islam MK, Sharif MM, Jemy SA, Haque SMR, Baset Ku",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "bioRxiv Preprint Server (Not Peer-Reviewed)",
           "doi": "10.64898/2026.10.22.26366042",
           "sourceUrl": "https://doi.org/10.64898/2026.10.22.26366042",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier E",
           "accessClassification": "Abstract-Verified",
@@ -19697,26 +18398,7 @@
           "extractedFindingSnippet": "Mineralogical mechanisms responsible for substantial strength enhancement are revealed."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "BREATH SAFE by Kaveh Dimitri Salahi",
-          "creators": "Salahi, kaveh dimitri",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.24332297",
-          "url": "https://doi.org/10.5281/zenodo.24332297"
-        },
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "BREATH SAFE by Kaveh Dimitri Salahi",
-          "creators": "Salahi, kaveh dimitri",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.24332298",
-          "url": "https://doi.org/10.5281/zenodo.24332298"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "MoEFCC Notification G.S.R. 143(E) (2022) Mandatory Zig-Zag Brick Kiln Technology & JKPCC District Kiln Inventory",
@@ -19787,7 +18469,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 27691,
         "deduplicatedCandidatesInspected": 10,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -19832,7 +18514,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "The biological functions of &lt;i&gt;Scutellaria baicalensis&lt;/i&gt; Georgi extracts and their application prospects in livestock and poultry production",
+          "title": "The biological functions of Scutellaria baicalensis Georgi extracts and their application prospects in livestock and poultry production",
           "authors": "Zhang G, Du X, Li Y, Ma X, Leng H, Gao Y",
           "year": 2026,
           "venue": "Frontiers in veterinary science",
@@ -19903,24 +18585,6 @@
             "3-12%"
           ],
           "extractedFindingSnippet": "Heat stress (HS) constrains livestock production under climate change, impairing health, welfare, productivity and survival."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Bacterial pathogens occurring in poultry litter",
-          "authors": "Ricke SC, Rogers AE, Olson EG, Hale BM",
-          "year": 2026,
-          "venue": "Poultry science",
-          "doi": "10.1016/j.psj.2026.108046",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13744837",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13744837",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "There is an increased risk of bacterial pathogen transmission, environmental contamination, and the accumulation of organic waste, allowing widespread pathogen proliferation."
         }
       ],
       "retrievedDataCiteDatasets": [
@@ -20245,7 +18909,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 2588065,
         "deduplicatedCandidatesInspected": 15,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -20265,24 +18929,6 @@
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "Plant byproducts represent a valuable and underutilized source of bioactive compounds."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Repoliticising the CE: Sen’s Theory of Justice and the Ideologies Shaping Circular Transitions",
-          "authors": "Plaatjes JL, Cherrington R",
-          "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
-          "doi": "10.21203/rs.3.rs-10876028/v1",
-          "sourceUrl": "https://doi.org/10.21203/rs.3.rs-10876028/v1",
-          "oaFullTextUrl": null,
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Abstract-Indexed",
-          "geographicalTier": "Tier C",
-          "accessClassification": "Abstract-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Abstract The circular economy has emerged as a dominant sustainability framework, yet its rapid institutionalisation obscures critical questions about power, equity, and justice in industrial transitions."
         },
         {
           "repository": "Zenodo",
@@ -20325,12 +18971,12 @@
           "title": "The material flow analysis model REMIND-MFA: Global demand scenarios and circular flows for plastics, steel, and cement",
           "authors": "Dürrwächter J, Weiss B, Schweiger L, Hosak M, Zhang Q, Diez T, Hoppe J, Luderer G, Ueckerdt F",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-11566180/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-11566180/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier E",
           "accessClassification": "Abstract-Verified",
@@ -20343,12 +18989,12 @@
           "title": "Material Flow Analysis of Titanium Metal in European Aviation: Circular Economy Strategies for reduced import dependence",
           "authors": "Ghirlandi S, Hoff T, Böcher C, Sprecher B, Pohya AA, Peck D",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-11048667/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-11048667/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier E",
           "accessClassification": "Abstract-Verified",
@@ -20367,12 +19013,12 @@
           "title": "Beyond Recycling Volumes: A Life-Cycle Material-Flow Model of Circular Economy Policy Mixes",
           "authors": "Wang D, Sun M",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-10648467/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-10648467/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier E",
           "accessClassification": "Abstract-Verified",
@@ -20560,7 +19206,7 @@
         },
         {
           "repository": "Crossref",
-          "title": "Investigation of water quality changes in drinking water supplied from Sitlee water treatment plant on River Tawi to Old Jammu City, Jammu, J&amp;K, India",
+          "title": "Investigation of water quality changes in drinking water supplied from Sitlee water treatment plant on River Tawi to Old Jammu City, Jammu, J&K, India",
           "authors": "Kundan, P.; Slathia, D.",
           "year": 2018,
           "venue": "Journal of Applied and Natural Science",
@@ -20602,7 +19248,7 @@
         },
         {
           "repository": "Crossref",
-          "title": "Spring Atlas of Tawi River Catchment of Jammu &amp; Kashmir",
+          "title": "Spring Atlas of Tawi River Catchment of Jammu & Kashmir",
           "authors": "Rawat, S. S.",
           "year": 2024,
           "venue": "Natioal Institute of Hydrology",
@@ -20825,12 +19471,12 @@
           "title": "Aufeis in High Mountain Asia: Evidence from two endorheic basins (Tso Moriri and Pangong Tso)",
           "authors": "Brombierstäudl, D.; Schmitt, T.; Schmidt, S.; Nüsser, M.",
           "year": 2023,
-          "venue": "Copernicus GmbH",
+          "venue": "Copernicus GmbH (Preprint — Not Peer-Reviewed)",
           "doi": "10.5194/egusphere-egu23-13288",
           "sourceUrl": "https://doi.org/10.5194/egusphere-egu23-13288",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Publisher Standard Terms",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
@@ -20932,7 +19578,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 1540835,
         "deduplicatedCandidatesInspected": 15,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -20978,7 +19624,7 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Multi-Source Remote Sensing and Ensemble Learning for Habitat Suitability Mapping of the Common Leopard (&lt;i&gt;Panthera pardus&lt;/i&gt;) in Azad Jammu and Kashmir, Pakistan",
+          "title": "Multi-Source Remote Sensing and Ensemble Learning for Habitat Suitability Mapping of the Common Leopard (Panthera pardus) in Azad Jammu and Kashmir, Pakistan",
           "authors": "Dildar Z, Huang W, Ahmed R, Khalid Z",
           "year": 2026,
           "venue": "Sensors (Basel, Switzerland)",
@@ -20999,7 +19645,7 @@
         {
           "repository": "Crossref",
           "title": "Effects of soil type and nitrogen source on nitrogen leaching: Insights from a laboratory column experiment",
-          "authors": "Department of Soil and Environmental Sciences, Faculty of Agriculture, University of Poonch Rawalakot, 12350,  Azad Jammu & Kashmir, Pakistan; Tahir, M. M.; Ain, Q., et al.",
+          "authors": "Department of Soil and Environmental Sciences, Faculty of Agriculture, University of Poonch Rawalakot, 12350, Azad Jammu & Kashmir, Pakistan; Tahir, M. M.; Ain, Q., et al.",
           "year": 2025,
           "venue": "Soil and Environment",
           "doi": "10.25252/se/2025/253890",
@@ -21012,7 +19658,7 @@
           "accessClassification": "Abstract-Verified",
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
-          "extractedFindingSnippet": "The cumulative amount of NH4+-N leached ranged from 62 to 891 mg N L-1, and followed the order; ammonium nitrate &gt; urea &gt; nitrophos, regardless of soil type."
+          "extractedFindingSnippet": "The cumulative amount of NH4+-N leached ranged from 62 to 891 mg N L-1, and followed the order; ammonium nitrate > urea > nitrophos, regardless of soil type."
         },
         {
           "repository": "Zenodo",
@@ -21031,24 +19677,6 @@
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "The results indicated notable variation in dietary diversity across districts, with Hattian Bala exhibiting the highest number of dietary items, i.e., 34 species of plants, followed by Muzaffarabad, i.e., 30 species, and Neelum, i.e., 23 species."
-        },
-        {
-          "repository": "Zenodo",
-          "title": "Macrosiphoniella sanborni",
-          "authors": "Hassan, Muhammad Asghar; Asif, Muhammad; Chakrabarti, Samiran",
-          "year": 2024,
-          "venue": "A comprehensive checklist and host plants of Aphididae (Aphidomorpha: Hemiptera) from Pakistan, pp. 1-114 in European Journal of Taxonomy",
-          "doi": "10.5281/zenodo.13275354",
-          "sourceUrl": "https://zenodo.org/records/13275354",
-          "oaFullTextUrl": "https://zenodo.org/records/13275354",
-          "citedByCount": 0,
-          "publicationType": "publication",
-          "license": "cc-zero",
-          "geographicalTier": "Tier A",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Macrosiphoniella sanborni (Gillette, 1908) Host plant Chrysanthemum sp."
         },
         {
           "repository": "Europe PMC",
@@ -21150,7 +19778,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 315580,
         "deduplicatedCandidatesInspected": 18,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 5
       },
       "retrievedLiterature": [
         {
@@ -21180,12 +19808,12 @@
           "title": "Understanding Glacial Lake Evolution and the Associated GLOF Hazard in Shyok Catchment of Upper Indus Basin",
           "authors": "Rather, A. F.; Ahmed, R.; Bateni, S. M., et al.",
           "year": 2023,
-          "venue": "Research Square Platform LLC",
+          "venue": "Research Square Platform LLC (Preprint — Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-2453096/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-2453096/v1",
           "oaFullTextUrl": "https://www.researchsquare.com/article/rs-2453096/v1",
           "citedByCount": 3,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "https://creativecommons.org/licenses/by/4.0/",
           "geographicalTier": "Tier A",
           "accessClassification": "Open-Access Full Text Available",
@@ -21194,36 +19822,16 @@
           "extractedFindingSnippet": "The results reveal a significant increase in the total number of glacial lakes from 143 in 1992 to 240 in 2022 as well as the total glacial lake area that increased from 8.45 km 2 (± 0.02 km 2 ) in 1992 to 13.26 km 2 (± 0.04 km 2 ) in 2022."
         },
         {
-          "repository": "Crossref",
-          "title": "AN INVESTIGATION INTO RELATIONSHIP BETWEEN STUDENTS' ATTITUDE AND ANXIETY TOWARDS RESEARCH AND THEIR RESEARCH SELF-EFFICACY AT A LOCAL UNIVERSITY IN GILGIT-BALTISTAN, PAKISTAN",
-          "authors": "Karakoram International University, Gilgit-Baltistan, Pakistan; Angaiz, D.; Jan, S., et al.",
-          "year": 2021,
-          "venue": "Pakistan Journal of Social Research",
-          "doi": "10.52567/pjsr.v3i4.311",
-          "sourceUrl": "https://doi.org/10.52567/pjsr.v3i4.311",
-          "oaFullTextUrl": null,
-          "citedByCount": 2,
-          "publicationType": "journal-article",
-          "license": "Publisher Standard Terms",
-          "geographicalTier": "Tier A",
-          "accessClassification": "Abstract-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "50%"
-          ],
-          "extractedFindingSnippet": "Results indicated more than 50% students showed positive attitudes and high research self-efficacy towards research."
-        },
-        {
           "repository": "Europe PMC",
           "title": "Correcting Two Processing Pitfalls in Landsat Glacier Change Detection: Bualtar Glacier and the Karakoram Anomaly, 1990-2025",
           "authors": "Sohail Z, Tariq S",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-11380881/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-11380881/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier A",
           "accessClassification": "Abstract-Verified",
@@ -21265,36 +19873,18 @@
           "title": "One-dimensional hydraulic modelling of glacier lake outburst flood (GLOF) in Hunza sub-basin of Karakoram",
           "authors": "Baig, S. U.; Muneeb, F.; Dad, K.",
           "year": 2025,
-          "venue": "Springer Science and Business Media LLC",
+          "venue": "Springer Science and Business Media LLC (Preprint — Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-7188352/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-7188352/v1",
           "oaFullTextUrl": "https://www.researchsquare.com/article/rs-7188352/v1",
           "citedByCount": 0,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "https://creativecommons.org/licenses/by/4.0/",
           "geographicalTier": "Tier A",
           "accessClassification": "Open-Access Full Text Available",
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "Karakoram glacier lakes develop at high altitudes."
-        },
-        {
-          "repository": "Crossref",
-          "title": "Empowering young girls through digital training programs in Hunza, Gilgit Baltistan",
-          "authors": "Seema Shah; Qaisara Parveen; Muhammad Arshad Dahar",
-          "year": 2024,
-          "venue": "Indus Journal of Social Sciences",
-          "doi": "10.59075/ijss.v2i2.412",
-          "sourceUrl": "https://doi.org/10.59075/ijss.v2i2.412",
-          "oaFullTextUrl": "https://induspublishers.com/IJSS/article/download/412/379",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "https://creativecommons.org/licenses/by/4.0",
-          "geographicalTier": "Tier A",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Application of digital skills for income generation was found that Diverse entrepreneurial ventures, economic independence through freelancing and digital skills in E- Commerce."
         }
       ],
       "retrievedDataCiteDatasets": [],
@@ -21370,7 +19960,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 999836,
         "deduplicatedCandidatesInspected": 11,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -21396,12 +19986,12 @@
           "title": "The Tragedy of Sand Commons and Environmental Justice in India’s Riverine Ecosystems",
           "authors": "Kumar V, Saurav SK",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-10709286/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-10709286/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier C",
           "accessClassification": "Abstract-Verified",
@@ -21462,27 +20052,6 @@
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "Healthcare waste management in rural and remote India should not be treated as merely a technical disposal problem but as a governance, behavioral, and community health challenge."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Strengthening Tobacco Control during the COVID-19 Pandemic in India: A Secondary Policy Review and Analysis",
-          "authors": "Yadav A, Singh R, Sinha P",
-          "year": 2026,
-          "venue": "Indian journal of community medicine : official publication of Indian Association of Preventive & Social Medicine",
-          "doi": "10.4103/ijcm.ijcm_811_25",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13544919",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13544919",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier D",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [
-            "90%",
-            "85%"
-          ],
-          "extractedFindingSnippet": "India's response to the COVID-19 crisis involved invoking a combination of emergency and penal laws and regulations to prevent tobacco use, especially in public places to prevent transmission of COVID-19 in the country."
         },
         {
           "repository": "Europe PMC",
@@ -21698,12 +20267,12 @@
           "title": "Health Risk Vulnerability of Farm Community to Pesticide Application in Upper Jhelum Basin of Kashmir Himalaya, India",
           "authors": "Ganaie, M. I.; Dev, A.; Wani, M. A.; Mayer, I. A.",
           "year": 2022,
-          "venue": "Springer Science and Business Media LLC",
+          "venue": "Springer Science and Business Media LLC (Preprint — Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-328758/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-328758/v1",
           "oaFullTextUrl": "https://www.researchsquare.com/article/rs-328758/v1",
           "citedByCount": 0,
-          "publicationType": "posted-content",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "https://creativecommons.org/licenses/by/4.0/",
           "geographicalTier": "Tier B",
           "accessClassification": "Open-Access Full Text Available",
@@ -21965,15 +20534,6 @@
           "publisher": "Deakin University",
           "doi": "10.26187/deakin.35085664",
           "url": "https://doi.org/10.26187/deakin.35085664"
-        },
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "THE NEEDLE, THE BRAIN, AND THE UNFINISHED MAP OF SENSATION A scientific and technical notebook for F061-F065: Acupuncture-evoked multimodal imaging, brain magnetic timing, pain-prediction boundaries, repeated-stimulation adaptation and false functional-connectivity edges. Author identity: White Rainbow Epoch / 33 x STARLI | 11 November 2026 SCIENTIFIC STATUS: Entirely prospective analytical design; any numerical results reported below are deterministic synthetic simulations. No actual acupuncture, human EEG, MEG, fMRI or clinical intervention was performed. This research is not evidence of neural repair or clinical efficacy. Primary source: user-supplied 331-page STARLI Acupuncture x Quantum Sensing x Regenerative Medicine, 100 Flagship Research Directions, version 1.0. F061-F065 titles, primary endpoints and nonclinical boundaries are traced to that manuscript. Additional scientific standards and literature are independently identified in the bibliography; classical philosophical traditions are cultural sources, not measured physical mechanisms.",
-          "creators": "33",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.24139680",
-          "url": "https://doi.org/10.5281/zenodo.24139680"
         }
       ],
       "verifiedInstitutionalDatasets": [
@@ -22046,7 +20606,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 4601079,
         "deduplicatedCandidatesInspected": 17,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 6
       },
       "retrievedLiterature": [
         {
@@ -22071,7 +20631,7 @@
         },
         {
           "repository": "Crossref",
-          "title": "Making Biodiversity Data Social, Shareable, and Scalable: Reflections on iNaturalist &amp;amp; citizen science",
+          "title": "Making Biodiversity Data Social, Shareable, and Scalable: Reflections on iNaturalist & citizen science",
           "authors": "Seltzer, C.",
           "year": 2019,
           "venue": "Biodiversity Information Science and Standards",
@@ -22129,27 +20689,6 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Citizen science data as a tool for monitoring moss diversity in Poland: potential and limitations",
-          "authors": "Latoszewski M, Świsłowski P, Rajfur M, Wolski GJ",
-          "year": 2026,
-          "venue": "Environmental monitoring and assessment",
-          "doi": "10.1007/s10661-026-16092-5",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13710573",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13710573",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": "2019–2025",
-          "extractedMeasurements": [
-            "65.5%",
-            "60%"
-          ],
-          "extractedFindingSnippet": "Analysis revealed extreme asymmetry in research effort (G users = 0.89): the 12 most active users contributed 65.5% of national records, creating a \"super-user effect.\" Rarefaction corrected this bias, identifying the Pomeranian Voivodeship as having the highest standardized diversity (S rar = 80.9)."
-        },
-        {
-          "repository": "Europe PMC",
           "title": "Citizen science-based biodiversity monitoring in oil palm plantations",
           "authors": "Maharani N, Nardiyono N, Munthe CR, Swayanuar P, Ni'Matullah S, Sueif S, Zaini S, Supriatna J, Kusrini M, Dennis R, van Balen B, van Strien A, Meijaard E",
           "year": 2026,
@@ -22190,15 +20729,6 @@
         }
       ],
       "retrievedDataCiteDatasets": [
-        {
-          "repository": "DataCite",
-          "title": "From Collection to Integration: Closing the Data Management Gap in European Marine Citizen Science",
-          "creators": "Robyn, Chloé, Knockaert, Carolien, Fockedey, Nancy",
-          "year": 2026,
-          "publisher": "Memorial University of Newfoundland",
-          "doi": "10.48336/d3f8-ky50",
-          "url": "https://doi.org/10.48336/d3f8-ky50"
-        },
         {
           "repository": "DataCite",
           "title": "Occurrence Download",
@@ -22430,19 +20960,10 @@
       "retrievedDataCiteDatasets": [
         {
           "repository": "DataCite",
-          "title": "Assessment of the sustainability of sensitive ecosystems. Application in Balos Lagoon",
-          "creators": "Skarakis Nikolaos, Σκαρακης Νικολαος",
-          "year": 2023,
-          "publisher": "Πολυτεχνείο Κρήτης",
-          "doi": "10.26233/heallink.tuc.95971",
-          "url": "https://doi.org/10.26233/heallink.tuc.95971"
-        },
-        {
-          "repository": "DataCite",
           "title": "Natural Capital, Resource Economics, and Circular Development: Inte-grating Measurement Frameworks, Environmental Valuation, and Long-Term Resilience",
           "creators": "Linares, Fiorella, Flores, Alberto, Salas, Maritza",
           "year": 2026,
-          "publisher": "Global Circular Economy and Sustainable  Development Journal",
+          "publisher": "Global Circular Economy and Sustainable Development Journal",
           "doi": "10.5281/zenodo.24256403",
           "url": "https://doi.org/10.5281/zenodo.24256403"
         }
@@ -22518,7 +21039,7 @@
         "queriesExecuted": 6,
         "rawCandidateHits": 1562513,
         "deduplicatedCandidatesInspected": 11,
-        "retainedVerifiedPublicationsCount": 7
+        "retainedVerifiedPublicationsCount": 5
       },
       "retrievedLiterature": [
         {
@@ -22561,57 +21082,21 @@
         },
         {
           "repository": "Europe PMC",
-          "title": "Reproducibility in biomedical research",
-          "authors": "Zhong J, D'Angelo D, Lyu C, Xu I, Enns PK, Wang F, Kaushal R",
-          "year": 2026,
-          "venue": "Nature medicine",
-          "doi": "10.1038/s41591-026-04667-1",
-          "sourceUrl": "https://europepmc.org/article/PMC/PMC13715817",
-          "oaFullTextUrl": "https://europepmc.org/article/PMC/PMC13715817",
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Open Access (Europe PMC)",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Open-Access Full Text Available",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Reproducibility has long been considered a foundation of trustworthy science, yet practices that enable reproducible research remain inconsistently implemented, despite widespread awareness and establishment of policies and guidelines."
-        },
-        {
-          "repository": "Europe PMC",
           "title": "A FAIR-Compliant Data Lakehouse for Seismological Workflows: Architecture and Experimental Evaluation",
           "authors": "Costa EDd, Musicante MA",
           "year": 2026,
-          "venue": "Biomedical & Environmental Science Journal",
+          "venue": "Research Square Preprint Server (Not Peer-Reviewed)",
           "doi": "10.21203/rs.3.rs-9519288/v1",
           "sourceUrl": "https://doi.org/10.21203/rs.3.rs-9519288/v1",
           "oaFullTextUrl": null,
           "citedByCount": 0,
-          "publicationType": "journal-article",
+          "publicationType": "Preprint (Not Peer-Reviewed)",
           "license": "Abstract-Indexed",
           "geographicalTier": "Tier E",
           "accessClassification": "Abstract-Verified",
           "studyPeriodDetected": null,
           "extractedMeasurements": [],
           "extractedFindingSnippet": "Abstract Processing seismological data poses significant challenges for its integration, governance, and reuse within scientific workflows."
-        },
-        {
-          "repository": "Europe PMC",
-          "title": "Integrating data management and analysis in bioimaging: A core facility perspective",
-          "authors": "Cao L, Paul MW, Willemse J, Voortman LM, Abbassi-Daloii T, Wolstencroft K, Dévédec SL",
-          "year": 2026,
-          "venue": "Journal of microscopy",
-          "doi": "10.1111/jmi.70211",
-          "sourceUrl": "https://doi.org/10.1111/jmi.70211",
-          "oaFullTextUrl": null,
-          "citedByCount": 0,
-          "publicationType": "journal-article",
-          "license": "Abstract-Indexed",
-          "geographicalTier": "Tier E",
-          "accessClassification": "Abstract-Verified",
-          "studyPeriodDetected": null,
-          "extractedMeasurements": [],
-          "extractedFindingSnippet": "Advances in microscopy instrumentation, automation, image analysis, and multimodal workflows have increased the scale, complexity, and institutional importance of imaging data."
         },
         {
           "repository": "Europe PMC",
@@ -22652,26 +21137,7 @@
           "extractedFindingSnippet": "Spatial turnover declined first, followed by abundance-based community dissimilarity."
         }
       ],
-      "retrievedDataCiteDatasets": [
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Basis-Free Pattern Architecture: Public Papers, Formal Converters, and Computational Appendices",
-          "creators": "kim, minsu",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.24460008",
-          "url": "https://doi.org/10.5281/zenodo.24460008"
-        },
-        {
-          "repository": "Zenodo / DataCite",
-          "title": "Basis-Free Pattern Architecture: Public Papers, Formal Converters, and Computational Appendices",
-          "creators": "kim, minsu",
-          "year": 2026,
-          "publisher": "Zenodo",
-          "doi": "10.5281/zenodo.18934501",
-          "url": "https://doi.org/10.5281/zenodo.18934501"
-        }
-      ],
+      "retrievedDataCiteDatasets": [],
       "verifiedInstitutionalDatasets": [
         {
           "title": "Wilkinson et al. (2016) FAIR Guiding Principles, Haddaway et al. (2018) ROSES Environmental Evidence Standard & DataCite Metadata Schema 4.5",

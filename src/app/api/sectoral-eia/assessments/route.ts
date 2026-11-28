@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { NextRequest, NextResponse } from 'next/server';
+import { verifyAdminRequest } from '@/lib/seo/admin-session';
 
 export const runtime = 'nodejs';
 
@@ -19,7 +20,14 @@ function readSubmissions(): any[] {
   }
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const authCheck = await verifyAdminRequest(request);
+  if (!authCheck.authorized) {
+    return NextResponse.json(
+      { success: false, error: 'Unauthorized: Administrator session required to inspect stakeholder assessment submissions.' },
+      { status: 401 }
+    );
+  }
   return NextResponse.json({
     success: true,
     submissions: readSubmissions(),

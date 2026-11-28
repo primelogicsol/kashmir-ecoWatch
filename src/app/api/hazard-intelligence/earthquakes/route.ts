@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { allowForcedUpstreamRefresh } from '@/lib/seo/admin-session';
 import {
   earthquakeData,
   EarthquakeRecord,
@@ -285,7 +286,8 @@ function combineAgencyTag(existing: SeismicAgencySource, incoming: 'NCS' | 'EMSC
 export async function GET(request: Request) {
   const nowMs = Date.now();
   const { searchParams } = new URL(request.url);
-  const forceRefresh = searchParams.get('refresh') === '1';
+  const rawForceRefresh = searchParams.get('refresh') === '1';
+  const forceRefresh = rawForceRefresh && allowForcedUpstreamRefresh(request, 'earthquakes', 60_000);
 
   if (!forceRefresh && cachedResponse && nowMs - cachedAt < CACHE_TTL_MS) {
     return NextResponse.json(cachedResponse);
@@ -379,12 +381,14 @@ export async function GET(request: Request) {
       }
     }
 
-    let liveRisk = zone.risk_level;
-    if (maxMagWithin100 >= 5.0) {
-      liveRisk = 'Critical';
-    } else if (maxMagWithin50 >= 3.5 || maxMagWithin100 >= 4.2) {
-      liveRisk = liveRisk === 'Critical' ? 'Critical' : 'High';
-    }
+    // Preserve static tectonic zone risk_level rather than claiming deterministic forward fault rupture prediction;
+    // report recent 30-day catalog activity explicitly as 'Recent Regional Seismicity Elevated'.
+    const isSeismicityElevated = maxMagWithin100 >= 4.2 || maxMagWithin50 >= 3.5;
+    const recentSeismicityStatus = isSeismicityElevated
+      ? 'Recent Regional Seismicity Elevated'
+      : quakesWithin100km > 0
+        ? 'Background Regional Seismicity Observed'
+        : 'Baseline Tectonic Regime';
 
     return {
       ...zone,
@@ -395,7 +399,10 @@ export async function GET(request: Request) {
       live_latest_place: latestPlace || undefined,
       live_latest_time_ist: latestTimeIst || undefined,
       live_latest_source: latestSource || undefined,
-      live_risk_level: liveRisk,
+      live_risk_level: isSeismicityElevated
+        ? ('Recent Regional Seismicity Elevated' as EarthquakeRecord['live_risk_level'])
+        : zone.risk_level,
+      recent_seismicity_status: recentSeismicityStatus,
       last_updated: new Date().toISOString(),
     };
   });

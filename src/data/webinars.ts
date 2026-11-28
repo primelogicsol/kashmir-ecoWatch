@@ -37,8 +37,10 @@ export type EventStatus =
   | 'under_review' 
   | 'confirmed' 
   | 'registration_open' 
+  | 'upcoming'
   | 'live' 
   | 'completed' 
+  | 'concluded'
   | 'archived';
 
 export interface WebinarSession {
@@ -163,29 +165,29 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
     speakers: [
       {
         id: 'spk-1',
-        name: 'Prof. M. Farooq (Nominated / Invited)',
-        title: 'Professor & Head of Earth Sciences',
-        institution: 'University of Kashmir',
+        name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+        title: 'Glaciology & Geodetic Remote Sensing Track Slot',
+        institution: 'Academic Speaker Invitation Open (Consent & ORCID Required)',
         avatar: '/images/avatars/academic-silhouette.svg',
-        bio: 'Senior glaciologist with extensive field and satellite geodetic mass balance research across Western Himalayan glacier basins.',
+        bio: 'Reserved keynote slot for verified Western Himalayan glacier mass balance and spaceborne radar interferometry research.',
         status: 'Invited'
       },
       {
         id: 'spk-2',
-        name: 'Prof. Elena Rostova (Nominated / Invited)',
-        title: 'Senior Cryosphere Research Fellow',
-        institution: 'ETH Zurich & ICIMOD Affiliate',
+        name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+        title: 'Supraglacial Debris & Cryosphere Physics Track Slot',
+        institution: 'International Mountain Cryosphere Slot (Confirmation Pending)',
         avatar: '/images/avatars/academic-silhouette.svg',
-        bio: 'Specialist in supraglacial debris thermal physics, high-altitude UAV photogrammetry, and Hindu Kush-Himalayan cryospheric ablation modeling.',
+        bio: 'Reserved technical slot for supraglacial debris thermal physics, UAV photogrammetry, and cryospheric ablation modeling.',
         status: 'Invited'
       },
       {
         id: 'spk-3',
-        name: 'Dr. Tariq Ahmad (Nominated / Invited)',
-        title: 'Associate Professor of Agricultural Hydrology',
-        institution: 'SKUAST-Kashmir',
+        name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+        title: 'Watershed & Springshed Hydrology Track Slot',
+        institution: 'Regional Hydrology Speaker Slot (Confirmation Pending)',
         avatar: '/images/avatars/academic-silhouette.svg',
-        bio: 'Researcher on Karewa springshed hydraulics, watershed water budgets, and high-density horticultural irrigation resilience.',
+        bio: 'Reserved technical slot for Karewa springshed hydraulics, watershed water budgets, and downstream irrigation resilience.',
         status: 'Invited'
       }
     ],
@@ -223,20 +225,20 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
     speakers: [
       {
         id: 'spk-4',
-        name: 'Dr. Bushra Nazir (Nominated / Invited)',
-        title: 'Senior Limnologist & Wetland Ecologist',
-        institution: 'Limnology Research Centre, Srinagar',
+        name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+        title: 'Limnology & Wetland Ecology Track Slot',
+        institution: 'Regional Limnology Speaker Slot (Confirmation Pending)',
         avatar: '/images/avatars/academic-silhouette.svg',
-        bio: 'Researches benthic macro-invertebrate biotic indexing and waterbird carrying-capacity audits across J&K wetlands.',
+        bio: 'Reserved technical slot for macroinvertebrate biotic indexing and waterbird carrying-capacity assessments across Ramsar wetlands.',
         status: 'Invited'
       },
       {
         id: 'spk-5',
-        name: 'Er. Asif Qadri (Nominated / Invited)',
-        title: 'Ecological Hydrology Consultant',
-        institution: 'Wetlands International South Asia',
+        name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+        title: 'Wetland Restoration Engineering Track Slot',
+        institution: 'Wetland Hydrology Speaker Slot (Confirmation Pending)',
         avatar: '/images/avatars/academic-silhouette.svg',
-        bio: 'Designs ecological water control structures and channel de-silting models across Wular Lake and Haigam wetland.',
+        bio: 'Reserved technical slot for ecological water control structures and bathymetric siltation management across Wular and Haigam.',
         status: 'Invited'
       }
     ],
@@ -270,11 +272,11 @@ export const SCIENTIFIC_WEBINARS: WebinarSession[] = [
     speakers: [
       {
         id: 'spk-3',
-        name: 'Dr. Tariq Ahmad (Nominated / Invited)',
-        title: 'Associate Professor of Agricultural Hydrology',
-        institution: 'SKUAST-Kashmir',
+        name: 'Invited Session Chair / Speaker Slot (Confirmation Pending)',
+        title: 'Fluvial Geomorphology & Sediment Budgets Track Slot',
+        institution: 'Fluvial Hydraulics Speaker Slot (Confirmation Pending)',
         avatar: '/images/avatars/academic-silhouette.svg',
-        bio: 'Lead researcher on fluvial geomorphology, sediment budgets, and river corridor restoration.',
+        bio: 'Reserved technical slot for fluvial geomorphology, riverbed scour profiling, and river corridor restoration.',
         status: 'Invited'
       }
     ],

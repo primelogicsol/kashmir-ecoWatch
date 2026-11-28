@@ -18,25 +18,35 @@ export default function ErrorPreviewPage() {
   const [retryNotification, setRetryNotification] = useState<string | null>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (sessionStorage.getItem('kew_admin_authenticated') === 'true') {
-        setIsUnlocked(true);
-      }
-    }
+    fetch('/api/admin/session', { credentials: 'same-origin' })
+      .then((r) => r.json())
+      .then((s) => {
+        if (s?.authenticated) setIsUnlocked(true);
+      })
+      .catch(() => null);
   }, []);
 
-  const isAuthorized = (isLoggedIn && user?.role === 'administrator') || isUnlocked;
+  const isAuthorized = isUnlocked;
 
-  const handleUnlock = (e: React.FormEvent) => {
+  const handleUnlock = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (passcode.trim() === 'KEW-Admin-2026!') {
-      setIsUnlocked(true);
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem('kew_admin_authenticated', 'true');
+    try {
+      const res = await fetch('/api/admin/session', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ passcode: passcode.trim(), actor: user?.name || 'NOC Boundary Tester' }),
+      });
+      const payload = await res.json().catch(() => ({}));
+      if (res.ok && payload?.authenticated) {
+        setIsUnlocked(true);
+        setPasscode('');
+        setPassError(null);
+      } else {
+        setPassError(payload?.error || 'Invalid Administrator Passcode. Access restricted to authorized KEW personnel.');
       }
-      setPassError(null);
-    } else {
-      setPassError('Invalid Administrator Passcode. Access restricted to authorized KEW personnel.');
+    } catch {
+      setPassError('Unable to verify administrator session with server.');
     }
   };
 

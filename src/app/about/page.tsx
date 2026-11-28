@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heading } from '@/components/common/Heading';
+import { PLATFORM_METRICS } from '@/data/platform-metrics';
 import {
   Shield, Database, Users, Globe, BookOpen, Map,
   CheckCircle2, ArrowRight, Activity, Droplets, Mountain,
@@ -16,14 +17,14 @@ import {
 export default function AboutPage() {
   const [activeModuleTab, setActiveModuleTab] = useState<'biodiversity' | 'water' | 'hazards' | 'monitoring' | 'phenology' | 'stewardship'>('biodiversity');
 
-  // Core Vital Statistics
+  // Core Vital Statistics — Resolved from centralized PLATFORM_METRICS registry
   const macroStats = [
-    { value: '20', label: 'Districts Monitored', sub: 'Comprehensive regional baseline', icon: Map, color: 'text-emerald-400' },
-    { value: '4,200+', label: 'Taxa Documented', sub: 'Flora, fauna, avifauna & fungi', icon: Mountain, color: 'text-sky-400' },
-    { value: '7', label: 'Real-Time Hazard Streams', sub: 'Open-Meteo, USGS, FIRMS & sensors', icon: Activity, color: 'text-rose-400' },
-    { value: '150+', label: 'Protected Habitats', sub: 'Sanctuaries, parks & Ramsar wetlands', icon: Shield, color: 'text-amber-400' },
-    { value: '8-Stage', label: 'Scientific Pipeline', sub: 'Rigorous multi-layer validation', icon: Cpu, color: 'text-purple-400' },
-    { value: '100%', label: 'Public & Non-Commercial', sub: 'Open data & research integrity', icon: Globe, color: 'text-teal-400' },
+    { value: `${PLATFORM_METRICS.subregionsCount.formattedValue} / ${PLATFORM_METRICS.operationalDistrictsCount.formattedValue}`, label: 'Subregions & Districts', sub: '5 Western Himalayan subregions · 46 districts', icon: Map, color: 'text-emerald-400' },
+    { value: PLATFORM_METRICS.verifiedSpeciesProfilesCount.formattedValue, label: 'Verified Species Profiles', sub: 'Taxonomically audited reference checklist', icon: Mountain, color: 'text-sky-400' },
+    { value: PLATFORM_METRICS.mappedWaterbodiesCount.formattedValue, label: 'Mapped Waterbodies', sub: `${PLATFORM_METRICS.ramsarWetlandsCount.formattedValue} designated Ramsar sites + 546 basins`, icon: Droplets, color: 'text-rose-400' },
+    { value: PLATFORM_METRICS.protectedAreasVerifiedCount.formattedValue, label: 'Verified Protected Areas', sub: `${PLATFORM_METRICS.ramsarWetlandsCount.formattedValue} Ramsar wetlands & statutory reserves`, icon: Shield, color: 'text-amber-400' },
+    { value: '19 / 24', label: 'Research & EIAI Frameworks', sub: '19-stage sectoral · 24-section EIAI template', icon: Cpu, color: 'text-purple-400' },
+    { value: 'CC BY-NC 4.0', label: 'Non-Commercial Open License', sub: 'KEW syntheses · third-party rights retained', icon: Globe, color: 'text-teal-400' },
   ];
 
   // The 4 Fundamental Pillars
@@ -70,52 +71,52 @@ export default function AboutPage() {
   const modulesData = {
     biodiversity: {
       title: 'Biodiversity & Species Intelligence',
-      badge: '4,200+ Taxa Tracked',
-      desc: 'An authoritative taxonomic directory of the Western Himalayan biodiversity hotspot, tracking native, endemic, invasive, and Red Data Book threatened taxa across elevation gradients.',
+      badge: `${PLATFORM_METRICS.verifiedSpeciesProfilesCount.formattedValue} Verified Species Profiles`,
+      desc: 'A curated taxonomic reference directory for the Western Himalayan biodiversity hotspot, tracking verified mammals, avifauna, freshwater fish, and threatened vascular flora across elevation gradients.',
       features: [
-        'Avian migration flyways & wetland counts (Dal, Wular, Hokersar, Haigam)',
-        'Mammalian tracking including Snow Leopard, Hangul (Cervus hanglu hanglu), and Himalayan Brown Bear',
-        'Endemic medicinal flora catalogued with IUCN Red List conservation statuses',
-        'Cold-water fisheries monitoring across Jhelum, Lidder, and Sind drainages'
+        'Avian migration flyways & waterbird baselines across Wular, Hokersar, Shallabugh & Hygam',
+        'Mammalian range envelopes including Snow Leopard, Hangul (Cervus hanglu hanglu), and Himalayan Brown Bear',
+        'Endemic medicinal flora catalogued with IUCN Red List conservation statuses & anti-poaching GPS masking',
+        'Cold-water ichthyofauna baselines across Jhelum, Indus, Chenab, Lidder, and Sind drainages'
       ],
       link: '/biodiversity',
       linkText: 'Explore Biodiversity Module'
     },
     water: {
       title: 'Hydrology & Cryosphere Systems',
-      badge: '1,000+ Hydrological Bodies',
-      desc: 'High-resolution hydro-ecological monitoring of trans-Himalayan aquifers, glacial lakes, Jhelum tributaries, sub-watersheds, and Ramsar wetland ecosystems.',
+      badge: `${PLATFORM_METRICS.mappedWaterbodiesCount.formattedValue} Cataloged Waterbodies · ${PLATFORM_METRICS.ramsarWetlandsCount.formattedValue} Ramsar Sites`,
+      desc: 'Hydro-ecological baselines of trans-Himalayan aquifers, glacial lakes, Jhelum and Upper Indus tributaries, 28 verified river sub-basins, and 7 designated Ramsar wetland ecosystems.',
       features: [
-        'National Wetland Inventory (NWIA) hydro-morphological classifications',
-        'Glacial lake outburst flood (GLOF) susceptibility and Siachen melt dynamics',
-        'Spring-shed discharge tracking and rural potable aquifer vulnerability',
-        'Limnological health metrics: Dissolved Oxygen, BOD, COD, and chlorophyll-a trends'
+        'ISRO SAC National Wetland Inventory (NWIA 2011) hydro-morphological baselines (391,501 ha across J&K & Ladakh)',
+        'Glacial lake outburst flood (GLOF) susceptibility and Western Himalayan cryosphere retreat syntheses',
+        'Karst and alluvial spring-shed inventories and rural potable aquifer vulnerability profiles',
+        'Published limnological benchmarks: Dissolved Oxygen, BOD, COD, and Carlson TSI diagnostics'
       ],
       link: '/water-systems',
       linkText: 'Explore Water Systems'
     },
     hazards: {
       title: 'Hazard & Early Warning Intelligence',
-      badge: 'Real-Time Telemetry',
-      desc: 'Multi-hazard situational awareness combining satellite Earth observation, seismic stations, and meteorological APIs for rapid hazard response across high-risk terrain.',
+      badge: 'External Agency & Gridded NWP Feeds',
+      desc: 'Multi-hazard situational synthesis aggregating external space-agency thermal detections, USGS/EMSC/NCS seismic catalogs, and Open-Meteo/ECMWF gridded numerical weather models (0 KEW-owned physical field stations).',
       features: [
-        'NASA FIRMS satellite-detected thermal anomalies and active forest fire alerts',
-        'USGS automated earthquake feed focused on the active Himalayan seismic belt',
-        'Winter avalanche path mapping with snowpack depth and aspect analysis',
-        'Flash flood early warning indices driven by Open-Meteo precipitation models'
+        'NASA FIRMS satellite-detected thermal anomalies and forest fire corridor history',
+        'USGS / EMSC / NCS seismic event feeds across the Western Himalayan fault belt',
+        'Winter avalanche path mapping with terrain aspect and gridded snowpack indicators',
+        'Hydrological flood screening driven by GloFAS / Open-Meteo precipitation models'
       ],
       link: '/hazard-intelligence',
       linkText: 'Open Hazard Intelligence'
     },
     monitoring: {
       title: 'Environmental & Pollution Monitoring',
-      badge: '20 Districts Baseline',
-      desc: 'Systematic observation of human-induced stressors on the pristine Kashmir environment, providing public accountability and actionable compliance indicators.',
+      badge: `${PLATFORM_METRICS.operationalDistrictsCount.formattedValue} Operational Districts (${PLATFORM_METRICS.subregionsCount.formattedValue} Subregions)`,
+      desc: 'Documentary and gridded observation of anthropogenic stressors across 5 Western Himalayan subregions, synthesizing statutory audit reports, satellite indices, and community air monitors.',
       features: [
-        'Urban Air Quality Index (AQI) tracking particulate matter (PM2.5, PM10)',
-        'Municipal solid waste dumping site mapping and landfill leachate tracking',
-        'Sewage Treatment Plant (STP) operational capacity vs. untreated discharge',
-        'Biomedical waste flow accounting and hazardous effluent hot-spotting'
+        'Gridded CAMS atmospheric PM2.5/PM10 estimates & AirGradient community monitors',
+        'Municipal solid waste dumping site documentation and legacy landfill audits',
+        'Sewage Treatment Plant (STP) statutory design capacity vs. CAG audit utilization baselines',
+        'Biomedical waste rules compliance and brick-kiln plume dispersion syntheses'
       ],
       link: '/environmental-monitoring',
       linkText: 'Access Monitoring Dashboards'
@@ -185,7 +186,7 @@ export default function AboutPage() {
     },
     {
       title: 'Scientific Methodology',
-      desc: 'Comprehensive 19-section documentation of data pipelines, taxonomic criteria, and validation standards.',
+      desc: 'Documentation of the 8-stage data validation pipeline, the 19-stage sectoral research dossier workflow (KEW-SR-2026), and the 24-section KEW-EIAI canonical investigation report template.',
       href: '/about/methodology',
       icon: BookOpen,
       tag: 'Documentation'
@@ -559,12 +560,15 @@ export default function AboutPage() {
               ))}
             </div>
 
-            <div className="mt-6 flex justify-end">
+            <div className="mt-6 p-4 rounded-2xl bg-slate-900/60 border border-purple-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-slate-300">
+              <p className="leading-relaxed">
+                <strong className="text-white">Distinct Methodological Architectures:</strong> The <strong>8-stage data validation pipeline</strong> above governs dataset ingestion; KEW&apos;s <strong>101 Sectoral Research Dossiers</strong> follow a <strong>19-stage internal editorial synthesis workflow</strong>; and KEW&apos;s <strong>53 Canonical Environmental Investigations (KEW-EIAI)</strong> follow a <strong>24-section multidisciplinary forensic report template</strong>.
+              </p>
               <Link
                 href="/about/methodology"
-                className="inline-flex items-center gap-2 text-xs font-bold text-purple-400 hover:text-purple-300"
+                className="inline-flex items-center gap-2 text-xs font-bold text-purple-400 hover:text-purple-300 shrink-0"
               >
-                <span>Read the full 19-section methodology document</span>
+                <span>Read Methodology</span>
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
@@ -712,12 +716,12 @@ export default function AboutPage() {
                 </p>
                 <div className="grid grid-cols-2 gap-3 pt-2">
                   <div className="p-3 rounded-xl bg-slate-950/60 border border-white/5">
-                    <p className="text-lg font-bold text-emerald-400">20 Districts</p>
-                    <p className="text-[11px] text-slate-400">10 Kashmir + 10 Jammu</p>
+                    <p className="text-lg font-bold text-emerald-400">{PLATFORM_METRICS.subregionsCount.formattedValue} Subregions · {PLATFORM_METRICS.operationalDistrictsCount.formattedValue} Districts</p>
+                    <p className="text-[11px] text-slate-400">10 KV · 10 Jammu · 2 Ladakh · 10 AJ&amp;K · 14 GB</p>
                   </div>
                   <div className="p-3 rounded-xl bg-slate-950/60 border border-white/5">
-                    <p className="text-lg font-bold text-sky-400">300m - 7,000m+</p>
-                    <p className="text-[11px] text-slate-400">Elevation continuum</p>
+                    <p className="text-lg font-bold text-sky-400">{PLATFORM_METRICS.protectedAreasVerifiedCount.formattedValue} PAs · {PLATFORM_METRICS.ramsarWetlandsCount.formattedValue} Ramsar Sites</p>
+                    <p className="text-[11px] text-slate-400">{PLATFORM_METRICS.mappedWaterbodiesCount.formattedValue} cataloged waterbodies (300m–7,000m+)</p>
                   </div>
                 </div>
                 <Link
@@ -818,7 +822,7 @@ export default function AboutPage() {
                   targets: 'Article 3.1 & Res. XIV.13',
                   officialUrl: 'https://www.ramsar.org/',
                   kewModule: 'Wetlands Observatory',
-                  kewHref: '/biodiversity/wetlands',
+                  kewHref: '/water-systems/wetlands',
                   icon: Shield,
                   color: 'text-teal-400'
                 },

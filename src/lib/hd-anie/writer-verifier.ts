@@ -216,22 +216,42 @@ function composeEvidenceBoundChapters(
       ? `within the ${cluster.watersheds.join(' and ')}`
       : `across the ${regionLabel} ecological zone`;
 
+  const leadAuthorsLabel =
+    leadSource?.authors && leadSource.authors.length > 0
+      ? ` by ${leadSource.authors.join(', ')}`
+      : '';
+  const isNoDerivativesLead = Boolean(
+    leadSource &&
+      (/CC BY-ND|NoDerivatives|prohibited/i.test(leadSource.licensingRestriction) ||
+        leadSource.sourceId === 'src-mongabay-india')
+  );
+  // Never splice raw 500-char RSS excerpts unquoted into body prose; if quoting a brief
+  // non-ND scholarly/public abstract clause, cap strictly to <=22 words in explicit quotes.
+  let briefQuotedClause = '';
+  if (!isNoDerivativesLead && leadSource?.supportingExcerpt) {
+    const words = leadSource.supportingExcerpt.trim().split(/\s+/).filter(Boolean);
+    if (words.length >= 6) {
+      const clipped = words.slice(0, 22).join(' ').replace(/[.,;:]+$/, '');
+      briefQuotedClause = ` The source summary notes "${clipped}${words.length > 22 ? '…' : ''}" (${leadSource.publisherName}, ${leadSource.publishedAt.slice(0, 10)}).`;
+    }
+  }
+
   const chapter1Paragraphs: string[] = [
-    `Recent reporting and documentary records have focused renewed attention on ${
+    `Recent documentary filings and scholarly records have focused renewed attention on ${
       primaryDomain?.label.toLowerCase() || 'environmental conditions'
     } ${watershedPhrase}${
       cluster.districts.length > 0 ? `, specifically implicating ${cluster.districts.join(', ')}` : ''
-    }. According to ${leadSource?.publisherName || 'monitored source filings'} (${
-      leadSource?.publishedAt.slice(0, 10) || 'recent filing'
+    }. In ${leadSource?.publisherName || 'monitored source filings'} (published ${
+      leadSource?.publishedAt.slice(0, 10) || 'recently'
     }), ${
       leadSource?.doi
-        ? `peer-reviewed research titled "${leadSource.publicationTitle}" (DOI: ${leadSource.doi}) documents critical empirical patterns:`
-        : `emerging developments centered on "${leadSource?.publicationTitle || cluster.canonicalTopic}" highlight active environmental pressures:`
-    } ${
-      leadSource?.supportingExcerpt
-        ? leadSource.supportingExcerpt
-        : 'primary metadata indicates ongoing hydrological and ecological sensitivity requiring structured scientific scrutiny.'
-    }`,
+        ? `peer-reviewed research${leadAuthorsLabel} titled "${leadSource.publicationTitle}" (DOI: ${leadSource.doi}) examines ${
+            primaryDomain?.subjects.slice(0, 3).join(', ').toLowerCase() || 'regional ecological dynamics'
+          }.`
+        : `reporting${leadAuthorsLabel} titled "${leadSource?.publicationTitle || cluster.canonicalTopic}" documents active developments across ${
+            primaryDomain?.subjects.slice(0, 3).join(', ').toLowerCase() || 'monitored mountain systems'
+          }.`
+    }${briefQuotedClause}`,
   ];
 
   if (additionalSources.length > 0) {
@@ -296,7 +316,7 @@ function composeEvidenceBoundChapters(
       paragraphs: chapter1Paragraphs,
       fieldNote: {
         label: 'SOURCE PROVENANCE',
-        detail: `${dossier.externalSources.length} external record(s) · ${cluster.independentSourceFamilyCount} independent source family(ies) · Event window: ${cluster.earliestEventDate}`,
+        detail: `${dossier.externalSources.length} external record(s) · ${cluster.independentSourceFamilyCount} independent source family(ies) · Source published: ${leadSource?.publishedAt.slice(0, 10) || 'N/A'} · Observed event window: ${cluster.earliestEventDate}`,
       },
     },
     {
@@ -379,10 +399,9 @@ async function maybeEnhanceWithConfiguredLlm(
   }
 
   const ollamaUrl = process.env.OLLAMA_BASE_URL;
-  const openAiKey = process.env.OPENAI_API_KEY;
 
   // Never send untrusted raw instructions as system prompt: isolate retrieved facts as JSON data
-  if (!ollamaUrl && !openAiKey) {
+  if (!ollamaUrl) {
     return {
       ...draft,
       generationMethod: 'HD-ANIE Deterministic Evidence-RAG Synthesis ($0.00 · Zero External LLM Cost)',
@@ -629,6 +648,7 @@ export async function generateAutonomousEditorialDraft(
     ...dossier.externalSources.map((s, idx) => ({
       refNumber: idx + 1,
       label: s.publicationTitle,
+      authors: s.authors && s.authors.length > 0 ? s.authors : undefined,
       publisherOrJournal: s.publisherName,
       publishedDate: s.publishedAt.slice(0, 10),
       url: s.url,
@@ -642,6 +662,7 @@ export async function generateAutonomousEditorialDraft(
     ...dossier.kewKnowledgeMatches.slice(0, 3).map((k, idx) => ({
       refNumber: dossier.externalSources.length + idx + 1,
       label: k.title,
+      authors: ['Kashmir EcoWatch Scientific Observatory'],
       publisherOrJournal: `Kashmir EcoWatch · ${k.moduleLabel}`,
       publishedDate: nowIso.slice(0, 10),
       url: k.href,
@@ -744,7 +765,7 @@ export async function generateAutonomousEditorialDraft(
     sourceReferences,
     limitationsAndEvidenceGaps: dossier.unresolvedEvidenceGaps,
     editorialDisclosure:
-      'Prepared by the Himalayan Dispatch Desk through multi-source documentary research, claim-level citation verification, and Kashmir EcoWatch scientific baseline correlation. Source-based synthesis; no unverified field visit or fabricated interview is represented. Published upon senior editorial sign-off.',
+      'Automated Multi-Source Research Synthesis (HD-ANIE): Drafted through automated bibliographic/feed monitoring and Kashmir EcoWatch scientific baseline correlation, and desk-reviewed prior to publication. No firsthand field visit or spoken interview is represented.',
     relatedKewModules: dossier.kewKnowledgeMatches.slice(0, 3).map((m) => ({
       label: m.title,
       href: m.href,
@@ -800,19 +821,30 @@ export async function generateAutonomousEditorialDraft(
  * `CurrentEditionExperience`, `sitemap.ts`, RSS feed) render it seamlessly!
  */
 export function projectAnieDraftToMagazineStory(draft: AnieEditorialDraft): MagazineStory {
-  // Append source references & disclosure cleanly as the closing colophon chapter
-  const citationLines = draft.sourceReferences.map(
-    (r) =>
-      `[${r.refNumber}] ${r.label} — ${r.publisherOrJournal} (${r.publishedDate})${
-        r.doi ? ` · DOI: ${r.doi}` : ''
-      } · ${r.url}`
-  );
+  // Append source references (preserving full human/academic author attribution) & AI disclosure
+  const citationLines = draft.sourceReferences.map((r) => {
+    const authorPrefix =
+      r.authors && r.authors.length > 0 ? `${r.authors.join(', ')}, ` : '';
+    return `[${r.refNumber}] ${authorPrefix}"${r.label}" — ${r.publisherOrJournal} (${r.publishedDate})${
+      r.doi ? ` · DOI: ${r.doi}` : ''
+    } · ${r.url}`;
+  });
+
+  const documentarySources = draft.sourceReferences.map((r) => {
+    const authorPrefix =
+      r.authors && r.authors.length > 0 ? `${r.authors.join(', ')} — ` : '';
+    return {
+      label: `${authorPrefix}${r.label} (${r.publisherOrJournal}, ${r.publishedDate})`,
+      url: r.url,
+      relevance: `${r.evidenceType}${r.doi ? ` · DOI: ${r.doi}` : ''}`,
+    };
+  });
 
   const enrichedChapters: StoryChapter[] = [
     ...draft.chapters,
     {
       numberRoman: draft.chapters.length === 3 ? 'IV' : 'V',
-      title: 'Sources, Limitations & Editorial Disclosure',
+      title: 'Sources, Limitations & Automated Synthesis Disclosure',
       paragraphs: [
         draft.editorialDisclosure,
         ...(draft.limitationsAndEvidenceGaps.length > 0
@@ -824,6 +856,9 @@ export function projectAnieDraftToMagazineStory(draft: AnieEditorialDraft): Maga
   ];
 
   const primaryKew = draft.relatedKewModules[0];
+  const hasVerifiedSciSignOff = Boolean(
+    draft.scientificReviewApproved && draft.scientificReviewedBy
+  );
 
   return {
     id: draft.id,
@@ -852,14 +887,22 @@ export function projectAnieDraftToMagazineStory(draft: AnieEditorialDraft): Maga
         ? 'Himalayan Dispatch Desk'
         : draft.bylineDisplay,
     bylineRole: draft.bylineRole,
-    factCheckedBy:
-      draft.scientificReviewApproved && draft.scientificReviewedBy
-        ? `${draft.scientificReviewedBy} · Office of Editorial Standards`
-        : 'Office of Editorial Standards & Source Verification',
-    scientificReviewer:
-      draft.scientificReviewApproved && draft.scientificReviewedBy
-        ? draft.scientificReviewedBy
-        : 'Kashmir EcoWatch Scientific Baseline Correlation',
+    isAiAssisted: Boolean(draft.isAiAssisted ?? true),
+    aiAssistanceDisclosure:
+      draft.editorialDisclosure ||
+      'Automated Multi-Source Research Synthesis (HD-ANIE) — Desk Reviewed against cited records and KEW baselines.',
+    hasCompletedIndependentReview: hasVerifiedSciSignOff,
+    publicationStatusNote: hasVerifiedSciSignOff
+      ? undefined
+      : 'Automated Multi-Source Research Synthesis — Desk Reviewed',
+    editorialVerificationNote: draft.editorialDisclosure,
+    factCheckedBy: hasVerifiedSciSignOff
+      ? `${draft.scientificReviewedBy} · Office of Editorial Standards`
+      : 'Automated Multi-Source Research Synthesis — Desk Reviewed',
+    // NEVER populate a scientificReviewer name when scientificReviewApproved === false!
+    scientificReviewer: hasVerifiedSciSignOff && draft.scientificReviewedBy
+      ? draft.scientificReviewedBy
+      : '',
     workflowStage: draft.editorialStatus === 'published' ? 'publication' : 'editorial_approval',
     isPublished: draft.editorialStatus === 'published',
     isFeaturedCoverStory: draft.isFeatured && draft.departmentId === 'cover-stories',
@@ -867,6 +910,7 @@ export function projectAnieDraftToMagazineStory(draft: AnieEditorialDraft): Maga
     isVisualJournal: draft.departmentId === 'photo-essays',
     chapters: enrichedChapters,
     dataVisualization: draft.dataVisualization,
+    documentarySources,
     corrections: draft.corrections,
     relatedKewModule: primaryKew,
     seoKeywords: draft.seoKeywords,

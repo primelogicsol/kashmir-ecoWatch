@@ -414,9 +414,23 @@ export async function POST(request: NextRequest) {
 
   // 0. Server-Verified Admin Passcode Exchange -> Sets HttpOnly HMAC Cookie
   if (action === 'unlock_admin_passcode') {
+    const { checkAuthRateLimit, verifyWebinarAdminPasscode } = await import('@/lib/seo/admin-session');
+    const rate = checkAuthRateLimit(request, 'webinar-admin-login', 10, 15 * 60 * 1000);
+    if (!rate.allowed) {
+      return NextResponse.json(
+        { ok: false, error: 'Too many authentication attempts. Please retry later.' },
+        { status: 429, headers: { 'Retry-After': String(rate.retryAfterSeconds) } }
+      );
+    }
     const passcode = String(body.passcode || '').trim();
-    const expected = process.env.WEBINAR_ADMIN_PASSCODE || 'KEW-Admin-2026!';
-    if (passcode !== expected) {
+    const check = verifyWebinarAdminPasscode(passcode);
+    if (!check.configured) {
+      return NextResponse.json(
+        { ok: false, error: 'Webinar Administrator Passcode (WEBINAR_ADMIN_PASSCODE / ADMIN_PASSCODE) is not configured on the server.' },
+        { status: 503 }
+      );
+    }
+    if (!check.valid) {
       return NextResponse.json(
         { ok: false, error: 'Invalid Administrator Passcode. Access denied.' },
         { status: 401 }
@@ -430,6 +444,7 @@ export async function POST(request: NextRequest) {
     res.cookies.set(ADMIN_SESSION_COOKIE, sessionToken, {
       httpOnly: true,
       sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production',
       path: '/',
       maxAge: 12 * 60 * 60,
     });

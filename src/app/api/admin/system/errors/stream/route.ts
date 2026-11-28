@@ -1,4 +1,6 @@
+import { NextRequest } from 'next/server';
 import { telemetryStore, ErrorIncidentRecord } from '@/lib/error-telemetry';
+import { verifyAdminRequest } from '@/lib/seo/admin-session';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -8,12 +10,11 @@ export const runtime = 'nodejs';
  * Pushes live incoming incident records to connected administrator dashboards.
  * Includes automatic periodic heartbeat keep-alives every 15 seconds.
  */
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const adminKey = request.headers.get('x-admin-key') || searchParams.get('key');
-  if (adminKey !== 'KEW-Admin-2026!') {
+export async function GET(request: NextRequest) {
+  const authCheck = await verifyAdminRequest(request);
+  if (!authCheck.authorized) {
     return new Response(
-      JSON.stringify({ success: false, error: 'Unauthorized: Administrator authentication key required.' }),
+      JSON.stringify({ success: false, error: 'Unauthorized: Active administrator session required.' }),
       { status: 401, headers: { 'Content-Type': 'application/json' } }
     );
   }

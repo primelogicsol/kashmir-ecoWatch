@@ -19,6 +19,7 @@ import {
 } from '@/lib/himalayan-dispatch-store';
 import { readAnieStore } from '@/lib/hd-anie/store';
 import { EDITORIAL_DEPARTMENTS, REGIONAL_REPORTING_BUREAUS } from '@/data/himalayan-dispatch';
+import { PUBLICATION_GATE_STAGE_SPECS } from '@/lib/himalayan-dispatch-metrics';
 import type { BureauSlugId, EditorialDepartmentId } from '@/types/himalayan-dispatch';
 import type { HdnAccountRecord, HdnMediaAsset, HdnRoleId } from '@/types/hdn-newsroom';
 
@@ -92,11 +93,19 @@ export async function GET(request: NextRequest) {
     accounts: store.accounts.map((a) => ({
       ...a,
       accessCodeHash: undefined,
+      plainAccessCodeHint: undefined,
     })),
     roleDefinitions: HDN_ROLE_DEFINITIONS,
+    publicationGateSpecs: PUBLICATION_GATE_STAGE_SPECS,
     bureaus: REGIONAL_REPORTING_BUREAUS,
     departments: EDITORIAL_DEPARTMENTS,
     mediaAssets: store.mediaAssets,
+    visualGovernancePolicy: {
+      publicRoutineAiLabelsSuppressed: true,
+      fabricatedExifProhibited: true,
+      totalGovernedAssets: store.mediaAssets.length,
+      c2paSynthIdCataloguedCount: store.mediaAssets.filter((m) => m.c2paSynthIdDetected).length,
+    },
     auditLogs: hasPermission(account, 'audit:view_logs') ? store.auditLogs : [],
     anieAuditLogs: hasPermission(account, 'audit:view_logs') ? anieStore.auditLog.slice(0, 60) : [],
     trashedManuscripts: allMs.filter((m) => m.workflowStatus === 'trashed'),
@@ -246,7 +255,6 @@ export async function POST(request: NextRequest) {
         verifiedCredentials: [],
         approvedProfessionalLinks: [],
         accessCodeHash: hashAccessCode(issuedCode),
-        plainAccessCodeHint: issuedCode,
         status: 'active',
         charterAccepted: true,
         charterAcceptedAt: nowIso,
@@ -397,7 +405,7 @@ export async function PATCH(request: NextRequest) {
     if (body.rotateAccessCode) {
       rotatedCode = `HDN-${crypto.randomBytes(4).toString('hex').toUpperCase()}`;
       target.accessCodeHash = hashAccessCode(rotatedCode);
-      target.plainAccessCodeHint = rotatedCode;
+      delete target.plainAccessCodeHint;
     }
 
     target.updatedAt = new Date().toISOString();

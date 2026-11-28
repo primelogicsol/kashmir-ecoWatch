@@ -11,13 +11,15 @@ import { HD_ROUTES } from '@/lib/himalayan-dispatch-routes';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = buildPageMetadata({
-  title: 'The Current Issue — Vol. 01 / No. 01 | Himalayan Dispatch',
-  description:
-    'Read the current monthly edition of Himalayan Dispatch: Volume 01, Issue 01 — When Mountains Speak, Who Is Listening?, featuring cover inquiries, longform features, field dispatches, and monochrome visual essays.',
-  canonicalPath: '/himalayan-dispatch/current-issue',
-  imagePath: '/images/himalayan-dispatch/cover-gangbal-inaugural.jpg',
-});
+export function generateMetadata(): Metadata {
+  const { currentEdition } = getPublicDispatchBundle();
+  return buildPageMetadata({
+    title: `The Current Issue — ${currentEdition.volumeLabel}: ${currentEdition.title} | Himalayan Dispatch`,
+    description: currentEdition.subtitle,
+    canonicalPath: '/himalayan-dispatch/current-issue',
+    imagePath: currentEdition.coverImage,
+  });
+}
 
 export default function CurrentIssuePage() {
   const bundle = getPublicDispatchBundle();
@@ -43,6 +45,7 @@ export default function CurrentIssuePage() {
         dailyDispatches={dailyDispatches}
         forthcomingEdition={bundle.forthcomingEdition}
         forthcomingPreviews={bundle.forthcomingPreviews}
+        surfaceMode="current-issue"
       />
     </div>
   );

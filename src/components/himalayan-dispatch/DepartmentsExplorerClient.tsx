@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 import { resolveCanonicalStoryUrl } from '@/lib/himalayan-dispatch-routes';
 import {
@@ -18,11 +17,11 @@ export function DepartmentsExplorerClient({
   departments: EditorialDepartment[];
   stories: MagazineStory[];
 }) {
-  const searchParams = useSearchParams();
   const [selectedDept, setSelectedDept] = useState<EditorialDepartmentId | 'interviews-editorials' | 'all'>('all');
 
   useEffect(() => {
-    const q = searchParams.get('dept');
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('dept');
     if (q === 'interviews-editorials') {
       setSelectedDept('interviews-editorials');
     } else if (q && departments.some((d) => d.id === q)) {
@@ -30,7 +29,7 @@ export function DepartmentsExplorerClient({
     } else {
       setSelectedDept('all');
     }
-  }, [searchParams, departments]);
+  }, [departments]);
 
   const visibleDepartments =
     selectedDept === 'all'

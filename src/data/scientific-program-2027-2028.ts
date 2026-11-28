@@ -99,7 +99,7 @@ export const SCIENTIFIC_PROGRAM_ACTIVITIES: ScientificProgramActivity[] = [
     primaryModule: 'Water Systems',
     primaryModuleSlug: 'water-systems',
     relatedSubmodules: ['Aquatic Ecology', 'Biodiversity', 'Satellite Change Detection'],
-    geographicCoverage: 'Wular Lake, Dal Lake, Hokersar & Shallabugh Ramsar Sites',
+    geographicCoverage: 'Wular, Hokersar & Shallabugh Ramsar Sites; Dal Lake Urban Lacustrine Basin (Non-Ramsar)',
     discipline: 'Limnology & Wetland Ecology',
     targetParticipants: ['Limnologists', 'Ornithologists', 'Wetland Authorities', 'Restoration Ecologists'],
     intendedOutput: 'Ramsar Basin Limnological Water Quality & Trophic State Index (TSI) Protocol',

@@ -25,6 +25,42 @@ export type EditorialWorkflowStage =
   | 'corrections'
   | 'archiving';
 
+export type PublicationGateStageId =
+  | 'commissioned'
+  | 'research_in_progress'
+  | 'manuscript_draft'
+  | 'evidence_verification'
+  | 'scientific_review'
+  | 'editorial_review'
+  | 'copyright_ethics_review'
+  | 'administrator_approval'
+  | 'published'
+  | 'post_publication_corrections';
+
+export type PublicationGateStatus =
+  | 'completed'
+  | 'in_progress'
+  | 'pending'
+  | 'not_applicable';
+
+export interface PublicationGateRecord {
+  stageNumber: string; // '01' .. '10'
+  stageId: PublicationGateStageId;
+  label: string;
+  status: PublicationGateStatus;
+  verifiedBy?: string;
+  completedAt?: string;
+  notes?: string;
+}
+
+export interface StoryPublicationGateLedger {
+  currentStage: PublicationGateStageId;
+  currentStageNumber: string;
+  publicStatusSummary: string;
+  scientificReviewApplicable: boolean;
+  gates: PublicationGateRecord[];
+}
+
 export type PublicProductionBadge =
   | 'In reporting'
   | 'Commissioned'
@@ -152,6 +188,17 @@ export interface MagazineStory {
   region: string;
   readingTimeMinutes: number;
   wordCount: number;
+  proseWordCount?: number;
+  estimatedViewingMinutes?: number;
+  visualEssayMode?: 'authentic_documentary_photographs' | 'illustrative_monochrome_study';
+  dialogueMode?: 'verified_spoken_interview' | 'constructed_editorial_dialogue';
+  publicationGates?: StoryPublicationGateLedger;
+  hasCompletedIndependentReview?: boolean;
+  isAiAssisted?: boolean;
+  aiAssistanceDisclosure?: string;
+  conceptualFolioDisclosure?: string;
+  supplementaryDatasetUrl?: string;
+  supplementaryDatasetLabel?: string;
   publishedAt: string;
   updatedAt?: string;
   heroImage: string;
@@ -595,6 +642,8 @@ export interface DailyDispatchArticle {
   publishedAt: string;
   updatedAt?: string;
   readingTimeMinutes: number;
+  wordCount?: number;
+  hasCompletedIndependentReview?: boolean;
   bylineDisplay: string;
   journalistSlug?: string;
   factCheckedBy: string;

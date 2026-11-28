@@ -18,8 +18,8 @@ import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
    POLICY_PUBLISHED should never change — it records the original date.
    ─────────────────────────────────────────────────────────────────────── */
 const POLICY_PUBLISHED   = 'June 2026';
-const POLICY_LAST_UPDATED = 'June 26, 2026';
-const POLICY_VERSION     = '1.0';
+const POLICY_LAST_UPDATED = 'November 27, 2026';
+const POLICY_VERSION     = '1.2';
 
 /* ─── Section index ────────────────────────────────────────────────────── */
 
@@ -155,7 +155,7 @@ function PolicyMeta() {
           { label: 'Published',      value: POLICY_PUBLISHED },
           { label: 'Last Updated',   value: POLICY_LAST_UPDATED },
           { label: 'Version',        value: POLICY_VERSION },
-          { label: 'Jurisdiction',   value: 'J&K, India (GDPR-aligned)' },
+          { label: 'Governing Venue', value: 'Commonwealth of Virginia, USA (GDPR/DPDP-aligned)' },
         ].map(({ label, value }) => (
           <div key={label} className="flex justify-between items-start gap-3">
             <span className="text-[10px] text-slate-500 flex-shrink-0">{label}</span>
@@ -557,9 +557,9 @@ export default function PrivacyPolicyPage() {
                   <div className="border-t border-white/5" />
 
                   {/* ── International Users ── */}
-                  <Section id="international" icon={Globe} title="International Users" accent="text-teal-400" bg="bg-teal-500/10">
+                  <Section id="international" icon={Globe} title="International Users &amp; Operating Jurisdiction" accent="text-teal-400" bg="bg-teal-500/10">
                     <p>
-                      KEW serves users from multiple countries across South Asia, Central Asia, and internationally. By using the platform, users acknowledge that information may be processed in jurisdictions where KEW operates or where its service providers maintain infrastructure.
+                      Kashmir EcoWatch is operated from Loudoun County, Commonwealth of Virginia, USA, under Dr. Kumar Foundation USA &amp; Kumar Trust USA stewardship, serving users across South Asia, Central Asia, and internationally. By using the platform, users acknowledge that information may be processed in the United States or jurisdictions where service infrastructure operates, in alignment with applicable data-protection principles (including GDPR and Indian DPDP standards where applicable).
                     </p>
                   </Section>
 

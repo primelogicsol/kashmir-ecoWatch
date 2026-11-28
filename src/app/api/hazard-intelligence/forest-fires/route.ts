@@ -12,11 +12,31 @@ interface SachetAlert {
   severity?: string;
 }
 
-const HIMALAYAN_FIRE_KEYWORDS = [
-  'fire', 'forest fire', 'wildfire', 'heat', 'heatwave',
-  'kashmir', 'jammu', 'ladakh', 'udhampur', 'rajouri', 'poonch', 'doda', 'kishtwar',
-  'reasi', 'kathua', 'anantnag', 'baramulla', 'kupwara', 'neelum', 'muzaffarabad'
-];
+const JK_LADAKH_SPECIFIC_DISTRICTS = [
+  'srinagar', 'leh', 'kargil', 'anantnag', 'baramulla', 'kupwara', 'ganderbal',
+  'kishtwar', 'doda', 'ramban', 'poonch', 'rajouri', 'udhampur', 'reasi',
+  'kathua', 'samba', 'pulwama', 'shopian', 'kulgam', 'budgam', 'bandipora',
+] as const;
+
+const JK_LADAKH_REGIONAL_NAMES = ['jammu', 'kashmir', 'ladakh'] as const;
+
+const FIRE_HAZARD_KEYWORDS = ['forest fire', 'wildfire', 'bushfire', 'fire', 'heatwave', 'heat wave'] as const;
+
+function extractJkLadakhDistrict(text: string): string | null {
+  for (const dist of JK_LADAKH_SPECIFIC_DISTRICTS) {
+    if (new RegExp(`\\b${dist}\\b`, 'i').test(text)) {
+      return dist.charAt(0).toUpperCase() + dist.slice(1);
+    }
+  }
+  for (const reg of JK_LADAKH_REGIONAL_NAMES) {
+    if (new RegExp(`\\b${reg}\\b`, 'i').test(text)) {
+      if (reg === 'ladakh') return 'Ladakh';
+      if (reg === 'kashmir') return 'Kashmir';
+      return 'Jammu';
+    }
+  }
+  return null;
+}
 
 async function fetchSachetFireAlerts(): Promise<{ alerts: SachetAlert[]; status: 'Connected' | 'Unreachable' }> {
   try {
@@ -25,7 +45,7 @@ async function fetchSachetFireAlerts(): Promise<{ alerts: SachetAlert[]; status:
 
     const res = await fetch('https://sachet.ndma.gov.in/cap_public_website/rss/rss_india.xml', {
       headers: {
-        'User-Agent': 'KashmirEcoWatch-FireSentinel/2.0 (Stateless Real-Time Engine)'
+        'User-Agent': 'KashmirEcoWatch-FireSentinel/2.0 (Stateless Screening Engine)'
       },
       signal: controller.signal,
       next: { revalidate: 60 }
@@ -50,16 +70,21 @@ async function fetchSachetFireAlerts(): Promise<{ alerts: SachetAlert[]; status:
       const pubDate = pubDateMatch ? pubDateMatch[1].trim() : '';
       const link = linkMatch ? linkMatch[1].trim() : '';
 
-      const lowerTitle = title.toLowerCase();
-      const matched = HIMALAYAN_FIRE_KEYWORDS.find(k => lowerTitle.includes(k));
+      const matchedDistrict = extractJkLadakhDistrict(title);
+      if (!matchedDistrict) continue;
 
-      if (matched && (lowerTitle.includes('fire') || lowerTitle.includes('wildfire') || lowerTitle.includes('heatwave'))) {
+      const lowerTitle = title.toLowerCase();
+      const hasFireKeyword = FIRE_HAZARD_KEYWORDS.some(k => lowerTitle.includes(k));
+
+      if (hasFireKeyword) {
         matchingAlerts.push({
           title,
           pubDate,
           link,
-          district: matched.toUpperCase(),
-          severity: lowerTitle.includes('extreme') || lowerTitle.includes('red') ? 'Critical' : 'Moderate'
+          district: matchedDistrict,
+          severity: lowerTitle.includes('extreme') || lowerTitle.includes('red') || lowerTitle.includes('wildfire')
+            ? 'Critical'
+            : 'Moderate'
         });
       }
     }
@@ -79,7 +104,8 @@ async function fetchOpenMeteoFireWeather(records: ForestFireRecord[]) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 7000);
 
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}&daily=temperature_2m_max,relative_humidity_2m_min,wind_speed_10m_max&hourly=soil_moisture_0_to_7cm&forecast_days=1&timezone=auto`;
+    // 7-day rolling window: past_days=6 + forecast_days=1 = 7 daily steps
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}&daily=temperature_2m_max,relative_humidity_2m_min,wind_speed_10m_max,precipitation_sum&hourly=soil_moisture_0_to_7cm&past_days=6&forecast_days=1&timezone=auto`;
 
     const res = await fetch(url, {
       signal: controller.signal,
@@ -111,41 +137,54 @@ export async function GET() {
 
   const enrichedRecords = forestFireRegistry.map((record, index) => {
     const matchingAlert = sachetResult.alerts.find(a =>
-      a.district && record.district.toUpperCase().includes(a.district)
+      a.district && record.district.toLowerCase().includes(a.district.toLowerCase())
     );
 
     const locData = weatherResults ? weatherResults[index] : null;
     const daily = locData?.daily;
     const hourly = locData?.hourly;
+    const hasTelemetry = Boolean(daily && Array.isArray(daily.temperature_2m_max) && daily.temperature_2m_max.length > 0);
 
-    const tempMax = daily?.temperature_2m_max?.[0] ?? 16;
-    const humidityMin = daily?.relative_humidity_2m_min?.[0] ?? 55;
-    const windMax = daily?.wind_speed_10m_max?.[0] ?? 12;
-    const soilMoisture = hourly?.soil_moisture_0_to_7cm?.[0] ?? 0.32;
+    const lastIdx = hasTelemetry ? daily.temperature_2m_max.length - 1 : 0;
+    const tempMax = hasTelemetry ? (daily.temperature_2m_max[lastIdx] ?? 16) : 0;
+    const humidityMin = hasTelemetry ? (daily.relative_humidity_2m_min?.[lastIdx] ?? 55) : 0;
+    const windMax = hasTelemetry ? (daily.wind_speed_10m_max?.[lastIdx] ?? 12) : 0;
+    const precip7d = hasTelemetry
+      ? (daily.precipitation_sum?.slice(-7).reduce((a: number, b: number) => a + (b || 0), 0) ?? 0)
+      : 0;
+    const soilMoistureArr: number[] = hourly?.soil_moisture_0_to_7cm ?? [];
+    const soilMoisture = hasTelemetry && soilMoistureArr.length > 0
+      ? (soilMoistureArr[soilMoistureArr.length - 1] ?? 0.32)
+      : 0;
 
-    // Canadian Forest Fire Weather Index (FWI) proxy calculation
+    // Coarse-grid Open-Meteo meteorological dryness & wind screening heuristic
     let calculatedRisk: 'Critical' | 'High' | 'Moderate' | 'Low' = 'Low';
-    let trigger = 'Moist Understory & Stable Fire Weather';
+    let trigger = 'Moist Fuelbed & Low Fire Susceptibility';
 
-    const isHighHeat = tempMax >= 30;
-    const isModerateHeat = tempMax >= 24;
-    const isVeryDryAir = humidityMin <= 25;
-    const isDryAir = humidityMin <= 38;
-    const isHighWind = windMax >= 25;
-    const isDrySoil = soilMoisture <= 0.18;
-
-    if ((isHighHeat && isVeryDryAir && isHighWind) || (isVeryDryAir && isDrySoil && isHighWind)) {
-      calculatedRisk = 'Critical';
-      trigger = 'Extreme Fire Weather: Desiccating Winds & Critically Dry Fuel';
-    } else if ((isModerateHeat && isDryAir) || (isDrySoil && isHighWind)) {
-      calculatedRisk = 'High';
-      trigger = 'Elevated Ignition Risk: Low Humidity & Dry Duff Layer';
-    } else if (isDryAir || isModerateHeat || windMax >= 18) {
-      calculatedRisk = 'Moderate';
-      trigger = 'Moderate Drying: Pine Needle Flammability Watch';
-    } else {
+    if (!hasTelemetry) {
       calculatedRisk = 'Low';
-      trigger = 'Moist Fuelbed & Low Fire Susceptibility';
+      trigger = 'Telemetry Unavailable — Static Fuel Susceptibility Baseline Only';
+    } else {
+      const isHighHeat = tempMax >= 30;
+      const isModerateHeat = tempMax >= 24;
+      const isVeryDryAir = humidityMin <= 25;
+      const isDryAir = humidityMin <= 38;
+      const isHighWind = windMax >= 25;
+      const isDrySoil = soilMoisture <= 0.18 || precip7d < 2;
+
+      if ((isHighHeat && isVeryDryAir && isHighWind && precip7d < 5) || (isVeryDryAir && isDrySoil && isHighWind && tempMax >= 26)) {
+        calculatedRisk = 'Critical';
+        trigger = 'NWP Screening: Hot, Dry & Windy Surface Conditions with Low 7-Day Rain';
+      } else if ((isModerateHeat && isDryAir && precip7d < 10) || (isDrySoil && isHighWind && tempMax >= 20)) {
+        calculatedRisk = 'High';
+        trigger = 'NWP Screening: Low Relative Humidity & Dry Antecedent Week';
+      } else if ((isDryAir && tempMax >= 20) || isModerateHeat) {
+        calculatedRisk = 'Moderate';
+        trigger = 'NWP Screening: Seasonal Surface Drying Conditions';
+      } else {
+        calculatedRisk = 'Low';
+        trigger = 'NWP Screening: Cool / Moist Surface Meteorology';
+      }
     }
 
     let statusLabel = 'No Current Risk';
@@ -154,19 +193,23 @@ export async function GET() {
     } else if (calculatedRisk === 'Critical' || calculatedRisk === 'High') {
       statusLabel = 'Fire Season Watch';
     } else {
-      statusLabel = record.fire_season === 'Mar-Jun' ? 'Fire Season Watch' : 'No Current Risk';
+      statusLabel = hasTelemetry && calculatedRisk === 'Moderate' && record.fire_season === 'Mar-Jun'
+        ? 'Fire Season Watch'
+        : 'No Current Risk';
     }
 
     return {
       ...record,
-      live_temperature: tempMax,
-      live_humidity: humidityMin,
-      live_wind_speed: windMax,
-      live_soil_moisture: Number(soilMoisture.toFixed(3)),
+      live_temperature: hasTelemetry ? tempMax : undefined,
+      live_humidity: hasTelemetry ? humidityMin : undefined,
+      live_wind_speed: hasTelemetry ? windMax : undefined,
+      live_precipitation_7d: hasTelemetry ? Number(precip7d.toFixed(1)) : undefined,
+      live_soil_moisture: hasTelemetry ? Number(soilMoisture.toFixed(3)) : undefined,
       live_risk_level: calculatedRisk,
       dominant_trigger: trigger,
       current_status: statusLabel as any,
-      last_updated: timestamp,
+      last_updated: hasTelemetry ? timestamp : 'Telemetry Unavailable',
+      telemetryStatus: hasTelemetry ? 'MODEL_SCREENING' : 'UNAVAILABLE',
       provenance: {
         official_warning: matchingAlert ? {
           is_active: true,
@@ -178,7 +221,7 @@ export async function GET() {
           is_active: false,
           authority: 'NDMA SACHET (No Active Forest Fire Alerts for District)'
         },
-        fire_weather_model: 'Open-Meteo High-Resolution Fire Weather Index (FWI) Components',
+        fire_weather_model: 'Open-Meteo Gridded NWP Screening Heuristic',
         is_official_government_alert: !!matchingAlert
       }
     };
@@ -187,6 +230,7 @@ export async function GET() {
   return NextResponse.json({
     success: true,
     timestamp,
+    telemetryStatus: weatherResults ? 'MODEL_SCREENING' : 'UNAVAILABLE',
     vps_disk_usage_bytes: 0, // Stateless streaming
     monitored_zones: enrichedRecords.length,
     official_alerts_count: sachetResult.alerts.length,

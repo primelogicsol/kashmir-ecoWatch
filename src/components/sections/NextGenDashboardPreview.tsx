@@ -18,7 +18,12 @@ import { useRouter } from 'next/navigation';
 import { airQualityRegistry } from '@/data/air-quality-registry';
 import { waterQualitySites } from '@/data/water-systems';
 import { phenologyData } from '@/data/phenology-flowering';
-import { districtParticipation, participationMetrics } from '@/data/contribution-intelligence';
+import { districtParticipation } from '@/data/contribution-intelligence';
+import { PLATFORM_METRICS } from '@/data/platform-metrics';
+import {
+  FALLBACK_BASELINE_TELEMETRY,
+  type BaselineTelemetryData,
+} from '@/lib/telemetry/getBaselineTelemetry';
 
 const chartColors = {
   forest: { primary: '#10b981', secondary: '#34d399', glow: 'rgba(16, 185, 129, 0.3)' },
@@ -40,28 +45,43 @@ interface AqiTelemetryState {
   lastUpdated: string;
 }
 
-export function NextGenDashboardPreview() {
+export interface NextGenDashboardPreviewProps {
+  initialData?: BaselineTelemetryData;
+}
+
+export function NextGenDashboardPreview({
+  initialData = FALLBACK_BASELINE_TELEMETRY,
+}: NextGenDashboardPreviewProps = {}) {
   const router = useRouter();
 
-  // 1. Air Quality State: Connected to live Open-Meteo European CAMS API
-  const [aqiTelemetry, setAqiTelemetry] = useState<AqiTelemetryState>({
-    currentAqi: 63,
-    change24h: '-7.3%',
-    weeklyAvg: 65,
-    stationsCount: airQualityRegistry.length, // 44 stations across Western Himalaya
-    status: 'Moderate',
-    badgeVariant: 'warning',
-    chartData: [
-      { label: '00:00', value: 69 },
-      { label: '04:00', value: 66 },
-      { label: '08:00', value: 64 },
-      { label: '12:00', value: 63 },
-      { label: '16:00', value: 61 },
-      { label: 'Live', value: 63 },
-    ],
+  const initialStatus: AqiTelemetryState['status'] =
+    initialData.aqi.current > 150
+      ? 'Unhealthy'
+      : initialData.aqi.current > 100
+        ? 'Unhealthy for Sensitive Groups'
+        : initialData.aqi.current > 50
+          ? 'Moderate'
+          : 'Good';
+
+  const initialVariant: AqiTelemetryState['badgeVariant'] =
+    initialData.aqi.current > 100
+      ? 'danger'
+      : initialData.aqi.current > 50
+        ? 'warning'
+        : 'success';
+
+  // 1. Air Quality State: Pre-rendered from ISR baseline telemetry + background CAMS refresh
+  const [aqiTelemetry, setAqiTelemetry] = useState<AqiTelemetryState>(() => ({
+    currentAqi: initialData.aqi.current,
+    change24h: initialData.aqi.change24h,
+    weeklyAvg: initialData.aqi.rollingAvg,
+    stationsCount: initialData.aqi.stations || airQualityRegistry.length,
+    status: initialStatus,
+    badgeVariant: initialVariant,
+    chartData: initialData.aqi.diurnalSeries,
     isLive: false,
-    lastUpdated: 'Live Feed',
-  });
+    lastUpdated: 'Baseline Verified',
+  }));
 
   useEffect(() => {
     let isMounted = true;
@@ -191,15 +211,13 @@ export function NextGenDashboardPreview() {
     p.currentStage === 'Peak Bloom' || p.currentStage === 'First Bloom' || p.currentStage === 'Full Bloom'
   ).length || 44;
 
-  // 4. Wildlife Sightings: Connected to participationMetrics and sightings telemetry
-  const totalSightingsFormatted = participationMetrics.totalSightings.toLocaleString();
+  // 4. Verified Species Reference Profiles: Aligned with PLATFORM_METRICS
+  const totalSightingsFormatted = PLATFORM_METRICS.verifiedSpeciesProfilesCount.formattedValue;
   const realSightingData = [
-    { label: 'Jan', value: 142 },
-    { label: 'Feb', value: 198 },
-    { label: 'Mar', value: 285 },
-    { label: 'Apr', value: 246 },
-    { label: 'May', value: 215 },
-    { label: 'Jun', value: 170 },
+    { label: 'Mammals', value: 111 },
+    { label: 'Birds', value: 46 },
+    { label: 'Fish', value: 54 },
+    { label: 'Flora', value: 28 },
   ];
 
   // 5. District Ecological Scorecards: Connected to districtParticipation
@@ -232,7 +250,7 @@ export function NextGenDashboardPreview() {
           <div className="flex items-center gap-3 mb-4">
             <Activity className="w-5 h-5 text-emerald-400 signal-pulse" />
             <span className="text-xs font-semibold uppercase tracking-widest text-slate-400">
-              Live Environmental Telemetry & Intelligence
+              External Model Feeds &amp; Archival Synthesis ({PLATFORM_METRICS.kewOwnedPhysicalSensorsCount.formattedValue} KEW Sensors)
             </span>
           </div>
           <div className="flex flex-col gap-6">
@@ -241,7 +259,7 @@ export function NextGenDashboardPreview() {
                 Advanced Dashboard Previews
               </h2>
               <p className="text-slate-400 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed">
-                Live third-party API telemetry (Open-Meteo European CAMS) coupled with empirical Kashmir water systems, phenology, and district stewardship data.
+                Copernicus CAMS (~11 km) atmospheric model output paired with archival water-quality baselines ({PLATFORM_METRICS.mappedWaterbodiesCount.formattedValue} waterbodies, {PLATFORM_METRICS.ramsarWetlandsCount.formattedValue} Ramsar sites) across {PLATFORM_METRICS.operationalDistrictsCount.formattedValue} districts in {PLATFORM_METRICS.subregionsCount.formattedValue} subregions.
               </p>
             </div>
             <Button
@@ -273,11 +291,13 @@ export function NextGenDashboardPreview() {
                     <Wind className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
                       <h3 className="text-base sm:text-lg font-bold text-white">Air Quality Intelligence</h3>
                       <span className="flex items-center gap-1 px-2 py-0.5 rounded-[4px] bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-semibold text-emerald-400">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                        {aqiTelemetry.isLive ? 'LIVE CAMS API' : 'SYNCHRONIZING'}
+                        {aqiTelemetry.isLive
+                          ? 'Live Feed Active · CAMS'
+                          : 'Baseline Telemetry Verified · Auto-updating'}
                       </span>
                     </div>
                     <p className="text-xs sm:text-sm text-slate-400">
@@ -339,15 +359,28 @@ export function NextGenDashboardPreview() {
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-6 pt-6 border-t border-white/5">
                 {[
-                  { label: 'Current AQI', value: aqiTelemetry.currentAqi.toString(), status: aqiTelemetry.status },
+                  { label: 'Model US AQI', value: aqiTelemetry.currentAqi.toString(), status: aqiTelemetry.status },
                   { label: '24h Change', value: aqiTelemetry.change24h, status: 'warning' },
                   { label: 'Rolling Avg', value: aqiTelemetry.weeklyAvg.toString(), status: 'normal' },
-                  { label: 'Stations', value: aqiTelemetry.stationsCount.toString(), status: 'active' },
+                  { label: 'CAMS Grid Cells', value: aqiTelemetry.stationsCount.toString(), status: 'active' },
                 ].map((metric, idx) => (
                   <div key={idx}>
                     <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">{metric.label}</div>
                     <div className="text-2xl font-bold text-white">{metric.value}</div>
                   </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-1.5 mt-4 pt-4 border-t border-white/5">
+                {initialData.aqi.cities.map((city) => (
+                  <span
+                    key={city.name}
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-900/80 border border-white/10 text-[11px] text-slate-300"
+                  >
+                    <strong className="text-white font-semibold">{city.name}:</strong>
+                    <span className="font-mono text-emerald-400">{city.aqi}</span>
+                    <span className="text-slate-400">({city.level})</span>
+                  </span>
                 ))}
               </div>
             </Card>
@@ -368,7 +401,7 @@ export function NextGenDashboardPreview() {
                   </div>
                   <div>
                     <h3 className="text-base sm:text-lg font-bold text-white">Water Quality pH</h3>
-                    <p className="text-xs sm:text-sm text-slate-400">65 Empirical Stations</p>
+                    <p className="text-xs sm:text-sm text-slate-400">65 Archival Survey Sites</p>
                   </div>
                 </div>
                 <Badge variant="info" size="sm" className="text-xs flex-shrink-0">Optimal ({avgPh})</Badge>
@@ -490,11 +523,11 @@ export function NextGenDashboardPreview() {
                     <PawPrint className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
-                    <h3 className="text-base sm:text-lg font-bold text-white">Sighting Activity</h3>
-                    <p className="text-xs sm:text-sm text-slate-400">Verified field telemetry</p>
+                    <h3 className="text-base sm:text-lg font-bold text-white">Verified Species Profiles</h3>
+                    <p className="text-xs sm:text-sm text-slate-400">Curated taxonomic baseline</p>
                   </div>
                 </div>
-                <Badge variant="info" size="sm" className="text-xs flex-shrink-0">High Activity</Badge>
+                <Badge variant="info" size="sm" className="text-xs flex-shrink-0">Literature Verified</Badge>
               </div>
 
               <div className="h-32 sm:h-40">
@@ -515,7 +548,7 @@ export function NextGenDashboardPreview() {
                         border: '1px solid rgba(255, 255, 255, 0.1)',
                         borderRadius: '12px',
                       }}
-                      formatter={(val: any) => [`${val} observations`, 'Sightings']}
+                      formatter={(val: any) => [`${val} verified profiles`, 'Taxa']}
                     />
                     <Area
                       type="monotone"
@@ -532,7 +565,7 @@ export function NextGenDashboardPreview() {
                 <div className="flex items-center gap-2">
                   <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
                   <span className="text-xs sm:text-sm text-slate-400">
-                    Total: <strong className="text-white">{totalSightingsFormatted}</strong>
+                    Verified Total: <strong className="text-white">{totalSightingsFormatted}</strong>
                   </span>
                 </div>
               </div>
@@ -586,7 +619,7 @@ export function NextGenDashboardPreview() {
                 {[
                   { label: 'Highest Rate', district: highestDistrict?.district || 'Srinagar', score: `${highestDistrict?.resolutionRate || 87}%` },
                   { label: 'Active Baseline', district: lowestDistrict?.district || 'Kulgam', score: `${lowestDistrict?.resolutionRate || 71}%` },
-                  { label: 'Active Districts', district: `${districtParticipation.length} Districts`, score: `${districtParticipation.length}` },
+                  { label: 'Platform Districts', district: `${PLATFORM_METRICS.subregionsCount.formattedValue} Subregions`, score: PLATFORM_METRICS.operationalDistrictsCount.formattedValue },
                 ].map((item, idx) => (
                   <div key={idx}>
                     <div className="text-xs text-slate-500 uppercase mb-1">{item.label}</div>

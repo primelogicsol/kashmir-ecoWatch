@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { buildPageMetadata } from '@/lib/seo/route-metadata';
 import { getPublicDailyDispatches } from '@/lib/himalayan-dispatch-store';
 import { EditorialBreadcrumbs } from '@/components/himalayan-dispatch/EditorialBreadcrumbs';
+import { KewContentShare } from '@/components/common/KewContentShare';
 import { HD_ROUTES } from '@/lib/himalayan-dispatch-routes';
 
 export const dynamic = 'force-dynamic';
@@ -90,7 +91,7 @@ export default function DailyDispatchArchivePage() {
                 </p>
               </div>
 
-              <div className="md:col-span-2 md:text-right">
+              <div className="md:col-span-2 md:text-right flex md:justify-end items-center gap-2.5">
                 <Link
                   href={HD_ROUTES.dailyDispatchArticle(d.slug)}
                   className="hd-kicker inline-flex items-center gap-1"
@@ -98,6 +99,13 @@ export default function DailyDispatchArchivePage() {
                   <span>Open ({d.readingTimeMinutes}m)</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
+                <KewContentShare
+                  variant="toc-icon"
+                  title={d.headline}
+                  description={d.standfirst}
+                  canonicalPath={HD_ROUTES.dailyDispatchArticle(d.slug)}
+                  isPublished={d.isPublished}
+                />
               </div>
             </article>
           ))}

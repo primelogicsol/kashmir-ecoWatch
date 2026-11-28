@@ -75,6 +75,20 @@ export default function CsrCollaborationsPage() {
 
   const activeProgram = CSR_PROGRAM_DOSSIERS.find(p => p.id === selectedProgramId) || CSR_PROGRAM_DOSSIERS[0];
 
+  const sanitizedFundingPathways = FUNDING_PATHWAYS.map((pw) =>
+    pw.id === 'us-international-philanthropy'
+      ? {
+          ...pw,
+          governingStatute:
+            'U.S. Philanthropic Trust & Foundation Governance & Indian Foreign Contribution (Regulation) Act (FCRA) 2010',
+          recipientEligibility:
+            'Dr. Kumar Foundation USA & Kumar Trust USA exercising independent philanthropic stewardship. Cross-border disbursements to India require receiving implementing partners to hold an active MHA FCRA registration or project-specific prior permission.',
+          taxDeductibility:
+            'Prospective donors should verify applicable tax treatment directly with legal/tax counsel and the receiving entity prior to disbursement; contributions are never routed as earmarked pass-through conduits.',
+        }
+      : pw
+  );
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.acceptedScientificIndependence) {
@@ -94,7 +108,7 @@ export default function CsrCollaborationsPage() {
       priority: 'HIGH',
     });
 
-    const refCode = res.success ? res.trackingId : `KEW-CSR-2026-INQ-${Math.floor(1000 + Math.random() * 9000)}`;
+    const refCode = res.success ? res.trackingId : `KEW-CSR-2026-INQ-${Date.now().toString().slice(-4)}`;
     setInquiryResult({
       submitted: true,
       referenceCode: refCode,
@@ -208,7 +222,7 @@ export default function CsrCollaborationsPage() {
         <h2>8. Statutory Recipient Framework & Governance</h2>
         <div class="info-box">
           <p><strong>Domestic Indian CSR Funding:</strong> Administered exclusively through accredited, vetted Indian non-profit implementing partners holding active MCA Form CSR-1 registration and Sections 12A/80G status.</p>
-          <p><strong>International Diaspora & Philanthropic Grants:</strong> Administered under the 501(c)(3) public charity governance of the Dr. Kumar Foundation USA (Loudoun County, VA) and routed into India strictly via FCRA-registered banking accounts or prior permissions under MHA regulations.</p>
+          <p><strong>International Diaspora & Philanthropic Grants:</strong> Administered under the philanthropic stewardship of Dr. Kumar Foundation USA and Kumar Trust USA (Loudoun County, VA) and routed into India strictly via FCRA-registered banking accounts or prior permissions under MHA regulations.</p>
           <p><strong>Scientific Neutrality Covenant:</strong> Sponsoring entities possess zero editorial control over scientific observations, telemetry ingestion, threat assessments, or ecological alert levels.</p>
         </div>
 
@@ -338,7 +352,7 @@ export default function CsrCollaborationsPage() {
               </span>
               <span>•</span>
               <span className="px-2.5 py-1 rounded bg-slate-950 border border-white/5">
-                U.S. 501(c)(3) Oversight
+                U.S. Philanthropic Stewardship
               </span>
             </div>
           </div>
@@ -361,15 +375,14 @@ export default function CsrCollaborationsPage() {
               </div>
               <div className="p-3 rounded-xl bg-slate-950/70 border border-white/5">
                 <strong className="text-white block mb-1">For U.S. & International Diaspora Grants:</strong>
-                Contributions are administered under the governance of the <strong>Dr. Kumar Foundation USA</strong> (Loudoun County, VA) under 501(c)(3) 
-                public charity oversight, routed to India strictly via <strong>FCRA-registered accounts</strong> or project prior permissions.
+                Contributions are administered under the philanthropic governance of <strong>Dr. Kumar Foundation USA</strong> and <strong>Kumar Trust USA</strong> (Loudoun County, VA; formal tax-exempt determination status is not claimed unless documented per specific grant agreement), routed to India strictly via <strong>FCRA-registered accounts</strong> or project prior permissions.
               </div>
             </div>
           </div>
 
           {/* Pathway Tabs */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {FUNDING_PATHWAYS.map((pw) => (
+            {sanitizedFundingPathways.map((pw) => (
               <div 
                 key={pw.id}
                 className="p-5 rounded-2xl bg-slate-950/60 border border-white/5 hover:border-amber-500/30 transition-all space-y-3 flex flex-col justify-between"
@@ -823,7 +836,7 @@ export default function CsrCollaborationsPage() {
                     className="w-full bg-slate-950 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500/50"
                   >
                     <option value="Indian Corporate CSR (MCA Schedule VII)">Indian Corporate CSR (MCA Schedule VII)</option>
-                    <option value="U.S. / Global 501(c)(3) Philanthropy">U.S. / Global 501(c)(3) Philanthropy</option>
+                    <option value="U.S. / Global Philanthropic Endowment">U.S. / Global Philanthropic Endowment</option>
                     <option value="Scientific Research Grant Agency (ANRF / MoEFCC)">Scientific Research Grant Agency (ANRF / MoEFCC)</option>
                     <option value="Multilateral Climate & Biodiversity Fund">Multilateral Climate & Biodiversity Fund</option>
                   </select>
@@ -1074,7 +1087,7 @@ export default function CsrCollaborationsPage() {
                     <strong>Domestic Indian CSR:</strong> Administered via accredited implementing partners holding active MCA Form CSR-1 and 12A/80G status.
                   </p>
                   <p className="text-[11px] text-slate-300 print:text-slate-700 leading-relaxed">
-                    <strong>International Philanthropy:</strong> Administered under Dr. Kumar Foundation USA 501(c)(3) governance and routed strictly to FCRA-registered Indian accounts.
+                    <strong>International Philanthropy:</strong> Administered under Dr. Kumar Foundation USA &amp; Kumar Trust USA philanthropic governance and routed strictly to FCRA-registered Indian accounts.
                   </p>
                 </div>
               </div>

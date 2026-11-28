@@ -1,25 +1,26 @@
 import { Metric, IntelligenceCard, InsightPanel, FeaturedEntity, Alert, ChartData } from '@/types';
+import { PLATFORM_METRICS } from '@/data/platform-metrics';
 
-const STATIC_ANCHOR_MS = Date.UTC(2026, 10, 22, 12, 0, 0);
+// Headline metrics and static reference benchmarks aligned with PLATFORM_METRICS
 
 export const liveMetrics: Metric[] = [
-  { label: 'Protected Areas', value: 39, trend: 'stable', trendValue: 0 },
-  { label: 'Species Indexed', value: 73, trend: 'up', trendValue: 0 },
-  { label: 'Lakes & Wetlands', value: 82, trend: 'stable', trendValue: 0 },
-  { label: 'Active Alerts', value: 0, trend: 'stable', trendValue: 0 },
-  { label: 'Field Reports', value: 45, trend: 'up', trendValue: 8 },
-  { label: 'Hazard Zones', value: 224, trend: 'stable', trendValue: 0 },
+  { label: 'Operational Districts', value: PLATFORM_METRICS.operationalDistrictsCount.value, trend: 'stable', trendValue: 0 },
+  { label: 'Verified Species', value: PLATFORM_METRICS.verifiedSpeciesProfilesCount.value, trend: 'stable', trendValue: 0 },
+  { label: 'Cataloged Waterbodies', value: PLATFORM_METRICS.mappedWaterbodiesCount.value, trend: 'stable', trendValue: 0 },
+  { label: 'Ramsar Wetlands', value: PLATFORM_METRICS.ramsarWetlandsCount.value, trend: 'stable', trendValue: 0 },
+  { label: 'Protected Areas', value: PLATFORM_METRICS.protectedAreasVerifiedCount.value, trend: 'stable', trendValue: 0 },
+  { label: 'KEW Physical Sensors', value: PLATFORM_METRICS.kewOwnedPhysicalSensorsCount.value, trend: 'stable', trendValue: 0 },
 ];
 
 export const intelligenceCards: IntelligenceCard[] = [
   {
     id: 'atlas',
     title: 'Ecological Atlas',
-    description: 'Interactive GIS mapping of ecosystems, watersheds, and biodiversity hotspots',
+    description: 'Interactive GIS mapping of subregions, river basins, and protected habitats',
     icon: 'map',
     metrics: [
-      { label: 'Layers', value: 42 },
-      { label: 'Coverage', value: 100, unit: '%' },
+      { label: 'Districts', value: PLATFORM_METRICS.operationalDistrictsCount.value },
+      { label: 'Subregions', value: PLATFORM_METRICS.subregionsCount.value },
     ],
     link: '/protected-network/atlas',
     color: 'forest',
@@ -27,11 +28,11 @@ export const intelligenceCards: IntelligenceCard[] = [
   {
     id: 'biodiversity',
     title: 'Biodiversity Intelligence',
-    description: 'Comprehensive species database with distribution, habitat, and conservation status',
+    description: 'Verified taxonomic species profiles with elevation-checked bioclimatic distributions',
     icon: 'leaf',
     metrics: [
-      { label: 'Species', value: 2847 },
-      { label: 'Threatened', value: 312 },
+      { label: 'Verified Species', value: PLATFORM_METRICS.verifiedSpeciesProfilesCount.value },
+      { label: 'Subregions', value: PLATFORM_METRICS.subregionsCount.value },
     ],
     link: '/biodiversity',
     color: 'glacier',
@@ -39,11 +40,11 @@ export const intelligenceCards: IntelligenceCard[] = [
   {
     id: 'protected-areas',
     title: 'Protected Areas',
-    description: 'National parks, sanctuaries, reserves with ecological monitoring',
+    description: 'Statutory National Parks, Wildlife Sanctuaries, and notified Conservation/Wetland Reserves',
     icon: 'shield',
     metrics: [
-      { label: 'Areas', value: 47 },
-      { label: 'Coverage', value: 4380, unit: 'km²' },
+      { label: 'Protected Areas', value: PLATFORM_METRICS.protectedAreasVerifiedCount.value },
+      { label: 'Ramsar Sites', value: PLATFORM_METRICS.ramsarWetlandsCount.value },
     ],
     link: '/protected-network',
     color: 'earth',
@@ -51,11 +52,11 @@ export const intelligenceCards: IntelligenceCard[] = [
   {
     id: 'water',
     title: 'Water Systems',
-    description: 'Lakes, wetlands, rivers, springs with hydrological intelligence',
+    description: 'Cataloged lakes, Ramsar wetlands, river sub-basins, and published limnological baselines',
     icon: 'droplet',
     metrics: [
-      { label: 'Water Bodies', value: 1435 },
-      { label: 'Ramsar Basins', value: 5 },
+      { label: 'Waterbodies', value: PLATFORM_METRICS.mappedWaterbodiesCount.value },
+      { label: 'Ramsar Sites', value: PLATFORM_METRICS.ramsarWetlandsCount.value },
     ],
     link: '/water-systems',
     color: 'glacier',
@@ -63,11 +64,11 @@ export const intelligenceCards: IntelligenceCard[] = [
   {
     id: 'pollution',
     title: 'Hazard Intelligence',
-    description: 'Real-time hazard intelligence across floods, fires, landslides, and quakes',
+    description: 'Multi-hazard screening synthesizing USGS/EMSC seismic catalogs, GloFAS v4, and Open-Meteo NWP',
     icon: 'cloud',
     metrics: [
-      { label: 'Hazard Zones', value: 224 },
-      { label: 'Live APIs', value: 7 },
+      { label: 'River Sub-Basins', value: PLATFORM_METRICS.verifiedRiverBasinsCount.value },
+      { label: 'KEW Sensors', value: PLATFORM_METRICS.kewOwnedPhysicalSensorsCount.value },
     ],
     link: '/hazard-intelligence',
     color: 'slate',
@@ -75,37 +76,37 @@ export const intelligenceCards: IntelligenceCard[] = [
   {
     id: 'seasonal',
     title: 'Environmental Monitoring',
-    description: 'Pollution, water quality, and environmental stress signals',
+    description: 'External CAMS atmospheric grids, community optical PM2.5 feeds, and statutory audit baselines',
     icon: 'sun',
     metrics: [
-      { label: 'Monitored Assets', value: 48 },
-      { label: 'Domains', value: 11 },
+      { label: 'Districts', value: PLATFORM_METRICS.operationalDistrictsCount.value },
+      { label: 'KEW Sensors', value: PLATFORM_METRICS.kewOwnedPhysicalSensorsCount.value },
     ],
     link: '/environmental-monitoring',
     color: 'alert',
   },
   {
     id: 'trails',
-    title: 'Trails & Sightings',
-    description: 'Hiking trails, birding routes, wildlife observation hotspots',
+    title: 'Environmental Investigations',
+    description: 'Multidisciplinary desk-verified synthesis records and scoping charters across J&K and Ladakh',
     icon: 'footprints',
     metrics: [
-      { label: 'Trails', value: 156 },
-      { label: 'Sightings', value: 4521 },
+      { label: 'Charters & Records', value: PLATFORM_METRICS.canonicalInvestigationsCount.value },
+      { label: 'Desk-Verified', value: 2 },
     ],
-    link: '/trails-sightings',
+    link: '/environmental-investigations',
     color: 'forest',
   },
   {
     id: 'research',
-    title: 'Field Intelligence',
-    description: 'Scientific field reports, surveys, and technical assessments',
+    title: 'Sectoral EIA & Dossiers',
+    description: 'Internal environmental synthesis dossiers across Western Himalayan development sectors',
     icon: 'book',
     metrics: [
-      { label: 'Field Reports', value: 45 },
-      { label: 'Datasets', value: 89 },
+      { label: 'Research Dossiers', value: PLATFORM_METRICS.sectoralDossiersCount.value },
+      { label: 'Subregions', value: PLATFORM_METRICS.subregionsCount.value },
     ],
-    link: '/field-reports',
+    link: '/sectoral-eia',
     color: 'glacier',
   },
 ];
@@ -133,9 +134,9 @@ export const insightPanels: InsightPanel[] = [
       },
       {
         id: '3',
-        title: 'Mirgund Wetland - Water Quality Decline',
-        location: 'Kulgam District',
-        timestamp: new Date('2026-03-26'),
+        title: 'Mirgund Wetland Conservation Reserve — ISRO NWIA Statutory Baseline (2011)',
+        location: 'Baramulla / Budgam District',
+        timestamp: new Date('2011-05-01'),
         severity: 'medium',
       },
     ],
@@ -144,25 +145,25 @@ export const insightPanels: InsightPanel[] = [
     id: 'bloom-activity',
     title: 'Algal Bloom Activity',
     status: 'warning',
-    description: 'Seasonal algal bloom patterns across Kashmir\'s five major lakes',
+    description: 'Archived Sentinel-2 MSI NDCI retrievals and published limnological baselines',
     items: [
       {
         id: '1',
-        title: 'Dal Lake - Moderate Bloom',
+        title: 'Dal Lake — Eutrophic Nutrient Enrichment Audit Baseline (2025)',
         location: 'Srinagar',
-        timestamp: new Date(STATIC_ANCHOR_MS - 1 * 60 * 60 * 1000), // 1 hour ago
+        timestamp: new Date('2025-03-15'),
       },
       {
         id: '2',
-        title: 'Anchar Lake - High Bloom Activity',
+        title: 'Anchar Lake — Hypereutrophic Urban Inflow Literature Baseline (2024)',
         location: 'Srinagar',
-        timestamp: new Date(STATIC_ANCHOR_MS - 3 * 60 * 60 * 1000), // 3 hours ago
+        timestamp: new Date('2024-09-01'),
       },
       {
         id: '3',
-        title: 'Manasbal Lake - Developing Bloom',
+        title: 'Manasbal Lake — Monomictic Deep-Basin Limnological Baseline (2024)',
         location: 'Ganderbal',
-        timestamp: new Date(STATIC_ANCHOR_MS - 6 * 60 * 60 * 1000), // 6 hours ago
+        timestamp: new Date('2024-08-15'),
       },
     ],
   },
@@ -670,7 +671,7 @@ export const featuredEntities: FeaturedEntity[] = [
     id: 'jhelum-flood-plain',
     type: 'hazard',
     name: 'Jhelum Basin High-Exposure Flood Zone',
-    description: 'Riverine floodplain corridor spanning Sangam to Srinagar with active gauge telemetry, embankments, and hydraulic monitoring.',
+    description: 'Riverine floodplain corridor spanning Sangam to Srinagar tracked via statutory flood benchmarks and Copernicus GloFAS v4 modeled discharge.',
     image: '/images/jhelum-flood.jpg',
     metrics: [
       { label: 'Risk Level', value: 'Critical', unit: 'Zone 5' },
@@ -683,7 +684,7 @@ export const featuredEntities: FeaturedEntity[] = [
     id: 'panzath-karst-springs',
     type: 'hazard',
     name: 'Panzath Karst Springs & Aquifer',
-    description: 'Perennial karst hydrological spring shed in Qazigund feeding trout hatcheries, monitored for discharge stress.',
+    description: 'Perennial karst hydrological spring shed in Qazigund feeding trout hatcheries, documented in regional hydrogeological baselines.',
     image: '/images/panzath.jpg',
     metrics: [
       { label: 'Discharge', value: 450, unit: 'L/sec' },
@@ -696,7 +697,7 @@ export const featuredEntities: FeaturedEntity[] = [
     id: 'apharwat-avalanche-chute',
     type: 'hazard',
     name: 'Gulmarg Apharwat Avalanche Chute',
-    description: 'High-altitude snowpack fracture zone along Apharwat Peak monitored with automated acoustic sensors and slope telemetry.',
+    description: 'High-altitude snowpack fracture zone along Apharwat Peak screened via Gulmarg Avalanche Center bulletins and alpine NWP snowfall models.',
     image: '/images/apharwat-avalanche.jpg',
     metrics: [
       { label: 'Altitude', value: 4390, unit: 'm' },
@@ -709,11 +710,11 @@ export const featuredEntities: FeaturedEntity[] = [
     id: 'pir-panjal-fire-corridor',
     type: 'hazard',
     name: 'Pir Panjal Conifer Wildfire Corridor',
-    description: 'Dry-season Pinus wallichiana canopy belts monitored via satellite MODIS thermal anomalies and rapid ground response units.',
+    description: 'Dry-season Pinus wallichiana canopy belts screened via NDMA SACHET CAP bulletins and Open-Meteo NWP fire-weather heuristics.',
     image: '/images/forest-fire.jpg',
     metrics: [
       { label: 'Fuel Load', value: 'High', unit: 'Chir/Kail' },
-      { label: 'Alert Sensor', value: 'MODIS', unit: 'Thermal' },
+      { label: 'Screening', value: 'NWP+CAP', unit: 'Model' },
       { label: 'Response', value: 'Rapid', unit: 'Forest Dept' },
     ],
     link: '/hazard-intelligence/forest-fires',
@@ -724,47 +725,29 @@ export const alerts: Alert[] = [
   {
     id: '1',
     type: 'wetland_alert',
-    title: 'Wetland Encroachment Alert',
-    description: 'Illegal construction detected near protected wetland boundary',
+    title: 'Wetland Encroachment Audit Baseline',
+    description: 'Historical perimeter encroachment documented in statutory wetland conservation audits',
     severity: 'high',
     location: 'Hokersar Wetland, Srinagar',
-    timestamp: new Date(STATIC_ANCHOR_MS - 2 * 60 * 60 * 1000), // 2 hours ago
+    timestamp: new Date('2025-03-01'),
   },
   {
     id: '2',
     type: 'air_quality',
-    title: 'Air Quality Advisory',
-    description: 'Moderate AQI levels expected due to temperature inversion',
+    title: 'Winter Valley Inversion Advisory Baseline',
+    description: 'Seasonal particulate trapping during winter shallow boundary-layer inversions',
     severity: 'medium',
-    location: 'Srinagar Urban Area',
-    timestamp: new Date(STATIC_ANCHOR_MS - 5 * 60 * 60 * 1000), // 5 hours ago
+    location: 'Srinagar Basin',
+    timestamp: new Date('2025-11-15'),
   },
   {
     id: '3',
     type: 'trail_closure',
-    title: 'Trail Closure - Landslide Risk',
-    description: 'Temporary closure due to unstable terrain after rainfall',
+    title: 'Seasonal High-Altitude Route Closure',
+    description: 'Autumn-winter snow accumulation restricts access across upper alpine glacial trails',
     severity: 'high',
-    location: 'Kolahoi Base Camp Trail',
-    timestamp: new Date(STATIC_ANCHOR_MS - 24 * 60 * 60 * 1000), // 1 day ago
-  },
-  {
-    id: '4',
-    type: 'monitoring',
-    title: 'Water Quality Anomaly',
-    description: 'Elevated turbidity levels detected at monitoring station',
-    severity: 'medium',
-    location: 'Jhelum River, Sangam',
-    timestamp: new Date(STATIC_ANCHOR_MS - 2 * 24 * 60 * 60 * 1000), // 2 days ago
-  },
-  {
-    id: '5',
-    type: 'hazard',
-    title: 'Avalanche Risk Warning',
-    description: 'High avalanche risk in higher altitude zones',
-    severity: 'high',
-    location: 'Gulmarg High Range',
-    timestamp: new Date(STATIC_ANCHOR_MS - 3 * 24 * 60 * 60 * 1000), // 3 days ago
+    location: 'Kolahoi & Great Lakes Alpine Routes',
+    timestamp: new Date('2025-11-10'),
   },
 ];
 

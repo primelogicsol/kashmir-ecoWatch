@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import { allowForcedUpstreamRefresh } from '@/lib/seo/admin-session';
+import { KEW_OWNED_PHYSICAL_SENSORS_COUNT } from '@/data/monitoring-infrastructure-registry';
 import {
   airQualityRegistry,
   groundStationsRegistry,
@@ -28,7 +30,7 @@ export interface AirHazardAlert {
   stationName: string;
   district: string;
   scope: string;
-  type: 'Ground Sensor / CAAQMS' | 'Regional Model Grid';
+  type: 'Community Optical Sensor + CAMS Gases' | 'Gridded Atmospheric Model (ECMWF CAMS 11 km)' | 'Ground Sensor / CAAQMS' | 'Regional Model Grid';
   naqi: number;
   naqiCategory: string;
   aqi_us: number;
@@ -207,7 +209,8 @@ export async function GET(request: Request) {
   const now = new Date();
   const nowMs = now.getTime();
   const { searchParams } = new URL(request.url);
-  const forceRefresh = searchParams.get('refresh') === '1';
+  const rawForceRefresh = searchParams.get('refresh') === '1';
+  const forceRefresh = rawForceRefresh && allowForcedUpstreamRefresh(request, 'air-pollution', 60_000);
 
   if (!forceRefresh && cachedPayload && nowMs - cachedAt < CACHE_TTL_MS) {
     return NextResponse.json(cachedPayload);
@@ -351,11 +354,11 @@ export async function GET(request: Request) {
 
             return {
               ...unit,
-              verification_status: 'Calibrated Ground Sensor',
+              verification_status: 'Community Optical Sensor (AirGradient) + CAMS Model Gases',
               data_source:
                 sensorNodes.length > 0
-                  ? `AirGradient / BreatheOSS (${sensorNodes.length} Live Sensor${sensorNodes.length > 1 ? 's' : ''})`
-                  : 'AirGradient / BreatheOSS + Open-Meteo',
+                  ? `Community Optical Sensor (AirGradient: ${sensorNodes.length} Node${sensorNodes.length > 1 ? 's' : ''}) + CAMS Model Gases`
+                  : 'Community Optical Sensor (AirGradient) + CAMS Model Gases',
               pm25,
               pm10,
               no2,
@@ -376,7 +379,7 @@ export async function GET(request: Request) {
               lastUpdated: age.label,
               apiTimestamp: new Date(sensorTsMs).toISOString(),
               isStale: age.isStale,
-              modelRunTime: '5-Min Optical Ground Telemetry + CAMS Gas Layer',
+              modelRunTime: 'Community Optical PM2.5 (Non-Regulatory) + 11 km CAMS Gases',
               activeSensorCount: sensorNodes.length || 1,
               sensorNodes,
             };
@@ -400,6 +403,7 @@ export async function GET(request: Request) {
 
           return {
             ...unit,
+            verification_status: 'Gridded Atmospheric Model (ECMWF CAMS 11 km)',
             pm25: omPm25,
             pm10: omPm10,
             no2: omNo2,
@@ -417,19 +421,27 @@ export async function GET(request: Request) {
             displayVariant: omUsCalc.variant,
             dominantPollutant: omNaqiCalc.dominantPollutant,
             trend,
-            lastUpdated: age.label,
+            lastUpdated: `Model Cycle (${age.label.replace(/^Live\s*\((.*)\)$/, '$1')})`,
             apiTimestamp: omTimeDate.toISOString(),
             isStale: age.isStale,
-            modelRunTime: 'ECMWF / Copernicus CAMS Current UTC Cycle',
+            modelRunTime: 'ECMWF CAMS 11 km Gridded Model Cycle (No Ground Sensor)',
           };
         });
 
-        // ── 2. Process Physical Ground Monitoring Stations (Real Telemetry First, No Artificial Boosts)
+        // ── 2. Process Reference Nodes: Distinguish Community Optical Nodes vs Pure 11 km CAMS Model Cells (Muzaffarabad & Gilgit = Model Only)
         const groundStations: GroundStationLiveRecord[] = groundStationsRegistry.map((station) => {
           const matchingUnit = regionalUnits.find((u) => u.district === station.district) || regionalUnits[0];
+          const hasCommunityOptical =
+            matchingUnit.verification_status === 'Community Optical Sensor (AirGradient) + CAMS Model Gases' &&
+            station.district !== 'Muzaffarabad' &&
+            station.district !== 'Gilgit';
 
           return {
             ...station,
+            station_type: hasCommunityOptical
+              ? 'Community Optical Sensor (AirGradient) + CAMS Model Gases'
+              : 'Gridded Atmospheric Model (ECMWF CAMS 11 km)',
+            is_ground_truth: false, // Zero regulatory CPCB CAAQMS / EPA reference BAM APIs connected
             pm25: matchingUnit.pm25,
             pm10: matchingUnit.pm10,
             no2: matchingUnit.no2,
@@ -452,15 +464,20 @@ export async function GET(request: Request) {
             apiTimestamp: matchingUnit.apiTimestamp,
             isStale: matchingUnit.isStale,
             status: matchingUnit.isStale ? 'MAINTENANCE' : 'ONLINE',
-            activeSensorCount: matchingUnit.activeSensorCount,
-            sensorNodes: matchingUnit.sensorNodes,
+            activeSensorCount: hasCommunityOptical ? matchingUnit.activeSensorCount : 0,
+            sensorNodes: hasCommunityOptical ? matchingUnit.sensorNodes : [],
           };
         });
 
-        // ── 3. Empirical Ground Sensor vs. 11km Satellite Model Validation Deltas
+        // ── 3. Community Optical PM2.5 vs. 11km CAMS Model Deltas (ONLY when a real community sensor reading exists — NEVER CAMS minus CAMS!)
         const validationDeltas: ValidationDelta[] = [];
-        for (const districtName of ['Srinagar', 'Jammu'] as const) {
-          const gnd = groundStations.find((g) => g.district === districtName);
+        for (const districtName of ['Srinagar', 'Jammu', 'Leh'] as const) {
+          const gnd = groundStations.find(
+            (g) =>
+              g.district === districtName &&
+              g.station_type === 'Community Optical Sensor (AirGradient) + CAMS Model Gases' &&
+              (g.activeSensorCount ?? 0) > 0
+          );
           const mdl = modelOnlyByDistrict.get(districtName);
           if (gnd && mdl && gnd.pm25 > 0) {
             const delta = Number((gnd.pm25 - mdl.pm25).toFixed(1));
@@ -479,36 +496,39 @@ export async function GET(request: Request) {
                 delta > 35 ? 'Severe Trapping' : delta > 10 ? 'Moderate Stagnation' : 'Normal Dispersion',
               scientificNote:
                 delta > 10
-                  ? `CAMS 11km grid (${mdl.pm25} µg/m³, US AQI ${mdl.aqi_us}) underestimates street-level ground sensors (${gnd.pm25} µg/m³, US AQI ${gnd.aqi_us}) by ${Math.abs(bias)}% due to localized urban emissions and boundary-layer trapping.`
-                  : `CAMS 11km grid (${mdl.pm25} µg/m³) closely aligns with ground sensors (${gnd.pm25} µg/m³) under well-mixed atmospheric dispersion.`,
+                  ? `ECMWF CAMS 11 km grid (${mdl.pm25} µg/m³) underestimates non-regulatory community optical PM2.5 (${gnd.pm25} µg/m³) by ${Math.abs(bias)}% during localized valley boundary-layer trapping.`
+                  : `ECMWF CAMS 11 km grid (${mdl.pm25} µg/m³) aligns closely with community optical PM2.5 (${gnd.pm25} µg/m³) under mixed dispersion.`,
             });
           }
         }
 
-        // ── 4. Detect Active Air Hazard Alerts
+        // ── 4. Detect Active Air Hazard Screening Advisories
         const alerts: AirHazardAlert[] = [];
         regionalUnits.forEach((r) => {
-          const isGround = r.verification_status === 'Calibrated Ground Sensor';
+          const isCommunitySensor =
+            r.verification_status === 'Community Optical Sensor (AirGradient) + CAMS Model Gases';
           if (r.aqi_us > 150 || r.naqi > 150 || r.pm25 > 60) {
             const severity: 'moderate' | 'high' | 'critical' =
               r.aqi_us > 200 || r.naqi > 250 ? 'critical' : r.aqi_us > 150 || r.naqi > 150 ? 'high' : 'moderate';
             alerts.push({
-              id: `alert-${isGround ? 'ground' : 'model'}-${r.id}`,
+              id: `alert-${isCommunitySensor ? 'community' : 'cams'}-${r.id}`,
               stationName: r.name,
               district: r.district,
               scope: r.scope,
-              type: isGround ? 'Ground Sensor / CAAQMS' : 'Regional Model Grid',
+              type: isCommunitySensor
+                ? 'Community Optical Sensor + CAMS Gases'
+                : 'Gridded Atmospheric Model (ECMWF CAMS 11 km)',
               naqi: r.naqi,
               naqiCategory: r.naqiCategory,
               aqi_us: r.aqi_us,
               pm25: r.pm25,
               dominantPollutant: r.dominantPollutant,
               severity,
-              headline: `${isGround ? 'Live Ground Sensor Alert' : 'Regional Model Advisory'}: US AQI ${r.aqi_us} (NAQI ${r.naqi}) in ${r.district}`,
+              headline: `${isCommunitySensor ? 'Community Optical Screening Advisory' : 'ECMWF CAMS 11 km Model Advisory'}: Instantaneous US AQI ${r.aqi_us} (NAQI ${r.naqi}) in ${r.district}`,
               recommendation:
                 r.aqi_us > 200
                   ? 'Avoid prolonged outdoor exertion. Sensitive groups and children should wear N95 filtration masks.'
-                  : 'Elevated particulate pollution detected. Sensitive individuals should limit prolonged outdoor physical activity.',
+                  : 'Elevated particulate concentrations indicated by screening feed. Sensitive individuals should limit prolonged outdoor physical activity.',
             });
           }
         });
@@ -519,24 +539,29 @@ export async function GET(request: Request) {
         const avgUsAqi = Math.round(regionalUnits.reduce((acc, curr) => acc + curr.aqi_us, 0) / regionalUnits.length);
         const unhealthyCount = regionalUnits.filter((d) => d.aqi_us > 100).length;
         const groundSensorDistricts = regionalUnits.filter(
-          (d) => d.verification_status === 'Calibrated Ground Sensor'
+          (d) => d.verification_status === 'Community Optical Sensor (AirGradient) + CAMS Model Gases'
         ).length;
 
         const payload: Record<string, unknown> = {
           success: true,
+          kewOwnedPhysicalSensors: KEW_OWNED_PHYSICAL_SENSORS_COUNT,
+          directCpcbCaaqmsApisCount: 0,
           groundStations,
           regionalUnits,
           validationDeltas,
           alerts,
           meta: {
+            kewOwnedPhysicalSensors: KEW_OWNED_PHYSICAL_SENSORS_COUNT,
+            directCpcbCaaqmsApisCount: 0,
             totalGroundStations: groundStations.length,
             groundSensorDistricts,
             totalRegionalUnits: regionalUnits.length,
             avgNaqi,
             avgUsAqi,
             unhealthyCount,
-            provider: 'AirGradient / BreatheOSS Physical Ground Sensors + Open-Meteo / Copernicus CAMS (UTC Real-Time)',
-            modelResolution: 'Street-level optical ground sensors + 0.1° (~11 km) CAMS current telemetry',
+            provider: 'Community Optical Sensors (AirGradient / BreatheOSS, Non-Regulatory) + ECMWF CAMS 11 km Gridded Model (via Open-Meteo)',
+            modelResolution: 'Non-regulatory community optical PM2.5 (Srinagar/Jammu/Leh) + 0.1° (~11 km) ECMWF CAMS atmospheric model (Muzaffarabad & Gilgit are 100% model grids)',
+            aqiMethodologyDisclosure: 'Instantaneous hourly/optical concentrations evaluated against CPCB NAQI & US EPA AQI breakpoints for screening only; not statutory 24-hour regulatory NAAQS compliance averages.',
             updatedAt: currentNow.toISOString(),
           },
         };
@@ -558,20 +583,25 @@ export async function GET(request: Request) {
     const snapshot = getInitialAirQualitySnapshot();
     return NextResponse.json({
       success: true,
+      isLiveTelemetry: false,
       rateLimitedFallback: true,
+      kewOwnedPhysicalSensors: KEW_OWNED_PHYSICAL_SENSORS_COUNT,
+      directCpcbCaaqmsApisCount: 0,
       groundStations: snapshot.groundStations,
       regionalUnits: snapshot.regionalUnits,
       validationDeltas: snapshot.validationDeltas,
       alerts: [],
       meta: {
+        kewOwnedPhysicalSensors: KEW_OWNED_PHYSICAL_SENSORS_COUNT,
+        directCpcbCaaqmsApisCount: 0,
         totalGroundStations: snapshot.groundStations.length,
         totalRegionalUnits: snapshot.regionalUnits.length,
         avgNaqi: snapshot.avgNaqi,
         avgUsAqi: snapshot.avgUsAqi,
         unhealthyCount: snapshot.unhealthyCount,
-        provider: 'Kashmir EcoWatch Baseline Telemetry (Offline Fallback)',
-        modelResolution: '0.1° (~11 km)',
-        updatedAt: now.toISOString(),
+        provider: 'External Feed Temporarily Unavailable — Historical Reference Only',
+        modelResolution: '0.1° (~11 km) Historical Reference Climatology',
+        updatedAt: null,
       },
     });
   }

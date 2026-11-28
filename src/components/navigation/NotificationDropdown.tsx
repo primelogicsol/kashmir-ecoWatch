@@ -192,7 +192,7 @@ export function NotificationDropdown({ isOpen, onClose }: NotificationDropdownPr
                       </span>
                       {alert.id.startsWith('live-') && (
                         <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 shrink-0">
-                          LIVE SENSOR
+                          {alert.category === 'earthquake' ? 'USGS CATALOG' : 'MODEL FEED'}
                         </span>
                       )}
                     </div>

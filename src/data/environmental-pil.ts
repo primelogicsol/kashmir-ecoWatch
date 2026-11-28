@@ -171,7 +171,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-001",
     "caseNumber": "WP(C) PIL No. 2/2014 (Earlier PIL 159/2002)",
-    "cnrNumber": "JKHC010001422014",
     "caseTitle": "Syed Iqbal Tahir Geelani v. State of Jammu & Kashmir & Ors. (Dal Lake Preservation Case)",
     "filingYear": 2002,
     "proceedingType": "PIL",
@@ -259,8 +258,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
         "verifiedEvidence": "22 outfalls successfully linked to Habak, Hazratbal, and Laam STPs. 6 minor drains still overflow during storm surge.",
         "fieldAuditNotes": "Intermittent power supply to sewage pumping stations causes nocturnal bypass into Telbal Nallah.",
         "obligationType": "COURT_DIRECTED_MANDATE",
-        "evidenceVerificationLevel": "JOINT_INSPECTION_CONFIRMED",
-        "orderSourceUrl": "https://jkhighcourt.nic.in/casedoc/PIL_159_2002_Order_17112026.pdf"
+        "evidenceVerificationLevel": "JOINT_INSPECTION_CONFIRMED"
       },
       {
         "directionId": "DIR-DAL-02",
@@ -274,8 +272,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
         "verifiedEvidence": "Only 312 of 720 houseboats installed sealed holding tanks. Periodic emptying barges suffer pump breakdown.",
         "fieldAuditNotes": "Enforcement paused temporarily during peak tourist seasons; court issued stern follow-up reminder.",
         "obligationType": "COURT_DIRECTED_MANDATE",
-        "evidenceVerificationLevel": "GOVERNMENT_AFFIDAVIT_ONLY",
-        "orderSourceUrl": "https://jkhighcourt.nic.in/casedoc/PIL_159_2002_Order_28082024.pdf"
+        "evidenceVerificationLevel": "GOVERNMENT_AFFIDAVIT_ONLY"
       },
       {
         "directionId": "DIR-DAL-03",
@@ -289,8 +286,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
         "verifiedEvidence": "JKPCC commenced fortnightly lab sampling across all 5 STPs ahead of December 22, 2026 compliance hearing.",
         "fieldAuditNotes": "Brari Nambal aeration lagoons operate at sub-optimal dissolved oxygen levels during winter freeze.",
         "obligationType": "INSPECTION_ORDER",
-        "evidenceVerificationLevel": "JOINT_INSPECTION_CONFIRMED",
-        "orderSourceUrl": "https://jkhighcourt.nic.in/casedoc/PIL_159_2002_Order_17112026.pdf"
+        "evidenceVerificationLevel": "JOINT_INSPECTION_CONFIRMED"
       },
       {
         "directionId": "DIR-DAL-04",
@@ -304,8 +300,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
         "verifiedEvidence": "Demarcation maps submitted for Hazratbal and Boulevard reaches; Anchar lake fringe demarcation lagging behind.",
         "fieldAuditNotes": "Satellite audits detect ongoing interior island earth-filling near Mir Behri.",
         "obligationType": "COURT_DIRECTED_MANDATE",
-        "evidenceVerificationLevel": "SATELLITE_VERIFIED",
-        "orderSourceUrl": "https://jkhighcourt.nic.in/casedoc/PIL_159_2002_Order_17112026.pdf"
+        "evidenceVerificationLevel": "SATELLITE_VERIFIED"
       },
       {
         "directionId": "DIR-DAL-05",
@@ -319,11 +314,10 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
         "verifiedEvidence": "Affidavit drafted by Law Department; listing scheduled before Chief Justice Bench on 22-12-2026.",
         "fieldAuditNotes": "Pending judicial review on 22 December 2026.",
         "obligationType": "DEPARTMENTAL_UNDERTAKING",
-        "evidenceVerificationLevel": "GOVERNMENT_AFFIDAVIT_ONLY",
-        "orderSourceUrl": "https://jkhighcourt.nic.in/casedoc/PIL_159_2002_Order_17112026.pdf"
+        "evidenceVerificationLevel": "GOVERNMENT_AFFIDAVIT_ONLY"
       }
     ],
-    "sourceDocumentRef": "HCJK Order Sheet PIL 159/2002; e-Courts CNR JKHC010001422014",
+    "sourceDocumentRef": "HCJK Order Sheet PIL 159/2002",
     "sourceUrl": "https://jkhighcourt.nic.in",
     "lastVerifiedDate": "2026-04-10",
     "crossModuleLink": "/water-systems/lakes",
@@ -395,7 +389,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-002",
     "caseNumber": "Original Application No. 241/2021 (PB)",
-    "cnrNumber": "NGT010002412021",
     "caseTitle": "Dr. Raja Muzaffar Bhat v. State of Jammu & Kashmir & Ors. (Doodhganga & Mamath Kul River Pollution)",
     "filingYear": 2021,
     "proceedingType": "TRIBUNAL_APPLICATION",
@@ -500,7 +493,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
       {
         "title": "NGT Direction constituting Expert Joint Inspection Committee",
         "date": "2021-10-06",
-        "url": "https://indiankanoon.org/doc/98712345/",
+        "url": "https://greentribunal.gov.in",
         "orderType": "Inspection Order",
         "summary": "Ordered on-site water quality analysis of Doodhganga and Mamath Kull streams."
       }
@@ -529,7 +522,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-003",
     "caseNumber": "PIL No. 34/2019 (High Court J&K)",
-    "cnrNumber": "JKHC010045892019",
     "caseTitle": "Court on its Own Motion v. Union Territory of J&K & Ors. (Silence Zone & Noise Pollution Abatement)",
     "filingYear": 2019,
     "proceedingType": "SUO_MOTU",
@@ -639,7 +631,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-004",
     "caseNumber": "Writ Petition (Civil) No. 467/2018",
-    "cnrNumber": "AJKHC010008452018",
     "caseTitle": "Save Neelum Movement & Anr. v. Federation of Pakistan, WAPDA & Govt of AJ&K",
     "filingYear": 2018,
     "proceedingType": "WRIT_PETITION",
@@ -739,7 +730,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-005",
     "caseNumber": "Constitutional Petition No. 12/2020",
-    "cnrNumber": "GBSC010000122020",
     "caseTitle": "Ecological Defense Council Gilgit-Baltistan v. Municipal Corporation Gilgit & EPA Gilgit-Baltistan",
     "filingYear": 2020,
     "proceedingType": "WRIT_PETITION",
@@ -838,7 +828,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-006",
     "caseNumber": "Original Application No. 112/2022 (PB)",
-    "cnrNumber": "NGT010001122022",
     "caseTitle": "Tribunal on its Own Motion v. National Highways Authority of India (NHAI) & Ors. (NH-44 Slope Muck Dumping)",
     "filingYear": 2022,
     "proceedingType": "SUO_MOTU",
@@ -937,7 +926,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-007",
     "caseNumber": "PIL No. 14/2012 (High Court J&K)",
-    "cnrNumber": "JKHC010018902012",
     "caseTitle": "Mohammad Rafiq Zargar v. State of Jammu & Kashmir & Ors. (Gulmarg & Sonamarg Eco-Fragile Master Plan Violation)",
     "filingYear": 2012,
     "proceedingType": "PIL",
@@ -1033,7 +1021,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
       {
         "title": "High Court Landmark Injunction on Pahalgam Eco-Sensitive Zone",
         "date": "2012-04-18",
-        "url": "https://indiankanoon.org/doc/7891234/",
+        "url": "https://jkhighcourt.nic.in",
         "orderType": "Interim Injunction",
         "summary": "Halted all new construction in Pahalgam and prohibited Master Plan alterations without court leave."
       }
@@ -1053,7 +1041,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-008",
     "caseNumber": "Original Application No. 89/2021 (PB)",
-    "cnrNumber": "NGT010000892021",
     "caseTitle": "All J&K Brick Kiln Manufacturers Association / Citizen Forum v. State of J&K & Ors. (Brick Kiln Air Pollution)",
     "filingYear": 2021,
     "proceedingType": "TRIBUNAL_APPLICATION",
@@ -1171,7 +1158,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-009",
     "caseNumber": "PIL No. 22/2016 (High Court J&K Jammu Wing)",
-    "cnrNumber": "JKHC020008762016",
     "caseTitle": "Balbir Singh & Anr. v. State of Jammu & Kashmir & Ors. (Tawi River Mining & Raw Sewage Discharge)",
     "filingYear": 2016,
     "proceedingType": "PIL",
@@ -1287,7 +1273,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-010",
     "caseNumber": "Writ Petition (Civil) No. 78/2021",
-    "cnrNumber": "JKHC010023412021",
     "caseTitle": "Ladakh Ecological Development Group (LEDeG) v. UT of Ladakh & Anr. (Pangong & Tso Moriri Tourist Impact)",
     "filingYear": 2021,
     "proceedingType": "WRIT_PETITION",
@@ -1297,7 +1282,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
       "Leh"
     ],
     "sector": "Solid Waste & Plastic Pollution",
-    "environmentalAsset": "Pangong Tso & Tso Moriri Ramsar Wetland Basins",
+    "environmentalAsset": "Pangong Tso Trans-Himalayan Basin (Non-Ramsar) & Tso Moriri Ramsar Wetland (Site No. 1213)",
     "lat": 33.7595,
     "lng": 78.6674,
     "petitioners": "Ladakh Ecological Development Group (LEDeG)",
@@ -1384,7 +1369,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-011",
     "caseNumber": "Writ Petition No. 312/2019",
-    "cnrNumber": "AJKHC020003122019",
     "caseTitle": "Public Interest Action Coalition v. Environmental Protection Agency AJK & Anr. (Poonch River Mahseer Sanctuary Mining)",
     "filingYear": 2019,
     "proceedingType": "WRIT_PETITION",
@@ -1396,7 +1380,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
       "Bhimber"
     ],
     "sector": "Riverbed Mining & Karewa Quarrying",
-    "environmentalAsset": "Poonch River Aquatic Sanctuary (Ramsar Wetland Site No. 2097)",
+    "environmentalAsset": "Poonch River Mahseer National Park / Aquatic Sanctuary (AJ&K Statutory Sanctuary)",
     "lat": 33.1465,
     "lng": 73.7423,
     "petitioners": "Public Interest Action Coalition (Local fishery scientists and riverine communities)",
@@ -1406,7 +1390,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
     "disposalDate": "2023-03-15",
     "statutorySeparationNotice": "AJK High Court established that commercial mechanized excavator extraction of cobbles and gravel in Poonch River obliterated the shallow gravel breeding shoals of the endangered Golden Mahseer (Tor putitora).",
     "coreIssues": [
-      "Heavy mechanized extraction of river pebbles and sand within the officially declared Ramsar Protected Aquatic Sanctuary",
+      "Heavy mechanized extraction of river pebbles and sand within the officially declared AJ&K Statutory Mahseer Aquatic Sanctuary",
       "Destruction of upstream spawning redds of Golden Mahseer and Kashmir Hill Stream Loach",
       "Failure of AJK-EPA to conduct mandatory Environmental Impact Assessment (EIA) prior to granting district extraction contracts"
     ],
@@ -1436,7 +1420,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
         "eventType": "JUDGMENT",
         "title": "Final Judgment Banning Commercial Mining in Sanctuary Reach",
         "bench": "Division Bench AJK High Court",
-        "summary": "Declared mechanized mining within Ramsar boundary ultra vires and ordered ecological rehabilitation of damaged shoals."
+        "summary": "Declared mechanized mining within statutory Mahseer sanctuary boundary ultra vires and ordered ecological rehabilitation of damaged shoals."
       },
       {
         "date": "2025-06-20",
@@ -1484,7 +1468,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-012",
     "caseNumber": "Civil Review Petition No. 05/2021",
-    "cnrNumber": "GBSC020000052021",
     "caseTitle": "Diamer Catchment Action Forum v. WAPDA & GB Administration (Diamer Bhasha Dam Environmental Displacees & Afforestation)",
     "filingYear": 2021,
     "proceedingType": "APPEAL",
@@ -1581,7 +1564,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-013",
     "caseNumber": "Original Application No. 351/2019 (PB)",
-    "cnrNumber": "NGT010003512019",
     "caseTitle": "Raja Muzaffar Bhat v. Baseer Ahmad Khan & Ors. (Hokersar Wetland Conservation & Unscientific Dredging)",
     "filingYear": 2019,
     "proceedingType": "CONTEMPT_PETITION",
@@ -1679,7 +1661,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-014",
     "caseNumber": "PIL No. 08/2017 (High Court J&K Srinagar Wing)",
-    "cnrNumber": "JKHC010012892017",
     "caseTitle": "Kashmir Environmental Watch Association v. State of Jammu & Kashmir & Ors. (Wular Lake Restoration & Willow De-silting)",
     "filingYear": 2017,
     "proceedingType": "PIL",
@@ -1777,7 +1758,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-015",
     "caseNumber": "Original Application No. 174/2020 (PB)",
-    "cnrNumber": "NGT010001742020",
     "caseTitle": "Valley Environmental Trust v. Ministry of Environment, Forest & Climate Change & Ors. (Karewa Plateau Excavation)",
     "filingYear": 2020,
     "proceedingType": "TRIBUNAL_APPLICATION",
@@ -1877,7 +1857,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-016",
     "caseNumber": "PIL No. 05/2018 (High Court J&K Srinagar Wing)",
-    "cnrNumber": "JKHC010006782018",
     "caseTitle": "Peoples Welfare Forum Pahalgam v. State of Jammu & Kashmir & Ors. (Pahalgam Eco-Fragile Master Plan & Lidder Basin)",
     "filingYear": 2018,
     "proceedingType": "PIL",
@@ -1974,7 +1953,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-017",
     "caseNumber": "Writ Petition (Civil) No. 202/1995 (With J&K Interim Orders 1996-1998)",
-    "cnrNumber": "SCIN010002021995",
     "caseTitle": "T.N. Godavarman Thirumulpad v. Union of India & Ors. (J&K Timber Transit & Forest Felling Injunction)",
     "filingYear": 1995,
     "proceedingType": "PIL",
@@ -2074,7 +2052,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-018",
     "caseNumber": "Writ Petition (Civil) No. 472/1998",
-    "cnrNumber": "SCIN010004721998",
     "caseTitle": "M.C. Mehta v. State of Jammu & Kashmir & Ors. (Pahalgam & Lidder Catchment PIL)",
     "filingYear": 1998,
     "proceedingType": "PIL",
@@ -2170,7 +2147,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-019",
     "caseNumber": "OWP No. 412/1999",
-    "cnrNumber": "JKHC010004121999",
     "caseTitle": "G.M. Sheikh & Ors. v. State of Jammu & Kashmir & Ors. (Dal Lake Hotel Sewage Injunction)",
     "filingYear": 1999,
     "proceedingType": "WRIT_PETITION",
@@ -2248,7 +2224,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-020",
     "caseNumber": "PIL No. 88/2003",
-    "cnrNumber": "JKHC010000882003",
     "caseTitle": "Kashmir Environmental Protection Forum v. Dept of Forest & Ors. (Pir Panjal Deodar Preservation)",
     "filingYear": 2003,
     "proceedingType": "PIL",
@@ -2328,7 +2303,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-021",
     "caseNumber": "Writ Petition No. 119/2004",
-    "cnrNumber": "AJKHC010001192004",
     "caseTitle": "Neelum Valley Forest Action Coalition v. Govt of AJ&K & Forest Dept (Sharda & Kel Alpine Deodar Preservation)",
     "filingYear": 2004,
     "proceedingType": "WRIT_PETITION",
@@ -2407,7 +2381,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-022",
     "caseNumber": "Writ Petition No. 04/2007 (Chief Court Northern Areas)",
-    "cnrNumber": "GBCC010000042007",
     "caseTitle": "Central Karakoram Alpine Conservation Society v. Northern Areas Administration (Deosai & CKNP Protection)",
     "filingYear": 2007,
     "proceedingType": "WRIT_PETITION",
@@ -2487,7 +2460,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-023",
     "caseNumber": "PIL No. 345/2006 (Wular Lake Conservation)",
-    "cnrNumber": "JKHC010003452006",
     "caseTitle": "Kashmir Environmental Protection v. State of Jammu & Kashmir & Ors. (Wular Lake Encroachment & CMAP Expenditure)",
     "filingYear": 2006,
     "proceedingType": "PIL",
@@ -2551,7 +2523,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
       {
         "title": "High Court Order on Wular Lake Encroachment & Expenditure (23.09.2021)",
         "date": "2021-09-23",
-        "url": "https://indiankanoon.org/doc/wular-pil-345-2006/",
+        "url": "https://jkhighcourt.nic.in",
         "orderType": "INTERIM_ORDER",
         "summary": "Bench directed WUCMA to file updated geo-tagged survey of remaining 380 kanals and audit willow felling proceeds."
       }
@@ -2600,7 +2572,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
         "status": "OVERDUE",
         "obligationType": "COURT_DIRECTED_MANDATE",
         "evidenceVerificationLevel": "GOVERNMENT_AFFIDAVIT_ONLY",
-        "orderSourceUrl": "https://indiankanoon.org/doc/wular-pil-345-2006/",
         "verifiedEvidence": "WUCMA reported ongoing eviction drives in Saderkoot; local civil suits stalled action on ~140 kanals.",
         "fieldAuditNotes": "Court-recorded claim remains unverified on the ground; satellite change detection indicates persistent agrarian use."
       },
@@ -2614,20 +2585,18 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
         "status": "IN_PROGRESS",
         "obligationType": "DEPARTMENTAL_UNDERTAKING",
         "evidenceVerificationLevel": "PENDING_DOCUMENTATION",
-        "orderSourceUrl": "https://indiankanoon.org/doc/wular-pil-345-2006/",
         "verifiedEvidence": "Interim financial statement submitted; formal Comptroller and Auditor General (CAG) performance audit pending.",
         "fieldAuditNotes": "Expenditure claimed primarily on mechanical dredging of 3.1 km² Naidkhai sector and peripheral bunding."
       }
     ],
     "sourceDocumentRef": "High Court J&K Order dated 23.09.2021 in PIL No. 345/2006; Indian Kanoon archive",
-    "sourceUrl": "https://indiankanoon.org/doc/wular-pil-345-2006/",
+    "sourceUrl": "https://jkhighcourt.nic.in",
     "lastVerifiedDate": "2026-04-12",
     "crossModuleLink": "/water-systems/lakes"
   },
   {
     "id": "kew-case-024",
     "caseNumber": "PIL No. 404/2011 (River Sindh Protection)",
-    "cnrNumber": "JKHC010004042011",
     "caseTitle": "Court on its Own Motion v. State of Jammu & Kashmir & Ors. (River Sindh Encroachment & Riverbed Mining)",
     "filingYear": 2011,
     "proceedingType": "SUO_MOTU",
@@ -2663,7 +2632,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
       {
         "title": "High Court Order on River Sindh Encroachment & Mining (2022)",
         "date": "2022-06-15",
-        "url": "https://indiankanoon.org/doc/river-sindh-pil-404-2011/",
+        "url": "https://jkhighcourt.nic.in",
         "orderType": "INTERIM_ORDER",
         "summary": "Court directed Deputy Commissioner Ganderbal to demolish concrete structures within 100 feet of River Sindh water edge."
       }
@@ -2719,7 +2688,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
         "status": "IN_PROGRESS",
         "obligationType": "COURT_DIRECTED_MANDATE",
         "evidenceVerificationLevel": "JOINT_INSPECTION_CONFIRMED",
-        "orderSourceUrl": "https://indiankanoon.org/doc/river-sindh-pil-404-2011/",
         "verifiedEvidence": "48 temporary roadside commercial structures removed; residential and orchard encroachments pending revenue demarcations.",
         "fieldAuditNotes": "Trout sanctuary signage erected at Wayil; local police established night patrol squads."
       },
@@ -2733,20 +2701,18 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
         "status": "COMPLIED",
         "obligationType": "COURT_DIRECTED_MANDATE",
         "evidenceVerificationLevel": "JOINT_INSPECTION_CONFIRMED",
-        "orderSourceUrl": "https://indiankanoon.org/doc/river-sindh-pil-404-2011/",
         "verifiedEvidence": "14 mechanized extraction blocks cancelled; 8 heavy excavators impounded by Ganderbal police.",
         "fieldAuditNotes": "River turbidity upstream of Rangil intake normalized; trout hatcheries reported healthy fry survival."
       }
     ],
     "sourceDocumentRef": "High Court J&K Order Sheet PIL No. 404/2011; Indian Kanoon repository",
-    "sourceUrl": "https://indiankanoon.org/doc/river-sindh-pil-404-2011/",
+    "sourceUrl": "https://jkhighcourt.nic.in",
     "lastVerifiedDate": "2026-04-10",
     "crossModuleLink": "/water-systems/rivers"
   },
   {
     "id": "kew-case-025",
     "caseNumber": "WP(C) PIL No. 2/2024 (Ladakh Ecological Integrity)",
-    "cnrNumber": "JKHC010000022024",
     "caseTitle": "Abdul Wahid & Anr. v. Union Territory of Ladakh & Ors. (Changthang & High-Altitude Sanctuary Buffers)",
     "filingYear": 2024,
     "proceedingType": "PIL",
@@ -2783,7 +2749,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
       {
         "title": "High Court Order on Ladakh Eco-Sensitive Boundaries (28.01.2026)",
         "date": "2026-01-28",
-        "url": "https://jkhighcourt.nic.in/order/wpc-pil-2-2024/",
+        "url": "https://jkhighcourt.nic.in",
         "orderType": "INTERIM_ORDER",
         "summary": "Division Bench ordered UT Ladakh and MoEFCC to file joint status affidavit on wildlife corridor protection by May 2026."
       }
@@ -2832,7 +2798,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
         "status": "IN_PROGRESS",
         "obligationType": "COURT_DIRECTED_MANDATE",
         "evidenceVerificationLevel": "PENDING_DOCUMENTATION",
-        "orderSourceUrl": "https://jkhighcourt.nic.in/order/wpc-pil-2-2024/",
         "verifiedEvidence": "Draft ESZ proposals submitted to MoEFCC Expert Committee; awaiting final central gazette publication.",
         "fieldAuditNotes": "High-altitude field surveys completed for Hemis western boundary; eastern Changthang boundary reconciliation underway."
       }
@@ -2845,7 +2810,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
   {
     "id": "kew-case-026",
     "caseNumber": "Original Application No. 351/2023 (PB)",
-    "cnrNumber": "NGT010003512023",
     "caseTitle": "Dr. Raja Muzaffar Bhat v. Union Territory of J&K & Ors. (Doodhganga Environmental Assessment & Inspection)",
     "filingYear": 2023,
     "proceedingType": "TRIBUNAL_APPLICATION",
@@ -2882,7 +2846,7 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
       {
         "title": "NGT Principal Bench Order on Doodhganga Compliance & Inspection (2025)",
         "date": "2025-08-22",
-        "url": "https://greentribunal.gov.in/order/oa-351-2023/",
+        "url": "https://greentribunal.gov.in",
         "orderType": "INTERIM_ORDER",
         "summary": "Tribunal directed JKPCC to submit monthly chemical analysis reports on effluent discharge from all interim sewage sumps."
       }
@@ -2931,7 +2895,6 @@ export const ENVIRONMENTAL_CASES_DATA: EnvironmentalCase[] = [
         "status": "IN_PROGRESS",
         "obligationType": "COURT_DIRECTED_MANDATE",
         "evidenceVerificationLevel": "JOINT_INSPECTION_CONFIRMED",
-        "orderSourceUrl": "https://greentribunal.gov.in/order/oa-351-2023/",
         "verifiedEvidence": "Civil structures completed; mechanical aeration rotors installed; pipeline hook-up at 70%.",
         "fieldAuditNotes": "Water quality sampling shows BOD at 7.8 mg/L, reflecting ongoing partial discharge."
       }
@@ -3166,7 +3129,7 @@ export const ENVIRONMENTAL_LEGAL_STATUTES: LegalStatute[] = [
     jurisdictionScope: 'Azad Jammu & Kashmir',
     enforcingBodies: ['AJK Environmental Protection Agency (AJK-EPA)', 'Environmental Magistrates'],
     relevantSections: ['Section 11 (Prohibition of certain discharges or emissions)', 'Section 12 (Initial Environmental Examination and EIA)', 'Section 17 (Environmental Protection Order)'],
-    applicabilitySynopsis: 'Statutory basis for the AJK High Court rulings on Neelum River ecological flow (E-Flow) compliance and the protection of the Poonch River Mahseer Ramsar sanctuary.'
+    applicabilitySynopsis: 'Statutory basis for the AJK High Court rulings on Neelum River ecological flow (E-Flow) compliance and the protection of the Poonch River Mahseer National Park / Aquatic Sanctuary.'
   },
   {
     code: 'PK-GB-2014',
@@ -3194,61 +3157,45 @@ export interface RegionalJudicialSummary {
   primaryCourts: string[];
 }
 
-export const REGIONAL_JUDICIAL_SUMMARIES: Record<KEWRegion, RegionalJudicialSummary> = {
-  'Kashmir Valley': {
-    region: 'Kashmir Valley',
-    totalCases: 13,
-    activeCases: 6,
-    disposedCases: 7,
-    totalDirectives: 22,
-    compliedDirectives: 14,
-    complianceRate: 63.6,
-    primaryCourts: ['High Court of J&K and Ladakh (Srinagar Wing)', 'NGT (Principal Bench)', 'Supreme Court of India']
-  },
-  'Jammu': {
-    region: 'Jammu',
-    totalCases: 2,
-    activeCases: 2,
-    disposedCases: 0,
-    totalDirectives: 4,
-    compliedDirectives: 2,
-    complianceRate: 50.0,
-    primaryCourts: ['High Court of J&K and Ladakh (Jammu Wing)', 'NGT (Principal Bench)']
-  },
-  'Ladakh': {
-    region: 'Ladakh',
-    totalCases: 1,
-    activeCases: 1,
-    disposedCases: 0,
-    totalDirectives: 2,
-    compliedDirectives: 1,
-    complianceRate: 50.0,
-    primaryCourts: ['High Court of J&K and Ladakh (Srinagar Wing)']
-  },
-  'AJ&K': {
-    region: 'AJ&K',
-    totalCases: 3,
-    activeCases: 1,
-    disposedCases: 2,
-    totalDirectives: 5,
-    compliedDirectives: 3,
-    complianceRate: 60.0,
-    primaryCourts: ['AJK High Court (Muzaffarabad / Mirpur)', 'AJK Supreme Court']
-  },
-  'Gilgit-Baltistan': {
-    region: 'Gilgit-Baltistan',
-    totalCases: 3,
-    activeCases: 2,
-    disposedCases: 1,
-    totalDirectives: 5,
-    compliedDirectives: 3,
-    complianceRate: 60.0,
-    primaryCourts: ['GB Chief Court', 'GB Supreme Appellate Court']
-  }
+const PRIMARY_COURTS_BY_REGION: Record<KEWRegion, string[]> = {
+  'Kashmir Valley': ['High Court of J&K and Ladakh (Srinagar Wing)', 'NGT (Principal Bench)', 'Supreme Court of India'],
+  'Jammu': ['High Court of J&K and Ladakh (Jammu Wing)', 'NGT (Principal Bench)'],
+  'Ladakh': ['High Court of J&K and Ladakh (Srinagar Wing)'],
+  'AJ&K': ['AJK High Court (Muzaffarabad / Mirpur)', 'AJK Supreme Court'],
+  'Gilgit-Baltistan': ['GB Chief Court', 'GB Supreme Appellate Court'],
 };
 
+function buildRegionalJudicialSummaries(cases: EnvironmentalCase[]): Record<KEWRegion, RegionalJudicialSummary> {
+  const regions: KEWRegion[] = ['Kashmir Valley', 'Jammu', 'Ladakh', 'AJ&K', 'Gilgit-Baltistan'];
+  const out = {} as Record<KEWRegion, RegionalJudicialSummary>;
+  for (const region of regions) {
+    const regionCases = cases.filter((c) => c.region === region);
+    const totalCases = regionCases.length;
+    const disposedCases = regionCases.filter((c) => c.currentJudicialStatus === 'DISPOSED_WITH_DIRECTIONS' || c.currentJudicialStatus === 'DISMISSED').length;
+    const activeCases = totalCases - disposedCases;
+    const directives = regionCases.flatMap((c) => c.complianceDirectives || []);
+    const totalDirectives = directives.length;
+    const compliedDirectives = directives.filter((d) => d.status === 'COMPLIED').length;
+    const complianceRate = totalDirectives > 0 ? Number(((compliedDirectives / totalDirectives) * 100).toFixed(1)) : 0;
+    out[region] = {
+      region,
+      totalCases,
+      activeCases,
+      disposedCases,
+      totalDirectives,
+      compliedDirectives,
+      complianceRate,
+      primaryCourts: PRIMARY_COURTS_BY_REGION[region],
+    };
+  }
+  return out;
+}
+
+export const REGIONAL_JUDICIAL_SUMMARIES: Record<KEWRegion, RegionalJudicialSummary> =
+  buildRegionalJudicialSummaries(ENVIRONMENTAL_CASES_DATA);
+
 // ─────────────────────────────────────────────────────────────────────────────
-// SECTORAL SUMMARY AGGREGATES
+// SECTORAL SUMMARY AGGREGATES (DYNAMICALLY COMPUTED FROM ACTIVE REGISTRY)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface SectorJudicialSummary {
@@ -3259,64 +3206,34 @@ export interface SectorJudicialSummary {
   compensationLeviedINR: string;
 }
 
-export const SECTORAL_JUDICIAL_SUMMARIES: SectorJudicialSummary[] = [
-  {
-    sector: 'Forest & Wildlife Conservation',
-    caseCount: 7,
-    totalDirectives: 10,
-    compliedDirectives: 9,
-    compensationLeviedINR: 'Rs 8.5 Crore'
-  },
-  {
-    sector: 'Water Bodies & Wetlands',
-    caseCount: 6,
-    totalDirectives: 10,
-    compliedDirectives: 5,
-    compensationLeviedINR: 'Rs 35.0 Crore'
-  },
-  {
-    sector: 'Riverbed Mining & Karewa Quarrying',
-    caseCount: 3,
-    totalDirectives: 6,
-    compliedDirectives: 4,
-    compensationLeviedINR: 'Rs 1.5 Crore'
-  },
-  {
-    sector: 'Solid Waste & Plastic Pollution',
-    caseCount: 2,
-    totalDirectives: 4,
-    compliedDirectives: 2,
-    compensationLeviedINR: 'Rs 3.0 Crore'
-  },
-  {
-    sector: 'Air Pollution & Brick Kilns',
-    caseCount: 1,
-    totalDirectives: 2,
-    compliedDirectives: 1,
-    compensationLeviedINR: 'Rs 1.8 Crore'
-  },
-  {
-    sector: 'Acoustic Noise & Silence Zones',
-    caseCount: 1,
-    totalDirectives: 2,
-    compliedDirectives: 1,
-    compensationLeviedINR: 'Rs 45 Lakhs'
-  },
-  {
-    sector: 'Infrastructure, Highways & Muck Dumping',
-    caseCount: 1,
-    totalDirectives: 2,
-    compliedDirectives: 1,
-    compensationLeviedINR: 'Rs 2.0 Crore'
-  },
-  {
-    sector: 'Cryosphere, Glaciers & Hydropower',
-    caseCount: 1,
-    totalDirectives: 2,
-    compliedDirectives: 0,
-    compensationLeviedINR: 'Rs 15.0 Crore (AJK Mitigation)'
-  }
-];
+const SECTOR_COMPENSATION_NOTES: Record<EnvironmentalSector, string> = {
+  'Forest & Wildlife Conservation': 'Court-supervised compensatory afforestation & sanctuary protection orders',
+  'Water Bodies & Wetlands': 'Rs 35.0 Crore (NGT Doodhganga & wetland municipal accountability orders)',
+  'Riverbed Mining & Karewa Quarrying': 'Environmental compensation & mechanized mining lease cancellations',
+  'Solid Waste & Plastic Pollution': 'Municipal solid waste remediation & legacy waste bio-mining bonds',
+  'Air Pollution & Brick Kilns': 'Zig-zag conversion & non-compliant brick-kiln closure penalties',
+  'Acoustic Noise & Silence Zones': 'Statutory silence-zone enforcement & equipment seizure directives',
+  'Infrastructure, Highways & Muck Dumping': 'Slope stabilization & designated muck-disposal restitution',
+  'Cryosphere, Glaciers & Hydropower': 'Minimum ecological flow (E-Flow) & catchment mitigation mandates',
+};
+
+function buildSectoralJudicialSummaries(cases: EnvironmentalCase[]): SectorJudicialSummary[] {
+  const sectors = Object.keys(SECTOR_COMPENSATION_NOTES) as EnvironmentalSector[];
+  return sectors.map((sector) => {
+    const matching = cases.filter((c) => c.sector === sector);
+    const directives = matching.flatMap((c) => c.complianceDirectives || []);
+    return {
+      sector,
+      caseCount: matching.length,
+      totalDirectives: directives.length,
+      compliedDirectives: directives.filter((d) => d.status === 'COMPLIED').length,
+      compensationLeviedINR: SECTOR_COMPENSATION_NOTES[sector],
+    };
+  });
+}
+
+export const SECTORAL_JUDICIAL_SUMMARIES: SectorJudicialSummary[] =
+  buildSectoralJudicialSummaries(ENVIRONMENTAL_CASES_DATA);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // DATA SOURCES & COURT ARCHIVES REGISTRY
@@ -3410,443 +3327,9 @@ export const JUDICIAL_DATA_SOURCES: JudicialDataSource[] = [
 // 40-YEAR HISTORICAL CASES (1986–2015 ADDITIONS)
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const HISTORICAL_CASES_1986_2015: EnvironmentalCase[] = [
-  {
-    id: 'kew-case-017',
-    caseNumber: 'Writ Petition (Civil) No. 202/1995 (With J&K Interim Orders 1996-1998)',
-    cnrNumber: 'SCIN010002021995',
-    caseTitle: 'T.N. Godavarman Thirumulpad v. Union of India & Ors. (J&K Timber Transit & Forest Felling Injunction)',
-    filingYear: 1995,
-    proceedingType: 'PIL',
-    jurisdiction: 'Supreme Court of India',
-    region: 'Kashmir Valley',
-    districts: ['Baramulla', 'Kupwara', 'Anantnag', 'Doda'],
-    sector: 'Forest & Wildlife Conservation',
-    environmentalAsset: 'Western Himalayan Coniferous Forests (Deodar, Kail, Fir, Spruce)',
-    lat: 34.2000,
-    lng: 74.3500,
-    petitioners: 'T.N. Godavarman Thirumulpad',
-    respondents: 'Union of India, State of Jammu & Kashmir through Chief Secretary, J&K Forest Dept, J&K State Forest Corporation',
-    presidingBench: 'Honble Chief Justice J.S. Verma, Justice B.N. Kirpal',
-    currentJudicialStatus: 'DISPOSED_WITH_DIRECTIONS',
-    disposalDate: '1998-01-15',
-    statutorySeparationNotice: 'Supreme Court established that large-scale illicit timber felling during the early 1990s armed conflict severely degraded Pir Panjal and Shamsabari forest compartments, mandating a total ban on unregulated timber transit out of J&K.',
-    coreIssues: [
-      'Uncontrolled illicit commercial felling of virgin Himalayan Cedrus deodara and Pinus wallichiana stands',
-      'Proliferation of hundreds of unlicensed wood-based sawmills operating within 5 km of reserved forest compartments',
-      'Unregulated export of illicitly felled timber consignments across Lakhanpur border checkpoint into Punjab and Haryana'
-    ],
-    keyDirectives: [
-      'Complete ban on felling of standing green trees in all J&K forests except in accordance with approved Working Plans',
-      'Immediate closure and confiscation of all unlicensed sawmills operating within 5 km radius of any demarcated forest',
-      'Prohibition on transit or export of timber from J&K without biometric transit passes and High-Powered Committee certification',
-      'Constitution of J&K Forest Protection Force (FPF) with armed statutory authority to combat organized timber smuggling'
-    ],
-    chronology: [
-      {
-        date: '1996-12-12',
-        eventType: 'INTERIM_ORDER',
-        title: 'Landmark Godavarman Forest Preservation Injunction',
-        bench: 'Chief Justice J.S. Verma Bench',
-        summary: 'Supreme Court declared that "forest" must be understood in its dictionary sense regardless of formal revenue categorization.'
-      },
-      {
-        date: '1997-03-04',
-        eventType: 'INTERIM_ORDER',
-        title: 'Special Directions Governing Jammu & Kashmir Forests',
-        bench: 'Honble Three-Judge Bench',
-        summary: 'Imposed complete freeze on private timber sales and directed immediate seizure of illicit logs stored in forest depots.'
-      },
-      {
-        date: '1998-01-15',
-        eventType: 'JUDGMENT',
-        title: 'Final Working Plan Mandate & Sawmill Relocation Guidelines',
-        bench: 'Justice B.N. Kirpal Bench',
-        summary: 'Directed that no forest harvesting in J&K can occur without Central Empowered Committee (CEC) and MoEF approved working plans.'
-      }
-    ],
-    complianceDirectives: [
-      {
-        directionId: 'DIR-GOD-01',
-        issuedDate: '1997-03-04',
-        responsibleAgency: 'J&K Forest Department & State Forest Corporation',
-        agencyType: 'FOREST',
-        directionText: 'Dismantle all unlicensed sawmills within 5 km of reserved forest boundaries and seal machinery.',
-        statutoryDeadline: '1997-09-30',
-        status: 'COMPLIED',
-        lastReportDate: '1999-04-12',
-        verifiedEvidence: '248 unlicensed sawmills permanently dismantled across Kashmir and Jammu divisions; 32 relocated to designated industrial estates.',
-        fieldAuditNotes: 'Timber smuggling volume dropped by an estimated 80% following police-FPF joint highway check-posts.'
-      }
-    ],
-    sourceDocumentRef: '(1997) 2 SCC 267; AIR 1997 SC 1228; AWS Open Data SC Registry',
-    sourceUrl: 'https://main.sci.gov.in',
-    lastVerifiedDate: '2026-03-15',
-    crossModuleLink: '/protected-network/reports-and-plans'
-  },
-  {
-    id: 'kew-case-018',
-    caseNumber: 'Writ Petition (Civil) No. 472/1998',
-    cnrNumber: 'SCIN010004721998',
-    caseTitle: 'M.C. Mehta v. State of Jammu & Kashmir & Ors. (Pahalgam & Lidder Catchment PIL)',
-    filingYear: 1998,
-    proceedingType: 'PIL',
-    jurisdiction: 'Supreme Court of India',
-    region: 'Kashmir Valley',
-    districts: ['Anantnag'],
-    sector: 'Water Bodies & Wetlands',
-    environmentalAsset: 'Lidder River Catchment & Pahalgam Alpine Valley',
-    lat: 34.0200,
-    lng: 75.3200,
-    petitioners: 'M.C. Mehta (Renowned Environmental Advocate & Magsaysay Laureate)',
-    respondents: 'State of J&K through Chief Secretary, Pahalgam Development Authority, Tourism Dept, J&K Forest Dept',
-    presidingBench: 'Honble Justice B.N. Kirpal, Justice S.P. Bharucha',
-    currentJudicialStatus: 'DISPOSED_WITH_DIRECTIONS',
-    disposalDate: '2001-08-24',
-    statutorySeparationNotice: 'Supreme Court instituted strict environmental guidelines to safeguard the glacial meltwaters of the Lidder River from unchecked commercial tourism development.',
-    coreIssues: [
-      'Uncontrolled commercial hotel and guest house construction along the pristine banks of the Lidder River',
-      'Direct disposal of raw municipal garbage and sewage into the river upstream of drinking water intakes',
-      'Degradation of alpine pastures in Aru and Chandanwari from unmanaged pilgrim and tourist transit'
-    ],
-    keyDirectives: [
-      'Establishment of the Bhasin Committee to determine carrying capacity of Pahalgam valley',
-      'Absolute prohibition on construction of permanent hotels within 100 meters of the high flood level of Lidder River',
-      'Creation of the Pahalgam Development Authority (PDA) as an autonomous conservation and planning body'
-    ],
-    chronology: [
-      {
-        date: '1998-07-10',
-        eventType: 'FILING',
-        title: 'PIL Filed in Supreme Court of India',
-        bench: 'Apex Green Bench',
-        summary: 'Petition highlighted severe ecological threat to Lidder watershed from haphazard commercial expansion.'
-      },
-      {
-        date: '1999-04-18',
-        eventType: 'INTERIM_ORDER',
-        title: 'Bhasin Committee Appointed',
-        bench: 'Justice B.N. Kirpal',
-        summary: 'Court appointed expert committee headed by Lt. Gen. Bhasin to assess ecological carrying capacity of Pahalgam.'
-      },
-      {
-        date: '2001-08-24',
-        eventType: 'JUDGMENT',
-        title: 'Final Judgment Endorsing Bhasin Committee Recommendations',
-        bench: 'Honble Division Bench',
-        summary: 'Supreme Court directed J&K Govt to notify Revised Pahalgam Master Plan adhering strictly to carrying capacity ceilings.'
-      }
-    ],
-    complianceDirectives: [
-      {
-        directionId: 'DIR-MCM-01',
-        issuedDate: '2001-08-24',
-        responsibleAgency: 'Pahalgam Development Authority (PDA)',
-        agencyType: 'MUNICIPAL',
-        directionText: 'Enforce statutory 100-meter green buffer along both banks of Lidder River and demolish unauthorized riverfront structures.',
-        statutoryDeadline: '2002-12-31',
-        status: 'COMPLIED',
-        lastReportDate: '2003-06-15',
-        verifiedEvidence: 'PDA notified buffer zone; 18 illegal riverfront kiosks demolished; became foundation for subsequent 2018 High Court PIL.',
-        fieldAuditNotes: 'Historic precedent establishing judicial protection of Lidder river corridor.'
-      }
-    ],
-    sourceDocumentRef: '(2001) 9 SCC 548; Supreme Court of India Registry',
-    sourceUrl: 'https://main.sci.gov.in',
-    lastVerifiedDate: '2026-03-10',
-    crossModuleLink: '/water-systems/rivers'
-  },
-  {
-    id: 'kew-case-019',
-    caseNumber: 'OWP No. 412/1999',
-    cnrNumber: 'JKHC010004121999',
-    caseTitle: 'G.M. Sheikh & Ors. v. State of Jammu & Kashmir & Ors. (Dal Lake Hotel Sewage Injunction)',
-    filingYear: 1999,
-    proceedingType: 'WRIT_PETITION',
-    jurisdiction: 'High Court of Jammu & Kashmir and Ladakh (Srinagar Wing)',
-    region: 'Kashmir Valley',
-    districts: ['Srinagar'],
-    sector: 'Water Bodies & Wetlands',
-    environmentalAsset: 'Dal Lake Boulevard Corridor & Dalgate Basin',
-    lat: 34.0850,
-    lng: 74.8350,
-    petitioners: 'G.M. Sheikh & Concerned Citizens of Dal Lake Basin',
-    respondents: 'State of J&K through Housing & Urban Development Dept, Srinagar Development Authority, UEED, JKPCC',
-    presidingBench: 'Honble Justice B.A. Khan, Justice T.S. Doabia',
-    currentJudicialStatus: 'DISPOSED_WITH_DIRECTIONS',
-    disposalDate: '2001-05-14',
-    statutorySeparationNotice: 'High Court issued the earliest landmark judicial injunction prohibiting hotels along the Boulevard from discharging raw kitchen and toilet effluent directly into Dal Lake.',
-    coreIssues: [
-      'Direct discharge of raw untreated sewage from over 90 Boulevard hotels directly into Dal Lake',
-      'Failure of government agencies to commission peripheral sewage interceptor schemes planned since 1986',
-      'Severe eutrophication, foul odors, and massive algal blooms along the Boulevard tourist promenade'
-    ],
-    keyDirectives: [
-      'Mandatory disconnection of hotel water supplies for commercial establishments failing to install primary septic tanks',
-      'Urban Environmental Engineering Dept (UEED) ordered to accelerate civil works on Boulevard Sewage Trunk Line',
-      'JKPCC directed to conduct weekly biological oxygen demand (BOD) sampling at Dalgate weir'
-    ],
-    chronology: [
-      {
-        date: '1999-06-12',
-        eventType: 'FILING',
-        title: 'Writ Petition Registered in Srinagar Wing',
-        bench: 'Justice B.A. Khan',
-        summary: 'Citizens presented evidence of raw sewage flowing across pedestrian footpaths into Dal Lake.'
-      },
-      {
-        date: '2000-08-22',
-        eventType: 'INTERIM_ORDER',
-        title: 'Closure Threat to 42 Non-Compliant Hotels',
-        bench: 'Division Bench High Court',
-        summary: 'Court directed municipal authorities to seal commercial operations of hotels lacking certified holding tanks.'
-      },
-      {
-        date: '2001-05-14',
-        eventType: 'JUDGMENT',
-        title: 'Directives on Boulevard Interceptor Trunk Sewer',
-        bench: 'Justice T.S. Doabia Bench',
-        summary: 'High Court ordered completion of Boulevard interceptor trunk line and paved the way for master PIL 159/2002.'
-      }
-    ],
-    complianceDirectives: [
-      {
-        directionId: 'DIR-GMS-01',
-        issuedDate: '2000-08-22',
-        responsibleAgency: 'Urban Environmental Engineering Dept (UEED) & Srinagar Municipality',
-        agencyType: 'MUNICIPAL',
-        directionText: 'Intercept all private sewer connections along Boulevard road and divert into Brari Nambal / Habak trunk sewer.',
-        statutoryDeadline: '2002-06-30',
-        status: 'COMPLIED',
-        lastReportDate: '2002-10-18',
-        verifiedEvidence: 'Boulevard trunk sewer Phase 1 commissioned; 84 commercial hotels hooked into municipal interceptor.',
-        fieldAuditNotes: 'Predecessor case directly leading into the landmark 2002 Dal Lake PIL.'
-      }
-    ],
-    sourceDocumentRef: 'OWP No. 412/1999 Judgment Sheet; High Court of J&K Archives',
-    sourceUrl: 'https://jkhighcourt.nic.in',
-    lastVerifiedDate: '2026-03-08',
-    crossModuleLink: '/water-systems/lakes'
-  },
-  {
-    id: 'kew-case-020',
-    caseNumber: 'PIL No. 88/2003',
-    cnrNumber: 'JKHC010000882003',
-    caseTitle: 'Kashmir Environmental Protection Forum v. Dept of Forest & Ors. (Pir Panjal Deodar Preservation)',
-    filingYear: 2003,
-    proceedingType: 'PIL',
-    jurisdiction: 'High Court of Jammu & Kashmir and Ladakh (Srinagar Wing)',
-    region: 'Kashmir Valley',
-    districts: ['Budgam', 'Shopian', 'Pulwama'],
-    sector: 'Forest & Wildlife Conservation',
-    environmentalAsset: 'Pir Panjal Range Temperate Coniferous Forests (Doodhpathri & Yusmarg Corridors)',
-    lat: 33.8500,
-    lng: 74.6500,
-    petitioners: 'Kashmir Environmental Protection Forum (Environmental activists and retired foresters)',
-    respondents: 'State of J&K through Principal Chief Conservator of Forests (PCCF), Forest Protection Force, District Magistrate Budgam',
-    presidingBench: 'Honble Chief Justice B.C. Patel, Justice Muzaffar Jan',
-    currentJudicialStatus: 'DISPOSED_WITH_DIRECTIONS',
-    disposalDate: '2006-07-28',
-    statutorySeparationNotice: 'High Court cracked down on organized nocturnal timber smuggling networks exploiting remote mountain passes of the Pir Panjal range.',
-    coreIssues: [
-      'Extensive clear-felling of ancient Deodar and Kail trees in Sukhnag and Doodhganga forest ranges',
-      'Use of horses and uncalibrated river logging flumes to smuggle high-value timber into urban timber markets',
-      'Lack of modern communication gear and vehicles for Forest Protection Force personnel'
-    ],
-    keyDirectives: [
-      'Establishment of round-the-clock fortified forest check-posts at Raiyar, Khag, and Keller',
-      'Mandatory registration and GPS mapping of all licensed timber depots and furniture manufacturing units in Budgam and Shopian',
-      'State Government directed to procure modern wireless VHF equipment and four-wheel-drive vehicles for Forest Protection Force'
-    ],
-    chronology: [
-      {
-        date: '2003-09-14',
-        eventType: 'FILING',
-        title: 'PIL Filed in Srinagar High Court',
-        bench: 'Division Bench',
-        summary: 'Petitioners submitted photographic evidence of dozens of freshly cut century-old Deodar stumps in Doodhpathri forests.'
-      },
-      {
-        date: '2004-11-10',
-        eventType: 'INTERIM_ORDER',
-        title: 'High Court Directs Armed Forest Protection Squads',
-        bench: 'Chief Justice B.C. Patel',
-        summary: 'Court directed deployment of armed FPF squads on vulnerable forest entry passes.'
-      },
-      {
-        date: '2006-07-28',
-        eventType: 'JUDGMENT',
-        title: 'Final Judgment on Pir Panjal Forest Corridor Security',
-        bench: 'Division Bench',
-        summary: 'Directed PCCF to maintain annual satellite canopy audit and establish joint community forest protection committees.'
-      }
-    ],
-    complianceDirectives: [
-      {
-        directionId: 'DIR-PIR-01',
-        issuedDate: '2004-11-10',
-        responsibleAgency: 'J&K Forest Department & Police',
-        agencyType: 'FOREST',
-        directionText: 'Erect permanent fortified check-gates at all 6 arterial forest egress routes in Budgam and Shopian.',
-        statutoryDeadline: '2005-08-31',
-        status: 'COMPLIED',
-        lastReportDate: '2006-05-20',
-        verifiedEvidence: '6 permanent check-posts established with wireless VHF telemetry; 1,420 illicit timber logs seized in first 18 months.',
-        fieldAuditNotes: 'Timber poaching in Pir Panjal valley compartments declined by over 75%.'
-      }
-    ],
-    sourceDocumentRef: 'PIL No. 88/2003 Judgment Sheet; High Court of J&K',
-    sourceUrl: 'https://jkhighcourt.nic.in',
-    lastVerifiedDate: '2026-03-05',
-    crossModuleLink: '/protected-network/corridors-and-connectivity'
-  },
-  {
-    id: 'kew-case-021',
-    caseNumber: 'Writ Petition No. 119/2004',
-    cnrNumber: 'AJKHC010001192004',
-    caseTitle: 'Neelum Valley Forest Action Coalition v. Govt of AJ&K & Forest Dept (Sharda & Kel Alpine Deodar Preservation)',
-    filingYear: 2004,
-    proceedingType: 'WRIT_PETITION',
-    jurisdiction: 'Azad Jammu & Kashmir High Court (Muzaffarabad)',
-    region: 'AJ&K',
-    districts: ['Neelum'],
-    sector: 'Forest & Wildlife Conservation',
-    environmentalAsset: 'Upper Neelum Valley Moist Temperate Forests (Sharda, Kel & Taobat)',
-    lat: 34.7950,
-    lng: 74.1850,
-    petitioners: 'Neelum Valley Forest Action Coalition (Indigenous community leaders and environmental advocates)',
-    respondents: 'Govt of Azad Jammu & Kashmir through Chief Secretary, Secretary Forests AJK, Chief Conservator of Forests AJK, AJK Logging & Sawmill Corporation',
-    presidingBench: 'Honble Chief Justice Reaz Akhtar Chaudhry, Justice Abdul Majeed Mallick',
-    currentJudicialStatus: 'DISPOSED_WITH_DIRECTIONS',
-    disposalDate: '2007-06-19',
-    statutorySeparationNotice: 'AJK High Court struck down commercial forest exploitation contracts that threatened critical landslide-prone watersheds in upper Neelum Valley.',
-    coreIssues: [
-      'Commercial logging concessions granted to commercial timber corporations in landslide-vulnerable high-slope mountain zones',
-      'Severe soil erosion, flash floods, and massive silting of the Neelum River damaging downstream irrigation channels',
-      'Loss of indigenous community grazing and medicinal plant collection rights under commercial felling leases'
-    ],
-    keyDirectives: [
-      'Complete cancellation of commercial green-felling leases in upper Neelum compartments above 2,000 meters elevation',
-      'Strict ban on export of unmanufactured raw round logs outside the territory of Azad Jammu & Kashmir',
-      'Mandatory compensatory afforestation of 2,000 hectares of degraded alpine slopes in Sharda and Kel sub-divisions',
-      'Establishment of Village Forest Committees (VFCs) empowered to manage community fuelwood and prevent illicit felling'
-    ],
-    chronology: [
-      {
-        date: '2004-05-18',
-        eventType: 'FILING',
-        title: 'Writ Petition Filed in Muzaffarabad High Court',
-        bench: 'Division Bench AJK High Court',
-        summary: 'Petitioners demonstrated that clear-felling on steep slopes triggered recurrent catastrophic mudslides in Kel.'
-      },
-      {
-        date: '2005-02-14',
-        eventType: 'INTERIM_ORDER',
-        title: 'Stay on Commercial Timber Extraction',
-        bench: 'Chief Justice Reaz Akhtar Chaudhry',
-        summary: 'Court restrained AJK Logging & Sawmill Corp from moving heavy machinery into Sharda forest compartments.'
-      },
-      {
-        date: '2007-06-19',
-        eventType: 'JUDGMENT',
-        title: 'Final Judgment Banning Commercial Green Felling',
-        bench: 'Full Bench AJK High Court',
-        summary: 'High Court declared that right to life under AJ&K Interim Constitution includes right to a stable mountain ecosystem.'
-      }
-    ],
-    complianceDirectives: [
-      {
-        directionId: 'DIR-NEEL-FOR-01',
-        issuedDate: '2007-06-19',
-        responsibleAgency: 'AJK Forest Department',
-        agencyType: 'FOREST',
-        directionText: 'Enforce complete ban on commercial green timber harvesting in Neelum Valley and establish 28 community nurseries.',
-        statutoryDeadline: '2009-12-31',
-        status: 'COMPLIED',
-        lastReportDate: '2010-04-15',
-        verifiedEvidence: 'Commercial logging ceased; 28 community nurseries produced 1.2 million saplings planted across degraded slopes.',
-        fieldAuditNotes: 'Historic AJK judicial precedent safeguarding upper Indus-Jhelum catchment forests.'
-      }
-    ],
-    sourceDocumentRef: 'PLD 2008 AJK 12; Writ Petition No. 119/2004 Judgment Record',
-    sourceUrl: 'https://pakistancaselaw.com',
-    lastVerifiedDate: '2026-03-12',
-    crossModuleLink: '/protected-network/corridors-and-connectivity'
-  },
-  {
-    id: 'kew-case-022',
-    caseNumber: 'Writ Petition No. 04/2007 (Chief Court Northern Areas)',
-    cnrNumber: 'GBCC010000042007',
-    caseTitle: 'Central Karakoram Alpine Conservation Society v. Northern Areas Administration (Deosai & CKNP Protection)',
-    filingYear: 2007,
-    proceedingType: 'WRIT_PETITION',
-    jurisdiction: 'Gilgit-Baltistan Chief Court',
-    region: 'Gilgit-Baltistan',
-    districts: ['Skardu', 'Astore'],
-    sector: 'Forest & Wildlife Conservation',
-    environmentalAsset: 'Deosai High-Altitude Plateau (4,114m) & Central Karakoram National Park',
-    lat: 35.0333,
-    lng: 75.4500,
-    petitioners: 'Central Karakoram Alpine Conservation Society (Local naturalists and high-altitude guides)',
-    respondents: 'Administration of Northern Areas (now Govt of GB), Wildlife Dept Northern Areas, Tourism Dept, District Collector Skardu',
-    presidingBench: 'Honble Chief Judge Northern Areas',
-    currentJudicialStatus: 'DISPOSED_WITH_DIRECTIONS',
-    disposalDate: '2009-08-11',
-    statutorySeparationNotice: 'Predecessor Chief Court of Northern Areas (now GB Chief Court) intervened to halt destructive vehicular rallies and illegal hunting threatening the critically endangered Himalayan Brown Bear in Deosai National Park.',
-    coreIssues: [
-      'Uncontrolled motorized vehicle off-roading across the fragile permafrost peatlands of Deosai plateau',
-      'Harassment and poaching of the endangered Himalayan Brown Bear (Ursus arctos isabellinus) population',
-      'Uncollected tourist plastic refuse and food waste polluting pristine glacial streams feeding the Shigar and Indus rivers'
-    ],
-    keyDirectives: [
-      'Total ban on motorized vehicle off-roading outside the designated single gravel road across Deosai plateau',
-      'Prohibition of vehicular rallies, drone filming, and overnight camping within designated brown bear core sanctuaries',
-      'Establishment of entry checkpoints at Ali Malik and Sadpara with mandatory registration, waste deposit bonds, and wildlife wardens',
-      'Mandatory ecological carrying capacity limits on tourist entries during the short summer window (July–September)'
-    ],
-    chronology: [
-      {
-        date: '2007-06-25',
-        eventType: 'FILING',
-        title: 'Petition Filed in Chief Court Northern Areas',
-        bench: 'Chief Judge Bench',
-        summary: 'Petitioners presented evidence of four-wheel-drive vehicles churning fragile alpine peat moss and disrupting bear foraging.'
-      },
-      {
-        date: '2007-08-18',
-        eventType: 'INTERIM_ORDER',
-        title: 'Injunction on Off-Road Driving in Deosai',
-        bench: 'Chief Judge Northern Areas',
-        summary: 'Court prohibited all vehicles from leaving the established road alignment under penalty of vehicle impoundment.'
-      },
-      {
-        date: '2009-08-11',
-        eventType: 'JUDGMENT',
-        title: 'Final Protective Decree for Deosai Alpine Ecosystem',
-        bench: 'Division Bench Chief Court',
-        summary: 'Ordered permanent wildlife warden presence and institutionalized the Deosai National Park Management Plan.'
-      }
-    ],
-    complianceDirectives: [
-      {
-        directionId: 'DIR-DEO-01',
-        issuedDate: '2009-08-11',
-        responsibleAgency: 'GB Wildlife & Parks Department',
-        agencyType: 'FOREST',
-        directionText: 'Enforce entry registration and ban off-road tracks on Deosai plateau; deploy seasonal wildlife watchers at Sheosar Lake and Kala Pani.',
-        statutoryDeadline: '2010-06-30',
-        status: 'COMPLIED',
-        lastReportDate: '2011-09-15',
-        verifiedEvidence: 'Checkposts established at Ali Malik Mar and Sadpara; off-road driving virtually eliminated; brown bear census recorded population increase from 28 to over 75 individuals.',
-        fieldAuditNotes: 'Foundational historical judicial decree establishing high-altitude protected plateau management in Gilgit-Baltistan.'
-      }
-    ],
-    sourceDocumentRef: 'Writ Petition No. 04/2007 Record; Chief Court Gilgit-Baltistan Archives',
-    sourceUrl: 'https://chiefcourtgb.gov.pk',
-    lastVerifiedDate: '2026-03-14',
-    crossModuleLink: '/protected-network/national-parks'
-  }
-];
+export const HISTORICAL_CASES_1986_2015: EnvironmentalCase[] = ENVIRONMENTAL_CASES_DATA.filter((c) =>
+  ['kew-case-017', 'kew-case-018', 'kew-case-019', 'kew-case-020', 'kew-case-021', 'kew-case-022'].includes(c.id)
+);
 
 // Append historical cases to the master dataset
 // Master dataset already contains all 26 cases
@@ -4231,12 +3714,12 @@ export const JUDICIAL_ACQUISITION_PIPELINES: JudicialAcquisitionPipeline[] = [
       {
         sourceName: 'eCourtsIndia Partner API',
         sourceType: 'REST_API',
-        endpointOrUrl: 'https://blogs.ecourtsindia.com/2026/04/16/ecourts-india-api-developer-guide/',
+        endpointOrUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/',
         authentication: 'Partner License Key',
         format: 'REST JSON',
         licensing: 'Commercial Partner Agreement',
         refreshFrequency: 'Weekly',
-        coverageScope: 'Indexed District Court & High Court case status, CNR history, and daily cause lists.',
+        coverageScope: 'Official NIC eCourts Services portal (India District & High Courts only; third-party commercial aggregators such as ecourtsindia.com are non-authoritative).',
         operationalNotes: 'Evaluated for docket tracking of pending environmental proceedings at district court level.'
       }
     ]
@@ -4327,7 +3810,7 @@ export const JUDICIAL_ACQUISITION_PIPELINES: JudicialAcquisitionPipeline[] = [
         licensing: 'Educational / Non-Commercial Use',
         refreshFrequency: 'Quarterly',
         coverageScope: 'Himalayan wetland jurisprudence, high-altitude protected areas, and wildlife trade enforcement.',
-        operationalNotes: 'Supplies context on historical Ramsar site litigation (Pangong, Wular, Hokersar).'
+        operationalNotes: 'Supplies context on historical Ramsar site litigation (Tso Moriri, Wular, Hokersar).'
       },
       {
         sourceName: 'Climate Change Litigation India Database',
@@ -4440,453 +3923,177 @@ export const ARCHIVAL_GAPS_LEDGER: ArchivalGapRecord[] = [
 // AUTHENTIC COURT-ORDER EXTENSIONS (PIL 345/2006, PIL 404/2011, WP(C) 2/2024, OA 351/2023)
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const ADDITIONAL_AUTHENTIC_CASES: EnvironmentalCase[] = [
-  {
-    id: 'kew-case-023',
-    caseNumber: 'PIL No. 345/2006 (Wular Lake Conservation)',
-    cnrNumber: 'JKHC010003452006',
-    caseTitle: 'Kashmir Environmental Protection v. State of Jammu & Kashmir & Ors. (Wular Lake Encroachment & CMAP Expenditure)',
-    filingYear: 2006,
-    proceedingType: 'PIL',
-    jurisdiction: 'High Court of Jammu & Kashmir and Ladakh (Srinagar Wing)',
-    region: 'Kashmir Valley',
-    districts: ['Bandipora', 'Baramulla'],
-    sector: 'Water Bodies & Wetlands',
-    environmentalAsset: 'Wular Lake Ramsar Site No. 461 & Peripheral Marshlands',
-    lat: 34.3500,
-    lng: 74.5800,
-    petitioners: 'Kashmir Environmental Protection (Civil Society Public Interest Litigants)',
-    respondents: 'State of J&K through Chief Secretary, Wular Conservation and Management Authority (WUCMA), Forest Dept, Revenue Dept',
-    presidingBench: 'Chief Justice Bench / Division Bench (Order dated 23.09.2021)',
-    currentJudicialStatus: 'MONITORING_COMPLIANCE',
-    verificationTier: 'TIER_1_AUTHENTICATED',
-    sourceDocketStatus: 'VERIFIED_COURT_ORDER',
-    nextHearingDate: 'Periodic Compliance Bench',
-    statutorySeparationNotice: 'High Court order dated 23.09.2021 recorded specific quantitative departmental submissions on Wular Lake encroachment and CMAP funds. KEW explicitly records these figures as government action-taken claims rather than proof of current recovery.',
-    courtRecordedQuantitativeClaims: [
-      {
-        indicator: 'Identified Lake Encroachment',
-        reportedValue: '642 Kanals and 1 Marla (~32.4 Hectares)',
-        reportingAgency: 'Revenue Department & WUCMA Action-Taken Report',
-        orderDate: '2021-09-23',
-        judicialContext: 'Recorded in Division Bench order examining status of illegal agricultural dykes and plantations in Wular basin.',
-        independentVerificationStatus: 'UNVERIFIED_GOVERNMENT_CLAIM',
-        notes: 'Departmental figure submitted to court; satellite temporal audits indicate peripheral seasonal re-encroachment.'
-      },
-      {
-        indicator: 'Reported Encroachment Recovered',
-        reportedValue: '261 Kanals and 10 Marlas (~13.2 Hectares)',
-        reportingAgency: 'WUCMA Eviction Task Force Submission',
-        orderDate: '2021-09-23',
-        judicialContext: 'Claimed by authority as retrieved lake surface following demolition of unauthorized earth bunds.',
-        independentVerificationStatus: 'PARTIALLY_CORROBORATED',
-        notes: 'Physical recovery confirmed in core Naidkhai sector, but remaining 380 kanals 11 marlas remain contested in local revenue courts.'
-      },
-      {
-        indicator: 'Encroachment Remaining Unrecovered',
-        reportedValue: '380 Kanals and 11 Marlas (~19.2 Hectares)',
-        reportingAgency: 'Judicial Record (Order dated 23.09.2021)',
-        orderDate: '2021-09-23',
-        judicialContext: 'Court directed accelerated eviction of remaining encroachments with district police assistance.',
-        independentVerificationStatus: 'UNVERIFIED_GOVERNMENT_CLAIM',
-        notes: 'High Court ordered demarcation boundary pillars along the entire 130 km perimeter.'
-      },
-      {
-        indicator: 'CMAP Conservation Funds Allocation vs Expenditure',
-        reportedValue: '₹124.825 Crore spent out of ₹200.0 Crore allocation',
-        reportingAgency: 'WUCMA Financial Action-Taken Affidavit',
-        orderDate: '2021-09-23',
-        judicialContext: 'Examined under the Comprehensive Management Action Plan (CMAP) for de-silting and willow extraction.',
-        independentVerificationStatus: 'UNVERIFIED_GOVERNMENT_CLAIM',
-        notes: 'Expenditure claim recorded by court; does not constitute independent audit of ecological conservation effectiveness.'
-      }
-    ],
-    orderLinks: [
-      {
-        title: 'High Court Order on Wular Lake Encroachment & Expenditure (23.09.2021)',
-        date: '2021-09-23',
-        url: 'https://indiankanoon.org/doc/wular-pil-345-2006/',
-        orderType: 'INTERIM_ORDER',
-        summary: 'Bench directed WUCMA to file updated geo-tagged survey of remaining 380 kanals and audit willow felling proceeds.'
-      }
-    ],
-    coreIssues: [
-      'Discrepancy between reported encroachment recovery (261 kanals) and remaining unrecovered lakebed (380 kanals)',
-      'Accountability and verification of ₹124.825 Crore spent under the ₹200 Crore Comprehensive Management Action Plan',
-      'Uncontrolled silt ingress from Madhumati and Erin catchment torrents reducing lake flood absorption capacity'
-    ],
-    keyDirectives: [
-      'WUCMA and Deputy Commissioner Bandipora directed to complete physical demarcation of full 130 km² boundary',
-      'Expedite eviction proceedings on remaining 380 kanals 11 marlas of identified encroached lake area',
-      'Submit comprehensive utilization certificate and third-party audit of ₹124.825 Crore CMAP expenditure'
-    ],
-    chronology: [
-      {
-        date: '2006-08-14',
-        eventType: 'FILING',
-        title: 'PIL 345/2006 Registered in Srinagar High Court',
-        bench: 'Division Bench',
-        summary: 'Litigation instituted highlighting catastrophic shrinkage of Wular Lake and failure of municipal sewage interception.'
-      },
-      {
-        date: '2021-09-23',
-        eventType: 'INTERIM_ORDER',
-        title: 'Landmark Order on Encroachment Statistics & CMAP Funds',
-        bench: 'Honble Chief Justice Pankaj Mithal, Justice Sanjay Dhar',
-        summary: 'Court scrutinized government action-taken report detailing 642K 1M encroachment, 261K 10M recovery, and ₹124.825 Cr expenditure.'
-      },
-      {
-        date: '2024-10-18',
-        eventType: 'HEARING',
-        title: 'Review of Peripheral Boundary Ring Dyke',
-        bench: 'Chief Justice Bench',
-        summary: 'WUCMA directed to verify satellite baseline maps and report on willow extraction revenue ledger.'
-      }
-    ],
-    complianceDirectives: [
-      {
-        directionId: 'DIR-WUL-345-01',
-        issuedDate: '2021-09-23',
-        responsibleAgency: 'WUCMA & Revenue Department Bandipora',
-        agencyType: 'REVENUE',
-        directionText: 'Evict remaining 380 kanals 11 marlas of encroached lake land and file geo-tagged drone compliance report.',
-        statutoryDeadline: '2022-06-30',
-        status: 'OVERDUE',
-        obligationType: 'COURT_DIRECTED_MANDATE',
-        evidenceVerificationLevel: 'GOVERNMENT_AFFIDAVIT_ONLY',
-        orderSourceUrl: 'https://indiankanoon.org/doc/wular-pil-345-2006/',
-        verifiedEvidence: 'WUCMA reported ongoing eviction drives in Saderkoot; local civil suits stalled action on ~140 kanals.',
-        fieldAuditNotes: 'Court-recorded claim remains unverified on the ground; satellite change detection indicates persistent agrarian use.'
-      },
-      {
-        directionId: 'DIR-WUL-345-02',
-        issuedDate: '2021-09-23',
-        responsibleAgency: 'WUCMA & Planning Dept J&K',
-        agencyType: 'WATER_RESOURCES',
-        directionText: 'Submit certified financial breakdown and ecological outcome audit of ₹124.825 Crore spent under CMAP.',
-        statutoryDeadline: '2022-03-31',
-        status: 'IN_PROGRESS',
-        obligationType: 'DEPARTMENTAL_UNDERTAKING',
-        evidenceVerificationLevel: 'PENDING_DOCUMENTATION',
-        orderSourceUrl: 'https://indiankanoon.org/doc/wular-pil-345-2006/',
-        verifiedEvidence: 'Interim financial statement submitted; formal Comptroller and Auditor General (CAG) performance audit pending.',
-        fieldAuditNotes: 'Expenditure claimed primarily on mechanical dredging of 3.1 km² Naidkhai sector and peripheral bunding.'
-      }
-    ],
-    sourceDocumentRef: 'High Court J&K Order dated 23.09.2021 in PIL No. 345/2006; Indian Kanoon archive',
-    sourceUrl: 'https://indiankanoon.org/doc/wular-pil-345-2006/',
-    lastVerifiedDate: '2026-04-12',
-    crossModuleLink: '/water-systems/lakes'
-  },
-  {
-    id: 'kew-case-024',
-    caseNumber: 'PIL No. 404/2011 (River Sindh Protection)',
-    cnrNumber: 'JKHC010004042011',
-    caseTitle: 'Court on its Own Motion v. State of Jammu & Kashmir & Ors. (River Sindh Encroachment & Riverbed Mining)',
-    filingYear: 2011,
-    proceedingType: 'SUO_MOTU',
-    jurisdiction: 'High Court of Jammu & Kashmir and Ladakh (Srinagar Wing)',
-    region: 'Kashmir Valley',
-    districts: ['Ganderbal'],
-    sector: 'Riverbed Mining & Karewa Quarrying',
-    environmentalAsset: 'River Sindh (Major Tributary of Jhelum River & Ganderbal Water Supply)',
-    lat: 34.2200,
-    lng: 74.7800,
-    petitioners: 'High Court Suo Motu Cognizance',
-    respondents: 'State of J&K through Chief Secretary, Irrigation & Flood Control Dept, Fisheries Dept, Geology & Mining Dept, District Magistrate Ganderbal',
-    presidingBench: 'Chief Justice Bench / Division Bench (Orders 2018, 2021, 2022, 2025)',
-    currentJudicialStatus: 'MONITORING_COMPLIANCE',
-    verificationTier: 'TIER_1_AUTHENTICATED',
-    sourceDocketStatus: 'VERIFIED_COURT_ORDER',
-    nextHearingDate: 'Periodic Monitoring Bench',
-    statutorySeparationNotice: 'High Court order dated 2022 placed on record a departmental survey identifying 258 kanals and 12.75 marlas of River Sindh catchment land under illegal private encroachment.',
-    courtRecordedQuantitativeClaims: [
-      {
-        indicator: 'Documented River Sindh Encroachment',
-        reportedValue: '258 Kanals and 12.75 Marlas (~13.1 Hectares)',
-        reportingAgency: 'Revenue Department & I&FC Ganderbal Survey',
-        orderDate: '2022-06-15',
-        judicialContext: 'Recorded in Division Bench order auditing commercial roadside structures, dhabas, and orchards on riverbed.',
-        independentVerificationStatus: 'UNVERIFIED_GOVERNMENT_CLAIM',
-        notes: 'Departmental survey recorded in court; reflects river floodplain area occupied by commercial and agrarian structures.'
-      }
-    ],
-    orderLinks: [
-      {
-        title: 'High Court Order on River Sindh Encroachment & Mining (2022)',
-        date: '2022-06-15',
-        url: 'https://indiankanoon.org/doc/river-sindh-pil-404-2011/',
-        orderType: 'INTERIM_ORDER',
-        summary: 'Court directed Deputy Commissioner Ganderbal to demolish concrete structures within 100 feet of River Sindh water edge.'
-      }
-    ],
-    coreIssues: [
-      'Illegal encroachment of 258 kanals and 12.75 marlas of river land along Ganderbal-Kangan-Wayil highway axis',
-      'Uncontrolled mechanized excavation of riverbed boulders and sand destroying world-famous Brown Trout spawning pools',
-      'Direct disposal of municipal solid waste and hotel sewage into River Sindh upstream of Rangil Water Treatment Plant'
-    ],
-    keyDirectives: [
-      'Complete prohibition of mechanized heavy earthmovers (JCBs) in River Sindh watercourse; extraction limited to certified manual labor',
-      'Immediate demolition of all commercial dhabas, tin sheds, and concrete platforms erected within 100 feet of riverbank',
-      'Demarcation of strict silence and conservation zones along Wayil and Preng trout hatchery streams'
-    ],
-    chronology: [
-      {
-        date: '2011-05-18',
-        eventType: 'FILING',
-        title: 'Suo Motu PIL 404/2011 Registered',
-        bench: 'Chief Justice Bench',
-        summary: 'High Court acted on news reports of widespread desecration and commercial encroachment of River Sindh.'
-      },
-      {
-        date: '2018-08-30',
-        eventType: 'INTERIM_ORDER',
-        title: 'Ban on Mechanized Riverbed Mining',
-        bench: 'Division Bench',
-        summary: 'Restrained Geology and Mining Dept from granting uncalibrated mechanized mining leases in trout waters.'
-      },
-      {
-        date: '2022-06-15',
-        eventType: 'INTERIM_ORDER',
-        title: 'Encroachment Survey of 258 Kanals Recorded',
-        bench: 'Honble Division Bench',
-        summary: 'Court recorded departmental survey finding 258 kanals 12.75 marlas encroached; ordered immediate removal.'
-      },
-      {
-        date: '2025-05-20',
-        eventType: 'COMPLIANCE_FILING',
-        title: 'District Magistrate Ganderbal Demolition Report',
-        bench: 'Chief Justice Bench',
-        summary: 'District administration reported removal of 48 unauthorized temporary structures and fencing of river buffers.'
-      }
-    ],
-    complianceDirectives: [
-      {
-        directionId: 'DIR-SINDH-01',
-        issuedDate: '2022-06-15',
-        responsibleAgency: 'District Magistrate Ganderbal & I&FC Dept',
-        agencyType: 'MUNICIPAL',
-        directionText: 'Demolish all unauthorized commercial structures and dhabas occupying 258 kanals 12.75 marlas of River Sindh land.',
-        statutoryDeadline: '2023-04-30',
-        status: 'IN_PROGRESS',
-        obligationType: 'COURT_DIRECTED_MANDATE',
-        evidenceVerificationLevel: 'JOINT_INSPECTION_CONFIRMED',
-        orderSourceUrl: 'https://indiankanoon.org/doc/river-sindh-pil-404-2011/',
-        verifiedEvidence: '48 temporary roadside commercial structures removed; residential and orchard encroachments pending revenue demarcations.',
-        fieldAuditNotes: 'Trout sanctuary signage erected at Wayil; local police established night patrol squads.'
-      },
-      {
-        directionId: 'DIR-SINDH-02',
-        issuedDate: '2018-08-30',
-        responsibleAgency: 'Geology & Mining Dept & Fisheries Dept',
-        agencyType: 'INFRASTRUCTURE',
-        directionText: 'Enforce complete ban on heavy JCB machinery in riverbed and protect Brown Trout spawning reaches.',
-        statutoryDeadline: 'Continuous Injunction',
-        status: 'COMPLIED',
-        obligationType: 'COURT_DIRECTED_MANDATE',
-        evidenceVerificationLevel: 'JOINT_INSPECTION_CONFIRMED',
-        orderSourceUrl: 'https://indiankanoon.org/doc/river-sindh-pil-404-2011/',
-        verifiedEvidence: '14 mechanized extraction blocks cancelled; 8 heavy excavators impounded by Ganderbal police.',
-        fieldAuditNotes: 'River turbidity upstream of Rangil intake normalized; trout hatcheries reported healthy fry survival.'
-      }
-    ],
-    sourceDocumentRef: 'High Court J&K Order Sheet PIL No. 404/2011; Indian Kanoon repository',
-    sourceUrl: 'https://indiankanoon.org/doc/river-sindh-pil-404-2011/',
-    lastVerifiedDate: '2026-04-10',
-    crossModuleLink: '/water-systems/rivers'
-  },
-  {
-    id: 'kew-case-025',
-    caseNumber: 'WP(C) PIL No. 2/2024 (Ladakh Ecological Integrity)',
-    cnrNumber: 'JKHC010000022024',
-    caseTitle: 'Abdul Wahid & Anr. v. Union Territory of Ladakh & Ors. (Changthang & High-Altitude Sanctuary Buffers)',
-    filingYear: 2024,
-    proceedingType: 'PIL',
-    jurisdiction: 'High Court of Jammu & Kashmir and Ladakh (Srinagar Wing)',
-    region: 'Ladakh',
-    districts: ['Leh', 'Kargil'],
-    sector: 'Forest & Wildlife Conservation',
-    environmentalAsset: 'Ladakh Trans-Himalayan Eco-Sensitive Zones & High-Altitude Wetlands',
-    lat: 34.1526,
-    lng: 77.5771,
-    petitioners: 'Abdul Wahid & Ladakh Environmental Action Collective',
-    respondents: 'Union Territory of Ladakh through Chief Secretary, Wildlife Protection Dept Ladakh, Tourism Dept Ladakh, Ministry of Environment (MoEFCC)',
-    presidingBench: 'Honble Chief Justice Bench (Order dated 28.01.2026)',
-    currentJudicialStatus: 'ACTIVE_PENDING',
-    verificationTier: 'TIER_1_AUTHENTICATED',
-    sourceDocketStatus: 'VERIFIED_COURT_ORDER',
-    nextHearingDate: '2026-05-14',
-    statutorySeparationNotice: 'High Court order dated 28.01.2026 directed UT Administration of Ladakh to place on record comprehensive geo-spatial boundaries of proposed Eco-Sensitive Zones around Hemis and Changthang wildlife sanctuaries.',
-    courtRecordedQuantitativeClaims: [
-      {
-        indicator: 'Proposed Eco-Sensitive Zone Buffer',
-        reportedValue: '1 km to 10 km variable radial buffer around Protected Areas',
-        reportingAgency: 'UT Ladakh Wildlife Department Affidavit',
-        orderDate: '2026-01-28',
-        judicialContext: 'Submitted in response to petition alleging tourist infrastructure encroachment into Snow Leopard breeding corridors.',
-        independentVerificationStatus: 'UNVERIFIED_GOVERNMENT_CLAIM',
-        notes: 'Court demanded final notification timeline from MoEFCC.'
-      }
-    ],
-    orderLinks: [
-      {
-        title: 'High Court Order on Ladakh Eco-Sensitive Boundaries (28.01.2026)',
-        date: '2026-01-28',
-        url: 'https://jkhighcourt.nic.in/order/wpc-pil-2-2024/',
-        orderType: 'INTERIM_ORDER',
-        summary: 'Division Bench ordered UT Ladakh and MoEFCC to file joint status affidavit on wildlife corridor protection by May 2026.'
-      }
-    ],
-    coreIssues: [
-      'Delay in final gazette notification of statutory Eco-Sensitive Zones around Hemis National Park and Changthang Cold Desert Sanctuary',
-      'Massive proliferation of commercial safari camps and unmanaged off-roading across delicate alpine permafrost soils',
-      'Solid waste accumulation and greywater disposal along high-altitude tourist circuits (Nubra, Pangong, Tso Moriri)'
-    ],
-    keyDirectives: [
-      'UT Administration directed to finalize and submit geo-referenced boundary maps for all declared wildlife sanctuaries in Ladakh',
-      'Enforce carrying capacity ceiling on commercial tourist vehicle permits issued for Changthang plateau',
-      'District Magistrates of Leh and Kargil ordered to submit verified action-taken reports on single-use plastic enforcement'
-    ],
-    chronology: [
-      {
-        date: '2024-02-10',
-        eventType: 'FILING',
-        title: 'WP(C) PIL 2/2024 Filed in High Court',
-        bench: 'Chief Justice Bench',
-        summary: 'Petitioners challenged unmitigated commercial infrastructure expansion threatening Ladakh fragile cryosphere.'
-      },
-      {
-        date: '2025-06-18',
-        eventType: 'HEARING',
-        title: 'Court Demands Inter-Departmental Status Report',
-        bench: 'Division Bench',
-        summary: 'High Court noted absence of comprehensive tourism carrying capacity assessment.'
-      },
-      {
-        date: '2026-01-28',
-        eventType: 'INTERIM_ORDER',
-        title: 'Order Mandating Geo-Tagged Sanctuary Boundary Submissions',
-        bench: 'Honble Chief Justice Bench',
-        summary: 'Court directed UT Ladakh and MoEFCC to finalize statutory ESZ notifications and listed matter for compliance in May 2026.'
-      }
-    ],
-    complianceDirectives: [
-      {
-        directionId: 'DIR-LAD-2024-01',
-        issuedDate: '2026-01-28',
-        responsibleAgency: 'Wildlife Protection Dept Ladakh & MoEFCC',
-        agencyType: 'FOREST',
-        directionText: 'Submit finalized geo-referenced boundary maps and gazette notification schedule for Ladakh Eco-Sensitive Zones.',
-        statutoryDeadline: '2026-05-14',
-        status: 'IN_PROGRESS',
-        obligationType: 'COURT_DIRECTED_MANDATE',
-        evidenceVerificationLevel: 'PENDING_DOCUMENTATION',
-        orderSourceUrl: 'https://jkhighcourt.nic.in/order/wpc-pil-2-2024/',
-        verifiedEvidence: 'Draft ESZ proposals submitted to MoEFCC Expert Committee; awaiting final central gazette publication.',
-        fieldAuditNotes: 'High-altitude field surveys completed for Hemis western boundary; eastern Changthang boundary reconciliation underway.'
-      }
-    ],
-    sourceDocumentRef: 'High Court of J&K and Ladakh Order dated 28.01.2026 in WP(C) PIL No. 2/2024',
-    sourceUrl: 'https://jkhighcourt.nic.in',
-    lastVerifiedDate: '2026-04-14',
-    crossModuleLink: '/protected-network/national-parks'
-  },
-  {
-    id: 'kew-case-026',
-    caseNumber: 'Original Application No. 351/2023 (PB)',
-    cnrNumber: 'NGT010003512023',
-    caseTitle: 'Dr. Raja Muzaffar Bhat v. Union Territory of J&K & Ors. (Doodhganga Environmental Assessment & Inspection)',
-    filingYear: 2023,
-    proceedingType: 'TRIBUNAL_APPLICATION',
-    jurisdiction: 'National Green Tribunal (Principal Bench, New Delhi)',
-    region: 'Kashmir Valley',
-    districts: ['Budgam', 'Srinagar'],
-    sector: 'Water Bodies & Wetlands',
-    environmentalAsset: 'Doodhganga Stream, Mamath Kul & Peripheral STPs',
-    lat: 34.0150,
-    lng: 74.7650,
-    petitioners: 'Dr. Raja Muzaffar Bhat',
-    respondents: 'UT of J&K through Chief Secretary, Srinagar Municipal Corporation (SMC), Municipal Committee Chadoora, JKPCC',
-    presidingBench: 'Honble Chairperson Justice Prakash Shrivastava, Dr. A. Senthil Vel',
-    currentJudicialStatus: 'ACTIVE_PENDING',
-    verificationTier: 'TIER_1_AUTHENTICATED',
-    sourceDocketStatus: 'VERIFIED_COURT_ORDER',
-    nextHearingDate: '2026-06-20',
-    statutorySeparationNotice: 'NGT execution bench instituted dedicated follow-up proceedings to verify on-the-ground utilization of ₹35 Crore compensation deposited pursuant to OA 241/2021 orders.',
-    courtRecordedQuantitativeClaims: [
-      {
-        indicator: 'Doodhganga STP Construction Status',
-        reportedValue: '65% civil works completed at Chadoora; 100% completed at Chanapora',
-        reportingAgency: 'SMC & JKPCC Joint Inspection Report',
-        orderDate: '2025-08-22',
-        judicialContext: 'Submitted to NGT Principal Bench during review of sewage diversion infrastructure.',
-        independentVerificationStatus: 'PARTIALLY_CORROBORATED',
-        notes: 'Chanapora STP physical structure in place; mechanical and electrical commissioning undergoing dry runs.'
-      }
-    ],
-    orderLinks: [
-      {
-        title: 'NGT Principal Bench Order on Doodhganga Compliance & Inspection (2025)',
-        date: '2025-08-22',
-        url: 'https://greentribunal.gov.in/order/oa-351-2023/',
-        orderType: 'INTERIM_ORDER',
-        summary: 'Tribunal directed JKPCC to submit monthly chemical analysis reports on effluent discharge from all interim sewage sumps.'
-      }
-    ],
-    coreIssues: [
-      'Verification of ₹35 Crore environmental compensation escrow fund disbursement for Doodhganga rejuvenation',
-      'Timely commissioning of decentralized Sewage Treatment Plants to stop raw sewage entry into drinking water intakes',
-      'Continuous independent water quality testing for Fecal Coliform, Biological Oxygen Demand (BOD), and heavy metals'
-    ],
-    keyDirectives: [
-      'JKPCC directed to submit monthly water quality monitoring data from 5 designated sampling stations along Doodhganga',
-      'SMC and Urban Local Bodies ordered to complete 100% bio-mining of legacy waste at Chadoora riverfront dumpsite',
-      'Divisional Commissioner Kashmir directed to file quarterly expenditure reports on the ₹35 Crore escrow restoration fund'
-    ],
-    chronology: [
-      {
-        date: '2023-05-12',
-        eventType: 'FILING',
-        title: 'OA 351/2023 Instituted before NGT',
-        bench: 'NGT Principal Bench',
-        summary: 'Applicant demonstrated continued discharge of untreated sewage despite initial ₹35 Crore penalty order.'
-      },
-      {
-        date: '2024-03-14',
-        eventType: 'INTERIM_ORDER',
-        title: 'Joint Inspection Committee Constituted',
-        bench: 'Justice Prakash Shrivastava Bench',
-        summary: 'Ordered CPCB and JKPCC to collect unannounced water samples during peak morning discharge hours.'
-      },
-      {
-        date: '2025-08-22',
-        eventType: 'INTERIM_ORDER',
-        title: 'Strict Deadlines for STP Commissioning',
-        bench: 'Honble Chairperson Bench',
-        summary: 'Tribunal cautioned municipal officers of personal contempt liability if Chadoora STP is not commissioned by 2026.'
-      }
-    ],
-    complianceDirectives: [
-      {
-        directionId: 'DIR-DOODH-351-01',
-        issuedDate: '2025-08-22',
-        responsibleAgency: 'SMC & Urban Local Bodies Kashmir',
-        agencyType: 'MUNICIPAL',
-        directionText: 'Fully commission Chadoora decentralized STP and connect all 17 municipal stormwater outfalls.',
-        statutoryDeadline: '2026-08-31',
-        status: 'IN_PROGRESS',
-        obligationType: 'COURT_DIRECTED_MANDATE',
-        evidenceVerificationLevel: 'JOINT_INSPECTION_CONFIRMED',
-        orderSourceUrl: 'https://greentribunal.gov.in/order/oa-351-2023/',
-        verifiedEvidence: 'Civil structures completed; mechanical aeration rotors installed; pipeline hook-up at 70%.',
-        fieldAuditNotes: 'Water quality sampling shows BOD at 7.8 mg/L, reflecting ongoing partial discharge.'
-      }
-    ],
-    sourceDocumentRef: 'NGT Principal Bench Order Sheet in OA No. 351/2023; National Green Tribunal portal',
-    sourceUrl: 'https://greentribunal.gov.in',
-    lastVerifiedDate: '2026-04-12',
-    crossModuleLink: '/water-systems/rivers'
-  }
-];
+export const ADDITIONAL_AUTHENTIC_CASES: EnvironmentalCase[] = ENVIRONMENTAL_CASES_DATA.filter((c) =>
+  ['kew-case-023', 'kew-case-024', 'kew-case-025', 'kew-case-026'].includes(c.id)
+);
 
 // Append these newly authenticated cases
+
+// QUARANTINED_ARCHIVE_METADATA
+export const QUARANTINED_FABRICATED_CNR_SUMMARY = {
+  datasetId: 'judicial-pil-docket-registry',
+  quarantinedDate: '2026-11-27',
+  quarantinedCnrCount: 26,
+  reason:
+    'Withdrew all 26 algorithmically constructed 16-character CNR strings (including impossible Indian NIC eCourts CNR formats assigned to AJ&K and Gilgit-Baltistan courts, NGT diary numbers padded as CNRs, and pre-eCourts Supreme Court cases) plus non-resolving PDF/slug URLs.',
+  verificationRequirement:
+    'Populate cnrNumber or orderSourceUrl only after retrieving certified High Court of J&K and Ladakh / NGT / Supreme Court registry order sheets.',
+  quarantinedRecords: [
+  {
+    "id": "kew-case-001",
+    "caseNumber": "WP(C) PIL No. 2/2014 (Earlier PIL 159/2002)",
+    "courtName": "",
+    "quarantinedCnr": "JKHC010001422014"
+  },
+  {
+    "id": "kew-case-002",
+    "caseNumber": "Original Application No. 241/2021 (PB)",
+    "courtName": "",
+    "quarantinedCnr": "NGT010002412021"
+  },
+  {
+    "id": "kew-case-003",
+    "caseNumber": "PIL No. 34/2019 (High Court J&K)",
+    "courtName": "",
+    "quarantinedCnr": "JKHC010045892019"
+  },
+  {
+    "id": "kew-case-004",
+    "caseNumber": "Writ Petition (Civil) No. 467/2018",
+    "courtName": "",
+    "quarantinedCnr": "AJKHC010008452018"
+  },
+  {
+    "id": "kew-case-005",
+    "caseNumber": "Constitutional Petition No. 12/2020",
+    "courtName": "",
+    "quarantinedCnr": "GBSC010000122020"
+  },
+  {
+    "id": "kew-case-006",
+    "caseNumber": "Original Application No. 112/2022 (PB)",
+    "courtName": "",
+    "quarantinedCnr": "NGT010001122022"
+  },
+  {
+    "id": "kew-case-007",
+    "caseNumber": "PIL No. 14/2012 (High Court J&K)",
+    "courtName": "",
+    "quarantinedCnr": "JKHC010018902012"
+  },
+  {
+    "id": "kew-case-008",
+    "caseNumber": "Original Application No. 89/2021 (PB)",
+    "courtName": "",
+    "quarantinedCnr": "NGT010000892021"
+  },
+  {
+    "id": "kew-case-009",
+    "caseNumber": "PIL No. 22/2016 (High Court J&K Jammu Wing)",
+    "courtName": "",
+    "quarantinedCnr": "JKHC020008762016"
+  },
+  {
+    "id": "kew-case-010",
+    "caseNumber": "Writ Petition (Civil) No. 78/2021",
+    "courtName": "",
+    "quarantinedCnr": "JKHC010023412021"
+  },
+  {
+    "id": "kew-case-011",
+    "caseNumber": "Writ Petition No. 312/2019",
+    "courtName": "",
+    "quarantinedCnr": "AJKHC020003122019"
+  },
+  {
+    "id": "kew-case-012",
+    "caseNumber": "Civil Review Petition No. 05/2021",
+    "courtName": "",
+    "quarantinedCnr": "GBSC020000052021"
+  },
+  {
+    "id": "kew-case-013",
+    "caseNumber": "Original Application No. 351/2019 (PB)",
+    "courtName": "",
+    "quarantinedCnr": "NGT010003512019"
+  },
+  {
+    "id": "kew-case-014",
+    "caseNumber": "PIL No. 08/2017 (High Court J&K Srinagar Wing)",
+    "courtName": "",
+    "quarantinedCnr": "JKHC010012892017"
+  },
+  {
+    "id": "kew-case-015",
+    "caseNumber": "Original Application No. 174/2020 (PB)",
+    "courtName": "",
+    "quarantinedCnr": "NGT010001742020"
+  },
+  {
+    "id": "kew-case-016",
+    "caseNumber": "PIL No. 05/2018 (High Court J&K Srinagar Wing)",
+    "courtName": "",
+    "quarantinedCnr": "JKHC010006782018"
+  },
+  {
+    "id": "kew-case-017",
+    "caseNumber": "Writ Petition (Civil) No. 202/1995 (With J&K Interim Orders 1996-1998)",
+    "courtName": "",
+    "quarantinedCnr": "SCIN010002021995"
+  },
+  {
+    "id": "kew-case-018",
+    "caseNumber": "Writ Petition (Civil) No. 472/1998",
+    "courtName": "",
+    "quarantinedCnr": "SCIN010004721998"
+  },
+  {
+    "id": "kew-case-019",
+    "caseNumber": "OWP No. 412/1999",
+    "courtName": "",
+    "quarantinedCnr": "JKHC010004121999"
+  },
+  {
+    "id": "kew-case-020",
+    "caseNumber": "PIL No. 88/2003",
+    "courtName": "",
+    "quarantinedCnr": "JKHC010000882003"
+  },
+  {
+    "id": "kew-case-021",
+    "caseNumber": "Writ Petition No. 119/2004",
+    "courtName": "",
+    "quarantinedCnr": "AJKHC010001192004"
+  },
+  {
+    "id": "kew-case-022",
+    "caseNumber": "Writ Petition No. 04/2007 (Chief Court Northern Areas)",
+    "courtName": "",
+    "quarantinedCnr": "GBCC010000042007"
+  },
+  {
+    "id": "kew-case-023",
+    "caseNumber": "PIL No. 345/2006 (Wular Lake Conservation)",
+    "courtName": "",
+    "quarantinedCnr": "JKHC010003452006"
+  },
+  {
+    "id": "kew-case-024",
+    "caseNumber": "PIL No. 404/2011 (River Sindh Protection)",
+    "courtName": "",
+    "quarantinedCnr": "JKHC010004042011"
+  },
+  {
+    "id": "kew-case-025",
+    "caseNumber": "WP(C) PIL No. 2/2024 (Ladakh Ecological Integrity)",
+    "courtName": "",
+    "quarantinedCnr": "JKHC010000022024"
+  },
+  {
+    "id": "kew-case-026",
+    "caseNumber": "Original Application No. 351/2023 (PB)",
+    "courtName": "",
+    "quarantinedCnr": "NGT010003512023"
+  }
+],
+} as const;

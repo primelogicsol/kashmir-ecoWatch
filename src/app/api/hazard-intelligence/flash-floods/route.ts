@@ -12,12 +12,33 @@ interface SachetAlert {
   severity?: string;
 }
 
-const JK_DISTRICT_KEYWORDS = [
-  'jammu', 'kashmir', 'srinagar', 'baramulla', 'anantnag', 'ganderbal', 'budgam',
-  'pulwama', 'kupwara', 'bandipora', 'kulgam', 'shopian', 'doda', 'ramban',
-  'kishtwar', 'poonch', 'rajouri', 'reasi', 'udhampur', 'samba', 'kathua',
-  'ladakh', 'leh', 'kargil', 'muzaffarabad', 'neelum', 'gilgit', 'hunza', 'skardu'
-];
+const JK_LADAKH_SPECIFIC_DISTRICTS = [
+  'srinagar', 'leh', 'kargil', 'anantnag', 'baramulla', 'kupwara', 'ganderbal',
+  'kishtwar', 'doda', 'ramban', 'poonch', 'rajouri', 'udhampur', 'reasi',
+  'kathua', 'samba', 'pulwama', 'shopian', 'kulgam', 'budgam', 'bandipora',
+] as const;
+
+const JK_LADAKH_REGIONAL_NAMES = ['jammu', 'kashmir', 'ladakh'] as const;
+
+const FLASH_FLOOD_HAZARD_KEYWORDS = [
+  'flash flood', 'cloudburst', 'heavy rain', 'extremely heavy', 'inundation', 'flood',
+] as const;
+
+function extractJkLadakhDistrict(text: string): string | null {
+  for (const dist of JK_LADAKH_SPECIFIC_DISTRICTS) {
+    if (new RegExp(`\\b${dist}\\b`, 'i').test(text)) {
+      return dist.charAt(0).toUpperCase() + dist.slice(1);
+    }
+  }
+  for (const reg of JK_LADAKH_REGIONAL_NAMES) {
+    if (new RegExp(`\\b${reg}\\b`, 'i').test(text)) {
+      if (reg === 'ladakh') return 'Ladakh';
+      if (reg === 'kashmir') return 'Kashmir';
+      return 'Jammu';
+    }
+  }
+  return null;
+}
 
 async function fetchSachetAlerts(): Promise<{ alerts: SachetAlert[]; status: 'Connected' | 'Unreachable' }> {
   try {
@@ -26,7 +47,7 @@ async function fetchSachetAlerts(): Promise<{ alerts: SachetAlert[]; status: 'Co
 
     const res = await fetch('https://sachet.ndma.gov.in/cap_public_website/rss/rss_india.xml', {
       headers: {
-        'User-Agent': 'KashmirEcoWatch-HazardIntelligence/2.0 (Forensic Real-time Verification Engine)'
+        'User-Agent': 'KashmirEcoWatch-HazardIntelligence/2.0 (Stateless Screening Engine)'
       },
       signal: controller.signal,
       next: { revalidate: 60 }
@@ -51,16 +72,19 @@ async function fetchSachetAlerts(): Promise<{ alerts: SachetAlert[]; status: 'Co
       const pubDate = pubDateMatch ? pubDateMatch[1].trim() : '';
       const link = linkMatch ? linkMatch[1].trim() : '';
 
-      const lowerTitle = title.toLowerCase();
-      const matchedKeyword = JK_DISTRICT_KEYWORDS.find(k => lowerTitle.includes(k));
+      const matchedDistrict = extractJkLadakhDistrict(title);
+      if (!matchedDistrict) continue;
 
-      if (matchedKeyword) {
+      const lowerTitle = title.toLowerCase();
+      const hasFloodKeyword = FLASH_FLOOD_HAZARD_KEYWORDS.some(k => lowerTitle.includes(k));
+
+      if (hasFloodKeyword) {
         matchingAlerts.push({
           title,
           pubDate,
           link,
-          district: matchedKeyword.toUpperCase(),
-          severity: lowerTitle.includes('flash flood') || lowerTitle.includes('cloudburst') || lowerTitle.includes('heavy rain') ? 'High' : 'Moderate'
+          district: matchedDistrict,
+          severity: lowerTitle.includes('flash flood') || lowerTitle.includes('cloudburst') || lowerTitle.includes('red') ? 'High' : 'Moderate'
         });
       }
     }
@@ -115,18 +139,28 @@ export async function GET() {
 
   const enrichedCatchments = flashFloodData.map((record, index) => {
     // Check if this catchment matches any active official NDMA SACHET alert
-    const matchingAlert = sachetResult.alerts.find(a => 
-      a.district && record.district.toUpperCase().includes(a.district)
+    const matchingAlert = sachetResult.alerts.find(a =>
+      a.district && record.district.toLowerCase().includes(a.district.toLowerCase())
     );
+
+    const hasTelemetry = Boolean(forecastData && forecastData[index] && forecastData[index].hourly);
+    const susceptibility = String(
+      (record as unknown as { susceptibility_class?: string }).susceptibility_class || record.risk_level || 'Moderate'
+    );
+    const isHighSusceptibility =
+      susceptibility === 'Very High' || susceptibility === 'Critical' || susceptibility === 'High';
+    const isLowSusceptibility = susceptibility === 'Low';
 
     let forecastRainfall24h = 0;
     let peakHourlyIntensity = 0;
     let latestHourlyRainfall = 0;
     let calculatedRisk: 'Low' | 'Moderate' | 'High' | 'Critical' = 'Low';
     let trend: 'Rising' | 'Stable' | 'Falling' = 'Stable';
-    let dominantFactor = 'Low Convective Activity';
+    let dominantFactor = hasTelemetry
+      ? 'Low Convective Activity'
+      : 'Telemetry Unavailable — Static Catchment Susceptibility Only';
 
-    if (forecastData && forecastData[index] && forecastData[index].hourly) {
+    if (hasTelemetry && forecastData && forecastData[index]?.hourly) {
       const hourly = forecastData[index].hourly;
       let currentIndex = hourly.time.findIndex((t: string) => t.startsWith(currentHourPrefix));
       if (currentIndex === -1) currentIndex = 0;
@@ -136,30 +170,30 @@ export async function GET() {
       forecastRainfall24h = parseFloat(next24.reduce((sum: number, val: number) => sum + (val || 0), 0).toFixed(1));
       peakHourlyIntensity = parseFloat(Math.max(...next24.map((v: number) => v || 0)).toFixed(1));
 
-      // Scientific runoff vulnerability calculation (distinguishing model prediction from official alert)
-      if (peakHourlyIntensity >= 25) {
+      const critHourlyThreshold = isHighSusceptibility ? 20 : isLowSusceptibility ? 30 : 25;
+      const high24hThreshold = isHighSusceptibility ? 25 : isLowSusceptibility ? 40 : 30;
+      const highHourlyThreshold = isHighSusceptibility ? 8 : isLowSusceptibility ? 14 : 10;
+      const mod24hThreshold = isHighSusceptibility ? 8 : isLowSusceptibility ? 15 : 10;
+
+      if (peakHourlyIntensity >= critHourlyThreshold) {
         calculatedRisk = 'Critical';
-        dominantFactor = 'Extreme Convective Surge Forecast';
+        dominantFactor = `NWP Screening: High Hourly Rain Intensity (${susceptibility} Susceptibility Nallah)`;
         trend = 'Rising';
-      } else if (forecastRainfall24h >= 30 || peakHourlyIntensity >= 10) {
+      } else if (forecastRainfall24h >= high24hThreshold || peakHourlyIntensity >= highHourlyThreshold) {
         calculatedRisk = 'High';
-        dominantFactor = 'Intense Precipitation Outlook';
+        dominantFactor = `NWP Screening: Elevated 24h Rainfall Outlook (${susceptibility} Susceptibility)`;
         trend = 'Rising';
-      } else if (forecastRainfall24h >= 10 || peakHourlyIntensity >= 4) {
+      } else if (forecastRainfall24h >= mod24hThreshold || peakHourlyIntensity >= 4) {
         calculatedRisk = 'Moderate';
-        dominantFactor = 'Moderate Runoff Accumulation';
+        dominantFactor = 'NWP Screening: Moderate Catchment Rainfall Outlook';
         trend = 'Stable';
       } else {
         calculatedRisk = 'Low';
-        dominantFactor = 'Minimal Precipitation Forecast';
+        dominantFactor = 'NWP Screening: Minimal Precipitation Forecast';
         trend = latestHourlyRainfall > 0 ? 'Rising' : 'Falling';
       }
     }
 
-    // Truthful monitoring status:
-    // If official alert is active -> Official Alert
-    // If calculated risk is High/Critical -> Elevated Runoff Risk
-    // Else -> Normal / Monitored
     let statusLabel: 'Active Alert' | 'Watch' | 'Seasonal Risk' | 'Normal' = 'Normal';
     if (matchingAlert) {
       statusLabel = 'Active Alert';
@@ -169,12 +203,10 @@ export async function GET() {
       statusLabel = record.current_status === 'Seasonal Risk' ? 'Seasonal Risk' : 'Normal';
     }
 
-    // Truthful verification status
-    // No zone has dedicated real-time telemetry rain gauges attached in this pipeline yet,
-    // though major corridors are downstream of Jhelum telemetry.
-    const verificationLabel = record.nallah_stream.includes('Jhelum') || record.nallah_stream.includes('Chenab')
-      ? 'Basin Telemetry Corroborated'
-      : 'NWP Model-Monitored Catchment';
+    // Zero direct IMD AWS or Doppler radar gauges are connected; disclose coarse NWP screening honestly
+    const verificationLabel = hasTelemetry
+      ? 'Open-Meteo Gridded NWP Screening Heuristic'
+      : 'Telemetry Unavailable — Static Baseline';
 
     return {
       ...record,
@@ -186,7 +218,8 @@ export async function GET() {
       dominant_trigger: dominantFactor,
       current_status: statusLabel,
       verification_status: verificationLabel,
-      last_updated: timestamp,
+      last_updated: hasTelemetry ? timestamp : 'Telemetry Unavailable',
+      telemetryStatus: hasTelemetry ? 'MODEL_SCREENING' : 'UNAVAILABLE',
 
       // Truthful 100% forensic provenance metadata
       provenance: {
@@ -200,8 +233,8 @@ export async function GET() {
           is_active: false,
           authority: 'NDMA SACHET (No Active Alerts For Catchment)'
         },
-        forecast_source: 'Open-Meteo NWP High-Resolution Atmospheric Model',
-        telemetry_classification: 'Atmospheric Forecast (Not In-Situ Rain Gauge)',
+        forecast_source: 'Open-Meteo Gridded NWP Screening Heuristic',
+        telemetry_classification: 'Coarse Gridded Atmospheric Forecast (~9–11 km — Zero In-Situ Rain Gauge or Radar)',
         is_official_government_alert: !!matchingAlert
       }
     };
@@ -210,11 +243,12 @@ export async function GET() {
   return NextResponse.json({
     success: true,
     timestamp,
+    telemetryStatus: forecastData ? 'MODEL_SCREENING' : 'UNAVAILABLE',
     monitored_zones: enrichedCatchments.length,
     official_alerts_count: sachetResult.alerts.length,
     official_alerts: sachetResult.alerts,
     sachet_feed_status: sachetResult.status,
-    forecast_source: 'Open-Meteo ECMWF/GFS High-Resolution NWP',
+    forecast_source: 'Open-Meteo Gridded NWP Screening Heuristic',
     data: enrichedCatchments
   });
 }

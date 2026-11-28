@@ -249,7 +249,7 @@ export const PORTFOLIO_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
     heroImageCaption: 'Plio-Pleistocene fluvio-lacustrine Karewa plateau tablelands undergoing vertical scarp excavation in central/south Kashmir.',
 
     subregion: 'Multi-District Kashmir Basin',
-    districts: ['Pulwama', 'Budgam', 'Pampore', 'Anantnag', 'Shopian', 'Baramulla'],
+    districts: ['Pulwama', 'Budgam', 'Anantnag', 'Shopian', 'Baramulla'],
     watershedOrBasin: 'Kashmir Intermontane Basin Tablelands (Hirpur, Nagum & Dilpur Formations)',
     elevationRangeM: '1,600–2,100 m ASL',
     coordinates: [33.945, 74.915],
@@ -556,7 +556,7 @@ export const PORTFOLIO_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
     alternativeSolutions: [],
     recommendations: [],
     references: [
-      { id: 'REF-HOK-01', authorsOrBody: 'Romshoo, S. A., & Rashid, I.', year: 2014, title: 'Assessing the impacts of anthropogenic activities on structurallyarz Hokersar wetland in Kashmir Himalayas', publicationOrSeries: 'Arabian Journal of Geosciences, 7, 143–160', referenceType: 'Peer-Reviewed Journal', provenanceNote: 'Multi-decadal spatial and hydrological baseline for Hokersar shrinkage.' },
+      { id: 'REF-HOK-01', authorsOrBody: 'Romshoo, S. A., & Rashid, I.', year: 2014, title: 'Assessing the impacts of changing land cover and climate on Hokersar wetland in Kashmir Himalayas', publicationOrSeries: 'Arabian Journal of Geosciences, 7(1), 143–160', referenceType: 'Peer-Reviewed Journal', doiOrOfficialRef: '10.1007/s12517-012-0761-9', externalUrl: 'https://doi.org/10.1007/s12517-012-0761-9', provenanceNote: 'Multi-decadal spatial and hydrological baseline for Hokersar shrinkage.' },
     ],
     updatesLog: [{ date: '2026-11-15', version: 'v0.4', entryType: 'Initial Publication', summary: 'Scoping dossier registered.', verifiedBy: 'KEW-EIAI Wetlands Desk' }],
     dataGaps: ['Post-2020 high-resolution bathymetric survey of Hokersar core and reedbed zones.'],

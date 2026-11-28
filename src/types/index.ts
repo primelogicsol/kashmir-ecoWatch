@@ -28,7 +28,7 @@ export interface InsightItem {
   id: string;
   title: string;
   location?: string;
-  timestamp: Date;
+  timestamp: Date | string;
   severity?: 'high' | 'medium' | 'low';
   isLive?: boolean;
 }

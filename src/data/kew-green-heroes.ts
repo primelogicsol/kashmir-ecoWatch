@@ -280,11 +280,11 @@ export const API_SOURCE_CONNECTORS: ApiConnectorRecord[] = [
     licensing: 'CC0 Public Domain Dedication',
     permittedReuse: 'Full commercial & non-commercial reuse',
     syncSchedule: 'Bi-Weekly Automated Delta',
-    lastSyncTimestamp: '2026-11-20 04:15:00 UTC',
-    recordsDiscovered: 418,
-    candidatesReviewed: 142,
-    verifiedContributors: 18,
-    operationalStatus: 'ACTIVE',
+    lastSyncTimestamp: 'Standby (Manual Editorial Verification Only)',
+    recordsDiscovered: 0,
+    candidatesReviewed: 0,
+    verifiedContributors: 0,
+    operationalStatus: 'STANDBY',
     priority: 'P0',
     proofOfConceptQuery: 'authors?search=Shakil+Romshoo&filter=works_count:>10'
   },
@@ -299,11 +299,11 @@ export const API_SOURCE_CONNECTORS: ApiConnectorRecord[] = [
     licensing: 'CC0 Public Domain',
     permittedReuse: 'Unrestricted open metadata indexing',
     syncSchedule: 'Monthly Scheduled Sync',
-    lastSyncTimestamp: '2026-11-18 10:30:00 UTC',
-    recordsDiscovered: 285,
-    candidatesReviewed: 98,
-    verifiedContributors: 14,
-    operationalStatus: 'ACTIVE',
+    lastSyncTimestamp: 'Standby (Manual Editorial Verification Only)',
+    recordsDiscovered: 0,
+    candidatesReviewed: 0,
+    verifiedContributors: 0,
+    operationalStatus: 'STANDBY',
     priority: 'P0',
     proofOfConceptQuery: 'orcid-search?q=affiliation-org-name:"University of Kashmir"'
   },
@@ -318,11 +318,11 @@ export const API_SOURCE_CONNECTORS: ApiConnectorRecord[] = [
     licensing: 'Open Access metadata',
     permittedReuse: 'Free academic reuse and attribution',
     syncSchedule: 'Weekly Pipeline Execution',
-    lastSyncTimestamp: '2026-11-21 02:40:00 UTC',
-    recordsDiscovered: 650,
-    candidatesReviewed: 180,
-    verifiedContributors: 22,
-    operationalStatus: 'ACTIVE',
+    lastSyncTimestamp: 'Standby (Manual Editorial Verification Only)',
+    recordsDiscovered: 0,
+    candidatesReviewed: 0,
+    verifiedContributors: 0,
+    operationalStatus: 'STANDBY',
     priority: 'P0',
     proofOfConceptQuery: 'works?query=Kashmir+wetland+ecology&rows=50'
   },
@@ -337,11 +337,11 @@ export const API_SOURCE_CONNECTORS: ApiConnectorRecord[] = [
     licensing: 'CC BY 4.0 / CC0',
     permittedReuse: 'Scientific citation mandated',
     syncSchedule: 'Monthly Species Ledger Batch',
-    lastSyncTimestamp: '2026-11-15 08:00:00 UTC',
-    recordsDiscovered: 281575,
-    candidatesReviewed: 340,
-    verifiedContributors: 26,
-    operationalStatus: 'ACTIVE',
+    lastSyncTimestamp: 'Standby (Manual Editorial Verification Only)',
+    recordsDiscovered: 0,
+    candidatesReviewed: 0,
+    verifiedContributors: 0,
+    operationalStatus: 'STANDBY',
     priority: 'P0',
     proofOfConceptQuery: 'occurrence/search?country=IN&stateProvince=Jammu+and+Kashmir'
   },
@@ -356,11 +356,11 @@ export const API_SOURCE_CONNECTORS: ApiConnectorRecord[] = [
     licensing: 'Creative Commons (User-selected CC BY-NC)',
     permittedReuse: 'Non-commercial ecological research',
     syncSchedule: 'Weekly Citizen Ingestion',
-    lastSyncTimestamp: '2026-11-19 14:20:00 UTC',
-    recordsDiscovered: 739,
-    candidatesReviewed: 65,
-    verifiedContributors: 12,
-    operationalStatus: 'ACTIVE',
+    lastSyncTimestamp: 'Standby (Manual Editorial Verification Only)',
+    recordsDiscovered: 0,
+    candidatesReviewed: 0,
+    verifiedContributors: 0,
+    operationalStatus: 'STANDBY',
     priority: 'P0',
     proofOfConceptQuery: 'observations?place_id=125587&iconic_taxa=Aves,Plantae'
   },
@@ -375,11 +375,11 @@ export const API_SOURCE_CONNECTORS: ApiConnectorRecord[] = [
     licensing: 'CC0 1.0 Universal',
     permittedReuse: 'Unrestricted structured knowledge graph',
     syncSchedule: 'Monthly Entity Harmonization',
-    lastSyncTimestamp: '2026-11-12 18:00:00 UTC',
-    recordsDiscovered: 124,
-    candidatesReviewed: 55,
-    verifiedContributors: 16,
-    operationalStatus: 'ACTIVE',
+    lastSyncTimestamp: 'Standby (Manual Editorial Verification Only)',
+    recordsDiscovered: 0,
+    candidatesReviewed: 0,
+    verifiedContributors: 0,
+    operationalStatus: 'STANDBY',
     priority: 'P0',
     proofOfConceptQuery: 'SELECT ?item ?itemLabel WHERE { ?item wdt:P106 wd:Q15253557 ; wdt:P27 wd:Q668 . }'
   },
@@ -394,11 +394,11 @@ export const API_SOURCE_CONNECTORS: ApiConnectorRecord[] = [
     licensing: 'Open Research Dataset',
     permittedReuse: 'Open news event indexing',
     syncSchedule: 'Daily Headline Surveillance',
-    lastSyncTimestamp: '2026-11-21 22:10:00 UTC',
-    recordsDiscovered: 312,
-    candidatesReviewed: 85,
-    verifiedContributors: 9,
-    operationalStatus: 'ACTIVE',
+    lastSyncTimestamp: 'Standby (Manual Editorial Verification Only)',
+    recordsDiscovered: 0,
+    candidatesReviewed: 0,
+    verifiedContributors: 0,
+    operationalStatus: 'STANDBY',
     priority: 'P0',
     proofOfConceptQuery: 'doc?query=(Kashmir OR Ladakh OR "River Sindh") pollution&mode=artlist'
   },
@@ -413,10 +413,10 @@ export const API_SOURCE_CONNECTORS: ApiConnectorRecord[] = [
     licensing: 'Open Data Commons / CC BY 4.0',
     permittedReuse: 'European & international funded research attribution',
     syncSchedule: 'Quarterly Project Import',
-    lastSyncTimestamp: '2026-10-30 11:00:00 UTC',
-    recordsDiscovered: 88,
-    candidatesReviewed: 34,
-    verifiedContributors: 7,
+    lastSyncTimestamp: 'Standby (Manual Editorial Verification Only)',
+    recordsDiscovered: 0,
+    candidatesReviewed: 0,
+    verifiedContributors: 0,
     operationalStatus: 'STANDBY',
     priority: 'P1',
     proofOfConceptQuery: 'projects?keywords=Himalayan+cryosphere+Kashmir'
@@ -432,10 +432,10 @@ export const API_SOURCE_CONNECTORS: ApiConnectorRecord[] = [
     licensing: 'YouTube Terms of Service / Embed Protocol',
     permittedReuse: 'Embeddable educational video linking',
     syncSchedule: 'Bi-Weekly Content Curation',
-    lastSyncTimestamp: '2026-11-17 16:45:00 UTC',
-    recordsDiscovered: 145,
-    candidatesReviewed: 40,
-    verifiedContributors: 6,
+    lastSyncTimestamp: 'Standby (Manual Editorial Verification Only)',
+    recordsDiscovered: 0,
+    candidatesReviewed: 0,
+    verifiedContributors: 0,
     operationalStatus: 'STANDBY',
     priority: 'P1',
     proofOfConceptQuery: 'search?q=Kashmir+Dal+Lake+conservation+documentary&type=video'
@@ -500,69 +500,12 @@ export const INSTITUTIONAL_REGISTRIES: InstitutionalRegistryRecord[] = [
   }
 ];
 
-export const POTENTIAL_ENVIRONMENTAL_PARTNERS: PotentialEnvironmentalPartner[] = [
-  {
-    id: 'partner-001',
-    name: 'Adv. Altaf Mehraj',
-    profession: 'High Court Advocate / Constitutional Law',
-    region: 'Kashmir Valley',
-    district: 'Srinagar',
-    primaryAffiliation: 'J&K High Court Bar Association',
-    engagementPotential: 'Potential pro-bono legal counsel for community spring restoration petitions and municipal waste PILs.',
-    sourceRegistry: 'J&K Bar Council Roster',
-    demonstratedEcoWorkStatus: 'NO_PRIOR_ECO_WORKS_ON_RECORD',
-    status: 'ALLIES_REGISTRY_ONLY'
-  },
-  {
-    id: 'partner-002',
-    name: 'Tariq Naqash',
-    profession: 'Senior Journalist / Foreign Correspondent',
-    region: 'Azad Jammu & Kashmir',
-    district: 'Muzaffarabad',
-    primaryAffiliation: 'Muzaffarabad Press Club / National Media',
-    engagementPotential: 'Experienced investigative reporter with deep regional reach along the Neelum and Jhelum basins.',
-    sourceRegistry: 'AJK Press Foundation Directory',
-    demonstratedEcoWorkStatus: 'EXPRESSED_PUBLIC_INTEREST',
-    status: 'ALLIES_REGISTRY_ONLY'
-  },
-  {
-    id: 'partner-003',
-    name: 'Stanzin Dorjai Gya',
-    profession: 'International Documentary Filmmaker',
-    region: 'Ladakh',
-    district: 'Leh',
-    primaryAffiliation: 'Himalayan Film Collective',
-    engagementPotential: 'Visual documentation of Changthang pashmina goat nomad climate distress and alpine water scarcity.',
-    sourceRegistry: 'Ladakh Media Guild',
-    demonstratedEcoWorkStatus: 'EXPRESSED_PUBLIC_INTEREST',
-    status: 'ALLIES_REGISTRY_ONLY'
-  },
-  {
-    id: 'partner-004',
-    name: 'Mufti Muhammad Farooq',
-    profession: 'Spiritual Scholar & Madrasa Administrator',
-    region: 'Jammu',
-    district: 'Rajouri',
-    primaryAffiliation: 'Pir Panjal Islamic Educational Trust',
-    engagementPotential: 'Potential leader for community water conservation sermons and anti-plastic campaigns at rural shrines.',
-    sourceRegistry: 'Religious Trust Directory',
-    demonstratedEcoWorkStatus: 'NO_PRIOR_ECO_WORKS_ON_RECORD',
-    status: 'ALLIES_REGISTRY_ONLY'
-  }
-];
+// Unapproved prospective partner / candidate dossiers quarantined pending written consent & verified environmental work
+export const POTENTIAL_ENVIRONMENTAL_PARTNERS: PotentialEnvironmentalPartner[] = [];
 
-export const INGESTION_TELEMETRY = {
-  totalCandidatesDiscovered: 1248,
-  identityVerifiedCount: 412,
-  contributionVerifiedCount: 84,
-  publishedProfilesCount: 24,
-  docketAwaitingReviewCount: 328,
-  activeApiConnectorsCount: 9,
-  lastGlobalSync: '2026-11-21 22:10:00 UTC',
-  dataCompletenessScore: 89.4
-};
+// INGESTION_TELEMETRY is computed dynamically below from verified GREEN_HEROES_MASTER_DATA
 
-export const GREEN_HEROES_MASTER_DATA: GreenHeroProfile[] = [
+const RAW_GREEN_HEROES_RECORDS: GreenHeroProfile[] = [
   {
     id: 'kew-hero-003',
     name: 'Sheikh Noor-ud-Din Wali (Nund Rishi)',
@@ -847,41 +790,6 @@ export const GREEN_HEROES_MASTER_DATA: GreenHeroProfile[] = [
     lng: 74.098
   },
   {
-    id: 'kew-hero-008',
-    name: 'Khadija Bano',
-    honorific: 'Ms.',
-    primaryCategory: 'Water & Wetland Guardians',
-    secondaryCategories: ['Community Green Heroes', 'Traditional Knowledge Keepers'],
-    recognitionTier: 'DOCUMENTED_CANDIDATE',
-    recognitionYear: 2023,
-    isHistorical: false,
-    lifespan: 'Active',
-    region: 'Azad Jammu & Kashmir',
-    district: 'Muzaffarabad',
-    affiliation: 'Neelum Valley Women’s Spring Restoration Conservancy (Informal Collective)',
-    tagline: 'Grassroots women\'s mobilization for mountain spring protection in Upper Neelum',
-    biography: 'Grassroots community organizer who mobilized village women across Muzaffarabad and Neelum districts to construct stone recharge trenches, ban domestic plastic dumping near sacred springs (*Baolis*), and plant native alder trees to stabilize catchment slopes following tectonic landslides.',
-    documentedContributions: [
-      {
-        title: 'Community Recharge & Desiltation of Mountain Springs',
-        year: 2019,
-        type: 'COMMUNITY_INITIATIVE',
-        description: 'Organized traditional dry-stone retaining walls and bio-fencing protecting village headwater aquifers from livestock fouling and siltation.',
-        evidenceTier: 'GOVERNMENT_GAZETTE',
-        impactMetric: 'Mountain Springs Protection & Catchment Stabilization'
-      }
-    ],
-    evidenceSummary: 'Documented in AJ&K Environmental Protection Agency community development reports. Specific quantitative count of 34 springs and formal organization registration currently placed in KEW Research Review queue pending dated project records.',
-    crossModuleLinks: [
-      { label: 'Drinking Water Springs Registry', url: '/water-systems/springs' },
-      { label: 'Regional Profiles: AJ&K', url: '/resources' }
-    ],
-    verificationStatus: 'PENDING_FIELD_VERIFICATION',
-    lastAuditedDate: '2026-09-25',
-    lat: 34.37,
-    lng: 73.47
-  },
-  {
     id: 'kew-hero-009',
     name: 'Muhammad Ali Sadpara (Legacy)',
     honorific: 'Hero of Pakistan',
@@ -1131,41 +1039,6 @@ export const GREEN_HEROES_MASTER_DATA: GreenHeroProfile[] = [
     lng: 74.64
   },
   {
-    id: 'kew-hero-016',
-    name: 'Chhotan Lal',
-    honorific: 'Chaudhary',
-    primaryCategory: 'Community Green Heroes',
-    secondaryCategories: ['Water & Wetland Guardians'],
-    recognitionTier: 'DOCUMENTED_CANDIDATE',
-    recognitionYear: 2021,
-    isHistorical: false,
-    lifespan: 'Active',
-    region: 'Jammu',
-    district: 'Samba',
-    affiliation: 'Samba Kandi Traditional Pond Restoration Samiti',
-    tagline: 'Reviver of traditional rainwater collection ponds across the arid Kandi belt',
-    biography: 'Farmer and community volunteer who revived centuries-old traditional rainwater collection ponds (*Talabs*) in the severely water-stressed Kandi belt of Samba and Kathua, desilting overflow channels and planting sacred pipal and banyan trees to cool local microclimates.',
-    documentedContributions: [
-      {
-        title: 'Kandi Rainwater Pond Desiltation & Embankment Reinforcement',
-        year: 2017,
-        type: 'COMMUNITY_INITIATIVE',
-        description: 'Mobilized youth to manually remove invasive thorny mesquite shrubs and deepen silted village ponds ahead of monsoon rains.',
-        evidenceTier: 'INDEPENDENT_MEDIA',
-        impactMetric: 'Traditional Village Rainwater Ponds Recharged'
-      }
-    ],
-    evidenceSummary: 'Documented through District Administration Samba rural citations. Exact quantitative count of 18 ponds and legal registration status placed in KEW Research Review queue pending primary hydrological verification.',
-    crossModuleLinks: [
-      { label: 'Groundwater & Water Tables', url: '/water-systems/groundwater' },
-      { label: 'Regional Profiles: Jammu', url: '/resources' }
-    ],
-    verificationStatus: 'PENDING_FIELD_VERIFICATION',
-    lastAuditedDate: '2026-06-15',
-    lat: 32.56,
-    lng: 75.12
-  },
-  {
     id: 'kew-hero-017',
     name: 'Arifa Jan',
     honorific: 'Ms.',
@@ -1380,41 +1253,6 @@ export const GREEN_HEROES_MASTER_DATA: GreenHeroProfile[] = [
     }
   },
   {
-    id: 'kew-hero-023',
-    name: 'Bashir Ahmad Wani (Willow Master)',
-    honorific: 'Master',
-    primaryCategory: 'Traditional Knowledge Keepers',
-    secondaryCategories: ['Water & Wetland Guardians', 'Community Green Heroes'],
-    recognitionTier: 'DOCUMENTED_CANDIDATE',
-    recognitionYear: 2022,
-    isHistorical: false,
-    lifespan: 'Active',
-    region: 'Kashmir Valley',
-    district: 'Ganderbal',
-    affiliation: 'Sindh Flood Basin Willow Cutters Community',
-    tagline: 'Master of natural bio-dykes using Kashmiri willow wicker to halt riverbank erosion',
-    biography: 'Traditional willow cultivator and riverfront artisan from Wayil who for 35 years has constructed woven willow vegetative revetments (*Kani-bandhs*) along the torrents of the River Sindh, demonstrating that live willow root lattices prevent riverbank collapse far more sustainably than concrete gabion walls.',
-    documentedContributions: [
-      {
-        title: 'Living Bio-Dyke Construction along River Sindh Floodways',
-        year: 2016,
-        type: 'COMMUNITY_INITIATIVE',
-        description: 'Planted and braided living willow whips along vulnerable agricultural riverbanks, resisting torrential snowmelt surges.',
-        evidenceTier: 'INDEPENDENT_MEDIA',
-        impactMetric: 'Traditional Living Bio-Revetment Constructed'
-      }
-    ],
-    evidenceSummary: 'Featured in Irrigation & Flood Control Department bio-engineering technical feasibility reports. Specific claim of 12 km living bio-revetments and formal association registration placed in KEW Research Review queue pending original field measurements.',
-    crossModuleLinks: [
-      { label: 'Rivers Health Intelligence', url: '/water-systems/rivers' },
-      { label: 'Flood Risk Engineering', url: '/water-systems/flood-risk' }
-    ],
-    verificationStatus: 'PENDING_FIELD_VERIFICATION',
-    lastAuditedDate: '2026-06-20',
-    lat: 34.23,
-    lng: 74.78
-  },
-  {
     id: 'kew-hero-024',
     name: 'Tsewang Norboo',
     honorific: 'Engr.',
@@ -1451,24 +1289,62 @@ export const GREEN_HEROES_MASTER_DATA: GreenHeroProfile[] = [
   }
 ];
 
-export const GREEN_HEROES_STATS: GreenHeroesDirectoryStats = {
-  totalProfiles: 24,
-  kewGreenHeroesCount: 10,
-  verifiedContributorsCount: 10,
-  historicalLegacyCount: 4,
-  regionsCovered: 5,
-  districtsCovered: 14,
-  totalContributionsDocumented: 35,
-  categoriesCount: 20
+export const GREEN_HEROES_MASTER_DATA: GreenHeroProfile[] = RAW_GREEN_HEROES_RECORDS.filter(
+  (p) =>
+    p.recognitionTier !== 'DOCUMENTED_CANDIDATE' &&
+    p.verificationStatus !== 'PENDING_FIELD_VERIFICATION'
+);
+
+export const INGESTION_TELEMETRY = {
+  totalCandidatesDiscovered: GREEN_HEROES_MASTER_DATA.length,
+  identityVerifiedCount: GREEN_HEROES_MASTER_DATA.length,
+  contributionVerifiedCount: GREEN_HEROES_MASTER_DATA.reduce(
+    (sum, p) => sum + (p.documentedContributions?.length || 0),
+    0
+  ),
+  publishedProfilesCount: GREEN_HEROES_MASTER_DATA.length,
+  docketAwaitingReviewCount: 0,
+  activeApiConnectorsCount: 0,
+  lastGlobalSync: 'Manual Editorial Audit · 2026-11-27',
+  dataCompletenessScore: 100,
 };
 
-export const REGIONAL_HEROES_BREAKDOWN: Record<KEWRegion, { total: number; greenHeroes: number; verified: number; historical: number }> = {
-  'Kashmir Valley': { total: 11, greenHeroes: 5, verified: 4, historical: 2 },
-  'Jammu': { total: 4, greenHeroes: 1, verified: 2, historical: 1 },
-  'Ladakh': { total: 4, greenHeroes: 2, verified: 2, historical: 0 },
-  'Azad Jammu & Kashmir': { total: 3, greenHeroes: 1, verified: 2, historical: 0 },
-  'Gilgit-Baltistan': { total: 2, greenHeroes: 1, verified: 0, historical: 1 }
+export const GREEN_HEROES_STATS: GreenHeroesDirectoryStats = {
+  totalProfiles: GREEN_HEROES_MASTER_DATA.length,
+  kewGreenHeroesCount: GREEN_HEROES_MASTER_DATA.filter((p) => p.recognitionTier === 'KEW_GREEN_HERO').length,
+  verifiedContributorsCount: GREEN_HEROES_MASTER_DATA.filter((p) => p.recognitionTier === 'VERIFIED_CONTRIBUTOR').length,
+  historicalLegacyCount: GREEN_HEROES_MASTER_DATA.filter((p) => p.recognitionTier === 'HISTORICAL_LEGACY').length,
+  regionsCovered: new Set(GREEN_HEROES_MASTER_DATA.map((p) => p.region)).size,
+  districtsCovered: new Set(GREEN_HEROES_MASTER_DATA.map((p) => p.district)).size,
+  totalContributionsDocumented: GREEN_HEROES_MASTER_DATA.reduce(
+    (sum, p) => sum + (p.documentedContributions?.length || 0),
+    0
+  ),
+  categoriesCount: GREEN_HERO_CATEGORIES_LIST.length,
 };
+
+function buildRegionalBreakdown(profiles: GreenHeroProfile[]) {
+  const regions: KEWRegion[] = [
+    'Kashmir Valley',
+    'Jammu',
+    'Ladakh',
+    'Azad Jammu & Kashmir',
+    'Gilgit-Baltistan',
+  ];
+  const out = {} as Record<KEWRegion, { total: number; greenHeroes: number; verified: number; historical: number }>;
+  for (const r of regions) {
+    const sub = profiles.filter((p) => p.region === r);
+    out[r] = {
+      total: sub.length,
+      greenHeroes: sub.filter((p) => p.recognitionTier === 'KEW_GREEN_HERO').length,
+      verified: sub.filter((p) => p.recognitionTier === 'VERIFIED_CONTRIBUTOR').length,
+      historical: sub.filter((p) => p.recognitionTier === 'HISTORICAL_LEGACY').length,
+    };
+  }
+  return out;
+}
+
+export const REGIONAL_HEROES_BREAKDOWN = buildRegionalBreakdown(GREEN_HEROES_MASTER_DATA);
 
 // Re-export Forest Protection Martyrs & Fallen Defenders
 export * from './kew-green-martyrs';
@@ -1478,3 +1354,13 @@ export * from './kew-environmental-journalists';
 export * from './kew-environmental-scientists';
 export * from './kew-environmental-advocates';
 export * from './kew-creative-artists';
+
+// QUARANTINED_ARCHIVE_METADATA
+export const QUARANTINED_GREEN_HERO_CANDIDATES_SUMMARY = {
+  datasetId: 'institutional-academic-profiles',
+  quarantinedDate: '2026-11-27',
+  quarantinedCandidateProfiles: ['kew-hero-008', 'kew-hero-016', 'kew-hero-023'],
+  quarantinedPotentialPartnerRecords: ['partner-001', 'partner-002', 'partner-003', 'partner-004'],
+  reason:
+    'Withheld unapproved DOCUMENTED_CANDIDATE / PENDING_FIELD_VERIFICATION dossiers and prospective partner records with no prior verified eco-work consent from active public arrays, and removed synthetic INGESTION_TELEMETRY pipeline counts.',
+} as const;

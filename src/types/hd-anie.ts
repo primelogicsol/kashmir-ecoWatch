@@ -74,6 +74,7 @@ export interface AnieSourceRecord {
   endpointUrl: string;
   accessPermissions: 'public_feed' | 'open_scientific_api' | 'public_index_metadata';
   copyrightAndLicense: string;
+  allowExcerptInSynthesis?: boolean;
   robotsPolicyStatus: 'permitted' | 'unchecked' | 'restricted_blocked';
   reliabilityScore: number; // 0 - 100
   pollFrequencyMinutes: number;
@@ -261,6 +262,7 @@ export interface AnieRevisionEntry {
 export interface AnieSourceReferenceCitation {
   refNumber: number;
   label: string;
+  authors?: string[];
   publisherOrJournal: string;
   publishedDate: string;
   url: string;

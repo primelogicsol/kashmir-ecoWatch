@@ -13,8 +13,10 @@ import {
   ALLOWED_DISPATCH_ROOT_SEGMENTS,
   CANONICAL_DISPATCH_URL,
   DISPATCH_IDENTITY,
+  IS_DISPATCH_SUBDOMAIN_LIVE,
   stripDispatchPrefix,
   toDispatchCanonicalUrl,
+  toInternalDispatchPath,
 } from '@/lib/himalayan-dispatch-routes';
 
 export interface PageMetadataOptions {
@@ -77,6 +79,11 @@ export const NON_INDEXABLE_ROUTE_PREFIXES = [
   '/editorial-cms',
   '/journalist-sign-in',
   '/pitch',
+  '/environmental-investigations/submit',
+  '/ngo-impact/submit',
+  '/sectoral-eia/assessment/new',
+  '/protected-network/reports-and-plans/request',
+  '/protected-network/trails-and-sightings/request',
   '/webinars/admin',
   '/webinars/institution/',
   '/api',
@@ -114,15 +121,23 @@ export function buildPageMetadata(opts: PageMetadataOptions): Metadata {
       : `${cleanDispatchTitle} | ${DISPATCH_IDENTITY.officialName}`;
 
     const dispatchSubpath = stripDispatchPrefix(opts.canonicalPath);
-    const dispatchCanonicalUrl = toDispatchCanonicalUrl(dispatchSubpath);
+    const activeDispatchOrigin = IS_DISPATCH_SUBDOMAIN_LIVE
+      ? CANONICAL_DISPATCH_URL
+      : CANONICAL_SITE_URL;
+    const dispatchCanonicalUrl = IS_DISPATCH_SUBDOMAIN_LIVE
+      ? toDispatchCanonicalUrl(dispatchSubpath)
+      : toAbsoluteCanonicalUrl(toInternalDispatchPath(dispatchSubpath));
     const rawImg = opts.imagePath || DISPATCH_IDENTITY.defaultOgImagePath;
     const dispatchImageUrl = /^https?:\/\//i.test(rawImg)
       ? rawImg
-      : `${CANONICAL_DISPATCH_URL}${rawImg.startsWith('/') ? rawImg : `/${rawImg}`}`;
+      : `${activeDispatchOrigin}${rawImg.startsWith('/') ? rawImg : `/${rawImg}`}`;
+    const rssFeedHref = IS_DISPATCH_SUBDOMAIN_LIVE
+      ? DISPATCH_IDENTITY.rssFeedUrl
+      : `${CANONICAL_SITE_URL}/himalayan-dispatch/feed.xml`;
     const shouldNoIndexDispatch = Boolean(opts.noIndex || isNonPublicRoute(opts.canonicalPath));
 
     return {
-      metadataBase: new URL(CANONICAL_DISPATCH_URL),
+      metadataBase: new URL(activeDispatchOrigin),
       applicationName: DISPATCH_IDENTITY.officialName,
       title: {
         absolute: fullDispatchTitle,
@@ -143,13 +158,13 @@ export function buildPageMetadata(opts: PageMetadataOptions): Metadata {
       authors:
         opts.authors && opts.authors.length > 0
           ? opts.authors.map((name) => ({ name }))
-          : [{ name: DISPATCH_IDENTITY.officialName, url: DISPATCH_IDENTITY.canonicalHomepageUrl }],
+          : [{ name: DISPATCH_IDENTITY.officialName, url: IS_DISPATCH_SUBDOMAIN_LIVE ? DISPATCH_IDENTITY.canonicalHomepageUrl : `${CANONICAL_SITE_URL}/himalayan-dispatch` }],
       creator: DISPATCH_IDENTITY.officialName,
       publisher: DISPATCH_IDENTITY.publisherName,
       alternates: {
         canonical: dispatchCanonicalUrl,
         types: {
-          'application/rss+xml': DISPATCH_IDENTITY.rssFeedUrl,
+          'application/rss+xml': rssFeedHref,
         },
       },
       robots: shouldNoIndexDispatch
@@ -387,6 +402,18 @@ const CURATED_STATIC_ROUTES: Record<
       'Eight-stage scientific verification methodology, sensor calibration standards, satellite remote sensing protocols, uncertainty disclosure, and FAIR open-data principles used by Kashmir EcoWatch.',
     keywords: ['Kashmir EcoWatch methodology', 'environmental telemetry validation', 'remote sensing methodology'],
   },
+  '/governance': {
+    title: 'Institutional Governance, Scientific Charter & Alamdar-e-Kashmir Ethos',
+    description:
+      'Standalone institutional governance portal, scientific charter, editorial independence safeguards, founding ESRO (2004) leadership lineage, and Sheikh Noor-ud-Din Wali ecological ethics of Kashmir EcoWatch.',
+    imagePath: '/images/governance-alamdar-hero.jpg',
+    keywords: [
+      'Kashmir EcoWatch governance',
+      'KEW scientific charter',
+      'Alamdar-e-Kashmir ecological ethos',
+      'Dr. Kumar Foundation USA stewardship',
+    ],
+  },
   '/about/governance': {
     title: 'Ecological Governance, Institutional Charter & Alamdar-e-Kashmir Ethos',
     description:
@@ -445,7 +472,7 @@ const CURATED_STATIC_ROUTES: Record<
   '/open-data': {
     title: 'Open Environmental Data Catalog & Downloadable Scientific Datasets',
     description:
-      'FAIR-compliant open environmental datasets covering 52 categories across Kashmir hydrology, NWIA wetlands, glaciers, Red Data Book species, air quality, and GIS vectors under CC BY 4.0.',
+      'FAIR-compliant open environmental datasets covering 52 categories across Kashmir hydrology, NWIA wetlands, glaciers, Red Data Book species, air quality, and GIS vectors under CC BY-NC 4.0.',
     keywords: ['Kashmir open environmental data', 'Kashmir GIS datasets', 'Himalayan hydrology dataset', 'NWIA Kashmir dataset'],
   },
   '/atlas': {
@@ -493,7 +520,7 @@ const CURATED_STATIC_ROUTES: Record<
   '/water-systems/lakes': {
     title: 'Lakes of Kashmir & Western Himalaya — Dal, Wular, Sheshnag & Alpine Tarns',
     description:
-      'Scientific inventory and limnological profiles of 62 freshwater, urban, floodplain, and high-altitude glacial lakes across Kashmir and Ladakh including Dal, Wular, Sheshnag, Manasbal, and Nigeen.',
+      'Scientific inventory and limnological profiles of 553 cataloged waterbodies across freshwater, urban, floodplain, and high-altitude glacial lakes in Kashmir and the Western Himalaya including Dal, Wular, Sheshnag, Manasbal, and Nigeen.',
     imagePath: '/images/water-module/water-lake.jpg',
   },
   '/water-systems/wetlands': {

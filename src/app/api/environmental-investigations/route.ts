@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { verifyAdminRequest } from '@/lib/seo/admin-session';
 import {
   computeEiaiMetrics,
   DISCIPLINE_CLUSTERS,
@@ -37,6 +38,9 @@ export async function GET(request: NextRequest) {
 
   const metrics = computeEiaiMetrics(allRecords);
   const store = readEiaiStore();
+  const adminCheck = includeProposals
+    ? await verifyAdminRequest(request)
+    : { authorized: false, actor: 'anonymous', method: 'none' };
 
   return NextResponse.json({
     success: true,
@@ -52,7 +56,7 @@ export async function GET(request: NextRequest) {
       publicationFormatsCount: PUBLICATION_FORMATS.length,
       precedentsCount: GLOBAL_PRECEDENT_CASE_STUDIES.length,
     },
-    ...(includeProposals ? { proposals: store.proposals } : {}),
+    ...(includeProposals && adminCheck.authorized ? { proposals: store.proposals } : {}),
   });
 }
 
@@ -96,6 +100,13 @@ export async function POST(request: NextRequest) {
 
     // 2. Admin: Initiate New Canonical Investigation Charter
     if (action === 'create_investigation') {
+      const authCheck = await verifyAdminRequest(request);
+      if (!authCheck.authorized) {
+        return NextResponse.json(
+          { success: false, error: 'Unauthorized: Administrator session required to create canonical investigation charters.' },
+          { status: 401 }
+        );
+      }
       const store = readEiaiStore();
       const all = getMergedInvestigations();
       const nextNum = String(all.length + 1).padStart(4, '0');
@@ -197,6 +208,13 @@ export async function POST(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   try {
+    const authCheck = await verifyAdminRequest(request);
+    if (!authCheck.authorized) {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized: Administrator session required to modify investigations.' },
+        { status: 401 }
+      );
+    }
     const body = await request.json();
     const store = readEiaiStore();
 

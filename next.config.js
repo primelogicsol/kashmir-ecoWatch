@@ -19,6 +19,7 @@ const nextConfig = {
 
   images: {
     unoptimized: true,
+    qualities: [75, 85],
   },
 
   async rewrites() {
@@ -32,6 +33,18 @@ const nextConfig = {
   },
 
   async headers() {
+    const securityHeaders = [
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      {
+        key: 'Permissions-Policy',
+        value: 'camera=(self), microphone=(self), geolocation=(self), interest-cohort=()',
+      },
+      ...(process.env.NODE_ENV === 'production'
+        ? [{ key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' }]
+        : []),
+    ];
     const noIndexHeaders = [
       {
         key: 'X-Robots-Tag',
@@ -39,6 +52,10 @@ const nextConfig = {
       },
     ];
     return [
+      {
+        source: '/:path*',
+        headers: securityHeaders,
+      },
       // Exclude any non-canonical *.vercel.app preview/branch deployment from search engine indexing
       {
         source: '/:path*',

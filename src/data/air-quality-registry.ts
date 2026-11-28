@@ -6,6 +6,9 @@
 // 4. Dual Index Engine: Full support for both Indian NAQI (CPCB) & US EPA AQI standards.
 
 export type VerificationStatus =
+  | 'Community Optical Sensor (AirGradient) + CAMS Model Gases'
+  | 'Gridded Atmospheric Model (ECMWF CAMS 11 km)'
+  | 'External Feed Temporarily Unavailable — Historical Reference Only'
   | 'Official CAAQMS Station'
   | 'Government EPA Station'
   | 'Calibrated Ground Sensor'
@@ -15,7 +18,7 @@ export type VerificationStatus =
 
 export type AqiStandard = 'NAQI' | 'US_AQI';
 
-// ─── Physical Ground Monitoring Station Interface ────────────────────────────
+// ─── Reference Air Monitoring Node / Grid Interface (0 KEW Hardware Sensors) ─
 
 export interface GroundStation {
   id: string;
@@ -25,11 +28,16 @@ export interface GroundStation {
   district: string;
   lat: number;
   lng: number;
-  station_type: 'Official CAAQMS' | 'Government EPA' | 'Research Sensor';
+  station_type:
+    | 'Community Optical Sensor (AirGradient) + CAMS Model Gases'
+    | 'Gridded Atmospheric Model (ECMWF CAMS 11 km)'
+    | 'Official CAAQMS'
+    | 'Government EPA'
+    | 'Research Sensor';
   operating_authority: string;
   instrument: string;
   reporting_standard: string;
-  is_ground_truth: true;
+  is_ground_truth: boolean;
 }
 
 // ─── Regional Modeled Unit Interface ─────────────────────────────────────────
@@ -129,78 +137,78 @@ export interface ValidationDelta {
   scientificNote: string;
 }
 
-// ─── 1. Physical Ground Monitoring Stations Registry ─────────────────────────
+// ─── 1. Reference Air Monitoring Nodes (3 Community Optical + 2 CAMS Model Grids; 0 Direct CPCB CAAQMS APIs) ─
 
 export const groundStationsRegistry: GroundStation[] = [
   {
     id: 'GND-SGR-01',
-    name: 'Srinagar CAAQMS (Hyderpora / Rajbagh)',
+    name: 'Srinagar Community AirGradient Monitor + CAMS Grid',
     scope: 'Kashmir Core',
     country_or_region: 'India — J&K',
     district: 'Srinagar',
     lat: 34.0837,
     lng: 74.7973,
-    station_type: 'Official CAAQMS',
-    operating_authority: 'CPCB & J&K Pollution Control Committee (JKPCC)',
-    instrument: 'Beta Attenuation Monitor (BAM-1020) + Gas Analyzers',
-    reporting_standard: 'National Ambient Air Quality Standards (NAAQS India)',
-    is_ground_truth: true,
+    station_type: 'Community Optical Sensor (AirGradient) + CAMS Model Gases',
+    operating_authority: 'AirGradient / BreatheOSS Community Network & ECMWF CAMS (Non-Regulatory; 0 Direct CPCB CAAQMS APIs)',
+    instrument: 'Community Optical PM2.5 Nephelometer + ~11 km CAMS Model Gases',
+    reporting_standard: 'Non-Regulatory Community Screening (Not Official NAAQS CAAQMS)',
+    is_ground_truth: false,
   },
   {
     id: 'GND-JMU-01',
-    name: 'Jammu CAAQMS (Bikram Chowk)',
+    name: 'Jammu Community AirGradient Monitor + CAMS Grid',
     scope: 'Trans-Divisional',
     country_or_region: 'India — Jammu',
     district: 'Jammu',
     lat: 32.7266,
     lng: 74.8570,
-    station_type: 'Official CAAQMS',
-    operating_authority: 'CPCB & J&K Pollution Control Committee (JKPCC)',
-    instrument: 'Continuous Ambient Air Monitoring System (BAM + Chemiluminescence)',
-    reporting_standard: 'National Ambient Air Quality Standards (NAAQS India)',
-    is_ground_truth: true,
+    station_type: 'Community Optical Sensor (AirGradient) + CAMS Model Gases',
+    operating_authority: 'AirGradient / BreatheOSS Community Network & ECMWF CAMS (Non-Regulatory; 0 Direct CPCB CAAQMS APIs)',
+    instrument: 'Community Optical PM2.5 Nephelometer + ~11 km CAMS Model Gases',
+    reporting_standard: 'Non-Regulatory Community Screening (Not Official NAAQS CAAQMS)',
+    is_ground_truth: false,
   },
   {
     id: 'GND-LEH-01',
-    name: 'Leh Atmospheric Baseline Observatory',
+    name: 'Leh Community AirGradient Monitor + CAMS Grid',
     scope: 'Trans-Divisional',
     country_or_region: 'India — Ladakh',
     district: 'Leh',
     lat: 34.1526,
     lng: 77.5771,
-    station_type: 'Official CAAQMS',
-    operating_authority: 'IMD / Ladakh UT Pollution Control Committee',
-    instrument: 'Optical Particle Counter & High-Altitude Gas Monitor',
-    reporting_standard: 'National Ambient Air Quality Standards (NAAQS India)',
-    is_ground_truth: true,
+    station_type: 'Community Optical Sensor (AirGradient) + CAMS Model Gases',
+    operating_authority: 'AirGradient / BreatheOSS Community Network & ECMWF CAMS (Non-Regulatory; 0 Direct CPCB CAAQMS APIs)',
+    instrument: 'High-Altitude Community Optical PM2.5 Sensor + ~11 km CAMS Model Gases',
+    reporting_standard: 'Non-Regulatory Community Screening (Not Official NAAQS CAAQMS)',
+    is_ground_truth: false,
   },
   {
     id: 'GND-MZF-01',
-    name: 'Muzaffarabad Urban Monitoring Node',
+    name: 'Muzaffarabad Regional CAMS Atmospheric Grid Cell',
     scope: 'Transboundary / Extended',
     country_or_region: 'AJK',
     district: 'Muzaffarabad',
     lat: 34.3700,
     lng: 73.4711,
-    station_type: 'Government EPA',
-    operating_authority: 'AJK Environmental Protection Agency (AJK-EPA)',
-    instrument: 'Continuous Optical Particulate Telemetry',
-    reporting_standard: 'NEQS (National Environmental Quality Standards)',
-    is_ground_truth: true,
+    station_type: 'Gridded Atmospheric Model (ECMWF CAMS 11 km)',
+    operating_authority: 'Copernicus Atmosphere Monitoring Service (ECMWF CAMS via Open-Meteo — Zero Ground Sensor Connected)',
+    instrument: '0.1° (~11 km) Gridded Atmospheric Reanalysis / Forecast Model',
+    reporting_standard: 'Modeled Screening Estimate Only (No In-Situ EPA Ground Telemetry)',
+    is_ground_truth: false,
   },
   {
     id: 'GND-GLT-01',
-    name: 'Gilgit Valley Basin Monitoring Station',
+    name: 'Gilgit Regional CAMS Atmospheric Grid Cell',
     scope: 'Transboundary / Extended',
     country_or_region: 'Gilgit-Baltistan',
     district: 'Gilgit',
     lat: 35.9208,
     lng: 74.3144,
-    station_type: 'Government EPA',
-    operating_authority: 'Gilgit-Baltistan EPA (GB-EPA)',
-    instrument: 'Ambient Particulate Sampler & Laser Scattering',
-    reporting_standard: 'NEQS (National Environmental Quality Standards)',
-    is_ground_truth: true,
+    station_type: 'Gridded Atmospheric Model (ECMWF CAMS 11 km)',
+    operating_authority: 'Copernicus Atmosphere Monitoring Service (ECMWF CAMS via Open-Meteo — Zero Ground Sensor Connected)',
+    instrument: '0.1° (~11 km) Gridded Atmospheric Reanalysis / Forecast Model',
+    reporting_standard: 'Modeled Screening Estimate Only (No In-Situ EPA Ground Telemetry)',
+    is_ground_truth: false,
   },
 ];
 
@@ -454,6 +462,9 @@ export function calculateUsAqi(pm25: number, pm10: number): {
 // This guarantees that SSR never renders empty 0 records, '...', or loading skeletons
 // when crawlers, audits, or users visit the page.
 
+const ARCHIVAL_FALLBACK_TIMESTAMP_ISO = '2024-12-15T00:00:00.000Z';
+const ARCHIVAL_FALLBACK_NOTICE = 'External Feed Temporarily Unavailable — Historical Reference Only';
+
 export function getInitialAirQualitySnapshot(): {
   groundStations: GroundStationLiveRecord[];
   regionalUnits: AirQualityLiveRecord[];
@@ -463,12 +474,8 @@ export function getInitialAirQualitySnapshot(): {
   unhealthyCount: number;
   lastUpdated: string;
 } {
-  const now = new Date();
-  const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-
-  // Baseline calibrated ground observations (CPCB CAAQMS & Regional EPAs)
-  const groundStations: GroundStationLiveRecord[] = groundStationsRegistry.map((s, idx) => {
-    // Srinagar has higher winter PM2.5 due to valley inversion; Jammu has transport dust
+  // Static historical seasonal reference values — NEVER stamped with new Date() or "Live Telemetry"
+  const groundStations: GroundStationLiveRecord[] = groundStationsRegistry.map((s) => {
     const pm25 = s.district === 'Srinagar' ? 68.4 : s.district === 'Jammu' ? 54.2 : s.district === 'Leh' ? 14.5 : 38.6;
     const pm10 = s.district === 'Srinagar' ? 112.0 : s.district === 'Jammu' ? 98.4 : s.district === 'Leh' ? 24.0 : 64.2;
     const no2 = s.district === 'Srinagar' ? 22.4 : 28.6;
@@ -481,6 +488,7 @@ export function getInitialAirQualitySnapshot(): {
 
     return {
       ...s,
+      is_ground_truth: false,
       pm25,
       pm10,
       no2,
@@ -497,23 +505,22 @@ export function getInitialAirQualitySnapshot(): {
       displayCategory: naqiCalc.category,
       displayVariant: naqiCalc.variant,
       dominantPollutant: naqiCalc.dominantPollutant,
-      trend: idx % 2 === 0 ? 'Rising' : 'Stable',
-      observationTimestamp: now.toISOString(),
-      lastUpdated: `Live Telemetry (Synced ${timeStr})`,
-      apiTimestamp: now.toISOString(),
-      isStale: false,
-      status: 'ONLINE',
+      trend: 'Stable',
+      observationTimestamp: ARCHIVAL_FALLBACK_TIMESTAMP_ISO,
+      lastUpdated: ARCHIVAL_FALLBACK_NOTICE,
+      apiTimestamp: ARCHIVAL_FALLBACK_TIMESTAMP_ISO,
+      isStale: true,
+      status: 'OFFLINE',
     };
   });
 
-  // 44 Regional Modeled Units (Copernicus CAMS & Open-Meteo High-Resolution Gridded Model)
-  const regionalUnits: AirQualityLiveRecord[] = airQualityRegistry.map((unit, idx) => {
-    // CAMS model runs at 0.1° (~11 km) which smooths valley topography
+  // 44 Regional Modeled Units (Static archival CAMS climatology fallback when external feed is unreachable)
+  const regionalUnits: AirQualityLiveRecord[] = airQualityRegistry.map((unit) => {
     const isValleyCore = ['Srinagar', 'Budgam', 'Pulwama', 'Baramulla', 'Anantnag'].includes(unit.district);
     const isAlpine = ['Ganderbal', 'Kupwara', 'Leh', 'Kargil', 'Neelum', 'Astore', 'Hunza'].includes(unit.district);
-    
-    const pm25 = isValleyCore ? 42.5 + (idx % 7) : isAlpine ? 12.0 + (idx % 4) : 28.0 + (idx % 5);
-    const pm10 = pm25 * 1.6;
+
+    const pm25 = isValleyCore ? 45.0 : isAlpine ? 14.0 : 30.0;
+    const pm10 = Number((pm25 * 1.6).toFixed(1));
     const no2 = 14.2;
     const so2 = 4.8;
     const co = 380;
@@ -524,6 +531,7 @@ export function getInitialAirQualitySnapshot(): {
 
     return {
       ...unit,
+      verification_status: 'External Feed Temporarily Unavailable — Historical Reference Only',
       pm25,
       pm10,
       no2,
@@ -540,59 +548,16 @@ export function getInitialAirQualitySnapshot(): {
       displayCategory: naqiCalc.category,
       displayVariant: naqiCalc.variant,
       dominantPollutant: naqiCalc.dominantPollutant,
-      trend: idx % 3 === 0 ? 'Rising' : 'Stable',
-      lastUpdated: `Live Sync (${timeStr})`,
-      apiTimestamp: now.toISOString(),
-      isStale: false,
-      modelRunTime: '00:00 / 12:00 UTC Synoptic Cycle',
+      trend: 'Stable',
+      lastUpdated: ARCHIVAL_FALLBACK_NOTICE,
+      apiTimestamp: ARCHIVAL_FALLBACK_TIMESTAMP_ISO,
+      isStale: true,
+      modelRunTime: 'Historical Winter Reference Climatology (Non-Live Fallback)',
     };
   });
 
-  // Empirical Ground vs Model Deltas for Srinagar and Jammu
-  const sgrGround = groundStations.find(g => g.id === 'GND-SGR-01');
-  const sgrModel = regionalUnits.find(r => r.id === 'KC-SGR');
-  const jmuGround = groundStations.find(g => g.id === 'GND-JMU-01');
-  const jmuModel = regionalUnits.find(r => r.id === 'TD-JMU');
-
+  // Do not fabricate ground-vs-model validation deltas when external feeds are offline
   const validationDeltas: ValidationDelta[] = [];
-
-  if (sgrGround && sgrModel) {
-    const delta = Number((sgrGround.pm25 - sgrModel.pm25).toFixed(1));
-    const bias = Number((((sgrModel.pm25 - sgrGround.pm25) / sgrGround.pm25) * 100).toFixed(1));
-    validationDeltas.push({
-      stationId: sgrGround.id,
-      stationName: sgrGround.name,
-      district: sgrGround.district,
-      groundPm25: sgrGround.pm25,
-      modelPm25: sgrModel.pm25,
-      deltaPm25: delta,
-      biasPercent: bias,
-      groundAqi: sgrGround.naqi,
-      modelAqi: sgrModel.naqi,
-      inversionFactor: 'Severe Trapping',
-      scientificNote:
-        'CAMS 11km model underestimates valley-floor PM2.5 by ~38% due to thermal inversion lid (200-400m altitude) trapping local Kangri/biomass smoke.',
-    });
-  }
-
-  if (jmuGround && jmuModel) {
-    const delta = Number((jmuGround.pm25 - jmuModel.pm25).toFixed(1));
-    const bias = Number((((jmuModel.pm25 - jmuGround.pm25) / jmuGround.pm25) * 100).toFixed(1));
-    validationDeltas.push({
-      stationId: jmuGround.id,
-      stationName: jmuGround.name,
-      district: jmuGround.district,
-      groundPm25: jmuGround.pm25,
-      modelPm25: jmuModel.pm25,
-      deltaPm25: delta,
-      biasPercent: bias,
-      groundAqi: jmuGround.naqi,
-      modelAqi: jmuModel.naqi,
-      inversionFactor: 'Moderate Stagnation',
-      scientificNote:
-        'Model tracks ground observations within ±18% in Jammu plains; minor variance from local vehicular corridor dust along NH-44.',
-    });
-  }
 
   const avgNaqi = Math.round(regionalUnits.reduce((acc, u) => acc + u.naqi, 0) / regionalUnits.length);
   const avgUsAqi = Math.round(regionalUnits.reduce((acc, u) => acc + u.aqi_us, 0) / regionalUnits.length);
@@ -605,7 +570,7 @@ export function getInitialAirQualitySnapshot(): {
     avgNaqi,
     avgUsAqi,
     unhealthyCount,
-    lastUpdated: timeStr,
+    lastUpdated: ARCHIVAL_FALLBACK_NOTICE,
   };
 }
 
@@ -636,13 +601,16 @@ export function getVerificationBadgeVariant(status: string): 'success' | 'info' 
     case 'Government EPA Station':
     case 'API Live':
       return 'success';
+    case 'Community Optical Sensor (AirGradient) + CAMS Model Gases':
     case 'Calibrated Ground Sensor':
     case 'Public Sensor Verified':
       return 'info';
+    case 'Gridded Atmospheric Model (ECMWF CAMS 11 km)':
     case 'Satellite-Modelled (CAMS)':
     case 'Satellite-Modelled':
     case 'Regional Model Grid':
       return 'warning';
+    case 'External Feed Temporarily Unavailable — Historical Reference Only':
     case 'Data Deficient':
     default:
       return 'default';

@@ -6,6 +6,7 @@ import { Archive, ArrowRight, Rss, Search, ShieldCheck } from 'lucide-react';
 import { DailyDispatchArticle, EditorialDepartment } from '@/types/himalayan-dispatch';
 import { REGIONAL_REPORTING_BUREAUS } from '@/data/himalayan-dispatch';
 import { EditorialBreadcrumbs } from './EditorialBreadcrumbs';
+import { KewContentShare } from '@/components/common/KewContentShare';
 import { HD_ROUTES, toKewPlatformUrl } from '@/lib/himalayan-dispatch-routes';
 
 export function DailyDispatchClient({
@@ -257,6 +258,30 @@ export function DailyDispatchClient({
                 </p>
               </div>
 
+              {leadItem.aiAssistanceDisclosure && (
+                <p
+                  className="hd-font-body text-xs border-l-2 pl-3 py-1 leading-relaxed"
+                  style={{ borderColor: 'var(--hd-copper)', color: 'var(--hd-fg-muted)' }}
+                >
+                  <strong className="hd-font-sans text-[10px] tracking-[0.14em] uppercase mr-1.5" style={{ color: 'var(--hd-copper)' }}>
+                    Synthesis Disclosure:
+                  </strong>
+                  {leadItem.aiAssistanceDisclosure}
+                </p>
+              )}
+
+              {leadItem.corrections && leadItem.corrections.length > 0 && (
+                <p
+                  className="hd-font-body text-xs border px-3 py-2 leading-relaxed"
+                  style={{ borderColor: 'var(--hd-rule-strong)', color: 'var(--hd-fg-secondary)' }}
+                >
+                  <strong className="hd-font-sans text-[10px] tracking-[0.14em] uppercase mr-1.5" style={{ color: 'var(--hd-copper)' }}>
+                    {leadItem.corrections[0].kind} ({leadItem.corrections[0].date}):
+                  </strong>
+                  {leadItem.corrections[0].note}
+                </p>
+              )}
+
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <Link
                   href={HD_ROUTES.dailyDispatchArticle(leadItem.slug)}
@@ -266,6 +291,14 @@ export function DailyDispatchClient({
                   <span>Read Dispatch</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
+
+                <KewContentShare
+                  variant="toc-icon"
+                  title={leadItem.headline}
+                  description={leadItem.standfirst}
+                  canonicalPath={HD_ROUTES.dailyDispatchArticle(leadItem.slug)}
+                  isPublished={leadItem.isPublished}
+                />
 
                 {leadItem.relatedKewModule && (
                   <a
@@ -343,9 +376,28 @@ export function DailyDispatchClient({
                     >
                       {art.standfirst}
                     </p>
-                    <p className="hd-folio-meta pt-1">
-                      BY {art.bylineDisplay.toUpperCase()} &nbsp;·&nbsp; {art.readingTimeMinutes} MIN READ
-                    </p>
+                    <div className="pt-1 flex items-center justify-between gap-3">
+                      <p className="hd-folio-meta">
+                        BY {art.bylineDisplay.toUpperCase()} &nbsp;·&nbsp; {art.readingTimeMinutes} MIN READ
+                      </p>
+                      <KewContentShare
+                        variant="toc-icon"
+                        title={art.headline}
+                        description={art.standfirst}
+                        canonicalPath={HD_ROUTES.dailyDispatchArticle(art.slug)}
+                        isPublished={art.isPublished}
+                      />
+                    </div>
+                    {art.aiAssistanceDisclosure && (
+                      <p className="hd-font-body text-xs italic pt-0.5" style={{ color: 'var(--hd-fg-muted)' }}>
+                        Disclosure: {art.aiAssistanceDisclosure}
+                      </p>
+                    )}
+                    {art.corrections && art.corrections.length > 0 && (
+                      <p className="hd-font-body text-xs pt-0.5" style={{ color: 'var(--hd-copper)' }}>
+                        {art.corrections[0].kind} ({art.corrections[0].date}): {art.corrections[0].note}
+                      </p>
+                    )}
                   </div>
 
                   <div className="md:col-span-3">

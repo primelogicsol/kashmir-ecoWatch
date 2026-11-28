@@ -3,6 +3,7 @@ import { DAILY_DISPATCH_ARTICLES } from '@/data/himalayan-dispatch-autonomous';
 import {
   ALLOWED_DISPATCH_ROOT_SEGMENTS,
   CANONICAL_DISPATCH_URL,
+  CANONICAL_KEW_PLATFORM_URL,
   HD_LEGACY_PREFIX,
   isDispatchHostname,
   resolveLegacyDeptQueryToSlug,
@@ -29,6 +30,81 @@ const NO_INDEX_DISPATCH_SEGMENTS = new Set<string>([
   'journalist-sign-in',
   'pitch',
 ]);
+
+/**
+ * Canonical KEW platform root segments that should 308-redirect to `https://kashmir-ecowatch.com`
+ * if accidentally requested on `dispatch.kashmir-ecowatch.com`, preventing cross-host 404s.
+ */
+const KNOWN_KEW_PLATFORM_ROOT_SEGMENTS = new Set<string>([
+  'about',
+  'accessibility',
+  'alert-archive',
+  'alerts',
+  'atlas',
+  'biodiversity',
+  'citizen-science',
+  'contribute',
+  'contribute-data',
+  'contribute-guidelines',
+  'districts',
+  'earth-human-impact',
+  'ecovoices',
+  'entity-explorer',
+  'environmental-calendar',
+  'environmental-investigations',
+  'environmental-monitoring',
+  'field-reports',
+  'founder',
+  'governance',
+  'hazard-intelligence',
+  'investigations',
+  'join-citizen-science',
+  'leadership',
+  'legal-notice',
+  'library',
+  'live-incident-map',
+  'methodology',
+  'module-directory',
+  'ngo-impact',
+  'open-data',
+  'privacy',
+  'protected-areas',
+  'protected-network',
+  'report-issue',
+  'research-library',
+  'resources',
+  'risk-monitoring',
+  'risk-updates',
+  'search',
+  'seasonal-ecology',
+  'sectoral-eia',
+  'submit-observation',
+  'terms',
+  'trails-sightings',
+  'water-systems',
+  'webinars',
+]);
+
+/**
+ * Permanent alias & legacy route redirects on the main KEW platform.
+ */
+const KEW_CANONICAL_ALIAS_REDIRECTS: Record<string, string> = {
+  '/methodology': '/environmental-investigations/methodology',
+  '/founder': '/about/founder',
+  '/leadership': '/governance',
+  '/investigations': '/environmental-investigations',
+  '/regional-profiles': '/districts',
+  '/environmental-resilience': '/environmental-monitoring/environmental-resilience',
+  '/sdg': '/environmental-monitoring/sdg-monitoring',
+  '/biodiversity/wetlands': '/water-systems/wetlands',
+  '/water-systems/algal-bloom-intelligence': '/hazard-intelligence/algal-bloom-intelligence',
+  '/gis-mapping': '/atlas',
+  '/change-detection': '/earth-human-impact/change-detection-observatory',
+  '/risk-monitoring/pollution-stress': '/environmental-monitoring',
+  '/risk-monitoring/live-alerts': '/risk-monitoring/live-alerts-advisories',
+  '/risk-monitoring/early-warning': '/risk-monitoring/live-alerts-advisories',
+  '/risk-monitoring/response-operations': '/risk-monitoring',
+};
 
 function extractHostOnly(rawHost: string): string {
   return rawHost.split(',')[0]?.trim().toLowerCase().replace(/:\d+$/, '') || '';
@@ -59,11 +135,6 @@ function shouldRedirectLegacyKewDomainToSubdomain(rawHost: string): boolean {
   return isProdKewDomain && process.env.DISPATCH_LEGACY_REDIRECTS_ENABLED === 'true';
 }
 
-/**
- * Evaluates a Dispatch-relative subpath (stripped of `/himalayan-dispatch`) and
- * returns a clean canonical subpath (starting with `/`) if it matches any legacy
- * query or slug rule, or `null` if the subpath is already canonical.
- */
 function resolveLegacyDispatchSubpath(
   subpath: string,
   searchParams: URLSearchParams
@@ -98,8 +169,11 @@ function resolveLegacyDispatchSubpath(
       if (DAILY_DISPATCH_SLUG_SET.has(slug)) {
         return `/daily-dispatch/${slug}`;
       }
-      if (slug === 'notes-from-the-upper-jhelum') {
-        return `/issues/monograph-00-watershed-voices/${slug}`;
+      if (
+        slug === 'notes-from-the-upper-jhelum' ||
+        slug === 'notes-from-the-upper-jhelum-headwaters'
+      ) {
+        return '/issues/monograph-00-watershed-voices/notes-from-the-upper-jhelum-headwaters';
       }
       return `/issues/volume-01-issue-01/${slug}`;
     }
@@ -163,6 +237,20 @@ function buildDispatchHostDestination(
   return new URL(destPathAndQuery, `${proto}://${firstHost}/`);
 }
 
+function buildKewPlatformDestination(
+  request: NextRequest,
+  rawHost: string,
+  destPathAndQuery: string
+): URL {
+  const hostOnly = extractHostOnly(rawHost);
+  if (hostOnly.startsWith('dispatch.localhost')) {
+    const portMatch = rawHost.split(',')[0]?.trim().match(/:(\d+)$/);
+    const portSuffix = portMatch ? `:${portMatch[1]}` : ':3002';
+    return new URL(destPathAndQuery, `http://localhost${portSuffix}/`);
+  }
+  return new URL(destPathAndQuery, `${CANONICAL_KEW_PLATFORM_URL}/`);
+}
+
 function isAllowedDispatchApiPath(pathname: string): boolean {
   return (
     pathname === '/api/himalayan-dispatch' ||
@@ -174,13 +262,15 @@ function isAllowedDispatchApiPath(pathname: string): boolean {
 }
 
 /**
- * Hostname-Aware Request Router & Localhost Preservation Proxy (Next.js 16)
+ * Hostname-Aware Request Router & Alias Redirect Proxy (Next.js 16)
  */
 export function proxy(request: NextRequest) {
   const { pathname, search, searchParams } = request.nextUrl;
   const rawHost =
     request.headers.get('x-forwarded-host') || request.headers.get('host') || '';
   const hostOnly = extractHostOnly(rawHost);
+  const normalizedPathname =
+    pathname.length > 1 && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
 
   // ═══════════════════════════════════════════════════════════════════════════
   // 1. DEDICATED PRODUCTION SUBDOMAIN (`dispatch.kashmir-ecowatch.com`)
@@ -241,6 +331,16 @@ export function proxy(request: NextRequest) {
     const isAllowedSubroute =
       firstSegment.length > 0 && ALLOWED_DISPATCH_ROOT_SEGMENTS.has(firstSegment);
 
+    // Safety cross-host redirect: if a relative KEW platform route is requested on
+    // `dispatch.kashmir-ecowatch.com`, redirect cleanly (308) to the main KEW domain!
+    if (!isDispatchRoot && !isAllowedSubroute && KNOWN_KEW_PLATFORM_ROOT_SEGMENTS.has(firstSegment)) {
+      const canonicalKewTarget = KEW_CANONICAL_ALIAS_REDIRECTS[normalizedPathname] || normalizedPathname;
+      return NextResponse.redirect(
+        buildKewPlatformDestination(request, rawHost, `${canonicalKewTarget}${search}`),
+        308
+      );
+    }
+
     const requestHeaders = new Headers(request.headers);
     requestHeaders.set('x-hd-subdomain', '1');
     requestHeaders.set('x-hd-public-path', pathname);
@@ -270,6 +370,14 @@ export function proxy(request: NextRequest) {
   // ═══════════════════════════════════════════════════════════════════════════
   // 2. LOCALHOST (`localhost:3002`) & MAIN KEW DOMAIN (`kashmir-ecowatch.com`)
   // ═══════════════════════════════════════════════════════════════════════════
+  const aliasRedirectTarget = KEW_CANONICAL_ALIAS_REDIRECTS[normalizedPathname];
+  if (aliasRedirectTarget) {
+    return NextResponse.redirect(
+      new URL(`${aliasRedirectTarget}${search}`, request.url),
+      308
+    );
+  }
+
   if (pathname === '/our-story' || pathname === '/our-story/') {
     if (shouldRedirectLegacyKewDomainToSubdomain(rawHost)) {
       return NextResponse.redirect(new URL('/our-story', `${CANONICAL_DISPATCH_URL}/`), 308);
@@ -281,7 +389,6 @@ export function proxy(request: NextRequest) {
     const stripped = stripDispatchPrefix(pathname);
     const upgradedSubpath = resolveLegacyDispatchSubpath(stripped, searchParams);
 
-    // Gated production-only legacy redirect (NEVER fires on localhost!)
     if (shouldRedirectLegacyKewDomainToSubdomain(rawHost)) {
       const targetSubpath = upgradedSubpath || `${stripped}${search}`;
       return NextResponse.redirect(
@@ -290,7 +397,6 @@ export function proxy(request: NextRequest) {
       );
     }
 
-    // Preserve existing `/himalayan-dispatch/...` legacy query/slug upgrades on localhost
     if (upgradedSubpath) {
       return NextResponse.redirect(
         new URL(toInternalDispatchPath(upgradedSubpath), request.url),

@@ -646,6 +646,17 @@ export interface HdnMediaAsset {
   editorialApprovalStatus: 'pending_review' | 'approved' | 'rejected';
   approvedBy?: string;
   createdAt: string;
+  /** Restricted Administrative Visual Governance Metadata (never rendered on public decorative surfaces) */
+  generationWorkflow?: string;
+  c2paSynthIdDetected?: boolean;
+  exifPresent?: boolean;
+  evidentiarySuitability?:
+    | 'decorative_editorial_only'
+    | 'illustrative_study_with_clarification'
+    | 'verified_documentary_evidence'
+    | 'verified_cartographic_graphic';
+  publicCaptionPolicyNote?: string;
+  usedInStorySlugs?: string[];
 }
 
 export interface HdnMonthlyEditionRecord {

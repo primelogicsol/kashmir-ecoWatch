@@ -56,10 +56,10 @@ const SHARED_ECON_REFERENCES: CitationReference[] = [
     authorsOrBody: 'Finance Department, Government of Jammu & Kashmir',
     year: 2026,
     title: 'Annual Financial Statement, Budget Summary, Detailed Demands for Grants & FRBM Disclosures (FY 2026–27 Budget Estimates)',
-    publicationOrSeries: 'Official J&K Budget Portal (jakfinance-jk.com)',
+    publicationOrSeries: 'Official Finance Department Portal, Govt. of J&K (jakfinance.nic.in)',
     referenceType: 'Technical Institute Report',
-    externalUrl: 'https://jakfinance-jk.com/budget2026-27.html',
-    provenanceNote: 'Authoritative statutory source for FY 2026–27 Total Expenditure (₹1,13,767 cr), Revenue (₹80,640 cr), Capital Outlay (₹25,236 cr), Debt Repayment (₹7,809 cr), Loans (₹82 cr), Central Grants (₹58,218 cr), Fiscal Deficit (₹14,685 cr), and GSDP (₹3,15,822 cr).',
+    externalUrl: 'https://jakfinance.nic.in/',
+    provenanceNote: 'Official government finance portal for FY 2026–27 Total Expenditure (₹1,13,767 cr), Revenue (₹80,640 cr), Capital Outlay (₹25,236 cr), Debt Repayment (₹7,809 cr), Loans (₹82 cr), Central Grants (₹58,218 cr), Fiscal Deficit (₹14,685 cr), and GSDP (₹3,15,822 cr), cross-verified with PRS Legislative Research (https://prsindia.org/budgets/states/jammu-and-kashmir-budget-analysis-2026-27).',
   },
   {
     id: 'REF-ECON-PRS27',
@@ -84,8 +84,8 @@ const SHARED_ECON_REFERENCES: CitationReference[] = [
   {
     id: 'REF-ECON-CAGLAKE',
     authorsOrBody: 'Comptroller and Auditor General of India (CAG)',
-    year: 2024,
-    title: 'Performance Audit on Conservation and Management of Dal-Nigeen and Wular Lakes in Jammu & Kashmir',
+    year: 2025,
+    title: 'Performance Audit on Conservation and Management of Dal-Nigeen and Wular Lakes in Jammu & Kashmir (Report No. 4 of 2025)',
     publicationOrSeries: 'CAG Audit Report ID 125068 (Government of J&K)',
     referenceType: 'Statutory Audit (CAG)',
     externalUrl: 'https://www.cag.gov.in/en/audit-report/details/125068',
@@ -619,7 +619,7 @@ export const ECONOMICS_15_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
       { suffix: '03', assertion: 'Exact multi-year Narrow and Broad EEI percentages and bottom-up Ecological Financing Deficit (EFD_t) in constant prices for FY 2000–01 through FY 2026–27 remain under primary Demand-for-Grant and CAG Finance Account extraction.', sourceCategory: 'Government Audit Records', classification: 'Unverified', basis: 'Individual agency Demands for Grants and audited Appropriation Accounts require line-item coding.', citationIds: [], methodReq: 'Extract object-head BE, RE, and CAG Audited Actuals across all 23 departments (FY 2000–27), deflate via spliced MoSPI GSDP deflator, and compute bottom-up engineering R_t.' },
     ],
     accountability: [
-      { suffix: '01', institution: 'Finance Department, Government of Jammu & Kashmir', acronym: 'Finance Dept J&K', mandate: 'Preparation of Annual Financial Statements, Detailed Demands for Grants, FRBM compliance, treasury releases, and outcome budgeting.', ownership: 'UT Consolidated Fund & Green/Outcome Budget Tagging', scientificResp: 'Publishing transparent object-head and division-disaggregated environmental expenditure schedules.', financialResp: '₹1,13,767 cr FY 2026–27 Total Budgeted Expenditure oversight', documentedFindings: 'Publishes comprehensive macro budget documents on jakfinance-jk.com, but currently lacks a consolidated UN SEEA / Green Budget Statement cross-walking environmental spending and ecological outcomes across departments.', response: 'Clarification invited on whether J&K Finance Department plans to introduce an annual SEEA-aligned Green & Climate Budget Statement.', questions: ['What is the consolidated BE, RE, and Audited Actual expenditure on CEPA/CReMA environmental protection across all Demands in FY 2024–25, 2025–26, and 2026–27?', 'How are UT-wide environmental grants apportioned between Jammu Division and Kashmir Division?'], corrective: 'Publish an annual SEEA-aligned Environmental & Natural Capital Budget Statement alongside the Annual Financial Statement.' },
+      { suffix: '01', institution: 'Finance Department, Government of Jammu & Kashmir', acronym: 'Finance Dept J&K', mandate: 'Preparation of Annual Financial Statements, Detailed Demands for Grants, FRBM compliance, treasury releases, and outcome budgeting.', ownership: 'UT Consolidated Fund & Green/Outcome Budget Tagging', scientificResp: 'Publishing transparent object-head and division-disaggregated environmental expenditure schedules.', financialResp: '₹1,13,767 cr FY 2026–27 Total Budgeted Expenditure oversight', documentedFindings: 'Publishes macro budget documents via official Finance Department channels (jakfinance.nic.in / PRS analysis), but currently lacks a consolidated UN SEEA / Green Budget Statement cross-walking environmental spending and ecological outcomes across departments.', response: 'Clarification invited on whether J&K Finance Department plans to introduce an annual SEEA-aligned Green & Climate Budget Statement.', questions: ['What is the consolidated BE, RE, and Audited Actual expenditure on CEPA/CReMA environmental protection across all Demands in FY 2024–25, 2025–26, and 2026–27?', 'How are UT-wide environmental grants apportioned between Jammu Division and Kashmir Division?'], corrective: 'Publish an annual SEEA-aligned Environmental & Natural Capital Budget Statement alongside the Annual Financial Statement.' },
     ],
     unansweredQuestions: [
       'After excluding salaries and pensions, what net capital and operational O&M sum actually reaches frontline ecological protection, laboratory testing, and pollution abatement across J&K?',
@@ -638,7 +638,7 @@ export const ECONOMICS_15_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
     ],
     regulatoryLead: 'J&K Reorganization Act 2019 Fiscal Provisions; FRBM Act; UN SEEA Central Framework (CEPA/CReMA); CAG Auditing Standards.',
     statutoryComplianceMatrix: [
-      { id: 'SCM-0039-01', sectorOrQuestion: 'Macro Annual Financial Statement & FRBM Disclosure (FY 2026–27)', applicableInstrument: 'J&K Budget Manual & FRBM Framework', classification: 'Verified compliant', evidenceAndLegalBasis: 'FY 2026–27 AFS, Demands for Grants, and FRBM statements publicly released on jakfinance-jk.com.', requiredInstitutionalEvidence: 'Machine-readable CSV/Excel release of object-head actuals.' },
+      { id: 'SCM-0039-01', sectorOrQuestion: 'Macro Annual Financial Statement & FRBM Disclosure (FY 2026–27)', applicableInstrument: 'J&K Budget Manual & FRBM Framework', classification: 'Verified compliant', evidenceAndLegalBasis: 'FY 2026–27 AFS, Demands for Grants, and FRBM statements publicly released by J&K Finance Department (jakfinance.nic.in) and verified by PRS Legislative Research.', requiredInstitutionalEvidence: 'Machine-readable CSV/Excel release of object-head actuals.' },
       { id: 'SCM-0039-02', sectorOrQuestion: 'Consolidated Cross-Departmental SEEA Environmental Expenditure Accounting', applicableInstrument: 'MoSPI EnviStats / UN SEEA CEPA-CReMA Standard', classification: 'Not verified', evidenceAndLegalBasis: 'No unified multi-department environmental expenditure account currently separates conservation O&M from salaries and CSS transfers.', requiredInstitutionalEvidence: 'Demand-wise CEPA/CReMA reconciliation table (FY 2020–27).' },
       { id: 'SCM-0039-03', sectorOrQuestion: 'Audited Lake Conservation Expenditure Seasonality & Outcome Linkage', applicableInstrument: 'CAG Performance Audit (Report 125068)', classification: 'Verified noncompliant', evidenceAndLegalBasis: 'CAG documented ₹16.18 cr (57.8% of ₹28.01 cr) Dal de-weeding spend outside prescribed months plus discontinued catchment works.', requiredInstitutionalEvidence: 'Action-Taken Notes linking treasury releases to seasonal windows and trophic KPIs.' },
     ],
@@ -683,7 +683,7 @@ export const ECONOMICS_15_INVESTIGATION_DOSSIERS: InvestigationRecord[] = [
       { label: 'Institutions in Audit Scope', value: '23', unit: 'Agencies', sourceTag: 'Mandate Verification Active' },
       { label: 'Fiscal Execution Chain', value: '7', unit: 'Stages', sourceTag: 'BE → Ecological Return' },
       { label: 'Audited Finance Baseline', value: '2024–25', unit: 'CAG Report', sourceTag: 'Report ID 125155' },
-      { label: 'Current Budget Cycle', value: '2026–27', unit: 'BE Baseline', sourceTag: 'jakfinance-jk.com' },
+      { label: 'Current Budget Cycle', value: '2026–27', unit: 'BE Baseline', sourceTag: 'jakfinance.nic.in / PRS' },
     ],
     chronology: [
       { period: '2019–2020', eventTitle: 'Institutional Reorganization of J&K Environmental Bodies', documentedRecord: 'Transition of JKSPCB to JKPCC, LAWDA to LCMA, and PHE/I&FC to Jal Shakti under UT administrative rules.', sourceRef: 'REF-ECON-CAGFIN25', significance: 'Intervention' },

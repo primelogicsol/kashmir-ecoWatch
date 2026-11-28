@@ -1,14 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { usePathname, useSelectedLayoutSegment } from 'next/navigation';
 import { 
-  Map, Wind, AlertTriangle, PlusCircle, Menu, 
-  Activity, Bell, Compass
+  Map, Wind, AlertTriangle, PlusCircle,
+  Compass
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { alertRegistry } from '@/data/alert-registry';
+import { useLiveAlerts } from '@/hooks/useLiveAlerts';
 
 interface MobileQuickTelemetryBarProps {
   onOpenMenu?: () => void;
@@ -17,50 +17,13 @@ interface MobileQuickTelemetryBarProps {
 export function MobileQuickTelemetryBar({ onOpenMenu }: MobileQuickTelemetryBarProps) {
   const pathname = usePathname();
   const segment = useSelectedLayoutSegment();
-  const [unreadAlerts, setUnreadAlerts] = useState<number>(0);
+  const { unreadCount: unreadAlerts } = useLiveAlerts();
   const isDispatchRoute = Boolean(
     segment === 'himalayan-dispatch' ||
       pathname?.startsWith('/himalayan-dispatch') ||
       pathname?.startsWith('/webinars/room/') ||
       (pathname?.startsWith('/webinars/sessions/') && pathname?.endsWith('/live'))
   );
-
-  useEffect(() => {
-    if (isDispatchRoute) return;
-    let isMounted = true;
-    const checkAlerts = async () => {
-      try {
-        const stored = localStorage.getItem('kew_read_notifications');
-        const readIds = stored ? new Set(JSON.parse(stored)) : new Set();
-        const res = await fetch('/api/alerts/live');
-        if (res.ok && isMounted) {
-          const data = await res.json();
-          const list = data.alerts || alertRegistry;
-          setUnreadAlerts(list.filter((a: any) => !readIds.has(a.id)).length);
-          return;
-        }
-      } catch {}
-
-      if (isMounted) {
-        try {
-          const stored = localStorage.getItem('kew_read_notifications');
-          const readIds = stored ? new Set(JSON.parse(stored)) : new Set();
-          setUnreadAlerts(alertRegistry.filter(a => !readIds.has(a.id)).length);
-        } catch {
-          setUnreadAlerts(alertRegistry.length);
-        }
-      }
-    };
-
-    checkAlerts();
-    window.addEventListener('storage', checkAlerts);
-    window.addEventListener('kew_alerts_updated', checkAlerts);
-    return () => {
-      isMounted = false;
-      window.removeEventListener('storage', checkAlerts);
-      window.removeEventListener('kew_alerts_updated', checkAlerts);
-    };
-  }, [isDispatchRoute]);
 
   if (isDispatchRoute) {
     return null;

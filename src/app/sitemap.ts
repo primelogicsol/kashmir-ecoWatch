@@ -8,10 +8,12 @@ import { buildValidatedSitemapInventory } from '@/lib/seo/sitemap-validator';
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const { entries } = buildValidatedSitemapInventory();
-  return entries.map((entry) => ({
-    url: entry.url,
-    lastModified: entry.lastModified,
-    changeFrequency: entry.changeFrequency,
-    priority: entry.priority,
-  }));
+  return entries
+    .filter((entry) => !entry.pathname.endsWith('/request'))
+    .map((entry) => ({
+      url: entry.url,
+      lastModified: entry.lastModified,
+      changeFrequency: entry.changeFrequency,
+      priority: entry.priority,
+    }));
 }

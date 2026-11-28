@@ -2,9 +2,10 @@
 
 import { ErrorBoundary } from '@/components/common/ErrorBoundary';
 import { CinematicIntroduction } from '@/components/sections/CinematicIntroduction';
-import { ImmersiveHero } from '@/components/sections/ImmersiveHero';
+import { HeroTelemetryBanner } from '@/components/sections/HeroTelemetryBanner';
 import { AsymmetricModuleSurface } from '@/components/sections/AsymmetricModuleSurface';
-import { ExpandableLivePanels } from '@/components/sections/ExpandableLivePanels';
+import { InteractiveAtlasPreview } from '@/components/sections/InteractiveAtlasPreview';
+import { LiveIntelligencePanels } from '@/components/sections/LiveIntelligencePanels';
 import { NextGenDashboardPreview } from '@/components/sections/NextGenDashboardPreview';
 import { FeaturedEntityStrip } from '@/components/sections/FeaturedEntityStrip';
 import { AlertResponseSystem } from '@/components/sections/AlertResponseSystem';
@@ -15,22 +16,18 @@ import { EarthHumanImpactSection } from '@/components/sections/EarthHumanImpactS
 import { SectoralEiaSection } from '@/components/sections/SectoralEiaSection';
 import { EnvironmentalInvestigationsSection } from '@/components/sections/EnvironmentalInvestigationsSection';
 import { EducationStewardshipActionSection } from '@/components/sections/EducationStewardshipActionSection';
-import dynamic from 'next/dynamic';
+import {
+  FALLBACK_BASELINE_TELEMETRY,
+  type BaselineTelemetryData,
+} from '@/lib/telemetry/getBaselineTelemetry';
 
-// Dynamically import map component with SSR disabled (leaflet requires window)
-const MapIntelligenceCore = dynamic(
-  () => import('@/components/sections/MapIntelligenceCore').then(mod => ({ default: mod.MapIntelligenceCore })),
-  { 
-    ssr: false,
-    loading: () => (
-      <div className="min-h-[600px] bg-slate-900/50 animate-pulse rounded-2xl border border-white/10 flex items-center justify-center">
-        <p className="text-slate-400 text-sm">Loading map intelligence...</p>
-      </div>
-    )
-  }
-);
+export interface HomePageClientProps {
+  initialData?: BaselineTelemetryData;
+}
 
-export function HomePageClient() {
+export function HomePageClient({
+  initialData = FALLBACK_BASELINE_TELEMETRY,
+}: HomePageClientProps = {}) {
   return (
     <main id="main-content" className="min-h-screen bg-slate-950">
       {/* Additive Cinematic Institutional Introduction */}
@@ -38,9 +35,9 @@ export function HomePageClient() {
         <CinematicIntroduction />
       </ErrorBoundary>
 
-      {/* Band 1: Hero Command Surface */}
+      {/* Band 1: Hero Command Surface (Pre-rendered SSR Telemetry) */}
       <ErrorBoundary sectionName="Hero">
-        <ImmersiveHero />
+        <HeroTelemetryBanner initialData={initialData} />
       </ErrorBoundary>
 
       {/* Band 2: Core Intelligence Modules */}
@@ -63,12 +60,12 @@ export function HomePageClient() {
         <EnvironmentalInvestigationsSection />
       </ErrorBoundary>
 
-      {/* Band 3: Atlas + Live Monitoring */}
+      {/* Band 3: Interactive GIS Atlas Preview + Live Intelligence Panels */}
       <ErrorBoundary sectionName="Map Intelligence">
-        <MapIntelligenceCore />
+        <InteractiveAtlasPreview initialData={initialData} />
       </ErrorBoundary>
       <ErrorBoundary sectionName="Live Panels">
-        <ExpandableLivePanels />
+        <LiveIntelligencePanels initialData={initialData} />
       </ErrorBoundary>
 
       {/* Band 4: District Intelligence & Featured Entities */}
@@ -93,10 +90,10 @@ export function HomePageClient() {
       </ErrorBoundary>
 
       <ErrorBoundary sectionName="Dashboard Preview">
-        <NextGenDashboardPreview />
+        <NextGenDashboardPreview initialData={initialData} />
       </ErrorBoundary>
       <ErrorBoundary sectionName="Alert System">
-        <AlertResponseSystem />
+        <AlertResponseSystem initialData={initialData} />
       </ErrorBoundary>
     </main>
   );

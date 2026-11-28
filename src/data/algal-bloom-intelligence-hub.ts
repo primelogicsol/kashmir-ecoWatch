@@ -42,7 +42,16 @@ export interface SatelliteObservation {
   waterbodyName: string;
   region: 'Kashmir Valley' | 'Jammu Division' | 'Ladakh' | 'Azad Kashmir (AJK)' | 'Gilgit-Baltistan (GB)';
   district: string;
-  waterbodyType: 'Natural Freshwater Lake' | 'Wetland / Ramsar Site' | 'Tectonic / Valley Lake' | 'High-Altitude Tarn' | 'Hypersaline / Soda Basin' | 'Hydroelectric Reservoir' | 'Urban Lagoon / Wetland';
+  waterbodyType:
+    | 'Natural Freshwater Lake'
+    | 'Wetland / Ramsar Site'
+    | 'Wetland Conservation Reserve (Non-Ramsar)'
+    | 'Tectonic / Valley Lake'
+    | 'High-Altitude Tarn'
+    | 'Hypersaline / Soda Basin'
+    | 'Hydroelectric Reservoir'
+    | 'Urban Lagoon / Wetland';
+  isRamsar?: boolean;
   latitude: number;
   longitude: number;
   surfaceAreaKm2: number;
@@ -121,8 +130,17 @@ export interface LcmaStpEffluentRecord {
   district: string;
   receivingWaterbody: string;
   controllingAuthority: string;
-  monitoringType: 'Online Continuous Effluent Monitoring System (OCEMS)' | 'Municipal Operational Telemetry' | 'Periodic Regulatory Compliance Grab';
-  operationalStatus: 'Operational - Active Telemetry' | 'Operational - Manual Log' | 'Under Upgradation' | 'Planned / Sanctioned';
+  monitoringType:
+    | 'Published Audit / Design Capacity Reference (Non-Live)'
+    | 'Online Continuous Effluent Monitoring System (OCEMS)'
+    | 'Municipal Operational Telemetry'
+    | 'Periodic Regulatory Compliance Grab';
+  operationalStatus:
+    | 'Published Audit / Design Capacity Reference (Non-Live)'
+    | 'Operational - Active Telemetry'
+    | 'Operational - Manual Log'
+    | 'Under Upgradation'
+    | 'Planned / Sanctioned';
   lastTelemetryTimestamp: string;
 
   // Capacity vs Actual Discharge
@@ -229,6 +247,7 @@ export interface MonitoredWaterbody {
   altitudeM: number;
   surfaceAreaKm2: number;
   lakeType: string;
+  isRamsar?: boolean;
   trophicStatus: 'Hypereutrophic' | 'Eutrophic' | 'Mesotrophic' | 'Oligotrophic' | 'Brackish / Saline';
   latitude: number;
   longitude: number;
@@ -247,9 +266,39 @@ export interface MonitoredWaterbody {
   };
 }
 
+/**
+ * Official Ramsar Sites Information Service (RSIS) designated wetlands in the Western Himalaya (7 sites across 8 basins):
+ * - Wular Lake (#461)
+ * - Tsomoriri (#1213)
+ * - Hokera / Hokersar Wetland (#1570)
+ * - Surinsar-Mansar Lakes (#1573 — Mansar + Surinsar)
+ * - Tso Kar Wetland Complex (#2443)
+ * - Shallbugh Wetland Conservation Reserve (#2488)
+ * - Hygam Wetland Conservation Reserve (#2496)
+ */
+export const OFFICIAL_RSIS_RAMSAR_IDS = new Set<string>([
+  'wb-wular',
+  'wb-tsomoriri',
+  'wb-hokersar',
+  'wb-mansar',
+  'wb-surinsar',
+  'wb-tsokar',
+  'wb-shallabugh',
+  'wb-hygam',
+]);
+
+/**
+ * Exact Mishra & Mishra (2012) Normalized Difference Chlorophyll Index (NDCI) polynomial:
+ * Chl-a (µg/L) = 14.039 + 86.110 * NDCI + 194.325 * NDCI^2
+ * Regional Himalayan screening carries ±12.0 µg/L uncalibrated optical uncertainty.
+ */
+export function computeMishraNdciChlA(ndci: number): number {
+  return Number(Math.max(0.5, 14.039 + 86.11 * ndci + 194.325 * ndci * ndci).toFixed(1));
+}
+
 // ─── Pre-Configured Comprehensive Himalayan Datasets ─────────────────────────
 
-export const satelliteObservationsCatalog: SatelliteObservation[] = [
+const rawSatelliteObservationsCatalog: SatelliteObservation[] = [
   {
     "waterbodyId": "wb-dal",
     "waterbodyName": "Dal Lake",
@@ -272,9 +321,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 2.4,
     "validWaterPixelPercentage": 97.6,
     "ndciIndex": 0.28,
-    "chlorophyllAEstimateUgL": 38.4,
+    "chlorophyllAEstimateUgL": 53.4,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 3.8,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 14.8,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": true,
@@ -304,9 +353,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 3.1,
     "validWaterPixelPercentage": 96.2,
     "ndciIndex": 0.31,
-    "chlorophyllAEstimateUgL": 42.6,
+    "chlorophyllAEstimateUgL": 59.4,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 3.8,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 24.2,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": true,
@@ -336,9 +385,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 1.8,
     "validWaterPixelPercentage": 98.4,
     "ndciIndex": 0.22,
-    "chlorophyllAEstimateUgL": 28.5,
+    "chlorophyllAEstimateUgL": 42.4,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 3.8,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 9.6,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -351,7 +400,7 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "waterbodyName": "Anchar Lake",
     "region": "Kashmir Valley",
     "district": "Srinagar",
-    "waterbodyType": "Wetland / Ramsar Site",
+    "waterbodyType": "Urban Lagoon / Wetland",
     "latitude": 34.1481,
     "longitude": 74.7869,
     "surfaceAreaKm2": 5.6,
@@ -368,15 +417,15 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 2,
     "validWaterPixelPercentage": 95.8,
     "ndciIndex": 0.36,
-    "chlorophyllAEstimateUgL": 49.2,
+    "chlorophyllAEstimateUgL": 70.2,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 3.8,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 28,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": true,
     "surfaceScumMethod": "Floating Algae Index (FAI > 0.05) & Red-Edge Step",
     "qualityFlag": "Validated Cloud-Free",
-    "statusNotes": "Shared orbital granule T43SDR; severe microcystin bloom and thick decomposing algal mats along southern shoreline."
+    "statusNotes": "Shared orbital granule T43SDR; high optical red-edge biomass and decomposing macrophyte-algal mats along southern shoreline."
   },
   {
     "waterbodyId": "wb-manasbal",
@@ -400,9 +449,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 1.5,
     "validWaterPixelPercentage": 99.1,
     "ndciIndex": 0.14,
-    "chlorophyllAEstimateUgL": 14.2,
+    "chlorophyllAEstimateUgL": 29.9,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 3.8,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 5.2,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -432,9 +481,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 2.5,
     "validWaterPixelPercentage": 91.4,
     "ndciIndex": 0.25,
-    "chlorophyllAEstimateUgL": 32.1,
+    "chlorophyllAEstimateUgL": 47.7,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 3.8,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 19.4,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -597,7 +646,7 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "waterbodyName": "Mirgund Wetland",
     "region": "Kashmir Valley",
     "district": "Baramulla / Budgam",
-    "waterbodyType": "Wetland / Ramsar Site",
+    "waterbodyType": "Wetland Conservation Reserve (Non-Ramsar)",
     "latitude": 34.145,
     "longitude": 74.632,
     "surfaceAreaKm2": 4,
@@ -627,7 +676,7 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "waterbodyName": "Chatlam Wetland Reserve",
     "region": "Kashmir Valley",
     "district": "Pulwama",
-    "waterbodyType": "Wetland / Ramsar Site",
+    "waterbodyType": "Wetland Conservation Reserve (Non-Ramsar)",
     "latitude": 34.016,
     "longitude": 74.935,
     "surfaceAreaKm2": 0.8,
@@ -657,7 +706,7 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "waterbodyName": "Narkara Wetland",
     "region": "Kashmir Valley",
     "district": "Budgam",
-    "waterbodyType": "Wetland / Ramsar Site",
+    "waterbodyType": "Wetland Conservation Reserve (Non-Ramsar)",
     "latitude": 34.048,
     "longitude": 74.764,
     "surfaceAreaKm2": 2.1,
@@ -687,7 +736,7 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "waterbodyName": "Freshkoori Wetland",
     "region": "Kashmir Valley",
     "district": "Pulwama",
-    "waterbodyType": "Wetland / Ramsar Site",
+    "waterbodyType": "Wetland Conservation Reserve (Non-Ramsar)",
     "latitude": 34.022,
     "longitude": 74.918,
     "surfaceAreaKm2": 0.5,
@@ -717,7 +766,7 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "waterbodyName": "Kranchoo Wetland",
     "region": "Kashmir Valley",
     "district": "Pulwama",
-    "waterbodyType": "Wetland / Ramsar Site",
+    "waterbodyType": "Wetland Conservation Reserve (Non-Ramsar)",
     "latitude": 34.009,
     "longitude": 74.927,
     "surfaceAreaKm2": 0.4,
@@ -747,7 +796,7 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "waterbodyName": "Malgam Wetland",
     "region": "Kashmir Valley",
     "district": "Bandipora",
-    "waterbodyType": "Wetland / Ramsar Site",
+    "waterbodyType": "Wetland Conservation Reserve (Non-Ramsar)",
     "latitude": 34.361,
     "longitude": 74.575,
     "surfaceAreaKm2": 1.2,
@@ -794,9 +843,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 0.8,
     "validWaterPixelPercentage": 99.4,
     "ndciIndex": 0.24,
-    "chlorophyllAEstimateUgL": 31,
+    "chlorophyllAEstimateUgL": 45.9,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 3.8,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 11.4,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -826,9 +875,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 1.2,
     "validWaterPixelPercentage": 98.8,
     "ndciIndex": 0.19,
-    "chlorophyllAEstimateUgL": 22.8,
+    "chlorophyllAEstimateUgL": 37.4,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 3.8,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 9.8,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -858,9 +907,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 1,
     "validWaterPixelPercentage": 99,
     "ndciIndex": 0.06,
-    "chlorophyllAEstimateUgL": 5.8,
+    "chlorophyllAEstimateUgL": 19.9,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 3.8,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 4.1,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -873,7 +922,7 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "waterbodyName": "Gharana Wetland Reserve",
     "region": "Jammu Division",
     "district": "Jammu (R.S. Pura)",
-    "waterbodyType": "Wetland / Ramsar Site",
+    "waterbodyType": "Wetland Conservation Reserve (Non-Ramsar)",
     "latitude": 32.54,
     "longitude": 74.69,
     "surfaceAreaKm2": 0.7,
@@ -920,9 +969,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 2.1,
     "validWaterPixelPercentage": 98.1,
     "ndciIndex": 0.08,
-    "chlorophyllAEstimateUgL": 8.5,
+    "chlorophyllAEstimateUgL": 22.2,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 3.8,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 6.2,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -982,9 +1031,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 0,
     "validWaterPixelPercentage": 100,
     "ndciIndex": -0.04,
-    "chlorophyllAEstimateUgL": 1.2,
+    "chlorophyllAEstimateUgL": 10.9,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 0.8,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 1.1,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -1164,9 +1213,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 1.8,
     "validWaterPixelPercentage": 98.7,
     "ndciIndex": 0.26,
-    "chlorophyllAEstimateUgL": 33.4,
+    "chlorophyllAEstimateUgL": 49.6,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 3.8,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 16.2,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -1196,9 +1245,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 2.2,
     "validWaterPixelPercentage": 97.5,
     "ndciIndex": 0.11,
-    "chlorophyllAEstimateUgL": 10.6,
+    "chlorophyllAEstimateUgL": 25.9,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 3.8,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 4.8,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -1348,9 +1397,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 5.2,
     "validWaterPixelPercentage": 94.8,
     "ndciIndex": -0.01,
-    "chlorophyllAEstimateUgL": 2.1,
+    "chlorophyllAEstimateUgL": 13.2,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 1.2,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 18.5,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -1380,9 +1429,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 3.4,
     "validWaterPixelPercentage": 96.6,
     "ndciIndex": -0.02,
-    "chlorophyllAEstimateUgL": 1.9,
+    "chlorophyllAEstimateUgL": 12.4,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 0.9,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 4.2,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -1412,9 +1461,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 2.8,
     "validWaterPixelPercentage": 97.2,
     "ndciIndex": 0.04,
-    "chlorophyllAEstimateUgL": 4.2,
+    "chlorophyllAEstimateUgL": 17.8,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 1.5,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 2.9,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -1444,9 +1493,9 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "cloudCoverPercent": 2.5,
     "validWaterPixelPercentage": 97.5,
     "ndciIndex": 0.02,
-    "chlorophyllAEstimateUgL": 3,
+    "chlorophyllAEstimateUgL": 15.8,
     "chlorophyllModelId": "Mishra & Mishra (2012) Red-Edge NDCI Polynomial",
-    "chlorophyllUncertaintyUgL": 1.2,
+    "chlorophyllUncertaintyUgL": 12.0,
     "turbidityNtu": 2.1,
     "turbidityModelId": "Nechad et al. (2010) NIR 665nm/842nm Model",
     "surfaceScumDetected": false,
@@ -1725,6 +1774,30 @@ export const satelliteObservationsCatalog: SatelliteObservation[] = [
     "statusNotes": "Altitude 3,050m; famous emerald glacial lake surrounded by pine forest, seasonal surface freeze."
   }
 ];
+
+export const satelliteObservationsCatalog: SatelliteObservation[] = rawSatelliteObservationsCatalog.map((obs) => {
+  const isRamsar = OFFICIAL_RSIS_RAMSAR_IDS.has(obs.waterbodyId);
+  const correctedWaterbodyType: SatelliteObservation['waterbodyType'] =
+    !isRamsar && obs.waterbodyType === 'Wetland / Ramsar Site'
+      ? 'Wetland Conservation Reserve (Non-Ramsar)'
+      : obs.waterbodyType;
+
+  if (obs.monitoringStatus === 'Processed - Valid Satellite Observation') {
+    return {
+      ...obs,
+      isRamsar,
+      waterbodyType: correctedWaterbodyType,
+      chlorophyllAEstimateUgL: computeMishraNdciChlA(obs.ndciIndex),
+      chlorophyllUncertaintyUgL: 12.0,
+    };
+  }
+
+  return {
+    ...obs,
+    isRamsar,
+    waterbodyType: correctedWaterbodyType,
+  };
+});
 
 
 export const institutionalRecordsCatalog: InstitutionalWaterQualityRecord[] = [
@@ -2019,7 +2092,7 @@ export const institutionalRecordsCatalog: InstitutionalWaterQualityRecord[] = [
 ];
 
 
-export const lcmaStpEffluentCatalog: LcmaStpEffluentRecord[] = [
+const rawLcmaStpEffluentCatalog: LcmaStpEffluentRecord[] = [
   {
     "stpId": "LCMA-STP-01",
     "facilityName": "Hazratbal Sewage Treatment Plant",
@@ -2028,8 +2101,8 @@ export const lcmaStpEffluentCatalog: LcmaStpEffluentRecord[] = [
     "district": "Srinagar",
     "receivingWaterbody": "Dal Lake (Hazratbal Basin)",
     "controllingAuthority": "J&K Lakes Conservation and Management Authority (LCMA)",
-    "monitoringType": "Online Continuous Effluent Monitoring System (OCEMS)",
-    "operationalStatus": "Operational - Active Telemetry",
+    "monitoringType": "Published Audit / Design Capacity Reference (Non-Live)",
+    "operationalStatus": "Published Audit / Design Capacity Reference (Non-Live)",
     "lastTelemetryTimestamp": "2026-11-21 16:30 IST",
     "designCapacityMld": 7.5,
     "actualDischargeMld": 6.8,
@@ -2052,8 +2125,8 @@ export const lcmaStpEffluentCatalog: LcmaStpEffluentRecord[] = [
     "district": "Srinagar",
     "receivingWaterbody": "Dal Lake (Habak Basin)",
     "controllingAuthority": "J&K Lakes Conservation and Management Authority (LCMA)",
-    "monitoringType": "Online Continuous Effluent Monitoring System (OCEMS)",
-    "operationalStatus": "Operational - Active Telemetry",
+    "monitoringType": "Published Audit / Design Capacity Reference (Non-Live)",
+    "operationalStatus": "Published Audit / Design Capacity Reference (Non-Live)",
     "lastTelemetryTimestamp": "2026-11-21 16:30 IST",
     "designCapacityMld": 3.2,
     "actualDischargeMld": 3.1,
@@ -2076,8 +2149,8 @@ export const lcmaStpEffluentCatalog: LcmaStpEffluentRecord[] = [
     "district": "Srinagar",
     "receivingWaterbody": "Dal Lake (Bod Dal / Nishat)",
     "controllingAuthority": "J&K Lakes Conservation and Management Authority (LCMA)",
-    "monitoringType": "Online Continuous Effluent Monitoring System (OCEMS)",
-    "operationalStatus": "Operational - Active Telemetry",
+    "monitoringType": "Published Audit / Design Capacity Reference (Non-Live)",
+    "operationalStatus": "Published Audit / Design Capacity Reference (Non-Live)",
     "lastTelemetryTimestamp": "2026-11-21 16:30 IST",
     "designCapacityMld": 4.5,
     "actualDischargeMld": 4.2,
@@ -2100,8 +2173,8 @@ export const lcmaStpEffluentCatalog: LcmaStpEffluentRecord[] = [
     "district": "Srinagar",
     "receivingWaterbody": "Brari Nambal Lagoon & Dal Lake",
     "controllingAuthority": "J&K Lakes Conservation and Management Authority (LCMA)",
-    "monitoringType": "Online Continuous Effluent Monitoring System (OCEMS)",
-    "operationalStatus": "Operational - Active Telemetry",
+    "monitoringType": "Published Audit / Design Capacity Reference (Non-Live)",
+    "operationalStatus": "Published Audit / Design Capacity Reference (Non-Live)",
     "lastTelemetryTimestamp": "2026-11-21 16:30 IST",
     "designCapacityMld": 16.1,
     "actualDischargeMld": 15.6,
@@ -2124,8 +2197,8 @@ export const lcmaStpEffluentCatalog: LcmaStpEffluentRecord[] = [
     "district": "Srinagar",
     "receivingWaterbody": "Nigeen Lake & Anchar Lake Corridor",
     "controllingAuthority": "J&K Lakes Conservation and Management Authority (LCMA)",
-    "monitoringType": "Online Continuous Effluent Monitoring System (OCEMS)",
-    "operationalStatus": "Operational - Active Telemetry",
+    "monitoringType": "Published Audit / Design Capacity Reference (Non-Live)",
+    "operationalStatus": "Published Audit / Design Capacity Reference (Non-Live)",
     "lastTelemetryTimestamp": "2026-11-21 16:30 IST",
     "designCapacityMld": 5.4,
     "actualDischargeMld": 5,
@@ -2148,8 +2221,8 @@ export const lcmaStpEffluentCatalog: LcmaStpEffluentRecord[] = [
     "district": "Srinagar",
     "receivingWaterbody": "Chunt Kul / Jhelum River",
     "controllingAuthority": "Urban Environmental Engineering Department (UEED J&K)",
-    "monitoringType": "Municipal Operational Telemetry",
-    "operationalStatus": "Operational - Active Telemetry",
+    "monitoringType": "Published Audit / Design Capacity Reference (Non-Live)",
+    "operationalStatus": "Published Audit / Design Capacity Reference (Non-Live)",
     "lastTelemetryTimestamp": "2026-11-21 16:00 IST",
     "designCapacityMld": 10,
     "actualDischargeMld": 9.4,
@@ -2172,8 +2245,8 @@ export const lcmaStpEffluentCatalog: LcmaStpEffluentRecord[] = [
     "district": "Srinagar",
     "receivingWaterbody": "Brari Nambal Lagoon & Jhelum Navigation Canal",
     "controllingAuthority": "Urban Environmental Engineering Department (UEED J&K)",
-    "monitoringType": "Municipal Operational Telemetry",
-    "operationalStatus": "Operational - Active Telemetry",
+    "monitoringType": "Published Audit / Design Capacity Reference (Non-Live)",
+    "operationalStatus": "Published Audit / Design Capacity Reference (Non-Live)",
     "lastTelemetryTimestamp": "2026-11-21 16:00 IST",
     "designCapacityMld": 16.1,
     "actualDischargeMld": 14.8,
@@ -2196,8 +2269,8 @@ export const lcmaStpEffluentCatalog: LcmaStpEffluentRecord[] = [
     "district": "Srinagar",
     "receivingWaterbody": "Jhelum River & Anchar Lake Outfall Canal",
     "controllingAuthority": "Urban Environmental Engineering Department (UEED J&K)",
-    "monitoringType": "Municipal Operational Telemetry",
-    "operationalStatus": "Operational - Active Telemetry",
+    "monitoringType": "Published Audit / Design Capacity Reference (Non-Live)",
+    "operationalStatus": "Published Audit / Design Capacity Reference (Non-Live)",
     "lastTelemetryTimestamp": "2026-11-21 16:00 IST",
     "designCapacityMld": 16,
     "actualDischargeMld": 15.2,
@@ -2220,8 +2293,8 @@ export const lcmaStpEffluentCatalog: LcmaStpEffluentRecord[] = [
     "district": "Jammu",
     "receivingWaterbody": "Tawi River (Surinsar-Mansar Catchment Buffer)",
     "controllingAuthority": "Jammu Municipal Corporation (JMC) / UEED",
-    "monitoringType": "Online Continuous Effluent Monitoring System (OCEMS)",
-    "operationalStatus": "Operational - Active Telemetry",
+    "monitoringType": "Published Audit / Design Capacity Reference (Non-Live)",
+    "operationalStatus": "Published Audit / Design Capacity Reference (Non-Live)",
     "lastTelemetryTimestamp": "2026-11-21 15:45 IST",
     "designCapacityMld": 30,
     "actualDischargeMld": 26.5,
@@ -2310,265 +2383,22 @@ export const lcmaStpEffluentCatalog: LcmaStpEffluentRecord[] = [
   }
 ];
 
+export const lcmaStpEffluentCatalog: LcmaStpEffluentRecord[] = rawLcmaStpEffluentCatalog.map((stp) => ({
+  ...stp,
+  monitoringType: 'Published Audit / Design Capacity Reference (Non-Live)',
+  operationalStatus: 'Published Audit / Design Capacity Reference (Non-Live)',
+  lastTelemetryTimestamp: 'Published Audit / Design Capacity Reference (Non-Live)',
+}));
 
-export const laboratoryCyanotoxinCatalog: LaboratoryCyanotoxinRecord[] = [
-  // ─── KASHMIR VALLEY (Kashmir Core) ──────────────────────────────────────────
-  {
-    sampleId: 'KU-LIM-2026-D04',
-    waterbodyName: 'Dal Lake',
-    samplingLocation: 'Gagribal Basin & Dalgate Lock',
-    scope: 'Kashmir Core',
-    region: 'Kashmir Valley',
-    district: 'Srinagar',
-    collectionDate: '2026-10-24 09:30 IST',
-    analysisDate: '2026-10-27',
-    testingLaboratory: 'University of Kashmir Limnology Lab',
-    analyticalMethod: 'ELISA (Microcystin-ADDA)',
-    dominantSpecies: 'Microcystis aeruginosa, Dolichospermum flos-aquae',
-    cyanobacteriaCellDensityCellsML: 42000,
-    microcystinLrUgL: 1.45,
-    detectionLimitUgL: 0.10,
-    whoRecreationalGuidelineUgL: 1.0,
-    toxinSafetyStatus: 'Advisory Exceedance (>1.0 µg/L)',
-    chainOfCustodyVerified: true,
-  },
-  {
-    sampleId: 'JK-ENV-2026-W09',
-    waterbodyName: 'Wular Lake',
-    samplingLocation: 'Saderkote Inflow Delta',
-    scope: 'Kashmir Core',
-    region: 'Kashmir Valley',
-    district: 'Bandipora',
-    collectionDate: '2026-10-22 11:15 IST',
-    analysisDate: '2026-10-25',
-    testingLaboratory: 'J&K State Environmental Laboratory',
-    analyticalMethod: 'HPLC-MS/MS',
-    dominantSpecies: 'Microcystis spp., Oscillatoria tenuis',
-    cyanobacteriaCellDensityCellsML: 58000,
-    microcystinLrUgL: 2.10,
-    detectionLimitUgL: 0.10,
-    whoRecreationalGuidelineUgL: 1.0,
-    toxinSafetyStatus: 'Advisory Exceedance (>1.0 µg/L)',
-    chainOfCustodyVerified: true,
-  },
-  {
-    sampleId: 'KU-LIM-2026-N02',
-    waterbodyName: 'Nigeen Lake',
-    samplingLocation: 'West Embankment / Ashai Bagh channel',
-    scope: 'Kashmir Core',
-    region: 'Kashmir Valley',
-    district: 'Srinagar',
-    collectionDate: '2026-10-24 10:45 IST',
-    analysisDate: '2026-10-27',
-    testingLaboratory: 'University of Kashmir Limnology Lab',
-    analyticalMethod: 'ELISA (Microcystin-ADDA)',
-    dominantSpecies: 'Planktothrix agardhii, Euglena gracilis',
-    cyanobacteriaCellDensityCellsML: 18500,
-    microcystinLrUgL: 0.65,
-    detectionLimitUgL: 0.10,
-    whoRecreationalGuidelineUgL: 1.0,
-    toxinSafetyStatus: 'Low Cyanotoxin Level (<1.0 µg/L)',
-    chainOfCustodyVerified: true,
-  },
-  {
-    sampleId: 'KU-LIM-2026-M01',
-    waterbodyName: 'Manasbal Lake',
-    samplingLocation: 'Deepest Central Basin (13m depth surface)',
-    scope: 'Kashmir Core',
-    region: 'Kashmir Valley',
-    district: 'Ganderbal',
-    collectionDate: '2026-10-18 14:00 IST',
-    analysisDate: '2026-10-21',
-    testingLaboratory: 'University of Kashmir Limnology Lab',
-    analyticalMethod: 'ELISA (Microcystin-ADDA)',
-    dominantSpecies: 'Ceratium hirundinella (Dinoflagellate), Diatoms',
-    cyanobacteriaCellDensityCellsML: 3400,
-    microcystinLrUgL: 0.08,
-    detectionLimitUgL: 0.10,
-    whoRecreationalGuidelineUgL: 1.0,
-    toxinSafetyStatus: 'Below Detection Limit (<0.10 µg/L)',
-    chainOfCustodyVerified: true,
-  },
-
-  // ─── JAMMU DIVISION (Trans-Divisional) ───────────────────────────────────────
-  {
-    sampleId: 'JU-ENV-2026-MS01',
-    waterbodyName: 'Mansar Lake',
-    samplingLocation: 'Western Ghat / Sacred Ramsar Sanctuary Zone',
-    scope: 'Trans-Divisional',
-    region: 'Jammu Division',
-    district: 'Udhampur',
-    collectionDate: '2026-10-15 08:45 IST',
-    analysisDate: '2026-10-18',
-    testingLaboratory: 'University of Jammu Dept. of Environmental Sciences',
-    analyticalMethod: 'HPLC-MS/MS',
-    dominantSpecies: 'Microcystis aeruginosa, Cylindrospermopsis raciborskii',
-    cyanobacteriaCellDensityCellsML: 49000,
-    microcystinLrUgL: 1.82,
-    detectionLimitUgL: 0.10,
-    whoRecreationalGuidelineUgL: 1.0,
-    toxinSafetyStatus: 'Advisory Exceedance (>1.0 µg/L)',
-    chainOfCustodyVerified: true,
-  },
-  {
-    sampleId: 'JU-ENV-2026-SR02',
-    waterbodyName: 'Surinsar Lake',
-    samplingLocation: 'Lotus Eco-Zone / Northwest Inflow Arm',
-    scope: 'Trans-Divisional',
-    region: 'Jammu Division',
-    district: 'Jammu',
-    collectionDate: '2026-10-15 11:30 IST',
-    analysisDate: '2026-10-18',
-    testingLaboratory: 'J&K Pollution Control Committee (Jammu Central Lab)',
-    analyticalMethod: 'ELISA (Microcystin-ADDA)',
-    dominantSpecies: 'Anabaena spiroides, Chroococcus turgidus',
-    cyanobacteriaCellDensityCellsML: 14200,
-    microcystinLrUgL: 0.42,
-    detectionLimitUgL: 0.10,
-    whoRecreationalGuidelineUgL: 1.0,
-    toxinSafetyStatus: 'Low Cyanotoxin Level (<1.0 µg/L)',
-    chainOfCustodyVerified: true,
-  },
-  {
-    sampleId: 'JK-ENV-2026-RS01',
-    waterbodyName: 'Ranjit Sagar Reservoir',
-    samplingLocation: 'Basohli Forebay & Ravi Impoundment',
-    scope: 'Trans-Divisional',
-    region: 'Jammu Division',
-    district: 'Kathua',
-    collectionDate: '2026-10-12 10:00 IST',
-    analysisDate: '2026-10-16',
-    testingLaboratory: 'Punjab-J&K Joint Inter-State Water Laboratory',
-    analyticalMethod: 'ELISA (Microcystin-ADDA)',
-    dominantSpecies: 'Synedra ulna, Cyclotella (Diatoms)',
-    cyanobacteriaCellDensityCellsML: 4100,
-    microcystinLrUgL: 0.12,
-    detectionLimitUgL: 0.10,
-    whoRecreationalGuidelineUgL: 1.0,
-    toxinSafetyStatus: 'Low Cyanotoxin Level (<1.0 µg/L)',
-    chainOfCustodyVerified: true,
-  },
-
-  // ─── LADAKH (Trans-Divisional) ──────────────────────────────────────────────
-  {
-    sampleId: 'UOL-ENV-2026-PG01',
-    waterbodyName: 'Pangong Tso',
-    samplingLocation: 'Lukung Northwestern Saline Shoreline',
-    scope: 'Trans-Divisional',
-    region: 'Ladakh',
-    district: 'Leh',
-    collectionDate: '2026-09-28 13:15 IST',
-    analysisDate: '2026-10-04',
-    testingLaboratory: 'University of Ladakh High-Altitude Environmental Lab',
-    analyticalMethod: 'HPLC-MS/MS',
-    dominantSpecies: 'Nodularia spumigena, Phormidium tenue (Cold-adapted mats)',
-    cyanobacteriaCellDensityCellsML: 1200,
-    microcystinLrUgL: 0.04,
-    detectionLimitUgL: 0.10,
-    whoRecreationalGuidelineUgL: 1.0,
-    toxinSafetyStatus: 'Below Detection Limit (<0.10 µg/L)',
-    chainOfCustodyVerified: true,
-  },
-  {
-    sampleId: 'NIHE-LEH-2026-TM01',
-    waterbodyName: 'Tso Moriri',
-    samplingLocation: 'Karzok Wetland Basin (Ramsar High-Altitude Site)',
-    scope: 'Trans-Divisional',
-    region: 'Ladakh',
-    district: 'Leh',
-    collectionDate: '2026-09-26 12:00 IST',
-    analysisDate: '2026-10-02',
-    testingLaboratory: 'GB Pant National Institute of Himalayan Environment (NIHE Leh)',
-    analyticalMethod: 'ELISA (Microcystin-ADDA)',
-    dominantSpecies: 'Bacillariophyceae (Alpine diatoms), Chlamydomonas',
-    cyanobacteriaCellDensityCellsML: 850,
-    microcystinLrUgL: 0.02,
-    detectionLimitUgL: 0.10,
-    whoRecreationalGuidelineUgL: 1.0,
-    toxinSafetyStatus: 'Below Detection Limit (<0.10 µg/L)',
-    chainOfCustodyVerified: true,
-  },
-
-  // ─── AZAD KASHMIR (Transboundary / Extended) ────────────────────────────────
-  {
-    sampleId: 'PCRWR-AJK-2026-MG01',
-    waterbodyName: 'Mangla Reservoir',
-    samplingLocation: 'Jhelum River Inflow Arm (Mirpur Sector)',
-    scope: 'Transboundary / Extended',
-    region: 'Azad Kashmir (AJK)',
-    district: 'Mirpur',
-    collectionDate: '2026-10-10 10:30 PKT',
-    analysisDate: '2026-10-14',
-    testingLaboratory: 'Pakistan Council of Research in Water Resources (PCRWR)',
-    analyticalMethod: 'HPLC-MS/MS',
-    dominantSpecies: 'Microcystis flos-aquae, Anabaena circinalis',
-    cyanobacteriaCellDensityCellsML: 38500,
-    microcystinLrUgL: 1.15,
-    detectionLimitUgL: 0.10,
-    whoRecreationalGuidelineUgL: 1.0,
-    toxinSafetyStatus: 'Advisory Exceedance (>1.0 µg/L)',
-    chainOfCustodyVerified: true,
-  },
-  {
-    sampleId: 'UAJK-ENV-2026-BJ02',
-    waterbodyName: 'Banjosa Lake',
-    samplingLocation: 'Rawalakot Forest Catchment Basin',
-    scope: 'Transboundary / Extended',
-    region: 'Azad Kashmir (AJK)',
-    district: 'Poonch (AJK)',
-    collectionDate: '2026-10-08 14:15 PKT',
-    analysisDate: '2026-10-12',
-    testingLaboratory: 'University of Azad Jammu & Kashmir (UAJK Muzaffarabad)',
-    analyticalMethod: 'ELISA (Microcystin-ADDA)',
-    dominantSpecies: 'Gloeotrichia echinulata, Chlorella vulgaris',
-    cyanobacteriaCellDensityCellsML: 8200,
-    microcystinLrUgL: 0.28,
-    detectionLimitUgL: 0.10,
-    whoRecreationalGuidelineUgL: 1.0,
-    toxinSafetyStatus: 'Low Cyanotoxin Level (<1.0 µg/L)',
-    chainOfCustodyVerified: true,
-  },
-
-  // ─── GILGIT-BALTISTAN (Transboundary / Extended) ────────────────────────────
-  {
-    sampleId: 'KIU-WQL-2026-AT01',
-    waterbodyName: 'Attabad Lake',
-    samplingLocation: 'Upper Hunza River Inflow Gorge',
-    scope: 'Transboundary / Extended',
-    region: 'Gilgit-Baltistan (GB)',
-    district: 'Hunza',
-    collectionDate: '2026-09-20 11:00 PKT',
-    analysisDate: '2026-09-25',
-    testingLaboratory: 'Karakoram International University (KIU Gilgit) Water Lab',
-    analyticalMethod: 'HPLC-MS/MS',
-    dominantSpecies: 'Glacial flour diatoms, Fragilaria crotonensis',
-    cyanobacteriaCellDensityCellsML: 620,
-    microcystinLrUgL: 0.03,
-    detectionLimitUgL: 0.10,
-    whoRecreationalGuidelineUgL: 1.0,
-    toxinSafetyStatus: 'Below Detection Limit (<0.10 µg/L)',
-    chainOfCustodyVerified: true,
-  },
-  {
-    sampleId: 'EPA-GB-2026-SP01',
-    waterbodyName: 'Sadpara Lake',
-    samplingLocation: 'Skardu Municipal Water Intake Forebay',
-    scope: 'Transboundary / Extended',
-    region: 'Gilgit-Baltistan (GB)',
-    district: 'Skardu',
-    collectionDate: '2026-09-18 15:30 PKT',
-    analysisDate: '2026-09-23',
-    testingLaboratory: 'Gilgit-Baltistan Environmental Protection Agency (EPA-GB)',
-    analyticalMethod: 'ELISA (Microcystin-ADDA)',
-    dominantSpecies: 'Asterionella formosa, Tabellaria fenestrata',
-    cyanobacteriaCellDensityCellsML: 940,
-    microcystinLrUgL: 0.05,
-    detectionLimitUgL: 0.10,
-    whoRecreationalGuidelineUgL: 1.0,
-    toxinSafetyStatus: 'Below Detection Limit (<0.10 µg/L)',
-    chainOfCustodyVerified: true,
-  },
-];
+// QUARANTINED_SYNTHETIC_LAB_SAMPLES:
+// All synthetic laboratory cyanotoxin sample records (KU-LIM-2026-D04, JK-ENV-2026-W09,
+// KU-LIM-2026-N02, KU-LIM-2026-M01, JU-ENV-2026-MS01, JU-ENV-2026-SR02, JK-ENV-2026-RS01,
+// UOL-ENV-2026-PG01, NIHE-LEH-2026-TM01, PCRWR-AJK-2026-MG01, UAJK-ENV-2026-BJ02,
+// KIU-WQL-2026-AT01, EPA-GB-2026-SP01) have been permanently quarantined.
+// Reason: Unverified synthetic ELISA / HPLC-MS/MS microcystin concentrations and
+// chainOfCustodyVerified=true flags without primary signed laboratory assay certificates.
+// Public state: Laboratory ELISA/LC-MS cyanotoxin feed pending institutional MoU.
+export const laboratoryCyanotoxinCatalog: LaboratoryCyanotoxinRecord[] = [];
 
 export const bloomEarlyWarningAlerts: BloomEarlyWarningAlert[] = [
   {
@@ -2577,13 +2407,13 @@ export const bloomEarlyWarningAlerts: BloomEarlyWarningAlert[] = [
     waterbodyName: 'Dal Lake',
     district: 'Srinagar',
     scope: 'Kashmir Core',
-    classification: 'Laboratory-Confirmed Harmful Bloom',
-    alertHeadline: 'Microcystin Advisory Exceedance in Dal Lake Gagribal Basin',
-    evidenceSource: 'Laboratory Microcystin Assay',
-    advisoryGuidance: 'Microcystin-LR concentration measured at 1.45 µg/L, exceeding WHO recreational threshold (1.0 µg/L). Avoid direct skin contact and recreational bathing in Gagribal and Dalgate basins.',
-    isOfficialHealthAdvisory: true,
-    issuingBody: 'University of Kashmir Limnology Lab & KEW Water Sentinel',
-    timestamp: '2026-11-20 12:00 IST',
+    classification: 'Probable Bloom',
+    alertHeadline: 'Elevated Optical NDCI (+0.28) & Surface Algal Biomass Screening in Dal Lake Gagribal Basin',
+    evidenceSource: 'Sentinel-2 Satellite Biomass',
+    advisoryGuidance: 'Archived Copernicus Sentinel-2 red-edge reflectance indicates elevated optical chlorophyll-a proxy (53.4 ± 12.0 µg/L, uncalibrated Mishra & Mishra 2012 polynomial). Optical screening cannot confirm microcystin presence; official public health bathing advisories rest solely with statutory health/pollution authorities.',
+    isOfficialHealthAdvisory: false,
+    issuingBody: 'KEW Optical Screening Synthesis (Non-Statutory — Not an Official Public Health Advisory)',
+    timestamp: '2026-11-19 (Sentinel-2 Overpass)',
   },
   {
     alertId: 'AL-BLM-WUL-02',
@@ -2594,10 +2424,10 @@ export const bloomEarlyWarningAlerts: BloomEarlyWarningAlert[] = [
     classification: 'Probable Bloom',
     alertHeadline: 'Elevated Optical NDCI (+0.31) with Agricultural Nutrient Influx in Saderkote Basin',
     evidenceSource: 'Sentinel-2 Satellite Biomass',
-    advisoryGuidance: 'Copernicus Sentinel-2 red-edge reflectance indicates dense surface chlorophyll-a (42.6 µg/L). Local fishermen advised to avoid using untreated lake water for household washing.',
+    advisoryGuidance: 'Archived Copernicus Sentinel-2 red-edge reflectance indicates elevated surface chlorophyll-a proxy (59.4 ± 12.0 µg/L, uncalibrated Mishra & Mishra 2012 polynomial) alongside Trapa natans macrophyte canopies.',
     isOfficialHealthAdvisory: false,
-    issuingBody: 'KEW Satellite Biomass Screener',
-    timestamp: '2026-11-21 08:30 IST',
+    issuingBody: 'KEW Optical Screening Synthesis (Non-Statutory)',
+    timestamp: '2026-11-19 (Sentinel-2 Overpass)',
   },
   {
     alertId: 'AL-BLM-ANC-03',
@@ -2606,12 +2436,12 @@ export const bloomEarlyWarningAlerts: BloomEarlyWarningAlert[] = [
     district: 'Srinagar / Ganderbal',
     scope: 'Kashmir Core',
     classification: 'Probable Bloom',
-    alertHeadline: 'Hypereutrophic Stagnation & Macrophyte-Algal Surface Mat Accumulation',
-    evidenceSource: 'Hydro-Thermal Predictive Model',
-    advisoryGuidance: 'Severe nitrogen runoff coupled with zero flushing velocity is accelerating phytoplankton decay. High biochemical oxygen demand and fish stress detected.',
+    alertHeadline: 'Hypereutrophic Stagnation & Macrophyte-Algal Surface Mat Screening (+0.36 NDCI)',
+    evidenceSource: 'Sentinel-2 Satellite Biomass',
+    advisoryGuidance: 'Archived Sentinel-2 red-edge reflectance indicates high optical biomass proxy (70.2 ± 12.0 µg/L, uncalibrated) in low-flushing littoral zones. Laboratory cyanotoxin assay feed pending institutional MoU.',
     isOfficialHealthAdvisory: false,
-    issuingBody: 'KEW Hydro-Thermal Early Warning System',
-    timestamp: '2026-11-21 06:15 IST',
+    issuingBody: 'KEW Optical Screening Synthesis (Non-Statutory)',
+    timestamp: '2026-11-19 (Sentinel-2 Overpass)',
   },
 ];
 
@@ -3496,7 +3326,7 @@ export const predictiveForecastsCatalog: PredictiveBloomForecast[] = [
 
 // ─── 83 Comprehensive Monitored Waterbodies Across 5 Regions ─────────────────
 
-export const primaryMonitoredWaterbodies: MonitoredWaterbody[] = [
+const rawPrimaryMonitoredWaterbodies: MonitoredWaterbody[] = [
   // ── 1. Kashmir Valley (Kashmir Core)
   {
     id: 'wb-dal',
@@ -3510,8 +3340,8 @@ export const primaryMonitoredWaterbodies: MonitoredWaterbody[] = [
     trophicStatus: 'Eutrophic',
     latitude: 34.1082,
     longitude: 74.8690,
-    currentBloomClassification: 'Laboratory-Confirmed Harmful Bloom',
-    cyanotoxinStatus: 'Advisory Exceedance (>1.0 µg/L)',
+    currentBloomClassification: 'Probable Bloom',
+    cyanotoxinStatus: 'No Laboratory Testing Conducted',
   },
   {
     id: 'wb-wular',
@@ -4145,12 +3975,12 @@ export const primaryMonitoredWaterbodies: MonitoredWaterbody[] = [
     "scope": "Kashmir Core",
     "altitudeM": 1582,
     "surfaceAreaKm2": 4,
-    "lakeType": "Ramsar wetland",
+    "lakeType": "Wetland Conservation Reserve (Non-Ramsar)",
     "trophicStatus": "Eutrophic",
     "latitude": 34.145,
     "longitude": 74.632,
     "currentBloomClassification": "Possible Bloom Detected",
-    "cyanotoxinStatus": "Below Detection Limit (<0.10 µg/L)"
+    "cyanotoxinStatus": "No Laboratory Testing Conducted"
   },
   {
     "id": "wb-chatlam",
@@ -4235,12 +4065,12 @@ export const primaryMonitoredWaterbodies: MonitoredWaterbody[] = [
     "scope": "Trans-Divisional",
     "altitudeM": 285,
     "surfaceAreaKm2": 0.7,
-    "lakeType": "Sub-tropical Ramsar wetland",
+    "lakeType": "Sub-tropical Wetland Conservation Reserve (Non-Ramsar)",
     "trophicStatus": "Hypereutrophic",
     "latitude": 32.54,
     "longitude": 74.69,
     "currentBloomClassification": "Possible Bloom Detected",
-    "cyanotoxinStatus": "Below Detection Limit (<0.10 µg/L)"
+    "cyanotoxinStatus": "No Laboratory Testing Conducted"
   },
   {
     "id": "wb-khalti",
@@ -4315,9 +4145,23 @@ export const primaryMonitoredWaterbodies: MonitoredWaterbody[] = [
     "latitude": 36.168,
     "longitude": 74.148,
     "currentBloomClassification": "No Bloom Detected",
-    "cyanotoxinStatus": "Below Detection Limit (<0.10 µg/L)"
+    "cyanotoxinStatus": "No Laboratory Testing Conducted"
   },
 ];
+
+export const primaryMonitoredWaterbodies: MonitoredWaterbody[] = rawPrimaryMonitoredWaterbodies.map((wb) => {
+  const isRamsar = OFFICIAL_RSIS_RAMSAR_IDS.has(wb.id);
+  const matchingLab = laboratoryCyanotoxinCatalog.find((l) => l.waterbodyName === wb.name);
+  return {
+    ...wb,
+    isRamsar,
+    currentBloomClassification:
+      wb.currentBloomClassification === 'Laboratory-Confirmed Harmful Bloom' && !matchingLab
+        ? 'Probable Bloom'
+        : wb.currentBloomClassification,
+    cyanotoxinStatus: matchingLab ? matchingLab.toxinSafetyStatus : 'No Laboratory Testing Conducted',
+  };
+});
 
 // ─── Initial SSR Snapshot Helper ─────────────────────────────────────────────
 
@@ -4334,13 +4178,6 @@ export function getInitialAlgalBloomSnapshot() {
       institutionalRecord: inst,
       laboratoryRecord: lab,
       forecast: fc,
-      liveMeteorology: {
-        tempMaxC: wb.subRegion === 'Ladakh' ? 4.2 : wb.subRegion === 'Gilgit-Baltistan' ? 8.5 : 18.2,
-        windSpeedKmH: 7.4,
-        solarRadiationMjM2: 15.6,
-        precip7dMm: 9.2,
-        stratificationState: 'Stagnant Surface Layer (<10 km/h)',
-      },
     };
   });
 
@@ -4359,7 +4196,7 @@ export function getInitialAlgalBloomSnapshot() {
       activeOcemsStps: lcmaStpEffluentCatalog.length,
       laboratoryAssays: laboratoryCyanotoxinCatalog.length,
       activeBloomAlerts: bloomEarlyWarningAlerts.length,
-      lastSyncTime: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
+      lastSyncTime: 'Archival Reference Snapshot',
     },
   };
 }

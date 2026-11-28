@@ -4,8 +4,11 @@ import React, { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
-import { insightPanels } from '@/lib/data';
 import { InsightPanel } from '@/types';
+import {
+  FALLBACK_BASELINE_TELEMETRY,
+  type BaselineTelemetryData,
+} from '@/lib/telemetry/getBaselineTelemetry';
 import { useRouter } from 'next/navigation';
 import {
   ChevronDown,
@@ -60,11 +63,17 @@ const iconConfig: Record<string, React.ComponentType<{ className?: string }>> = 
   'cryosphere-watch': Mountain,
 };
 
-export function ExpandableLivePanels() {
+export interface ExpandableLivePanelsProps {
+  initialData?: BaselineTelemetryData;
+}
+
+export function ExpandableLivePanels({
+  initialData = FALLBACK_BASELINE_TELEMETRY,
+}: ExpandableLivePanelsProps = {}) {
   const router = useRouter();
 
-  // 1. Live Panels State: initialized with baseline, updated dynamically via Live APIs
-  const [panels, setPanels] = useState<InsightPanel[]>(insightPanels);
+  // 1. Live Panels State: pre-populated from server-rendered ISR baseline telemetry
+  const [panels, setPanels] = useState<InsightPanel[]>(() => initialData.panels);
   const [isLiveTelemetry, setIsLiveTelemetry] = useState(false);
   const [lastSynced, setLastSynced] = useState<string>('');
   const [hasMounted, setHasMounted] = useState(false);
@@ -76,7 +85,7 @@ export function ExpandableLivePanels() {
   // 2. All cards opened by default per user specification
   const [expandedPanels, setExpandedPanels] = useState<Record<string, boolean>>(() => {
     const initial: Record<string, boolean> = {};
-    insightPanels.forEach(panel => {
+    initialData.panels.forEach(panel => {
       initial[panel.id] = true;
     });
     return initial;
@@ -85,17 +94,28 @@ export function ExpandableLivePanels() {
   const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
   const [alertModalMode, setAlertModalMode] = useState<'subscribe' | 'settings'>('subscribe');
 
-  // Connect to live third-party APIs (Open-Meteo European CAMS, GloFAS, and live telemetry)
+  // Connect to external public model APIs (Open-Meteo CAMS & /api/alerts/live) while preserving static baselines honestly
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
+
+    const classifyAqiLabel = (aqi: number) =>
+      aqi > 200
+        ? 'Very Unhealthy'
+        : aqi > 150
+          ? 'Unhealthy'
+          : aqi > 100
+            ? 'Unhealthy for Sensitive Groups'
+            : aqi > 50
+              ? 'Moderate'
+              : 'Good';
 
     async function syncLiveApiFeeds() {
       try {
         const [alertsRes, airRes] = await Promise.allSettled([
           fetch('/api/alerts/live', { signal: controller.signal }),
           fetch(
-            'https://air-quality-api.open-meteo.com/v1/air-quality?latitude=34.0837&longitude=74.7973&current=pm10,pm2_5,us_aqi&timezone=Asia%2FKolkata',
+            'https://air-quality-api.open-meteo.com/v1/air-quality?latitude=34.0837,33.7311,34.1990&longitude=74.7973,75.1487,74.3636&current=pm10,pm2_5,us_aqi&timezone=UTC',
             { signal: controller.signal }
           )
         ]);
@@ -105,222 +125,261 @@ export function ExpandableLivePanels() {
         let liveAlerts: any[] = [];
         if (alertsRes.status === 'fulfilled' && alertsRes.value.ok) {
           const json = await alertsRes.value.json();
-          liveAlerts = json.alerts || [];
+          if (json?.source === 'live-api' && Array.isArray(json.alerts)) {
+            liveAlerts = json.alerts;
+          }
         }
 
-        let srinagarAqi = 63, srinagarPm25 = 6.6, srinagarPm10 = 11.7;
+        let camsPoints: Array<{ aqi: number; pm25: number; pm10: number; timeIso: string }> | null = null;
         if (airRes.status === 'fulfilled' && airRes.value.ok) {
           const airJson = await airRes.value.json();
-          if (airJson?.current) {
-            srinagarAqi = Math.round(airJson.current.us_aqi ?? 63);
-            srinagarPm25 = Math.round((airJson.current.pm2_5 ?? 6.6) * 10) / 10;
-            srinagarPm10 = Math.round((airJson.current.pm10 ?? 11.7) * 10) / 10;
+          const arr = Array.isArray(airJson) ? airJson : [airJson];
+          if (arr.length === 3 && arr.every((entry) => entry?.current && typeof entry.current.us_aqi === 'number')) {
+            camsPoints = arr.map((entry) => ({
+              aqi: Math.round(entry.current.us_aqi),
+              pm25: Math.round((entry.current.pm2_5 ?? 0) * 10) / 10,
+              pm10: Math.round((entry.current.pm10 ?? 0) * 10) / 10,
+              timeIso: entry.current.time ? `${entry.current.time}Z` : new Date().toISOString(),
+            }));
           }
         }
 
         const zojilaAlert = liveAlerts.find(a => a.id === 'live-avalanche-zojila' || a.category === 'avalanche');
-        const jhelumAlert = liveAlerts.find(a => a.id === 'live-river-jhelum' || a.category === 'flood');
-        const landslideAlert = liveAlerts.find(a => a.id === 'live-landslide-ramban' || a.category === 'landslide');
+        const jhelumAlert = liveAlerts.find(a => a.id === 'live-flood-jhelum' || a.id === 'live-river-jhelum' || a.category === 'flood');
+        const jhelumDischargeVal = jhelumAlert?.guidance?.actions?.[0]
+          ?.replace('Modeled Discharge (GloFAS v4): ', '')
+          ?.replace('Current Live Discharge: ', '')
+          ?.replace('Discharge Level: ', '') || null;
 
-        const srinagarAqiCategory = srinagarAqi > 200 ? 'Very Unhealthy' : srinagarAqi > 150 ? 'Unhealthy' : srinagarAqi > 100 ? 'Unhealthy for Sensitive Groups' : srinagarAqi > 50 ? 'Moderate' : 'Good';
-        const jhelumDischargeVal = jhelumAlert?.guidance?.actions?.[0]?.replace('Current Live Discharge: ', '')?.replace('Discharge Level: ', '') || '0.9 m³/s';
-
-        // Dynamically update panels with verified live 3rd-party API data
         setPanels(prev => prev.map(panel => {
-          // Card 1: Air Quality Signals -> Real-time Open-Meteo European CAMS API
+          // Card 1: Air Quality Signals -> Real multi-point Open-Meteo CAMS 11 km model grid (zero synthetic offsets)
           if (panel.id === 'air-quality') {
+            if (camsPoints) {
+              const [sgr, ang, brm] = camsPoints;
+              const maxAqi = Math.max(sgr.aqi, ang.aqi, brm.aqi);
+              return {
+                ...panel,
+                description: 'Copernicus CAMS (~11 km gridded atmospheric model via Open-Meteo) — non-regulatory model screening',
+                status: maxAqi > 100 ? 'critical' : maxAqi > 50 ? 'warning' : 'normal',
+                items: [
+                  {
+                    id: 'aq-1',
+                    title: `Srinagar Grid — ${classifyAqiLabel(sgr.aqi)} US AQI (${sgr.aqi}) · PM2.5 ${sgr.pm25} µg/m³ (CAMS 11 km Model)`,
+                    location: 'Srinagar Basin Grid (34.08°N, 74.80°E)',
+                    timestamp: new Date(sgr.timeIso),
+                    severity: sgr.aqi > 100 ? 'high' : sgr.aqi > 50 ? 'medium' : 'low',
+                    isLive: true,
+                  },
+                  {
+                    id: 'aq-2',
+                    title: `Anantnag Grid — ${classifyAqiLabel(ang.aqi)} US AQI (${ang.aqi}) · PM2.5 ${ang.pm25} µg/m³ (CAMS 11 km Model)`,
+                    location: 'Anantnag South Grid (33.73°N, 75.15°E)',
+                    timestamp: new Date(ang.timeIso),
+                    severity: ang.aqi > 100 ? 'high' : ang.aqi > 50 ? 'medium' : 'low',
+                    isLive: true,
+                  },
+                  {
+                    id: 'aq-3',
+                    title: `Baramulla Grid — ${classifyAqiLabel(brm.aqi)} US AQI (${brm.aqi}) · PM10 ${brm.pm10} µg/m³ (CAMS 11 km Model)`,
+                    location: 'Baramulla Gateway Grid (34.20°N, 74.36°E)',
+                    timestamp: new Date(brm.timeIso),
+                    severity: brm.aqi > 100 ? 'high' : brm.aqi > 50 ? 'medium' : 'low',
+                    isLive: true,
+                  },
+                ]
+              };
+            }
             return {
               ...panel,
-              status: srinagarAqi > 100 ? 'critical' : srinagarAqi > 50 ? 'warning' : 'normal',
-              items: [
-                {
-                  id: 'aq-1',
-                  title: `Srinagar Urban — ${srinagarAqiCategory} AQI (${srinagarAqi}) · PM2.5 ${srinagarPm25} µg/m³`,
-                  location: 'Srinagar CPCB Station & Dal Lake Basin',
-                  timestamp: new Date(),
-                  severity: srinagarAqi > 100 ? 'high' : srinagarAqi > 50 ? 'medium' : 'low',
-                  isLive: true,
-                },
-                {
-                  id: 'aq-2',
-                  title: `Anantnag Basin — Good AQI (${Math.max(38, srinagarAqi - 15)}) · PM2.5 5.2 µg/m³`,
-                  location: 'Anantnag & Lidder Valley Catchment',
-                  timestamp: new Date(Date.now() - 12 * 60 * 1000),
-                  severity: 'low',
-                  isLive: true,
-                },
-                {
-                  id: 'aq-3',
-                  title: `Baramulla Gateway — Moderate AQI (${Math.max(45, srinagarAqi - 5)}) · PM10 ${srinagarPm10} µg/m³`,
-                  location: 'Baramulla & Wular Peripheral Belt',
-                  timestamp: new Date(Date.now() - 28 * 60 * 1000),
-                  severity: 'medium',
-                  isLive: true,
-                },
-              ]
+              description: 'Historical winter inversion & valley particulate reference baselines (2024)',
+              items: panel.items.map(it => ({ ...it, isLive: false })),
             };
           }
 
-          // Card 2: Glacial Lake & Cryosphere Watch -> Real-time High Altitude Mountain Sensor Feed
+          // Card 2: Glacial Lake & Cryosphere Watch -> NWP pass screening + published satellite glaciology baselines
           if (panel.id === 'cryosphere-watch') {
             return {
               ...panel,
+              description: 'Published satellite glaciology inventories paired with Open-Meteo NWP pass screening',
               items: [
-                {
-                  id: 'cryo-1',
-                  title: zojilaAlert ? zojilaAlert.title : 'Zoji La Pass (3,528m) Live Freeze-Thaw Telemetry: -2.7°C',
-                  location: zojilaAlert?.affectedArea || 'Zoji La & Dras Sector, Kargil',
-                  timestamp: new Date(zojilaAlert?.updated || Date.now() - 18 * 60 * 1000),
-                  severity: 'high',
-                  isLive: true,
-                },
+                zojilaAlert
+                  ? {
+                      id: 'cryo-1',
+                      title: zojilaAlert.title,
+                      location: zojilaAlert.affectedArea || 'Zoji La & Dras Sector, Kargil',
+                      timestamp: new Date(zojilaAlert.updated),
+                      severity: zojilaAlert.severity === 'critical' || zojilaAlert.severity === 'high' ? 'high' : 'medium',
+                      isLive: true,
+                    }
+                  : {
+                      id: 'cryo-1',
+                      title: 'Zoji La Pass (3,528 m) — High-Altitude Cryosphere Corridor Baseline (2023)',
+                      location: 'Zoji La & Dras Sector, Kargil',
+                      timestamp: new Date('2023-11-15'),
+                      severity: 'medium',
+                      isLive: false,
+                    },
                 {
                   id: 'cryo-2',
-                  title: 'Kolhai Glacier Snout — Active Ablation & Moraine Runoff',
+                  title: 'Kolahoi Glacier — ~23% Area Retreat Since 1962 (Published Remote-Sensing Baseline, 2021)',
                   location: 'Lidder Headwaters, Anantnag',
-                  timestamp: new Date(Date.now() - 42 * 60 * 1000),
+                  timestamp: new Date('2021-06-15'),
                   severity: 'high',
-                  isLive: true,
+                  isLive: false,
                 },
                 {
                   id: 'cryo-3',
-                  title: 'Thajiwas Moraine Dam — Proglacial Tarn Level Stable',
+                  title: 'Thajiwas & Sonamarg Glacial Tarns — ISRO SAC Inventory Baseline (2011)',
                   location: 'Sonamarg Alpine Ridge, Ganderbal',
-                  timestamp: new Date(Date.now() - 75 * 60 * 1000),
+                  timestamp: new Date('2011-05-01'),
                   severity: 'medium',
-                  isLive: true,
+                  isLive: false,
                 },
               ]
             };
           }
 
-          // Card 3: Wetland Stress Watch -> Real-time GloFAS Hydrological Telemetry
+          // Card 3: Wetland Stress Watch -> GloFAS v4 modeled discharge + statutory Ramsar/NWIA baselines
           if (panel.id === 'wetland-stress') {
             return {
               ...panel,
+              description: 'Statutory Ramsar / ISRO NWIA wetland baselines & Copernicus GloFAS v4 (~5 km) modeled discharge',
               items: [
-                {
-                  id: 'wet-1',
-                  title: `Jhelum River & Hokersar Inflow — Live Discharge: ${jhelumDischargeVal}`,
-                  location: 'Jhelum Basin & Hokersar Ramsar Wetland',
-                  timestamp: new Date(jhelumAlert?.updated || Date.now() - 25 * 60 * 1000),
-                  severity: 'high',
-                  isLive: true,
-                },
+                jhelumAlert && jhelumDischargeVal
+                  ? {
+                      id: 'wet-1',
+                      title: `Jhelum Basin (GloFAS v4 ~5 km Model) — Modeled Discharge: ${jhelumDischargeVal}`,
+                      location: 'Jhelum Basin & Hokersar Ramsar Wetland',
+                      timestamp: new Date(jhelumAlert.updated),
+                      severity: jhelumAlert.severity === 'critical' || jhelumAlert.severity === 'high' ? 'high' : 'low',
+                      isLive: true,
+                    }
+                  : {
+                      id: 'wet-1',
+                      title: 'Hokersar Wetland (Ramsar #1570) — Siltation & Inflow Audit Baseline (2025)',
+                      location: 'Srinagar / Budgam District',
+                      timestamp: new Date('2025-03-01'),
+                      severity: 'high',
+                      isLive: false,
+                    },
                 {
                   id: 'wet-2',
-                  title: 'Shallabugh Wetland — Hydrological Inundation & Siltation Watch',
-                  location: 'Ganderbal & Sindh Confluence',
-                  timestamp: new Date(Date.now() - 55 * 60 * 1000),
+                  title: 'Shallabugh Wetland — Ramsar Site #2488 Statutory Baseline (1,675 ha, 2022)',
+                  location: 'Ganderbal & Srinagar District',
+                  timestamp: new Date('2022-06-08'),
                   severity: 'medium',
-                  isLive: true,
+                  isLive: false,
                 },
                 {
                   id: 'wet-3',
-                  title: 'Mirgund Wetland — Water Surface Level & Turbidity Sensor',
-                  location: 'Baramulla-Budgam Wetland Belt',
-                  timestamp: new Date(Date.now() - 110 * 60 * 1000),
+                  title: 'Mirgund Wetland Conservation Reserve — ISRO NWIA Statutory Baseline (2011)',
+                  location: 'Baramulla / Budgam District',
+                  timestamp: new Date('2011-05-01'),
                   severity: 'medium',
-                  isLive: true,
+                  isLive: false,
                 },
               ]
             };
           }
 
-          // Card 4: Algal Bloom Activity -> Real-time Basin Eutrophication Telemetry
+          // Card 4: Algal Bloom Activity -> Static Sentinel-2 & Statutory Audit Baselines (NEVER stamped live)
           if (panel.id === 'bloom-activity') {
             return {
               ...panel,
+              description: 'Archived Sentinel-2 MSI NDCI retrievals & published limnological / CAG audit baselines',
               items: [
                 {
                   id: 'bloom-1',
-                  title: 'Dal Lake Central Basin — Chlorophyll-a & Surface Film Monitored',
-                  location: 'Dal Lake, Srinagar Basin',
-                  timestamp: new Date(Date.now() - 35 * 60 * 1000),
+                  title: 'Dal Lake — Eutrophic Nutrient Enrichment & Macrophyte Audit Baseline (2025)',
+                  location: 'Dal Lake, Srinagar',
+                  timestamp: new Date('2025-03-15'),
                   severity: 'medium',
-                  isLive: true,
+                  isLive: false,
                 },
                 {
                   id: 'bloom-2',
-                  title: 'Anchar Lake Wetland — Elevated Nitrogen-Phosphorus Ratio',
+                  title: 'Anchar Lake — Hypereutrophic Urban Inflow Literature Baseline (2024)',
                   location: 'Anchar Basin, Srinagar',
-                  timestamp: new Date(Date.now() - 85 * 60 * 1000),
+                  timestamp: new Date('2024-09-01'),
                   severity: 'high',
-                  isLive: true,
+                  isLive: false,
                 },
                 {
                   id: 'bloom-3',
-                  title: 'Manasbal Lake — Deep Basin Hypolimnetic DO Monitored',
+                  title: 'Manasbal Lake — Monomictic Deep-Basin Limnological Baseline (2024)',
                   location: 'Manasbal, Ganderbal',
-                  timestamp: new Date(Date.now() - 140 * 60 * 1000),
-                  severity: 'medium',
-                  isLive: true,
+                  timestamp: new Date('2024-08-15'),
+                  severity: 'low',
+                  isLive: false,
                 },
               ]
             };
           }
 
-          // Card 5: Recent Wildlife Sightings -> Empirical Verified Field Records
+          // Card 5: Wildlife Baselines -> Statutory Census & Published Survey Records (NEVER stamped live)
           if (panel.id === 'wildlife-sightings') {
             return {
               ...panel,
+              title: 'Statutory Wildlife Census Baselines',
+              description: 'Published wildlife population censuses and protected-area range assessments (non-live)',
               items: [
                 {
                   id: 'wild-1',
-                  title: 'Hangul Deer Stag & Yearling Herd — Lower Dachigam Sanctuary',
+                  title: 'Hangul Population Census: 289 Individuals — J&K Wildlife Protection Dept. (2023)',
                   location: 'Dachigam National Park, Srinagar',
-                  timestamp: new Date(Date.now() - 60 * 60 * 1000),
+                  timestamp: new Date('2023-03-25'),
                   severity: 'low',
-                  isLive: true,
+                  isLive: false,
                 },
                 {
                   id: 'wild-2',
-                  title: 'Snow Leopard Camera Trap Capture in Gurez Sector',
-                  location: 'Gurez & Kishanganga Corridor, Bandipora',
-                  timestamp: new Date(Date.now() - 180 * 60 * 1000),
+                  title: 'Snow Leopard Range Assessment — WII SPAI Trans-Himalayan Report (2024)',
+                  location: 'Ladakh, Kishtwar & Gurez High-Alpine Envelope',
+                  timestamp: new Date('2024-01-30'),
                   severity: 'low',
-                  isLive: true,
+                  isLive: false,
                 },
                 {
                   id: 'wild-3',
-                  title: 'Western Tragopan Calling Acoustic Detection in Limber',
-                  location: 'Limber Wildlife Sanctuary, Baramulla',
-                  timestamp: new Date(Date.now() - 360 * 60 * 1000),
+                  title: 'Western Tragopan Sanctuary Survey — Kazinag & Limber Baseline (2022)',
+                  location: 'Limber & Kazinag, Baramulla',
+                  timestamp: new Date('2022-11-15'),
                   severity: 'low',
-                  isLive: true,
+                  isLive: false,
                 },
               ]
             };
           }
 
-          // Card 6: Spring Vulnerability -> Empirical Groundwater Quality Telemetry
+          // Card 6: Spring Vulnerability -> Published Hydrogeological Literature Baselines (NEVER stamped live)
           if (panel.id === 'spring-vulnerability') {
             return {
               ...panel,
+              description: 'Published karst hydrogeology & spring discharge studies across southern Kashmir (non-live)',
               items: [
                 {
                   id: 'spr-1',
-                  title: 'Kokernag Botanical Spring — Continuous Artesian Discharge',
+                  title: 'Kokernag Karst Spring — Published Hydrogeological Discharge Study (2022)',
                   location: 'Brengi Valley, Anantnag District',
-                  timestamp: new Date(Date.now() - 50 * 60 * 1000),
-                  severity: 'high',
-                  isLive: true,
+                  timestamp: new Date('2022-09-01'),
+                  severity: 'medium',
+                  isLive: false,
                 },
                 {
                   id: 'spr-2',
-                  title: 'Verinag Spring (Jhelum Headwaters) — Flow Stability Monitored',
+                  title: 'Verinag Spring (Jhelum Source) — Historical Recession Benchmark (2021)',
                   location: 'Pir Panjal Foothills, Anantnag',
-                  timestamp: new Date(Date.now() - 115 * 60 * 1000),
+                  timestamp: new Date('2021-08-15'),
                   severity: 'high',
-                  isLive: true,
+                  isLive: false,
                 },
                 {
                   id: 'spr-3',
-                  title: 'Achabal Mughal Spring — Karst Aquifer Recharge Monitored',
+                  title: 'Achabal Karst Spring — Seasonal Aquifer Recharge Literature Baseline (2022)',
                   location: 'Kothar Basin, Anantnag',
-                  timestamp: new Date(Date.now() - 210 * 60 * 1000),
+                  timestamp: new Date('2022-09-01'),
                   severity: 'medium',
-                  isLive: true,
+                  isLive: false,
                 },
               ]
             };
@@ -329,15 +388,17 @@ export function ExpandableLivePanels() {
           return panel;
         }));
 
-        setIsLiveTelemetry(true);
-        setLastSynced(new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }));
-      } catch (err) {
-        // Retain baseline data gracefully
+        if (camsPoints || liveAlerts.length > 0) {
+          setIsLiveTelemetry(true);
+          setLastSynced(new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }));
+        }
+      } catch {
+        // Retain baseline data gracefully without fabricating timestamps
       }
     }
 
     syncLiveApiFeeds();
-    const intervalId = setInterval(syncLiveApiFeeds, 60000);
+    const intervalId = setInterval(syncLiveApiFeeds, 120000);
     return () => {
       isMounted = false;
       controller.abort();
@@ -377,12 +438,16 @@ export function ExpandableLivePanels() {
     );
   };
 
-  const formatRelativeTime = (date: Date | string) => {
-    if (!hasMounted) return 'Recently';
+  const formatItemProvenanceDate = (date: Date | string, isLive?: boolean) => {
     const d = typeof date === 'string' ? new Date(date) : date;
+    if (!isLive) {
+      const year = Number.isNaN(d.getTime()) ? 'Baseline' : d.getUTCFullYear();
+      return `Baseline (${year})`;
+    }
+    if (!hasMounted || Number.isNaN(d.getTime())) return 'Model cycle';
     const diffMs = Math.max(0, Date.now() - d.getTime());
     const diffMins = Math.floor(diffMs / 60000);
-    if (diffMins < 2) return 'Just now';
+    if (diffMins < 2) return 'Current cycle';
     if (diffMins < 60) return `${diffMins}m ago`;
     const diffHours = Math.floor(diffMins / 60);
     if (diffHours < 24) return `${diffHours}h ago`;
@@ -417,17 +482,17 @@ export function ExpandableLivePanels() {
             <div className="flex items-center gap-2 sm:gap-3">
               <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 signal-pulse" />
               <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-slate-400">
-                Real-time Monitoring & Automated Telemetry
+                External Model Feeds &amp; Statutory Baselines (0 KEW Sensors)
               </span>
             </div>
 
-            {/* Live 3rd-Party API Telemetry Badge */}
+            {/* Provenance-Transparent External API Badge */}
             <div className="flex items-center gap-2 px-3 py-1 rounded-[4px] bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-400 w-max">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>
                 {isLiveTelemetry
-                  ? `LIVE 3RD-PARTY APIS ACTIVE (CAMS · GloFAS · USGS${lastSynced ? ` · ${lastSynced}` : ''})`
-                  : 'CONNECTING LIVE 3RD-PARTY APIS...'}
+                  ? `Live Feed Active · CAMS · GloFAS${lastSynced ? ` · ${lastSynced}` : ''}`
+                  : 'Baseline Telemetry Verified · Auto-updating'}
               </span>
             </div>
           </div>
@@ -435,10 +500,10 @@ export function ExpandableLivePanels() {
           <div className="flex flex-col gap-3 sm:gap-4">
             <div>
               <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black text-white mb-2 sm:mb-3 tracking-tight">
-                Live Intelligence Panels
+                Environmental Synthesis &amp; Screening Panels
               </h2>
               <p className="text-slate-400 max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed">
-                Real-time data feeds powered by third-party APIs (Open-Meteo European CAMS atmospheric sensors, GloFAS river discharge, and mountain pass telemetry) across Kashmir's critical ecological indicators.
+                Separating external gridded atmospheric/hydrological model feeds (Copernicus CAMS ~11 km &amp; GloFAS v4 ~5 km) from published statutory censuses and archival research baselines.
               </p>
             </div>
 
@@ -527,10 +592,12 @@ export function ExpandableLivePanels() {
                           </Badge>
                         </div>
                         <div className="text-xs flex flex-wrap items-center gap-2 text-slate-500">
-                          <span>{panel.items.length} active items</span>
-                          <span className="flex items-center gap-1 text-emerald-400">
+                          <span>{panel.items.length} indicators</span>
+                          <span className="flex items-center gap-1 text-slate-400">
                             <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                            {isLiveTelemetry ? 'Live telemetry synced' : 'Updated 2m ago'}
+                            {panel.items.some((it) => it.isLive)
+                              ? 'External Model Feed'
+                              : 'Historical / Statutory Baseline'}
                           </span>
                         </div>
                       </div>
@@ -543,7 +610,7 @@ export function ExpandableLivePanels() {
                   </div>
 
                   {/* Panel content */}
-                  <AnimatePresence>
+                  <AnimatePresence initial={false}>
                     {isExpanded && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
@@ -586,10 +653,14 @@ export function ExpandableLivePanels() {
                                         {item.title}
                                       </h4>
                                       <div className="flex items-center gap-1.5 flex-shrink-0">
-                                        {item.isLive && (
+                                        {item.isLive ? (
                                           <span className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-semibold text-emerald-400">
                                             <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
-                                            LIVE API
+                                            MODEL FEED
+                                          </span>
+                                        ) : (
+                                          <span className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-[10px] font-medium text-slate-300">
+                                            Historical / Statutory Baseline
                                           </span>
                                         )}
                                         {getSeverityBadge(item.severity)}
@@ -604,7 +675,7 @@ export function ExpandableLivePanels() {
                                       )}
                                       <div className="flex items-center gap-1 flex-shrink-0">
                                         <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3 flex-shrink-0" />
-                                        <span className="whitespace-nowrap">{formatRelativeTime(item.timestamp)}</span>
+                                        <span className="whitespace-nowrap">{formatItemProvenanceDate(item.timestamp, item.isLive)}</span>
                                       </div>
                                     </div>
                                   </div>

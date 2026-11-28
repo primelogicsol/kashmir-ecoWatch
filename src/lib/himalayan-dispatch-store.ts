@@ -87,6 +87,11 @@ import {
   getPublicHdnEditionsMerged,
   readHdnStore,
 } from '@/lib/hdn/store';
+import {
+  computeDailyDispatchMetrics,
+  computeStoryMetrics,
+  evaluateStoryReviewVerification,
+} from '@/lib/himalayan-dispatch-metrics';
 
 export const JOURNALIST_SESSION_COOKIE = 'hd_journalist_session';
 
@@ -175,16 +180,19 @@ const EMPTY_STORE: DispatchPersistentStoreData = {
   publicInquiries: [],
 };
 
+import {
+  getDomainSigningSecret,
+  isConfiguredSafeSecret,
+  timingSafeSecretMatch,
+  verifyAdminPasscode,
+} from '@/lib/seo/admin-session';
+
 function getJournalistSigningSecret(): string {
-  return (
-    process.env.AUTH_SECRET ||
-    process.env.NEXTAUTH_SECRET ||
-    process.env.CRON_SECRET ||
-    'kew-admin-hmac-signing-fallback'
-  );
+  return getDomainSigningSecret('dispatch-journalist');
 }
 
 export interface JournalistSessionClaims {
+  v?: 2;
   journalistSlug: string;
   email: string;
   name: string;
@@ -195,11 +203,12 @@ export interface JournalistSessionClaims {
 }
 
 export function signJournalistSessionToken(
-  claims: Omit<JournalistSessionClaims, 'iat' | 'exp'>,
+  claims: Omit<JournalistSessionClaims, 'iat' | 'exp' | 'v'>,
   ttlSeconds = 12 * 60 * 60
 ): string {
   const now = Math.floor(Date.now() / 1000);
   const payload: JournalistSessionClaims = {
+    v: 2,
     ...claims,
     iat: now,
     exp: now + ttlSeconds,
@@ -234,6 +243,7 @@ export function verifyJournalistSessionToken(
     const parsed = JSON.parse(
       Buffer.from(encoded, 'base64url').toString('utf8')
     ) as JournalistSessionClaims;
+    if (parsed.v !== 2) return null;
     if (!parsed.exp || parsed.exp < Math.floor(Date.now() / 1000)) return null;
     if (!parsed.journalistSlug) return null;
 
@@ -363,13 +373,18 @@ function mapStatusToLifecycleStep(
  */
 export function getAllMergedStoriesInternal(): MagazineStory[] {
   const store = readDispatchStore();
+  const hdnStore = readHdnStore();
   const hdnOverrides = getCanonicalStoryHdnOverrides();
   return MAGAZINE_STORIES.map((story) => {
     const ov = store.storyWorkflowOverrides[story.slug];
     const hdnMs = hdnOverrides.get(story.slug);
     const extraCorrections = store.storyCorrections[story.slug] || [];
     const hdnPublished = hdnMs ? hdnMs.workflowStatus === 'published' : undefined;
-    return {
+    const hdnExplicitlyUnpublished = Boolean(
+      hdnMs && (hdnMs.unpublishedAt || hdnMs.workflowStatus === 'trashed' || hdnMs.workflowStatus === 'rejected')
+    );
+
+    const mergedStory: MagazineStory = {
       ...story,
       ...(hdnMs && hdnMs.versionNumber > 1
         ? {
@@ -377,11 +392,11 @@ export function getAllMergedStoriesInternal(): MagazineStory[] {
             subtitle: hdnMs.standfirst || story.subtitle,
             dateline: hdnMs.dateline,
             chapters: blocksToChapters(hdnMs.blocks),
-            isPublished: Boolean(hdnPublished),
-            workflowStage: hdnPublished ? 'publication' : 'editorial_approval',
+            isPublished: !hdnExplicitlyUnpublished && (Boolean(hdnPublished) || story.isPublished),
+            workflowStage: hdnPublished ? 'publication' : story.workflowStage,
             updatedAt: hdnMs.updatedAt.slice(0, 10),
           }
-        : hdnMs && !hdnPublished
+        : hdnExplicitlyUnpublished
           ? {
               isPublished: false,
               workflowStage: 'editorial_approval' as EditorialWorkflowStage,
@@ -399,6 +414,22 @@ export function getAllMergedStoriesInternal(): MagazineStory[] {
         ...extraCorrections,
         ...story.corrections,
       ],
+    };
+
+    const metrics = computeStoryMetrics(mergedStory);
+    const hasCompletedIndependentReview = evaluateStoryReviewVerification(
+      mergedStory,
+      hdnStore.factChecks,
+      hdnStore.scientificReviews
+    );
+
+    return {
+      ...mergedStory,
+      wordCount: metrics.wordCount,
+      proseWordCount: metrics.proseWordCount,
+      readingTimeMinutes: metrics.readingTimeMinutes,
+      estimatedViewingMinutes: metrics.estimatedViewingMinutes,
+      hasCompletedIndependentReview,
     };
   });
 }
@@ -433,7 +464,9 @@ export function getAllMergedAssignmentsInternal(): ForthcomingAssignment[] {
  * stories with administrator-approved & published HD-ANIE articles seamlessly).
  */
 export function getPublicPublishedStories(): MagazineStory[] {
+  const hdnStore = readHdnStore();
   const allowedPublicStages = new Set<EditorialWorkflowStage>([
+    'editorial_approval',
     'publication',
     'corrections',
     'archiving',
@@ -448,7 +481,20 @@ export function getPublicPublishedStories(): MagazineStory[] {
   for (const st of [...hdnPublished, ...aniePublished, ...canonicalPublished]) {
     if (seenSlugs.has(st.slug)) continue;
     seenSlugs.add(st.slug);
-    combined.push(st);
+    const metrics = computeStoryMetrics(st);
+    const hasCompletedIndependentReview = evaluateStoryReviewVerification(
+      st,
+      hdnStore.factChecks,
+      hdnStore.scientificReviews
+    );
+    combined.push({
+      ...st,
+      wordCount: metrics.wordCount,
+      proseWordCount: metrics.proseWordCount,
+      readingTimeMinutes: metrics.readingTimeMinutes,
+      estimatedViewingMinutes: metrics.estimatedViewingMinutes,
+      hasCompletedIndependentReview,
+    });
   }
   return combined;
 }
@@ -629,18 +675,32 @@ export function getPublicJournalists(): JournalistProfile[] {
   return [...baseProfiles, ...onboardedPublicProfiles, ...hdnExtraProfiles];
 }
 
+const LEGACY_JOURNALIST_SLUG_ALIASES: Record<string, string> = {
+  'aaliya-andrabi': 'investigations-urban-water-desk',
+  'danish-wani': 'visual-editions-desk',
+  'dr-nida-hamdani': 'data-cartography-desk',
+  'rafiq-ahmad-bhat': 'wetlands-forest-desk',
+};
+
 export function getPublicJournalistPortfolio(slug: string): {
   journalist: JournalistProfile;
   publishedStories: MagazineStory[];
   approvedUpcomingAssignments: PublicForthcomingAssignmentPreview[];
 } | null {
-  const journalist = getPublicJournalists().find((j) => j.slug === slug);
+  const publicList = getPublicJournalists();
+  const resolvedSlug = LEGACY_JOURNALIST_SLUG_ALIASES[slug] || slug;
+  const journalist =
+    publicList.find((j) => j.slug === resolvedSlug) ||
+    publicList.find((j) => j.slug === slug);
   if (!journalist) return null;
   const publishedStories = getPublicPublishedStories().filter(
-    (s) => s.journalistSlug === slug || s.photographyByline === journalist.name
+    (s) =>
+      s.journalistSlug === journalist.slug ||
+      s.journalistSlug === slug ||
+      s.photographyByline === journalist.name
   );
   const approvedUpcomingAssignments = getPublicForthcomingPreviews().filter(
-    (a) => a.journalistSlug === slug
+    (a) => a.journalistSlug === journalist.slug || a.journalistSlug === slug
   );
   return {
     journalist,
@@ -1033,11 +1093,12 @@ export function authenticateJournalistForWorkspace(input: {
     };
   }
 
-  // 1. Check Founding Masthead roster (paired with ADMIN_PASSCODE or HD-MASTHEAD-2026)
+  // 1. Check Founding Masthead roster (paired with configured ADMIN_PASSCODE or DISPATCH_MASTHEAD_CODE)
   const mastheadSlug = MASTHEAD_EMAIL_TO_SLUG[normEmail];
   const validMastheadSecret =
-    code === (process.env.ADMIN_PASSCODE || 'KEW-Admin-2026!') ||
-    code === (process.env.DISPATCH_MASTHEAD_CODE || 'HD-MASTHEAD-2026');
+    verifyAdminPasscode(code).valid ||
+    (isConfiguredSafeSecret(process.env.DISPATCH_MASTHEAD_CODE, 10) &&
+      timingSafeSecretMatch(code, process.env.DISPATCH_MASTHEAD_CODE, 10));
 
   if (mastheadSlug && validMastheadSecret) {
     const profile = JOURNALIST_PROFILES.find((j) => j.slug === mastheadSlug);
@@ -1906,7 +1967,12 @@ export function getPublicDailyDispatches(): DailyDispatchArticle[] {
   ]) {
     if (!item.isPublished || seen.has(item.slug)) continue;
     seen.add(item.slug);
-    merged.push(item);
+    const ddMetrics = computeDailyDispatchMetrics(item);
+    merged.push({
+      ...item,
+      wordCount: ddMetrics.wordCount,
+      readingTimeMinutes: ddMetrics.readingTimeMinutes,
+    });
   }
   return merged.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 }

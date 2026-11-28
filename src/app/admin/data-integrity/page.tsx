@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   ShieldCheck, AlertTriangle, CheckCircle2, XCircle, 
@@ -45,26 +45,39 @@ export default function DataIntegrityDashboardPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedEntityType, setSelectedEntityType] = useState<string>('ALL');
 
-  // Security gate matching admin dashboard
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      return sessionStorage.getItem('kew_admin_authenticated') === 'true';
-    }
-    return false;
-  });
+  // Server-verified HttpOnly session gate matching admin dashboard
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
   const [passcode, setPasscode] = useState('');
   const [passError, setPassError] = useState<string | null>(null);
 
-  const handleUnlock = (e: React.FormEvent) => {
+  useEffect(() => {
+    fetch('/api/admin/session', { credentials: 'same-origin' })
+      .then((r) => r.json())
+      .then((s) => {
+        if (s?.authenticated) setIsUnlocked(true);
+      })
+      .catch(() => null);
+  }, []);
+
+  const handleUnlock = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (passcode.trim() === 'KEW-Admin-2026!') {
-      setIsUnlocked(true);
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem('kew_admin_authenticated', 'true');
+    try {
+      const res = await fetch('/api/admin/session', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ passcode: passcode.trim(), actor: 'KEW Data Integrity Auditor' }),
+      });
+      const payload = await res.json().catch(() => ({}));
+      if (res.ok && payload?.authenticated) {
+        setIsUnlocked(true);
+        setPasscode('');
+        setPassError(null);
+      } else {
+        setPassError(payload?.error || 'Invalid Administrator Passcode. Access restricted to authorized KEW personnel.');
       }
-      setPassError(null);
-    } else {
-      setPassError('Invalid Administrator Passcode. Access restricted to authorized KEW personnel.');
+    } catch {
+      setPassError('Unable to verify administrator session with server.');
     }
   };
 

@@ -1,74 +1,117 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { verifyCronOrIngestRequest } from '@/lib/seo/admin-session';
 
-// LISDS Phase 2: Cron Job for automated Telemetry Ingestion
-// In production, this route is triggered via a cron scheduler (e.g. Vercel Cron or CloudWatch Events)
-// It fetches live environmental data (e.g., Open-Meteo) for registered hazard zones and pushes it into the telemetry pipeline.
+export const runtime = 'nodejs';
 
-export async function GET() {
+/**
+ * LISDS Phase 2: Authenticated Cron Job for Gridded NWP Weather & Soil Moisture Ingestion
+ * Scientific Integrity Policy: Zero random/synthetic measurements permitted.
+ * Queries real Open-Meteo gridded NWP model outputs (~9-11 km resolution) and explicitly
+ * labels provenance as 'Gridded Reanalysis / NWP Model Output' (never physical ground station truth).
+ */
+export async function GET(request: NextRequest) {
+  const authCheck = await verifyCronOrIngestRequest(request);
+  if (!authCheck.authorized) {
+    return NextResponse.json(
+      { success: false, error: 'Unauthorized: Valid CRON_SECRET / INGEST_API_KEY Bearer token or Admin session required.' },
+      { status: 401 }
+    );
+  }
+
   try {
-    console.log('[CRON] Starting Landslide Telemetry Ingestion Cycle...');
-    
-    // In a real database, we would query the spatial_entities table for active landslide hazard zones:
-    // const zones = await prisma.hazard_zones.findMany({ include: { entity: true } });
-    
-    // For prototype purposes, we mock fetching two critical hazard zones in the Pir Panjal range
     const targetZones = [
       { id: 'zone-001', name: 'NH44 Ramban Sector', lat: 33.24, lon: 75.19 },
-      { id: 'zone-002', name: 'Banihal Pass Approach', lat: 33.43, lon: 75.19 }
+      { id: 'zone-002', name: 'Banihal Pass Approach', lat: 33.43, lon: 75.19 },
     ];
 
-    const telemetryPayload = [];
+    const telemetryPayload: Array<{
+      spatial_entity_id: string;
+      source_id: string;
+      provenance_class: string;
+      observation_type: string;
+      value: number;
+      unit: string;
+      observed_at: string;
+    }> = [];
 
-    // Step 1: Fetch Live Weather & Soil Data from Open-Meteo (or similar API)
     for (const zone of targetZones) {
-      // Mocking the API fetch for demonstration. 
-      // Real API: `https://api.open-meteo.com/v1/forecast?latitude=${zone.lat}&longitude=${zone.lon}&hourly=rain,soil_moisture_0_to_7cm`
-      
-      // Simulate received payload
-      const simulatedRainfall24h = Math.random() * 120; // 0 to 120 mm
-      const simulatedSoilMoisture = 0.2 + (Math.random() * 0.3); // 0.2 to 0.5 m3/m3
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 7000);
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${zone.lat}&longitude=${zone.lon}&daily=precipitation_sum&hourly=soil_moisture_0_to_7cm&past_days=1&forecast_days=1&timezone=UTC`;
 
-      telemetryPayload.push({
-        spatial_entity_id: zone.id,
-        source_id: 'Open-Meteo-NWP',
-        observation_type: 'Rainfall_24h',
-        value: simulatedRainfall24h,
-        unit: 'mm'
-      });
+      const res = await fetch(url, {
+        headers: { Accept: 'application/json' },
+        signal: controller.signal,
+        cache: 'no-store',
+      }).finally(() => clearTimeout(timer));
 
-      telemetryPayload.push({
-        spatial_entity_id: zone.id,
-        source_id: 'Open-Meteo-NWP',
-        observation_type: 'Soil_Moisture_API',
-        value: simulatedSoilMoisture,
-        unit: 'm3/m3'
-      });
+      if (!res.ok) {
+        continue;
+      }
+
+      const json = await res.json();
+      const dailyPrecip: Array<number | null> = json?.daily?.precipitation_sum || [];
+      const latestPrecip = dailyPrecip.length > 0 ? dailyPrecip[dailyPrecip.length - 1] : null;
+      const hourlySm: Array<number | null> = json?.hourly?.soil_moisture_0_to_7cm || [];
+      const validSm = hourlySm.filter((v): v is number => typeof v === 'number' && Number.isFinite(v));
+      const latestSm = validSm.length > 0 ? validSm[validSm.length - 1] : null;
+      const observedAt = new Date().toISOString();
+
+      if (typeof latestPrecip === 'number' && Number.isFinite(latestPrecip)) {
+        telemetryPayload.push({
+          spatial_entity_id: zone.id,
+          source_id: 'Open-Meteo-Gridded-NWP-9km',
+          provenance_class: 'Gridded Reanalysis / NWP Model Output',
+          observation_type: 'Rainfall_24h',
+          value: Number(latestPrecip.toFixed(2)),
+          unit: 'mm',
+          observed_at: observedAt,
+        });
+      }
+
+      if (typeof latestSm === 'number' && Number.isFinite(latestSm)) {
+        telemetryPayload.push({
+          spatial_entity_id: zone.id,
+          source_id: 'Open-Meteo-Gridded-NWP-9km',
+          provenance_class: 'Gridded Reanalysis / NWP Model Output',
+          observation_type: 'Soil_Moisture_API',
+          value: Number(latestSm.toFixed(4)),
+          unit: 'm3/m3',
+          observed_at: observedAt,
+        });
+      }
     }
 
-    // Step 2: Post to our internal Telemetry Ingestion Pipeline
-    // In production, we'd use the full URL from env, or directly invoke the logic if refactored into a service layer.
-    // For the API prototype, we mock the direct function call response.
-    
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://kashmir-ecowatch.com';
-    
-    // To avoid self-referential fetch timeouts during static builds, we'll log the success.
-    // const response = await fetch(`${baseUrl}/api/ingest/telemetry`, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ telemetry: telemetryPayload })
-    // });
-    
-    console.log('[CRON] Payload prepped for internal telemetry pipeline:', telemetryPayload.length, 'records.');
+    if (telemetryPayload.length === 0) {
+      return NextResponse.json(
+        {
+          success: false,
+          status: 'EXTERNAL_SOURCE_UNAVAILABLE',
+          message: 'External Open-Meteo NWP source temporarily unavailable; zero synthetic fallback values generated.',
+          zones_processed: 0,
+          records_retrieved: 0,
+        },
+        { status: 503 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
-      message: 'Telemetry cron job executed successfully.',
+      provenanceClass: 'Gridded Reanalysis / NWP Model Output (~9-11 km)',
+      groundTruthSensorClaim: false,
+      message: 'Verified Open-Meteo gridded NWP model parameters retrieved.',
       zones_processed: targetZones.length,
-      records_generated: telemetryPayload.length
+      records_retrieved: telemetryPayload.length,
+      telemetry: telemetryPayload,
     });
-
   } catch (error: any) {
-    console.error('[CRON] Error during telemetry ingestion:', error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        status: 'EXTERNAL_SOURCE_UNAVAILABLE',
+        error: 'Upstream NWP telemetry fetch interrupted; zero synthetic values generated.',
+      },
+      { status: 503 }
+    );
   }
 }

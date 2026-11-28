@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { CheckCircle2, ExternalLink, FileCheck2, ShieldCheck } from 'lucide-react';
 import { HDN_ROUTES } from '@/lib/hdn/routes';
+import { toKewPlatformUrl } from '@/lib/himalayan-dispatch-routes';
 import type { HdnScientificReviewRecord } from '@/types/hdn-newsroom';
 
 export function HdnScientificReviewDashboardView({
@@ -50,10 +51,15 @@ export function HdnScientificReviewDashboardView({
               <div className="font-mono text-[10px] text-[#8C3125] font-bold">{r.code}</div>
               <div className="font-bold text-sm">{r.observatoryLabel}</div>
               <p className="text-slate-500">{r.summary}</p>
-              <Link href={r.observatoryHref} target="_blank" className="inline-flex items-center gap-1 text-[#8C3125] font-semibold underline">
+              <a
+                href={toKewPlatformUrl(r.observatoryHref)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[#8C3125] font-semibold underline"
+              >
                 <span>Open KEW Observatory</span>
                 <ExternalLink className="w-3 h-3" />
-              </Link>
+              </a>
             </div>
           ))}
         </div>

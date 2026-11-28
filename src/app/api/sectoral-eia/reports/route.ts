@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { verifyAdminRequest } from '@/lib/seo/admin-session';
 import { computeResearchSeriesPortfolioStats } from '@/data/sectoral-research-series-2026';
 import {
   evaluateCandidateScopeDuplication,
@@ -94,6 +95,13 @@ export async function POST(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   try {
+    const authCheck = await verifyAdminRequest(request);
+    if (!authCheck.authorized) {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized: Administrator session required to modify research dossiers.' },
+        { status: 401 }
+      );
+    }
     const body = await request.json();
     const {
       code,

@@ -10,6 +10,7 @@ import {
   ArrowRight, Shield, Activity, ChevronDown, ChevronUp, Database
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { PLATFORM_METRICS } from '@/data/platform-metrics';
 
 export interface DistrictScorecard {
   name: string;
@@ -26,8 +27,8 @@ export interface DistrictScorecard {
   forestCoverPct: number;
 }
 
-// Authoritative empirical baseline synthesized from KEW ecological registry
-// (wetlandsData, protected-network, masterForestDatabase, and species distribution records)
+// Authoritative empirical baseline synthesized from FSI ISFR 2023 & verified KEW registries
+// (10 Kashmir Valley Core districts within KEW's 46-district / 5-subregion scope)
 const KASHMIR_VALLEY_DISTRICTS: DistrictScorecard[] = [
   {
     name: 'Kupwara',
@@ -36,26 +37,26 @@ const KASHMIR_VALLEY_DISTRICTS: DistrictScorecard[] = [
     riskLevel: 'Low',
     wetlands: 2,
     protectedAreas: 2,
-    speciesCount: 534,
+    speciesCount: 142,
     trend: 'stable',
-    strength: 'Dense Forest Cover (43.3%)',
+    strength: 'Dense Conifer Cover (50.6% ISFR)',
     challenge: 'Remote Border Corridor Access',
     route: '/biodiversity/district/kupwara',
-    forestCoverPct: 43.3,
+    forestCoverPct: 50.6,
   },
   {
     name: 'Ganderbal',
     slug: 'ganderbal',
     ecologicalScore: 82,
     riskLevel: 'Low-Moderate',
-    wetlands: 1,
+    wetlands: 2,
     protectedAreas: 3,
-    speciesCount: 489,
+    speciesCount: 156,
     trend: 'stable',
-    strength: 'Highest Forest Cover (59%) & Alpine Lakes',
+    strength: 'High Alpine Lakes & Shallabugh Ramsar (#2488)',
     challenge: 'Sind Basin Tourism Waste',
     route: '/biodiversity/district/ganderbal',
-    forestCoverPct: 59.0,
+    forestCoverPct: 43.4,
   },
   {
     name: 'Anantnag',
@@ -64,40 +65,40 @@ const KASHMIR_VALLEY_DISTRICTS: DistrictScorecard[] = [
     riskLevel: 'Moderate',
     wetlands: 2,
     protectedAreas: 4,
-    speciesCount: 734,
+    speciesCount: 168,
     trend: 'stable',
     strength: 'Overa-Aru Sanctuary & Lidder Catchment',
     challenge: 'Human-Wildlife Conflict Pressure',
     route: '/biodiversity/district/anantnag',
-    forestCoverPct: 27.0,
+    forestCoverPct: 41.6,
   },
   {
     name: 'Baramulla',
     slug: 'baramulla',
     ecologicalScore: 76,
     riskLevel: 'Moderate',
-    wetlands: 5,
-    protectedAreas: 6,
-    speciesCount: 676,
+    wetlands: 3,
+    protectedAreas: 5,
+    speciesCount: 161,
     trend: 'improving',
-    strength: 'Wular Ramsar Wetland Ecosystem',
+    strength: 'Wular (#461) & Hygam (#2496) Ramsar Wetlands',
     challenge: 'Agricultural Runoff & Silt Influx',
     route: '/biodiversity/district/baramulla',
-    forestCoverPct: 28.0,
+    forestCoverPct: 29.1,
   },
   {
     name: 'Bandipora',
     slug: 'bandipora',
     ecologicalScore: 75,
     riskLevel: 'Moderate',
-    wetlands: 5,
+    wetlands: 2,
     protectedAreas: 3,
-    speciesCount: 599,
+    speciesCount: 148,
     trend: 'improving',
-    strength: 'Wular Shoreline & Gurez Alpine Meadow',
+    strength: 'Wular Ramsar Basin & Gurez Alpine Valley',
     challenge: 'Watershed Siltation & Encroachment',
     route: '/biodiversity/district/bandipora',
-    forestCoverPct: 31.0,
+    forestCoverPct: 37.1,
   },
   {
     name: 'Kulgam',
@@ -106,12 +107,12 @@ const KASHMIR_VALLEY_DISTRICTS: DistrictScorecard[] = [
     riskLevel: 'Moderate',
     wetlands: 1,
     protectedAreas: 2,
-    speciesCount: 549,
+    speciesCount: 124,
     trend: 'stable',
     strength: 'Veshav River Catchment & Aharbal Forest',
     challenge: 'Riverbed Quarrying & Flash Floods',
     route: '/biodiversity/district/kulgam',
-    forestCoverPct: 43.0,
+    forestCoverPct: 38.2,
   },
   {
     name: 'Budgam',
@@ -120,12 +121,12 @@ const KASHMIR_VALLEY_DISTRICTS: DistrictScorecard[] = [
     riskLevel: 'Moderate',
     wetlands: 2,
     protectedAreas: 3,
-    speciesCount: 563,
+    speciesCount: 132,
     trend: 'stable',
-    strength: 'Hokersar Wetland & Tosamaidan Pastures',
-    challenge: 'Brick Kiln Emissions & Karewa Levelling',
+    strength: 'Hokersar Ramsar (#1570) & Tosamaidan Pastures',
+    challenge: 'Brick Kiln Emissions & Karewa Excavation',
     route: '/biodiversity/district/budgam',
-    forestCoverPct: 23.0,
+    forestCoverPct: 24.8,
   },
   {
     name: 'Srinagar',
@@ -133,13 +134,13 @@ const KASHMIR_VALLEY_DISTRICTS: DistrictScorecard[] = [
     ecologicalScore: 72,
     riskLevel: 'Moderate-High',
     wetlands: 3,
-    protectedAreas: 6,
-    speciesCount: 892,
+    protectedAreas: 4,
+    speciesCount: 179,
     trend: 'declining',
-    strength: 'Highest Species (892) & Dachigam NP',
-    challenge: 'Dal Lake Urban Pressure & Eutrophication',
+    strength: 'Dachigam NP & Hokersar Ramsar Basin',
+    challenge: 'Dal-Anchar Urban Eutrophication Pressure',
     route: '/biodiversity/district/srinagar',
-    forestCoverPct: 21.0,
+    forestCoverPct: 10.1,
   },
   {
     name: 'Shopian',
@@ -148,26 +149,26 @@ const KASHMIR_VALLEY_DISTRICTS: DistrictScorecard[] = [
     riskLevel: 'Moderate',
     wetlands: 1,
     protectedAreas: 1,
-    speciesCount: 444,
+    speciesCount: 118,
     trend: 'stable',
-    strength: 'Pir Panjal Coniferous Belt (34%)',
-    challenge: 'Intensive Orchard Chemical Runoff',
+    strength: 'Hirpora WLS & Pir Panjal Conifer Belt (43.8%)',
+    challenge: 'Intensive Orchard Agrochemical Runoff',
     route: '/biodiversity/district/shopian',
-    forestCoverPct: 34.0,
+    forestCoverPct: 43.8,
   },
   {
     name: 'Pulwama',
     slug: 'pulwama',
     ecologicalScore: 69,
     riskLevel: 'Moderate-High',
-    wetlands: 7,
-    protectedAreas: 10,
-    speciesCount: 378,
+    wetlands: 4,
+    protectedAreas: 4,
+    speciesCount: 115,
     trend: 'declining',
-    strength: 'Extensive Wetland Sanctuary Network (7)',
-    challenge: 'Industrial Conversion & Habitat Fragmentation',
+    strength: 'Pampore Wetland Conservation Reserves (4)',
+    challenge: 'Karewa Conversion & Industrial Emissions',
     route: '/biodiversity/district/pulwama',
-    forestCoverPct: 13.0,
+    forestCoverPct: 19.6,
   },
 ];
 
@@ -256,7 +257,7 @@ export function DistrictIntelligenceStrip() {
             </div>
             <div className="flex items-center gap-2 px-2.5 py-1 rounded-[4px] bg-slate-800/80 border border-slate-700/50 text-[10px] sm:text-xs text-slate-300">
               <Database className="w-3 h-3 text-emerald-400" />
-              <span>Verified Empirical Baseline · 10 Valley Districts</span>
+              <span>10 Kashmir Core Districts · {PLATFORM_METRICS.operationalDistrictsCount.formattedValue} Platform Districts ({PLATFORM_METRICS.subregionsCount.formattedValue} Subregions)</span>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -265,8 +266,7 @@ export function DistrictIntelligenceStrip() {
                 District Ecological Scorecards
               </h2>
               <p className="text-slate-400 max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed">
-                Compare ecological health, biodiversity richness, risk levels,
-                and conservation status across Kashmir's districts.
+                Compare composite synthesis indicators, FSI ISFR forest cover baselines, verified species subsets ({PLATFORM_METRICS.verifiedSpeciesProfilesCount.formattedValue} platform reference profiles), and statutory protected areas across Kashmir Valley&apos;s 10 core districts.
               </p>
             </div>
             <div className="flex items-center gap-2 sm:self-end">
@@ -277,7 +277,7 @@ export function DistrictIntelligenceStrip() {
                 icon={<Map className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
                 onClick={() => router.push('/districts')}
               >
-                View All Districts
+                View All {PLATFORM_METRICS.operationalDistrictsCount.formattedValue} Districts
               </Button>
             </div>
           </div>

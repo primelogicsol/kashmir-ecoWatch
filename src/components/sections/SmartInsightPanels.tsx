@@ -203,7 +203,7 @@ export function SmartInsightPanels() {
                                     )}
                                     <div className="flex items-center gap-1">
                                       <Calendar className="w-3 h-3" />
-                                      <span>{formatDate(item.timestamp)}</span>
+                                      <span>{formatDate(new Date(item.timestamp))}</span>
                                     </div>
                                   </div>
                                 </div>

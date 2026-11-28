@@ -66,13 +66,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authModalMode, setAuthModalMode] = useState<AuthModalMode>('signin');
 
-  // Load existing session on mount
+  // Load existing local contributor profile on mount (never trust localStorage for administrator privilege)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       try {
         const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
         if (stored) {
-          const parsed = JSON.parse(stored);
+          const parsed = JSON.parse(stored) as AuthUser;
+          if (parsed && parsed.role === 'administrator') {
+            parsed.role = 'researcher';
+            parsed.roleLabel = roleDisplayMap.researcher;
+          }
           setUser(parsed);
         }
       } catch (err) {
@@ -197,13 +201,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return { success: false, error: 'Password must be at least 6 characters.' };
     }
 
+    const safeRole: ContributorRole =
+      data.role && data.role !== 'administrator' ? data.role : 'citizen_scientist';
     const newUser: AuthUser = {
       id: `usr_${Date.now()}`,
       name: data.name.trim(),
       email: data.email.trim().toLowerCase(),
       avatar: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(data.name)}&backgroundColor=047857`,
-      role: data.role || 'citizen_scientist',
-      roleLabel: roleDisplayMap[data.role || 'citizen_scientist'],
+      role: safeRole,
+      roleLabel: roleDisplayMap[safeRole],
       district: data.district || 'Srinagar',
       institution: data.institution || 'Civic Observatory',
       provider: 'email',

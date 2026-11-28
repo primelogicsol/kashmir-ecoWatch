@@ -4,25 +4,90 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { notFound, useParams } from 'next/navigation';
 import { getDistrictBySlug, getDistrictSpeciesList } from '@/data/biodiversity-access';
+import { getDistrictBiodiversity } from '@/data/biodiversity-intelligence';
+import {
+  CANONICAL_DISTRICTS,
+  normalizeCanonicalDistrictName,
+} from '@/data/geographic-registry';
+import { VERIFIED_CORE_SPECIES_DATA, medicinalPlantsData } from '@/data/species';
 import SourceVerificationBadge from '@/components/biodiversity/intelligence/SourceVerificationBadge';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 
 const DistrictDetailPage: React.FC = () => {
   const params = useParams();
-  const slug = params?.slug as string;
+  const slug = decodeURIComponent((params?.slug as string) || '').trim();
   
   const [district, setDistrict] = useState<any>(null);
   const [speciesList, setSpeciesList] = useState<any[]>([]);
 
   useEffect(() => {
     if (slug) {
-      const districtData = getDistrictBySlug(slug);
-      if (!districtData) {
+      const canonicalName =
+        normalizeCanonicalDistrictName(slug) ||
+        normalizeCanonicalDistrictName(slug.replace(/-/g, ' '));
+      const canonicalRec = CANONICAL_DISTRICTS.find(
+        (d) => d.name === canonicalName || d.slug === slug.toLowerCase()
+      );
+      const allBio = getDistrictBiodiversity.all();
+      const matchedIntel =
+        allBio.find(
+          (d) =>
+            d.district.toLowerCase() === (canonicalName || slug).toLowerCase() ||
+            d.district.toLowerCase().replace(/\s+/g, '-') === slug.toLowerCase()
+        ) || getDistrictBySlug(slug);
+
+      const resolvedName = canonicalRec?.name || matchedIntel?.district;
+      if (!resolvedName) {
         notFound();
         return;
       }
-      setDistrict(districtData);
-      setSpeciesList(getDistrictSpeciesList(slug));
+
+      const verifiedCore = VERIFIED_CORE_SPECIES_DATA.filter((sp) =>
+        sp.districts?.includes(resolvedName)
+      );
+      const verifiedMed = medicinalPlantsData.filter((sp) =>
+        sp.districts?.includes(resolvedName)
+      );
+      const fallbackSpecies = getDistrictSpeciesList(resolvedName);
+      const finalSpecies = verifiedCore.length > 0 ? verifiedCore : fallbackSpecies;
+
+      const fallbackDistrictObj = matchedIntel || {
+        district: resolvedName,
+        totalSpecies: verifiedCore.length,
+        mammals: verifiedCore.filter((s) => s.taxonomicGroup === 'mammals').length,
+        birds: verifiedCore.filter((s) => s.taxonomicGroup === 'birds').length,
+        fish: verifiedCore.filter((s) => s.taxonomicGroup === 'fish').length,
+        plants: verifiedCore.filter((s) => s.taxonomicGroup === 'plants').length,
+        medicinalPlants: verifiedMed.length,
+        threatenedSpecies: verifiedCore.filter((s) =>
+          ['CR', 'EN', 'VU'].includes(s.conservationStatus)
+        ).length,
+        endemicSpecies: verifiedCore.filter(
+          (s) => s.endemismStatus && s.endemismStatus !== 'widely-distributed'
+        ).length,
+        migratorySpecies: verifiedCore.filter((s) => Boolean(s.migrationWindow)).length,
+        primaryHabitats: canonicalRec?.isLowlandSubtropical
+          ? ['subtropical', 'riparian']
+          : canonicalRec?.subregion === 'Ladakh' || canonicalRec?.subregion === 'Gilgit-Baltistan'
+          ? ['high-altitude-desert', 'alpine-meadow', 'rocky-slope']
+          : ['temperate-forest', 'coniferous-forest', 'alpine-meadow'],
+        protectedAreaCoverage: 0,
+        biodiversityHotspots: [`${resolvedName} Ecological Envelope (${canonicalRec?.elevationMinM ?? 0}–${canonicalRec?.elevationMaxM ?? 0} m ASL)`],
+        habitatLossRisk: 'medium',
+        humanWildlifeConflict: 'medium',
+        speciesList: finalSpecies.map((s) => s.slug),
+        endemicSpeciesList: finalSpecies
+          .filter((s) => s.endemismStatus && s.endemismStatus !== 'widely-distributed')
+          .map((s) => s.slug),
+        threatenedSpeciesList: finalSpecies
+          .filter((s) => ['CR', 'EN', 'VU'].includes(s.conservationStatus))
+          .map((s) => s.slug),
+        relatedProtectedAreas: [],
+        relatedTrails: [],
+      };
+
+      setDistrict(fallbackDistrictObj);
+      setSpeciesList(finalSpecies);
     }
   }, [slug]);
 

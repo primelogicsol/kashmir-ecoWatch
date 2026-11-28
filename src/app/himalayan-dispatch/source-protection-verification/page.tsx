@@ -8,7 +8,7 @@ import { HD_ROUTES } from '@/lib/himalayan-dispatch-routes';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Source Protection & Documentary Verification — Himalayan Dispatch',
   description:
-    'Confidential source handling, three-tier protection classification, primary-source fact-checking methodology, and ecological location redaction rules.',
+    'Confidential source handling, three-tier protection classification, AES-256-GCM encrypted server storage, out-of-band Tier III guidance, and ecological location redaction rules.',
   canonicalPath: '/himalayan-dispatch/source-protection-verification',
 });
 
@@ -30,8 +30,8 @@ export default function SourceProtectionVerificationPage() {
           </h1>
           <p className="hd-font-body text-lg sm:text-xl leading-relaxed" style={{ color: 'var(--hd-fg-secondary)' }}>
             Environmental accountability in fragile mountain jurisdictions requires twin disciplines:
-            uncompromising factual corroboration before publication and ironclad protection for
-            sources who risk reprisal.
+            uncompromising factual corroboration before publication and honest, technically accurate
+            safeguards for sources who face reprisal risk.
           </p>
         </header>
 
@@ -41,17 +41,17 @@ export default function SourceProtectionVerificationPage() {
             {
               tier: 'TIER I · STANDARD ON-RECORD',
               title: 'Named Testimony & Public Filings',
-              body: 'Himalayan Dispatch defaults to named attribution wherever safe. Quotes, field observations, and public statutory filings are archived in the article’s Stage 04 verification dossier.',
+              body: 'Himalayan Dispatch defaults to named attribution wherever safe. Quotes, field observations, and public statutory filings are logged in the article’s Stage 04 verification dossier.',
             },
             {
               tier: 'TIER II · EMBARGOED PRE-PUBLICATION',
               title: 'Withheld Until Right-of-Reply',
-              body: 'Active investigative commissions are withheld from public Coming Next slates while documentary audits and formal institutional right-of-reply letters are underway.',
+              body: 'Active investigative commissions are withheld from public Coming Next slates while documentary audits and formal institutional right-of-reply outreach are underway.',
             },
             {
               tier: 'TIER III · STRICT CONFIDENTIAL',
-              title: 'Server-Quarantined & Offline Vault',
-              body: 'Granted only with Managing Editor & Source Protection Officer approval when a source faces credible physical, legal, or livelihood harm. Identities are known to senior editors for verification yet never stored in public databases or exposed via APIs.',
+              title: 'Encrypted Server Store & Out-of-Band Handoff',
+              body: 'Confidential source logs within the authenticated newsroom store are protected with AES-256-GCM server-side encryption and excluded from all public APIs. Because standard HTTP web forms traverse network infrastructure, Tier III whistleblowers facing physical, legal, or livelihood risk should NEVER upload raw files via web forms—always initiate an out-of-band Signal or PGP handoff first.',
             },
           ].map((t) => (
             <div
@@ -81,7 +81,7 @@ export default function SourceProtectionVerificationPage() {
             <p className="hd-font-body text-base leading-relaxed" style={{ color: 'var(--hd-fg-secondary)' }}>
               Information provided by a confidential source must be independently corroborated
               through physical field measurement, multi-temporal satellite imagery, court or
-              environmental clearance records, or multiple independent witnesses before publication.
+              environmental clearance records, or multiple independent documentary sources before publication.
             </p>
           </div>
 
@@ -103,10 +103,10 @@ export default function SourceProtectionVerificationPage() {
 
         <div className="p-6 border flex flex-wrap items-center justify-between gap-4" style={{ borderColor: 'var(--hd-rule)' }}>
           <p className="hd-font-body text-sm" style={{ color: 'var(--hd-fg-muted)' }}>
-            To request an encrypted Signal or PGP key handoff—without transmitting sensitive documents over standard HTTP forms—use the Commissioning Desk flag.
+            Recommended for Tier III disclosures: request an out-of-band Signal or PGP key exchange via the Commissioning Desk flag without entering confidential documents or source names into web forms.
           </p>
           <Link href={HD_ROUTES.pitch} className="hd-kicker hover:underline">
-            Request Secure Handoff →
+            Request Out-of-Band Handoff →
           </Link>
         </div>
       </div>

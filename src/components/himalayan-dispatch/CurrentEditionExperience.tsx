@@ -10,13 +10,30 @@ import {
 import {
   HD_ROUTES,
   resolveCanonicalStoryUrl,
+  toCanonicalIssueSlug,
 } from '@/lib/himalayan-dispatch-routes';
+import { KewContentShare } from '@/components/common/KewContentShare';
+import { isHimalayanDispatchMonograph } from '@/lib/sharing/kew-content-sharing';
 import { EditorialDataGraphic } from './EditorialDataGraphic';
 import { ForthcomingEditionSpread } from './ForthcomingEditionSpread';
 import {
   HIMALAYAN_DISPATCH_FOUNDING_PHILOSOPHY,
   HIMALAYAN_DISPATCH_FOUNDING_STORY,
 } from '@/data/himalayan-dispatch-founding-story';
+import {
+  BEYOND_THE_CONFERENCE_DEFINING_PRINCIPLE,
+  BEYOND_THE_CONFERENCE_SERIES_META,
+  BEYOND_THE_CONFERENCE_SERIES_SLUGS,
+  CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META,
+  CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_SLUGS,
+  CIVIL_SOCIETY_DEFINING_PRINCIPLE,
+  HIMALAYAN_DISPATCH_COMPLETE_EDITORIAL_ARCHITECTURE,
+  HIMALAYAN_DISPATCH_EDITORIAL_DIFFERENCE_ROWS,
+  HIMALAYAN_DISPATCH_FOUR_RESPONSIBILITY_LEVELS,
+  HIMALAYAN_DISPATCH_NGO_OUTCOME_MATRIX,
+  HIMALAYAN_DISPATCH_PERMANENT_RESPONSIBILITIES,
+  HIMALAYAN_DISPATCH_ULTIMATE_ECOLOGICAL_MEASURE,
+} from '@/data/himalayan-dispatch-beyond-conference';
 
 export function CurrentEditionExperience({
   edition,
@@ -24,13 +41,17 @@ export function CurrentEditionExperience({
   dailyDispatches = [],
   forthcomingEdition,
   forthcomingPreviews,
+  surfaceMode = 'homepage',
 }: {
   edition: MagazineEdition;
   stories: MagazineStory[];
   dailyDispatches?: DailyDispatchArticle[];
   forthcomingEdition: MagazineEdition;
   forthcomingPreviews: PublicForthcomingAssignmentPreview[];
+  surfaceMode?: 'homepage' | 'current-issue';
 }) {
+  const isMonograph = isHimalayanDispatchMonograph(edition);
+  const canonicalIssuePath = HD_ROUTES.issue(toCanonicalIssueSlug(edition.slug));
   const bySlug = (slug: string) => stories.find((s) => s.slug === slug);
 
   const coverStory =
@@ -45,6 +66,12 @@ export function CurrentEditionExperience({
   const dataEssay = bySlug('thirty-eight-winters-of-snowline-retreat');
   const interview = bySlug('a-glacier-does-not-negotiate-with-five-year-plans');
   const charterEditorial = bySlug('why-the-western-himalayas-demand-slow-journalism');
+  const beyondConferenceStories = BEYOND_THE_CONFERENCE_SERIES_SLUGS.map((sl) => bySlug(sl)).filter(
+    (s): s is MagazineStory => Boolean(s)
+  );
+  const civilSocietyStories = CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_SLUGS.map((sl) => bySlug(sl)).filter(
+    (s): s is MagazineStory => Boolean(s)
+  );
 
   return (
     <div>
@@ -105,6 +132,29 @@ export function CurrentEditionExperience({
                   >
                     <span>Read Cover Story ({coverStory.readingTimeMinutes} min)</span>
                   </Link>
+                )}
+
+                {surfaceMode === 'homepage' ? (
+                  <KewContentShare
+                    variant="editorial-button"
+                    surfaceTone="darkplate"
+                    label="Share Himalayan Dispatch"
+                    title="Himalayan Dispatch — Environmental Journalism & Magazine"
+                    description="Himalayan Dispatch is an official environmental magazine of Kashmir EcoWatch exploring fragile landscapes, fallen conservation defenders, investigative journalism, and ecological truth across the Western Himalayas."
+                    canonicalPath="/himalayan-dispatch"
+                    isPublished
+                  />
+                ) : (
+                  <KewContentShare
+                    variant="editorial-button"
+                    surfaceTone="darkplate"
+                    label={isMonograph ? 'Share This Monograph' : 'Share This Issue'}
+                    title={`${edition.title} — ${edition.volumeLabel} | Himalayan Dispatch`}
+                    description={edition.subtitle}
+                    canonicalPath={canonicalIssuePath}
+                    editionStatus={edition.status}
+                    isPublished={edition.status !== 'forthcoming'}
+                  />
                 )}
               </div>
             </div>
@@ -293,36 +343,58 @@ export function CurrentEditionExperience({
             </div>
 
             <ol className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
-              {stories.map((st, idx) => (
-                <li key={st.id} className="py-4 sm:py-5 group" style={{ borderColor: 'var(--hd-rule)' }}>
-                  <Link
-                    href={resolveCanonicalStoryUrl(st)}
-                    className="grid grid-cols-12 gap-4 items-baseline"
+              {stories.map((st, idx) => {
+                const storyUrl = resolveCanonicalStoryUrl(st);
+                return (
+                  <li
+                    key={st.id}
+                    className="py-4 sm:py-5 group flex items-start justify-between gap-3"
+                    style={{ borderColor: 'var(--hd-rule)' }}
                   >
-                    <span
-                      className="col-span-2 sm:col-span-1 hd-font-display text-2xl font-medium"
-                      style={{ color: 'var(--hd-copper)' }}
+                    <Link
+                      href={storyUrl}
+                      className="flex-1 min-w-0 grid grid-cols-12 gap-4 items-baseline"
                     >
-                      {String(idx + 1).padStart(2, '0')}
-                    </span>
-                    <div className="col-span-10 sm:col-span-9 space-y-1">
-                      <span className="hd-folio-meta block">{st.departmentRubric}</span>
-                      <h3
-                        className="hd-font-display text-2xl sm:text-[1.7rem] font-semibold leading-snug group-hover:underline underline-offset-4"
-                        style={{ color: 'var(--hd-fg)' }}
+                      <span
+                        className="col-span-2 sm:col-span-1 hd-font-display text-2xl font-medium"
+                        style={{ color: 'var(--hd-copper)' }}
                       >
-                        {st.title}
-                      </h3>
-                      <p className="hd-font-body text-sm" style={{ color: 'var(--hd-fg-muted)' }}>
-                        By {st.bylineDisplay} &nbsp;·&nbsp; {st.region}
-                      </p>
+                        {String(idx + 1).padStart(2, '0')}
+                      </span>
+                      <div className="col-span-10 sm:col-span-9 space-y-1">
+                        <span className="hd-folio-meta block">{st.departmentRubric}</span>
+                        <h3
+                          className="hd-font-display text-2xl sm:text-[1.7rem] font-semibold leading-snug group-hover:underline underline-offset-4"
+                          style={{ color: 'var(--hd-fg)' }}
+                        >
+                          {st.title}
+                        </h3>
+                        <p className="hd-font-body text-sm" style={{ color: 'var(--hd-fg-muted)' }}>
+                          By {st.bylineDisplay} &nbsp;·&nbsp; {st.region}
+                        </p>
+                      </div>
+                      <div className="hidden sm:block sm:col-span-2 text-right">
+                        <span className="hd-folio-meta">
+                          {st.departmentId === 'photo-essays'
+                            ? `${st.readingTimeMinutes}M READ · ${st.estimatedViewingMinutes || 7}M VIEW`
+                            : `${st.readingTimeMinutes} MIN`}
+                        </span>
+                      </div>
+                    </Link>
+
+                    <div className="pt-1 shrink-0">
+                      <KewContentShare
+                        variant="toc-icon"
+                        title={st.title}
+                        description={st.excerpt || st.subtitle}
+                        canonicalPath={storyUrl}
+                        isPublished={st.isPublished}
+                        workflowStage={st.workflowStage}
+                      />
                     </div>
-                    <div className="hidden sm:block sm:col-span-2 text-right">
-                      <span className="hd-folio-meta">{st.readingTimeMinutes} MIN</span>
-                    </div>
-                  </Link>
-                </li>
-              ))}
+                  </li>
+                );
+              })}
             </ol>
           </div>
         </div>
@@ -576,7 +648,7 @@ export function CurrentEditionExperience({
                 03 / THE VISUAL JOURNAL
               </Link>
               <span className="hd-font-sans text-[11px] tracking-[0.22em] uppercase text-[#A39B8B]">
-                MONOCHROME SILVER PORTFOLIO &nbsp;·&nbsp; 5 PLATES
+                MONOCHROME VISUAL STUDY &nbsp;·&nbsp; {visualJournal.photoPlates?.length || 10} PLATES &nbsp;·&nbsp; {visualJournal.readingTimeMinutes}M READ / {visualJournal.estimatedViewingMinutes || 7}M VIEW
               </span>
             </div>
 
@@ -596,7 +668,9 @@ export function CurrentEditionExperience({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
               <div className="lg:col-span-7 space-y-4">
                 <p className="hd-font-sans text-[10px] tracking-[0.28em] uppercase text-[#A39B8B]">
-                  A PHOTOGRAPHIC ESSAY BY {visualJournal.bylineDisplay}
+                  {visualJournal.visualEssayMode === 'illustrative_monochrome_study'
+                    ? `AN ILLUSTRATIVE MONOCHROME VISUAL STUDY BY ${visualJournal.bylineDisplay}`
+                    : `A PHOTOGRAPHIC ESSAY BY ${visualJournal.bylineDisplay}`}
                 </p>
                 <Link href={resolveCanonicalStoryUrl(visualJournal)} className="block group">
                   <h2 className="hd-font-display text-4xl sm:text-6xl lg:text-7xl font-semibold text-[#F2EFE7] leading-[0.98] group-hover:underline underline-offset-8">
@@ -677,7 +751,11 @@ export function CurrentEditionExperience({
                     >
                       {investigation.departmentRubric}
                     </Link>
-                    <span className="hd-folio-meta">STAGE 05 VERIFIED</span>
+                    <span className="hd-folio-meta">
+                      {investigation.hasCompletedIndependentReview
+                        ? 'STAGE 05 VERIFIED'
+                        : `${investigation.readingTimeMinutes} MIN DOSSIER`}
+                    </span>
                   </div>
 
                   <Link href={resolveCanonicalStoryUrl(investigation)} className="hd-plate-group block">
@@ -786,7 +864,9 @@ export function CurrentEditionExperience({
                   href={HD_ROUTES.department('interviews-editorials')}
                   className="hd-kicker hover:underline block"
                 >
-                  05 / THE CONVERSATION · LONGFORM INTERVIEW
+                  {interview.dialogueMode === 'constructed_editorial_dialogue'
+                    ? '05 / THE CONVERSATION · CONSTRUCTED EDITORIAL DIALOGUE'
+                    : '05 / THE CONVERSATION · LONGFORM INTERVIEW'}
                 </Link>
 
                 <div className="relative pt-2">
@@ -816,7 +896,10 @@ export function CurrentEditionExperience({
 
                 <div className="pt-2 flex flex-wrap items-center gap-6">
                   <span className="hd-folio-meta">
-                    INTERVIEW BY {interview.bylineDisplay} &nbsp;·&nbsp; {interview.readingTimeMinutes} MIN
+                    {interview.dialogueMode === 'constructed_editorial_dialogue'
+                      ? `EDITORIAL DIALOGUE SYNTHESIS BY ${interview.bylineDisplay}`
+                      : `INTERVIEW BY ${interview.bylineDisplay}`}{' '}
+                    &nbsp;·&nbsp; {interview.readingTimeMinutes} MIN
                   </span>
                   <Link
                     href={resolveCanonicalStoryUrl(interview)}
@@ -862,6 +945,449 @@ export function CurrentEditionExperience({
                 </div>
               </aside>
             )}
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          COMPOSITION 06 — BEYOND THE CONFERENCE: INDEPENDENT RESPONSE SERIES
+          Five Original Scientific, Engineering & Governance Advancement Folios
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {beyondConferenceStories.length > 0 && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{ borderColor: 'var(--hd-rule-strong)' }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-14">
+            <div
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b items-end"
+              style={{ borderColor: 'var(--hd-rule)' }}
+            >
+              <div className="lg:col-span-8 space-y-4">
+                <p className="hd-kicker">{BEYOND_THE_CONFERENCE_DEFINING_PRINCIPLE.kicker}</p>
+                <h2
+                  className="hd-font-display text-3xl sm:text-5xl lg:text-6xl font-semibold leading-[1.02]"
+                  style={{ color: 'var(--hd-fg)' }}
+                >
+                  {BEYOND_THE_CONFERENCE_DEFINING_PRINCIPLE.headline}
+                </h2>
+                <p
+                  className="hd-font-body text-base sm:text-lg leading-relaxed max-w-3xl"
+                  style={{ color: 'var(--hd-fg-secondary)' }}
+                >
+                  {BEYOND_THE_CONFERENCE_DEFINING_PRINCIPLE.standfirst}
+                </p>
+              </div>
+              <div
+                className="lg:col-span-4 p-5 border-l-2 space-y-2"
+                style={{
+                  borderColor: 'var(--hd-copper)',
+                  backgroundColor: 'var(--hd-bg-elevated)',
+                }}
+              >
+                <p className="hd-folio-meta">INTELLECTUAL IDENTITY</p>
+                <p
+                  className="hd-font-display text-xl sm:text-2xl italic font-medium leading-snug"
+                  style={{ color: 'var(--hd-fg)' }}
+                >
+                  “{BEYOND_THE_CONFERENCE_DEFINING_PRINCIPLE.epigraph}”
+                </p>
+              </div>
+            </div>
+
+            {/* Five Permanent Institutional Responsibilities */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+              {HIMALAYAN_DISPATCH_PERMANENT_RESPONSIBILITIES.map((resp) => (
+                <div
+                  key={resp.number}
+                  className="p-5 border space-y-2"
+                  style={{
+                    borderColor: 'var(--hd-rule)',
+                    backgroundColor: 'var(--hd-bg-elevated)',
+                  }}
+                >
+                  <div
+                    className="hd-font-display text-3xl font-semibold"
+                    style={{ color: 'var(--hd-copper)' }}
+                  >
+                    {resp.number}
+                  </div>
+                  <h3
+                    className="hd-font-display text-xl font-semibold"
+                    style={{ color: 'var(--hd-fg)' }}
+                  >
+                    {resp.title}
+                  </h3>
+                  <p
+                    className="hd-font-body text-xs sm:text-sm leading-relaxed"
+                    style={{ color: 'var(--hd-fg-secondary)' }}
+                  >
+                    {resp.mandate}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Five Response Editorials (11–15) + The Editorial Difference Ledger */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+              <div className="lg:col-span-8 divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
+                {beyondConferenceStories.map((st) => {
+                  const meta = BEYOND_THE_CONFERENCE_SERIES_META[st.slug];
+                  const url = resolveCanonicalStoryUrl(st);
+                  return (
+                    <article
+                      key={st.id}
+                      className="py-7 first:pt-0 space-y-2.5"
+                      style={{ borderColor: 'var(--hd-rule)' }}
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <span className="hd-kicker">
+                          {meta?.dispatchNumber || '—'} · {meta?.conferenceReference || st.departmentRubric}
+                        </span>
+                        <span className="hd-folio-meta">
+                          {st.readingTimeMinutes} MIN READ ({st.wordCount.toLocaleString()} WORDS)
+                        </span>
+                      </div>
+                      <Link href={url} className="block group">
+                        <h3
+                          className="hd-font-display text-2xl sm:text-4xl font-semibold leading-tight group-hover:underline underline-offset-4"
+                          style={{ color: 'var(--hd-fg)' }}
+                        >
+                          {st.title}
+                        </h3>
+                      </Link>
+                      <p
+                        className="hd-font-display text-lg sm:text-xl italic"
+                        style={{ color: 'var(--hd-copper)' }}
+                      >
+                        {st.subtitle}
+                      </p>
+                      <p
+                        className="hd-font-body text-sm sm:text-base leading-relaxed"
+                        style={{ color: 'var(--hd-fg-secondary)' }}
+                      >
+                        {st.excerpt}
+                      </p>
+                      {meta?.proposedFramework && (
+                        <p className="hd-folio-meta pt-1">
+                          PROPOSED ADVANCEMENT: {meta.proposedFramework.toUpperCase()}
+                        </p>
+                      )}
+                      <div className="pt-2 flex items-center justify-between">
+                        <span className="hd-folio-meta">BY {st.bylineDisplay}</span>
+                        <Link
+                          href={url}
+                          className="hd-kicker inline-flex items-center gap-1.5 hover:underline"
+                        >
+                          <span>Read Response Editorial</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+
+              <aside
+                className="lg:col-span-4 border p-6 space-y-4"
+                style={{
+                  borderColor: 'var(--hd-rule-strong)',
+                  backgroundColor: 'var(--hd-bg-elevated)',
+                }}
+              >
+                <p className="hd-kicker">THE EDITORIAL DIFFERENCE</p>
+                <h3
+                  className="hd-font-display text-2xl font-semibold leading-snug"
+                  style={{ color: 'var(--hd-fg)' }}
+                >
+                  Why Conference Coverage Is Not Enough
+                </h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="border-b" style={{ borderColor: 'var(--hd-rule-strong)' }}>
+                        <th className="py-2 pr-2 hd-folio-meta">Conventional Reporting</th>
+                        <th className="py-2 pl-2 hd-folio-meta">Himalayan Dispatch</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
+                      {HIMALAYAN_DISPATCH_EDITORIAL_DIFFERENCE_ROWS.map((row, idx) => (
+                        <tr key={idx}>
+                          <td
+                            className="py-2.5 pr-2 hd-font-body text-xs align-top"
+                            style={{ color: 'var(--hd-fg-muted)' }}
+                          >
+                            {row.conventional}
+                          </td>
+                          <td
+                            className="py-2.5 pl-2 hd-font-body text-xs font-semibold align-top"
+                            style={{ color: 'var(--hd-fg)' }}
+                          >
+                            {row.himalayanDispatch}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          COMPOSITION 07 — CIVIL SOCIETY & ENVIRONMENTAL ACCOUNTABILITY (16–21)
+          Six Inquiries Into Advocacy, Legal Enforcement & Ecological Outcomes
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {civilSocietyStories.length > 0 && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{ borderColor: 'var(--hd-rule-strong)' }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-14">
+            <div
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b items-end"
+              style={{ borderColor: 'var(--hd-rule)' }}
+            >
+              <div className="lg:col-span-8 space-y-4">
+                <p className="hd-kicker">{CIVIL_SOCIETY_DEFINING_PRINCIPLE.kicker}</p>
+                <h2
+                  className="hd-font-display text-3xl sm:text-5xl lg:text-6xl font-semibold leading-[1.02]"
+                  style={{ color: 'var(--hd-fg)' }}
+                >
+                  {CIVIL_SOCIETY_DEFINING_PRINCIPLE.headline}
+                </h2>
+                <p
+                  className="hd-font-body text-base sm:text-lg leading-relaxed max-w-3xl"
+                  style={{ color: 'var(--hd-fg-secondary)' }}
+                >
+                  {CIVIL_SOCIETY_DEFINING_PRINCIPLE.standfirst}
+                </p>
+              </div>
+              <div
+                className="lg:col-span-4 p-5 border-l-2 space-y-2"
+                style={{
+                  borderColor: 'var(--hd-copper)',
+                  backgroundColor: 'var(--hd-bg-elevated)',
+                }}
+              >
+                <p className="hd-folio-meta">UNIVERSAL INSTITUTIONAL SCRUTINY</p>
+                <p
+                  className="hd-font-display text-lg sm:text-xl italic font-medium leading-snug"
+                  style={{ color: 'var(--hd-fg)' }}
+                >
+                  “{CIVIL_SOCIETY_DEFINING_PRINCIPLE.nonExemptionClause}”
+                </p>
+              </div>
+            </div>
+
+            {/* Four Levels of Environmental Responsibility + Ultimate Measure */}
+            <div className="space-y-5">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="hd-kicker">FOUR LEVELS OF ENVIRONMENTAL RESPONSIBILITY</span>
+                <span className="hd-folio-meta">
+                  ULTIMATE MEASURE: {HIMALAYAN_DISPATCH_ULTIMATE_ECOLOGICAL_MEASURE.toUpperCase()}
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {HIMALAYAN_DISPATCH_FOUR_RESPONSIBILITY_LEVELS.map((lvl) => (
+                  <div
+                    key={lvl.number}
+                    className="p-5 border space-y-2"
+                    style={{
+                      borderColor: 'var(--hd-rule)',
+                      backgroundColor: 'var(--hd-bg-elevated)',
+                    }}
+                  >
+                    <div
+                      className="hd-font-display text-3xl font-semibold"
+                      style={{ color: 'var(--hd-copper)' }}
+                    >
+                      {lvl.number}
+                    </div>
+                    <h3
+                      className="hd-font-display text-xl font-semibold"
+                      style={{ color: 'var(--hd-fg)' }}
+                    >
+                      {lvl.actor}
+                    </h3>
+                    <p
+                      className="hd-font-body text-xs sm:text-sm leading-relaxed"
+                      style={{ color: 'var(--hd-fg-secondary)' }}
+                    >
+                      {lvl.question}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Six Civil Society Inquiries (16–21) + Complete Architecture & NGO Outcome Matrix */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+              <div className="lg:col-span-8 divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
+                {civilSocietyStories.map((st) => {
+                  const meta = CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META[st.slug];
+                  const url = resolveCanonicalStoryUrl(st);
+                  return (
+                    <article
+                      key={st.id}
+                      className="py-7 first:pt-0 space-y-2.5"
+                      style={{ borderColor: 'var(--hd-rule)' }}
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <span className="hd-kicker">
+                          {meta?.dispatchNumber || '—'} · {meta?.institutionalContext || st.departmentRubric}
+                        </span>
+                        <span className="hd-folio-meta">
+                          {st.readingTimeMinutes} MIN READ ({st.wordCount.toLocaleString()} WORDS)
+                        </span>
+                      </div>
+                      <Link href={url} className="block group">
+                        <h3
+                          className="hd-font-display text-2xl sm:text-4xl font-semibold leading-tight group-hover:underline underline-offset-4"
+                          style={{ color: 'var(--hd-fg)' }}
+                        >
+                          {st.title}
+                        </h3>
+                      </Link>
+                      <p
+                        className="hd-font-display text-lg sm:text-xl italic"
+                        style={{ color: 'var(--hd-copper)' }}
+                      >
+                        {meta?.centralQuestion || st.subtitle}
+                      </p>
+                      <p
+                        className="hd-font-body text-sm sm:text-base leading-relaxed"
+                        style={{ color: 'var(--hd-fg-secondary)' }}
+                      >
+                        {st.excerpt}
+                      </p>
+                      {meta?.proposedFramework && (
+                        <p className="hd-folio-meta pt-1">
+                          PROPOSED ADVANCEMENT: {meta.proposedFramework.toUpperCase()}
+                        </p>
+                      )}
+                      <div className="pt-2 flex items-center justify-between">
+                        <span className="hd-folio-meta">BY {st.bylineDisplay}</span>
+                        <Link
+                          href={url}
+                          className="hd-kicker inline-flex items-center gap-1.5 hover:underline"
+                        >
+                          <span>Read Accountability Inquiry</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+
+              <div className="lg:col-span-4 space-y-8">
+                {/* Complete 21-Dispatch Architecture */}
+                <aside
+                  className="border p-6 space-y-4"
+                  style={{
+                    borderColor: 'var(--hd-rule-strong)',
+                    backgroundColor: 'var(--hd-bg-elevated)',
+                  }}
+                >
+                  <p className="hd-kicker">THE COMPLETE EDITORIAL ARCHITECTURE</p>
+                  <h3
+                    className="hd-font-display text-2xl font-semibold leading-snug"
+                    style={{ color: 'var(--hd-fg)' }}
+                  >
+                    21 Inaugural Dispatches Across Three Series
+                  </h3>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="border-b" style={{ borderColor: 'var(--hd-rule-strong)' }}>
+                          <th className="py-2 pr-2 hd-folio-meta">Series</th>
+                          <th className="py-2 px-2 hd-folio-meta">Nos.</th>
+                          <th className="py-2 pl-2 hd-folio-meta">Primary Focus</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
+                        {HIMALAYAN_DISPATCH_COMPLETE_EDITORIAL_ARCHITECTURE.map((row) => (
+                          <tr key={row.dispatches}>
+                            <td
+                              className="py-2.5 pr-2 hd-font-body text-xs font-semibold align-top"
+                              style={{ color: 'var(--hd-fg)' }}
+                            >
+                              {row.series}
+                            </td>
+                            <td
+                              className="py-2.5 px-2 hd-folio-meta align-top"
+                              style={{ color: 'var(--hd-copper)' }}
+                            >
+                              {row.dispatches}
+                            </td>
+                            <td
+                              className="py-2.5 pl-2 hd-font-body text-xs align-top"
+                              style={{ color: 'var(--hd-fg-secondary)' }}
+                            >
+                              {row.primaryFocus}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </aside>
+
+                {/* NGO Activity vs Outcome Indicator Matrix */}
+                <aside
+                  className="border p-6 space-y-4"
+                  style={{
+                    borderColor: 'var(--hd-rule-strong)',
+                    backgroundColor: 'var(--hd-bg-elevated)',
+                  }}
+                >
+                  <p className="hd-kicker">CIVIL SOCIETY EVALUATION MATRIX</p>
+                  <h3
+                    className="hd-font-display text-2xl font-semibold leading-snug"
+                    style={{ color: 'var(--hd-fg)' }}
+                  >
+                    Activity Counts vs. Ecological Outcomes
+                  </h3>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="border-b" style={{ borderColor: 'var(--hd-rule-strong)' }}>
+                          <th className="py-2 pr-2 hd-folio-meta">Conventional Activity</th>
+                          <th className="py-2 pl-2 hd-folio-meta">Outcome Indicator</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
+                        {HIMALAYAN_DISPATCH_NGO_OUTCOME_MATRIX.map((row, idx) => (
+                          <tr key={idx}>
+                            <td
+                              className="py-2 pr-2 hd-font-body text-xs align-top"
+                              style={{ color: 'var(--hd-fg-muted)' }}
+                            >
+                              {row.conventionalActivity}
+                            </td>
+                            <td
+                              className="py-2 pl-2 hd-font-body text-xs font-semibold align-top"
+                              style={{ color: 'var(--hd-fg)' }}
+                            >
+                              {row.proposedOutcomeIndicator}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p
+                    className="hd-font-body text-xs italic pt-2 border-t"
+                    style={{ borderColor: 'var(--hd-rule)', color: 'var(--hd-fg-muted)' }}
+                  >
+                    {CIVIL_SOCIETY_DEFINING_PRINCIPLE.evidentiaryNotice}
+                  </p>
+                </aside>
+              </div>
+            </div>
           </div>
         </section>
       )}

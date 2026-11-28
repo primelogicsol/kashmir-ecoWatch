@@ -53,7 +53,7 @@ export default function ClimateChangePage() {
   return (
     <main className="min-h-screen bg-slate-950">{/* Hero Section */}
       <Heading
-        breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Pollution & Stress', href: '/risk-monitoring/pollution-stress' }, { label: 'Climate Change' }]}
+        breadcrumbs={[{ label: 'Risk & Monitoring', href: '/risk-monitoring' }, { label: 'Pollution & Stress', href: '/environmental-monitoring' }, { label: 'Climate Change' }]}
         title={<>
             <KewBrandIdentity />
             <span className="block whitespace-normal break-words leading-[1.12] overflow-visible bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Climate Change Signals</span>
@@ -75,7 +75,7 @@ export default function ClimateChangePage() {
               size="lg"
               variant="outline"
               className="border-white/20 text-white hover:bg-white/5"
-              onClick={() => router.push('/risk-monitoring/pollution-stress')}
+              onClick={() => router.push('/environmental-monitoring')}
             >
               <ArrowRight className="w-5 h-5 mr-2" />
               Back to Pollution & Stress

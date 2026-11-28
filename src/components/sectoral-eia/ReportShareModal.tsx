@@ -6,16 +6,24 @@ import {
   Copy,
   Check,
   Share2,
-  Mail,
   FileDown,
   QrCode,
-  ExternalLink,
   Hash,
   Smartphone,
 } from 'lucide-react';
-import { encodeQrMatrix, renderQrSvgString } from '@/lib/qr-svg';
+import { encodeQrMatrix } from '@/lib/qr-svg';
 import { CANONICAL_SITE_URL } from '@/lib/seo/entity-identity';
 import { KewOfficialPublicationLogo } from '@/components/common/Logo';
+import {
+  buildCanonicalPublicShareUrl,
+  buildKewShareChannels,
+  copyCanonicalLinkToClipboard,
+  dispatchNativeDeviceShare,
+  downloadCanonicalQrSvg,
+  KewExternalShareChannelKey,
+  supportsNativeDeviceShare,
+} from '@/lib/sharing/kew-content-sharing';
+import { KewShareChannelIcon } from '@/components/common/KewContentShare';
 
 export interface ShareableChapterAnchor {
   number: string;
@@ -68,9 +76,7 @@ export function ReportShareModal({
   }, [initialChapterAnchor]);
 
   useEffect(() => {
-    if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
-      setCanNativeShare(true);
-    }
+    setCanNativeShare(supportsNativeDeviceShare());
   }, []);
 
   useEffect(() => {
@@ -79,10 +85,14 @@ export function ReportShareModal({
     }
   }, [isOpen, code]);
 
-  const canonicalReportUrl = useMemo(() => {
-    const base = `${CANONICAL_SITE_URL}/sectoral-eia/reports/${code.toLowerCase()}`;
-    return selectedAnchor ? `${base}#chapter-${selectedAnchor}` : base;
-  }, [code, selectedAnchor]);
+  const canonicalReportUrl = useMemo(
+    () =>
+      buildCanonicalPublicShareUrl(
+        `/sectoral-eia/reports/${code.toLowerCase()}`,
+        selectedAnchor
+      ),
+    [code, selectedAnchor]
+  );
 
   const localOrLivePdfUrl = useMemo(() => {
     const origin =
@@ -100,12 +110,16 @@ export function ReportShareModal({
 
   const dispatchPlatform = (platformKey: string, targetHref: string) => {
     trackShareAnalytics(code, 'share_platform_dispatch', platformKey);
+    if (targetHref.startsWith('mailto:')) {
+      window.location.href = targetHref;
+      return;
+    }
     window.open(targetHref, '_blank', 'noopener,noreferrer');
   };
 
   const handleCopy = async (kind: 'url' | 'pdf', value: string) => {
-    try {
-      await navigator.clipboard.writeText(value);
+    const ok = await copyCanonicalLinkToClipboard(value);
+    if (ok) {
       setCopiedField(kind);
       trackShareAnalytics(
         code,
@@ -113,75 +127,46 @@ export function ReportShareModal({
         kind === 'url' ? 'copy_report_link' : 'copy_pdf_link'
       );
       setTimeout(() => setCopiedField(null), 2200);
-    } catch {}
+    }
   };
 
   const handleNativeShare = async () => {
     if (!canNativeShare) return;
-    try {
-      await navigator.share({
-        title: shareHeadline,
-        text: shortSummary,
-        url: canonicalReportUrl,
-      });
+    const status = await dispatchNativeDeviceShare({
+      title: shareHeadline,
+      description: shortSummary,
+      canonicalUrl: canonicalReportUrl,
+    });
+    if (status === 'shared') {
       trackShareAnalytics(code, 'share_platform_dispatch', 'web_share_api');
-    } catch {}
+    }
   };
 
   const handleDownloadQrSvg = () => {
-    const svg = renderQrSvgString(canonicalReportUrl, 3);
-    const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${code}-QR-Link.svg`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    downloadCanonicalQrSvg(canonicalReportUrl, `${code}-QR-Link.svg`);
     trackShareAnalytics(code, 'share_platform_dispatch', 'qr_svg_download');
   };
 
-  const platforms = [
-    {
-      key: 'whatsapp',
-      label: 'WhatsApp',
-      href: `https://wa.me/?text=${encodeURIComponent(`${shareHeadline}\n\n${canonicalReportUrl}`)}`,
-      accent: 'border-emerald-500/30 hover:border-emerald-400/60 text-emerald-300',
-    },
-    {
-      key: 'linkedin',
-      label: 'LinkedIn',
-      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalReportUrl)}`,
-      accent: 'border-sky-500/30 hover:border-sky-400/60 text-sky-300',
-    },
-    {
-      key: 'x_twitter',
-      label: 'X (Twitter)',
-      href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareHeadline)}&url=${encodeURIComponent(canonicalReportUrl)}`,
-      accent: 'border-slate-500/40 hover:border-slate-300/60 text-slate-200',
-    },
-    {
-      key: 'facebook',
-      label: 'Facebook',
-      href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(canonicalReportUrl)}`,
-      accent: 'border-blue-500/30 hover:border-blue-400/60 text-blue-300',
-    },
-    {
-      key: 'telegram',
-      label: 'Telegram',
-      href: `https://t.me/share/url?url=${encodeURIComponent(canonicalReportUrl)}&text=${encodeURIComponent(shareHeadline)}`,
-      accent: 'border-cyan-500/30 hover:border-cyan-400/60 text-cyan-300',
-    },
-    {
-      key: 'email',
-      label: 'Institutional Email',
-      href: `mailto:?subject=${encodeURIComponent(shareHeadline)}&body=${encodeURIComponent(
-        `${shareHeadline}\n\nExecutive Summary:\n${shortSummary}\n\nPermanent Report URL:\n${canonicalReportUrl}`
-      )}`,
-      accent: 'border-amber-500/30 hover:border-amber-400/60 text-amber-300',
-    },
-  ];
+  const accentByKey: Record<KewExternalShareChannelKey, string> = {
+    whatsapp: 'border-emerald-500/30 hover:border-emerald-400/60 text-emerald-300',
+    linkedin: 'border-sky-500/30 hover:border-sky-400/60 text-sky-300',
+    x_twitter: 'border-slate-500/40 hover:border-slate-300/60 text-slate-200',
+    facebook: 'border-blue-500/30 hover:border-blue-400/60 text-blue-300',
+    telegram: 'border-cyan-500/30 hover:border-cyan-400/60 text-cyan-300',
+    email: 'border-amber-500/30 hover:border-amber-400/60 text-amber-300',
+  };
+
+  const platforms = buildKewShareChannels({
+    title: shareHeadline,
+    description: shortSummary,
+    canonicalUrl: canonicalReportUrl,
+    publicationLabel: 'Kashmir EcoWatch',
+    summaryHeading: 'Executive Summary',
+  }).map((ch) => ({
+    ...ch,
+    label: ch.key === 'email' ? 'Institutional Email' : ch.label,
+    accent: accentByKey[ch.key],
+  }));
 
   const quiet = 2;
   const qrTotal = qrMatrix.length + quiet * 2;
@@ -333,11 +318,7 @@ export function ReportShareModal({
                     className={`flex items-center justify-between rounded-md border bg-slate-950 px-3 py-2.5 text-xs font-semibold transition-colors ${p.accent}`}
                   >
                     <span className="inline-flex items-center gap-2">
-                      {p.key === 'email' ? (
-                        <Mail className="h-3.5 w-3.5" />
-                      ) : (
-                        <ExternalLink className="h-3.5 w-3.5" />
-                      )}
+                      <KewShareChannelIcon channel={p.key} className="h-3.5 w-3.5" />
                       {p.label}
                     </span>
                   </button>

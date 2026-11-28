@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { telemetryStore, ErrorSeverity, SystemModule, ErrorCategory } from '@/lib/error-telemetry';
+import { verifyAdminRequest } from '@/lib/seo/admin-session';
 
 export const dynamic = 'force-dynamic';
 
@@ -68,12 +69,12 @@ const SIMULATION_PRESETS: Record<SimulationType, SimulationPreset> = {
  * Development & Staging "Generate Test Error" Control
  * Strictly prohibited from destructive failure simulation in production.
  */
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
-    const adminKey = request.headers.get('x-admin-key');
-    if (adminKey !== 'KEW-Admin-2026!') {
+    const authCheck = await verifyAdminRequest(request);
+    if (!authCheck.authorized) {
       return NextResponse.json(
-        { success: false, error: 'Unauthorized: Administrator authentication key required.' },
+        { success: false, error: 'Unauthorized: Active administrator session required.' },
         { status: 401 }
       );
     }

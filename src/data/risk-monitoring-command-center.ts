@@ -959,41 +959,62 @@ export function getDistrictWatchLeaderboard(): DistrictWatchEntry[] {
     'kishtwar', 'doda', 'ramban', 'rajouri', 'poonch', 'kathua',
   ];
   
-  return districts.map((district, index) => {
-    const waterIntel = getDistrictWaterIntelligence(district);
-    const riskScore = 100 - waterIntel.averageHealthScore;
-    
-    let watchStatus: WatchStatus = 'normal';
-    if (riskScore > 80) watchStatus = 'critical';
-    else if (riskScore > 60) watchStatus = 'high';
-    else if (riskScore > 40) watchStatus = 'elevated';
-    
-    let responseCapacity: 'adequate' | 'stretched' | 'overwhelmed' = 'adequate';
-    if (riskScore > 70) responseCapacity = 'stretched';
-    if (riskScore > 90) responseCapacity = 'overwhelmed';
-    
-    return {
-      district,
-      rank: index + 1,
-      overallRiskScore: riskScore,
-      watchStatus,
-      weekOverWeekChange: Math.floor(Math.random() * 10) - 5,
-      categoryScores: {
-        hazard: Math.floor(Math.random() * 60) + 20,
-        pollution: Math.floor(Math.random() * 60) + 20,
-        biodiversity: Math.floor(Math.random() * 60) + 20,
-      },
-      activeIncidents: liveIncidents.filter(i => i.location.district === district && i.status === 'active').length,
-      criticalIncidents: liveIncidents
-        .filter(i => i.location.district === district && i.severity === 'critical')
-        .map(i => i.slug),
-      hotspotCorridors: hotspotCorridors
-        .filter(c => c.location.districts.includes(district))
-        .map(c => c.name),
-      responseCapacity,
-      lastUpdated: new Date().toISOString(),
-    };
-  }).sort((a, b) => b.overallRiskScore - a.overallRiskScore);
+  return districts
+    .map((district, index) => {
+      const waterIntel = getDistrictWaterIntelligence(district);
+      const riskScore = 100 - waterIntel.averageHealthScore;
+
+      let watchStatus: WatchStatus = 'normal';
+      if (riskScore > 80) watchStatus = 'critical';
+      else if (riskScore > 60) watchStatus = 'high';
+      else if (riskScore > 40) watchStatus = 'elevated';
+
+      let responseCapacity: 'adequate' | 'stretched' | 'overwhelmed' = 'adequate';
+      if (riskScore > 70) responseCapacity = 'stretched';
+      if (riskScore > 90) responseCapacity = 'overwhelmed';
+
+      const districtIncidents = liveIncidents.filter(i => i.location.district === district);
+      const activeCount = districtIncidents.filter(i => i.status === 'active').length;
+      const hazardIncidents = districtIncidents.filter(i => i.category === 'hazard').length;
+      const pollutionIncidents = districtIncidents.filter(i => i.category === 'pollution').length;
+      const biodiversityIncidents = districtIncidents.filter(i => i.category === 'biodiversity').length;
+      const matchedCorridors = hotspotCorridors.filter(c => c.location.districts.includes(district));
+
+      const hazardScore = Math.min(
+        95,
+        Math.max(15, Math.round(riskScore * 0.7 + hazardIncidents * 12 + matchedCorridors.length * 6))
+      );
+      const pollutionScore = Math.min(
+        95,
+        Math.max(15, Math.round(riskScore * 0.85 + pollutionIncidents * 12))
+      );
+      const biodiversityScore = Math.min(
+        95,
+        Math.max(15, Math.round(riskScore * 0.65 + biodiversityIncidents * 12 + matchedCorridors.length * 5))
+      );
+
+      return {
+        district,
+        rank: index + 1,
+        overallRiskScore: riskScore,
+        watchStatus,
+        weekOverWeekChange: 0,
+        categoryScores: {
+          hazard: hazardScore,
+          pollution: pollutionScore,
+          biodiversity: biodiversityScore,
+        },
+        activeIncidents: activeCount,
+        criticalIncidents: districtIncidents
+          .filter(i => i.severity === 'critical')
+          .map(i => i.slug),
+        hotspotCorridors: matchedCorridors.map(c => c.name),
+        responseCapacity,
+        lastUpdated: 'Static Baseline Synthesis',
+      };
+    })
+    .sort((a, b) => b.overallRiskScore - a.overallRiskScore)
+    .map((entry, sortedIdx) => ({ ...entry, rank: sortedIdx + 1 }));
 }
 
 export function getDistrictWatchStatus(district: string): DistrictWatchEntry | null {

@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { ArrowRight, MapPin, ShieldCheck } from 'lucide-react';
 import type {
   EditorialDepartmentId,
@@ -37,17 +36,17 @@ export function RegionalBureausClient({
   journalists: JournalistProfile[];
   beats: BeatItem[];
 }) {
-  const searchParams = useSearchParams();
   const [selectedBureau, setSelectedBureau] = useState<string>('all');
 
   useEffect(() => {
-    const q = searchParams.get('bureau');
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('bureau');
     if (q && bureaus.some((b) => b.id === q)) {
       setSelectedBureau(q);
     } else {
       setSelectedBureau('all');
     }
-  }, [searchParams, bureaus]);
+  }, [bureaus]);
 
   const visibleBureaus =
     selectedBureau === 'all'

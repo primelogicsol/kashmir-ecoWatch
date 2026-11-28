@@ -19,8 +19,8 @@ import { WEBINAR_CONCEPTUAL_MEDIA_DISCLOSURE } from '@/data/webinar-hero-carouse
    NOTICE_PUBLISHED is fixed — it records the original publication date.
    ─────────────────────────────────────────────────────────────────────── */
 const NOTICE_PUBLISHED    = 'June 2026';
-const NOTICE_LAST_UPDATED = 'June 26, 2026';
-const NOTICE_VERSION      = '1.0';
+const NOTICE_LAST_UPDATED = 'November 27, 2026';
+const NOTICE_VERSION      = '1.2';
 
 /* ─── Section index ────────────────────────────────────────────────────── */
 
@@ -154,7 +154,7 @@ function DocMeta() {
           { label: 'Published',    value: NOTICE_PUBLISHED },
           { label: 'Last Updated', value: NOTICE_LAST_UPDATED },
           { label: 'Version',      value: NOTICE_VERSION },
-          { label: 'Jurisdiction', value: 'J&K, India' },
+          { label: 'Governing Venue', value: 'Commonwealth of Virginia, USA' },
         ].map(({ label, value }) => (
           <div key={label} className="flex justify-between items-start gap-3">
             <span className="text-[10px] text-slate-500 flex-shrink-0">{label}</span>
@@ -467,16 +467,35 @@ export default function LegalNoticePage() {
                   <div className="border-t border-white/5" />
 
                   {/* ── IP ── */}
-                  <Section id="ip" icon={Lock} title="Intellectual Property" accent="text-amber-400" bg="bg-amber-500/10">
+                  <Section id="ip" icon={Lock} title="Intellectual Property &amp; Tiered Licensing" accent="text-amber-400" bg="bg-amber-500/10">
                     <p>
-                      Unless otherwise stated, the original content published by Kashmir EcoWatch — including text, graphics, visualisations, reports, dashboards, website design, and documentation — is protected by applicable intellectual property laws.
+                      <strong className="text-white">1. Eligible KEW-Authored Synthesis Datasets &amp; Desk-Verified Reports — CC BY-NC 4.0:</strong>{' '}
+                      Original synthesis tables, harmonized taxonomic/geographic checklists, and desk-verified analytical reports authored by Kashmir EcoWatch are made available under{' '}
+                      <a
+                        href="https://creativecommons.org/licenses/by-nc/4.0/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-emerald-400 hover:text-emerald-300 underline font-medium"
+                      >
+                        CC BY-NC 4.0 (Creative Commons Attribution-NonCommercial 4.0 International)
+                      </a>
+                      . Non-commercial academic, educational, journalistic, and conservation reuse is permitted with attribution to Kashmir EcoWatch and underlying primary sources; commercial reuse is reserved and requires prior written permission.
                     </p>
                     <p>
-                      Third-party datasets, imagery, maps, publications, and environmental resources remain the property of their respective owners and are used in accordance with their applicable licences and attribution requirements.
+                      <strong className="text-white">2. Explicit Carve-Outs &amp; Retained Rights:</strong>
                     </p>
+                    <Bullets
+                      accent="bg-amber-400"
+                      items={[
+                        'Third-Party Rights Retained: Government gazettes, statutory atlases (ISRO NWIA, FSI ISFR, CAG Reports, Ramsar RSIS), judicial orders, and peer-reviewed journal articles linked or summarized on KEW remain governed by their original statutory or publisher copyright terms.',
+                        'Conservation-Restricted: Fine-scale GPS coordinates of poaching-vulnerable or threatened wildlife and endemic medicinal flora are masked/generalized (>=10 km / district grids) and excluded from open redistribution.',
+                        'EcoVoices Cultural & Musical Works: Musical compositions, vocal recordings, poetic recitations, and documentary photography remain subject to creator/performer copyright (Artist & Cultural Rights Reserved).',
+                        'Proprietary Platform Software: Kashmir EcoWatch application source code, UI architecture, visual identity, and trademarks are proprietary (© 2026 Kashmir EcoWatch. All rights reserved).',
+                      ]}
+                    />
                     <div className="rounded-xl bg-amber-950/20 border border-amber-500/20 p-4 mt-2">
                       <p className="text-xs text-slate-300 leading-relaxed">
-                        Unauthorised reproduction, extraction, redistribution, reverse engineering, imitation, or commercial exploitation of KEW content is prohibited without prior written authorisation.
+                        <strong className="text-white">Governing Venue:</strong> Kashmir EcoWatch is operated from Loudoun County, Commonwealth of Virginia, USA, under Dr. Kumar Foundation USA &amp; Kumar Trust USA stewardship. Disputes relating to platform terms or intellectual property are governed by the laws of the Commonwealth of Virginia, USA, while respecting applicable statutory data and information laws across covered jurisdictions.
                       </p>
                     </div>
                   </Section>
@@ -537,18 +556,18 @@ export default function LegalNoticePage() {
                   <div className="border-t border-white/5" />
 
                   {/* ── Open Data ── */}
-                  <Section id="open-data" icon={Layers} title="Open Data & Attribution" accent="text-emerald-400" bg="bg-emerald-500/10">
+                  <Section id="open-data" icon={Layers} title="Open Data &amp; Non-Commercial Licensing (CC BY-NC 4.0)" accent="text-emerald-400" bg="bg-emerald-500/10">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="rounded-xl bg-emerald-950/30 border border-emerald-500/20 p-4">
-                        <div className="text-xs font-bold text-emerald-400 mb-2">Open Data</div>
+                        <div className="text-xs font-bold text-emerald-400 mb-2">Eligible KEW Syntheses — CC BY-NC 4.0</div>
                         <p className="text-xs text-slate-300 leading-relaxed">
-                          Where KEW publishes datasets designated as open data, users must comply with the applicable licensing conditions and provide appropriate attribution where required.
+                          Eligible KEW-authored synthesis datasets and desk-verified reports are licensed under CC BY-NC 4.0 (Creative Commons Attribution-NonCommercial 4.0 International). Commercial reuse is reserved; attribution to KEW and primary sources is mandatory.
                         </p>
                       </div>
                       <div className="rounded-xl bg-amber-950/20 border border-amber-500/20 p-4">
-                        <div className="text-xs font-bold text-amber-400 mb-2">Restricted Data</div>
+                        <div className="text-xs font-bold text-amber-400 mb-2">Third-Party &amp; Conservation-Restricted Carve-Outs</div>
                         <p className="text-xs text-slate-300 leading-relaxed">
-                          Some datasets displayed on the platform may remain subject to third-party licensing restrictions and may not be redistributed without authorisation.
+                          External agency/journal publications (Third-Party Rights Retained), masked wildlife coordinates (Conservation-Restricted), and EcoVoices cultural/musical works are excluded from CC BY-NC 4.0 dataset re-licensing.
                         </p>
                       </div>
                     </div>

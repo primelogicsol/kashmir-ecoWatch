@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { biodiversityMetrics, mammalsData, birdsData, getBiodiversityData } from '@/data/biodiversity';
+import { VERIFIED_SPECIES_COUNTS, SPECIES_SCIENTIFIC_PROVENANCE_NOTE } from '@/data/species';
+import { PLATFORM_METRICS } from '@/data/platform-metrics';
 import { ModuleKpiStrip } from '@/components/common/ModuleKpiStrip';
 import { RED_DATA_METRICS, PRIORITY_KASHMIR_SPECIES } from '@/data/red-data-book-kashmir';
 import { useRouter } from 'next/navigation';
@@ -125,8 +127,8 @@ const exploreModes = [
     label: 'By Protected Area', 
     icon: Map, 
     href: '/protected-areas',
-    description: 'Biodiversity within PAs',
-    count: 47,
+    description: 'Biodiversity within verified PAs',
+    count: PLATFORM_METRICS.protectedAreasVerifiedCount.value,
     countLabel: 'areas',
     color: 'from-amber-500 to-orange-600'
   },
@@ -135,8 +137,8 @@ const exploreModes = [
     label: 'By District', 
     icon: Building2, 
     href: '/districts',
-    description: 'District-level biodiversity',
-    count: 16,
+    description: 'Operational baseline districts',
+    count: PLATFORM_METRICS.operationalDistrictsCount.value,
     countLabel: 'districts',
     color: 'from-violet-500 to-purple-600'
   },
@@ -156,7 +158,7 @@ const exploreModes = [
     icon: Shield, 
     href: '/biodiversity/threatened-species',
     description: 'IUCN & WLPA filtering',
-    count: 89,
+    count: biodiversityMetrics.threatened,
     countLabel: 'threatened',
     color: 'from-red-500 to-rose-600'
   },
@@ -165,9 +167,9 @@ const exploreModes = [
     label: 'By Sightings', 
     icon: Eye, 
     href: '/trails-sightings',
-    description: 'Field observations',
-    count: 4521,
-    countLabel: 'records',
+    description: 'Verified species profiles',
+    count: VERIFIED_SPECIES_COUNTS.totalCoreVerified,
+    countLabel: 'verified taxa',
     color: 'from-sky-500 to-blue-600'
   },
 ];
@@ -191,12 +193,12 @@ export default function BiodiversityPage() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const featuredSpecies = [
-    getBiodiversityData.mammals.bySlug('kashmir-stag-hangul'),
-    getBiodiversityData.mammals.bySlug('kashmir-markhor'),
+    getBiodiversityData.mammals.bySlug('hangul-kashmir-stag') || getBiodiversityData.mammals.bySlug('kashmir-stag-hangul'),
+    getBiodiversityData.mammals.bySlug('markhor') || getBiodiversityData.mammals.bySlug('kashmir-markhor'),
     getBiodiversityData.birds.bySlug('kashmir-flycatcher'),
     getBiodiversityData.birds.bySlug('himalayan-monal'),
     getBiodiversityData.fish.bySlug('kashmir-snow-trout'),
-    getBiodiversityData.medicinalPlants.bySlug('atis'),
+    getBiodiversityData.medicinalPlants.bySlug('indian-atees') || getBiodiversityData.medicinalPlants.bySlug('atis'),
   ].filter(Boolean);
 
   const handleQuickView = (species: any) => {
@@ -357,7 +359,7 @@ export default function BiodiversityPage() {
             <a href="/biodiversity">
               <Button size="sm" variant="outline" className="border-emerald-500/40 text-slate-950 bg-emerald-500 font-bold transition-all shadow-md shadow-emerald-500/30">
                 <Leaf className="w-4 h-4 mr-1.5" />
-                ALL {biodiversityMetrics.totalSpecies} Taxa
+                {VERIFIED_SPECIES_COUNTS.totalCoreVerified} Verified Core Taxa
               </Button>
             </a>
             <a href="/biodiversity/threatened-species">
@@ -369,7 +371,7 @@ export default function BiodiversityPage() {
             <a href="/biodiversity/medicinal-plants">
               <Button size="sm" className="bg-gradient-to-r from-purple-600 to-indigo-500 text-white font-bold transition-all">
                 <Flower2 className="w-4 h-4 mr-1.5" />
-                127 Pharmacopeia
+                {VERIFIED_SPECIES_COUNTS.medicinalPlants} Pharmacopeia
               </Button>
             </a>
           </div>
@@ -399,13 +401,18 @@ export default function BiodiversityPage() {
           <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
             <div className="text-right hidden sm:block">
               <div className="text-xs text-slate-400">Taxonomic Inventory</div>
-              <div className="text-sm font-bold text-emerald-300">{biodiversityMetrics.totalSpecies} Master Species</div>
+              <div className="text-sm font-bold text-emerald-300">{VERIFIED_SPECIES_COUNTS.totalCoreVerified} Verified Core Species</div>
             </div>
-            <div className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-300 flex items-center gap-1.5">
+            <div className="px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-xs font-semibold text-amber-300 flex items-center gap-1.5">
               <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />
-              <span>Full Biodiversity Coverage</span>
+              <span>Verified Subset · Quarantine Active</span>
             </div>
           </div>
+        </div>
+
+        {/* Scientific Provenance & Quarantine Disclosure */}
+        <div className="mt-3 rounded-xl border border-amber-500/25 bg-amber-950/20 px-4 py-3 text-xs text-slate-300 leading-relaxed">
+          <strong className="text-amber-300">Scientific Provenance Note:</strong> {SPECIES_SCIENTIFIC_PROVENANCE_NOTE}
         </div>
 
         {/* ───────────────────────────────────────────────────────────── */}
@@ -417,9 +424,9 @@ export default function BiodiversityPage() {
             <div className="kew-card-icon-box w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] p-2 bg-emerald-500/20 border-emerald-500/40 text-emerald-300">
               <Leaf className="w-4 h-4" />
             </div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400">Total Taxa</h3>
-            <div className="text-2xl font-black text-white tabular-nums">{biodiversityMetrics.totalSpecies}</div>
-            <div className="text-[11px] text-emerald-400/90 font-mono mt-auto">ALL Cataloged Taxa</div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400">Verified Core Taxa</h3>
+            <div className="text-2xl font-black text-white tabular-nums">{VERIFIED_SPECIES_COUNTS.totalCoreVerified}</div>
+            <div className="text-[11px] text-emerald-400/90 font-mono mt-auto">4 Core Taxonomic Classes</div>
           </div>
 
           {/* Card 2: Mammals */}
@@ -791,7 +798,7 @@ export default function BiodiversityPage() {
               </div>
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-white">District Intelligence</h2>
-                <p className="text-xs sm:text-sm md:text-base text-slate-400">Biodiversity across all 16 districts of Kashmir</p>
+                <p className="text-xs sm:text-sm md:text-base text-slate-400">Biodiversity envelopes across Western Himalayan districts</p>
               </div>
             </div>
             <Button

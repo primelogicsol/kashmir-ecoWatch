@@ -65,8 +65,28 @@ export type FloodZoneLiveRecord = FloodZoneRecord & {
   field_gauge?: string | null;
 };
 
-const CACHE_KEY = "flood_data_cache_v2";
+const CACHE_KEY = "flood_data_cache_v3_glofas_screening";
 const CACHE_DURATION = 30 * 60 * 1000;
+
+function computeSeriesQuantile(values: number[], q: number): number {
+  const valid = values.filter((v) => typeof v === "number" && Number.isFinite(v) && v >= 0).sort((a, b) => a - b);
+  if (valid.length === 0) return 0;
+  const pos = (valid.length - 1) * q;
+  const base = Math.floor(pos);
+  const rest = pos - base;
+  if (valid[base + 1] !== undefined) {
+    return valid[base] + rest * (valid[base + 1] - valid[base]);
+  }
+  return valid[base];
+}
+
+function getMinimumPhysicalHighFlowM3s(riverSystem: string): number {
+  const rs = riverSystem.toLowerCase();
+  if (rs.includes("indus") || rs.includes("chenab")) return 600;
+  if (rs.includes("jhelum")) return 450;
+  if (rs.includes("ravi") || rs.includes("shyok") || rs.includes("neelum") || rs.includes("gilgit")) return 250;
+  return 80;
+}
 
 function useFloodData() {
   const [data, setData] = useState<FloodZoneLiveRecord[]>([]);
@@ -94,21 +114,21 @@ function useFloodData() {
         const lons = floodZoneRegistry.map((z) => z.longitude).join(",");
 
         const floodRes = await fetch(
-          `https://flood-api.open-meteo.com/v1/flood?latitude=${lats}&longitude=${lons}&daily=river_discharge,river_discharge_mean,river_discharge_median,river_discharge_max,river_discharge_min,river_discharge_p25,river_discharge_p75&past_days=7&forecast_days=30&timezone=auto`,
+          `https://flood-api.open-meteo.com/v1/flood?latitude=${lats}&longitude=${lons}&daily=river_discharge,river_discharge_mean,river_discharge_median,river_discharge_max,river_discharge_min,river_discharge_p25,river_discharge_p75&past_days=92&forecast_days=30&timezone=UTC`,
         );
         const forecastRes = await fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}&daily=precipitation_sum,rain_sum,showers_sum,snowfall_sum&past_days=1&forecast_days=3&timezone=auto`,
+          `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}&daily=precipitation_sum,rain_sum,showers_sum,snowfall_sum&past_days=1&forecast_days=3&timezone=UTC`,
         );
 
-        let kfwData: any[] = [];
+        let statutoryBenchmarks: any[] = [];
         try {
           const kfwRes = await fetch('/api/floods/live');
           if (kfwRes.ok) {
             const kfwJson = await kfwRes.json();
-            kfwData = kfwJson.data || [];
+            statutoryBenchmarks = kfwJson.data || [];
           }
         } catch (e) {
-          console.warn("Failed to fetch field gauges", e);
+          console.warn("Failed to fetch statutory stage benchmarks", e);
         }
 
         if (!floodRes.ok || !forecastRes.ok)
@@ -116,6 +136,7 @@ function useFloodData() {
 
         const floodData = await floodRes.json();
         const forecastData = await forecastRes.json();
+        const todayIsoDate = new Date().toISOString().slice(0, 10);
 
         const combinedData: FloodZoneLiveRecord[] = floodZoneRegistry.map(
           (zone, idx) => {
@@ -126,26 +147,34 @@ function useFloodData() {
 
             const dailyFlood = cd?.daily || {};
             const dailyWeather = wcd?.daily || {};
-
-            const todayIdxFlood = 7;
+            const floodDates: string[] = dailyFlood.time || [];
+            const matchedTodayIdx = floodDates.findIndex((d) => d === todayIsoDate);
+            const todayIdxFlood =
+              matchedTodayIdx >= 0
+                ? matchedTodayIdx
+                : Math.min(92, Math.max(0, (dailyFlood.river_discharge?.length || 1) - 1));
             const todayIdxWeather = 1;
 
-            const latest_discharge =
-              dailyFlood.river_discharge?.[todayIdxFlood] || 0;
-            const prev_discharge =
-              dailyFlood.river_discharge?.[todayIdxFlood - 1] || 0;
-            const discharge_mean =
-              dailyFlood.river_discharge_mean?.[todayIdxFlood] || 0;
-            const discharge_p75 =
-              dailyFlood.river_discharge_p75?.[todayIdxFlood] || 0;
-            const discharge_max =
-              dailyFlood.river_discharge_max?.[todayIdxFlood] || 0;
+            const qSeries: number[] = dailyFlood.river_discharge || [];
+            const past90Series = qSeries.slice(0, todayIdxFlood + 1);
+            const median90d = computeSeriesQuantile(past90Series, 0.5);
+            const p90_90d = computeSeriesQuantile(past90Series, 0.9);
 
-            const futureDischarge =
-              dailyFlood.river_discharge?.slice(todayIdxFlood + 1) || [];
+            const latest_discharge = qSeries[todayIdxFlood] || 0;
+            const prev_discharge =
+              todayIdxFlood > 0 ? qSeries[todayIdxFlood - 1] || 0 : latest_discharge;
+            const discharge_mean =
+              dailyFlood.river_discharge_mean?.[todayIdxFlood] || median90d || 0;
+            const discharge_p75 =
+              dailyFlood.river_discharge_p75?.[todayIdxFlood] || p90_90d || 0;
+
+            const futureDischarge = qSeries.slice(todayIdxFlood + 1);
             const forecast_peak = futureDischarge.length
-              ? Math.max(...futureDischarge)
+              ? Math.max(...futureDischarge.map((v: number) => v || 0))
               : 0;
+            const nearTerm7dPeak = futureDischarge.slice(0, 7).length
+              ? Math.max(...futureDischarge.slice(0, 7).map((v: number) => v || 0))
+              : latest_discharge;
 
             const latest_rainfall =
               dailyWeather.precipitation_sum?.[todayIdxWeather] || 0;
@@ -156,21 +185,36 @@ function useFloodData() {
               (dailyWeather.precipitation_sum?.[todayIdxWeather + 2] || 0) +
               (dailyWeather.precipitation_sum?.[todayIdxWeather + 3] || 0);
 
-            const kfwMatch = kfwData.find(k => k.name.toLowerCase().includes(zone.name.toLowerCase()) || zone.name.toLowerCase().includes(k.name.toLowerCase()));
-            const field_gauge = kfwMatch ? `${kfwMatch.levelStrMeters} / ${kfwMatch.levelStrFeet} (${kfwMatch.time})` : null;
+            const benchMatch = statutoryBenchmarks.find(
+              (k) =>
+                k.name.toLowerCase().includes(zone.name.toLowerCase()) ||
+                zone.name.toLowerCase().includes(k.name.toLowerCase()),
+            );
+            const field_gauge = benchMatch
+              ? `Statutory Alert: ${benchMatch.alertLevelFeet} ft · Danger: ${benchMatch.dangerLevelFeet} ft${benchMatch.sept2014PeakFeet ? ` · 2014 Peak: ${benchMatch.sept2014PeakFeet} ft` : ""} (Live Gauge Not Connected)`
+              : null;
 
             let trend: "Rising" | "Falling" | "Stable" = "Stable";
-            if (latest_discharge >= prev_discharge * 1.1) trend = "Rising";
-            else if (latest_discharge <= prev_discharge * 0.9)
+            if (prev_discharge > 1 && latest_discharge >= prev_discharge * 1.1) trend = "Rising";
+            else if (prev_discharge > 1 && latest_discharge <= prev_discharge * 0.9)
               trend = "Falling";
 
-            let dominant_trigger = "Normal Flow";
+            // Physical + 90-Day Median Anomaly Flood-Wave Screening (GloFAS v4 ~5 km Grid)
+            // Requires BOTH meaningful physical river discharge scale AND positive flood-wave exceedance
+            // above the 90-day median & ensemble P75 — never elevating receding low-flow winter rivers!
+            const minHighFlowM3s = getMinimumPhysicalHighFlowM3s(zone.river_system);
+            const referenceMedian = Math.max(median90d, 5);
+            const anomalyRatio = latest_discharge / referenceMedian;
+            const nearTermWaveM3s = Math.max(latest_discharge, nearTerm7dPeak);
+            const nearTermWaveRatio = nearTermWaveM3s / referenceMedian;
+
+            let dominant_trigger = "Baseflow / Within 90-Day Median";
             if (forecast_rainfall_72h > 50)
-              dominant_trigger = "Heavy Rainfall Forecast";
+              dominant_trigger = "Heavy NWP Rainfall Forecast";
             else if (latest_rainfall > 20)
-              dominant_trigger = "Recent Heavy Rain";
-            else if (trend === "Rising")
-              dominant_trigger = "Upstream Discharge";
+              dominant_trigger = "Recent NWP Precipitation";
+            else if (trend === "Rising" && latest_discharge >= minHighFlowM3s * 0.5)
+              dominant_trigger = "Rising Modeled Streamflow";
 
             let live_risk_level = "Low";
             if (
@@ -180,16 +224,34 @@ function useFloodData() {
               live_risk_level = "Critical";
               dominant_trigger = "Official Warning / Verified";
             } else if (
-              latest_discharge > forecast_peak * 0.9 ||
-              (trend === "Rising" && latest_discharge > discharge_p75)
+              latest_discharge >= minHighFlowM3s * 1.6 &&
+              anomalyRatio >= 3.0 &&
+              latest_discharge > Math.max(p90_90d * 1.4, discharge_p75 * 1.3)
+            ) {
+              live_risk_level = "Critical";
+              dominant_trigger = "Extreme GloFAS Modeled Flood Wave";
+            } else if (
+              (latest_discharge >= minHighFlowM3s * 1.25 &&
+                anomalyRatio >= 2.2 &&
+                latest_discharge > Math.max(p90_90d * 1.15, discharge_p75 * 1.1)) ||
+              (nearTermWaveM3s >= minHighFlowM3s * 1.4 &&
+                nearTermWaveRatio >= 2.5 &&
+                forecast_rainfall_72h >= 75)
             ) {
               live_risk_level = "Very High";
+              dominant_trigger = "Major GloFAS Flood-Wave Exceedance";
             } else if (
-              latest_discharge > discharge_p75 ||
-              forecast_rainfall_72h > 100
+              (latest_discharge >= minHighFlowM3s &&
+                anomalyRatio >= 1.75 &&
+                latest_discharge > discharge_p75) ||
+              (nearTermWaveM3s >= minHighFlowM3s && forecast_rainfall_72h >= 85)
             ) {
               live_risk_level = "High";
-            } else if (latest_discharge > discharge_mean) {
+              dominant_trigger = "High Modeled Discharge Anomaly";
+            } else if (
+              (latest_discharge >= minHighFlowM3s * 0.6 && anomalyRatio >= 1.4) ||
+              forecast_rainfall_72h >= 50
+            ) {
               live_risk_level = "Moderate";
             }
 
@@ -206,7 +268,7 @@ function useFloodData() {
               trend,
               dominant_trigger,
               field_gauge,
-              last_updated: new Date().toISOString(),
+              last_updated: todayIsoDate,
             };
           },
         );
@@ -303,13 +365,13 @@ function FloodZoneCard({
         <div className="grid grid-cols-2 gap-1.5 text-xs">
           <div className="bg-white/5 rounded p-2 border border-white/5">
             <div className="text-[9px] text-slate-500 uppercase tracking-wider mb-0.5">
-              Latest Discharge
+              GloFAS v4 Modeled Q
             </div>
             <div className="font-bold text-slate-200">
               {record.latest_discharge.toFixed(1)} m³/s
             </div>
             <div className="text-[9px] text-slate-500 mt-0.5">
-              Mean: {record.discharge_mean.toFixed(1)}
+              Baseline: {record.discharge_mean.toFixed(1)} (~5 km Grid)
             </div>
           </div>
           <div className="bg-white/5 rounded p-2 border border-white/5">
@@ -352,11 +414,11 @@ function FloodZoneCard({
             </div>
           </div>
           {record.field_gauge && (
-            <div className="bg-white/5 rounded p-2 border border-blue-500/30 col-span-2">
-              <div className="text-[9px] text-blue-400 uppercase tracking-wider mb-0.5 flex items-center gap-1">
-                <Activity className="w-3 h-3" /> Field Gauge Reading
+            <div className="bg-white/5 rounded p-2 border border-amber-500/30 col-span-2">
+              <div className="text-[9px] text-amber-400 uppercase tracking-wider mb-0.5 flex items-center gap-1">
+                <Shield className="w-3 h-3" /> Statutory Stage Thresholds (Non-Live)
               </div>
-              <div className="font-bold text-blue-100 truncate">
+              <div className="font-medium text-slate-200 text-[10px] leading-snug">
                 {record.field_gauge}
               </div>
             </div>
@@ -590,7 +652,7 @@ export default function FloodsPage() {
             </span>
           </>
         }
-        subtitle="Real-time river discharge and heavy rainfall tracking powered by internal telemetry and forecast models. Enriched with ground-truth field gauge measurements."
+        subtitle="GloFAS v4 Modeled Discharge (~5 km Grid) — Screening Only, paired with Open-Meteo NWP precipitation forecasts and published CWC / J&K I&FC statutory danger-stage benchmarks (live physical river gauge telemetry is not connected)."
         icon={<Waves className="w-6 h-6 text-blue-400" />}
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
@@ -764,11 +826,11 @@ export default function FloodsPage() {
           >
             <h2 className="text-2xl font-bold text-white flex items-center gap-3">
               <Zap className="w-6 h-6 text-blue-400" />
-              Live Flood Zone Registry
+              Flood Zone Screening Registry — GloFAS v4 Modeled Discharge (~5 km Grid) — Screening Only
             </h2>
             <p className="text-slate-400 text-sm mt-1">
-              Real-time discharge and heavy rainfall modeling for {totalZones}{" "}
-              zones.
+              90-day discharge anomaly screening and NWP precipitation outlook across {totalZones}{" "}
+              zones (modeled discharge only; not physical staff-gauge stage).
             </p>
           </motion.div>
 

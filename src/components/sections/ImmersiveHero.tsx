@@ -1,12 +1,19 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Map, Leaf, BarChart3, ArrowRight, ArrowUpRight, Radar, Satellite, Activity, Search, X, Shield, Droplet, Footprints, AlertTriangle, Book, Database, Sparkles, Wind, Scale, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 import { isScientificQuestionLike } from '@/lib/search/scientific-qa-types';
+import { PLATFORM_METRICS } from '@/data/platform-metrics';
+import {
+  FALLBACK_BASELINE_TELEMETRY,
+  type BaselineTelemetryData,
+} from '@/lib/telemetry/getBaselineTelemetry';
 
 interface SuggestGroup {
   groupKey: string;
@@ -20,12 +27,49 @@ interface SuggestGroup {
   }>;
 }
 
-export function ImmersiveHero() {
+export interface ImmersiveHeroProps {
+  initialData?: BaselineTelemetryData;
+}
+
+export function ImmersiveHero({ initialData = FALLBACK_BASELINE_TELEMETRY }: ImmersiveHeroProps = {}) {
   const [query, setQuery] = useState('');
   const [suggestGroups, setSuggestGroups] = useState<SuggestGroup[]>([]);
   const [totalHits, setTotalHits] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [heroAqi, setHeroAqi] = useState(() => ({
+    current: initialData.aqi.current,
+    status: initialData.aqi.status,
+  }));
+
+  useEffect(() => {
+    let isMounted = true;
+    const ctrl = new AbortController();
+    fetch(
+      'https://air-quality-api.open-meteo.com/v1/air-quality?latitude=34.0837&longitude=74.7973&current=us_aqi&timezone=Asia%2FKolkata',
+      { signal: ctrl.signal }
+    )
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json) => {
+        if (!isMounted || typeof json?.current?.us_aqi !== 'number') return;
+        const val = Math.round(json.current.us_aqi);
+        const status =
+          val > 150
+            ? 'Unhealthy'
+            : val > 100
+              ? 'Sensitive'
+              : val > 50
+                ? 'Moderate'
+                : 'Good';
+        setHeroAqi({ current: val, status });
+      })
+      .catch(() => {});
+
+    return () => {
+      isMounted = false;
+      ctrl.abort();
+    };
+  }, []);
 
   const sectionRef = useRef<HTMLElement>(null);
   const spotlightLayerRef = useRef<HTMLDivElement>(null);
@@ -215,14 +259,13 @@ export function ImmersiveHero() {
       {/* Continuous Section 01 Geospatial Background Surface (immediately below Cinematic Hero through EXPLORE indicator) */}
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none select-none">
         {/* Layer 1: Base Kashmir satellite-relief terrain - dark aerial environmental intelligence surface */}
-        <div
-          className="absolute inset-0 hero-satellite-relief"
-          style={{
-            backgroundImage: `url('/background.png')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-          }}
+        <Image
+          src="/background.png"
+          alt="Kashmir Valley Western Himalayan Satellite and Topological Relief"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center hero-satellite-relief"
         />
 
         {/* Layer 2: Eco intelligence overlay - topo + hydrology combined */}
@@ -392,69 +435,105 @@ export function ImmersiveHero() {
             Integrating Earth observation, remote sensing, geospatial analytics, Earth systems science, ecosystem science, climate intelligence, hydrological modelling, biodiversity informatics and environmental risk assessment to advance scientific understanding, evidence-based governance, ecological resilience and sustainable stewardship across the Western Himalayas.
           </motion.p>
 
-          {/* Mobile 2-Tap Direct Field Telemetry (Priority 1 Mobile Accessibility) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.55 }}
-            className="grid grid-cols-2 gap-2 my-5 md:hidden"
+          {/* Pre-rendered SSR Baseline Telemetry Pills (Frame 1 Crawlable) */}
+          <div
+            aria-label="Baseline Western Himalayan Live Telemetry Summary"
+            className="flex flex-wrap items-center gap-2 mb-5 sm:mb-6"
           >
-            <button
-              onClick={() => router.push('/environmental-monitoring/air-pollution')}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-emerald-500/30 text-left active:scale-95 transition-all shadow-md"
-              aria-label="Direct access to live AQI air pollution monitoring"
+            <Link
+              href="/environmental-monitoring/air-pollution"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-xs font-semibold text-amber-300 hover:bg-amber-500/20 transition-colors"
+            >
+              <Wind className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>{`AQI: ${heroAqi.current} ${heroAqi.status}`}</span>
+            </Link>
+            <Link
+              href="/biodiversity"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-300 hover:bg-emerald-500/20 transition-colors"
+            >
+              <Leaf className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span>{`${initialData.summaryMetrics.species} Species`}</span>
+            </Link>
+            <Link
+              href="/protected-network"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 border border-white/15 text-xs font-semibold text-slate-200 hover:border-emerald-400/50 transition-colors"
+            >
+              <Map className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span>{`${initialData.summaryMetrics.protectedAreas} Protected Areas`}</span>
+            </Link>
+            <Link
+              href="/water-systems"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-semibold text-cyan-200 hover:bg-cyan-500/20 transition-colors"
+            >
+              <Droplet className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+              <span>{`${initialData.summaryMetrics.waterSystems} Water Systems · pH ${initialData.waterQuality.avgPh.toFixed(1)}`}</span>
+            </Link>
+            <Link
+              href="/risk-monitoring/live-alerts-advisories"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-xs font-semibold text-red-300 hover:bg-red-500/20 transition-colors"
+            >
+              <AlertTriangle className="w-3.5 h-3.5 text-red-400 shrink-0" />
+              <span>{`${initialData.alerts.length} Active Alerts`}</span>
+            </Link>
+          </div>
+
+          {/* Interactive GIS Quick-Launch Buttons (First Paint on All Viewports) */}
+          <div
+            aria-label="Interactive GIS Quick Launch"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 max-w-3xl mb-6 sm:mb-7"
+          >
+            <Link
+              href="/atlas"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-emerald-500/30 hover:border-emerald-400/60 text-left active:scale-95 transition-all shadow-md"
             >
               <div className="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400 flex-shrink-0">
+                <Map className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <span className="text-[9px] text-slate-400 uppercase font-semibold block leading-tight">Spatial Core</span>
+                <span className="text-xs font-bold text-white truncate block">GIS Atlas</span>
+              </div>
+            </Link>
+
+            <Link
+              href="/environmental-monitoring/air-pollution"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-cyan-500/30 hover:border-cyan-400/60 text-left active:scale-95 transition-all shadow-md"
+            >
+              <div className="p-1.5 rounded-lg bg-cyan-500/20 text-cyan-400 flex-shrink-0">
                 <Wind className="w-4 h-4" />
               </div>
               <div className="min-w-0">
-                <span className="text-[9px] text-slate-400 uppercase font-semibold block leading-tight">Air Quality</span>
-                <span className="text-xs font-bold text-white truncate block">Live AQI Telemetry</span>
+                <span className="text-[9px] text-slate-400 uppercase font-semibold block leading-tight">CAMS Network</span>
+                <span className="text-xs font-bold text-white truncate block">Live AQI</span>
               </div>
-            </button>
+            </Link>
 
-            <button
-              onClick={() => router.push('/hazard-intelligence/earthquakes')}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-red-500/30 text-left active:scale-95 transition-all shadow-md"
-              aria-label="Direct access to seismic and earthquake intelligence"
+            <Link
+              href="/submit-observation"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-emerald-500/30 hover:border-emerald-400/60 text-left active:scale-95 transition-all shadow-md"
             >
-              <div className="p-1.5 rounded-lg bg-red-500/20 text-red-400 flex-shrink-0">
-                <Activity className="w-4 h-4 animate-pulse" />
+              <div className="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400 flex-shrink-0">
+                <Shield className="w-4 h-4" />
               </div>
               <div className="min-w-0">
-                <span className="text-[9px] text-slate-400 uppercase font-semibold block leading-tight">Seismic Belt</span>
-                <span className="text-xs font-bold text-white truncate block">EMSC Telemetry</span>
+                <span className="text-[9px] text-slate-400 uppercase font-semibold block leading-tight">Citizen Science</span>
+                <span className="text-xs font-bold text-white truncate block">Report Field</span>
               </div>
-            </button>
+            </Link>
 
-            <button
-              onClick={() => router.push('/risk-monitoring/live-alerts-advisories')}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-amber-500/30 text-left active:scale-95 transition-all shadow-md"
-              aria-label="Direct access to multi-hazard alerts and advisories"
+            <Link
+              href="/risk-monitoring/live-alerts-advisories"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-amber-500/30 hover:border-amber-400/60 text-left active:scale-95 transition-all shadow-md"
             >
               <div className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400 flex-shrink-0">
                 <AlertTriangle className="w-4 h-4" />
               </div>
               <div className="min-w-0">
-                <span className="text-[9px] text-slate-400 uppercase font-semibold block leading-tight">Hazard Alerts</span>
-                <span className="text-xs font-bold text-white truncate block">Active Advisories</span>
+                <span className="text-[9px] text-slate-400 uppercase font-semibold block leading-tight">Multi-Hazard</span>
+                <span className="text-xs font-bold text-white truncate block">Alerts</span>
               </div>
-            </button>
-
-            <button
-              onClick={() => router.push('/submit-observation')}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-cyan-500/30 text-left active:scale-95 transition-all shadow-md"
-              aria-label="Direct access to submit citizen science field observation"
-            >
-              <div className="p-1.5 rounded-lg bg-cyan-500/20 text-cyan-400 flex-shrink-0">
-                <Shield className="w-4 h-4" />
-              </div>
-              <div className="min-w-0">
-                <span className="text-[9px] text-slate-400 uppercase font-semibold block leading-tight">Field Action</span>
-                <span className="text-xs font-bold text-white truncate block">Deposit Observation</span>
-              </div>
-            </button>
-          </motion.div>
+            </Link>
+          </div>
 
           {/* Primary actions */}
           <motion.div
@@ -726,7 +805,7 @@ export function ImmersiveHero() {
             </div>
           </motion.div>
 
-          {/* Quick stats with live indicators */}
+          {/* Provenance-verified headline metrics */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -734,10 +813,30 @@ export function ImmersiveHero() {
             className="mt-10 sm:mt-12 md:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 3xl:gap-6 w-full"
           >
             {[
-              { value: '2,847+', label: 'Species Indexed', icon: Leaf, trend: '+156' },
-              { value: '182', label: 'Protected & Bird Areas', icon: Map, trend: '47 Core J&K' },
-              { value: '1,435+', label: 'Water Systems', icon: Activity, trend: 'Active' },
-              { value: '240+', label: 'Monitoring Stations', icon: Satellite, trend: 'Online' },
+              {
+                value: PLATFORM_METRICS.operationalDistrictsCount.formattedValue,
+                label: 'Operational Districts',
+                icon: Map,
+                trend: `${PLATFORM_METRICS.subregionsCount.formattedValue} Subregions`,
+              },
+              {
+                value: PLATFORM_METRICS.ramsarWetlandsCount.formattedValue,
+                label: 'Ramsar Wetlands',
+                icon: Shield,
+                trend: `${PLATFORM_METRICS.protectedAreasVerifiedCount.formattedValue} Protected Areas`,
+              },
+              {
+                value: PLATFORM_METRICS.mappedWaterbodiesCount.formattedValue,
+                label: 'Cataloged Waterbodies',
+                icon: Droplet,
+                trend: `${PLATFORM_METRICS.verifiedSpeciesProfilesCount.formattedValue} Verified Species`,
+              },
+              {
+                value: PLATFORM_METRICS.kewOwnedPhysicalSensorsCount.formattedValue,
+                label: 'KEW Hardware Sensors',
+                icon: Satellite,
+                trend: 'External Public Feeds',
+              },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -770,7 +869,7 @@ export function ImmersiveHero() {
             <div className="inline-flex items-center gap-3 px-3 sm:px-4 py-2.5 rounded-[4px] glass-light border border-white/10 max-w-full">
               <Database className="w-4 h-4 text-blue-400 shrink-0" />
               <span className="text-[11px] sm:text-xs 3xl:text-sm text-slate-300 leading-relaxed">
-                Source-integrated metrics updated across 24 specialized intelligence modules — synthesizing reference inventories, Copernicus/ECMWF satellite feeds, municipal audits, and field sensors
+                Provenance-verified synthesis across {PLATFORM_METRICS.subregionsCount.formattedValue} Subregions, {PLATFORM_METRICS.operationalDistrictsCount.formattedValue} Districts, {PLATFORM_METRICS.ramsarWetlandsCount.formattedValue} Ramsar Wetlands &amp; {PLATFORM_METRICS.mappedWaterbodiesCount.formattedValue} Cataloged Waterbodies — External Public Satellite &amp; Agency Feeds — {PLATFORM_METRICS.kewOwnedPhysicalSensorsCount.formattedValue} KEW Hardware Sensors
               </span>
             </div>
           </motion.div>

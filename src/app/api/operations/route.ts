@@ -13,6 +13,12 @@ import {
 // Global in-memory storage for operations cache (persists across hot requests)
 let operationsMemoryStore: OperationRecord[] = [...INITIAL_OPERATIONS_RECORDS];
 
+function maskEmailForPublicLookup(email: string): string {
+  const [user, domain] = String(email || '').split('@');
+  if (!user || !domain) return '[redacted]';
+  return `${user.slice(0, 2)}***@${domain}`;
+}
+
 // GET /api/operations
 export async function GET(req: NextRequest) {
   try {
@@ -23,6 +29,7 @@ export async function GET(req: NextRequest) {
     const priority = searchParams.get('priority');
     const status = searchParams.get('status');
 
+    const sessionAuth = await verifyAdminRequest(req);
     let results = [...operationsMemoryStore];
 
     if (trackingId) {
@@ -30,11 +37,24 @@ export async function GET(req: NextRequest) {
         (r) => r.trackingId.trim().toUpperCase() === trackingId.trim().toUpperCase()
       );
       if (match) {
-        return NextResponse.json({ success: true, data: match });
+        const safeMatch = sessionAuth.authorized
+          ? match
+          : { ...match, ownerEmail: maskEmailForPublicLookup(match.ownerEmail) };
+        return NextResponse.json({ success: true, data: safeMatch });
       }
       return NextResponse.json(
         { success: false, error: `No record found for Tracking ID: ${trackingId}` },
         { status: 404 }
+      );
+    }
+
+    if (!sessionAuth.authorized) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Unauthorized: Listing contributor submissions requires an active administrator session. Public contributors may check status using their issued Tracking ID.',
+        },
+        { status: 401 }
       );
     }
 
@@ -187,10 +207,8 @@ export async function POST(req: NextRequest) {
 // PATCH /api/operations: Admin updates status, assignment, or priority
 export async function PATCH(req: NextRequest) {
   try {
-    const adminKey = req.headers.get('x-admin-key');
     const sessionAuth = await verifyAdminRequest(req);
-    const expectedKey = process.env.ADMIN_API_KEY || 'KEW-Admin-2026!';
-    if (!sessionAuth.authorized && adminKey !== expectedKey) {
+    if (!sessionAuth.authorized) {
       return NextResponse.json(
         { success: false, error: 'Unauthorized: Admin authentication session required.' },
         { status: 401 }

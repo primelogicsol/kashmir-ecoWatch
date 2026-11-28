@@ -275,7 +275,7 @@ export default function AlgalBloomIntelligencePage() {
     { label: 'Elevated NDCI Biomass', value: elevatedNdciCount, icon: 'Waves', color: elevatedNdciCount > 0 ? 'text-amber-400' : 'text-emerald-400' },
     { label: 'Probable Surface Blooms', value: probableBloomsCount, icon: 'AlertTriangle', color: probableBloomsCount > 0 ? 'text-orange-400' : 'text-emerald-400' },
     { label: 'Lab Toxin Exceedances', value: confirmedToxicCount, icon: 'Microscope', color: confirmedToxicCount > 0 ? 'text-red-400' : 'text-slate-400' },
-    { label: 'LCMA STP OCEMS', value: lcmaStpRecords.length, icon: 'Building', color: 'text-sky-400' },
+    { label: 'STP Audit Benchmarks', value: lcmaStpRecords.length, icon: 'Building', color: 'text-sky-400' },
   ];
 
   return (
@@ -296,7 +296,7 @@ export default function AlgalBloomIntelligencePage() {
             </span>
           </>
         }
-        subtitle="24/7 automated monitoring architecture pairing Sentinel-2 optical chlorophyll-a biomass (NDCI B5/B4) with continuous hydro-thermal forcing, CPCB/JKPCC water quality baselines, LCMA STP effluent telemetry, and analytical laboratory cyanotoxin assays."
+        subtitle="Multi-source limnological screening synthesis pairing archived Sentinel-2 optical chlorophyll-a proxy (NDCI B5/B4, ±12 µg/L uncalibrated) with Open-Meteo gridded meteorology, published CPCB/JKPCC grab-sample baselines, and published STP design/audit capacity references."
         icon={<Waves className="w-6 h-6 text-emerald-400" />}
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-3">
@@ -404,10 +404,10 @@ export default function AlgalBloomIntelligencePage() {
             {
               id: 'alerts' as const,
               label: 'Early-Warning & Toxins',
-              sub: 'Microcystin Lab Assays',
+              sub: 'Optical Screening & Lab Status',
               icon: AlertOctagon,
-              badge: `${confirmedToxicCount} Toxin Advisory`,
-              badgeColor: confirmedToxicCount > 0 ? 'bg-red-500/20 text-red-300' : 'bg-emerald-500/20 text-emerald-300',
+              badge: laboratoryToxinRecords.length > 0 ? `${confirmedToxicCount} Toxin Advisory` : 'Lab Feed Pending MoU',
+              badgeColor: confirmedToxicCount > 0 ? 'bg-red-500/20 text-red-300' : 'bg-slate-700 text-slate-300',
             },
             {
               id: 'forecast' as const,
@@ -542,7 +542,7 @@ export default function AlgalBloomIntelligencePage() {
                 </span>
               </div>
               <div className="text-[10px] text-slate-400 whitespace-nowrap font-mono bg-black/40 px-2 py-1 rounded">
-                Model: Mishra-Mishra (2012) ±3.8 µg/L
+                Model: Mishra &amp; Mishra (2012) ±12.0 µg/L (Uncalibrated Screening)
               </div>
             </div>
 
@@ -619,7 +619,7 @@ export default function AlgalBloomIntelligencePage() {
                                 {sat.chlorophyllAEstimateUgL} <span className="text-xs font-normal text-slate-400">µg/L</span>
                               </span>
                               <span className="text-[9px] text-slate-500 block font-mono mt-0.5">
-                                ±{sat.chlorophyllUncertaintyUgL ?? 3.8} µg/L (Mishra-Mishra)
+                                ±{sat.chlorophyllUncertaintyUgL ?? 12.0} µg/L uncalibrated (Mishra &amp; Mishra)
                               </span>
                             </div>
                             <div>
@@ -822,45 +822,67 @@ export default function AlgalBloomIntelligencePage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-white/5">
-                    {laboratoryToxinRecords
-                      .filter(lab => {
-                        if (selectedLabRegion === 'All' || selectedLabRegion === 'All 5 Regions') return true;
-                        return (lab as any).region === selectedLabRegion;
-                      })
-                      .map(lab => (
-                      <tr key={lab.sampleId} className="hover:bg-white/[0.03] transition-colors">
-                        <td className="p-3.5 font-medium">
-                          <div className="font-bold text-white text-sm">{lab.waterbodyName}</div>
-                          <div className="text-[10px] font-mono text-emerald-400 mt-0.5">{lab.sampleId}</div>
-                        </td>
-                        <td className="p-3.5">
-                          {renderGeographicRegion((lab as any).region || 'Kashmir Valley', (lab as any).district || 'Srinagar')}
-                        </td>
-                        <td className="p-3.5 text-slate-300 font-medium">{lab.samplingLocation}</td>
-                        <td className="p-3.5 text-slate-300 font-medium">
-                          {lab.testingLaboratory}
-                        </td>
-                        <td className="p-3.5 font-mono text-slate-300">{lab.analyticalMethod}</td>
-                        <td className="p-3.5 font-mono">
-                          <span className={`font-bold ${lab.microcystinLrUgL > 1.0 ? 'text-red-400' : 'text-emerald-400'}`}>
-                            {lab.microcystinLrUgL} µg/L
-                          </span>
-                          <span className="text-[9px] text-slate-500 block">LOD: {lab.detectionLimitUgL} µg/L</span>
-                        </td>
-                        <td className="p-3.5 font-mono text-slate-300">
-                          {lab.cyanobacteriaCellDensityCellsML.toLocaleString()} cells/mL
-                        </td>
-                        <td className="p-3.5">
-                          {renderToxinStatus(lab.toxinSafetyStatus)}
-                        </td>
-                        <td className="p-3.5">
-                          <span className="inline-flex items-center gap-1 text-[10px] px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold whitespace-nowrap">
-                            <CheckCircle2 className="w-3 h-3 text-emerald-400" />
-                            Verified
-                          </span>
+                    {laboratoryToxinRecords.length === 0 ? (
+                      <tr>
+                        <td colSpan={9} className="p-8 text-center">
+                          <div className="max-w-2xl mx-auto space-y-2">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold">
+                              <Microscope className="w-3.5 h-3.5" />
+                              Laboratory ELISA/LC-MS cyanotoxin feed pending institutional MoU
+                            </div>
+                            <p className="text-xs text-slate-400 leading-relaxed">
+                              Unverified synthetic cyanotoxin assay placeholders have been quarantined. Certified microcystin-LR and anatoxin-a laboratory records will appear here only after signed chain-of-custody data sharing with JKPCC, LCMA, or accredited university limnology laboratories.
+                            </p>
+                          </div>
                         </td>
                       </tr>
-                    ))}
+                    ) : (
+                      laboratoryToxinRecords
+                        .filter(lab => {
+                          if (selectedLabRegion === 'All' || selectedLabRegion === 'All 5 Regions') return true;
+                          return (lab as any).region === selectedLabRegion;
+                        })
+                        .map(lab => (
+                        <tr key={lab.sampleId} className="hover:bg-white/[0.03] transition-colors">
+                          <td className="p-3.5 font-medium">
+                            <div className="font-bold text-white text-sm">{lab.waterbodyName}</div>
+                            <div className="text-[10px] font-mono text-emerald-400 mt-0.5">{lab.sampleId}</div>
+                          </td>
+                          <td className="p-3.5">
+                            {renderGeographicRegion((lab as any).region || 'Kashmir Valley', (lab as any).district || 'Srinagar')}
+                          </td>
+                          <td className="p-3.5 text-slate-300 font-medium">{lab.samplingLocation}</td>
+                          <td className="p-3.5 text-slate-300 font-medium">
+                            {lab.testingLaboratory}
+                          </td>
+                          <td className="p-3.5 font-mono text-slate-300">{lab.analyticalMethod}</td>
+                          <td className="p-3.5 font-mono">
+                            <span className={`font-bold ${lab.microcystinLrUgL > 1.0 ? 'text-red-400' : 'text-emerald-400'}`}>
+                              {lab.microcystinLrUgL} µg/L
+                            </span>
+                            <span className="text-[9px] text-slate-500 block">LOD: {lab.detectionLimitUgL} µg/L</span>
+                          </td>
+                          <td className="p-3.5 font-mono text-slate-300">
+                            {lab.cyanobacteriaCellDensityCellsML.toLocaleString()} cells/mL
+                          </td>
+                          <td className="p-3.5">
+                            {renderToxinStatus(lab.toxinSafetyStatus)}
+                          </td>
+                          <td className="p-3.5">
+                            {lab.chainOfCustodyVerified ? (
+                              <span className="inline-flex items-center gap-1 text-[10px] px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold whitespace-nowrap">
+                                <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                                Verified
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center gap-1 text-[10px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-400 border border-slate-700 font-semibold whitespace-nowrap">
+                                Pending Verification
+                              </span>
+                            )}
+                          </td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </div>
@@ -922,7 +944,7 @@ export default function AlgalBloomIntelligencePage() {
                 </div>
               </div>
               <div className="flex-shrink-0 text-[10px] text-slate-400 font-mono bg-black/40 px-2.5 py-1.5 rounded border border-white/5">
-                Baseline MAE: ±3.8 µg/L · Time-Separated Testing
+                Uncalibrated Screening Heuristic · In-Situ Validation Pending
               </div>
             </div>
 
@@ -1232,9 +1254,9 @@ export default function AlgalBloomIntelligencePage() {
                       </div>
                     </div>
 
-                    <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-500">
-                      <span>Receives: {stp.receivingWaterbody}</span>
-                      <span>Sync: {stp.lastTelemetryTimestamp}</span>
+                    <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-500 gap-2">
+                      <span className="truncate">Receives: {stp.receivingWaterbody}</span>
+                      <span className="truncate">Basis: {stp.lastTelemetryTimestamp}</span>
                     </div>
                   </Card>
                 ))}

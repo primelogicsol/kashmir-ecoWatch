@@ -6,11 +6,18 @@ import { EditorialBreadcrumbs } from '@/components/himalayan-dispatch/EditorialB
 import { JsonLd } from '@/components/seo/JsonLd';
 import {
   CANONICAL_DISPATCH_URL,
+  CANONICAL_KEW_PLATFORM_URL,
   DISPATCH_IDENTITY,
   HD_ROUTES,
+  IS_DISPATCH_SUBDOMAIN_LIVE,
   toDispatchCanonicalUrl,
+  toInternalDispatchPath,
   toKewPlatformUrl,
 } from '@/lib/himalayan-dispatch-routes';
+import {
+  KewChapterAnchorCopyButton,
+  KewContentShare,
+} from '@/components/common/KewContentShare';
 import {
   HIMALAYAN_DISPATCH_FOUNDING_PHILOSOPHY,
   HIMALAYAN_DISPATCH_FOUNDING_STORY,
@@ -24,7 +31,16 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function HimalayanDispatchOurStoryPage() {
-  const canonicalUrl = toDispatchCanonicalUrl(HD_ROUTES.ourStory);
+  const activeOrigin = IS_DISPATCH_SUBDOMAIN_LIVE
+    ? CANONICAL_DISPATCH_URL
+    : CANONICAL_KEW_PLATFORM_URL;
+  const canonicalUrl = IS_DISPATCH_SUBDOMAIN_LIVE
+    ? toDispatchCanonicalUrl(HD_ROUTES.ourStory)
+    : `${CANONICAL_KEW_PLATFORM_URL}${toInternalDispatchPath('/our-story')}`;
+  const foundingChapters = HIMALAYAN_DISPATCH_FOUNDING_STORY.chapters.map((ch) => ({
+    id: ch.id,
+    label: `Chapter ${ch.roman} — ${ch.heading}`,
+  }));
 
   const foundingPageJsonLd = {
     '@context': 'https://schema.org',
@@ -34,11 +50,13 @@ export default function HimalayanDispatchOurStoryPage() {
     url: canonicalUrl,
     mainEntity: {
       '@type': 'Periodical',
-      '@id': `${CANONICAL_DISPATCH_URL}/#periodical`,
+      '@id': `${activeOrigin}/#periodical`,
       name: DISPATCH_IDENTITY.officialName,
       alternateName: DISPATCH_IDENTITY.extendedName,
       foundingDate: DISPATCH_IDENTITY.foundingYear,
-      url: DISPATCH_IDENTITY.canonicalHomepageUrl,
+      url: IS_DISPATCH_SUBDOMAIN_LIVE
+        ? DISPATCH_IDENTITY.canonicalHomepageUrl
+        : `${CANONICAL_KEW_PLATFORM_URL}/himalayan-dispatch`,
       publisher: {
         '@type': 'Organization',
         name: DISPATCH_IDENTITY.parentInstitutionName,
@@ -105,6 +123,16 @@ export default function HimalayanDispatchOurStoryPage() {
               {HIMALAYAN_DISPATCH_FOUNDING_STORY.standfirst}
             </p>
           </div>
+
+          <KewContentShare
+            variant="article-toolbar"
+            label="Share Founding Record"
+            title={HIMALAYAN_DISPATCH_FOUNDING_STORY.title}
+            description={HIMALAYAN_DISPATCH_FOUNDING_STORY.standfirst}
+            canonicalPath={HD_ROUTES.ourStory}
+            chapters={foundingChapters}
+            isPublished
+          />
         </header>
 
         {/* ═══════════════════════════════════════════════════════════════════
@@ -223,12 +251,21 @@ export default function HimalayanDispatchOurStoryPage() {
                 >
                   <div className="space-y-1.5">
                     <span className="hd-kicker block">CHAPTER {chapter.roman}</span>
-                    <h2
-                      className="hd-font-display text-2xl sm:text-4xl font-semibold leading-tight tracking-[0.01em]"
-                      style={{ color: 'var(--hd-fg)' }}
-                    >
-                      {chapter.heading}
-                    </h2>
+                    <div className="flex items-baseline justify-between gap-3">
+                      <h2
+                        className="hd-font-display text-2xl sm:text-4xl font-semibold leading-tight tracking-[0.01em]"
+                        style={{ color: 'var(--hd-fg)' }}
+                      >
+                        {chapter.heading}
+                      </h2>
+                      <KewChapterAnchorCopyButton
+                        canonicalPath={HD_ROUTES.ourStory}
+                        chapterAnchor={chapter.id}
+                        chapterTitle={chapter.heading}
+                        isPublished
+                        className="shrink-0"
+                      />
+                    </div>
                   </div>
 
                   <div className="hd-prose space-y-4">
@@ -265,6 +302,15 @@ export default function HimalayanDispatchOurStoryPage() {
               className="pt-12 mt-12 border-t space-y-6"
               style={{ borderColor: 'var(--hd-rule-strong)' }}
             >
+              <KewContentShare
+                variant="article-toolbar"
+                label="Share Founding Record"
+                title={HIMALAYAN_DISPATCH_FOUNDING_STORY.title}
+                description={HIMALAYAN_DISPATCH_FOUNDING_STORY.standfirst}
+                canonicalPath={HD_ROUTES.ourStory}
+                chapters={foundingChapters}
+                isPublished
+              />
               <div
                 className="p-8 sm:p-10 border space-y-4"
                 style={{

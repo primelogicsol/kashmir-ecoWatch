@@ -436,7 +436,7 @@ export default function SoilPollutionPage() {
               size="lg"
               variant="outline"
               className="border-white/20 text-white hover:bg-white/5"
-              onClick={() => window.location.href = '/risk-monitoring/pollution-stress'}
+              onClick={() => window.location.href = '/environmental-monitoring'}
             >
               <ArrowRight className="w-5 h-5 mr-2" />
               Back to Pollution & Stress
@@ -1053,7 +1053,7 @@ export default function SoilPollutionPage() {
             </Card>
             <Card
               className="glass-light border-white/10 hover:border-emerald-500/30 transition-all p-5 cursor-pointer group"
-              onClick={() => window.location.href = '/risk-monitoring/pollution-stress'}
+              onClick={() => window.location.href = '/environmental-monitoring'}
             >
               <FlaskConical className="w-8 h-8 text-emerald-400 mb-3 group-hover:scale-110 transition-transform" />
               <h3 className="text-sm font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">

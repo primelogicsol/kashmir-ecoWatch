@@ -19,6 +19,7 @@ import {
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { KEW_IDENTITY } from '@/lib/seo/entity-identity';
+import { DATASET_LICENSE_POLICIES } from '@/data/dataset-licensing-registry';
 import { isVerifiedRealDoi, toAbsoluteCanonicalUrl } from '@/lib/seo/structured-data';
 
 export interface EpistemicEvidenceClassification {
@@ -50,6 +51,9 @@ export interface ScientificPublicationStandardProps {
   reviewer?: string;
   doi?: string;
   atlasHref?: string;
+  isThirdPartyCopyright?: boolean;
+  licenseLabel?: string;
+  licenseUrl?: string;
 }
 
 /**
@@ -79,8 +83,20 @@ export function ScientificPublicationStandard({
   reviewer = 'KEW Western Himalayan Scientific Review Desk',
   doi,
   atlasHref,
+  isThirdPartyCopyright = false,
+  licenseLabel,
+  licenseUrl,
 }: ScientificPublicationStandardProps) {
   const [copiedCitation, setCopiedCitation] = useState(false);
+
+  const defaultPolicy = isThirdPartyCopyright
+    ? DATASET_LICENSE_POLICIES['THIRD-PARTY-STATUTORY-OR-AGENCY']
+    : DATASET_LICENSE_POLICIES['CC-BY-NC-4.0'];
+  const effectiveLicenseLabel =
+    licenseLabel ||
+    defaultPolicy.name ||
+    'CC BY-NC 4.0 (Creative Commons Attribution-NonCommercial 4.0 International)';
+  const effectiveLicenseUrl = licenseUrl ?? defaultPolicy.url;
 
   const canonicalUrl = toAbsoluteCanonicalUrl(canonicalPath);
   const validDoi = isVerifiedRealDoi(doi) ? doi!.replace(/^https?:\/\/(dx\.)?doi\.org\//i, '').trim() : undefined;
@@ -247,17 +263,27 @@ export function ScientificPublicationStandard({
                 </span>
               </div>
 
-              <div className="space-y-0.5">
-                <span className="text-slate-400 font-mono uppercase block">Open Science License</span>
-                <a
-                  href={KEW_IDENTITY.defaultLicenseUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sky-400 hover:text-sky-300 inline-flex items-center gap-1 font-medium"
-                >
-                  <Scale className="w-3.5 h-3.5 shrink-0" />
-                  <span>{KEW_IDENTITY.defaultLicenseLabel}</span>
-                </a>
+              <div className="space-y-1">
+                <span className="text-slate-400 font-mono uppercase block">Dataset &amp; Report License</span>
+                {effectiveLicenseUrl ? (
+                  <a
+                    href={effectiveLicenseUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sky-400 hover:text-sky-300 inline-flex items-center gap-1 font-medium"
+                  >
+                    <Scale className="w-3.5 h-3.5 shrink-0" />
+                    <span>{effectiveLicenseLabel}</span>
+                  </a>
+                ) : (
+                  <span className="text-amber-300 inline-flex items-center gap-1 font-medium">
+                    <Scale className="w-3.5 h-3.5 shrink-0" />
+                    <span>{effectiveLicenseLabel}</span>
+                  </span>
+                )}
+                <p className="text-[10px] text-slate-400 leading-snug">
+                  Third-party statutory/journal citations retain original copyright (Third-Party Rights Retained); sensitive wildlife GPS points remain Conservation-Restricted.
+                </p>
               </div>
             </div>
 

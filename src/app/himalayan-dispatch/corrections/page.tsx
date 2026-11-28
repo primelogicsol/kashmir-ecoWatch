@@ -118,7 +118,7 @@ export default function CorrectionsPage() {
           category="correction_request"
           kicker="FACTUAL ACCURACY INTAKE"
           heading="Report a Factual Error or Request a Clarification"
-          description="Routed directly to Madiha Shah (Corrections & Clarifications Editor) and Fahad Qadri (Chief Fact-Checker). For broader ethical concerns, visit Reader Complaints or the Public Editor."
+          description="Routed directly to the Office of Editorial Standards & Verification and the Founding Editor-in-Chief. For broader ethical concerns, visit Reader Complaints or the Public Editor."
           showArticleUrlField
           subjectLabel="Claim or Passage in Question *"
           subjectPlaceholder="e.g., Canal elevation figure in Chapter I"

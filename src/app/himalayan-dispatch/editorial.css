@@ -503,6 +503,156 @@
 }
 
 
+/* ─── HIMALAYAN DISPATCH NATIVE CONTENT SHARING (LIGHT, INK & DARKROOM) ─── */
+.hd-editorial-root .hd-share-cover-btn {
+  background-color: var(--hd-bg-elevated) !important;
+  color: var(--hd-fg) !important;
+  border-color: var(--hd-rule-strong) !important;
+}
+
+.hd-editorial-root .hd-share-cover-btn:hover {
+  border-color: var(--hd-copper) !important;
+  color: var(--hd-copper) !important;
+}
+
+.hd-editorial-root .hd-share-cover-btn--darkplate {
+  background-color: transparent !important;
+  color: #F2EFE7 !important;
+  border-color: rgba(242, 239, 231, 0.45) !important;
+}
+
+.hd-editorial-root .hd-share-cover-btn--darkplate:hover {
+  background-color: rgba(242, 239, 231, 0.1) !important;
+  border-color: #F2EFE7 !important;
+}
+
+.hd-editorial-root .hd-share-toc-btn {
+  background-color: transparent !important;
+  color: var(--hd-fg-muted) !important;
+  border-color: var(--hd-rule) !important;
+}
+
+.hd-editorial-root .hd-share-toc-btn:hover {
+  background-color: var(--hd-copper-soft) !important;
+  color: var(--hd-copper) !important;
+  border-color: var(--hd-copper) !important;
+}
+
+.hd-editorial-root .hd-share-toolbar {
+  border-color: var(--hd-rule) !important;
+  background-color: transparent !important;
+}
+
+.hd-editorial-root .hd-share-toolbar-label {
+  color: var(--hd-fg-muted) !important;
+}
+
+.hd-editorial-root .hd-share-toolbar-icon-btn,
+.hd-editorial-root .hd-share-toolbar-pill-btn {
+  background-color: transparent !important;
+  color: var(--hd-fg-secondary) !important;
+  border-color: var(--hd-rule) !important;
+}
+
+.hd-editorial-root .hd-share-toolbar-icon-btn:hover,
+.hd-editorial-root .hd-share-toolbar-pill-btn:hover {
+  background-color: var(--hd-copper-soft) !important;
+  color: var(--hd-copper) !important;
+  border-color: var(--hd-copper) !important;
+}
+
+.hd-editorial-root .hd-share-toolbar--darkplate {
+  border-color: rgba(242, 239, 231, 0.18) !important;
+}
+
+.hd-editorial-root .hd-share-toolbar--darkplate .hd-share-toolbar-label {
+  color: #D8C3A5 !important;
+}
+
+.hd-editorial-root .hd-share-toolbar--darkplate .hd-share-toolbar-icon-btn,
+.hd-editorial-root .hd-share-toolbar--darkplate .hd-share-toolbar-pill-btn {
+  background-color: transparent !important;
+  color: #F2EFE7 !important;
+  border-color: rgba(242, 239, 231, 0.24) !important;
+}
+
+.hd-editorial-root .hd-share-toolbar--darkplate .hd-share-toolbar-icon-btn:hover,
+.hd-editorial-root .hd-share-toolbar--darkplate .hd-share-toolbar-pill-btn:hover {
+  background-color: rgba(242, 239, 231, 0.1) !important;
+  color: #D8C3A5 !important;
+  border-color: #D8C3A5 !important;
+}
+
+.hd-editorial-root .hd-chapter-copy-btn {
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  color: var(--hd-fg-muted) !important;
+  opacity: 0.68;
+}
+
+.hd-editorial-root .hd-chapter-copy-btn:hover,
+.hd-editorial-root .hd-chapter-copy-btn:focus-visible {
+  opacity: 1;
+  color: var(--hd-copper) !important;
+  border-color: var(--hd-rule) !important;
+  background-color: var(--hd-bg-elevated) !important;
+}
+
+.hd-share-modal-backdrop {
+  background-color: rgba(16, 16, 15, 0.76);
+  backdrop-filter: blur(2px);
+}
+
+.hd-share-modal-panel {
+  background-color: var(--hd-bg, #F2EFE7) !important;
+  color: var(--hd-fg, #171717) !important;
+  border-color: var(--hd-rule-strong, #171717) !important;
+}
+
+.hd-share-modal-header {
+  background-color: var(--hd-bg-elevated, #F8F6F0) !important;
+  border-color: var(--hd-rule, rgba(23, 23, 23, 0.14)) !important;
+}
+
+.hd-share-muted-copy {
+  color: var(--hd-fg-secondary, #34312C) !important;
+}
+
+.hd-share-input {
+  background-color: var(--hd-bg-elevated, #F8F6F0) !important;
+  color: var(--hd-fg, #171717) !important;
+  border-color: var(--hd-rule-strong, #171717) !important;
+}
+
+.hd-share-primary-btn {
+  background-color: var(--hd-copper-solid, #8C3125) !important;
+  color: #F2EFE7 !important;
+  border: 1px solid var(--hd-copper-solid, #8C3125) !important;
+}
+
+.hd-share-primary-btn:hover {
+  opacity: 0.92;
+}
+
+.hd-share-channel-btn,
+.hd-share-icon-btn {
+  background-color: var(--hd-bg-elevated, #F8F6F0) !important;
+  color: var(--hd-fg, #171717) !important;
+  border-color: var(--hd-rule, rgba(23, 23, 23, 0.14)) !important;
+}
+
+.hd-share-channel-btn:hover,
+.hd-share-icon-btn:hover {
+  background-color: var(--hd-copper-soft, rgba(140, 49, 37, 0.08)) !important;
+  color: var(--hd-copper, #8C3125) !important;
+  border-color: var(--hd-copper, #8C3125) !important;
+}
+
+.hd-share-qr-card {
+  background-color: var(--hd-bg-elevated, #F8F6F0) !important;
+  border-color: var(--hd-rule, rgba(23, 23, 23, 0.14)) !important;
+}
+
 /* ─── HIMALAYAN DISPATCH NEWSROOM (HDN) — DETERMINISTIC DARK WORKSPACE MODE ─── */
 .hdn-theme-dark .bg-white {
   background-color: #0f172a !important;

@@ -330,7 +330,7 @@ export function AdvancedFooter() {
               </div>
 
               <div className="pt-0.5 text-[11px] text-slate-500">
-                <span>© 2026 Kashmir EcoWatch · Independent · Non-Commercial · Open Data</span>
+                <span>© 2026 Kashmir EcoWatch. All rights reserved (Platform Software) · Eligible KEW Syntheses: CC BY-NC 4.0 (Non-Commercial)</span>
               </div>
             </div>
 
@@ -362,12 +362,21 @@ export function AdvancedFooter() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-7 space-y-4">
 
 
-          {/* Intellectual Property Notice */}
+          {/* Tiered Licensing & Intellectual Property Notice */}
           <div className="flex items-start gap-3 border-l-2 border-slate-600/40 pl-4">
             <Shield className="w-3.5 h-3.5 text-slate-500/60 mt-0.5 flex-shrink-0" />
             <p className="text-[10px] sm:text-[11px] text-slate-500 leading-relaxed">
-              <span className="font-semibold text-slate-400">Intellectual Property: </span>
-              Kashmir EcoWatch environmental intelligence systems, geospatial models, analytical registries, and digital architecture are protected under intellectual property laws. Unauthorized reproduction or commercial extraction is prohibited. Read our{' '}
+              <span className="font-semibold text-slate-400">Licensing &amp; Intellectual Property: </span>
+              Eligible KEW-authored synthesis datasets, taxonomic/geographic reference tables, and desk-verified reports are licensed under{' '}
+              <a
+                href="https://creativecommons.org/licenses/by-nc/4.0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2 font-medium transition-colors"
+              >
+                CC BY-NC 4.0 (Creative Commons Attribution-NonCommercial 4.0 International)
+              </a>{' '}
+              for non-commercial research, educational, and conservation use with attribution (commercial reuse requires prior written permission). Explicit carve-outs apply to third-party government, statutory, and journal publications (<span className="text-slate-400">Third-Party Rights Retained</span>), poaching-vulnerable wildlife coordinates (<span className="text-slate-400">Conservation-Restricted</span>), EcoVoices cultural and musical works (<span className="text-slate-400">Artist &amp; Cultural Rights Reserved</span>), and proprietary KEW platform software &amp; UI (<span className="text-slate-400">© 2026 Kashmir EcoWatch. All rights reserved</span>). Read our{' '}
               <Link href="/legal-notice#ip" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2 font-medium transition-colors">
                 Intellectual Property &amp; Legal Notice
               </Link>.

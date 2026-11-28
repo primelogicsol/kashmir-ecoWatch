@@ -1854,6 +1854,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -1861,14 +1862,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 3800
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Climate Change",
@@ -1908,6 +1921,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -1915,13 +1929,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Overexploitation",
@@ -1961,6 +1988,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -1968,13 +1996,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Climate Change",
@@ -2014,6 +2055,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -2021,11 +2063,28 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
+    ],
     "threats": [
       "Overexploitation",
       "Climate Change",
@@ -2064,6 +2123,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -2071,13 +2131,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Habitat Loss",
@@ -2117,6 +2190,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -2124,13 +2198,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -2170,6 +2257,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -2177,11 +2265,28 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
+    ],
     "threats": [
       "Overexploitation",
       "Illegal Harvesting",
@@ -2220,6 +2325,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -2227,13 +2333,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 5000
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
     "protectedAreas": [
-      "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -2281,12 +2401,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -2326,6 +2460,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -2333,12 +2468,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 3500
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
+    ],
     "threats": [
       "Climate Change",
       "Habitat Loss",
@@ -2377,6 +2527,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -2384,12 +2535,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -2429,6 +2595,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -2436,12 +2603,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 3500
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
+    ],
     "threats": [
       "Habitat Loss",
       "Overexploitation",
@@ -2479,21 +2661,36 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "description": "Arnebia benthamii (Kahzaban) sends up massive furry flowering spires on rocky subalpine slopes. Its thick purple-red root is one of Kashmir's most trusted home remedies for seasonal influenza, chest congestion, and high fevers.",
     "ecologicalRole": "Primary Producer",
     "habitats": [
-      "Subalpine Forests",
-      "Temperate Coniferous Forests"
+      "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
+      "Glacial Moraines"
     ],
     "elevationRange": {
       "min": 3000,
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Ganderbal",
+      "Bandipora",
       "Anantnag",
+      "Kupwara",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -2541,12 +2738,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -2594,13 +2804,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -2648,12 +2870,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -2693,6 +2929,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -2700,12 +2937,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
+    ],
     "threats": [
       "Illegal Harvesting",
       "Overexploitation",
@@ -2744,6 +2996,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -2751,12 +3004,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -2795,20 +3063,35 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "description": "Rheum webbianum (Pamb-hakh) flourishes on high alpine cliffs between 3,000m and 4,300m. Pastoral Gujjars and Bakerwals depend on its wild roots to treat sprains and digestive upsets during summer migration cycles.",
     "ecologicalRole": "Primary Producer",
     "habitats": [
+      "Subalpine Forests",
       "Alpine Meadows",
-      "Glacial Moraines"
+      "Temperate Coniferous Forests"
     ],
     "elevationRange": {
       "min": 2500,
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
+      "Anantnag",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -2847,6 +3130,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "description": "Rheum spiciforme is a tough, prostrate alpine rhubarb forming dense rosettes on wind-swept ridges and glacial screes. It is renowned among mountain nomads for setting fractures and soothing joint trauma.",
     "ecologicalRole": "Primary Producer",
     "habitats": [
+      "Trans-Himalayan Cold Desert Scrub",
       "Alpine Meadows",
       "Glacial Moraines"
     ],
@@ -2857,10 +3141,18 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "districts": [
       "Leh",
       "Kargil",
-      "Bandipora"
+      "Kishtwar",
+      "Bandipora",
+      "Astore",
+      "Gilgit",
+      "Hunza",
+      "Skardu",
+      "Ghanche"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Hemis National Park",
+      "Changthang Cold Desert Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Climate Change",
@@ -2908,13 +3200,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -2962,11 +3267,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
+    ],
     "threats": [
       "Overexploitation",
       "Illegal Harvesting",
@@ -3004,6 +3324,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "description": "Ephedra gerardiana (Somlata / Asmani) is a low, jointed green subshrub clinging to arid rocky screes of the trans-Himalayan rain shadow. It has been used for centuries as an emergency respiratory opener for mountain travelers battling thin air and asthma.",
     "ecologicalRole": "Primary Producer",
     "habitats": [
+      "Trans-Himalayan Cold Desert Scrub",
       "Alpine Meadows",
       "Glacial Moraines"
     ],
@@ -3014,10 +3335,18 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "districts": [
       "Leh",
       "Kargil",
-      "Bandipora"
+      "Kishtwar",
+      "Bandipora",
+      "Astore",
+      "Gilgit",
+      "Hunza",
+      "Skardu",
+      "Ghanche"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Hemis National Park",
+      "Changthang Cold Desert Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Habitat Loss",
@@ -3065,12 +3394,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -3118,13 +3460,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -3172,12 +3527,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Overexploitation",
@@ -3216,20 +3585,37 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "description": "Jurinea macrocephala (Dhup) forms broad rosettes on high-altitude meadows between 2,800m and 4,000m. Its thick, aromatic root is the traditional source of sacred Himalayan dhoop incense, purifying homes and soothing chronic skin ulcers.",
     "ecologicalRole": "Primary Producer",
     "habitats": [
-      "Subalpine Forests",
-      "Temperate Coniferous Forests"
+      "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
+      "Glacial Moraines"
     ],
     "elevationRange": {
       "min": 3000,
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Ganderbal",
+      "Bandipora",
       "Anantnag",
+      "Kupwara",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
+    ],
     "threats": [
       "Climate Change",
       "Illegal Harvesting",
@@ -3276,12 +3662,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -3329,12 +3728,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -3382,13 +3794,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -3427,19 +3851,36 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "description": "Bergenia stracheyi is an alpine sister of Zakhm-e-hayat thriving at higher elevations up to 4,200m. It is relied upon by mountain herdsmen for ophthalmic washes and setting livestock fractures.",
     "ecologicalRole": "Primary Producer",
     "habitats": [
+      "Subalpine Forests",
       "Alpine Meadows",
-      "Glacial Moraines"
+      "Temperate Coniferous Forests"
     ],
     "elevationRange": {
       "min": 2500,
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
+      "Anantnag",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
+    ],
     "threats": [
       "Illegal Harvesting",
       "Overexploitation",
@@ -3486,13 +3927,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -3532,6 +3986,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -3539,12 +3994,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 3500
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
+    ],
     "threats": [
       "Illegal Harvesting",
       "Habitat Loss",
@@ -3583,6 +4053,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -3590,13 +4061,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 3500
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -3644,11 +4128,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
+    ],
     "threats": [
       "Habitat Loss",
       "Overexploitation",
@@ -3687,6 +4186,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -3694,12 +4194,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
+    ],
     "threats": [
       "Habitat Loss",
       "Overexploitation",
@@ -3746,13 +4261,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Overexploitation",
@@ -3800,12 +4327,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -3853,11 +4393,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
+    ],
     "threats": [
       "Illegal Harvesting",
       "Overexploitation",
@@ -3904,13 +4460,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -3958,12 +4526,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -4011,13 +4592,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -4065,12 +4658,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -4118,11 +4724,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
+    ],
     "threats": [
       "Habitat Loss",
       "Overexploitation",
@@ -4169,11 +4790,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
+    ],
     "threats": [
       "Climate Change",
       "Habitat Loss",
@@ -4219,12 +4855,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4500
     },
     "districts": [
-      "Leh",
-      "Kargil",
-      "Bandipora"
+      "Srinagar",
+      "Ganderbal",
+      "Budgam",
+      "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
+      "Baramulla",
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -4272,12 +4923,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -4325,12 +4990,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -4378,12 +5056,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -4431,12 +5122,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Overexploitation",
@@ -4484,12 +5188,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -4528,6 +5245,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "description": "Artemisia brevifolia thrives in the arid cold desert tracts of Ladakh and northern Kashmir. It is a prized source of Santonin, the historic vermifuge for eradicating intestinal parasites.",
     "ecologicalRole": "Primary Producer",
     "habitats": [
+      "Trans-Himalayan Cold Desert Scrub",
       "Alpine Meadows",
       "Glacial Moraines"
     ],
@@ -4538,10 +5256,18 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "districts": [
       "Leh",
       "Kargil",
-      "Bandipora"
+      "Kishtwar",
+      "Bandipora",
+      "Astore",
+      "Gilgit",
+      "Hunza",
+      "Skardu",
+      "Ghanche"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Hemis National Park",
+      "Changthang Cold Desert Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Habitat Loss",
@@ -4580,6 +5306,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "description": "Artemisia maritima is a perennial aromatic herb yielding high concentrations of Santonin, traditionally utilized to cleanse the digestive tract of parasitic infections.",
     "ecologicalRole": "Primary Producer",
     "habitats": [
+      "Trans-Himalayan Cold Desert Scrub",
       "Alpine Meadows",
       "Glacial Moraines"
     ],
@@ -4590,11 +5317,18 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "districts": [
       "Leh",
       "Kargil",
-      "Bandipora"
+      "Kishtwar",
+      "Bandipora",
+      "Astore",
+      "Gilgit",
+      "Hunza",
+      "Skardu",
+      "Ghanche"
     ],
     "protectedAreas": [
-      "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Hemis National Park",
+      "Changthang Cold Desert Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Habitat Loss",
@@ -4642,12 +5376,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -4695,12 +5442,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -4748,12 +5508,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -4801,12 +5574,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -4854,12 +5640,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -4907,12 +5706,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -4960,13 +5772,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -5014,12 +5838,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -5067,12 +5904,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -5112,6 +5962,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -5119,14 +5970,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Climate Change",
@@ -5166,6 +6029,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -5173,11 +6037,28 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
+    ],
     "threats": [
       "Illegal Harvesting",
       "Overexploitation",
@@ -5224,12 +6105,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -5277,13 +6172,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -5331,12 +6238,17 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
-      "Anantnag",
+      "Bandipora",
       "Baramulla",
-      "Shopian"
+      "Ganderbal",
+      "Budgam",
+      "Pulwama",
+      "Anantnag"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Hokersar Wetland",
+      "Shallabugh Wetland",
+      "Hygam Wetland"
     ],
     "threats": [
       "Climate Change",
@@ -5384,12 +6296,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -5429,6 +6354,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -5436,14 +6362,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -5491,11 +6429,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
+    ],
     "threats": [
       "Illegal Harvesting",
       "Overexploitation",
@@ -5543,11 +6496,14 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "districts": [
       "Srinagar",
       "Bandipora",
-      "Ganderbal"
+      "Baramulla",
+      "Ganderbal",
+      "Budgam"
     ],
     "protectedAreas": [
-      "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Wular Lake Ramsar Site",
+      "Hokersar Wetland",
+      "Shallabugh Wetland"
     ],
     "threats": [
       "Habitat Loss",
@@ -5596,10 +6552,14 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "districts": [
       "Srinagar",
       "Bandipora",
-      "Ganderbal"
+      "Baramulla",
+      "Ganderbal",
+      "Budgam"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Wular Lake Ramsar Site",
+      "Hokersar Wetland",
+      "Shallabugh Wetland"
     ],
     "threats": [
       "Climate Change",
@@ -5648,10 +6608,14 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "districts": [
       "Srinagar",
       "Bandipora",
-      "Ganderbal"
+      "Baramulla",
+      "Ganderbal",
+      "Budgam"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Wular Lake Ramsar Site",
+      "Hokersar Wetland",
+      "Shallabugh Wetland"
     ],
     "threats": [
       "Climate Change",
@@ -5700,9 +6664,15 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "districts": [
       "Srinagar",
       "Bandipora",
-      "Ganderbal"
+      "Baramulla",
+      "Ganderbal",
+      "Budgam"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Wular Lake Ramsar Site",
+      "Hokersar Wetland",
+      "Shallabugh Wetland"
+    ],
     "threats": [
       "Climate Change",
       "Illegal Harvesting",
@@ -5749,13 +6719,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Overexploitation",
@@ -5803,12 +6785,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -5847,21 +6842,29 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "description": "Hippophae rhamnoides (Tsermang) lines glacial riverbeds with thorny silver-green thickets and vibrant orange berries. A miracle superfood of the trans-Himalayas, it provides extreme vitamin density and cellular rejuvenation.",
     "ecologicalRole": "Primary Producer",
     "habitats": [
-      "Subalpine Forests",
-      "Temperate Coniferous Forests"
+      "Trans-Himalayan Cold Desert Scrub",
+      "Alpine Meadows",
+      "Glacial Moraines"
     ],
     "elevationRange": {
       "min": 2500,
       "max": 4000
     },
     "districts": [
-      "Srinagar",
-      "Anantnag",
-      "Baramulla",
-      "Shopian"
+      "Leh",
+      "Kargil",
+      "Kishtwar",
+      "Bandipora",
+      "Astore",
+      "Gilgit",
+      "Hunza",
+      "Skardu",
+      "Ghanche"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Hemis National Park",
+      "Changthang Cold Desert Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -5909,12 +6912,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -5962,11 +6979,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
+    ],
     "threats": [
       "Overexploitation",
       "Illegal Harvesting",
@@ -6013,12 +7045,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -6066,12 +7112,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -6119,13 +7179,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -6173,12 +7246,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -6226,12 +7313,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -6279,13 +7379,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -6333,11 +7445,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
+    ],
     "threats": [
       "Climate Change",
       "Habitat Loss",
@@ -6384,12 +7511,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -6437,12 +7578,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -6490,12 +7645,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -6543,12 +7711,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Overexploitation",
@@ -6596,13 +7778,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Overexploitation",
@@ -6650,12 +7844,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -6703,13 +7910,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Overexploitation",
@@ -6749,6 +7968,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -6756,12 +7976,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 3500
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
+    ],
     "threats": [
       "Habitat Loss",
       "Overexploitation",
@@ -6800,6 +8035,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -6807,11 +8043,28 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
+    ],
     "threats": [
       "Illegal Harvesting",
       "Climate Change",
@@ -6850,6 +8103,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -6857,12 +8111,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -6901,21 +8170,36 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "description": "Juniperus macropoda is an ancient long-lived tree of the dry inner valleys. Its wood and berries provide deep-heating liniments for gout and sciatica.",
     "ecologicalRole": "Primary Producer",
     "habitats": [
-      "Subalpine Forests",
-      "Temperate Coniferous Forests"
+      "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
+      "Glacial Moraines"
     ],
     "elevationRange": {
       "min": 3000,
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Ganderbal",
+      "Bandipora",
       "Anantnag",
+      "Kupwara",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -6955,6 +8239,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -6962,13 +8247,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 3500
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -7016,12 +8314,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -7069,11 +8380,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
+    ],
     "threats": [
       "Overexploitation",
       "Climate Change",
@@ -7112,6 +8438,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -7119,12 +8446,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
     ],
     "threats": [
       "Overexploitation",
@@ -7163,20 +8505,37 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "description": "Rhododendron campanulatum (Gaggar-katz) paints subalpine slopes with bell-shaped mauve and white blooms below the treeline. Used with caution due to potent alkaloids, its leaves are prepared into specialized remedies for chronic rheumatism.",
     "ecologicalRole": "Primary Producer",
     "habitats": [
-      "Subalpine Forests",
-      "Temperate Coniferous Forests"
+      "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
+      "Glacial Moraines"
     ],
     "elevationRange": {
       "min": 3000,
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Ganderbal",
+      "Bandipora",
       "Anantnag",
+      "Kupwara",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
+    ],
     "threats": [
       "Climate Change",
       "Illegal Harvesting",
@@ -7214,22 +8573,36 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "description": "Betula utilis (Burza) stands as the heroic guardian of the Himalayan treeline. Its papery silvery-pink bark, used for centuries to record sacred scriptures, contains high yields of Betulinic acid, a powerful modern anticancer and wound-healing compound.",
     "ecologicalRole": "Primary Producer",
     "habitats": [
-      "Subalpine Forests",
-      "Temperate Coniferous Forests"
+      "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
+      "Glacial Moraines"
     ],
     "elevationRange": {
       "min": 3000,
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Ganderbal",
+      "Bandipora",
       "Anantnag",
+      "Kupwara",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
     "protectedAreas": [
-      "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
     ],
     "threats": [
       "Overexploitation",
@@ -7277,11 +8650,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
+    ],
     "threats": [
       "Habitat Loss",
       "Overexploitation",
@@ -7328,12 +8717,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -7373,6 +8775,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -7380,13 +8783,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Habitat Loss",
@@ -7434,12 +8850,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -7487,12 +8917,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -7532,6 +8976,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -7539,13 +8984,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 5000
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
     "protectedAreas": [
-      "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -7593,13 +9052,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -7639,6 +9111,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -7646,13 +9119,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
     "protectedAreas": [
-      "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
     ],
     "threats": [
       "Climate Change",
@@ -7700,12 +9187,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -7745,6 +9246,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -7752,11 +9254,28 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
+    ],
     "threats": [
       "Overexploitation",
       "Habitat Loss",
@@ -7795,6 +9314,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -7802,11 +9322,28 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 5000
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
+    ],
     "threats": [
       "Illegal Harvesting",
       "Overexploitation",
@@ -7845,6 +9382,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -7852,11 +9390,28 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
+    ],
     "threats": [
       "Illegal Harvesting",
       "Overexploitation",
@@ -7895,6 +9450,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -7902,14 +9458,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Habitat Loss",
@@ -7957,12 +9525,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -8002,6 +9584,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -8009,12 +9592,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
+    ],
     "threats": [
       "Illegal Harvesting",
       "Overexploitation",
@@ -8053,6 +9651,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -8060,14 +9659,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -8107,6 +9718,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -8114,14 +9726,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 3500
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Climate Change",
@@ -8161,6 +9785,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Alpine Meadows",
+      "Subalpine Birch & Rhododendron Scrub",
       "Glacial Moraines"
     ],
     "elevationRange": {
@@ -8168,12 +9793,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4500
     },
     "districts": [
-      "Leh",
+      "Ganderbal",
+      "Bandipora",
+      "Anantnag",
+      "Kupwara",
+      "Baramulla",
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
       "Kargil",
-      "Bandipora"
+      "Leh",
+      "Neelum",
+      "Astore",
+      "Skardu"
     ],
     "protectedAreas": [
-      "Gulmarg Biosphere Reserve"
+      "Overa-Aru Wildlife Sanctuary",
+      "Thajwas Wildlife Sanctuary",
+      "Kishtwar High Altitude National Park",
+      "Hirpora Wildlife Sanctuary"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -8213,6 +9853,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -8220,12 +9861,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
+    ],
     "threats": [
       "Illegal Harvesting",
       "Climate Change",
@@ -8264,6 +9920,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -8271,13 +9928,26 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 4000
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
     "protectedAreas": [
-      "Dachigam National Park"
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
     ],
     "threats": [
       "Illegal Harvesting",
@@ -8325,11 +9995,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Ganderbal",
+      "Budgam",
       "Anantnag",
+      "Pulwama",
+      "Shopian",
+      "Kulgam",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Kishtwar",
+      "Doda",
+      "Ramban",
+      "Poonch",
+      "Neelum",
+      "Muzaffarabad"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Dachigam National Park",
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary"
+    ],
     "threats": [
       "Illegal Harvesting",
       "Overexploitation",
@@ -8368,6 +10054,7 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     "ecologicalRole": "Primary Producer",
     "habitats": [
       "Subalpine Forests",
+      "Alpine Meadows",
       "Temperate Coniferous Forests"
     ],
     "elevationRange": {
@@ -8375,12 +10062,27 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
       "max": 3500
     },
     "districts": [
-      "Srinagar",
+      "Kupwara",
+      "Bandipora",
+      "Ganderbal",
       "Anantnag",
       "Baramulla",
-      "Shopian"
+      "Shopian",
+      "Kulgam",
+      "Kishtwar",
+      "Doda",
+      "Poonch",
+      "Kargil",
+      "Neelum",
+      "Muzaffarabad",
+      "Astore"
     ],
-    "protectedAreas": [],
+    "protectedAreas": [
+      "Gulmarg Wildlife Sanctuary",
+      "Overa-Aru Wildlife Sanctuary",
+      "Kazinag National Park",
+      "Kishtwar High Altitude National Park"
+    ],
     "threats": [
       "Climate Change",
       "Habitat Loss",
@@ -8427,13 +10129,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Habitat Loss",
@@ -8481,13 +10195,25 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Srinagar",
+      "Budgam",
+      "Pulwama",
+      "Ganderbal",
       "Anantnag",
+      "Kulgam",
+      "Shopian",
       "Baramulla",
-      "Shopian"
+      "Bandipora",
+      "Kupwara",
+      "Ramban",
+      "Doda",
+      "Rajouri",
+      "Poonch",
+      "Udhampur",
+      "Muzaffarabad"
     ],
     "protectedAreas": [
       "Dachigam National Park",
-      "Gulmarg Biosphere Reserve"
+      "Tral Wildlife Sanctuary"
     ],
     "threats": [
       "Overexploitation",
@@ -8516,3 +10242,5 @@ export const medicinalPhase1: BiodiversitySpecies[] = [
     ]
   }
 ];
+
+export const medicinalPlantsData: BiodiversitySpecies[] = medicinalPhase1;

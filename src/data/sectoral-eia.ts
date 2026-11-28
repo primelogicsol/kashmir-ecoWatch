@@ -197,9 +197,9 @@ export const ASSESSMENT_WORKFLOW_STEPS = [
   {
     step: '09',
     name: 'Scientific Review and Publication',
-    functionSummary: 'Apply evidence grading, expert review, and periodic reassessment',
-    details: 'Independent multidisciplinary scientific panel review, open evidence audit, DOI-registered publication, and scheduled biennial reassessments.',
-    deliverable: 'Peer-Reviewed SEIA Dossier, Open Dataset, and Policy Summary',
+    functionSummary: 'Apply evidence grading, internal desk audit, and external review queuing',
+    details: 'Internal multidisciplinary evidence grading, open provenance audit, CC BY-NC 4.0 synthesis publication, and queueing for independent external peer review.',
+    deliverable: 'Desk-Synthesized Research Dossiers (External Peer Review Pending), Open Dataset, and Policy Summary',
     icon: 'Award'
   }
 ];

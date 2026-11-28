@@ -423,7 +423,7 @@ export default function EnvironmentalInvestigationsHomePage() {
                 Western Himalayan Investigation Portfolio
               </h2>
               <p className="text-sm text-slate-400 mt-1 max-w-3xl">
-                Active and proposed investigation subjects are transparently distinguished from completed peer-verified reports — scoping charters define falsifiable scientific questions, not predetermined conclusions.
+                Active and proposed investigation subjects are transparently distinguished from completed desk-verified canonical reports — scoping charters define falsifiable scientific questions, not predetermined conclusions.
               </p>
             </div>
             <Link href="/environmental-investigations/atlas">

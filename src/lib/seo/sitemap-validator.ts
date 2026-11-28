@@ -50,6 +50,7 @@ import {
 import {
   DEPARTMENT_ROUTE_CONFIG,
   FOOTER_BUREAU_LINKS,
+  IS_DISPATCH_SUBDOMAIN_LIVE,
   toCanonicalIssueSlug,
 } from '@/lib/himalayan-dispatch-routes';
 import { CONFERENCES_DETAILED, SESSIONS_DETAILED } from '@/data/conference-system';
@@ -264,6 +265,13 @@ const REDIRECT_SOURCE_PATHS = new Set<string>([
   '/water-systems/springs/kokernag',
   '/protected-areas/dachigam',
   '/environmental-calendar/ecovoices',
+  '/methodology',
+  '/founder',
+  '/leadership',
+  '/risk-monitoring/pollution-stress',
+  '/risk-monitoring/live-alerts',
+  '/risk-monitoring/early-warning',
+  '/risk-monitoring/response-operations',
 ]);
 
 function isRedirectStubPath(pathname: string): boolean {
@@ -405,6 +413,52 @@ export function buildValidatedSitemapInventory(): {
     }
   }
   walkPages(appDir);
+  candidateMap.set('/governance', { documentType: 'module_page' });
+
+  // When the dedicated Dispatch subdomain is not yet live, ensure all public
+  // Himalayan Dispatch dynamic routes are seeded for main-host sitemap indexing.
+  if (!IS_DISPATCH_SUBDOMAIN_LIVE) {
+    for (const ed of getPublicEditions()) {
+      if (ed.status !== 'forthcoming') {
+        candidateMap.set(`/himalayan-dispatch/issues/${toCanonicalIssueSlug(ed.slug)}`, {
+          lastUpdated: ed.publishedIsoDate,
+          documentType: 'editorial_issue',
+        });
+      }
+    }
+    for (const st of getPublicPublishedStories()) {
+      candidateMap.set(
+        `/himalayan-dispatch/issues/${toCanonicalIssueSlug(st.editionSlug)}/${st.slug}`,
+        { lastUpdated: st.updatedAt || st.publishedAt, documentType: 'editorial_story' }
+      );
+    }
+    for (const dd of getPublicDailyDispatches()) {
+      candidateMap.set(`/himalayan-dispatch/daily-dispatch/${dd.slug}`, {
+        lastUpdated: dd.updatedAt || dd.publishedAt,
+        documentType: 'daily_dispatch',
+      });
+    }
+    for (const deptSlug of Object.keys(DEPARTMENT_ROUTE_CONFIG)) {
+      candidateMap.set(`/himalayan-dispatch/departments/${deptSlug}`, {
+        documentType: 'module_page',
+      });
+    }
+    for (const b of FOOTER_BUREAU_LINKS) {
+      candidateMap.set(`/himalayan-dispatch/bureaus/${b.id}`, {
+        documentType: 'module_page',
+      });
+    }
+    for (const bt of getPublicReportingBeats()) {
+      candidateMap.set(`/himalayan-dispatch/reporting-beats/${bt.slug}`, {
+        documentType: 'module_page',
+      });
+    }
+    for (const j of getPublicJournalists()) {
+      candidateMap.set(`/himalayan-dispatch/journalists/${j.slug}`, {
+        documentType: 'module_page',
+      });
+    }
+  }
 
   for (const doc of corpus.documents) {
     if (!doc.canonicalUrl || !doc.canonicalUrl.startsWith('/')) continue;
@@ -441,9 +495,12 @@ export function buildValidatedSitemapInventory(): {
 
   for (const [pathname, meta] of candidateMap.entries()) {
     // 0. Himalayan Dispatch has its own dedicated publication hostname & sitemap
-    // (`https://dispatch.kashmir-ecowatch.com/sitemap.xml`); legacy `/himalayan-dispatch*`
-    // paths on `kashmir-ecowatch.com` permanently 308-redirect to the Dispatch subdomain.
-    if (pathname === '/himalayan-dispatch' || pathname.startsWith('/himalayan-dispatch/')) {
+    // (`https://dispatch.kashmir-ecowatch.com/sitemap.xml`) ONLY once `IS_DISPATCH_SUBDOMAIN_LIVE`
+    // is enabled. When `false`, `/himalayan-dispatch*` routes are indexed on `kashmir-ecowatch.com`.
+    if (
+      IS_DISPATCH_SUBDOMAIN_LIVE &&
+      (pathname === '/himalayan-dispatch' || pathname.startsWith('/himalayan-dispatch/'))
+    ) {
       audit.redirectedUrls++;
       note('redirected_to_dispatch_subdomain_sitemap');
       continue;
@@ -456,14 +513,16 @@ export function buildValidatedSitemapInventory(): {
       continue;
     }
 
-    // 2. Non-indexable administrative, auth, live-room & dev utility routes
+    // 2. Non-indexable administrative, auth, gated `/request` & dev utility routes
     if (
       isNonPublicRoute(pathname) ||
+      pathname.endsWith('/request') ||
       (pathname.startsWith('/webinars/sessions/') && pathname.endsWith('/live')) ||
       pathname === '/ngo-impact/submit' ||
       pathname === '/environmental-investigations/submit' ||
       pathname === '/himalayan-dispatch/pitch' ||
       pathname === '/himalayan-dispatch/newsroom' ||
+      pathname === '/himalayan-dispatch/editorial-cms' ||
       pathname === '/himalayan-dispatch/journalist-sign-in' ||
       pathname === '/sectoral-eia/assessment/new'
     ) {

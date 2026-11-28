@@ -224,7 +224,7 @@ const DASHBOARDS: DashboardCard[] = [
     metrics: 16,
     status: 'Live',
     feeds: ['Alerts', 'Operations', 'Field Reports'],
-    route: '/risk-monitoring/response-operations',
+    route: '/risk-monitoring',
     color: 'from-violet-500 to-purple-600',
   },
   {
@@ -337,7 +337,7 @@ export default function DashboardsPage() {
         label="Risk Analytics"
         actions={
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/live-alerts')}>
+            <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-xl" onClick={() => router.push('/risk-monitoring/live-alerts-advisories')}>
               <Bell className="w-5 h-5 mr-2" />Live Alerts
             </Button>
             <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5" onClick={() => router.push('/risk-monitoring')}>Back to Overview</Button>
@@ -602,7 +602,7 @@ export default function DashboardsPage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {[
-              { label: 'Live Alerts', href: '/risk-monitoring/live-alerts', icon: Bell },
+              { label: 'Live Alerts', href: '/risk-monitoring/live-alerts-advisories', icon: Bell },
               { label: 'District Risk Profiles', href: '/risk-monitoring/district-risk-profiles', icon: MapPin },
               { label: 'Flood Risk', href: '/risk-monitoring/flood-flash-flood', icon: Droplets },
               { label: 'Landslide Monitoring', href: '/risk-monitoring/landslide-slope', icon: Mountain },
@@ -611,7 +611,7 @@ export default function DashboardsPage() {
               { label: 'Glacier & Cryosphere', href: '/risk-monitoring/glacier-cryosphere', icon: Zap },
               { label: 'Hydrological Risk', href: '/risk-monitoring/hydrological-risk', icon: Waves },
               { label: 'Environmental Incidents', href: '/risk-monitoring/environmental-incident-risk', icon: AlertTriangle },
-              { label: 'Response Operations', href: '/risk-monitoring/response-operations', icon: Activity },
+              { label: 'Response Operations', href: '/risk-monitoring', icon: Activity },
             ].map((link, idx) => {
               const LinkIcon = link.icon;
               return (

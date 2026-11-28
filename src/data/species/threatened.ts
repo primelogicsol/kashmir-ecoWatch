@@ -36,9 +36,9 @@ export const threatenedPhase1: BiodiversitySpecies[] = [
     "districts": [
       "Srinagar",
       "Ganderbal",
-      "Pulwama",
       "Anantnag",
-      "Baramulla"
+      "Pulwama",
+      "Bandipora"
     ],
     "protectedAreas": [
       "Dachigam National Park",
@@ -375,10 +375,19 @@ export const threatenedPhase1: BiodiversitySpecies[] = [
       "max": 3200
     },
     "districts": [
-      "Doda",
+      "Kupwara",
+      "Baramulla",
+      "Bandipora",
+      "Srinagar",
+      "Ganderbal",
+      "Anantnag",
+      "Poonch",
+      "Rajouri",
       "Kishtwar",
-      "Udhampur",
-      "Ramban"
+      "Doda",
+      "Neelum",
+      "Muzaffarabad",
+      "Jhelum Valley"
     ],
     "protectedAreas": [
       "Kishtwar High Altitude National Park",
@@ -2302,32 +2311,35 @@ export const threatenedPhase1: BiodiversitySpecies[] = [
     "nationalStatus": "Protected Coldwater Endemic",
     "citesListing": "Not Listed",
     "estimatedWildPopulation": "Confined to high-altitude streams and lakes",
-    "traffickingCorridor": "Indus - Zanskar & Jhelum High River Branches",
+    "traffickingCorridor": "Jhelum River Mainstem, Dal, Wular & Manasbal Lacustrine System",
     "traffickingRisk": "Low Risk",
     "effectivePopulationNe": "~500 breeding adults",
     "inbreedingRisk": "High High-Altitude Valley Isolation",
     "projectedAltitudinalShift": "+170m upstream",
     "climateVulnerability": "Glacial Silt Pulses Abrading Gill Filaments",
-    "description": "A distinctive snow trout exhibiting an arched dorsal profile and blunt snout, uniquely adapted to survive both in high-altitude lakes of Kashmir and the cold Indus and Zanskar rivers in Ladakh. Grazes on aquatic mosses and chironomid larvae in near-freezing currents.",
+    "description": "Endemic Kashmir Valley schizothoracine cyprinid ('Sattar Gaad', Kullander et al., 1999) inhabiting the Jhelum mainstem, Wular, Dal, and Manasbal lakes, ascending cold tributary streams in spring to spawn on clean gravel.",
     "ecologicalRole": "High-Altitude Benthic Herbivore and Detritivore",
     "habitats": [
       "Riverine Valleys",
       "Wetlands & Lakes"
     ],
     "elevationRange": {
-      "min": 1500,
-      "max": 3400
+      "min": 1550,
+      "max": 2200
     },
     "districts": [
+      "Srinagar",
       "Ganderbal",
+      "Bandipora",
+      "Baramulla",
+      "Budgam",
       "Anantnag",
-      "Leh",
-      "Kargil",
-      "Skardu"
+      "Pulwama"
     ],
     "protectedAreas": [
-      "Gangabal Alpine Lake Stretch",
-      "Indus Coldwater Sanctuary"
+      "Wular Lake Ramsar Site",
+      "Manasbal Lake",
+      "Dal Lake"
     ],
     "threats": [
       "Introduction of non-native brown trout (Salmo trutta) preying upon fingerlings",
@@ -2342,7 +2354,7 @@ export const threatenedPhase1: BiodiversitySpecies[] = [
     "verifiedSightings": 64,
     "conservationPriority": 7,
     "distributionPoints": [],
-    "endemismStatus": "trans-himalayan",
+    "endemismStatus": "kashmir-endemic",
     "dataSource": {
       "type": "inventory",
       "reference": "Ladakh Department of Fisheries & Wildlife Inventory 2024",
@@ -2477,19 +2489,19 @@ export const threatenedPhase1: BiodiversitySpecies[] = [
     "commonName": "Indus River Dolphin",
     "scientificName": "Platanista minor",
     "localName": "Bhulan / بھولن",
-    "taxonomicGroup": "fish",
-    "category": "Freshwater Cetacean",
+    "taxonomicGroup": "mammals",
+    "category": "Freshwater Cetacean (Mammalia)",
     "conservationStatus": "EN",
     "nationalStatus": "Strictly Protected Transboundary Cetacean",
     "citesListing": "CITES Appendix I",
     "estimatedWildPopulation": "~1,800-2,000 in Indus mainstem, rare seasonal transboundary visitor",
-    "traffickingCorridor": "Indus Basin Transboundary River Channels",
+    "traffickingCorridor": "Lower Indus Mainstem & Historical Downstream Jhelum-Chenab Barrage Boundary",
     "traffickingRisk": "High Risk",
     "effectivePopulationNe": "~400 mature breeding individuals",
     "inbreedingRisk": "Severe Barrage Fragmentation",
     "projectedAltitudinalShift": "+30m upstream during high discharge",
     "climateVulnerability": "Severe River Dewatering from Agricultural Canal Diversions",
-    "description": "One of the rarest mammals on Earth and the only exclusively freshwater dolphin in the Indus River system. Functionally blind, relying on echolocation to navigate muddy river currents. Fragmented by upstream barrage dams and threatened by agricultural dewatering and accidental entanglement in nylon gill nets.",
+    "description": "Endangered obligate freshwater cetacean (Mammalia: Platanistidae — reclassified from fish) endemic to the Indus River system. Historically ranged into the lower Jhelum and Chenab foothills up to the Mirpur-Punjab piedmont prior to Mangla/Rasul barrage fragmentation; does not inhabit upland Jammu streams.",
     "ecologicalRole": "Apex Bioindicator of Transboundary Indus Basin River Health",
     "habitats": [
       "Riverine Valleys"
@@ -2500,10 +2512,11 @@ export const threatenedPhase1: BiodiversitySpecies[] = [
     },
     "districts": [
       "Mirpur",
-      "Jammu"
+      "Bhimber"
     ],
     "protectedAreas": [
-      "Indus River Protected Stretch"
+      "Indus Dolphin Reserve (Downstream Indus Mainstem Reference)",
+      "Lower Jhelum-Mangla Downstream Boundary"
     ],
     "threats": [
       "Barrages and dams fragmenting dolphin populations into isolated pods",
@@ -3822,3 +3835,5 @@ export const threatenedPhase1: BiodiversitySpecies[] = [
     }
   }
 ];
+
+export const threatenedSpeciesData: BiodiversitySpecies[] = threatenedPhase1;

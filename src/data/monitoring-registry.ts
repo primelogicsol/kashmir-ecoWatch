@@ -1,5 +1,12 @@
 // Monitoring Intelligence Registry
-// Comprehensive monitoring network data for Kashmir EcoWatch
+// Provenance-verified external feed, community sensor, NWP grid & statutory benchmark registry for Kashmir EcoWatch.
+// CRITICAL DISCLOSURE: Kashmir EcoWatch owns and operates ZERO (0) physical field sensors, camera traps, weather stations, or river gauges.
+// QUARANTINED_SYNTHETIC_STATION_COUNTS: Withdrew legacy synthetic aggregates (263 "active stations" including 156 KEW camera traps, 47 weather stations, 34 water quality stations, 12 CAAQMS, 8 seismic stations, 6 glacier stations).
+
+import { KEW_OWNED_PHYSICAL_SENSORS_COUNT } from '@/data/monitoring-infrastructure-registry';
+import type { ScientificProvenanceClass } from '@/lib/scientific-integrity/quarantine-gateway';
+
+export { KEW_OWNED_PHYSICAL_SENSORS_COUNT };
 
 export type MonitoringStatus = 'active-network' | 'periodic-monitoring' | 'seasonal-coverage' | 'under-expansion' | 'reference-monitoring';
 export type MonitoringCadence = 'live' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'seasonal' | 'event-driven';
@@ -10,7 +17,7 @@ export interface ModuleLink {
   moduleId: string;
   moduleName: string;
   modulePath: string;
-  contributionType: string; // e.g., "Primary data source", "Alert generation", "Trend analysis"
+  contributionType: string;
 }
 
 export interface DashboardLink {
@@ -29,14 +36,18 @@ export interface MonitoringNetwork {
   id: string;
   category: MonitoringCategory;
   name: string;
-  
+
   // Status & Mode
   status: MonitoringStatus;
   cadence: MonitoringCadence;
   source: MonitoringSource;
-  
-  // Infrastructure
-  stationCount: number;
+
+  // Infrastructure & Provenance
+  stationCount: number; // Strictly 0 KEW-owned sensors; reflects verified external community sensor zones where applicable
+  kewOwnedPhysicalSensors: 0;
+  externalFeedOrGridCount: number;
+  infrastructureClassification: 'Community Optical Sensor + CAMS Model Grid' | 'External Statutory Agency Catalog' | 'Gridded NWP / Hydrological Model' | 'Published Statutory Grab-Sample Archive' | 'Satellite Remote-Sensing & Literature Benchmark';
+  provenanceClass: ScientificProvenanceClass;
   coverage: string;
   coverageDetails: {
     districts?: string[];
@@ -45,239 +56,269 @@ export interface MonitoringNetwork {
     altitudeRange?: string;
     urbanCoverage?: string;
   };
-  
+
   // Monitoring Scope
   parametersTracked: string[];
   whatIsMonitored: string;
-  
+
   // Module & Dashboard Links
   feedsModules: ModuleLink[];
   feedsDashboards: DashboardLink[];
   generatesAlerts: AlertLink[];
-  
+
   // Data & Quality
   dataAvailability: 'live-stream' | 'near-real-time' | 'daily-batch' | 'periodic-updates' | 'reference-archive';
-  historicalDataFrom: string; // year
+  historicalDataFrom: string;
   qualityAssurance: string;
-  
+
   // Operator & Source
   operatedBy: string;
   description: string;
-  
+
   // Limitations
   limitations?: string;
-  
+
   // Metadata
   lastUpdated: string;
   tags: string[];
 }
 
+const KASHMIR_CORE_DISTRICTS = [
+  'Srinagar',
+  'Ganderbal',
+  'Budgam',
+  'Anantnag',
+  'Kulgam',
+  'Pulwama',
+  'Shopian',
+  'Baramulla',
+  'Bandipora',
+  'Kupwara',
+];
+
 export const monitoringRegistry: MonitoringNetwork[] = [
   {
     id: 'monitor-air-quality',
     category: 'air-quality',
-    name: 'Air Quality Monitoring',
+    name: 'Community Optical PM2.5 + Copernicus CAMS Atmospheric Grid',
     status: 'active-network',
     cadence: 'hourly',
-    source: 'institutional',
-    stationCount: 12,
-    coverage: 'Urban & Valley-wide',
+    source: 'community-supported',
+    stationCount: 3, // 3 community AirGradient optical PM2.5 zones (Srinagar, Jammu, Leh); 0 KEW-owned sensors; 0 direct CPCB CAAQMS APIs
+    kewOwnedPhysicalSensors: 0,
+    externalFeedOrGridCount: 44,
+    infrastructureClassification: 'Community Optical Sensor + CAMS Model Grid',
+    provenanceClass: 'community_sensor',
+    coverage: '3 Community Optical Zones + 44 CAMS (~11 km) District Grid Cells',
     coverageDetails: {
-      districts: ['Srinagar', 'Anantnag', 'Baramulla', 'Ganderbal'],
-      urbanCoverage: 'Major urban centers and sensitive ecological zones'
+      districts: ['Srinagar', 'Jammu', 'Leh', 'Anantnag', 'Baramulla', 'Ganderbal', 'Muzaffarabad', 'Gilgit'],
+      urbanCoverage: 'Community optical PM2.5 in Srinagar, Jammu & Leh; 11 km ECMWF CAMS atmospheric model across 44 regional grid cells',
     },
-    parametersTracked: ['PM2.5', 'PM10', 'NO2', 'SO2', 'CO', 'O3', 'AQI'],
-    whatIsMonitored: 'Atmospheric particulate matter, gaseous pollutants, and composite Air Quality Index across urban centers and ecologically sensitive zones.',
+    parametersTracked: ['PM2.5 (community optical / CAMS)', 'PM10/NO2/SO2/CO/O3 (11 km CAMS model)', 'Non-Regulatory AQI Screening'],
+    whatIsMonitored: 'Non-regulatory community optical PM2.5 (AirGradient via BreatheOSS) paired with 0.1° (~11 km) Copernicus CAMS gridded atmospheric model outputs.',
     feedsModules: [
-      { moduleId: 'air-noise-monitoring', moduleName: 'Air & Noise Monitoring', modulePath: '/risk-monitoring', contributionType: 'Primary data source' },
-      { moduleId: 'risk-monitoring', moduleName: 'Risk & Monitoring', modulePath: '/risk-monitoring', contributionType: 'Alert generation' },
+      { moduleId: 'environmental-monitoring', moduleName: 'Environmental Monitoring', modulePath: '/environmental-monitoring/air-pollution', contributionType: 'Community PM2.5 & CAMS model screening' },
+      { moduleId: 'risk-monitoring', moduleName: 'Risk & Monitoring', modulePath: '/risk-monitoring', contributionType: 'Model AQI screening advisories' },
     ],
     feedsDashboards: [
-      { name: 'Air Quality Dashboard', path: '/dashboards/air-quality', description: 'Real-time AQI and pollutant trends' },
+      { name: 'Air Quality Intelligence', path: '/environmental-monitoring/air-pollution', description: 'Community optical PM2.5 & 44-cell CAMS atmospheric grid' },
     ],
     generatesAlerts: [
-      { type: 'Air Quality Alert', description: 'Triggered when AQI exceeds upper-moderate threshold', severity: 'moderate' },
+      { type: 'Air Quality Screening Advisory', description: 'Triggered when CAMS or community optical PM2.5 exceeds screening thresholds', severity: 'moderate' },
     ],
     dataAvailability: 'near-real-time',
-    historicalDataFrom: '2020',
-    qualityAssurance: 'CPCB-standard calibration with quarterly maintenance',
-    operatedBy: 'J&K State Pollution Control Board',
-    description: 'Network of continuous ambient air quality monitoring stations (CAAQMS) tracking particulate matter and gaseous pollutants across Kashmir Valley.',
-    limitations: 'Limited coverage in higher-altitude towns. Winter snow can delay maintenance access to some stations.',
-    lastUpdated: '2026-04-04',
-    tags: ['air-quality', 'pollution', 'urban', 'health', 'AQI', 'CAAQMS']
-  },
-  {
-    id: 'monitor-water-quality',
-    category: 'water-quality',
-    name: 'Water Quality Network',
-    status: 'active-network',
-    cadence: 'daily',
-    source: 'hybrid',
-    stationCount: 34,
-    coverage: 'All Major Basins',
-    coverageDetails: {
-      basins: ['Jhelum', 'Indus', 'Chenab'],
-      districts: ['Srinagar', 'Anantnag', 'Ganderbal', 'Baramulla', 'Kulgam'],
-    },
-    parametersTracked: ['pH', 'DO', 'BOD', 'COD', 'Turbidity', 'Temperature', 'Nitrates', 'Phosphates', 'Heavy Metals'],
-    whatIsMonitored: 'Physicochemical parameters, nutrient loading, and contamination indicators across major waterbodies, rivers, and wetland systems.',
-    feedsModules: [
-      { moduleId: 'water-systems', moduleName: 'Water Systems', modulePath: '/water-systems', contributionType: 'Primary water quality data' },
-      { moduleId: 'environmental-monitoring', moduleName: 'Environmental Monitoring', modulePath: '/environmental-monitoring', contributionType: 'Basin-level trends' },
-    ],
-    feedsDashboards: [
-      { name: 'Water Quality Dashboard', path: '/water-systems/dashboards/water-intelligence', description: 'Waterbody health indicators and parameter trends' },
-    ],
-    generatesAlerts: [
-      { type: 'Water Quality Alert', description: 'Triggered by sudden parameter shifts or contamination events', severity: 'high' },
-    ],
-    dataAvailability: 'daily-batch',
-    historicalDataFrom: '2018',
-    qualityAssurance: 'Standard methods (APHA) with inter-laboratory validation',
-    operatedBy: 'J&K Pollution Control Board / University of Kashmir Limnology Lab',
-    description: 'Comprehensive water quality monitoring network covering lakes, wetlands, rivers, and spring systems across Kashmir\'s major drainage basins.',
-    limitations: 'Some remote wetland sites sampled periodically rather than continuously. Winter ice cover affects sampling frequency.',
-    lastUpdated: '2026-04-03',
-    tags: ['water-quality', 'lakes', 'wetlands', 'rivers', 'springs', 'basin-monitoring']
+    historicalDataFrom: '2022',
+    qualityAssurance: 'Non-regulatory community optical calibration + ECMWF CAMS synoptic data assimilation (0 direct CPCB CAAQMS API feeds)',
+    operatedBy: 'AirGradient / BreatheOSS Community Network & ECMWF Copernicus CAMS (via Open-Meteo) — 0 KEW Sensors',
+    description: 'Integrates third-party community AirGradient optical PM2.5 nodes in Srinagar, Jammu, and Leh with 44 Copernicus CAMS (~11 km) regional model grid points. Muzaffarabad and Gilgit are 100% gridded model cells with zero connected ground monitors.',
+    limitations: 'Zero direct CPCB/JKPCC CAAQMS beta-attenuation API connections. Instantaneous hourly/optical readings differ from statutory 24-hour NAAQS compliance averages.',
+    lastUpdated: '2026-11-27',
+    tags: ['air-quality', 'community-sensor', 'CAMS-model', 'non-regulatory', 'AQI'],
   },
   {
     id: 'monitor-seismic',
     category: 'seismic',
-    name: 'Seismic Monitoring',
+    name: 'Multi-Agency Regional Seismic Catalog (USGS / EMSC / NCS)',
     status: 'active-network',
-    cadence: 'live',
+    cadence: 'event-driven',
     source: 'institutional',
-    stationCount: 8,
-    coverage: 'Statewide (Seismic Zones IV-V)',
+    stationCount: 0, // 0 KEW seismographs; ingests 3 external statutory seismological agency catalogs
+    kewOwnedPhysicalSensors: 0,
+    externalFeedOrGridCount: 3,
+    infrastructureClassification: 'External Statutory Agency Catalog',
+    provenanceClass: 'third_party_ground_station',
+    coverage: 'Western Himalaya & Hindu Kush-Pamir Belt (31.8°N–37.6°N, 71.0°E–80.5°E)',
     coverageDetails: {
-      districts: ['Srinagar', 'Anantnag', 'Baramulla', 'Ganderbal', 'Kupwara', 'Doda', 'Kishtwar'],
+      districts: [...KASHMIR_CORE_DISTRICTS, 'Kishtwar', 'Doda', 'Ramban', 'Leh', 'Kargil', 'Muzaffarabad', 'Gilgit'],
     },
-    parametersTracked: ['Magnitude', 'Depth', 'Epicenter Location', 'Peak Ground Acceleration', 'Seismic Intensity'],
-    whatIsMonitored: 'Seismic activity, earthquake events, and ground motion indicators across high-risk Himalayan seismic zones.',
+    parametersTracked: ['Magnitude (Mw/mb/ML)', 'Hypocentral Depth (km)', 'Epicenter Coordinates', 'Origin Time'],
+    whatIsMonitored: 'Deduplicated earthquake event catalogs reported by USGS ANSS ComCat, EMSC SeismicPortal, and National Center for Seismology (NCS India).',
     feedsModules: [
-      { moduleId: 'risk-monitoring', moduleName: 'Risk & Monitoring', modulePath: '/risk-monitoring', contributionType: 'Seismic risk assessment' },
-      { moduleId: 'districts', moduleName: 'District Profiles', modulePath: '/districts', contributionType: 'Seismic hazard mapping' },
+      { moduleId: 'hazard-intelligence', moduleName: 'Hazard Intelligence', modulePath: '/hazard-intelligence/earthquakes', contributionType: 'Official multi-agency earthquake catalog' },
+      { moduleId: 'districts', moduleName: 'District Profiles', modulePath: '/districts', contributionType: 'Historical & recent regional seismicity context' },
     ],
     feedsDashboards: [
-      { name: 'Seismic Activity Dashboard', path: '/hazard-intelligence/earthquakes', description: 'Recent earthquakes and seismic hazard maps' },
+      { name: 'Earthquake Intelligence', path: '/hazard-intelligence/earthquakes', description: 'Deduplicated USGS, EMSC & NCS seismic event catalog' },
     ],
     generatesAlerts: [
-      { type: 'Seismic Event Alert', description: 'Triggered by earthquakes above magnitude threshold', severity: 'critical' },
+      { type: 'Seismic Event Notification', description: 'Reported regional earthquakes (M ≥ 2.5) from USGS/EMSC/NCS catalogs', severity: 'critical' },
     ],
-    dataAvailability: 'live-stream',
-    historicalDataFrom: '2015',
-    qualityAssurance: 'National Seismological Network standards with IMD validation',
-    operatedBy: 'India Meteorological Department / National Center for Seismology',
-    description: 'Seismic station network monitoring earthquake activity across Kashmir\'s high-risk Himalayan terrain, providing real-time event detection.',
-    limitations: 'Sparse station density in remote high-altitude zones. Detection threshold varies by region.',
-    lastUpdated: '2026-04-04',
-    tags: ['seismic', 'earthquake', 'hazard', 'risk', 'Himalaya', 'tectonic']
+    dataAvailability: 'near-real-time',
+    historicalDataFrom: '1970',
+    qualityAssurance: 'External statutory seismological network review (USGS, EMSC, NCS India)',
+    operatedBy: 'USGS, Euro-Mediterranean Seismological Centre (EMSC) & NCS India — 0 KEW Seismographs',
+    description: 'Aggregates and Haversine-deduplicates official public seismic event feeds across the Western Himalaya. Kashmir EcoWatch operates zero local seismometers or GNSS monuments.',
+    limitations: 'Catalog completeness threshold is ~M 2.5–3.0 in high-relief Himalayan sectors; provides historical/recent event context rather than deterministic earthquake prediction.',
+    lastUpdated: '2026-11-27',
+    tags: ['seismic', 'earthquake', 'USGS', 'EMSC', 'NCS', 'external-catalog'],
   },
   {
     id: 'monitor-weather',
     category: 'weather',
-    name: 'Weather Stations',
+    name: 'Gridded Synoptic NWP & GloFAS v4 Hydrological Models',
     status: 'active-network',
     cadence: 'hourly',
-    source: 'institutional',
-    stationCount: 47,
-    coverage: 'All Districts (Multiple Altitudes)',
+    source: 'satellite-derived',
+    stationCount: 0, // 0 KEW physical AWS stations; NWP & hydrological model grid points only
+    kewOwnedPhysicalSensors: 0,
+    externalFeedOrGridCount: 46,
+    infrastructureClassification: 'Gridded NWP / Hydrological Model',
+    provenanceClass: 'gridded_reanalysis_nwp',
+    coverage: '5 Subregions / 46 Operational Districts (9–25 km NWP & ~5 km GloFAS Grids)',
     coverageDetails: {
-      districts: ['All 10 districts'],
-      altitudeRange: '200m (plains) to 4,000m+ (high-altitude stations)',
+      districts: [...KASHMIR_CORE_DISTRICTS, 'Jammu', 'Kishtwar', 'Ramban', 'Leh', 'Kargil', 'Muzaffarabad', 'Gilgit', 'Skardu'],
+      altitudeRange: '280 m (Shivalik plains) to 8,611 m (Karakoram relief — model grid terrain-masked)',
     },
-    parametersTracked: ['Temperature', 'Precipitation', 'Humidity', 'Wind Speed/Direction', 'Atmospheric Pressure', 'Solar Radiation', 'Snowfall'],
-    whatIsMonitored: 'Surface meteorological conditions across altitudinal gradients, supporting weather forecasting, climate analysis, and hazard preparedness.',
+    parametersTracked: ['2m Temp & Precip (NWP)', '850/700/500/300 hPa Synoptic Fields', '31-Member GEFS Quantiles', 'GloFAS v4 Modeled River Discharge'],
+    whatIsMonitored: 'Numerical weather prediction fields (ECMWF IFS, NOAA GFS/GEFS, ERA5-Land) and Copernicus GloFAS v4 (~5 km) modeled river discharge.',
     feedsModules: [
-      { moduleId: 'risk-monitoring', moduleName: 'Risk & Monitoring', modulePath: '/risk-monitoring', contributionType: 'Weather-based hazard forecasting' },
-      { moduleId: 'districts', moduleName: 'District Profiles', modulePath: '/districts', contributionType: 'District-level climate data' },
-      { moduleId: 'environmental-monitoring', moduleName: 'Environmental Monitoring', modulePath: '/environmental-monitoring', contributionType: 'Climate trend analysis' },
+      { moduleId: 'hazard-intelligence', moduleName: 'Hazard Intelligence', modulePath: '/hazard-intelligence', contributionType: 'Gridded NWP & GloFAS hazard screening' },
+      { moduleId: 'districts', moduleName: 'District Profiles', modulePath: '/districts', contributionType: 'Gridded reanalysis climate context' },
     ],
     feedsDashboards: [
-      { name: 'Weather Dashboard', path: '/earth-human-impact/climate-atmosphere', description: 'Current conditions and forecasts' },
-      { name: 'Climate Trends', path: '/hazard-intelligence/dashboards', description: 'Long-term temperature and precipitation patterns' },
+      { name: 'Atmospheric Systems', path: '/hazard-intelligence/atmospheric-systems/western-disturbances', description: 'Synoptic NWP & ERA5-Land analysis' },
+      { name: 'Flood Screening', path: '/hazard-intelligence/floods', description: 'GloFAS v4 (~5 km) modeled river discharge & statutory stage benchmarks' },
     ],
     generatesAlerts: [
-      { type: 'Weather Advisory', description: 'Heatwave, cold wave, or extreme precipitation warnings', severity: 'moderate' },
-      { type: 'Flood Advisory', description: 'Based on rainfall intensity and river level correlation', severity: 'high' },
+      { type: 'NWP Weather & Hydrological Screening', description: 'Coarse-grid NWP precipitation, snow, and GloFAS discharge screening', severity: 'moderate' },
     ],
     dataAvailability: 'near-real-time',
-    historicalDataFrom: '2010',
-    qualityAssurance: 'IMD-standard instrumentation with regular calibration',
-    operatedBy: 'India Meteorological Department / J&K Meteorological Department',
-    description: 'Dense network of automatic and manual weather stations providing meteorological observations across Kashmir\'s varied topography.',
-    limitations: 'High-altitude stations subject to winter inaccessibility. Some manual stations report with delay.',
-    lastUpdated: '2026-04-04',
-    tags: ['weather', 'meteorology', 'climate', 'forecasting', 'stations', 'IMD']
+    historicalDataFrom: '1980',
+    qualityAssurance: 'Unit-validated Open-Meteo / ECMWF / NOAA / Copernicus model ingestion with subterranean pressure-level masking',
+    operatedBy: 'Open-Meteo (ECMWF IFS / ERA5 / GloFAS v4 / NOAA GEFS) — 0 KEW Weather Stations',
+    description: 'Provides coarse-grid numerical weather and hydrological model diagnostics across Western Himalayan coordinates. Explicitly distinct from in-situ IMD AWS, Doppler radar, or CWC river gauges.',
+    limitations: '9–25 km NWP grids cannot resolve sub-2 km convective cloudburst cores or localized valley microclimates; GloFAS (~5 km) is modeled discharge, not physical staff-gauge height.',
+    lastUpdated: '2026-11-27',
+    tags: ['NWP', 'ECMWF', 'GloFAS', 'ERA5', 'gridded-model'],
+  },
+  {
+    id: 'monitor-water-quality',
+    category: 'water-quality',
+    name: 'Published Limnological & NWQMP Grab-Sample Reference Archive',
+    status: 'reference-monitoring',
+    cadence: 'seasonal',
+    source: 'institutional',
+    stationCount: 0, // 0 live water-quality telemetry sondes or KEW buoys; static published reference sites only
+    kewOwnedPhysicalSensors: 0,
+    externalFeedOrGridCount: 12,
+    infrastructureClassification: 'Published Statutory Grab-Sample Archive',
+    provenanceClass: 'government_statutory_record',
+    coverage: '22 Trophic-Indexed Kashmir Lakes & 12 Published Regulatory Grab-Sample Sites',
+    coverageDetails: {
+      basins: ['Jhelum', 'Indus', 'Chenab', 'Ravi'],
+      districts: ['Srinagar', 'Anantnag', 'Ganderbal', 'Baramulla', 'Bandipora', 'Jammu', 'Leh'],
+    },
+    parametersTracked: ['Published Carlson TSI (SD/Chl-a/TP)', 'Archival pH/DO/BOD/COD', 'Archived Sentinel-2 NDCI Scenes'],
+    whatIsMonitored: 'Archival physicochemical water quality records from CPCB NWQMP, JKPCC, CAG audits, and peer-reviewed limnological literature alongside static Sentinel-2 NDCI scenes.',
+    feedsModules: [
+      { moduleId: 'water-systems', moduleName: 'Water Systems', modulePath: '/water-systems', contributionType: 'Published limnological & NWIA reference baselines' },
+      { moduleId: 'algal-blooms', moduleName: 'Algal Bloom Hub', modulePath: '/hazard-intelligence/algal-bloom-intelligence', contributionType: 'Archived Sentinel-2 NDCI optical screening' },
+    ],
+    feedsDashboards: [
+      { name: 'Water Intelligence Atlas', path: '/water-systems/lakes', description: '553 cataloged waterbodies (22 with published Carlson TSI baselines)' },
+    ],
+    generatesAlerts: [],
+    dataAvailability: 'reference-archive',
+    historicalDataFrom: '2011',
+    qualityAssurance: 'Cross-referenced against ISRO NWIA (2011), CPCB NWQMP tables, CAG Report No. 4 of 2025, and peer-reviewed limnology',
+    operatedBy: 'Published Statutory Archives (CPCB / JKPCC / ISRO NWIA / Academic Literature) — 0 KEW Sondes or Buoys',
+    description: 'Curated documentary archive of published grab-sample water quality baselines and Sentinel-2 optical scenes. Real-time automated water quality sonde or OCEMS feeds are not connected.',
+    limitations: '531 of 553 cataloged lakes lack published in-situ Carlson TSI measurements; laboratory ELISA/LC-MS cyanotoxin ingestion is pending institutional MoU.',
+    lastUpdated: '2026-11-27',
+    tags: ['water-quality', 'archival-baseline', 'NWIA', 'NWQMP', 'limnology'],
   },
   {
     id: 'monitor-wildlife',
     category: 'wildlife',
-    name: 'Wildlife Camera Traps',
-    status: 'periodic-monitoring',
+    name: 'Published Wildlife Census & Taxonomic Literature Baselines',
+    status: 'reference-monitoring',
     cadence: 'seasonal',
-    source: 'field-based',
-    stationCount: 156,
-    coverage: 'Protected Areas & Critical Corridors',
+    source: 'institutional',
+    stationCount: 0, // Quarantined synthetic "156 camera traps" claim; KEW operates 0 camera traps
+    kewOwnedPhysicalSensors: 0,
+    externalFeedOrGridCount: 0,
+    infrastructureClassification: 'Satellite Remote-Sensing & Literature Benchmark',
+    provenanceClass: 'peer_reviewed_literature',
+    coverage: '45 Verified Protected Areas & 239 Verified Species Profiles',
     coverageDetails: {
-      protectedAreas: ['Dachigam NP', 'Overa-Aru WLS', 'Hirpora WLS', 'Gulmarg WLS', 'Kishtwar NP'],
+      districts: KASHMIR_CORE_DISTRICTS,
+      protectedAreas: ['Dachigam NP', 'Overa-Aru WLS', 'Hirpora WLS', 'Gulmarg WLS', 'Kishtwar High Altitude NP', 'Hemis NP'],
     },
-    parametersTracked: ['Species Presence/Absence', 'Relative Abundance', 'Activity Patterns', 'Human-Wildlife Conflict Events', 'Habitat Use'],
-    whatIsMonitored: 'Terrestrial wildlife activity, species distribution, and human-wildlife interaction indicators across protected areas and ecological corridors.',
+    parametersTracked: ['Statutory Population Censuses (Hangul, Markhor, Snow Leopard)', 'IUCN Red List Status', 'Elevation-Verified Range Envelopes'],
+    whatIsMonitored: 'Published wildlife department censuses (e.g., 2023 Hangul census, 2024 WII SPAI Snow Leopard assessment) and peer-reviewed taxonomic distributions.',
     feedsModules: [
-      { moduleId: 'biodiversity', moduleName: 'Biodiversity', modulePath: '/biodiversity', contributionType: 'Species detection and monitoring' },
-      { moduleId: 'protected-areas', moduleName: 'Protected Areas', modulePath: '/protected-network', contributionType: 'PA-level biodiversity tracking' },
+      { moduleId: 'biodiversity', moduleName: 'Biodiversity', modulePath: '/biodiversity', contributionType: '239 verified species reference profiles' },
+      { moduleId: 'protected-areas', moduleName: 'Protected Areas', modulePath: '/protected-network', contributionType: '45 verified protected area profiles' },
     ],
     feedsDashboards: [
-      { name: 'Species Intelligence Dashboard', path: '/biodiversity/dashboards', description: 'Species detection trends and distribution maps' },
+      { name: 'Biodiversity Reference Hub', path: '/biodiversity', description: 'Verified taxonomic checklists & IUCN conservation baselines' },
     ],
-    generatesAlerts: [
-      { type: 'Human-Wildlife Conflict Alert', description: 'Triggered by conflict event reports near settlements', severity: 'high' },
-      { type: 'Endangered Species Sighting', description: 'Rare species detection flagged for verification', severity: 'low' },
-    ],
-    dataAvailability: 'periodic-updates',
-    historicalDataFrom: '2019',
-    qualityAssurance: 'Systematic deployment protocol with expert species identification review',
-    operatedBy: 'J&K Wildlife Department / Research Partners',
-    description: 'Camera trap network deployed across protected areas and wildlife corridors for species monitoring and conflict tracking.',
-    limitations: 'Seasonal deployment cycles. Data retrieval delayed during heavy snow. Species identification requires expert review.',
-    lastUpdated: '2026-04-01',
-    tags: ['wildlife', 'camera-trap', 'species', 'protected-areas', 'biodiversity', 'conflict']
+    generatesAlerts: [],
+    dataAvailability: 'reference-archive',
+    historicalDataFrom: '2015',
+    qualityAssurance: 'Verified against IUCN Red List, WII monographs, and statutory wildlife census reports',
+    operatedBy: 'Published Statutory & Academic Literature (WII / Dept. of Wildlife Protection) — 0 KEW Camera Traps',
+    description: 'Synthesizes published wildlife survey literature and statutory census reports. Previously displayed synthetic camera-trap counts (156) have been quarantined; KEW operates zero field camera traps or acoustic arrays.',
+    limitations: 'Curated reference subset (239 verified species profiles); no live wildlife telemetry collars or automated camera-trap feeds are connected.',
+    lastUpdated: '2026-11-27',
+    tags: ['wildlife', 'literature-baseline', 'census', 'IUCN', 'protected-areas'],
   },
   {
     id: 'monitor-glacier',
     category: 'glacier',
-    name: 'Glacier Monitoring',
-    status: 'seasonal-coverage',
+    name: 'Cryosphere Remote-Sensing & Geodetic Literature Archive',
+    status: 'reference-monitoring',
     cadence: 'seasonal',
-    source: 'hybrid',
-    stationCount: 6,
-    coverage: 'High-Altitude Cryosphere Zones',
+    source: 'satellite-derived',
+    stationCount: 0, // 0 KEW glacier mass-balance stakes or alpine GNSS monuments
+    kewOwnedPhysicalSensors: 0,
+    externalFeedOrGridCount: 0,
+    infrastructureClassification: 'Satellite Remote-Sensing & Literature Benchmark',
+    provenanceClass: 'peer_reviewed_literature',
+    coverage: 'Greater Himalayan, Pir Panjal, Ladakh & Karakoram Benchmark Glaciers',
     coverageDetails: {
-      altitudeRange: '3,500m to 5,500m',
-      protectedAreas: ['Kolahoi Glacier Zone', 'Machoi Glacier Zone', 'Haramukh Region'],
+      districts: ['Anantnag', 'Ganderbal', 'Kishtwar', 'Kargil', 'Leh', 'Hunza', 'Shigar'],
+      altitudeRange: '3,500 m to 8,611 m ASL',
+      protectedAreas: ['Kolahoi Basin', 'Machoi / Drass', 'Suru-Zanskar', 'Karakoram Cryosphere'],
     },
-    parametersTracked: ['Glacier Mass Balance', 'Snow Line Elevation', 'Meltwater Discharge', 'Glacial Lake Extent', 'Equilibrium Line Altitude'],
-    whatIsMonitored: 'Glacier health indicators, mass balance, and cryosphere changes across major Kashmir glaciers.',
+    parametersTracked: ['Published Snout Retreat Rates', 'Geodetic Mass Balance (Literature)', 'Proglacial Lake Inventory'],
+    whatIsMonitored: 'Published multi-decadal satellite glacier retreat studies, WGMS/ISRO cryosphere inventories, and moraine-dammed glacial lake assessments.',
     feedsModules: [
-      { moduleId: 'water-systems', moduleName: 'Water Systems', modulePath: '/water-systems', contributionType: 'Upstream water source monitoring' },
-      { moduleId: 'risk-monitoring', moduleName: 'Risk & Monitoring', modulePath: '/risk-monitoring', contributionType: 'GLOF risk assessment' },
+      { moduleId: 'water-systems', moduleName: 'Water Systems', modulePath: '/water-systems', contributionType: 'Published glacier inventory baselines' },
+      { moduleId: 'glofs', moduleName: 'GLOF Screening', modulePath: '/hazard-intelligence/glofs', contributionType: 'Glacial lake susceptibility & NWP thermal screening' },
     ],
     feedsDashboards: [
-      { name: 'Cryosphere Dashboard', path: '/earth-human-impact/aquatic-cryosphere', description: 'Glacier health and snow cover trends' },
+      { name: 'Cryosphere & GLOF Hub', path: '/hazard-intelligence/glofs', description: 'Glacial lake inventory & NWP screening' },
     ],
-    generatesAlerts: [
-      { type: 'GLOF Risk Alert', description: 'Glacial lake outburst flood risk from expanding proglacial lakes', severity: 'critical' },
-    ],
-    dataAvailability: 'periodic-updates',
-    historicalDataFrom: '2016',
-    qualityAssurance: 'Field surveys combined with satellite remote sensing validation',
-    operatedBy: 'University of Kashmir / Wadia Institute of Himalayan Geology',
-    description: 'High-altitude glacier monitoring combining field observations with satellite-derived glacier change analysis.',
-    limitations: 'Extreme altitude limits field access. Most observations seasonal (summer only). Remote sensing data gap during cloud cover.',
-    lastUpdated: '2026-03-28',
-    tags: ['glacier', 'cryosphere', 'mass-balance', 'GLOF', 'high-altitude', 'climate-impact']
+    generatesAlerts: [],
+    dataAvailability: 'reference-archive',
+    historicalDataFrom: '1962',
+    qualityAssurance: 'Peer-reviewed glaciological literature & ISRO SAC / ICIMOD glacial lake inventories',
+    operatedBy: 'Published Satellite Glaciology Literature (ISRO / WIHG / University Studies) — 0 KEW Ablation Stations',
+    description: 'Compiles published satellite-derived glacier area change and geodetic mass-balance benchmarks. KEW operates zero physical glacier weather stations or GNSS monuments.',
+    limitations: 'Static multi-year satellite inventory benchmarks; live in-situ ablation stake or proglacial gauge telemetry is not connected.',
+    lastUpdated: '2026-11-27',
+    tags: ['glacier', 'cryosphere', 'remote-sensing', 'literature-baseline', 'GLOF'],
   },
 ];
 
@@ -290,18 +331,23 @@ export const getNetworkById = (id: string) => monitoringRegistry.find(n => n.id 
 
 export const getMonitoringStats = () => ({
   activeNetworks: getActiveNetworks().length,
-  totalStations: monitoringRegistry.reduce((sum, n) => sum + n.stationCount, 0),
-  districtCoverage: new Set(monitoringRegistry.flatMap(n => n.coverageDetails.districts || [])).size,
+  totalStations: KEW_OWNED_PHYSICAL_SENSORS_COUNT, // 0 KEW-owned physical stations
+  kewOwnedPhysicalSensors: KEW_OWNED_PHYSICAL_SENSORS_COUNT,
+  externalCommunitySensorZones: 3,
+  nwpModelGridCells: 44,
+  districtCoverage: new Set(
+    monitoringRegistry.flatMap(n => (n.coverageDetails.districts || []).filter(d => !d.toLowerCase().startsWith('all ')))
+  ).size,
   alertLinkedNetworks: getNetworksFeedingAlerts().length,
   dashboardLinkedNetworks: getNetworksFeedingDashboards().length,
 });
 
 export const statusDisplayLabels: Record<MonitoringStatus, string> = {
-  'active-network': 'Active Network',
-  'periodic-monitoring': 'Periodic Monitoring',
+  'active-network': 'External Feed Active',
+  'periodic-monitoring': 'Periodic Survey',
   'seasonal-coverage': 'Seasonal Coverage',
-  'under-expansion': 'Under Expansion',
-  'reference-monitoring': 'Reference Monitoring',
+  'under-expansion': 'Pending Integration',
+  'reference-monitoring': 'Archival Reference',
 };
 
 export const statusColors: Record<MonitoringStatus, string> = {
@@ -313,12 +359,12 @@ export const statusColors: Record<MonitoringStatus, string> = {
 };
 
 export const categoryLabels: Record<MonitoringCategory, string> = {
-  'air-quality': 'Air Quality',
-  'water-quality': 'Water Quality',
-  'seismic': 'Seismic',
-  'weather': 'Weather',
-  'wildlife': 'Wildlife',
-  'glacier': 'Glacier / Cryosphere',
+  'air-quality': 'Air Quality (Community + CAMS)',
+  'water-quality': 'Water Quality (Archival)',
+  'seismic': 'Seismic (Agency Catalogs)',
+  'weather': 'Weather & Floods (NWP / GloFAS)',
+  'wildlife': 'Wildlife (Literature Census)',
+  'glacier': 'Cryosphere (Remote Sensing)',
 };
 
 export const categoryGradients: Record<MonitoringCategory, string> = {
@@ -331,27 +377,27 @@ export const categoryGradients: Record<MonitoringCategory, string> = {
 };
 
 export const cadenceLabels: Record<MonitoringCadence, string> = {
-  live: 'Live Stream',
-  hourly: 'Hourly Updates',
-  daily: 'Daily Batch',
+  live: 'Near-Real-Time Feed',
+  hourly: 'Hourly Model / Feed',
+  daily: 'Daily Model Cycle',
   weekly: 'Weekly Updates',
   monthly: 'Monthly Reports',
-  seasonal: 'Seasonal Campaigns',
-  'event-driven': 'Event-Triggered',
+  seasonal: 'Published Archival Baseline',
+  'event-driven': 'Event-Driven Agency Catalog',
 };
 
 export const sourceLabels: Record<MonitoringSource, string> = {
-  institutional: 'Institutional Network',
-  'field-based': 'Field-Based Monitoring',
-  'community-supported': 'Community-Supported',
-  'satellite-derived': 'Satellite-Derived Data',
-  hybrid: 'Hybrid (Institutional + Field)',
+  institutional: 'External Statutory Archive / Catalog',
+  'field-based': 'Published Field Literature',
+  'community-supported': 'Community Optical + CAMS Model',
+  'satellite-derived': 'Satellite / Gridded NWP Model',
+  hybrid: 'Published Literature + Remote Sensing',
 };
 
 export const dataAvailabilityLabels: Record<MonitoringNetwork['dataAvailability'], string> = {
-  'live-stream': 'Live Data Stream',
-  'near-real-time': 'Near Real-Time',
-  'daily-batch': 'Daily Batch Updates',
-  'periodic-updates': 'Periodic Updates',
-  'reference-archive': 'Reference Archive',
+  'live-stream': 'External Public Feed',
+  'near-real-time': 'Near-Real-Time External API',
+  'daily-batch': 'Daily Model Batch',
+  'periodic-updates': 'Periodic Literature Updates',
+  'reference-archive': 'Static Reference Archive',
 };

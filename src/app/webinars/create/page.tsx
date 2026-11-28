@@ -294,7 +294,7 @@ export default function CreateWebinarPage() {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Prof. Elena Rostova / Dr. M. Farooq"
+                      placeholder="e.g. Invited Session Chair / Speaker Slot (Verified Consent & ORCID Required)"
                       value={form.primarySpeaker.name}
                       onChange={(e) => setForm({
                         ...form,

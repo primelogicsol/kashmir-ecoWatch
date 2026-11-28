@@ -2875,7 +2875,7 @@ export const COHORT_25_DOSSIERS: IndividualScientificDossierSpec[] = [
         title: 'Literature Synthesis: Mountain Observability Gaps & FAIR Reproducibility',
         paragraphs: [
           'Global and regional Himalayan scholarship converges on the urgency of upgrading mountain observation rigor. Immerzeel et al. [1] identified the Indus water tower as simultaneously the single most important and most vulnerable mountain basin globally, while highlighting severe high-altitude hydro-meteorological uncertainty. Leng, Harrison, and Anderson [4] documented critical monitoring blind spots across Himalayan alpine ecohydrology—particularly permafrost thaw, snow sublimation, and non-glacial alpine turf water regulation—and Romshoo et al. [2][3] established rigorous multi-decadal remote-sensing and CMIP6 hydrological modelling benchmarks across Kashmir and Upper Indus glaciers while emphasizing field mass-balance calibration.',
-          'In parallel, data-science and metrology communities have codified operational rules for trustworthy synthesis. Ahmadi et al. [5] demonstrate end-to-end automated workflows for FAIR (Findable, Accessible, Interoperable, Reusable) dataset sharing with rich provenance metadata, while Aguilar, Oppermann, and Weise [6] caution against "FAIRness theatre"—highlighting practical curation costs, legacy metadata heterogeneity, and the necessity of prioritizing high-value quality gates over superficial compliance checklists.',
+          'In parallel, data-science and metrology communities have codified operational rules for trustworthy synthesis. Wilkinson et al. [5] established the foundational FAIR (Findable, Accessible, Interoperable, Reusable) Guiding Principles for scientific data stewardship and provenance metadata, while Aguilar, Oppermann, and Weise [6] caution against "FAIRness theatre"—highlighting practical curation costs, legacy metadata heterogeneity, and the necessity of prioritizing high-value quality gates over superficial compliance checklists.',
         ],
       },
       {
@@ -3226,16 +3226,16 @@ export const COHORT_25_DOSSIERS: IndividualScientificDossierSpec[] = [
       {
         num: 5,
         id: 'REF-100-05',
-        authors: 'Ahmadi, M.; Wagner, R.; Bekeschus, S.; Becker, M. M.',
-        year: 2026,
-        title: 'Data Management Workflow for FAIR Sharing of Bioimaging Datasets in Plasma Medicine',
+        authors: 'Wilkinson, M. D.; Dumontier, M.; Aalbersberg, I. J.; Appleton, G.; Axton, M.; Baak, A.; Mons, B.',
+        year: 2016,
+        title: 'The FAIR Guiding Principles for scientific data management and stewardship',
         journalOrPublisher: 'Scientific Data',
         category: 'Peer-Reviewed Journal',
-        doi: '10.1038/s41597-026-07982-x',
+        doi: '10.1038/sdata.2016.18',
         relevantFinding:
-          'Provides operational architecture for automated FAIR (Findable, Accessible, Interoperable, Reusable) metadata capture, provenance tracking, and reproducible dataset packaging.',
+          'Establishes the foundational international FAIR (Findable, Accessible, Interoperable, Reusable) principles for machine-actionable scientific metadata, persistent identifiers, and provenance tracking.',
         applicabilityLimitation:
-          'Developed in laboratory imaging workflows; adapted in KEW to geospatial GeoJSON/CSV and multi-tier environmental provenance.',
+          'Defines domain-agnostic stewardship principles; adapted in KEW to geospatial GeoJSON/CSV schemas and multi-tier Western Himalayan environmental provenance.',
       },
       {
         num: 6,

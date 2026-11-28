@@ -48,34 +48,49 @@ export default function PrimeLogicErrorMonitoringDashboard() {
   const [passcodeError, setPasscodeError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const stored = sessionStorage.getItem('kew_admin_authenticated');
-      if (stored === 'true') {
-        setIsMasterUnlocked(true);
-      }
-    }
+    fetch('/api/admin/session', { credentials: 'same-origin' })
+      .then((r) => r.json())
+      .then((s) => {
+        if (s?.authenticated) {
+          setIsMasterUnlocked(true);
+        }
+      })
+      .catch(() => null);
   }, []);
 
-  const isAuthorized = (isLoggedIn && user?.role === 'administrator') || isMasterUnlocked;
+  const isAuthorized = isMasterUnlocked;
 
-  const handleUnlockWithPasscode = (e: React.FormEvent) => {
+  const handleUnlockWithPasscode = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (passcode.trim() === 'KEW-Admin-2026!') {
-      setIsMasterUnlocked(true);
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem('kew_admin_authenticated', 'true');
+    try {
+      const res = await fetch('/api/admin/session', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          passcode: passcode.trim(),
+          actor: user?.name || user?.email || 'Prime Logic NOC Administrator',
+        }),
+      });
+      const payload = await res.json().catch(() => ({}));
+      if (res.ok && payload?.authenticated) {
+        setIsMasterUnlocked(true);
+        setPasscode('');
+        setPasscodeError(null);
+      } else {
+        setPasscodeError(payload?.error || 'Invalid Administrator Passcode. Access denied.');
       }
-      setPasscodeError(null);
-    } else {
-      setPasscodeError('Invalid Administrator Passcode. Access denied.');
+    } catch {
+      setPasscodeError('Unable to verify administrator session with server.');
     }
   };
 
-  const handleLockDashboard = () => {
+  const handleLockDashboard = async () => {
     setIsMasterUnlocked(false);
-    if (typeof window !== 'undefined') {
-      sessionStorage.removeItem('kew_admin_authenticated');
-    }
+    await fetch('/api/admin/session', {
+      method: 'DELETE',
+      credentials: 'same-origin',
+    }).catch(() => null);
   };
 
   const [incidents, setIncidents] = useState<ErrorIncidentRecord[]>([]);
@@ -127,7 +142,7 @@ export default function PrimeLogicErrorMonitoringDashboard() {
     try {
       const res = await fetch('/api/admin/system/errors', {
         cache: 'no-store',
-        headers: { 'x-admin-key': 'KEW-Admin-2026!' },
+        credentials: 'same-origin',
       });
       if (!res.ok) throw new Error('API request failed');
       const data = await res.json();
@@ -152,7 +167,7 @@ export default function PrimeLogicErrorMonitoringDashboard() {
 
     let eventSource: EventSource | null = null;
     try {
-      eventSource = new EventSource('/api/admin/system/errors/stream?key=' + encodeURIComponent('KEW-Admin-2026!'));
+      eventSource = new EventSource('/api/admin/system/errors/stream');
 
       eventSource.onopen = () => {
         setStreamConnected(true);
@@ -226,7 +241,8 @@ export default function PrimeLogicErrorMonitoringDashboard() {
     try {
       const res = await fetch('/api/admin/system/errors', {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json', 'x-admin-key': 'KEW-Admin-2026!' },
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           id,
           status: newStatus,
@@ -257,7 +273,8 @@ export default function PrimeLogicErrorMonitoringDashboard() {
     try {
       const res = await fetch('/api/admin/system/errors/test', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-admin-key': 'KEW-Admin-2026!' },
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ simulationType: simType }),
       });
       const data = await res.json();

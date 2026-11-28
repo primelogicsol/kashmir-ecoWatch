@@ -360,16 +360,28 @@ function HistoricalFireArchiveCard({ event }: { event: HistoricalForestFireEvent
 
 // ─── Main Forest Fires Workbench ─────────────────────────────────────────────
 
+function ForestFiresUrlTabSync({
+  onTabChange,
+}: {
+  onTabChange: (tab: 'live-zones' | 'archive' | 'seasonal-regimes') => void;
+}) {
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const t = searchParams.get('tab');
+    if (t === 'archive' || t === 'seasonal-regimes' || t === 'live-zones') {
+      onTabChange(t);
+    } else if (typeof window !== 'undefined' && window.location.hash === '#archive') {
+      onTabChange('archive');
+    }
+  }, [searchParams, onTabChange]);
+  return null;
+}
+
 function ForestFiresWorkbench() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const { filter } = useGlobalFilter();
 
-  const [activeTab, setActiveTab] = useState<'live-zones' | 'archive' | 'seasonal-regimes'>(() => {
-    const t = searchParams.get('tab');
-    if (t === 'archive' || t === 'seasonal-regimes') return t;
-    return 'live-zones';
-  });
+  const [activeTab, setActiveTab] = useState<'live-zones' | 'archive' | 'seasonal-regimes'>('live-zones');
 
   const [forestTypeFilter, setForestTypeFilter] = useState('all');
   const [riskFilter, setRiskFilter] = useState('all');
@@ -379,15 +391,6 @@ function ForestFiresWorkbench() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedZone, setSelectedZone] = useState<ForestFireRecord | null>(null);
   const ITEMS_PER_PAGE = 9;
-
-  useEffect(() => {
-    const t = searchParams.get('tab');
-    if (t === 'archive' || t === 'seasonal-regimes' || t === 'live-zones') {
-      setActiveTab(t);
-    } else if (typeof window !== 'undefined' && window.location.hash === '#archive') {
-      setActiveTab('archive');
-    }
-  }, [searchParams]);
 
   const switchTab = (tab: 'live-zones' | 'archive' | 'seasonal-regimes') => {
     setActiveTab(tab);
@@ -464,6 +467,9 @@ function ForestFiresWorkbench() {
 
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col">
+      <Suspense fallback={null}>
+        <ForestFiresUrlTabSync onTabChange={setActiveTab} />
+      </Suspense>
       <Heading
         label="Hazard Intelligence · Wildfire, Burn-Scar Archive & Thermal Sentinel"
         breadcrumbs={[
@@ -1009,15 +1015,5 @@ function ForestFiresWorkbench() {
 }
 
 export default function ForestFiresPage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-slate-950 text-slate-300 flex items-center justify-center text-sm">
-          Loading Forest Fire Intelligence &amp; Archive...
-        </div>
-      }
-    >
-      <ForestFiresWorkbench />
-    </Suspense>
-  );
+  return <ForestFiresWorkbench />;
 }

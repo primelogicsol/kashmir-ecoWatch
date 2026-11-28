@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // KASHMIR ECOWATCH — STANDARDS-COMPLIANT ISO/IEC 18004 QR CODE MATRIX ENCODER
 // Pure TypeScript, zero external dependencies, zero third-party network calls.
-// Supports Byte Mode (UTF-8) Versions 1–6 (ECC Level L, up to 134 bytes).
+// Supports Byte Mode (UTF-8) Versions 1–9 (ECC Level L, up to 230 bytes).
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface QrVersionSpec {
@@ -20,7 +20,20 @@ const VERSION_SPECS: QrVersionSpec[] = [
   { version: 4, size: 33, dataCodewords: 80, ecCodewordsPerBlock: 20, numBlocks: 1, alignmentCenters: [6, 26] },
   { version: 5, size: 37, dataCodewords: 108, ecCodewordsPerBlock: 26, numBlocks: 1, alignmentCenters: [6, 30] },
   { version: 6, size: 41, dataCodewords: 136, ecCodewordsPerBlock: 18, numBlocks: 2, alignmentCenters: [6, 34] },
+  { version: 7, size: 45, dataCodewords: 156, ecCodewordsPerBlock: 20, numBlocks: 2, alignmentCenters: [6, 22, 38] },
+  { version: 8, size: 49, dataCodewords: 194, ecCodewordsPerBlock: 24, numBlocks: 2, alignmentCenters: [6, 24, 42] },
+  { version: 9, size: 53, dataCodewords: 232, ecCodewordsPerBlock: 30, numBlocks: 2, alignmentCenters: [6, 26, 46] },
 ];
+
+function computeVersionInfoBits(version: number): number {
+  let rem = version << 12;
+  for (let i = 5; i >= 0; i--) {
+    if (rem & (1 << (i + 12))) {
+      rem ^= 0x1f25 << i;
+    }
+  }
+  return (version << 12) | rem;
+}
 
 const GF_EXP = new Uint8Array(512);
 const GF_LOG = new Uint8Array(256);
@@ -185,13 +198,25 @@ export function encodeQrMatrix(text: string): boolean[][] {
   }
   setFunc(size - 8, 8, true);
 
+  // Version information blocks (two 6x3 regions required for ISO 18004 Versions >= 7)
+  if (spec.version >= 7) {
+    const versionBits = computeVersionInfoBits(spec.version);
+    for (let i = 0; i < 6; i++) {
+      for (let j = 0; j < 3; j++) {
+        const dark = ((versionBits >>> (i * 3 + j)) & 1) === 1;
+        setFunc(size - 11 + j, i, dark);
+        setFunc(i, size - 11 + j, dark);
+      }
+    }
+  }
+
   // Place data bits in upward/downward 2-column zig-zag
   const allBits: number[] = [];
   for (const cw of finalCodewords) {
     for (let b = 7; b >= 0; b--) allBits.push((cw >>> b) & 1);
   }
-  // Remainder bits (7 for V2–V6, 0 for V1)
-  if (spec.version >= 2) {
+  // Remainder bits (7 for V2–V6, 0 for V1 and V7–V9)
+  if (spec.version >= 2 && spec.version <= 6) {
     for (let i = 0; i < 7; i++) allBits.push(0);
   }
 

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import * as XLSX from 'xlsx';
+import { buildMinimalXlsxBuffer, XlsxSheetInput } from '@/lib/xlsx-minimal';
 import {
   getMergedMasterRecord,
   recordReportAnalyticsEvent,
@@ -79,7 +79,7 @@ export async function GET(
   }
 
   if (format === 'xlsx') {
-    const wb = XLSX.utils.book_new();
+    const sheets: XlsxSheetInput[] = [];
 
     const indRows = master.indicators.map((i) => ({
       Indicator_ID: i.id,
@@ -95,7 +95,7 @@ export async function GET(
       Provenance_Class: i.provenanceClass,
       Source_Attribution: i.sourceAttribution,
     }));
-    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(indRows), 'Indicators');
+    sheets.push({ name: 'Indicators', rows: indRows });
 
     const tsRows = master.telemetrySeries.points.map((p) => ({
       Period: p.period,
@@ -108,7 +108,7 @@ export async function GET(
       Provenance: master.telemetrySeries.provenanceClass,
     }));
     if (tsRows.length > 0) {
-      XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(tsRows), 'Seasonal_Series');
+      sheets.push({ name: 'Seasonal_Series', rows: tsRows });
     }
 
     const riskRows = master.riskMatrix.map((r) => ({
@@ -121,7 +121,7 @@ export async function GET(
       Cumulative_Score_100: r.cumulativeScore,
       Mitigation_Priority: r.mitigationPriority,
     }));
-    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(riskRows), 'Risk_Matrix');
+    sheets.push({ name: 'Risk_Matrix', rows: riskRows });
 
     const refRows = master.references.map((r) => ({
       Ref_Number: r.num,
@@ -134,17 +134,16 @@ export async function GET(
       Access_Classification: r.accessClassification || 'Abstract-Verified',
       DOI_Or_URL: r.doi ? `https://doi.org/${r.doi}` : r.sourceUrl || '',
     }));
-    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(refRows), 'References');
+    sheets.push({ name: 'References', rows: refRows });
 
     if (master.claimVerificationMatrix && master.claimVerificationMatrix.length > 0) {
-      XLSX.utils.book_append_sheet(
-        wb,
-        XLSX.utils.json_to_sheet(master.claimVerificationMatrix),
-        'Claim_Verification'
-      );
+      sheets.push({
+        name: 'Claim_Verification',
+        rows: master.claimVerificationMatrix as unknown as Array<Record<string, unknown>>,
+      });
     }
 
-    const xlsxBuf = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' }) as Buffer;
+    const xlsxBuf = buildMinimalXlsxBuffer(sheets);
     return new NextResponse(new Uint8Array(xlsxBuf), {
       status: 200,
       headers: {

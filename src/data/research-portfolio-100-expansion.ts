@@ -160,7 +160,7 @@ export const EXPANDED_DIVISIONS_XIII_TO_XXIII: ExpandedDivisionSpec[] = [
       'ajk-regional-ecology',
       'gilgit-baltistan-ecology',
     ],
-    primaryKewRoute: '/regional-profiles',
+    primaryKewRoute: '/districts',
   },
   {
     id: 'sector-23-governance-intelligence',
@@ -971,7 +971,7 @@ export const ADDITIONAL_60_RESEARCH_DOSSIERS: ResearchSeriesDossier[] = [
       'An integrated study of interacting earthquakes, landslides, floods, avalanches, extreme weather and their potential cascading effects on hospitals, communication systems, utilities, transport networks and emergency services.',
     author: 'KEW Critical Infrastructure & Multi-Hazard Resilience Unit',
     telemetryRoute: '/hazard-intelligence',
-    gisMapRoute: '/environmental-resilience',
+    gisMapRoute: '/environmental-monitoring/environmental-resilience',
     recommendedDataSources: [
       'Sentinel-1 SAR',
       'Copernicus DEM',
@@ -1059,7 +1059,7 @@ export const ADDITIONAL_60_RESEARCH_DOSSIERS: ResearchSeriesDossier[] = [
       'A multi-model assessment of projected temperature, precipitation, snow cover, climate extremes and ecological exposure under alternative greenhouse gas emission scenarios.',
     author: 'KEW Climate Modelling & Future Scenario Intelligence Unit',
     telemetryRoute: '/earth-human-impact/climate-atmosphere',
-    gisMapRoute: '/environmental-resilience',
+    gisMapRoute: '/environmental-monitoring/environmental-resilience',
     recommendedDataSources: [
       'ERA5',
       'CHIRPS',
@@ -1550,8 +1550,8 @@ export const ADDITIONAL_60_RESEARCH_DOSSIERS: ResearchSeriesDossier[] = [
     abstract:
       'An integrated assessment of environmental SDG indicators, ecosystem service valuation, natural capital, resilience indicators, restoration effectiveness and measurable progress toward long-term ecological sustainability.',
     author: 'KEW Sustainability Indicators & Natural Capital Accounting Unit',
-    telemetryRoute: '/sdg',
-    gisMapRoute: '/environmental-resilience',
+    telemetryRoute: '/environmental-monitoring/sdg-monitoring',
+    gisMapRoute: '/environmental-monitoring/environmental-resilience',
     distinctionNote:
       'Distinction from Report 40: Focuses on UN SEEA natural capital accounting, SDG indicator validity, and measurable restoration/policy outcomes rather than cross-sectoral pollution impact synthesis.',
     recommendedDataSources: [
@@ -1693,8 +1693,8 @@ export const KEW_MODULE_TO_REPORT_COVERAGE_MATRIX: ModuleReportCoverageRow[] = [
   { moduleId: 'plastic-pollution', domainName: 'Plastic Pollution', route: '/environmental-monitoring/plastic-pollution', existingPortfolioDossiers: [10, 19, 24], expandedPortfolioDossiers: [90], operationalDataStatus: 'Operational Dataset & UI' },
   { moduleId: 'sewage-wastewater', domainName: 'Sewage and Wastewater', route: '/environmental-monitoring/sewage-wastewater', existingPortfolioDossiers: [1, 3, 38], expandedPortfolioDossiers: [80, 81], operationalDataStatus: 'Operational Dataset & UI' },
   { moduleId: 'env-health', domainName: 'Environmental Health Signals', route: '/environmental-monitoring', existingPortfolioDossiers: [9, 35, 38], expandedPortfolioDossiers: [50, 53, 80, 81, 82], operationalDataStatus: 'Operational UI + Secondary Baseline' },
-  { moduleId: 'critical-infra', domainName: 'Critical Infrastructure', route: '/environmental-resilience', existingPortfolioDossiers: [29, 30, 32], expandedPortfolioDossiers: [72], operationalDataStatus: 'Operational UI + Secondary Baseline' },
-  { moduleId: 'env-resilience', domainName: 'Environmental Resilience', route: '/environmental-resilience', existingPortfolioDossiers: [40], expandedPortfolioDossiers: [72, 76, 99], operationalDataStatus: 'Operational Dataset & UI' },
+  { moduleId: 'critical-infra', domainName: 'Critical Infrastructure', route: '/environmental-monitoring/critical-infrastructure', existingPortfolioDossiers: [29, 30, 32], expandedPortfolioDossiers: [72], operationalDataStatus: 'Operational UI + Secondary Baseline' },
+  { moduleId: 'env-resilience', domainName: 'Environmental Resilience', route: '/environmental-monitoring/environmental-resilience', existingPortfolioDossiers: [40], expandedPortfolioDossiers: [72, 76, 99], operationalDataStatus: 'Operational Dataset & UI' },
   { moduleId: 'earth-human-impact', domainName: 'Earth & Human Impact', route: '/earth-human-impact', existingPortfolioDossiers: [17, 25, 26, 28], expandedPortfolioDossiers: [41, 62, 83, 84, 85, 86, 87], operationalDataStatus: 'Operational Dataset & UI' },
   { moduleId: 'land-earth-systems', domainName: 'Land and Earth Systems', route: '/earth-human-impact/land-earth-systems', existingPortfolioDossiers: [17, 18, 26], expandedPortfolioDossiers: [83, 84, 85], operationalDataStatus: 'Operational Dataset & UI' },
   { moduleId: 'mining-extraction', domainName: 'Mining and Extraction', route: '/earth-human-impact/mining-extraction', existingPortfolioDossiers: [25, 26, 27], expandedPortfolioDossiers: [87], operationalDataStatus: 'Operational Dataset & UI' },
@@ -1706,7 +1706,7 @@ export const KEW_MODULE_TO_REPORT_COVERAGE_MATRIX: ModuleReportCoverageRow[] = [
   { moduleId: 'pil-portal', domainName: 'Environmental PIL Portal', route: '/resources/environmental-pil', existingPortfolioDossiers: [25, 26], expandedPortfolioDossiers: [95, 96], operationalDataStatus: 'Operational Dataset & UI' },
   { moduleId: 'ngo-impact', domainName: 'NGO Impact & Green Heroes', route: '/ngo-impact', existingPortfolioDossiers: [], expandedPortfolioDossiers: [97, 98], operationalDataStatus: 'Operational Dataset & UI' },
   { moduleId: 'citizen-science', domainName: 'Citizen Science & Field Intelligence', route: '/citizen-science', existingPortfolioDossiers: [], expandedPortfolioDossiers: [98, 100], operationalDataStatus: 'Operational Dataset & UI' },
-  { moduleId: 'sdg-monitoring', domainName: 'SDG Monitoring', route: '/sdg', existingPortfolioDossiers: [40], expandedPortfolioDossiers: [99], operationalDataStatus: 'Operational Dataset & UI' },
+  { moduleId: 'sdg-monitoring', domainName: 'SDG Monitoring', route: '/environmental-monitoring/sdg-monitoring', existingPortfolioDossiers: [40], expandedPortfolioDossiers: [99], operationalDataStatus: 'Operational Dataset & UI' },
   { moduleId: 'open-data', domainName: 'Open Data Portal', route: '/open-data', existingPortfolioDossiers: [1, 2, 3, 4], expandedPortfolioDossiers: [86, 100], operationalDataStatus: 'Operational Dataset & UI' },
   { moduleId: 'research-library', domainName: 'Scientific Research Library', route: '/research-library', existingPortfolioDossiers: [1, 2, 3, 4], expandedPortfolioDossiers: [41, 47, 50, 54, 67, 73, 86, 95, 100], operationalDataStatus: 'Operational Dataset & UI' },
   { moduleId: 'cumulative-scenario', domainName: 'Cumulative & Scenario Modelling', route: '/sectoral-eia/cumulative-impact', existingPortfolioDossiers: [40], expandedPortfolioDossiers: [54, 67, 71, 72, 76, 99, 100], operationalDataStatus: 'Operational Dataset & UI' },

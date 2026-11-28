@@ -820,7 +820,7 @@ export function generateReportSpecificIndicators(
         : 'Unavailable',
       sourceAttribution:
         idx === 0 && topPub
-          ? `${topPub.authors} (${topPub.year}) [1]${
+          ? `${topPub.authors} (${topPub.year})${topPub.doi ? ` · DOI: ${topPub.doi}` : ''}${
               pubWithMeasurement && pubWithMeasurement.extractedMeasurements[0]
                 ? ` — Published abstract reports: ${pubWithMeasurement.extractedMeasurements.slice(0, 2).join(', ')}`
                 : ''
@@ -848,15 +848,18 @@ export function buildReportClaimVerificationMatrix(
   const entries: ClaimVerificationEntry[] = [];
 
   if (pub1) {
+    const isPreprint1 = /preprint/i.test(pub1.publicationType || '') || /preprint/i.test(pub1.venue || '');
     entries.push({
       claimId: `${dossier.code}-CLM-01`,
       chapterSection: 'Ch 04 & Ch 11 (Literature & Impact Synthesis)',
       claimStatement: pub1.extractedFindingSnippet
         ? `${pub1.extractedFindingSnippet.slice(0, 210)}${pub1.extractedFindingSnippet.length > 210 ? '…' : ''}`
         : `Published ${pub1.geographicalTier} investigation establishing empirical context for ${dossier.title} (${pub1.venue}, ${pub1.year}).`,
-      classification: 'Verified external scientific observation',
-      supportingEvidence: `[1] ${pub1.authors} (${pub1.year})${pub1.doi ? ` · DOI: ${pub1.doi}` : ''}`,
-      epistemicQualification: `Classified as ${pub1.geographicalTier} (${pub1.accessClassification}); never claimed as original KEW fieldwork.`,
+      classification: isPreprint1 ? 'Scientific interpretation' : 'Verified external scientific observation',
+      supportingEvidence: `External Corpus: ${pub1.authors} (${pub1.year}, ${pub1.venue})${pub1.doi ? ` · DOI: ${pub1.doi}` : ''}`,
+      epistemicQualification: isPreprint1
+        ? `Preprint (Not Peer-Reviewed) — ${pub1.geographicalTier} (${pub1.accessClassification}); treated as preliminary non-peer-reviewed literature and never claimed as original KEW fieldwork.`
+        : `Classified as ${pub1.geographicalTier} (${pub1.accessClassification}); cited explicitly by author/year/DOI from external literature corpus and never claimed as original KEW fieldwork.`,
     });
   }
 
@@ -879,7 +882,7 @@ export function buildReportClaimVerificationMatrix(
       pubClass.evidenceClass === 'Modelled Environmental Assessment'
         ? 'Modelled estimate'
         : 'Scientific interpretation',
-    supportingEvidence: `${modelSpec.analyticalDomain}${pub2 ? ` & [2] ${pub2.authors} (${pub2.year})` : ''}`,
+    supportingEvidence: `${modelSpec.analyticalDomain}${pub2 ? ` & External Corpus: ${pub2.authors} (${pub2.year}${pub2.doi ? `, DOI: ${pub2.doi}` : ''})` : ''}`,
     epistemicQualification: modelSpec.uncertaintyAndLimitations,
   });
 
