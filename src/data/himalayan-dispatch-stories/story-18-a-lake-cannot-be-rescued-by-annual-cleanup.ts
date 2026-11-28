@@ -10,14 +10,14 @@ import { buildPreReleaseStage08GateLedger } from '@/lib/himalayan-dispatch-metri
 import { MagazineStory } from '@/types/himalayan-dispatch';
 
 export const STORY_18_LAKE_ANNUAL_CLEANUP: MagazineStory = {
-  id: 'hd-story-18',
+  id: 'hd-story-19',
   slug: 'a-lake-cannot-be-rescued-by-an-annual-cleanup',
   editionSlug: 'vol-01-no-01',
   editionLabel: 'VOL. 01 / NO. 01 · THE INAUGURAL ISSUE',
   departmentId: 'editorials',
   secondaryDepartmentIds: ['investigative-journalism', 'data-journalism'],
   departmentRubric: 'CIVIL SOCIETY & ACCOUNTABILITY · III · LACUSTRINE RESTORATION',
-  folioCode: '18 / CIVIL SOCIETY INQUIRY · NLCO & CIVIC LAKE INITIATIVES',
+  folioCode: '21 / CIVIL SOCIETY INQUIRY · NLCO & CIVIC LAKE INITIATIVES',
   title: 'A Lake Cannot Be Rescued by an Annual Cleanup',
   subtitle:
     'An independent inquiry into Nigeen Lake Conservation Organisation, Rotary Club, and civil society lake initiatives across Kashmir.',

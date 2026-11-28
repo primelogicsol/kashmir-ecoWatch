@@ -41,7 +41,7 @@ export default function AnnualPilotReportPage() {
         label="Western Himalayan Field Science Program • Annual Pilot Synthesis"
         breadcrumbs={[
           { label: 'Home', href: '/' },
-          { label: 'Environmental Calendar', href: '/environmental-calendar' },
+          { label: 'Student Action Hub', href: '/environmental-calendar' },
           { label: 'Outdoor Classroom', href: '/environmental-calendar/outdoor-classroom' },
           { label: 'Annual Pilot Field Report (2026)' }
         ]}

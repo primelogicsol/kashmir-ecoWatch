@@ -18,7 +18,7 @@ export const STORY_11_SCIENCE_GOVERNANCE: MagazineStory = {
   departmentId: 'editorials',
   secondaryDepartmentIds: ['investigative-journalism', 'data-journalism'],
   departmentRubric: 'BEYOND THE CONFERENCE · I · SCIENCE & GOVERNANCE',
-  folioCode: '11 / INDEPENDENT RESPONSE · ECSSPP 2026',
+  folioCode: '13 / INDEPENDENT RESPONSE · ECSSPP 2026',
   title: 'Science Has Diagnosed the Valley. Who Will Prescribe Its Governance?',
   subtitle: 'An independent response to ECSSPP 2026, University of Kashmir.',
   excerpt:

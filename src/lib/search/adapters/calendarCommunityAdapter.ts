@@ -195,7 +195,39 @@ export function buildCalendarCommunityIndex(): SearchAdapterOutput {
     });
   }
 
-  // 5. Annual Environmental Calendar, EcoVoices & Outdoor Classroom
+  // 5. Student Action Hub, Annual Environmental Calendar, EcoVoices & Outdoor Classroom
+  documents.push({
+    id: 'module:student-action-hub',
+    documentType: 'module_page',
+    resultClass: 'module',
+    domain: 'ecological_calendar',
+    title: 'Student Action Hub — Environmental Awareness, Education, Participation & Action',
+    subtitle: 'Student Action Hub · Environmental Calendar & Outdoor Classroom',
+    description:
+      'Central student participation and environmental action platform uniting the 16-observance Environmental Calendar, Outdoor Classroom field science curriculum, Adopt-an-Ecosystem observatories, and student fieldwork across Jammu, Kashmir & Ladakh.',
+    canonicalUrl: '/environmental-calendar',
+    parentModule: 'Student Action Hub',
+    subregion: 'Multi-Regional',
+    tags: [
+      'Student Action Hub',
+      'Environmental Awareness',
+      'Environmental Education',
+      'Student Participation',
+      'Environmental Calendar',
+      'Outdoor Classroom',
+      'Adopt-an-Ecosystem',
+    ],
+    synonyms: ['Environmental Calendar & Student Action Hub', 'Kashmir Environmental Calendar', 'Youth Eco-Clubs'],
+    source: 'Kashmir EcoWatch Education & Student Stewardship Program',
+    trustBadge: 'Platform Module',
+    temporalNature: 'reference',
+    verificationStatus: 'Active Top-Level Module',
+    dataFreshness: 'static_module',
+    accessClassification: 'public',
+    ctaLabel: 'Open Student Action Hub',
+    adapterId: 'calendar-community',
+  });
+
   for (const ev of (environmentalCalendarEvents as any[]) || []) {
     const title = ev.title || ev.name;
     if (!title) continue;
@@ -208,9 +240,9 @@ export function buildCalendarCommunityIndex(): SearchAdapterOutput {
       subtitle: `Environmental Calendar · ${ev.authority || 'Observance'}`,
       description: ev.himalayanRelevance || ev.summary || ev.description || 'Annual UN and Western Himalayan ecological observance.',
       canonicalUrl: '/environmental-calendar',
-      parentModule: 'Environmental Calendar',
+      parentModule: 'Student Action Hub',
       subregion: 'Multi-Regional',
-      tags: ['Environmental Calendar', ev.month, ev.theme || ''].filter(Boolean),
+      tags: ['Student Action Hub', 'Environmental Calendar', ev.month, ev.theme || ''].filter(Boolean),
       synonyms: [],
       source: ev.authority || 'UN / MoEFCC / Regional Observance Schedule',
       trustBadge: 'Peer-Reviewed / Institutional',
@@ -227,7 +259,7 @@ export function buildCalendarCommunityIndex(): SearchAdapterOutput {
   documents.push({
     id: 'module:ecovoices',
     documentType: 'module_page',
-    resultClass: 'module_hub',
+    resultClass: 'module',
     domain: 'ecological_calendar',
     title: 'EcoVoices — Environmental Arts, Music & Creative Expression',
     subtitle: 'Independent Creative Platform · Music, Poetry, Cinema, Visual Arts & Soundscapes',

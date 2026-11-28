@@ -1064,7 +1064,7 @@ export function projectAnieDraftToHdnManuscript(draft: AnieEditorialDraft): HdnA
 
 function createInitialHdnStore(): HdnPersistentStore {
   return {
-    schemaVersion: 5,
+    schemaVersion: 8,
     accounts: buildSeededAccounts(),
     manuscripts: projectCanonicalStoriesToManuscripts(),
     assignments: buildSeededAssignments(),
@@ -1349,9 +1349,15 @@ export function readHdnStore(): HdnPersistentStore {
       ...existingMedia.filter((m) => !seenMediaUrls.has(m.url)),
     ];
 
-    const isSchemaUpgrade = (parsed.schemaVersion || 1) < 5;
+    const isSchemaUpgrade = (parsed.schemaVersion || 1) < 8;
+    const defaultEditionsById = new Map(defaults.editions.map((e) => [e.id, e]));
+    const existingEditions = Array.isArray(parsed.editions) ? parsed.editions : [];
+    const mergedEditions = [
+      ...defaults.editions,
+      ...existingEditions.filter((e) => !defaultEditionsById.has(e.id)),
+    ];
     const store: HdnPersistentStore = {
-      schemaVersion: 5,
+      schemaVersion: 8,
       accounts: existingAccs,
       manuscripts: refreshedMs,
       assignments:
@@ -1364,8 +1370,7 @@ export function readHdnStore(): HdnPersistentStore {
         ? parsed.confidentialSources
         : [],
       mediaAssets: mergedMedia,
-      editions:
-        !isSchemaUpgrade && Array.isArray(parsed.editions) ? parsed.editions : defaults.editions,
+      editions: mergedEditions,
       notifications: Array.isArray(parsed.notifications)
         ? parsed.notifications
         : defaults.notifications,

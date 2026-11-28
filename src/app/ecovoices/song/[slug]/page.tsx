@@ -218,6 +218,8 @@ export default async function EcoVoiceSongDetailPage({
                     <Link
                       key={i}
                       href="/environmental-calendar"
+                      title={`View ${obs} in Student Action Hub — Environmental Calendar`}
+                      aria-label={`View ${obs} in Student Action Hub`}
                       className="text-xs px-3 py-1 rounded-full bg-white/[0.04] hover:bg-amber-300/15 border border-white/10 hover:border-amber-300/35 text-slate-200 transition-colors"
                     >
                       {obs}

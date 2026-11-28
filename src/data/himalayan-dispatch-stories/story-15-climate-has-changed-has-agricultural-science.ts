@@ -16,7 +16,7 @@ export const STORY_15_CLIMATE_AGRICULTURAL_SCIENCE: MagazineStory = {
   departmentId: 'editorials',
   secondaryDepartmentIds: ['data-journalism', 'field-reports'],
   departmentRubric: 'BEYOND THE CONFERENCE · V · AGROECOLOGICAL REDESIGN',
-  folioCode: '15 / INDEPENDENT RESPONSE · IES 2026',
+  folioCode: '17 / INDEPENDENT RESPONSE · IES 2026',
   title: 'The Climate Has Changed. Has Agricultural Science?',
   subtitle: "An independent response to the Indian Ecological Society's 2026 conference.",
   excerpt:

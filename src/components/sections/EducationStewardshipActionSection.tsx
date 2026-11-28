@@ -25,7 +25,7 @@ export function EducationStewardshipActionSection() {
   const actionPillars = [
     {
       id: 'outdoor',
-      tag: 'Outdoor Classroom & Field Science',
+      tag: 'Student Action Hub · Outdoor Classroom',
       badge: 'School Observatories',
       badgeColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
       title: 'Adopt-an-Ecosystem Network',
@@ -63,21 +63,21 @@ export function EducationStewardshipActionSection() {
     },
     {
       id: 'webinars',
-      tag: 'Webinars & Conferences',
-      badge: 'Himalayan Science Exchange',
+      tag: 'Student Action Hub · Observances & Dialogues',
+      badge: 'Participation & Action',
       badgeColor: 'text-sky-400 bg-sky-500/10 border-sky-500/20',
-      title: 'Environmental Calendar & Expert Dialogues',
-      subtitle: 'UN Observances, statutory dates & glaciology symposiums',
-      icon: Video,
+      title: 'Student Action Hub',
+      subtitle: 'Environmental Awareness, Education, Participation & Action',
+      icon: Calendar,
       iconColor: 'text-sky-400',
-      desc: 'Synchronized with United Nations environmental days, Animal Welfare Fortnight, and Wildlife Week 2026. Hosts interactive virtual sessions connecting local researchers with glaciologists, limnologists, and environmental policy experts.',
+      desc: 'Synchronized with Kashmir EcoWatch’s Environmental Calendar of UN observances, Animal Welfare Fortnight, and Wildlife Week 2026—connecting students, eco-clubs, and schools with fieldwork guides and scientific dialogues.',
       stats: [
-        { label: 'Verified Dates', value: '17 Observances' },
-        { label: 'Format', value: 'Hybrid & Virtual' },
-        { label: 'Academic Scope', value: 'Peer Reviewed' }
+        { label: 'Calendar Dates', value: '16 Observances' },
+        { label: 'Student Topics', value: '60+ Projects' },
+        { label: 'Academic Scope', value: 'Schools & Youth' }
       ],
-      primaryLink: { label: 'View Environmental Calendar', href: '/environmental-calendar' },
-      secondaryLink: { label: 'Upcoming Observances', href: '/environmental-calendar#calendar' },
+      primaryLink: { label: 'Explore Student Action Hub', href: '/environmental-calendar' },
+      secondaryLink: { label: 'Environmental Calendar', href: '/environmental-calendar#calendar-directory' },
       gradient: 'from-sky-500/10 via-transparent to-transparent'
     },
     {
@@ -191,13 +191,15 @@ export function EducationStewardshipActionSection() {
             </button>
             <button
               onClick={() => setActiveTab('webinars')}
+              title="Student Action Hub — Environmental Awareness, Education, Participation & Action"
+              aria-label="Filter Student Action Hub"
               className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${
                 activeTab === 'webinars' 
                   ? 'bg-sky-600 text-white shadow-sm' 
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              Webinars
+              Student Action Hub
             </button>
             <button
               onClick={() => setActiveTab('ngo')}

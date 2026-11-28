@@ -419,9 +419,9 @@ export const EXTRACTED_ROUTE_METADATA: Record<string, { title?: string; descript
     "label": "Empirical Student Observations • Real-Time Field Telemetry Ingestion"
   },
   "/environmental-calendar": {
-    "title": "World Wetlands Day",
-    "description": "The official ecological observance framework and experiential learning calendar for schools, colleges, and youth eco-clubs across Jammu, Kashmir & Ladakh. Coupled with the historic Outdoor Classroom curriculum, practical fieldwork guides, and empirical project topics.",
-    "label": "Environmental Education · School & Youth Observances"
+    "title": "Student Action Hub — Environmental Awareness, Education, Participation & Action",
+    "description": "Environmental Awareness, Education, Participation & Action — uniting Kashmir EcoWatch's official Environmental Calendar of UN and regional observances with the Outdoor Classroom curriculum, practical fieldwork guides, and empirical student project topics across Jammu, Kashmir & Ladakh.",
+    "label": "Environmental Awareness, Education, Participation & Action"
   },
   "/environmental-monitoring/air-pollution": {
     "title": "Handheld Laser Sensor PM2.5 Reading",

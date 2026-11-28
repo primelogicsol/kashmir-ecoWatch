@@ -331,6 +331,13 @@ function EnvironmentalPilPortalContent() {
               <Compass className="w-3.5 h-3.5 text-cyan-400" />
               <span>Judicial GIS Atlas</span>
             </button>
+            <Link
+              href="/governance/legislation-enforcement-observatory"
+              className="px-3.5 py-1.5 rounded-[6px] bg-amber-500/15 hover:bg-amber-500/25 text-amber-200 font-bold text-xs border border-amber-500/40 transition-all flex items-center gap-1.5"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-amber-300" />
+              <span>5-Region Legislation &amp; Reform Observatory (16 Registries)</span>
+            </Link>
           </div>
         }
       />

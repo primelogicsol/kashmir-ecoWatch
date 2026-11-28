@@ -10,14 +10,14 @@ import { buildPreReleaseStage08GateLedger } from '@/lib/himalayan-dispatch-metri
 import { MagazineStory } from '@/types/himalayan-dispatch';
 
 export const STORY_19_SUCCESS_ENVIRONMENTAL_ACTIVISM: MagazineStory = {
-  id: 'hd-story-19',
+  id: 'hd-story-20',
   slug: 'who-measures-the-success-of-environmental-activism',
   editionSlug: 'vol-01-no-01',
   editionLabel: 'VOL. 01 / NO. 01 · THE INAUGURAL ISSUE',
   departmentId: 'editorials',
   secondaryDepartmentIds: ['investigative-journalism', 'data-journalism'],
   departmentRubric: 'CIVIL SOCIETY & ACCOUNTABILITY · IV · ACTIVISM & OUTCOMES',
-  folioCode: '19 / CIVIL SOCIETY INQUIRY · NGO ACCOUNTABILITY INDEX',
+  folioCode: '22 / CIVIL SOCIETY INQUIRY · NGO ACCOUNTABILITY INDEX',
   title: 'Who Measures the Success of Environmental Activism?',
   subtitle:
     'An independent inquiry into environmental NGOs, civil society organizations, and self-accountability across Kashmir.',

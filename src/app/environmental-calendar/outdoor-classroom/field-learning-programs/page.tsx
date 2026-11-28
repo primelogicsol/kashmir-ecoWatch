@@ -59,7 +59,7 @@ export default function FieldLearningProgramsPage() {
         label="Western Himalayan Scientific Field Curriculum • 8 Ecosystem Modules"
         breadcrumbs={[
           { label: 'Home', href: '/' },
-          { label: 'Environmental Calendar', href: '/environmental-calendar' },
+          { label: 'Student Action Hub', href: '/environmental-calendar' },
           { label: 'Outdoor Classroom', href: '/environmental-calendar/outdoor-classroom' },
           { label: '8 Field Programs' }
         ]}

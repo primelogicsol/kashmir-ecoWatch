@@ -453,6 +453,21 @@ const CURATED_STATIC_ROUTES: Record<
       'Dr. Zarf-e-Noori',
     ],
   },
+  '/environmental-calendar': {
+    title: 'Student Action Hub — Environmental Awareness, Education, Participation & Action',
+    description:
+      'Student Action Hub is Kashmir EcoWatch’s platform for environmental awareness, education, participation, and student action—uniting the annual Environmental Calendar of UN and regional observances with the Outdoor Classroom curriculum, Adopt-an-Ecosystem observatories, and fieldwork guides across Jammu, Kashmir & Ladakh.',
+    imagePath: '/images/environmental-calendar/calendar-hero-students-water.jpg',
+    keywords: [
+      'Student Action Hub',
+      'Kashmir Student Action Hub',
+      'Environmental Awareness Education Participation Action',
+      'Outdoor Classroom Kashmir',
+      'Kashmir Environmental Calendar',
+      'Adopt an Ecosystem Kashmir',
+      'Student Citizen Science Himalaya',
+    ],
+  },
   '/research-library': {
     title: 'Scientific Research Library, Environmental Assessments & Monographs',
     description:
@@ -668,6 +683,9 @@ const ACRONYM_MAP: Record<string, string> = {
 };
 
 function formatSegment(seg: string): string {
+  if (seg.toLowerCase() === 'environmental-calendar') {
+    return 'Student Action Hub';
+  }
   return seg
     .split('-')
     .map((w) => ACRONYM_MAP[w.toLowerCase()] || w.charAt(0).toUpperCase() + w.slice(1))

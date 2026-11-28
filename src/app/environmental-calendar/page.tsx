@@ -299,18 +299,18 @@ export default function EnvironmentalCalendarPage() {
               <KewBrandIdentity />
               <div className="leading-[1.15] overflow-visible">
                 <span className="kew-hero-headline-gradient bg-gradient-to-r from-emerald-400 via-teal-300 to-teal-200 bg-clip-text text-transparent tracking-normal [word-break:keep-all] [overflow-wrap:normal]">
-                  Environmental Calendar &amp; Student Action Hub
+                  Student Action Hub
                 </span>
               </div>
             </div>
           }
-          subtitle="The official ecological observance framework and experiential learning calendar for schools, colleges, and youth eco-clubs across Jammu, Kashmir & Ladakh. Coupled with the historic Outdoor Classroom curriculum, practical fieldwork guides, and empirical project topics."
+          subtitle="Environmental Awareness, Education, Participation & Action — uniting Kashmir EcoWatch's official Environmental Calendar of UN and regional observances with the Outdoor Classroom curriculum, practical fieldwork guides, and empirical student project topics across Jammu, Kashmir & Ladakh."
           icon={<Calendar className="w-6 h-6 text-emerald-400" />}
-          label="Environmental Education · School & Youth Observances"
+          label="Environmental Awareness, Education, Participation & Action"
           breadcrumbs={[
             { label: 'Home', href: '/' },
             { label: 'Education & Youth', href: '/ngo-impact' },
-            { label: 'Environmental Calendar' },
+            { label: 'Student Action Hub' },
           ]}
           images={[
             '/images/environmental-calendar/calendar-hero-students-water.jpg',
@@ -320,7 +320,11 @@ export default function EnvironmentalCalendarPage() {
           rightContent={heroShowcaseCard}
           actions={
             <div className="flex flex-wrap items-center gap-2">
-              <a href="#outdoor-classroom">
+              <a
+                href="#outdoor-classroom"
+                title="Jump to Outdoor Classroom field science workspace"
+                aria-label="Jump to Outdoor Classroom field science workspace"
+              >
                 <Button
                   size="sm"
                   className="bg-gradient-to-r from-emerald-600 to-emerald-500 font-bold transition-all shadow-md shadow-emerald-500/20"
@@ -333,12 +337,18 @@ export default function EnvironmentalCalendarPage() {
                 onClick={handlePrint}
                 size="sm"
                 variant="outline"
+                title="Print Environmental Calendar"
+                aria-label="Print Environmental Calendar"
                 className="border-white/20 text-white hover:bg-white/10 font-bold transition-all"
                 icon={<Printer className="w-4 h-4" />}
               >
                 Print Calendar
               </Button>
-              <a href="#calendar-directory">
+              <a
+                href="#calendar-directory"
+                title="View all 16 Environmental Calendar observances"
+                aria-label="View all 16 Environmental Calendar observances"
+              >
                 <Button
                   size="sm"
                   variant="outline"
@@ -448,7 +458,11 @@ export default function EnvironmentalCalendarPage() {
         </div>
 
         {/* Filter & Search Bar */}
-        <section className="sticky top-16 z-30 bg-slate-950/90 backdrop-blur-xl border-b border-white/10 py-4 shadow-xl">
+        <section
+          data-kew-dark-surface="true"
+          aria-label="Filter Student Action Hub observances and activities"
+          className="sticky top-16 z-30 bg-slate-950/90 backdrop-blur-xl border-b border-white/10 py-4 shadow-xl"
+        >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
             {/* Search Input and Selects */}
             <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
@@ -459,6 +473,7 @@ export default function EnvironmentalCalendarPage() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Search Student Action Hub observances, project topics, activities, or species"
                   placeholder="Search observances, project topics, activities, or species..."
                   className="w-full pl-9 pr-4 py-2 text-xs sm:text-sm bg-slate-900/80 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
                 />
@@ -470,6 +485,8 @@ export default function EnvironmentalCalendarPage() {
                 <select
                   value={selectedMonth}
                   onChange={(e) => setSelectedMonth(e.target.value)}
+                  aria-label="Filter Environmental Calendar by month"
+                  title="Filter Environmental Calendar by month"
                   className="bg-slate-900 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-emerald-500/50 shrink-0"
                 >
                   {MONTHS.map((m) => (
@@ -486,6 +503,8 @@ export default function EnvironmentalCalendarPage() {
                 <select
                   value={selectedLevel}
                   onChange={(e) => setSelectedLevel(e.target.value)}
+                  aria-label="Filter student activities by education level"
+                  title="Filter student activities by education level"
                   className="bg-slate-900 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-emerald-500/50 shrink-0"
                 >
                   {STUDENT_LEVELS.map((lvl) => (
@@ -524,8 +543,11 @@ export default function EnvironmentalCalendarPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-8">
               <div>
+                <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-emerald-500 block mb-1">
+                  Environmental Calendar
+                </span>
                 <h2 className="text-xl sm:text-2xl font-black text-white">
-                  Observance Timeline & Guides
+                  Observance Timeline &amp; Student Action Guides
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-400">
                   Showing {filteredEvents.length} of {environmentalCalendarEvents.length} environmental dates

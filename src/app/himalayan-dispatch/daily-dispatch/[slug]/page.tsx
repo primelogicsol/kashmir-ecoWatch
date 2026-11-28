@@ -183,7 +183,6 @@ export default async function DailyDispatchArticlePage({
               </p>
               <p className="hd-folio-meta">
                 PUBLISHED {article.publishedAt} &nbsp;·&nbsp; {article.readingTimeMinutes} MIN READ
-                {article.wordCount ? ` (${article.wordCount.toLocaleString()} WORDS)` : ''}
               </p>
             </div>
 

@@ -41,6 +41,7 @@ const footerLinks = {
     { label: 'Earth Systems Dashboard',           href: '/seasonal-ecology' },
     { label: 'SDG Dashboard',                     href: '/environmental-monitoring/sdg-monitoring' },
     { label: 'EcoVoices: Arts & Music',           href: '/ecovoices' },
+    { label: 'Student Action Hub',                href: '/environmental-calendar' },
   ],
   resources: [
     { label: 'Investigation Reports',     href: '/environmental-investigations/reports' },

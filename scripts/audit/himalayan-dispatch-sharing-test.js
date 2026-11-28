@@ -571,6 +571,22 @@ async function runLiveHttpAcceptanceTests() {
       expectNextArticle: true,
     },
     {
+      route: '/himalayan-dispatch/issues/volume-01-issue-01/the-mathematics-of-a-dying-lake',
+      expectedTitle: 'The Mathematics of a Dying Lake',
+      bylineSnippet: 'Dr. Fayaz Ahmad Khan',
+      heroImgSnippet: '/images/publications/dal-lake-lacustrine-houseboats.jpg',
+      minChapters: 10,
+      expectNextArticle: true,
+    },
+    {
+      route: '/himalayan-dispatch/issues/volume-01-issue-01/who-are-we-researching-for',
+      expectedTitle: 'Who Are We Researching For?',
+      bylineSnippet: 'Dr. Fayaz Ahmad Khan',
+      heroImgSnippet: '/images/publications/glaciology-kolahoi-gnss-survey.jpg',
+      minChapters: 6,
+      expectNextArticle: true,
+    },
+    {
       route: '/himalayan-dispatch/issues/volume-01-issue-01/an-elegy-for-winter',
       expectedTitle: 'An Elegy for Winter',
       bylineSnippet: 'Visual Editions Desk',

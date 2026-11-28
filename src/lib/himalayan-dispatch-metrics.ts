@@ -338,3 +338,87 @@ export function getPublicStoryGateBadge(story: MagazineStory): {
     isVerifiedRelease: false,
   };
 }
+
+/**
+ * PERMANENT EDITORIAL PRESENTATION STANDARD:
+ * Reading duration may remain visible. Numerical word counts must remain internal
+ * (used strictly for reading-time estimation and editorial administration).
+ */
+export function formatPublicReadingDuration(
+  story: {
+    readingTimeMinutes: number;
+    departmentId?: string;
+    estimatedViewingMinutes?: number;
+  },
+  variant: 'header' | 'card' | 'photo_header' = 'header'
+): string {
+  const mins = Math.max(1, story.readingTimeMinutes || 1);
+  if (variant === 'photo_header') {
+    const viewMins = Math.max(2, story.estimatedViewingMinutes || 7);
+    return `${mins} MIN TEXT READ · ${viewMins} MIN PLATE VIEWING`;
+  }
+  if (variant === 'card' && story.departmentId === 'photo-essays') {
+    const viewMins = Math.max(2, story.estimatedViewingMinutes || 7);
+    return `${mins} MIN READ · ${viewMins} MIN VIEW`;
+  }
+  return `${mins} MIN READ`;
+}
+
+/**
+ * Sanitizes public colophon `editorialMetadataTable` rows so numerical word counts
+ * and surrounding parentheses never appear publicly, without leaving empty
+ * parentheses or redundant separators.
+ */
+export function sanitizePublicEditorialMetadataRows(
+  rows: Array<{ attribute: string; assignment: string }>,
+  readingTimeMinutes: number
+): Array<{ attribute: string; assignment: string }> {
+  const out: Array<{ attribute: string; assignment: string }> = [];
+
+  for (const row of rows) {
+    const attr = row.attribute.trim();
+    const isPureWordCountAttr = /^(?:verified\s+|manuscript\s+|target\s+)?word\s*count$/i.test(
+      attr
+    );
+    if (isPureWordCountAttr) {
+      continue;
+    }
+
+    const cleanedAttr = attr
+      .replace(/\s*(?:&|and|\/)\s*word\s*count/gi, '')
+      .replace(/word\s*count\s*(?:&|and|\/)\s*/gi, '')
+      .trim();
+
+    let cleanedVal = row.assignment
+      // Remove parenthetical expressions containing word counts, e.g. "(5,697 words)" or "(4,157 prose words)"
+      .replace(/\s*\([^)]*\bwords?\b[^)]*\)/gi, '')
+      // Remove numerical word-count clauses, e.g. "5,153 verified words · " or "65,000–90,000 target words"
+      .replace(
+        /\b[0-9][0-9,–—-]*\+?\s*(?:[a-z-]+\s+){0,3}words?\b(?:\s*(?:total|prose|target|verified))?/gi,
+        ''
+      )
+      // Clean redundant separators or empty parentheses left behind
+      .replace(/\(\s*\)/g, '')
+      .replace(/(?:\s*[·•;|—–-]\s*){2,}/g, ' · ')
+      .replace(/^\s*[·•;|—–,-]\s*/g, '')
+      .replace(/\s*[·•;|—–,-]\s*$/g, '')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+
+    if (!cleanedVal) {
+      if (/reading|duration|length/i.test(cleanedAttr)) {
+        cleanedVal = `${Math.max(1, readingTimeMinutes || 1)} min read`;
+      } else {
+        continue;
+      }
+    }
+
+    out.push({
+      attribute: cleanedAttr || attr,
+      assignment: cleanedVal,
+    });
+  }
+
+  return out;
+}
+

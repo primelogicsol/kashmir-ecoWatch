@@ -276,8 +276,8 @@ export const HIMALAYAN_DISPATCH_GOVERNED_MEDIA_REGISTRY: HdnMediaAsset[] = [
     c2paSynthIdDetected: true,
     exifPresent: false,
     evidentiarySuitability: 'decorative_editorial_only',
-    publicCaptionPolicyNote: 'Used in Story 06 monochrome sequence and November inversion Daily Dispatch.',
-    usedInStorySlugs: ['an-elegy-for-winter'],
+    publicCaptionPolicyNote: 'Used in Story 06 monochrome sequence, Dispatch 17 Special Atmospheric Investigation, and November inversion Daily Dispatch.',
+    usedInStorySlugs: ['an-elegy-for-winter', 'the-atmosphere-has-no-borders'],
   },
   {
     id: 'hdn-gov-media-11',
@@ -328,8 +328,12 @@ export const HIMALAYAN_DISPATCH_GOVERNED_MEDIA_REGISTRY: HdnMediaAsset[] = [
     c2paSynthIdDetected: true,
     exifPresent: false,
     evidentiarySuitability: 'decorative_editorial_only',
-    publicCaptionPolicyNote: 'Desk portfolio emblem & data-journalism header visual.',
-    usedInStorySlugs: ['thirty-eight-winters-of-snowline-retreat'],
+    publicCaptionPolicyNote: 'Desk portfolio emblem, Dispatch 17 remote-sensing synthesis, and data-journalism header visual.',
+    usedInStorySlugs: [
+      'thirty-eight-winters-of-snowline-retreat',
+      'the-atmosphere-has-no-borders',
+      'the-mathematics-of-a-dying-lake',
+    ],
   },
   {
     id: 'hdn-gov-media-13',
@@ -354,7 +358,10 @@ export const HIMALAYAN_DISPATCH_GOVERNED_MEDIA_REGISTRY: HdnMediaAsset[] = [
     evidentiarySuitability: 'decorative_editorial_only',
     publicCaptionPolicyNote:
       'Approved editorial header plate for Dispatch 11 (Science-to-Governance response); no claim of depicting a specific named station.',
-    usedInStorySlugs: ['science-has-diagnosed-the-valley-who-will-prescribe-its-governance'],
+    usedInStorySlugs: [
+      'science-has-diagnosed-the-valley-who-will-prescribe-its-governance',
+      'the-atmosphere-has-no-borders',
+    ],
   },
   {
     id: 'hdn-gov-media-14',
@@ -428,8 +435,8 @@ export const HIMALAYAN_DISPATCH_GOVERNED_MEDIA_REGISTRY: HdnMediaAsset[] = [
     exifPresent: false,
     evidentiarySuitability: 'decorative_editorial_only',
     publicCaptionPolicyNote:
-      'Approved header plate for Dispatch 14 (Nature Is Not a Contractor — Ecosystem Recovery Accountability).',
-    usedInStorySlugs: ['nature-is-not-a-contractor'],
+      'Approved header plate for Dispatch 14 (Nature Is Not a Contractor) and When Politics Promises Green (Monograph 06).',
+    usedInStorySlugs: ['nature-is-not-a-contractor', 'when-politics-promises-green'],
   },
   {
     id: 'hdn-gov-media-17',
@@ -482,7 +489,10 @@ export const HIMALAYAN_DISPATCH_GOVERNED_MEDIA_REGISTRY: HdnMediaAsset[] = [
     evidentiarySuitability: 'decorative_editorial_only',
     publicCaptionPolicyNote:
       'Approved inline thematic plate for Dispatch 11; clarified in caption and verification note as illustrative rather than event/laboratory inspection photography.',
-    usedInStorySlugs: ['science-has-diagnosed-the-valley-who-will-prescribe-its-governance'],
+    usedInStorySlugs: [
+      'science-has-diagnosed-the-valley-who-will-prescribe-its-governance',
+      'the-atmosphere-has-no-borders',
+    ],
   },
   {
     id: 'hdn-gov-media-19',
@@ -884,8 +894,11 @@ export const HIMALAYAN_DISPATCH_GOVERNED_MEDIA_REGISTRY: HdnMediaAsset[] = [
     exifPresent: false,
     evidentiarySuitability: 'decorative_editorial_only',
     publicCaptionPolicyNote:
-      'Approved header plate for Dispatch 21 (Politically Neutral Environmental Assessment Charter); landscape context only.',
-    usedInStorySlugs: ['who-speaks-for-the-environment-when-politics-chooses-the-landscape'],
+      'Approved header plate for Dispatch 22 (Selective Environmental Consciousness & Monograph 02); landscape context only.',
+    usedInStorySlugs: [
+      'selective-environmental-consciousness',
+      'who-speaks-for-the-environment-when-politics-chooses-the-landscape',
+    ],
   },
   {
     id: 'hdn-gov-media-35',
@@ -936,5 +949,55 @@ export const HIMALAYAN_DISPATCH_GOVERNED_MEDIA_REGISTRY: HdnMediaAsset[] = [
     publicCaptionPolicyNote:
       'Approved Chapter I plate for Monograph 00 (Watershed Voices); routine provenance and licensing metadata retained internally in administrative registry without fabricated camera EXIF or personal photographer credits.',
     usedInStorySlugs: ['notes-from-the-upper-jhelum-headwaters'],
+  },
+  {
+    id: 'hdn-gov-media-37',
+    title: 'Central Asian Flyway Migratory Waterbirds & Kashmir Wetland Horizon Plate',
+    mediaType: 'conceptual_illustration',
+    url: '/images/biodiversity/biodiversity-birds-wetland.jpg',
+    caption:
+      'Migratory waterbirds over emergent reedbeds and open winter marsh channels across the Kashmir Valley.',
+    photographerOrCreator: 'Kashmir EcoWatch Visual Archive',
+    contributorSlug: 'himalayan-dispatch-desk',
+    bureauId: 'kashmir',
+    locationAndElevation: 'Kashmir Floodplain Wetlands · ~1,580 m (Thematic Reference)',
+    licensingInfo: 'KEW Institutional Archive',
+    consentRecorded: true,
+    provenanceClassification: 'ai_or_conceptual_labeled',
+    editorialApprovalStatus: 'approved',
+    approvedBy: 'Dr. Fayaz Ahmad Khan',
+    createdAt: '2026-11-28T00:00:00.000Z',
+    generationWorkflow: 'KEW biodiversity visual archive plate (Exif=False).',
+    c2paSynthIdDetected: false,
+    exifPresent: false,
+    evidentiarySuitability: 'decorative_editorial_only',
+    publicCaptionPolicyNote:
+      'Approved header plate for Dispatch 06 & Monograph 04 (The Sky Has No Borders); thematic habitat illustration without species-census evidentiary claim.',
+    usedInStorySlugs: ['the-sky-has-no-borders'],
+  },
+  {
+    id: 'hdn-gov-media-38',
+    title: 'Important Bird & Biodiversity Area (IBA) Montane-Wetland Habitat Plate',
+    mediaType: 'conceptual_illustration',
+    url: '/images/protected-network/protected-bird-habitat-areas-iba.jpg',
+    caption:
+      'Montane forest and wetland transition habitat representative of Western Himalayan Important Bird Areas.',
+    photographerOrCreator: 'Kashmir EcoWatch Visual Archive',
+    contributorSlug: 'himalayan-dispatch-desk',
+    bureauId: 'kashmir',
+    locationAndElevation: 'Western Himalayan IBA Network (Thematic Reference)',
+    licensingInfo: 'KEW Institutional Archive',
+    consentRecorded: true,
+    provenanceClassification: 'ai_or_conceptual_labeled',
+    editorialApprovalStatus: 'approved',
+    approvedBy: 'Dr. Fayaz Ahmad Khan',
+    createdAt: '2026-11-28T00:00:00.000Z',
+    generationWorkflow: 'KEW protected-network thematic plate (Exif=False).',
+    c2paSynthIdDetected: false,
+    exifPresent: false,
+    evidentiarySuitability: 'decorative_editorial_only',
+    publicCaptionPolicyNote:
+      'Approved inline IBA habitat plate for Dispatch 06 (The Sky Has No Borders).',
+    usedInStorySlugs: ['the-sky-has-no-borders'],
   },
 ];

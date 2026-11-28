@@ -20,7 +20,7 @@ export const STORY_16_SIX_YEARS_WARNINGS_AIR: MagazineStory = {
   departmentId: 'editorials',
   secondaryDepartmentIds: ['data-journalism', 'investigative-journalism'],
   departmentRubric: 'CIVIL SOCIETY & ACCOUNTABILITY · I · CLEAN AIR GOVERNANCE',
-  folioCode: '16 / CIVIL SOCIETY INQUIRY · PEC WEBINARS 2020–2026',
+  folioCode: '18 / CIVIL SOCIETY INQUIRY · PEC WEBINARS 2020–2026',
   title: 'Six Years of Warnings, and Kashmir Still Cannot Breathe',
   subtitle:
     "An independent inquiry into the Peoples' Environmental Council air-quality webinars (2020–2026) and the governance of Kashmir's winter airshed.",

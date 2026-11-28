@@ -508,7 +508,12 @@ export function getPublicDailyDispatchStories(): MagazineStory[] {
 }
 
 export function getPublicStoryBySlug(slug: string): MagazineStory | null {
-  return getPublicPublishedStories().find((s) => s.slug === slug) || null;
+  const resolvedSlug =
+    slug === 'who-speaks-for-the-environment-when-politics-chooses-landscape' ||
+    slug === 'who-speaks-for-the-environment-when-politics-chooses-the-landscape'
+      ? 'selective-environmental-consciousness'
+      : slug;
+  return getPublicPublishedStories().find((s) => s.slug === resolvedSlug) || null;
 }
 
 /**

@@ -83,6 +83,7 @@ export const ALLOWED_DISPATCH_ROOT_SEGMENTS = new Set<string>([
   'current-issue',
   'daily-dispatch',
   'departments',
+  'dispatches',
   'editorial-appointments',
   'editorial-board',
   'editorial-calendar',
@@ -308,6 +309,44 @@ export const HD_ROUTES = {
   issue: (issueSlug: string) => hdRoute(`/issues/${issueSlug}`),
   issueArticle: (issueSlug: string, articleSlug: string) =>
     hdRoute(`/issues/${issueSlug}/${articleSlug}`),
+  dispatchDirect: (articleSlug: string) => hdRoute(`/dispatches/${articleSlug}`),
+  get monograph01() {
+    return hdRoute('/issues/monograph-01-atmosphere-without-borders');
+  },
+  monograph01Chapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-01-atmosphere-without-borders/chapters/${chapterSlug}`),
+  monograph01Appendix: (appendixSlug: string) =>
+    hdRoute(`/issues/monograph-01-atmosphere-without-borders/appendices/${appendixSlug}`),
+  get monograph02() {
+    return hdRoute('/issues/monograph-02-selective-environmental-consciousness');
+  },
+  monograph02Chapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-02-selective-environmental-consciousness/chapters/${chapterSlug}`),
+  get monograph03() {
+    return hdRoute('/issues/monograph-03-mathematics-of-a-dying-lake');
+  },
+  monograph03Chapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-03-mathematics-of-a-dying-lake/chapters/${chapterSlug}`),
+  get monographResearchAccountability() {
+    return hdRoute('/issues/monograph-04-who-are-we-researching-for');
+  },
+  monographResearchAccountabilityChapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-04-who-are-we-researching-for/chapters/${chapterSlug}`),
+  get monograph04() {
+    return hdRoute('/issues/monograph-04-the-sky-has-no-borders');
+  },
+  monograph04Chapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-04-the-sky-has-no-borders/chapters/${chapterSlug}`),
+  get monograph06() {
+    return hdRoute('/issues/monograph-06-when-politics-promises-green');
+  },
+  monograph06Chapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-06-when-politics-promises-green/chapters/${chapterSlug}`),
+  get monographEnvironmentalLaw() {
+    return hdRoute('/issues/monograph-07-when-environmental-laws-exist');
+  },
+  monographEnvironmentalLawChapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-07-when-environmental-laws-exist/chapters/${chapterSlug}`),
   get forthcoming() {
     return hdRoute('/forthcoming');
   },
@@ -595,6 +634,18 @@ export const CANONICAL_EDITION_SLUG_MAP: Record<string, string> = {
   'vol-01-no-01': 'volume-01-issue-01',
   'volume-01-issue-01': 'volume-01-issue-01',
   'monograph-00-watershed-voices': 'monograph-00-watershed-voices',
+  'monograph-01-atmosphere-without-borders': 'monograph-01-atmosphere-without-borders',
+  'monograph-02-selective-environmental-consciousness':
+    'monograph-02-selective-environmental-consciousness',
+  'monograph-03-mathematics-of-a-dying-lake':
+    'monograph-03-mathematics-of-a-dying-lake',
+  'monograph-04-who-are-we-researching-for':
+    'monograph-04-who-are-we-researching-for',
+  'monograph-04-the-sky-has-no-borders': 'monograph-04-the-sky-has-no-borders',
+  'monograph-06-when-politics-promises-green':
+    'monograph-06-when-politics-promises-green',
+  'monograph-07-when-environmental-laws-exist':
+    'monograph-07-when-environmental-laws-exist',
   'issue-02-a-world-in-transition': 'issue-02-a-world-in-transition',
 };
 

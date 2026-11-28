@@ -16,7 +16,7 @@ export const STORY_13_ECOLOGICAL_LIMITS_DEVELOPMENT: MagazineStory = {
   departmentId: 'editorials',
   secondaryDepartmentIds: ['cover-stories', 'investigative-journalism'],
   departmentRubric: 'BEYOND THE CONFERENCE · III · ECOLOGICAL LIMITS',
-  folioCode: '13 / INDEPENDENT RESPONSE · SMDS-XIII',
+  folioCode: '15 / INDEPENDENT RESPONSE · SMDS-XIII',
   title: 'Who Gave Development the Right to Exceed the Mountain?',
   subtitle:
     'An independent response to the 13th Sustainable Mountain Development Summit.',

@@ -35,7 +35,7 @@ export const GLOBAL_NAV_ITEMS: GlobalNavItem[] = [
   { order: 9,  label: 'Himalayan Dispatch',       href: getKewToDispatchUrl('/'),           subtitle: 'Environmental Journalism & Magazine', hasDropdown: true },
   { order: 10, label: 'NGO Impact',               href: '/ngo-impact',                   hasDropdown: false },
   { order: 11, label: 'EcoVoices',                href: '/ecovoices',                    subtitle: 'Environmental Arts & Creative Expression', hasDropdown: true },
-  { order: 12, label: 'Environmental Calendar',   href: '/environmental-calendar',       hasDropdown: true },
+  { order: 12, label: 'Student Action Hub',       href: '/environmental-calendar',       subtitle: 'Environmental Awareness, Education, Participation & Action', hasDropdown: true },
   { order: 13, label: 'Webinars & Conferences',   href: '/webinars',                     subtitle: 'Scientific Exchange & Knowledge Sharing', hasDropdown: true },
   { order: 14, label: 'About',                    href: '/about',                        hasDropdown: true },
 ];
@@ -252,9 +252,11 @@ export function getGlobalDropdownItems(label: string): GlobalDropdownItem[] {
         { name: '✍️ Submit Creative Work', href: '/ecovoices#submit', desc: 'Editorial & scientific review gateway' },
       ];
 
+    case 'Student Action Hub':
     case 'Environmental Calendar':
       return [
-        { name: '📅 Annual Calendar', href: '/environmental-calendar', desc: '17 UN & Western Himalayan observances' },
+        { name: '🎓 Student Action Hub', href: '/environmental-calendar', desc: 'Environmental awareness, participation & action' },
+        { name: '📅 Environmental Calendar', href: '/environmental-calendar#calendar-directory', desc: '16 UN & Western Himalayan observances' },
         { name: '── Outdoor Classroom (OD) ──', href: '#', desc: '', isHeader: true },
         { name: '🧭 Program Overview', href: '/environmental-calendar/outdoor-classroom', desc: '8-stage experiential learning lifecycle' },
         { name: '📚 Curriculum Library', href: '/environmental-calendar/outdoor-classroom/curriculum', desc: '5-tier teacher guides & student rubrics' },

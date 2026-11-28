@@ -127,6 +127,42 @@ export default function LakeDetailPage() {
               </div>
             </div>
 
+            {slug === 'dal-lake' && (
+              <div className="rounded-xl border border-emerald-500/30 bg-gradient-to-r from-slate-900 via-slate-900/95 to-emerald-950/30 p-6 space-y-4">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <div className="text-xs font-mono uppercase tracking-wider text-emerald-400">
+                      Permanent KEW Scientific Companion · Himalayan Dispatch No. 04 &amp; Monograph 03
+                    </div>
+                    <h2 className="text-xl sm:text-2xl font-bold text-white mt-0.5">
+                      Dal Lake Conservation Performance Observatory
+                    </h2>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2 text-xs">
+                    <Link
+                      href="/water-systems/lakes/dal-lake/conservation-performance"
+                      className="rounded-md bg-emerald-600 hover:bg-emerald-500 px-4 py-2 font-semibold text-white transition-colors"
+                    >
+                      Open 12-Module Performance Observatory →
+                    </Link>
+                    <Link
+                      href="/himalayan-dispatch/issues/volume-01-issue-01/the-mathematics-of-a-dying-lake"
+                      className="rounded-md border border-cyan-500/40 bg-slate-950 px-3.5 py-2 font-semibold text-cyan-300 hover:border-cyan-400"
+                    >
+                      Read Dispatch 04: The Mathematics of a Dying Lake →
+                    </Link>
+                  </div>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Integrates Dal Lake’s Master Registry record, Algal Bloom Intelligence (AB-DAL-001),
+                  Satellite Change Detection, CAG Report No. 4 of 2025 baselines, and September 2026
+                  peripheral STP capacity (36.70 MLD existing; 30.0 MLD Gupt Ganga under construction)
+                  into eight coupled water, sediment, phosphorus, nitrogen, oxygen, biomass, land-use,
+                  and expenditure balances.
+                </p>
+              </div>
+            )}
+
             <LinkedInvestigationsModulePanel
               title={`Environmental Investigations & Intervention Audits — ${lake.name}`}
               subtitle="Evaluating documented ecological outcomes of dredging, mechanized/manual de-weeding, aeration, catchment management, and statutory conservation expenditure."

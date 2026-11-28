@@ -614,6 +614,7 @@ export function PremiumStickyHeader() {
         return <BookOpen className="w-4 h-4 text-amber-300" />;
       case 'EcoVoices':
         return <Music className="w-4 h-4 text-amber-300" />;
+      case 'Student Action Hub':
       case 'Environmental Calendar':
         return <Calendar className="w-4 h-4 text-emerald-400" />;
       case 'Webinars & Conferences':
@@ -1051,6 +1052,8 @@ export function PremiumStickyHeader() {
                   >
                     <Link
                       href={item.href}
+                      title={item.subtitle ? `${item.label} — ${item.subtitle}` : item.label}
+                      aria-label={item.label}
                       aria-current={active ? 'page' : undefined}
                       aria-haspopup={item.hasDropdown ? 'menu' : undefined}
                       aria-expanded={item.hasDropdown ? isOpen : undefined}

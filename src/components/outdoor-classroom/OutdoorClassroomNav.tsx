@@ -31,14 +31,23 @@ export function OutdoorClassroomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="sticky top-16 md:top-[72px] z-40 bg-slate-950/95 backdrop-blur-xl border-b border-emerald-500/20 shadow-lg">
+    <nav
+      data-kew-dark-surface="true"
+      aria-label="Student Action Hub and Outdoor Classroom navigation"
+      className="sticky top-16 md:top-[72px] z-40 bg-slate-950/95 backdrop-blur-xl border-b border-emerald-500/20 shadow-lg"
+    >
       <div className="container mx-auto px-4 sm:px-6">
         {/* Top breadcrumb & badge strip */}
         <div className="py-2.5 flex flex-wrap items-center justify-between gap-3 border-b border-white/5 text-xs">
           <div className="flex items-center gap-2 text-slate-400">
-            <Link href="/environmental-calendar" className="hover:text-emerald-400 flex items-center gap-1.5 transition-colors">
+            <Link
+              href="/environmental-calendar"
+              title="Student Action Hub — Environmental Awareness, Education, Participation & Action"
+              aria-label="Student Action Hub"
+              className="hover:text-emerald-400 flex items-center gap-1.5 transition-colors"
+            >
               <Calendar className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Environmental Calendar</span>
+              <span>Student Action Hub</span>
             </Link>
             <span className="text-slate-600">/</span>
             <span className="font-semibold text-emerald-300 flex items-center gap-1">

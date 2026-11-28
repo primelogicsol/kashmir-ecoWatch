@@ -21,6 +21,7 @@ interface HeaderSearchProps {
 const QUICK_CHIPS = [
   'Himalayan Dispatch',
   'EcoVoices',
+  'Student Action Hub',
   'Webinars & Conferences',
   'Hangul',
   'Wular Lake',

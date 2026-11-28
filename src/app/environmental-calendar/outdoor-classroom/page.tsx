@@ -63,7 +63,7 @@ export default function OutdoorClassroomOverviewPage() {
         label="Western Himalayan Field Science & Environmental Education Program"
         breadcrumbs={[
           { label: 'Home', href: '/' },
-          { label: 'Environmental Calendar', href: '/environmental-calendar' },
+          { label: 'Student Action Hub', href: '/environmental-calendar' },
           { label: 'Outdoor Classroom' }
         ]}
         icon={<GraduationCap className="w-6 h-6 text-emerald-400" />}

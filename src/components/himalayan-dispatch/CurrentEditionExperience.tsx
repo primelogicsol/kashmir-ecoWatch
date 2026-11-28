@@ -33,7 +33,16 @@ import {
   HIMALAYAN_DISPATCH_NGO_OUTCOME_MATRIX,
   HIMALAYAN_DISPATCH_PERMANENT_RESPONSIBILITIES,
   HIMALAYAN_DISPATCH_ULTIMATE_ECOLOGICAL_MEASURE,
+  SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_04,
+  SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_12,
+  SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17,
 } from '@/data/himalayan-dispatch-beyond-conference';
+import {
+  HIMALAYAN_DISPATCH_FIVE_FLAGSHIP_INVESTIGATIONS,
+  SELECTIVE_CONSCIOUSNESS_MONOGRAPH_SPEC,
+} from '@/data/himalayan-dispatch-selective-consciousness-monograph';
+import { WHEN_POLITICS_PROMISES_GREEN_SPEC } from '@/data/himalayan-dispatch-when-politics-promises-green-monograph';
+import { ENVIRONMENTAL_LAW_MONOGRAPH_SPEC } from '@/data/himalayan-dispatch-environmental-law-monograph';
 
 export function CurrentEditionExperience({
   edition,
@@ -59,6 +68,7 @@ export function CurrentEditionExperience({
     bySlug('when-mountains-speak-who-is-listening') ||
     stories[0];
   const bigRead = bySlug('the-water-we-have-forgotten');
+  const specialDalLakeInvestigation = bySlug('the-mathematics-of-a-dying-lake');
   const fieldWetlands = bySlug('where-the-wild-waters-end');
   const fieldCommunities = bySlug('the-people-who-guard-the-forest');
   const visualJournal = bySlug('an-elegy-for-winter');
@@ -66,6 +76,27 @@ export function CurrentEditionExperience({
   const dataEssay = bySlug('thirty-eight-winters-of-snowline-retreat');
   const interview = bySlug('a-glacier-does-not-negotiate-with-five-year-plans');
   const charterEditorial = bySlug('why-the-western-himalayas-demand-slow-journalism');
+  const specialResearchAccountabilityInvestigation = bySlug('who-are-we-researching-for');
+  const specialAtmosphereInvestigation = bySlug('the-atmosphere-has-no-borders');
+  const specialEnvironmentalLawFlagship = bySlug(
+    'when-environmental-laws-exist-but-the-environment-has-no-defence'
+  );
+  const whenPoliticsPromisesGreenFlagship = bySlug('when-politics-promises-green');
+  const selectiveConsciousnessFlagship = bySlug('selective-environmental-consciousness');
+  const environmentalLawNo = String(
+    Math.max(
+      1,
+      stories.findIndex(
+        (s) => s.slug === 'when-environmental-laws-exist-but-the-environment-has-no-defence'
+      ) + 1
+    )
+  ).padStart(2, '0');
+  const politicsGreenNo = String(
+    Math.max(1, stories.findIndex((s) => s.slug === 'when-politics-promises-green') + 1)
+  ).padStart(2, '0');
+  const selectiveConsciousnessNo = String(
+    Math.max(1, stories.findIndex((s) => s.slug === 'selective-environmental-consciousness') + 1)
+  ).padStart(2, '0');
   const beyondConferenceStories = BEYOND_THE_CONFERENCE_SERIES_SLUGS.map((sl) => bySlug(sl)).filter(
     (s): s is MagazineStory => Boolean(s)
   );
@@ -502,6 +533,157 @@ export function CurrentEditionExperience({
                   </Link>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          SPECIAL SCIENTIFIC INVESTIGATION FLAGSHIP (DISPATCH 04 + MONOGRAPH 03)
+          "The Mathematics of a Dying Lake: Decades of Conservation, Crores of Expenditure
+           and the Unresolved Engineering of Dal Lake"
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {specialDalLakeInvestigation && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: '#171717',
+            color: '#F2EFE7',
+          }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-7 space-y-5">
+                <span className="hd-font-sans text-[11px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
+                  04 &nbsp;·&nbsp; {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_04.kicker}
+                </span>
+
+                <Link
+                  href={resolveCanonicalStoryUrl(specialDalLakeInvestigation)}
+                  className="block group space-y-2"
+                >
+                  <h2 className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.0] text-[#F2EFE7] group-hover:underline underline-offset-4">
+                    {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_04.title}
+                  </h2>
+                  <p className="hd-font-display text-2xl sm:text-3xl italic text-[#D8C3A5]">
+                    {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_04.subtitle}
+                  </p>
+                </Link>
+
+                <p className="hd-font-body text-base sm:text-lg leading-relaxed text-[#F2EFE7]/85 max-w-3xl">
+                  {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_04.extendedDescription}
+                </p>
+
+                <div className="grid grid-cols-3 gap-6 py-5 border-y border-[#F2EFE7]/20">
+                  {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_04.heroStats.map((st) => (
+                    <div key={st.label} className="space-y-1">
+                      <div className="hd-font-display text-3xl sm:text-5xl font-semibold text-[#F2EFE7]">
+                        {st.value}
+                      </div>
+                      <div className="hd-font-sans text-[10px] sm:text-xs tracking-[0.2em] uppercase text-[#D8C3A5]">
+                        {st.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-1.5 text-xs text-[#F2EFE7]/75">
+                  <p className="hd-font-sans tracking-[0.16em] uppercase text-[#D8C3A5]">
+                    {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_04.statusBadge}
+                  </p>
+                  <p className="hd-font-body">
+                    Proposed byline: {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_04.proposedByline}
+                  </p>
+                  <p className="hd-font-body italic text-[#F2EFE7]/65">
+                    {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_04.geographicScope}
+                  </p>
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <Link
+                    href={resolveCanonicalStoryUrl(specialDalLakeInvestigation)}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: '#8C3125' }}
+                  >
+                    <span>
+                      Read Dispatch 04 ({specialDalLakeInvestigation.readingTimeMinutes} min)
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+
+                  <Link
+                    href={HD_ROUTES.monograph03}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-5 py-3.5 border border-[#F2EFE7]/45 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] hover:bg-[#F2EFE7]/10 transition-colors"
+                  >
+                    <span>Explore Monograph 03 (10 Volumes · 62 Chapters)</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              <aside className="lg:col-span-5 border border-[#F2EFE7]/25 p-6 sm:p-7 space-y-4 bg-[#201F1D]">
+                <p className="hd-font-sans text-[10px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
+                  DAL–NIGEEN CONSERVATION MATHEMATICS · CORE AUDIT BENCHMARKS
+                </p>
+                <div className="space-y-3 text-xs">
+                  <div className="p-3.5 border border-[#F2EFE7]/15 bg-[#171717] space-y-1">
+                    <span className="hd-font-sans text-[10px] uppercase tracking-wider text-[#D8C3A5]">
+                      Telbal Settling Basin (CAG 1998–2000)
+                    </span>
+                    <p className="hd-font-body text-[#F2EFE7]/85">
+                      7% to 57% historical sediment trapping efficiency (43–93% potential
+                      pass-through) + auxiliary-basin spoil disposal paradox.
+                    </p>
+                  </div>
+                  <div className="p-3.5 border border-[#F2EFE7]/15 bg-[#171717] space-y-1">
+                    <span className="hd-font-sans text-[10px] uppercase tracking-wider text-[#D8C3A5]">
+                      Peripheral STP Ring (Sept 2026 &amp; CAG Table 4.2)
+                    </span>
+                    <p className="hd-font-body text-[#F2EFE7]/85">
+                      36.70 MLD across 5 operational plants vs. ~48 MLD estimated load (+30.0 MLD
+                      Gupt Ganga u/c); 2016–18 P removal 14–66% vs. &gt;90% design requirement.
+                    </p>
+                  </div>
+                  <div className="p-3.5 border border-[#F2EFE7]/15 bg-[#171717] space-y-1">
+                    <span className="hd-font-sans text-[10px] uppercase tracking-wider text-[#D8C3A5]">
+                      De-Weeding, Dredging &amp; 8 Mass Balances
+                    </span>
+                    <p className="hd-font-body text-[#F2EFE7]/85">
+                      ₹28.01 cr de-weeding (57.8% outside window) &amp; ₹11.02 cr dredging audited
+                      against dry-tissue P export, slurry solids, and 8 coupled lake budgets.
+                    </p>
+                  </div>
+                </div>
+              </aside>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-[#F2EFE7]/20">
+              {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_04.publicationHierarchy.map((item) => (
+                <div
+                  key={item.level}
+                  className="p-5 border border-[#F2EFE7]/20 bg-[#201F1D] flex flex-col justify-between space-y-3"
+                >
+                  <div className="space-y-2">
+                    <p className="hd-font-sans text-[10px] font-semibold tracking-[0.22em] uppercase text-[#D8C3A5]">
+                      {item.level}
+                    </p>
+                    <h4 className="hd-font-display text-xl font-semibold text-[#F2EFE7]">
+                      {item.title}
+                    </h4>
+                    <p className="hd-font-body text-xs leading-relaxed text-[#F2EFE7]/75">
+                      {item.detail}
+                    </p>
+                  </div>
+                  <Link
+                    href={item.href}
+                    className="hd-font-sans inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#D8C3A5] hover:underline pt-1"
+                  >
+                    <span>{item.ctaLabel}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -950,6 +1132,159 @@ export function CurrentEditionExperience({
       )}
 
       {/* ═══════════════════════════════════════════════════════════════════════
+          SPECIAL SCIENTIFIC INVESTIGATION FLAGSHIP (DISPATCH 12 + MONOGRAPH 04)
+          "Who Are We Researching For? The World Knows Our Mountains. Do We?"
+          Positioned immediately after Founding Manifesto (11) & before Beyond the Conference (13–17)
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {specialResearchAccountabilityInvestigation && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: '#171717',
+            color: '#F2EFE7',
+          }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-7 space-y-5">
+                <span className="hd-font-sans text-[11px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
+                  12 &nbsp;·&nbsp; {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_12.kicker}
+                </span>
+
+                <Link
+                  href={resolveCanonicalStoryUrl(specialResearchAccountabilityInvestigation)}
+                  className="block group space-y-2"
+                >
+                  <h2 className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.0] text-[#F2EFE7] group-hover:underline underline-offset-4">
+                    {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_12.title}
+                  </h2>
+                  <p className="hd-font-display text-2xl sm:text-3xl italic text-[#D8C3A5]">
+                    {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_12.subtitle}
+                  </p>
+                </Link>
+
+                <p className="hd-font-body text-base sm:text-lg leading-relaxed text-[#F2EFE7]/85 max-w-3xl">
+                  {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_12.extendedDescription}
+                </p>
+
+                <div className="grid grid-cols-3 gap-6 py-5 border-y border-[#F2EFE7]/20">
+                  {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_12.heroStats.map((st) => (
+                    <div key={st.label} className="space-y-1">
+                      <div className="hd-font-display text-3xl sm:text-5xl font-semibold text-[#F2EFE7]">
+                        {st.value}
+                      </div>
+                      <div className="hd-font-sans text-[10px] sm:text-xs tracking-[0.2em] uppercase text-[#D8C3A5]">
+                        {st.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-1.5 text-xs text-[#F2EFE7]/75">
+                  <p className="hd-font-sans tracking-[0.16em] uppercase text-[#D8C3A5]">
+                    {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_12.statusBadge}
+                  </p>
+                  <p className="hd-font-body">
+                    By {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_12.proposedByline}
+                  </p>
+                  <p className="hd-font-body italic text-[#F2EFE7]/65">
+                    {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_12.geographicScope}
+                  </p>
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <Link
+                    href={resolveCanonicalStoryUrl(specialResearchAccountabilityInvestigation)}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: '#8C3125' }}
+                  >
+                    <span>
+                      Read Dispatch 12 (
+                      {specialResearchAccountabilityInvestigation.readingTimeMinutes} min)
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+
+                  <Link
+                    href={HD_ROUTES.monographResearchAccountability}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-5 py-3.5 border border-[#F2EFE7]/45 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] hover:bg-[#F2EFE7]/10 transition-colors"
+                  >
+                    <span>Explore Monograph 04 (15 Volumes · 60 Chapters)</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              <aside className="lg:col-span-5 border border-[#F2EFE7]/25 p-6 sm:p-7 space-y-4 bg-[#201F1D]">
+                <p className="hd-font-sans text-[10px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
+                  INTELLECTUAL FOUNDATION BEFORE &ldquo;BEYOND THE CONFERENCE&rdquo;
+                </p>
+                <div className="space-y-3 text-xs">
+                  <div className="p-3.5 border border-[#F2EFE7]/15 bg-[#171717] space-y-1">
+                    <span className="hd-font-sans text-[10px] uppercase tracking-wider text-[#D8C3A5]">
+                      80 Preliminary Research Units (5 Regions)
+                    </span>
+                    <p className="hd-font-body text-[#F2EFE7]/85">
+                      Kashmir Valley (24) · Jammu (19) · Gilgit-Baltistan (16) · Ladakh (11) · Azad
+                      Jammu &amp; Kashmir (10) — working unit inventory awaiting verification.
+                    </p>
+                  </div>
+                  <div className="p-3.5 border border-[#F2EFE7]/15 bg-[#171717] space-y-1">
+                    <span className="hd-font-sans text-[10px] uppercase tracking-wider text-[#D8C3A5]">
+                      2001–2026 Bibliometric Integrity Rule
+                    </span>
+                    <p className="hd-font-body text-[#F2EFE7]/85">
+                      Zero estimated publication totals: regional cells remain TBD until OpenAlex,
+                      Crossref, Shodhganga, HEC &amp; departmental verification (anchored by UoK
+                      Geography’s 145 reported papers, 2019–2023).
+                    </p>
+                  </div>
+                  <div className="p-3.5 border border-[#F2EFE7]/15 bg-[#171717] space-y-1">
+                    <span className="hd-font-sans text-[10px] uppercase tracking-wider text-[#D8C3A5]">
+                      Publish · Explain · Demonstrate · Measure
+                    </span>
+                    <p className="hd-font-body text-[#F2EFE7]/85">
+                      9-category Research-to-Society Protocol + Every Paper’s Second Life across
+                      English, Kashmiri, Urdu, Dogri, Balti, Shina, Ladakhi, Pahari &amp; Gojri.
+                    </p>
+                  </div>
+                </div>
+              </aside>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-[#F2EFE7]/20">
+              {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_12.publicationHierarchy.map((item) => (
+                <div
+                  key={item.level}
+                  className="p-5 border border-[#F2EFE7]/20 bg-[#201F1D] flex flex-col justify-between space-y-3"
+                >
+                  <div className="space-y-2">
+                    <p className="hd-font-sans text-[10px] font-semibold tracking-[0.22em] uppercase text-[#D8C3A5]">
+                      {item.level}
+                    </p>
+                    <h4 className="hd-font-display text-xl font-semibold text-[#F2EFE7]">
+                      {item.title}
+                    </h4>
+                    <p className="hd-font-body text-xs leading-relaxed text-[#F2EFE7]/75">
+                      {item.detail}
+                    </p>
+                  </div>
+                  <Link
+                    href={item.href}
+                    className="hd-font-sans inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#D8C3A5] hover:underline pt-1"
+                  >
+                    <span>{item.ctaLabel}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
           COMPOSITION 06 — BEYOND THE CONFERENCE: INDEPENDENT RESPONSE SERIES
           Five Original Scientific, Engineering & Governance Advancement Folios
           ═══════════════════════════════════════════════════════════════════════ */}
@@ -1045,7 +1380,7 @@ export function CurrentEditionExperience({
                           {meta?.dispatchNumber || '—'} · {meta?.conferenceReference || st.departmentRubric}
                         </span>
                         <span className="hd-folio-meta">
-                          {st.readingTimeMinutes} MIN READ ({st.wordCount.toLocaleString()} WORDS)
+                          {st.readingTimeMinutes} MIN READ
                         </span>
                       </div>
                       <Link href={url} className="block group">
@@ -1137,7 +1472,169 @@ export function CurrentEditionExperience({
       )}
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          COMPOSITION 07 — CIVIL SOCIETY & ENVIRONMENTAL ACCOUNTABILITY (16–21)
+          SPECIAL SCIENTIFIC INVESTIGATION FLAGSHIP (DISPATCH 17 + MONOGRAPH 01)
+          "The Atmosphere Has No Borders: The Air We Breathe, the Numbers We Cannot Trust"
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {specialAtmosphereInvestigation && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: '#171717',
+            color: '#F2EFE7',
+          }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-7 space-y-5">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="hd-font-sans text-[11px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
+                    19 &nbsp;·&nbsp; {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.kicker}
+                  </span>
+                </div>
+
+                <Link
+                  href={resolveCanonicalStoryUrl(specialAtmosphereInvestigation)}
+                  className="block group space-y-2"
+                >
+                  <h2 className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.0] text-[#F2EFE7] group-hover:underline underline-offset-4">
+                    {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.title}
+                  </h2>
+                  <p className="hd-font-display text-2xl sm:text-3xl italic text-[#D8C3A5]">
+                    {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.subtitle}
+                  </p>
+                </Link>
+
+                <p className="hd-font-body text-base sm:text-lg leading-relaxed text-[#F2EFE7]/85 max-w-3xl">
+                  {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.extendedDescription}
+                </p>
+
+                {/* 12 / 60 / 30 yrs Flagship Metrics */}
+                <div className="grid grid-cols-3 gap-6 py-5 border-y border-[#F2EFE7]/20">
+                  {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.heroStats.map((st) => (
+                    <div key={st.label} className="space-y-1">
+                      <div className="hd-font-display text-3xl sm:text-5xl font-semibold text-[#F2EFE7]">
+                        {st.value}
+                      </div>
+                      <div className="hd-font-sans text-[10px] sm:text-xs tracking-[0.2em] uppercase text-[#D8C3A5]">
+                        {st.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-1.5 text-xs text-[#F2EFE7]/75">
+                  <p className="hd-font-sans tracking-[0.16em] uppercase text-[#D8C3A5]">
+                    {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.statusBadge}
+                  </p>
+                  <p className="hd-font-body">
+                    Proposed byline: {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.proposedByline}
+                  </p>
+                  <p className="hd-font-body italic text-[#F2EFE7]/65">
+                    {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.geographicScope}
+                  </p>
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <Link
+                    href={resolveCanonicalStoryUrl(specialAtmosphereInvestigation)}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: '#8C3125' }}
+                  >
+                    <span>
+                      Read Dispatch 19 ({specialAtmosphereInvestigation.readingTimeMinutes} min)
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+
+                  <Link
+                    href={HD_ROUTES.monograph01}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-5 py-3.5 border border-[#F2EFE7]/45 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] hover:bg-[#F2EFE7]/10 transition-colors"
+                  >
+                    <span>Explore Monograph 01 (12 Volumes · 60 Chapters)</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Strategic Distinction: Dispatch 01 vs Dispatch 17 */}
+              <aside className="lg:col-span-5 border border-[#F2EFE7]/25 p-6 sm:p-7 space-y-5 bg-[#201F1D]">
+                <div className="space-y-1.5">
+                  <p className="hd-font-sans text-[10px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
+                    TWO INAUGURAL FLAGSHIPS · STRATEGIC DISTINCTION
+                  </p>
+                  <h3 className="hd-font-display text-2xl font-semibold text-[#F2EFE7]">
+                    Historical Legacy Meets Quantitative Atmospheric Science
+                  </h3>
+                </div>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse text-xs">
+                    <thead>
+                      <tr className="border-b border-[#F2EFE7]/25 text-[#D8C3A5]">
+                        <th className="py-2 pr-2 font-semibold uppercase tracking-wider">Dimension</th>
+                        <th className="py-2 px-2 font-semibold uppercase tracking-wider">Dispatch 01</th>
+                        <th className="py-2 pl-2 font-semibold uppercase tracking-wider">Dispatch 19</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-[#F2EFE7]/15">
+                      {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.flagshipComparison.map((row) => (
+                        <tr key={row.dimension}>
+                          <td className="py-2.5 pr-2 text-[#D8C3A5] font-medium align-top">
+                            {row.dimension}
+                          </td>
+                          <td className="py-2.5 px-2 text-[#F2EFE7]/80 align-top">
+                            {row.dispatch01}
+                          </td>
+                          <td className="py-2.5 pl-2 text-[#F2EFE7] font-semibold align-top">
+                            {row.dispatch17}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <p className="hd-font-body text-xs italic text-[#F2EFE7]/70 pt-2 border-t border-[#F2EFE7]/15">
+                  {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.evidentiaryNotice}
+                </p>
+              </aside>
+            </div>
+
+            {/* Three-Level Publication Hierarchy */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-[#F2EFE7]/20">
+              {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.publicationHierarchy.map((item) => (
+                <div
+                  key={item.level}
+                  className="p-5 border border-[#F2EFE7]/20 bg-[#201F1D] flex flex-col justify-between space-y-3"
+                >
+                  <div className="space-y-2">
+                    <p className="hd-font-sans text-[10px] font-semibold tracking-[0.22em] uppercase text-[#D8C3A5]">
+                      {item.level}
+                    </p>
+                    <h4 className="hd-font-display text-xl font-semibold text-[#F2EFE7]">
+                      {item.title}
+                    </h4>
+                    <p className="hd-font-body text-xs leading-relaxed text-[#F2EFE7]/75">
+                      {item.detail}
+                    </p>
+                  </div>
+                  <Link
+                    href={item.href}
+                    className="hd-font-sans inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#D8C3A5] hover:underline pt-1"
+                  >
+                    <span>{item.ctaLabel}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          COMPOSITION 07 — CIVIL SOCIETY & ENVIRONMENTAL ACCOUNTABILITY (16 & 18–22)
           Six Inquiries Into Advocacy, Legal Enforcement & Ecological Outcomes
           ═══════════════════════════════════════════════════════════════════════ */}
       {civilSocietyStories.length > 0 && (
@@ -1240,7 +1737,7 @@ export function CurrentEditionExperience({
                           {meta?.dispatchNumber || '—'} · {meta?.institutionalContext || st.departmentRubric}
                         </span>
                         <span className="hd-folio-meta">
-                          {st.readingTimeMinutes} MIN READ ({st.wordCount.toLocaleString()} WORDS)
+                          {st.readingTimeMinutes} MIN READ
                         </span>
                       </div>
                       <Link href={url} className="block group">
@@ -1284,7 +1781,7 @@ export function CurrentEditionExperience({
               </div>
 
               <div className="lg:col-span-4 space-y-8">
-                {/* Complete 21-Dispatch Architecture */}
+                {/* Complete 22-Dispatch Architecture */}
                 <aside
                   className="border p-6 space-y-4"
                   style={{
@@ -1297,7 +1794,7 @@ export function CurrentEditionExperience({
                     className="hd-font-display text-2xl font-semibold leading-snug"
                     style={{ color: 'var(--hd-fg)' }}
                   >
-                    21 Inaugural Dispatches Across Three Series
+                    24 Inaugural Dispatches Across Six Stages
                   </h3>
                   <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
@@ -1387,6 +1884,385 @@ export function CurrentEditionExperience({
                   </p>
                 </aside>
               </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          SPECIAL LEGAL & SCIENTIFIC INVESTIGATION FLAGSHIP
+          "When Environmental Laws Exist but the Environment Has No Defence" + Monograph 07
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {specialEnvironmentalLawFlagship && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: 'var(--hd-bg)',
+          }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-8 space-y-5">
+                <span className="hd-kicker">
+                  {environmentalLawNo} &nbsp;·&nbsp; {ENVIRONMENTAL_LAW_MONOGRAPH_SPEC.kicker}
+                </span>
+
+                <Link
+                  href={resolveCanonicalStoryUrl(specialEnvironmentalLawFlagship)}
+                  className="block group space-y-2"
+                >
+                  <h2
+                    className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.0] group-hover:underline underline-offset-4"
+                    style={{ color: 'var(--hd-fg)' }}
+                  >
+                    {ENVIRONMENTAL_LAW_MONOGRAPH_SPEC.editionTitle}
+                  </h2>
+                  <p
+                    className="hd-font-display text-2xl sm:text-3xl italic"
+                    style={{ color: 'var(--hd-copper)' }}
+                  >
+                    {ENVIRONMENTAL_LAW_MONOGRAPH_SPEC.subtitle}
+                  </p>
+                </Link>
+
+                <p
+                  className="hd-font-body text-base sm:text-lg leading-relaxed max-w-3xl"
+                  style={{ color: 'var(--hd-fg-secondary)' }}
+                >
+                  {specialEnvironmentalLawFlagship.excerpt}
+                </p>
+
+                <div
+                  className="grid grid-cols-3 gap-6 py-5 border-y"
+                  style={{ borderColor: 'var(--hd-rule-strong)' }}
+                >
+                  {ENVIRONMENTAL_LAW_MONOGRAPH_SPEC.heroStats.map((st) => (
+                    <div key={st.label} className="space-y-1">
+                      <div
+                        className="hd-font-display text-3xl sm:text-5xl font-semibold"
+                        style={{ color: 'var(--hd-fg)' }}
+                      >
+                        {st.value}
+                      </div>
+                      <div className="hd-folio-meta">{st.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="hd-folio-meta">
+                  BY {ENVIRONMENTAL_LAW_MONOGRAPH_SPEC.proposedByline} &nbsp;·&nbsp;{' '}
+                  {ENVIRONMENTAL_LAW_MONOGRAPH_SPEC.geographicScope}
+                </p>
+              </div>
+
+              <aside
+                className="lg:col-span-4 p-6 sm:p-8 border space-y-4"
+                style={{
+                  borderColor: 'var(--hd-rule-strong)',
+                  backgroundColor: 'var(--hd-bg-elevated)',
+                }}
+              >
+                <p className="hd-kicker">DEFINING JURISPRUDENTIAL AXIOM</p>
+                <p
+                  className="hd-font-display text-2xl italic font-medium leading-snug"
+                  style={{ color: 'var(--hd-fg)' }}
+                >
+                  “{ENVIRONMENTAL_LAW_MONOGRAPH_SPEC.ultimatePurposeAxiom}”
+                </p>
+                <p
+                  className="hd-font-body text-xs italic pt-3 border-t"
+                  style={{ borderColor: 'var(--hd-rule)', color: 'var(--hd-fg-muted)' }}
+                >
+                  Four distinct legal frameworks · CAG Report No. 4 of 2025 (22-year lake-bill
+                  delay) · India SWM Rules 2026 · Neelum–Jhelum e-flows · GB 2014/2015 EPA &amp;
+                  2019 Forest Act · 15 model reform packages subject to independent jurisdictional
+                  counsel review.
+                </p>
+              </aside>
+            </div>
+
+            <div
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t"
+              style={{ borderColor: 'var(--hd-rule)' }}
+            >
+              {ENVIRONMENTAL_LAW_MONOGRAPH_SPEC.publicationHierarchy.map((item) => (
+                <div
+                  key={item.level}
+                  className="p-5 border flex flex-col justify-between space-y-3"
+                  style={{
+                    borderColor: 'var(--hd-rule)',
+                    backgroundColor: 'var(--hd-bg-elevated)',
+                  }}
+                >
+                  <div className="space-y-2">
+                    <p className="hd-kicker">{item.level}</p>
+                    <h4
+                      className="hd-font-display text-xl font-semibold"
+                      style={{ color: 'var(--hd-fg)' }}
+                    >
+                      {item.title}
+                    </h4>
+                    <p
+                      className="hd-font-body text-xs leading-relaxed"
+                      style={{ color: 'var(--hd-fg-secondary)' }}
+                    >
+                      {item.detail}
+                    </p>
+                  </div>
+                  <Link
+                    href={item.href}
+                    className="hd-kicker inline-flex items-center gap-1.5 hover:underline pt-1"
+                  >
+                    <span>{item.ctaLabel}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          SPECIAL ELECTORAL ACCOUNTABILITY FLAGSHIP (IMMEDIATELY BEFORE SELECTIVE CONSCIOUSNESS)
+          "When Politics Promises Green" + Monograph 06 & KEW Manifesto Observatory
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {whenPoliticsPromisesGreenFlagship && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: 'var(--hd-bg-elevated)',
+          }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-8 space-y-5">
+                <span className="hd-kicker">
+                  {politicsGreenNo} &nbsp;·&nbsp; {WHEN_POLITICS_PROMISES_GREEN_SPEC.kicker}
+                </span>
+
+                <Link
+                  href={resolveCanonicalStoryUrl(whenPoliticsPromisesGreenFlagship)}
+                  className="block group space-y-2"
+                >
+                  <h2
+                    className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.0] group-hover:underline underline-offset-4"
+                    style={{ color: 'var(--hd-fg)' }}
+                  >
+                    {WHEN_POLITICS_PROMISES_GREEN_SPEC.title}
+                  </h2>
+                  <p
+                    className="hd-font-display text-2xl sm:text-3xl italic"
+                    style={{ color: 'var(--hd-copper)' }}
+                  >
+                    {WHEN_POLITICS_PROMISES_GREEN_SPEC.subtitle}
+                  </p>
+                </Link>
+
+                <p
+                  className="hd-font-body text-base sm:text-lg leading-relaxed max-w-3xl"
+                  style={{ color: 'var(--hd-fg-secondary)' }}
+                >
+                  {whenPoliticsPromisesGreenFlagship.excerpt}
+                </p>
+
+                <div
+                  className="grid grid-cols-3 gap-6 py-5 border-y"
+                  style={{ borderColor: 'var(--hd-rule-strong)' }}
+                >
+                  {WHEN_POLITICS_PROMISES_GREEN_SPEC.heroStats.map((st) => (
+                    <div key={st.label} className="space-y-1">
+                      <div
+                        className="hd-font-display text-3xl sm:text-5xl font-semibold"
+                        style={{ color: 'var(--hd-fg)' }}
+                      >
+                        {st.value}
+                      </div>
+                      <div className="hd-folio-meta">{st.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="hd-folio-meta">
+                  BY {WHEN_POLITICS_PROMISES_GREEN_SPEC.proposedByline} &nbsp;·&nbsp;{' '}
+                  {WHEN_POLITICS_PROMISES_GREEN_SPEC.geographicalCoverage}
+                </p>
+              </div>
+
+              <aside
+                className="lg:col-span-4 p-6 sm:p-8 border space-y-4"
+                style={{
+                  borderColor: 'var(--hd-rule-strong)',
+                  backgroundColor: 'var(--hd-bg)',
+                }}
+              >
+                <p className="hd-kicker">DEFINING ELECTORAL QUESTION</p>
+                <p
+                  className="hd-font-display text-2xl italic font-medium leading-snug"
+                  style={{ color: 'var(--hd-fg)' }}
+                >
+                  “{WHEN_POLITICS_PROMISES_GREEN_SPEC.definingQuestion}”
+                </p>
+                <p
+                  className="hd-font-body text-xs italic pt-3 border-t"
+                  style={{ borderColor: 'var(--hd-rule)', color: 'var(--hd-fg-muted)' }}
+                >
+                  {WHEN_POLITICS_PROMISES_GREEN_SPEC.researchStatusDisclosure}
+                </p>
+              </aside>
+            </div>
+
+            <div
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t"
+              style={{ borderColor: 'var(--hd-rule)' }}
+            >
+              {WHEN_POLITICS_PROMISES_GREEN_SPEC.publicationHierarchy.map((item) => (
+                <div
+                  key={item.level}
+                  className="p-5 border flex flex-col justify-between space-y-3"
+                  style={{
+                    borderColor: 'var(--hd-rule)',
+                    backgroundColor: 'var(--hd-bg)',
+                  }}
+                >
+                  <div className="space-y-2">
+                    <p className="hd-kicker">{item.level}</p>
+                    <h4
+                      className="hd-font-display text-xl font-semibold"
+                      style={{ color: 'var(--hd-fg)' }}
+                    >
+                      {item.title}
+                    </h4>
+                    <p
+                      className="hd-font-body text-xs leading-relaxed"
+                      style={{ color: 'var(--hd-fg-secondary)' }}
+                    >
+                      {item.detail}
+                    </p>
+                  </div>
+                  <Link
+                    href={item.href}
+                    className="hd-kicker inline-flex items-center gap-1.5 hover:underline pt-1"
+                  >
+                    <span>{item.ctaLabel}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          SPECIAL POLITICAL ECOLOGY FLAGSHIP (DISPATCH 22 + MONOGRAPH 02)
+          "Selective Environmental Consciousness" + Three Flagship Foundations
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {selectiveConsciousnessFlagship && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: '#171717',
+            color: '#F2EFE7',
+          }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-7 space-y-5">
+                <span className="hd-font-sans text-[11px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
+                  {selectiveConsciousnessNo} &nbsp;·&nbsp; {SELECTIVE_CONSCIOUSNESS_MONOGRAPH_SPEC.kicker}
+                </span>
+
+                <Link
+                  href={resolveCanonicalStoryUrl(selectiveConsciousnessFlagship)}
+                  className="block group space-y-2"
+                >
+                  <h2 className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.0] text-[#F2EFE7] group-hover:underline underline-offset-4">
+                    {SELECTIVE_CONSCIOUSNESS_MONOGRAPH_SPEC.title}
+                  </h2>
+                  <p className="hd-font-display text-2xl sm:text-3xl italic text-[#D8C3A5]">
+                    {SELECTIVE_CONSCIOUSNESS_MONOGRAPH_SPEC.subtitle}
+                  </p>
+                </Link>
+
+                <p className="hd-font-body text-base sm:text-lg leading-relaxed text-[#F2EFE7]/85 max-w-3xl">
+                  {SELECTIVE_CONSCIOUSNESS_MONOGRAPH_SPEC.extendedSubtitle}
+                </p>
+
+                <div className="grid grid-cols-3 gap-6 py-5 border-y border-[#F2EFE7]/20">
+                  {SELECTIVE_CONSCIOUSNESS_MONOGRAPH_SPEC.heroStats.map((st) => (
+                    <div key={st.label} className="space-y-1">
+                      <div className="hd-font-display text-3xl sm:text-5xl font-semibold text-[#F2EFE7]">
+                        {st.value}
+                      </div>
+                      <div className="hd-font-sans text-[10px] sm:text-xs tracking-[0.2em] uppercase text-[#D8C3A5]">
+                        {st.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="hd-font-sans text-xs tracking-[0.16em] uppercase text-[#D8C3A5]">
+                  BY {SELECTIVE_CONSCIOUSNESS_MONOGRAPH_SPEC.proposedByline} &nbsp;·&nbsp;{' '}
+                  {SELECTIVE_CONSCIOUSNESS_MONOGRAPH_SPEC.geographicScope}
+                </p>
+              </div>
+
+              <aside className="lg:col-span-5 p-6 sm:p-8 border border-[#F2EFE7]/20 bg-[#201F1D] space-y-4">
+                <p className="hd-font-sans text-[10px] font-semibold tracking-[0.22em] uppercase text-[#D8C3A5]">
+                  HIMALAYAN DISPATCH&apos;S MAJOR ACCOUNTABILITY FLAGSHIPS
+                </p>
+                <div className="space-y-3">
+                  {HIMALAYAN_DISPATCH_FIVE_FLAGSHIP_INVESTIGATIONS.map((fl) => (
+                    <div
+                      key={fl.dispatchLabel}
+                      className="p-4 border border-[#F2EFE7]/15 bg-[#171717] space-y-1"
+                    >
+                      <p className="hd-font-sans text-[10px] tracking-[0.18em] uppercase text-[#D8C3A5]">
+                        {fl.dispatchLabel} · {fl.foundationPillar}
+                      </p>
+                      <Link
+                        href={fl.href}
+                        className="hd-font-display text-xl font-semibold text-[#F2EFE7] block hover:underline"
+                      >
+                        {fl.title}
+                      </Link>
+                      <p className="hd-font-body text-xs text-[#F2EFE7]/75">{fl.subtitle}</p>
+                    </div>
+                  ))}
+                </div>
+              </aside>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-[#F2EFE7]/20">
+              {SELECTIVE_CONSCIOUSNESS_MONOGRAPH_SPEC.publicationHierarchy.map((item) => (
+                <div
+                  key={item.level}
+                  className="p-5 border border-[#F2EFE7]/20 bg-[#201F1D] flex flex-col justify-between space-y-3"
+                >
+                  <div className="space-y-2">
+                    <p className="hd-font-sans text-[10px] font-semibold tracking-[0.22em] uppercase text-[#D8C3A5]">
+                      {item.level}
+                    </p>
+                    <h4 className="hd-font-display text-xl font-semibold text-[#F2EFE7]">
+                      {item.title}
+                    </h4>
+                    <p className="hd-font-body text-xs leading-relaxed text-[#F2EFE7]/75">
+                      {item.detail}
+                    </p>
+                  </div>
+                  <Link
+                    href={item.href}
+                    className="hd-font-sans inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#D8C3A5] hover:underline pt-1"
+                  >
+                    <span>{item.ctaLabel}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </section>

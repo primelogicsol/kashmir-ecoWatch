@@ -16,7 +16,7 @@ function deriveDefaultRestoreLabel(pathname: string | null): string {
   if (pathname.startsWith('/biodiversity')) return 'Show Species Showcase';
   if (pathname.startsWith('/sectoral-eia')) return 'Show Sectoral Showcase';
   if (pathname.startsWith('/environmental-investigations')) return 'Show Dossier Showcase';
-  if (pathname.startsWith('/environmental-calendar')) return 'Show Seasonal Showcase';
+  if (pathname.startsWith('/environmental-calendar')) return 'Show Student Action Showcase';
   if (pathname.startsWith('/water-systems')) return 'Show Hydrology Stats';
   return 'Show Panel Details';
 }

@@ -763,7 +763,7 @@ export const SEVENTEEN_ENVIRONMENTAL_TOPIC_CLUSTERS: EnvironmentalTopicMapping[]
     primaryCanonicalRoutes: ['/webinars', '/webinars/conferences', '/environmental-calendar'],
     flagshipEntities: [
       { name: 'Scientific Webinars & Conferences', href: '/webinars' },
-      { name: 'Environmental Calendar & Outdoor Classroom', href: '/environmental-calendar' },
+      { name: 'Student Action Hub', href: '/environmental-calendar' },
     ],
   },
 ];

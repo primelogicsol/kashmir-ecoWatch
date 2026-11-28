@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { BiodiversityCategoryPage } from '@/components/common/BiodiversityCategoryPage';
 import { getBiodiversityData, BiodiversitySpecies } from '@/data/biodiversity';
 import { Card } from '@/components/ui/Card';
@@ -115,13 +116,46 @@ export default function BirdsPage() {
         '/images/bear.png',
       ]}
       title="Western Himalayan Avifauna & Ornithology"
-      subtitle="A comprehensive ornithological intelligence layer tracking 601 resident, altitudinal, and trans-Himalayan migratory bird taxa across Kashmir, Jammu, Ladakh, and extended valleys. Monitoring 152 IUCN Red List threatened species, Central Asian Flyway waterfowl, and royal galliform pheasants across all 25 districts."
+      subtitle={`A transboundary ornithological intelligence layer tracking ${totalCount} resident, altitudinal, and Central Asian Flyway bird records across Kashmir, Jammu, Ladakh, Azad Jammu & Kashmir, and Gilgit-Baltistan (${allDistricts.length} monitored geographic units; taxonomic & IUCN reconciliation ongoing).`}
       icon="Bird"
       color="from-sky-500 to-blue-600"
       species={displayedSpecies}
       metrics={metrics}
       filters={filters}
     >
+      {/* ── Western Himalayan Avian Intelligence Observatory Companion Banner ── */}
+      <div className="mb-8 p-5 rounded-xl bg-gradient-to-r from-sky-950/60 via-slate-900/90 to-slate-900 border border-sky-500/30 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div className="space-y-1.5 max-w-3xl">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-sky-400">
+              Western Himalayan Avian Intelligence Observatory
+            </span>
+            <span className="text-[10px] px-2 py-0.5 rounded bg-amber-500/15 border border-amber-400/30 text-amber-300 font-medium">
+              12 Permanent Modules · Checklist &amp; IUCN Reconciliation Active
+            </span>
+          </div>
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Explore our transboundary checklist reconciliation across Kashmir, Jammu, Ladakh (464 SACON–WII / 512 Avibase), AJ&amp;K (552), and Gilgit-Baltistan (~362), internal audit of KEW&apos;s {totalCount}-taxa registry, and companion <em>Himalayan Dispatch</em> investigation <strong>The Sky Has No Borders</strong>.
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+          <Link
+            href="/biodiversity/birds/avian-intelligence-observatory"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold transition"
+          >
+            <span>Open Avian Observatory</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </Link>
+          <Link
+            href="/himalayan-dispatch/issues/monograph-04-the-sky-has-no-borders"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-white/10 text-slate-200 text-xs font-medium transition"
+          >
+            <span>Monograph 04</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+      </div>
+
       {/* ── Avian Focus Categories Filter Bar ───────────────────────────────── */}
       <div className="mb-8">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">

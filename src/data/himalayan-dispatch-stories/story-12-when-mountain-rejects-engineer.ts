@@ -18,7 +18,7 @@ export const STORY_12_MOUNTAIN_REJECTS_ENGINEER: MagazineStory = {
   departmentId: 'editorials',
   secondaryDepartmentIds: ['investigative-journalism', 'longform-features'],
   departmentRubric: 'BEYOND THE CONFERENCE · II · MOUNTAIN ENGINEERING',
-  folioCode: '12 / INDEPENDENT RESPONSE · RECLAIM 2026',
+  folioCode: '14 / INDEPENDENT RESPONSE · RECLAIM 2026',
   title: 'When the Mountain Rejects the Engineer',
   subtitle: 'An independent response to RECLAIM 2026, NIT Srinagar.',
   excerpt:

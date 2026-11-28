@@ -115,7 +115,7 @@ export default function StudentObservationsPage() {
         label="Empirical Student Observations • Real-Time Field Telemetry Ingestion"
         breadcrumbs={[
           { label: 'Home', href: '/' },
-          { label: 'Environmental Calendar', href: '/environmental-calendar' },
+          { label: 'Student Action Hub', href: '/environmental-calendar' },
           { label: 'Outdoor Classroom', href: '/environmental-calendar/outdoor-classroom' },
           { label: 'Student Field Observations & Telemetry' }
         ]}

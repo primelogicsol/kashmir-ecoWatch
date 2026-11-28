@@ -17,7 +17,7 @@ export const STORY_14_NATURE_NOT_CONTRACTOR: MagazineStory = {
   departmentId: 'editorials',
   secondaryDepartmentIds: ['field-reports', 'longform-features'],
   departmentRubric: 'BEYOND THE CONFERENCE · IV · RESTORATION ACCOUNTABILITY',
-  folioCode: '14 / INDEPENDENT RESPONSE · IUST NBS 2026',
+  folioCode: '16 / INDEPENDENT RESPONSE · IUST NBS 2026',
   title: 'Nature Is Not a Contractor',
   subtitle:
     'An independent response to the International Conference on Nature-Based Solutions, IUST.',

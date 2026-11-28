@@ -42,6 +42,18 @@ const librarySections: Array<{
     accent: 'text-emerald-400',
   },
   {
+    id: 'environmental-research-observatory',
+    title: 'Western Himalayan Environmental Research Observatory (12 Registries)',
+    description:
+      'Permanent scientific knowledge-return companion to Himalayan Dispatch No. 12 & Monograph 04—cataloguing 80 preliminary research units across 5 regions, 2001–2026 OpenAlex bibliometrics, Second-Life plain-language summaries, 9+ regional languages, and verified ground outcomes.',
+    icon: Database,
+    color: 'from-cyan-500 to-emerald-600',
+    route: '/research-library/environmental-research-observatory',
+    documentCount: 12,
+    status: 'Live',
+    accent: 'text-cyan-400',
+  },
+  {
     id: 'environmental-impact-assessment',
     title: 'Environmental Impact Assessments',
     description:

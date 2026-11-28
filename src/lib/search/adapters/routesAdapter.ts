@@ -71,7 +71,7 @@ function inferDomainFromRoute(route: string): { domain: SearchDomain; parentModu
       return { domain: 'scientific_research', parentModule: 'Environmental Resources' };
     case 'seasonal-ecology':
     case 'environmental-calendar':
-      return { domain: 'ecological_calendar', parentModule: seg === 'seasonal-ecology' ? 'Seasonal Ecology' : 'Environmental Calendar' };
+      return { domain: 'ecological_calendar', parentModule: seg === 'seasonal-ecology' ? 'Seasonal Ecology' : 'Student Action Hub' };
     case 'citizen-science':
     case 'ngo-impact':
     case 'contribute':
@@ -115,10 +115,12 @@ function humanizeRoute(route: string): string {
     seiae: 'SEIAE',
   };
   const formatted = parts.map((seg) =>
-    seg
-      .split('-')
-      .map((w) => acronymMap[w.toLowerCase()] || w.charAt(0).toUpperCase() + w.slice(1))
-      .join(' ')
+    seg.toLowerCase() === 'environmental-calendar'
+      ? 'Student Action Hub'
+      : seg
+          .split('-')
+          .map((w) => acronymMap[w.toLowerCase()] || w.charAt(0).toUpperCase() + w.slice(1))
+          .join(' ')
   );
   if (formatted.length === 1) return formatted[0];
   return `${formatted[formatted.length - 1]} — ${formatted.slice(0, -1).join(' · ')}`;

@@ -16,7 +16,11 @@ import {
   toCanonicalIssueSlug,
   toKewPlatformUrl,
 } from '@/lib/himalayan-dispatch-routes';
-import { getPublicStoryGateBadge } from '@/lib/himalayan-dispatch-metrics';
+import {
+  formatPublicReadingDuration,
+  getPublicStoryGateBadge,
+  sanitizePublicEditorialMetadataRows,
+} from '@/lib/himalayan-dispatch-metrics';
 import {
   KewChapterAnchorCopyButton,
   KewContentShare,
@@ -26,6 +30,12 @@ import {
   isHimalayanDispatchMonograph,
 } from '@/lib/sharing/kew-content-sharing';
 import { EditorialDataGraphic } from './EditorialDataGraphic';
+import { EnvironmentalConsistencyExperiment } from './EnvironmentalConsistencyExperiment';
+import { DalLakeMathematicsWorkbench } from './DalLakeMathematicsWorkbench';
+import { ResearchAccountabilityWorkbench } from './ResearchAccountabilityWorkbench';
+import { AvianMigrationRefugiaWorkbench } from './AvianMigrationRefugiaWorkbench';
+import { WhempManifestoWorkbench } from './WhempManifestoWorkbench';
+import { EnvironmentalLawAccountabilityWorkbench } from './EnvironmentalLawAccountabilityWorkbench';
 
 export function StoryReaderClient({
   story,
@@ -101,7 +111,11 @@ export function StoryReaderClient({
                 <span>{story.editionLabel}</span>
               </Link>
               <span className="hd-font-sans text-[11px] tracking-[0.22em] uppercase text-[#A39B8B]">
-                {story.folioCode} &nbsp;·&nbsp; {story.readingTimeMinutes} MIN TEXT READ ({story.wordCount.toLocaleString()} WORDS) &nbsp;·&nbsp; {viewingMins} MIN PLATE VIEWING
+                {story.folioCode} &nbsp;·&nbsp;{' '}
+                {formatPublicReadingDuration(
+                  { ...story, estimatedViewingMinutes: viewingMins },
+                  'photo_header'
+                )}
               </span>
             </div>
 
@@ -243,7 +257,7 @@ export function StoryReaderClient({
                   {story.updatedAt && story.updatedAt !== story.publishedAt
                     ? `ORIGINALLY PUBLISHED ${story.publishedAt} · EXPANDED & REVISED ${story.updatedAt}`
                     : `${isPreReleaseStage08 ? 'EDITION FOLIO DATE' : 'PUBLISHED'} ${story.publishedAt}`}{' '}
-                  &nbsp;·&nbsp; {story.readingTimeMinutes} MIN READ ({story.wordCount.toLocaleString()} WORDS)
+                  &nbsp;·&nbsp; {formatPublicReadingDuration(story, 'header')}
                 </div>
               </div>
 
@@ -739,6 +753,26 @@ export function StoryReaderClient({
                     </figcaption>
                   </figure>
                 )}
+
+                {story.slug === 'selective-environmental-consciousness' &&
+                  ch.numberRoman === 'IX' && <EnvironmentalConsistencyExperiment />}
+                {story.slug === 'the-mathematics-of-a-dying-lake' &&
+                  ch.numberRoman === 'VIII' && (
+                    <DalLakeMathematicsWorkbench variant="editorial" />
+                  )}
+                {story.slug === 'who-are-we-researching-for' &&
+                  ch.numberRoman === 'V' && (
+                    <ResearchAccountabilityWorkbench variant="editorial" />
+                  )}
+                {story.slug === 'the-sky-has-no-borders' &&
+                  ch.numberRoman === 'V' && <AvianMigrationRefugiaWorkbench />}
+                {story.slug === 'when-politics-promises-green' &&
+                  ch.numberRoman === 'VI' && <WhempManifestoWorkbench />}
+                {story.slug ===
+                  'when-environmental-laws-exist-but-the-environment-has-no-defence' &&
+                  ch.numberRoman === 'VI' && (
+                    <EnvironmentalLawAccountabilityWorkbench variant="editorial" />
+                  )}
               </section>
               );
             })}
@@ -1160,7 +1194,10 @@ export function StoryReaderClient({
                         </tr>
                       </thead>
                       <tbody className="divide-y" style={{ borderColor: 'var(--hd-rule)' }}>
-                        {story.editorialMetadataTable.map((m, idx) => (
+                        {sanitizePublicEditorialMetadataRows(
+                          story.editorialMetadataTable,
+                          story.readingTimeMinutes
+                        ).map((m, idx) => (
                           <tr key={idx}>
                             <td
                               className="py-2.5 pr-4 text-xs sm:text-sm hd-font-body font-semibold whitespace-nowrap"

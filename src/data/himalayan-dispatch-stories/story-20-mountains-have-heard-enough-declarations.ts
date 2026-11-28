@@ -9,7 +9,7 @@ import { buildPreReleaseStage08GateLedger } from '@/lib/himalayan-dispatch-metri
 import { MagazineStory } from '@/types/himalayan-dispatch';
 
 export const STORY_20_ENOUGH_DECLARATIONS: MagazineStory = {
-  id: 'hd-story-20',
+  id: 'hd-story-21',
   slug: 'the-mountains-have-heard-enough-declarations',
   editionSlug: 'vol-01-no-01',
   editionLabel: 'VOL. 01 / NO. 01 · THE INAUGURAL ISSUE',
@@ -17,7 +17,7 @@ export const STORY_20_ENOUGH_DECLARATIONS: MagazineStory = {
   secondaryDepartmentIds: ['investigative-journalism', 'data-journalism'],
   departmentRubric:
     'CIVIL SOCIETY & ACCOUNTABILITY · V · DECLARATIONS & OBSERVATORY',
-  folioCode: '20 / CIVIL SOCIETY INQUIRY · COMMITMENTS OBSERVATORY',
+  folioCode: '23 / CIVIL SOCIETY INQUIRY · COMMITMENTS OBSERVATORY',
   title: 'The Mountains Have Heard Enough Declarations',
   subtitle:
     'An independent inquiry into climate consultations, civil society declarations, and the architecture of unmonitored commitments across the Western Himalayas.',

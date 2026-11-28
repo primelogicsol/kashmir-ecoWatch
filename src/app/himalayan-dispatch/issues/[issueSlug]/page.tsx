@@ -34,7 +34,10 @@ import {
   CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META,
   CIVIL_SOCIETY_DEFINING_PRINCIPLE,
   HIMALAYAN_DISPATCH_COMPLETE_EDITORIAL_ARCHITECTURE,
+  SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_06,
+  SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17,
 } from '@/data/himalayan-dispatch-beyond-conference';
+import { formatPublicReadingDuration } from '@/lib/himalayan-dispatch-metrics';
 
 export function generateStaticParams() {
   return getPublicEditions()
@@ -283,7 +286,7 @@ export default async function HimalayanDispatchMonthlyIssuePage({
 
             {canonicalIssueSlug === 'volume-01-issue-01' && (
               <div
-                className="py-6 grid grid-cols-1 sm:grid-cols-3 gap-4"
+                className="py-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
                 style={{ borderColor: 'var(--hd-rule)' }}
               >
                 {HIMALAYAN_DISPATCH_COMPLETE_EDITORIAL_ARCHITECTURE.map((arch) => (
@@ -387,9 +390,7 @@ export default async function HimalayanDispatchMonthlyIssuePage({
                           {String(idx + 1).padStart(2, '0')} · {st.departmentRubric}
                         </Link>
                         <span className="hd-folio-meta">
-                          {st.departmentId === 'photo-essays'
-                            ? `${st.readingTimeMinutes} MIN READ · ${st.estimatedViewingMinutes || 7} MIN VIEW (${st.wordCount.toLocaleString()} WORDS)`
-                            : `${st.readingTimeMinutes} MIN READ (${st.wordCount.toLocaleString()} WORDS)`}
+                          {formatPublicReadingDuration(st, 'card')}
                         </span>
                       </div>
 
@@ -401,6 +402,54 @@ export default async function HimalayanDispatchMonthlyIssuePage({
                           {st.title}
                         </h3>
                       </Link>
+
+                      {st.slug === SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_06.slug && (
+                        <div className="space-y-2 pt-0.5">
+                          <p
+                            className="hd-font-display text-base sm:text-lg italic"
+                            style={{ color: 'var(--hd-copper)' }}
+                          >
+                            {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_06.statusBadge}
+                          </p>
+                          <div className="flex flex-wrap items-center gap-4 text-xs">
+                            {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_06.heroStats.map((hs) => (
+                              <span key={hs.label} className="hd-folio-meta">
+                                {hs.value} {hs.label}
+                              </span>
+                            ))}
+                            <Link
+                              href={HD_ROUTES.monograph04}
+                              className="hd-kicker underline hover:opacity-80"
+                            >
+                              Open 18-Volume Monograph →
+                            </Link>
+                          </div>
+                        </div>
+                      )}
+
+                      {st.slug === SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.slug && (
+                        <div className="space-y-2 pt-0.5">
+                          <p
+                            className="hd-font-display text-base sm:text-lg italic"
+                            style={{ color: 'var(--hd-copper)' }}
+                          >
+                            {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.statusBadge}
+                          </p>
+                          <div className="flex flex-wrap items-center gap-4 text-xs">
+                            {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.heroStats.map((hs) => (
+                              <span key={hs.label} className="hd-folio-meta">
+                                {hs.value} {hs.label}
+                              </span>
+                            ))}
+                            <Link
+                              href={HD_ROUTES.monograph01}
+                              className="hd-kicker underline hover:opacity-80"
+                            >
+                              Open Monograph 01 →
+                            </Link>
+                          </div>
+                        </div>
+                      )}
 
                       {beyondMeta && (
                         <p

@@ -121,7 +121,7 @@ export const CREATIVE_ARTISTS_DOSSIERS: CreativeArtistDossier[] = [
     linkedModules: [
       { label: 'Ecological Voices', url: '/ecovoices' },
       { label: 'Traditional Plants', url: '/biodiversity/plants' },
-      { label: 'Environmental Calendar', url: '/environmental-calendar' }
+      { label: 'Student Action Hub', url: '/environmental-calendar' }
     ]
   },
   {

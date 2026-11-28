@@ -108,12 +108,12 @@ export const KEW_COMMUNICATION_PLATFORMS: CommunicationPlatformPillar[] = [
   },
   {
     id: 'environmental-calendar',
-    platform: 'Environmental Calendar & Outdoor Classroom',
-    medium: 'Observances, environmental education and experiential field learning',
+    platform: 'Student Action Hub',
+    medium: 'Environmental awareness, education, participation, observances and experiential field learning',
     primaryContributors: 'Teachers, students and academic institutions',
     href: '/environmental-calendar',
     status: 'active_module',
-    statusLabel: 'Education & Observance Module',
+    statusLabel: 'Awareness, Education & Action Module',
   },
 ];
 

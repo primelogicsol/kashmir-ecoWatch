@@ -23,23 +23,28 @@ import { THE_PRICE_OF_PROTECTING_PARADISE_STORY } from './himalayan-dispatch-pri
 import { MONOGRAPH_00_WATERSHED_VOICES_STORY } from './himalayan-dispatch-watershed-voices';
 import { STORY_02_MOUNTAINS_SPEAK } from './himalayan-dispatch-stories/story-02-mountains-speak';
 import { STORY_03_FORGOTTEN_WATER } from './himalayan-dispatch-stories/story-03-forgotten-water';
+import { THE_MATHEMATICS_OF_A_DYING_LAKE_STORY } from './himalayan-dispatch-dying-lake-story';
 import { STORY_04_WILD_WATERS } from './himalayan-dispatch-stories/story-04-wild-waters';
+import { THE_SKY_HAS_NO_BORDERS_STORY } from './himalayan-dispatch-sky-has-no-borders-story';
 import { STORY_05_FOREST_GUARDIANS } from './himalayan-dispatch-stories/story-05-forest-guardians';
 import { STORY_06_ELEGY_WINTER } from './himalayan-dispatch-stories/story-06-elegy-winter';
 import { STORY_07_VANISHING_FLOODPLAIN } from './himalayan-dispatch-stories/story-07-vanishing-floodplain';
 import { STORY_08_SNOWLINE_RETREAT } from './himalayan-dispatch-stories/story-08-snowline-retreat';
 import { STORY_09_GLACIER_DIALOGUE } from './himalayan-dispatch-stories/story-09-glacier-dialogue';
 import { STORY_10_SLOW_JOURNALISM } from './himalayan-dispatch-stories/story-10-slow-journalism';
+import { WHO_ARE_WE_RESEARCHING_FOR_STORY } from './himalayan-dispatch-research-accountability-story';
 import { STORY_11_SCIENCE_GOVERNANCE } from './himalayan-dispatch-stories/story-11-science-diagnosed-valley-governance';
 import { STORY_12_MOUNTAIN_REJECTS_ENGINEER } from './himalayan-dispatch-stories/story-12-when-mountain-rejects-engineer';
 import { STORY_13_ECOLOGICAL_LIMITS_DEVELOPMENT } from './himalayan-dispatch-stories/story-13-who-gave-development-right-exceed-mountain';
 import { STORY_14_NATURE_NOT_CONTRACTOR } from './himalayan-dispatch-stories/story-14-nature-is-not-a-contractor';
 import { STORY_15_CLIMATE_AGRICULTURAL_SCIENCE } from './himalayan-dispatch-stories/story-15-climate-has-changed-has-agricultural-science';
 import { STORY_16_SIX_YEARS_WARNINGS_AIR } from './himalayan-dispatch-stories/story-16-six-years-of-warnings-kashmir-cannot-breathe';
+import { STORY_17_ATMOSPHERE_NO_BORDERS } from './himalayan-dispatch-stories/story-17-the-atmosphere-has-no-borders';
 import { STORY_17_ENVIRONMENTAL_LAWS_NO_DEFENCE } from './himalayan-dispatch-stories/story-17-when-environmental-laws-exist-no-defence';
 import { STORY_18_LAKE_ANNUAL_CLEANUP } from './himalayan-dispatch-stories/story-18-a-lake-cannot-be-rescued-by-annual-cleanup';
 import { STORY_19_SUCCESS_ENVIRONMENTAL_ACTIVISM } from './himalayan-dispatch-stories/story-19-who-measures-success-environmental-activism';
 import { STORY_20_ENOUGH_DECLARATIONS } from './himalayan-dispatch-stories/story-20-mountains-have-heard-enough-declarations';
+import { WHEN_POLITICS_PROMISES_GREEN_STORY } from './himalayan-dispatch-when-politics-promises-green-story';
 import { STORY_21_POLITICS_CHOOSES_LANDSCAPE } from './himalayan-dispatch-stories/story-21-who-speaks-for-environment-when-politics-chooses-landscape';
 import { buildPreReleaseStage08GateLedger } from '@/lib/himalayan-dispatch-metrics';
 
@@ -400,7 +405,7 @@ export const MAGAZINE_EDITIONS: MagazineEdition[] = [
       'Across Kashmir EcoWatch, sensors, satellite passes, and hydrological ledgers measure the Western Himalayas with necessary precision. Yet numbers alone rarely explain the human cost of keeping a mountain watershed standing, or what happens to a home in Verinag or Doda when a forest guard never returns from duty.',
       'Himalayan Dispatch was founded to build a different kind of room: unhurried, literary, visually uncompromising, and anchored in verifiable truth. Our inaugural cover story—The Price of Protecting Paradise—turns toward the forgotten guardians of Kashmir’s forests, reconciling official memorials with lived occupational realities and asking who protects the protectors.',
       'Beside it across Volume 01, our correspondents listen to high cirque lakes beneath Haramukh, trace Srinagar’s buried waterways, stand at dawn along Hokersar’s reedlines, and examine thirty-eight winters of snowline retreat.',
-      'Completing this twenty-one-dispatch inaugural architecture, Series II (Beyond the Conference, Dispatches 11–15) begins where five major 2026 regional academic conferences ended, while Series III (Civil Society and Environmental Accountability, Dispatches 16–21) examines NGOs, legal advocacy, civic cleanups, public declarations, and selective consciousness—exempting neither universities, regulators, civil society, nor Kashmir EcoWatch itself from outcome-based scrutiny.',
+      'Completing this twenty-four-dispatch inaugural architecture, Dispatch 04 (The Mathematics of a Dying Lake) reconstructs the unresolved engineering and eight mass balances of Dal Lake conservation; Dispatch 12 (Who Are We Researching For?) establishes our five-region academic and scientific accountability census immediately ahead of Series II (Beyond the Conference, Dispatches 13–17); Dispatch 19 (The Atmosphere Has No Borders) examines transboundary atmospheric physics and measurement integrity; and Dispatches 18 and 20–24 interrogate civil society, legal enforcement, lake recovery, public declarations, and our closing flagship investigation—Selective Environmental Consciousness—exempting neither universities, regulators, businesses, religious institutions, communities, nor Kashmir EcoWatch itself from universal accountability.',
     ],
     editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
     editorsNoteRole: 'Founding Editor-in-Chief',
@@ -408,24 +413,29 @@ export const MAGAZINE_EDITIONS: MagazineEdition[] = [
       'the-price-of-protecting-paradise',
       'when-mountains-speak-who-is-listening',
       'the-water-we-have-forgotten',
+      'the-mathematics-of-a-dying-lake',
       'where-the-wild-waters-end',
+      'the-sky-has-no-borders',
       'the-people-who-guard-the-forest',
       'an-elegy-for-winter',
       'gravel-concrete-and-the-vanishing-floodplain',
       'thirty-eight-winters-of-snowline-retreat',
       'a-glacier-does-not-negotiate-with-five-year-plans',
       'why-the-western-himalayas-demand-slow-journalism',
+      'who-are-we-researching-for',
       'science-has-diagnosed-the-valley-who-will-prescribe-its-governance',
       'when-the-mountain-rejects-the-engineer',
       'who-gave-development-the-right-to-exceed-the-mountain',
       'nature-is-not-a-contractor',
       'the-climate-has-changed-has-agricultural-science',
       'six-years-of-warnings-and-kashmir-still-cannot-breathe',
+      'the-atmosphere-has-no-borders',
       'when-environmental-laws-exist-but-the-environment-has-no-defence',
       'a-lake-cannot-be-rescued-by-an-annual-cleanup',
       'who-measures-the-success-of-environmental-activism',
       'the-mountains-have-heard-enough-declarations',
-      'who-speaks-for-the-environment-when-politics-chooses-the-landscape',
+      'when-politics-promises-green',
+      'selective-environmental-consciousness',
     ],
   },
   {
@@ -480,14 +490,213 @@ export const MAGAZINE_EDITIONS: MagazineEdition[] = [
     editorsNoteRole: 'Founding Editor-in-Chief',
     storySlugs: ['notes-from-the-upper-jhelum-headwaters'],
   },
+  {
+    id: 'ed-monograph-01',
+    slug: 'monograph-01-atmosphere-without-borders',
+    volumeLabel: 'MONOGRAPH 01 · ATMOSPHERIC SCIENCE',
+    issueNumberLabel: 'SPECIAL SCIENTIFIC INVESTIGATION',
+    status: 'archived',
+    title: 'The Atmosphere Has No Borders',
+    themeKicker: 'CLIMATOLOGY · TRANSBOUNDARY ATMOSPHERIC DYNAMICS · MEASUREMENT INTEGRITY',
+    subtitle:
+      'The Air We Breathe, the Numbers We Cannot Trust — 12 Proposed Thematic Volumes, 60 Scientific Chapters & 20 Technical Appendices (1991–2020 Baseline).',
+    publicationDateLabel:
+      'Inaugural Companion Scientific Monograph · November 28, 2026 (Ongoing Investigation & Research Framework)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/publications/srinagar-urban-jhelum-inversion.jpg',
+    coverLocation: 'Kashmir Valley · Western Himalayas · South & Central Asia',
+    coverCaption:
+      'Shallow winter inversion haze suspended above Srinagar and the Jhelum floodplain beneath Himalayan ridges (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'The Atmosphere Belongs to No Nation',
+    editorsNoteBody: [
+      'Accompanying Dispatch 17 in Volume 01, Monograph 01 establishes our ongoing twelve-volume, sixty-chapter scientific investigation into Kashmir’s climatology, winter boundary-layer physics, indigenous emissions, transboundary aerosol corridors, secondary chemistry, and the November 2026 AQI 708 measurement controversy.',
+      'Designed as a permanent research framework paired with Kashmir EcoWatch’s atmospheric intelligence architecture, every chapter protocol and technical appendix remains explicitly identified as an active investigation in progress until nested WRF-Chem simulations, HYSPLIT ensembles, and station co-location audits are completed.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['the-atmosphere-has-no-borders'],
+  },
+  {
+    id: 'ed-monograph-02',
+    slug: 'monograph-02-selective-environmental-consciousness',
+    volumeLabel: 'MONOGRAPH 02 · POLITICAL ECOLOGY',
+    issueNumberLabel: 'SPECIAL INVESTIGATIVE MONOGRAPH',
+    status: 'archived',
+    title: 'Selective Environmental Consciousness',
+    themeKicker: 'POLITICAL ECOLOGY · ENVIRONMENTAL ETHICS · UNIVERSAL ACCOUNTABILITY',
+    subtitle:
+      'When Ecology Becomes Political and Environmental Responsibility Becomes Optional — 9 Thematic Volumes & 50 Proposed Chapters (2008–2026).',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Research Protocols Ongoing)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/publications/sheshnag-alpine-glacial-lake.jpg',
+    coverLocation: 'Sheshnag, Baltal, Leh & Kashmir Valley · Western Himalayas',
+    coverCaption:
+      'High-altitude glacial tarn and moraine basin at Sheshnag (3,590 m)—emblem of universal biophysical thresholds across Kashmir, Jammu, and Ladakh (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'Before We Point Our Fingers',
+    editorsNoteBody: [
+      'Retaining "Who Speaks for the Environment When Politics Chooses the Landscape?" as its introductory cover essay, Monograph 02 sets out a nine-volume, fifty-chapter interdisciplinary research programme examining why environmental outrage peaks during politically visible controversies and often subsides across everyday sewage, wetland, karewa, forest, and riverbed destruction.',
+      'Paired permanently with Kashmir EcoWatch’s Western Himalayan Environmental Accountability Observatory, it treats surveys, satellite change detection, and longitudinal movement evaluations transparently as proposed scientific protocols awaiting field execution and external review.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['selective-environmental-consciousness'],
+  },
+  {
+    id: 'ed-monograph-03',
+    slug: 'monograph-03-mathematics-of-a-dying-lake',
+    volumeLabel: 'MONOGRAPH 03 · LIMNOLOGY & ENGINEERING',
+    issueNumberLabel: 'SPECIAL SCIENTIFIC MONOGRAPH',
+    status: 'archived',
+    title: 'The Mathematics of a Dying Lake',
+    themeKicker:
+      'HYDROLOGY · LIMNOLOGY · ENVIRONMENTAL ENGINEERING · GEOSPATIAL INTELLIGENCE · PUBLIC ACCOUNTABILITY',
+    subtitle:
+      'Decades of Conservation, Crores of Expenditure and the Unresolved Engineering of Dal Lake — 10 Thematic Volumes, 62 Scientific Chapters & 8 Mass Balances.',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Documentary Retrieval & Protocols Ongoing)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/publications/dal-lake-lacustrine-houseboats.jpg',
+    coverLocation: 'Dal–Nigeen Lake System · Telbal Catchment · Srinagar · Western Himalayas',
+    coverCaption:
+      'Urban lacustrine waters, houseboat channels, and Zabarwan–Telbal catchment slopes across Dal Lake—where settling basins, peripheral STPs, nutrient budgets, dredging, and public expenditure meet physical law (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'The Lake Does Not Understand Crores',
+    editorsNoteBody: [
+      'Companion to Flagship Dispatch 04 in Vol. 01 / No. 01, Monograph 03 sets out a ten-volume, sixty-two-chapter environmental engineering investigation reconstructing the hydrological, sedimentological, chemical, biological, and financial balances of Dal Lake.',
+      'Paired permanently with Kashmir EcoWatch’s Dal Lake Conservation Performance Observatory (/water-systems/lakes/dal-lake/conservation-performance), it grounds historical audit benchmarks (CAG Report No. 4 of 2025) alongside September 2026 operational updates while explicitly tracking all twenty-three outstanding P0–P2 engineering records.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['the-mathematics-of-a-dying-lake'],
+  },
+  {
+    id: 'ed-monograph-research-accountability',
+    slug: 'monograph-04-who-are-we-researching-for',
+    volumeLabel: 'MONOGRAPH 04 · SCIENTIFIC ACCOUNTABILITY',
+    issueNumberLabel: 'SPECIAL SCIENTIFIC MONOGRAPH',
+    status: 'archived',
+    title: 'Who Are We Researching For? The World Knows Our Mountains. Do We?',
+    themeKicker:
+      'ACADEMIC RESEARCH · KNOWLEDGE DISSEMINATION · SCIENTIFIC IMPACT ACCOUNTABILITY',
+    subtitle:
+      'Twenty-Five Years of Environmental Research Across Five Western Himalayan Regions — 15 Thematic Volumes, 60 Proposed Chapters, 2001–2026 Bibliometric Census Protocol & Research-to-Society Standard.',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (2001–2026 Bibliometric Census Ongoing)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/publications/glaciology-kolahoi-gnss-survey.jpg',
+    coverLocation:
+      'Kashmir · Jammu · Ladakh · Azad Jammu & Kashmir · Gilgit-Baltistan · Western Himalayas',
+    coverCaption:
+      'High-altitude Western Himalayan environmental research context—honouring regional scientists while establishing a permanent knowledge-return covenant (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'Publish for the World. Explain to the People. Measure the Impact.',
+    editorsNoteBody: [
+      'Companion to Flagship Dispatch 12 in Vol. 01 / No. 01, Monograph 04 examines twenty-five years (2001–2026) of environmental scholarship across all five Western Himalayan regions—strictly prohibiting estimated or invented publication totals until programmatic OpenAlex, Crossref, Shodhganga, HEC, and institutional verification is completed.',
+      'Paired permanently with Kashmir EcoWatch’s Western Himalayan Environmental Research Observatory (/research-library/environmental-research-observatory), it guarantees Institutional Right of Response across every university and advances the Second-Life stakeholder standard in nine regional languages.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['who-are-we-researching-for'],
+  },
+  {
+    id: 'ed-monograph-05-sky-no-borders',
+    slug: 'monograph-04-the-sky-has-no-borders',
+    volumeLabel: 'MONOGRAPH 05 · ORNITHOLOGY & MIGRATORY ECOLOGY',
+    issueNumberLabel: 'SPECIAL SCIENTIFIC MONOGRAPH',
+    status: 'archived',
+    title: 'The Sky Has No Borders',
+    themeKicker:
+      'ORNITHOLOGY · BIODIVERSITY · MIGRATORY ECOLOGY · CENTRAL ASIAN FLYWAY · HABITAT CONSERVATION',
+    subtitle:
+      'The Birds of the Western Himalayas: Migration, Ecological Connectivity and the Landscapes We Are Losing — 18 Thematic Volumes & 54 Proposed Chapters.',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Checklist & Census Reconciliation Ongoing)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/biodiversity/biodiversity-birds-wetland.jpg',
+    coverLocation:
+      'Kashmir · Jammu · Ladakh · Azad Jammu & Kashmir · Gilgit-Baltistan · Central Asian Flyway',
+    coverCaption:
+      'Migratory waterbirds over winter marsh channels and Himalayan foothill ridges—connecting five Western Himalayan regions along the Central Asian Flyway (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'Living Indicators of One Connected Mountain System',
+    editorsNoteBody: [
+      'Companion to Flagship Dispatch 06 in Vol. 01 / No. 01, this eighteen-volume, fifty-four-chapter ornithological monograph treats birds as living diagnostics of wetland hydrology, forest connectivity, riverine shingle integrity, agrochemical exposure, and climate shifts across Kashmir, Jammu, Ladakh, Azad Jammu & Kashmir, and Gilgit-Baltistan.',
+      'Paired permanently with Kashmir EcoWatch’s Western Himalayan Avian Intelligence Observatory (/biodiversity/birds/avian-intelligence-observatory), it subjects both regional checklists and KEW’s own 601-taxa platform registry to transparent taxonomic, IUCN, and effort-adjusted verification.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['the-sky-has-no-borders'],
+  },
+  {
+    id: 'ed-monograph-06',
+    slug: 'monograph-06-when-politics-promises-green',
+    volumeLabel: 'MONOGRAPH 06 · ELECTORAL ACCOUNTABILITY',
+    issueNumberLabel: 'SPECIAL INVESTIGATIVE MONOGRAPH',
+    status: 'archived',
+    title: 'When Politics Promises Green',
+    themeKicker:
+      'ELECTORAL ACCOUNTABILITY · ENVIRONMENTAL GOVERNANCE · POLITICAL ECOLOGY · PUBLIC EXPENDITURE',
+    subtitle:
+      'Political Manifestos, Environmental Commitments and Ground Realities Across the Western Himalayas — 15 Thematic Volumes & 75 Proposed Chapters (2000–2026).',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Preliminary Investigation & Framework)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/environmental-pil/kashmir-high-court-wetland.jpg',
+    coverLocation: 'Kashmir · Jammu · Ladakh · Azad Jammu & Kashmir · Gilgit-Baltistan',
+    coverCaption:
+      'Western Himalayan river floodplain and catchment landscape—where five-year electoral pledges meet century-scale ecological consequences (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'Five-Year Terms, Century-Scale Consequences',
+    editorsNoteBody: [
+      'Positioned immediately ahead of Selective Environmental Consciousness in Vol. 01 / No. 01, Monograph 06 establishes a fifteen-volume, seventy-five-chapter research programme examining political manifestos, constitutional jurisdiction, INR/PKR environmental budgets, legislative records, and ground realities across all five Western Himalayan regions from 2000 through 2026.',
+      'Paired permanently with Kashmir EcoWatch’s Environmental Manifesto & Governance Observatory (/governance/environmental-manifesto-observatory) and advancing the ten-part Western Himalayan Environmental Manifesto Protocol (WHEMP), it applies one non-partisan evidentiary ruler to every party.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['when-politics-promises-green'],
+  },
+  {
+    id: 'ed-monograph-environmental-law',
+    slug: 'monograph-07-when-environmental-laws-exist',
+    volumeLabel: 'MONOGRAPH 07 · ENVIRONMENTAL JURISPRUDENCE',
+    issueNumberLabel: 'SPECIAL LEGAL & SCIENTIFIC MONOGRAPH',
+    status: 'archived',
+    title: 'When Environmental Laws Exist but Nature Has No Defence',
+    themeKicker:
+      'ENVIRONMENTAL JURISPRUDENCE · LEGISLATIVE REFORM · REGULATORY ACCOUNTABILITY · ECOLOGICAL GOVERNANCE',
+    subtitle:
+      "The Western Himalayas' Environmental Legal Architecture: What It Was Intended to Protect, Where Protection Broke Down and What Must Change — 20 Thematic Volumes & 100 Proposed Chapters.",
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Preliminary Statutory Census & Reform Framework)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/environmental-pil/ladakh-transhimalayan-sanctuary.jpg',
+    coverLocation:
+      'Kashmir · Jammu · Ladakh · Azad Jammu & Kashmir · Gilgit-Baltistan · Western Himalayas',
+    coverCaption:
+      'Western and Trans-Himalayan wetland, pasture, and watershed terrain governed across five regions by four distinct legal frameworks (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'Protecting the Environment Itself, Not Administrative Procedure',
+    editorsNoteBody: [
+      'Expanding our inaugural environmental-law dispatch into a twenty-volume, hundred-chapter comparative legal and scientific investigation, Monograph 07 examines four distinct statutory frameworks across Kashmir, Jammu, Ladakh, Azad Jammu & Kashmir, and Gilgit-Baltistan—from century-old forest codes and India’s April 2026 Solid Waste Management Rules to CAG’s documented 22-year lake-bill delay, Neelum–Jhelum e-flow commitments, and Gilgit-Baltistan’s 2019 Forest Act.',
+      'Paired permanently with Kashmir EcoWatch’s sixteen-registry Legislation and Enforcement Observatory (/governance/legislation-enforcement-observatory), it separates enforcement deficits from genuine statutory gaps and proposes fifteen model reform packages for independent legal review in each competent jurisdiction.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['when-environmental-laws-exist-but-the-environment-has-no-defence'],
+  },
 ];
 
 export const MAGAZINE_STORIES: MagazineStory[] = [
-  // ── 01–10: INAUGURAL EDITION (VOL. 01 / NO. 01) COMPLETE MANUSCRIPTS ──────
+  // ── 01–11: INAUGURAL EDITION (VOL. 01 / NO. 01) FOUNDING & DAL FLAGSHIP ────
   THE_PRICE_OF_PROTECTING_PARADISE_STORY,
   STORY_02_MOUNTAINS_SPEAK,
   STORY_03_FORGOTTEN_WATER,
+  THE_MATHEMATICS_OF_A_DYING_LAKE_STORY,
   STORY_04_WILD_WATERS,
+  THE_SKY_HAS_NO_BORDERS_STORY,
   STORY_05_FOREST_GUARDIANS,
   STORY_06_ELEGY_WINTER,
   STORY_07_VANISHING_FLOODPLAIN,
@@ -495,19 +704,24 @@ export const MAGAZINE_STORIES: MagazineStory[] = [
   STORY_09_GLACIER_DIALOGUE,
   STORY_10_SLOW_JOURNALISM,
 
-  // ── 11–15: BEYOND THE CONFERENCE — INDEPENDENT RESPONSE SERIES (VOL. 01) ──
+  // ── 12: ACADEMIC & SCIENTIFIC ACCOUNTABILITY FLAGSHIP ─────────────────────
+  WHO_ARE_WE_RESEARCHING_FOR_STORY,
+
+  // ── 13–17: BEYOND THE CONFERENCE — INDEPENDENT RESPONSE SERIES (VOL. 01) ──
   STORY_11_SCIENCE_GOVERNANCE,
   STORY_12_MOUNTAIN_REJECTS_ENGINEER,
   STORY_13_ECOLOGICAL_LIMITS_DEVELOPMENT,
   STORY_14_NATURE_NOT_CONTRACTOR,
   STORY_15_CLIMATE_AGRICULTURAL_SCIENCE,
 
-  // ── 16–21: CIVIL SOCIETY & ENVIRONMENTAL ACCOUNTABILITY SERIES (VOL. 01) ──
+  // ── 18–25+: ATMOSPHERIC, CIVIL SOCIETY, ELECTORAL MANIFESTOS & ETHICS ──────
   STORY_16_SIX_YEARS_WARNINGS_AIR,
+  STORY_17_ATMOSPHERE_NO_BORDERS,
   STORY_17_ENVIRONMENTAL_LAWS_NO_DEFENCE,
   STORY_18_LAKE_ANNUAL_CLEANUP,
   STORY_19_SUCCESS_ENVIRONMENTAL_ACTIVISM,
   STORY_20_ENOUGH_DECLARATIONS,
+  WHEN_POLITICS_PROMISES_GREEN_STORY,
   STORY_21_POLITICS_CHOOSES_LANDSCAPE,
 
   // ── FOUNDATIONAL WATERSHED MONOGRAPH (MONOGRAPH 00 · WATERSHED VOICES) ────

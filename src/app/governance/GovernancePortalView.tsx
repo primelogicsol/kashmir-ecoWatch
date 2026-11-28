@@ -831,6 +831,13 @@ export function GovernancePortalView({ canonicalPath }: GovernancePortalViewProp
                 <Shield className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Open Data &amp; CC BY-NC 4.0 Licensing</span>
               </Link>
+              <Link
+                href="/governance/legislation-enforcement-observatory"
+                className="px-4 py-2 rounded-md bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold transition-colors flex items-center gap-1.5"
+              >
+                <Scale className="w-3.5 h-3.5 text-amber-400" />
+                <span>Legislation &amp; Enforcement Observatory (16 Registries)</span>
+              </Link>
             </div>
 
             <div className="pt-4 mt-2 border-t border-white/10 text-xs text-slate-400 leading-relaxed">

@@ -175,8 +175,18 @@ function resolveLegacyDispatchSubpath(
       ) {
         return '/issues/monograph-00-watershed-voices/notes-from-the-upper-jhelum-headwaters';
       }
+      if (slug === 'who-speaks-for-the-environment-when-politics-chooses-the-landscape') {
+        return '/issues/volume-01-issue-01/selective-environmental-consciousness';
+      }
       return `/issues/volume-01-issue-01/${slug}`;
     }
+  }
+
+  if (
+    subpath ===
+    '/issues/volume-01-issue-01/who-speaks-for-the-environment-when-politics-chooses-the-landscape'
+  ) {
+    return '/issues/volume-01-issue-01/selective-environmental-consciousness';
   }
 
   if (subpath.startsWith('/editions/')) {
