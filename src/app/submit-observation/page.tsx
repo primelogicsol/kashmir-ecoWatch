@@ -15,6 +15,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Heading } from '@/components/common/Heading';
+import {
+  detectKewSubmissionOrigin,
+  KewEditorialConsiderationConsent,
+} from '@/components/common/KewEditorialConsiderationConsent';
 
 import { submitToOperations } from '@/lib/operationsClient';
 
@@ -396,6 +400,7 @@ export default function SubmitSightingPage() {
   const [photos,            setPhotos]             = useState<File[]>([]);
   const [contributorName,   setContributorName]    = useState('');
   const [contributorEmail,  setContributorEmail]   = useState('');
+  const [editorialConsent,  setEditorialConsent]   = useState(false);
   const [submitted,         setSubmitted]          = useState(false);
   const [sightingId,        setSightingId]         = useState('');
   const [isSubmitting,      setIsSubmitting]       = useState(false);
@@ -414,6 +419,8 @@ export default function SubmitSightingPage() {
       district: locationText.split(',')[0].trim(),
       details: `${description} | Observed: ${dateObserved} | Habitat: ${habitatType || 'Unspecified'} | Confidence: ${confidence} | Count: ${countObserved || '1'}${coordinates ? ` | GPS: ${coordinates}` : ''}`,
       priority: 'MEDIUM',
+      originatingPlatform: detectKewSubmissionOrigin(),
+      editorialConsiderationConsent: editorialConsent,
     });
 
     const newSightingId = res.success ? res.trackingId : generateSightingId();
@@ -741,6 +748,15 @@ export default function SubmitSightingPage() {
                           className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-500"
                         />
                       </div>
+                    </div>
+
+                    {/* Optional Himalayan Dispatch Editorial Consideration Consent */}
+                    <div className="mb-6">
+                      <KewEditorialConsiderationConsent
+                        id="submit-observation-hd-consent"
+                        checked={editorialConsent}
+                        onChange={setEditorialConsent}
+                      />
                     </div>
 
                     {/* Submit */}

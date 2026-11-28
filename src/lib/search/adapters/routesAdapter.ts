@@ -343,7 +343,7 @@ export function buildRoutesAndTabsIndex(): {
       /^\/(admin|auth|login|register|signup|signin|profile|dashboard|dashboards\/air-quality|unauthorized|forbidden)/i.test(
         route
       ) ||
-      /^\/himalayan-dispatch\/(newsroom|editorial-cms|journalist-sign-in)(\/|$)/i.test(route) ||
+      /^\/himalayan-dispatch\/(newsroom|editorial-cms|journalist-sign-in|admin|contact\/track|contact\/thread)(\/|$)/i.test(route) ||
       /^\/webinars\/(create|room)/.test(route)
     ) {
       excluded.push({

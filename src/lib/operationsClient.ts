@@ -10,6 +10,9 @@ export interface ClientSubmitPayload {
   district?: string;
   details: string;
   priority?: SubmissionPriority;
+  originatingPlatform?: 'kashmir_ecowatch' | 'himalayan_dispatch';
+  editorialConsiderationConsent?: boolean;
+  isAnonymous?: boolean;
 }
 
 export async function submitToOperations(

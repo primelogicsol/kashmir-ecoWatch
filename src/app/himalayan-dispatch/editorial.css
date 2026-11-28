@@ -679,3 +679,125 @@
 .hdn-theme-dark .text-slate-500 {
   color: #94a3b8 !important;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE EDITORIAL CORRESPONDENCE FORMS (MOBILE-FIRST & ZOOM/REFLOW SAFE)
+   - < 768px (Mobile & 200% Zoom / 320 CSS px Reflow): Strict 1-column (100%)
+   - 768px–1199px (Tablet / Small Desktop): 2-column adaptive grid ONLY when
+     container genuinely permits (>= 540px inline-size)
+   - >= 1200px (Large Desktop): 3-column first row when container >= 820px
+   - Subject & Statement/Message always remain 100% full width at all widths
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.hd-editorial-root .hd-corr-form-surface {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  container-type: inline-size;
+  overflow-x: clip;
+}
+
+.hd-editorial-root .hd-corr-row-3,
+.hd-editorial-root .hd-corr-row-2,
+.hd-editorial-root .hd-corr-row-full {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.hd-editorial-root .hd-corr-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.hd-editorial-root .hd-corr-label {
+  display: block;
+  font-family: var(--font-hd-sans), 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.45;
+  text-transform: uppercase;
+  color: var(--hd-copper);
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.hd-editorial-root .hd-corr-input,
+.hd-editorial-root .hd-corr-select,
+.hd-editorial-root .hd-corr-textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  min-height: 2.875rem; /* 46px accessible tap target */
+  padding: 0.7rem 0.9rem;
+  font-family: var(--font-hd-body), 'Newsreader', Georgia, serif;
+  font-size: 1rem; /* 16px prevents mobile zoom-on-focus and scales cleanly */
+  line-height: 1.5;
+  border: 1px solid var(--hd-rule-strong);
+  background-color: var(--hd-bg);
+  color: var(--hd-fg);
+}
+
+.hd-editorial-root .hd-corr-textarea {
+  min-height: 8.5rem;
+  resize: vertical;
+}
+
+.hd-editorial-root .hd-corr-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: 100%;
+  min-height: 3.125rem;
+  padding: 0.875rem 1.5rem;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: normal;
+}
+
+/* Tablet & Small Desktop (768px – 1199px): 2-column ONLY when space permits */
+@media (min-width: 768px) {
+  .hd-editorial-root .hd-corr-submit-btn {
+    width: auto;
+  }
+
+  @container (min-width: 540px) {
+    .hd-editorial-root .hd-corr-row-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.375rem;
+    }
+
+    .hd-editorial-root .hd-corr-row-3 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.375rem;
+    }
+
+    .hd-editorial-root .hd-corr-field--span-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+/* Large Desktop (>= 1200px): 3-column first row ONLY when container >= 800px */
+@media (min-width: 1200px) {
+  @container (min-width: 800px) {
+    .hd-editorial-root .hd-corr-row-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .hd-editorial-root .hd-corr-field--span-tablet {
+      grid-column: auto;
+    }
+  }
+}

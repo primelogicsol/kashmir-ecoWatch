@@ -14,6 +14,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Heading } from '@/components/common/Heading';
+import {
+  detectKewSubmissionOrigin,
+  KewEditorialConsiderationConsent,
+} from '@/components/common/KewEditorialConsiderationConsent';
 import { submitToOperations } from '@/lib/operationsClient';
 import { SubmissionPriority } from '@/lib/operations';
 
@@ -325,6 +329,7 @@ export default function ReportIssuePage() {
   const [photos,           setPhotos]           = useState<File[]>([]);
   const [reporterName,     setReporterName]     = useState('');
   const [reporterEmail,    setReporterEmail]    = useState('');
+  const [editorialConsent, setEditorialConsent] = useState(false);
   const [submitted,        setSubmitted]        = useState(false);
   const [incidentId,       setIncidentId]       = useState('');
   const [isSubmitting,     setIsSubmitting]     = useState(false);
@@ -348,6 +353,9 @@ export default function ReportIssuePage() {
       district: locationText.split(',')[0].trim(),
       details: `${description} | Date: ${incidentDate || 'Today'} ${incidentTime || ''} | Severity: ${selectedSeverity}${coordinates ? ` | GPS: ${coordinates}` : ''}`,
       priority,
+      originatingPlatform: detectKewSubmissionOrigin(),
+      editorialConsiderationConsent: editorialConsent,
+      isAnonymous: anonymous,
     });
 
     const newIncidentId = res.success ? res.trackingId : generateIncidentId();
@@ -660,6 +668,15 @@ export default function ReportIssuePage() {
                         </div>
                       </div>
                     )}
+
+                    {/* Optional Himalayan Dispatch Editorial Consideration Consent */}
+                    <div className="mb-6">
+                      <KewEditorialConsiderationConsent
+                        id="report-issue-hd-consent"
+                        checked={editorialConsent}
+                        onChange={setEditorialConsent}
+                      />
+                    </div>
 
                     {/* Submit */}
                     <Button

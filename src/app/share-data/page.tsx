@@ -15,6 +15,10 @@ import { Heading } from '@/components/common/Heading';
 import Link from 'next/link';
 import { submitToOperations } from '@/lib/operationsClient';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
+import {
+  detectKewSubmissionOrigin,
+  KewEditorialConsiderationConsent,
+} from '@/components/common/KewEditorialConsiderationConsent';
 
 /* ─── Data ──────────────────────────────────────────────────────────── */
 
@@ -415,6 +419,7 @@ export default function ShareDataPage() {
   const [contributorEmail,   setContributorEmail]   = useState('');
   const [isAnonymous,        setIsAnonymous]        = useState(false);
   const [agreeToDarwinCore,  setAgreeToDarwinCore]  = useState(false);
+  const [editorialConsent,   setEditorialConsent]   = useState(false);
   const [submitted,          setSubmitted]          = useState(false);
   const [submissionId,       setSubmissionId]       = useState('');
   const [isSubmitting,       setIsSubmitting]       = useState(false);
@@ -453,6 +458,9 @@ export default function ShareDataPage() {
       district: 'Srinagar',
       details: `${description} | Domain: ${selectedDomain} | Darwin Core: ${agreeToDarwinCore ? 'Yes' : 'No'} | Method: ${observationMethod || 'Standard'} | Equipment: ${equipmentUsed || 'Field sensors'}${coordinates ? ` | GPS: ${coordinates}` : ''}`,
       priority: 'HIGH',
+      originatingPlatform: detectKewSubmissionOrigin(),
+      editorialConsiderationConsent: editorialConsent,
+      isAnonymous,
     });
 
     const newId = res.success ? res.trackingId : generateSubmissionId();
@@ -868,6 +876,12 @@ export default function ShareDataPage() {
                                 </div>
                               </label>
                             </Card>
+
+                            <KewEditorialConsiderationConsent
+                              id="share-data-hd-consent"
+                              checked={editorialConsent}
+                              onChange={setEditorialConsent}
+                            />
                           </div>
 
                           <div className="flex justify-between pt-6 border-t border-white/10">

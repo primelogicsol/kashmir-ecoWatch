@@ -160,6 +160,9 @@ export const HDN_ROUTES = {
   get adminTrash() {
     return hdRoute('/newsroom/admin/trash');
   },
+  get adminCorrespondence() {
+    return hdRoute('/admin/correspondence');
+  },
 };
 
 export interface HdnNavGroup {
@@ -213,6 +216,7 @@ export const HDN_NAVIGATION_GROUPS: HdnNavGroup[] = [
       { label: 'Monthly Editions', get href() { return HDN_ROUTES.editorialEditions; } },
       { label: 'Publication Schedule', get href() { return HDN_ROUTES.editorialSchedule; } },
       { label: 'Corrections & Ethics', get href() { return HDN_ROUTES.editorialCorrections; } },
+      { label: 'Editorial Correspondence', get href() { return HDN_ROUTES.adminCorrespondence; } },
     ],
   },
   {
@@ -232,6 +236,7 @@ export const HDN_NAVIGATION_GROUPS: HdnNavGroup[] = [
     requiredPermission: 'workspace:admin',
     items: [
       { label: 'Command Center', get href() { return HDN_ROUTES.admin; }, exact: true },
+      { label: 'Editorial Correspondence', get href() { return HDN_ROUTES.adminCorrespondence; } },
       { label: 'Autonomous AI Engine', get href() { return HDN_ROUTES.adminAutonomousEngine; } },
       { label: 'Journalist Registry', get href() { return HDN_ROUTES.adminJournalists; } },
       { label: 'Applications Queue', get href() { return HDN_ROUTES.adminApplications; } },

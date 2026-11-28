@@ -4,6 +4,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { CheckCircle2, PlusCircle, ShieldCheck } from 'lucide-react';
 import { Heading } from '@/components/common/Heading';
+import {
+  detectKewSubmissionOrigin,
+  KewEditorialConsiderationConsent,
+} from '@/components/common/KewEditorialConsiderationConsent';
 import { KewBrandIdentity } from '@/components/common/KewBrandIdentity';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -22,6 +26,7 @@ export default function SubmitInvestigationPage() {
   const [proposerName, setProposerName] = useState('');
   const [proposerEmail, setProposerEmail] = useState('');
   const [proposerAffiliation, setProposerAffiliation] = useState('');
+  const [editorialConsent, setEditorialConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<{
     trackingCode: string;
@@ -74,6 +79,8 @@ export default function SubmitInvestigationPage() {
             organization: proposerAffiliation,
             district,
             details: `Location: ${locationName} (${temporalPeriod})\nDomain: ${domainId}\nIssue: ${issueDescription}\nSources: ${documentedSourcesProvided}`,
+            originatingPlatform: detectKewSubmissionOrigin(),
+            editorialConsiderationConsent: editorialConsent,
           }),
         });
         const opsJson = await opsRes.json();
@@ -317,6 +324,12 @@ export default function SubmitInvestigationPage() {
                   />
                 </div>
               </div>
+
+              <KewEditorialConsiderationConsent
+                id="submit-investigation-hd-consent"
+                checked={editorialConsent}
+                onChange={setEditorialConsent}
+              />
 
               <div className="pt-2 flex justify-end">
                 <Button type="submit" disabled={submitting}>

@@ -520,6 +520,20 @@ export const HD_ROUTES = {
   get contact() {
     return hdRoute('/contact');
   },
+  get contactMessage() {
+    return hdRoute('/contact/message');
+  },
+  get contactEnvironmentalInfo() {
+    return hdRoute('/contact/environmental-information');
+  },
+  get contactTrack() {
+    return hdRoute('/contact/track');
+  },
+  contactThread: (reference: string) =>
+    hdRoute(`/contact/thread/${encodeURIComponent(reference)}`),
+  get adminCorrespondence() {
+    return hdRoute('/admin/correspondence');
+  },
   get feedXml() {
     return hdRoute('/feed.xml');
   },
@@ -876,6 +890,7 @@ export const FOOTER_EDITORIAL_AFFAIRS_LINKS: Array<{ label: string; readonly hre
   { label: 'Corrections & Clarifications', get href() { return HD_ROUTES.corrections; } },
   { label: 'Newsroom Desk', get href() { return HD_ROUTES.newsroom; } },
   { label: 'Public Editor & Ombudsperson', get href() { return HD_ROUTES.publicEditor; } },
+  { label: 'Contact the Editorial Desk', get href() { return HD_ROUTES.contact; } },
 ];
 
 export const FOOTER_GOVERNANCE_LINKS: Array<{ label: string; readonly href: string }> = [

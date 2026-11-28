@@ -63,6 +63,9 @@ export interface OperationRecord {
   assignedTo?: string;
   slaDeadline?: string;
   isEscalated?: boolean;
+  originatingPlatform?: 'kashmir_ecowatch' | 'himalayan_dispatch';
+  editorialConsiderationConsent?: boolean;
+  isAnonymous?: boolean;
   timeline: TimelineEvent[];
   createdAt: string;
   updatedAt: string;

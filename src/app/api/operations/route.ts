@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyAdminRequest } from '@/lib/seo/admin-session';
 import pool from '@/lib/db';
+import { recordKewSubmissionConsentLedger } from '@/lib/himalayan-dispatch-correspondence';
 import { 
   OperationRecord, 
   INITIAL_OPERATIONS_RECORDS, 
@@ -39,7 +40,11 @@ export async function GET(req: NextRequest) {
       if (match) {
         const safeMatch = sessionAuth.authorized
           ? match
-          : { ...match, ownerEmail: maskEmailForPublicLookup(match.ownerEmail) };
+          : {
+              ...match,
+              ownerName: match.isAnonymous ? 'Identity Protected' : match.ownerName,
+              ownerEmail: maskEmailForPublicLookup(match.ownerEmail),
+            };
         return NextResponse.json({ success: true, data: safeMatch });
       }
       return NextResponse.json(
@@ -131,6 +136,14 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    const editorialConsiderationConsent = body.editorialConsiderationConsent === true;
+    const originatingPlatform: 'kashmir_ecowatch' | 'himalayan_dispatch' =
+      body.originatingPlatform === 'himalayan_dispatch'
+        ? 'himalayan_dispatch'
+        : 'kashmir_ecowatch';
+    const isAnonymous = body.isAnonymous === true;
+    const resolvedDetails = body.details || body.summary || body.title;
+
     const newRecord: OperationRecord = {
       id: `op_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
       trackingId,
@@ -147,16 +160,21 @@ export async function POST(req: NextRequest) {
       ownerEmail: body.ownerEmail.trim().toLowerCase(),
       organization: body.organization || undefined,
       district: body.district || 'Srinagar',
-      details: body.details || body.title,
+      details: resolvedDetails,
       assignedTo: priority === 'CRITICAL' ? 'Immediate Triage Officer' : undefined,
       isEscalated: priority === 'CRITICAL',
       slaDeadline: priority === 'CRITICAL' ? 'Immediate (< 4 Hours)' : '< 24 Hours SLA',
+      originatingPlatform,
+      editorialConsiderationConsent,
+      isAnonymous,
       timeline: [
         {
           timestamp: new Date().toUTCString(),
-          actor: body.ownerName || 'Public Contributor',
+          actor: isAnonymous ? 'Anonymous Contributor' : (body.ownerName || 'Public Contributor'),
           action: `Submitted via ${meta.label}`,
-          note: `Auto-assigned tracking ID ${trackingId} to ${meta.managementCenterLabel}.`,
+          note: `Auto-assigned tracking ID ${trackingId} to ${meta.managementCenterLabel}${
+            editorialConsiderationConsent ? ' (Optional Himalayan Dispatch editorial consideration authorized).' : '.'
+          }`,
         },
       ],
       createdAt: now,
@@ -165,6 +183,22 @@ export async function POST(req: NextRequest) {
 
     // Prepend to in-memory store
     operationsMemoryStore.unshift(newRecord);
+
+    // Record consent state in PostgreSQL KEW consent ledger (Phase 05 & Phase 09)
+    await recordKewSubmissionConsentLedger({
+      trackingId: newRecord.trackingId,
+      sourcePage: newRecord.sourcePage,
+      sourceLabel: newRecord.sourcePageLabel,
+      title: newRecord.title,
+      category: newRecord.category,
+      district: newRecord.district || 'Western Himalayas',
+      originatingPlatform,
+      editorialConsiderationConsent,
+      isAnonymous,
+      ownerName: newRecord.ownerName,
+      ownerEmail: newRecord.ownerEmail,
+      summaryText: newRecord.details,
+    });
 
     // Also attempt PostgreSQL write if connected
     try {

@@ -6,6 +6,10 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/common/Heading';
+import {
+  detectKewSubmissionOrigin,
+  KewEditorialConsiderationConsent,
+} from '@/components/common/KewEditorialConsiderationConsent';
 import { SectoralEiaNav } from '@/components/sectoral-eia/SectoralEiaNav';
 import { 
   PlusCircle, 
@@ -49,6 +53,7 @@ export default function NewAssessmentPage() {
   const [contactEmail, setContactEmail] = useState('');
   const [keyActivity, setKeyActivity] = useState('');
   const [mitigationAction, setMitigationAction] = useState('');
+  const [editorialConsent, setEditorialConsent] = useState(false);
 
   const nextStep = () => setCurrentStep((prev) => Math.min(prev + 1, 9));
   const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
@@ -91,6 +96,8 @@ export default function NewAssessmentPage() {
           organization: submittingEntity || 'Independent Contributor',
           district,
           summary: `Sector: ${sector} | Watershed: ${watershed} | Baseline: ${baselineYear}. ${keyActivity}`,
+          originatingPlatform: detectKewSubmissionOrigin(),
+          editorialConsiderationConsent: editorialConsent,
         }),
       }).catch(() => {});
 
@@ -612,6 +619,12 @@ export default function NewAssessmentPage() {
                       <span className="font-bold text-emerald-400">{submittingEntity || 'EcoWatch Panel'}</span>
                     </div>
                   </div>
+
+                  <KewEditorialConsiderationConsent
+                    id="seiae-hd-consent"
+                    checked={editorialConsent}
+                    onChange={setEditorialConsent}
+                  />
 
                   <p className="text-[11px] text-slate-400 leading-relaxed">
                     By submitting, you certify that all input values reflect documented field sensors or lab spectrometry, and you agree to EcoWatch open data publication upon scientific verification.

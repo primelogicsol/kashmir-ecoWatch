@@ -338,8 +338,16 @@ export function proxy(request: NextRequest) {
 
     const firstSegment = pathname.split('/').filter(Boolean)[0] || '';
     const isDispatchRoot = pathname === '/';
+    const isDispatchCorrespondenceAdmin =
+      normalizedPathname === '/admin/correspondence' ||
+      normalizedPathname.startsWith('/admin/correspondence/');
+    const isPrivateCorrespondencePath =
+      isDispatchCorrespondenceAdmin ||
+      normalizedPathname === '/contact/track' ||
+      normalizedPathname.startsWith('/contact/thread/');
     const isAllowedSubroute =
-      firstSegment.length > 0 && ALLOWED_DISPATCH_ROOT_SEGMENTS.has(firstSegment);
+      isDispatchCorrespondenceAdmin ||
+      (firstSegment.length > 0 && ALLOWED_DISPATCH_ROOT_SEGMENTS.has(firstSegment));
 
     // Safety cross-host redirect: if a relative KEW platform route is requested on
     // `dispatch.kashmir-ecowatch.com`, redirect cleanly (308) to the main KEW domain!
@@ -371,7 +379,7 @@ export function proxy(request: NextRequest) {
     const response = NextResponse.rewrite(rewriteUrl, {
       request: { headers: requestHeaders },
     });
-    if (NO_INDEX_DISPATCH_SEGMENTS.has(firstSegment)) {
+    if (NO_INDEX_DISPATCH_SEGMENTS.has(firstSegment) || isPrivateCorrespondencePath) {
       response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
     }
     return response;
@@ -414,7 +422,16 @@ export function proxy(request: NextRequest) {
       );
     }
 
-    return NextResponse.next();
+    const res = NextResponse.next();
+    if (
+      stripped === '/admin/correspondence' ||
+      stripped.startsWith('/admin/correspondence/') ||
+      stripped === '/contact/track' ||
+      stripped.startsWith('/contact/thread/')
+    ) {
+      res.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
+    }
+    return res;
   }
 
   return NextResponse.next();
