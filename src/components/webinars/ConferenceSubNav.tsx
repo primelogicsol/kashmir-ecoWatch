@@ -37,7 +37,10 @@ export function ConferenceSubNav({ conference }: Props) {
   ];
 
   return (
-    <div className="bg-slate-900/90 border-b border-white/10 backdrop-blur-md sticky top-28 md:top-32 z-30">
+    <div
+      style={{ top: 'calc(var(--kew-webinar-sticky-base, 4rem) + var(--kew-webinar-nav-height, 53px))' }}
+      className="kew-webinar-subnav bg-slate-900/90 border-b border-white/10 backdrop-blur-md sticky z-30"
+    >
       <div className="container mx-auto">
         <div className="flex items-center justify-between gap-4 overflow-x-auto no-scrollbar py-2">
           <div className="flex items-center gap-1">
