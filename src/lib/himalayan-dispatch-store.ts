@@ -384,6 +384,9 @@ export function getAllMergedStoriesInternal(): MagazineStory[] {
       hdnMs && (hdnMs.unpublishedAt || hdnMs.workflowStatus === 'trashed' || hdnMs.workflowStatus === 'rejected')
     );
 
+    const storyCorrections = Array.isArray(story.corrections) ? story.corrections : [];
+    const hdnMsCorrections = Array.isArray(hdnMs?.corrections) ? hdnMs.corrections : [];
+
     const mergedStory: MagazineStory = {
       ...story,
       ...(hdnMs && hdnMs.versionNumber > 1
@@ -410,9 +413,9 @@ export function getAllMergedStoriesInternal(): MagazineStory[] {
           }
         : {}),
       corrections: [
-        ...(hdnMs ? hdnMs.corrections.filter((c) => !story.corrections.some((sc) => sc.id === c.id)) : []),
+        ...hdnMsCorrections.filter((c) => !storyCorrections.some((sc) => sc.id === c.id)),
         ...extraCorrections,
-        ...story.corrections,
+        ...storyCorrections,
       ],
     };
 
@@ -2117,7 +2120,7 @@ export function getPublicBureauDossier(bureauSlug: string) {
 export function getPublicCorrectionRecords(): PublicCorrectionRecord[] {
   const records: PublicCorrectionRecord[] = [];
   for (const st of getPublicPublishedStories()) {
-    for (const c of st.corrections) {
+    for (const c of st.corrections ?? []) {
       records.push({
         id: c.id,
         date: c.date,
@@ -2132,7 +2135,7 @@ export function getPublicCorrectionRecords(): PublicCorrectionRecord[] {
     }
   }
   for (const dd of getPublicDailyDispatches()) {
-    for (const c of dd.corrections) {
+    for (const c of dd.corrections ?? []) {
       records.push({
         id: c.id,
         date: c.date,

@@ -20,7 +20,7 @@ export const THE_SKY_HAS_NO_BORDERS_STORY: MagazineStory = {
   secondaryDepartmentIds: ['field-reports', 'data-journalism', 'cover-stories'],
   departmentRubric:
     'SPECIAL SCIENTIFIC INVESTIGATION · ORNITHOLOGY · MIGRATORY ECOLOGY · BIODIVERSITY ACCOUNTABILITY',
-  folioCode: '06 / SPECIAL SCIENTIFIC INVESTIGATION · FIVE-REGION ORNITHOLOGICAL INQUIRY',
+  folioCode: '08 / SPECIAL SCIENTIFIC INVESTIGATION · FIVE-REGION ORNITHOLOGICAL INQUIRY',
   title: 'The Sky Has No Borders',
   subtitle:
     'The Birds of the Western Himalayas: Migration, Ecological Connectivity and the Landscapes We Are Losing',

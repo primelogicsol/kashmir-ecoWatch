@@ -868,6 +868,38 @@ function GreenHeroesPortalContent() {
               </button>
             </Card>
 
+            {/* South Asia's Environmental Vanguard — Special International Educational Collection */}
+            <Card className="p-5 bg-slate-900 border-emerald-700/50 rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="flex items-start gap-3">
+                <div className="p-2.5 rounded-[6px] bg-emerald-950/80 border border-emerald-700/60 text-emerald-400 shrink-0">
+                  <Sparkles className="w-5 h-5" />
+                </div>
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 font-mono">
+                      SPECIAL INTERNATIONAL COLLECTION · DISPATCH 14 &amp; MONOGRAPH 08
+                    </span>
+                    <span className="text-xs text-slate-400">
+                      32 Personalities · 4 Professions · 2 Countries (India &amp; Pakistan)
+                    </span>
+                  </div>
+                  <h4 className="text-sm font-bold text-white">
+                    South Asia’s Environmental Vanguard: Extraordinary Minds and the Lessons They Hold for Kashmir
+                  </h4>
+                  <p className="text-xs text-slate-300 leading-relaxed max-w-3xl">
+                    A non-ranking educational and professional-introspection collection examining 32 distinguished advocates, NGO institution-builders, investigative journalists, and scientists across four professional mirrors—connected directly with the Student Action Hub and the 2027–2035 Western Himalayan Leadership Agenda.
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/resources/kew-green-heroes/south-asian-vanguard"
+                className="px-4 py-2 rounded-[6px] bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-colors shrink-0 flex items-center gap-1.5 self-start md:self-auto"
+              >
+                <span>Open Vanguard Collection (32)</span>
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Card>
+
             {/* Spotlight Heroes Carousel / Grid */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">

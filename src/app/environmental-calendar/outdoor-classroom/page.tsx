@@ -107,6 +107,12 @@ export default function OutdoorClassroomOverviewPage() {
                 Adopt-an-Ecosystem
               </Button>
             </Link>
+            <Link href="/resources/kew-green-heroes/south-asian-vanguard">
+              <Button variant="outline" className="border-amber-500/40 bg-amber-500/10 text-amber-200 hover:bg-amber-500/20 font-medium">
+                <Sparkles className="w-4 h-4 mr-1.5" />
+                South Asia’s Vanguard (32 Mentors)
+              </Button>
+            </Link>
           </div>
         }
       />

@@ -42,7 +42,15 @@ import {
   SELECTIVE_CONSCIOUSNESS_MONOGRAPH_SPEC,
 } from '@/data/himalayan-dispatch-selective-consciousness-monograph';
 import { WHEN_POLITICS_PROMISES_GREEN_SPEC } from '@/data/himalayan-dispatch-when-politics-promises-green-monograph';
+import { HABAK_LABORATORY_SPEC } from '@/data/himalayan-dispatch-habak-laboratory-monograph';
 import { ENVIRONMENTAL_LAW_MONOGRAPH_SPEC } from '@/data/himalayan-dispatch-environmental-law-monograph';
+import { SOUTH_ASIAN_VANGUARD_MONOGRAPH_SPEC } from '@/data/himalayan-dispatch-south-asian-vanguard-monograph';
+import { PRICE_OF_POWER_MONOGRAPH_SPEC } from '@/data/himalayan-dispatch-price-of-power-monograph';
+import {
+  FOUR_STAGE_DEVELOPMENT_PROGRESSION,
+  KASHMIR_SEISMIC_GAP_METRICS,
+  THE_TIME_BOMB_SPEC,
+} from '@/data/himalayan-dispatch-time-bomb-monograph';
 
 export function CurrentEditionExperience({
   edition,
@@ -69,6 +77,10 @@ export function CurrentEditionExperience({
     stories[0];
   const bigRead = bySlug('the-water-we-have-forgotten');
   const specialDalLakeInvestigation = bySlug('the-mathematics-of-a-dying-lake');
+  const specialHabakLaboratoryInvestigation = bySlug('the-laboratory-that-kashmir-lost');
+  const habakLabNo = String(
+    Math.max(1, stories.findIndex((s) => s.slug === 'the-laboratory-that-kashmir-lost') + 1)
+  ).padStart(2, '0');
   const fieldWetlands = bySlug('where-the-wild-waters-end');
   const fieldCommunities = bySlug('the-people-who-guard-the-forest');
   const visualJournal = bySlug('an-elegy-for-winter');
@@ -77,6 +89,23 @@ export function CurrentEditionExperience({
   const interview = bySlug('a-glacier-does-not-negotiate-with-five-year-plans');
   const charterEditorial = bySlug('why-the-western-himalayas-demand-slow-journalism');
   const specialResearchAccountabilityInvestigation = bySlug('who-are-we-researching-for');
+  const specialSouthAsianVanguardFeature = bySlug('south-asias-environmental-vanguard');
+  const southAsianVanguardNo = String(
+    Math.max(
+      1,
+      stories.findIndex((s) => s.slug === 'south-asias-environmental-vanguard') + 1
+    )
+  ).padStart(2, '0');
+  const dispatchNoOf = (slug: string) =>
+    String(Math.max(1, stories.findIndex((s) => s.slug === slug) + 1)).padStart(2, '0');
+  const specialPriceOfPowerInvestigation = bySlug('the-price-of-power');
+  const priceOfPowerNo = dispatchNoOf('the-price-of-power');
+  const specialTimeBombInvestigation = bySlug(
+    'the-western-himalayas-are-sitting-on-a-time-bomb'
+  );
+  const timeBombNo = dispatchNoOf(
+    'the-western-himalayas-are-sitting-on-a-time-bomb'
+  );
   const specialAtmosphereInvestigation = bySlug('the-atmosphere-has-no-borders');
   const specialEnvironmentalLawFlagship = bySlug(
     'when-environmental-laws-exist-but-the-environment-has-no-defence'
@@ -355,11 +384,17 @@ export function CurrentEditionExperience({
                 </p>
               ))}
             </div>
-            <div className="pt-2 border-t inline-block pr-8" style={{ borderColor: 'var(--hd-rule)' }}>
+            <div className="pt-3 border-t inline-block pr-8 space-y-1" style={{ borderColor: 'var(--hd-rule)' }}>
               <div className="hd-font-display text-xl italic font-semibold" style={{ color: 'var(--hd-fg)' }}>
                 {edition.editorsNoteAuthor}
               </div>
-              <div className="hd-folio-meta mt-0.5">{edition.editorsNoteRole}</div>
+              <div className="hd-folio-meta">{edition.editorsNoteRole}</div>
+              <div className="hd-font-sans text-[11px] tracking-[0.16em] uppercase pt-1" style={{ color: 'var(--hd-copper)' }}>
+                Himalayan Dispatch
+              </div>
+              <div className="hd-folio-meta">
+                Kashmir EcoWatch &nbsp;·&nbsp; Western Himalayan
+              </div>
             </div>
           </div>
 
@@ -678,6 +713,179 @@ export function CurrentEditionExperience({
                   <Link
                     href={item.href}
                     className="hd-font-sans inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#D8C3A5] hover:underline pt-1"
+                  >
+                    <span>{item.ctaLabel}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          SPECIAL HISTORICAL & SCIENTIFIC INVESTIGATION (DISPATCH 05 + MONOGRAPH 10)
+          "The Laboratory That Kashmir Lost: When a Dying Lake Lost Its Scientific Institution"
+          Immediately follows Dispatch 04 (The Mathematics of a Dying Lake)
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {specialHabakLaboratoryInvestigation && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: 'var(--hd-bg-elevated)',
+          }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-7 space-y-5">
+                <span className="hd-kicker">
+                  {habakLabNo} &nbsp;·&nbsp; {HABAK_LABORATORY_SPEC.kicker}
+                </span>
+
+                <Link
+                  href={resolveCanonicalStoryUrl(specialHabakLaboratoryInvestigation)}
+                  className="block group space-y-2"
+                >
+                  <h2
+                    className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.0] group-hover:underline underline-offset-4"
+                    style={{ color: 'var(--hd-fg)' }}
+                  >
+                    {HABAK_LABORATORY_SPEC.title}
+                  </h2>
+                  <p
+                    className="hd-font-display text-xl sm:text-2xl italic"
+                    style={{ color: 'var(--hd-copper)' }}
+                  >
+                    {HABAK_LABORATORY_SPEC.subtitle}
+                  </p>
+                </Link>
+
+                <p
+                  className="hd-font-body text-base sm:text-lg leading-relaxed max-w-3xl"
+                  style={{ color: 'var(--hd-fg-secondary)' }}
+                >
+                  {HABAK_LABORATORY_SPEC.standfirst}
+                </p>
+
+                <div
+                  className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-5 border-y"
+                  style={{ borderColor: 'var(--hd-rule)' }}
+                >
+                  {HABAK_LABORATORY_SPEC.heroStats.map((st) => (
+                    <div key={st.label} className="space-y-1">
+                      <div
+                        className="hd-font-display text-3xl sm:text-5xl font-semibold"
+                        style={{ color: 'var(--hd-fg)' }}
+                      >
+                        {st.value}
+                      </div>
+                      <div className="hd-folio-meta">{st.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-1 text-xs">
+                  <p className="hd-folio-meta">
+                    BY {HABAK_LABORATORY_SPEC.proposedByline}
+                  </p>
+                  <p className="hd-folio-meta">
+                    {HABAK_LABORATORY_SPEC.geographicalFocus} &nbsp;·&nbsp;{' '}
+                    {HABAK_LABORATORY_SPEC.investigationPeriod}
+                  </p>
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <Link
+                    href={resolveCanonicalStoryUrl(specialHabakLaboratoryInvestigation)}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: '#8C3125' }}
+                  >
+                    <span>
+                      Read Dispatch {habakLabNo} ({specialHabakLaboratoryInvestigation.readingTimeMinutes} min)
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+
+                  <Link
+                    href={HD_ROUTES.monograph10}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-5 py-3.5 border text-xs font-semibold tracking-[0.2em] uppercase transition-colors"
+                    style={{ borderColor: 'var(--hd-copper)', color: 'var(--hd-copper)' }}
+                  >
+                    <span>Explore Monograph 10 (12 Volumes · 90 Chapters)</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              <aside
+                className="lg:col-span-5 p-6 sm:p-7 border space-y-4"
+                style={{
+                  borderColor: 'var(--hd-rule-strong)',
+                  backgroundColor: 'var(--hd-bg)',
+                }}
+              >
+                <p className="hd-kicker">
+                  DOCUMENTED INSTITUTIONAL FAILURES · CAG AUDITS 2011 &amp; 2025
+                </p>
+                <div className="grid grid-cols-2 gap-3">
+                  {HABAK_LABORATORY_SPEC.cag2011FailureStats.map((st) => (
+                    <div
+                      key={st.label}
+                      className="p-3.5 border space-y-1"
+                      style={{ borderColor: 'var(--hd-rule)' }}
+                    >
+                      <div
+                        className="hd-font-display text-2xl font-semibold"
+                        style={{ color: 'var(--hd-copper)' }}
+                      >
+                        {st.value}
+                      </div>
+                      <div className="hd-folio-meta">{st.label}</div>
+                    </div>
+                  ))}
+                </div>
+                <blockquote
+                  className="pt-3 border-t hd-font-display text-xl italic leading-snug"
+                  style={{ borderColor: 'var(--hd-rule)', color: 'var(--hd-fg)' }}
+                >
+                  “{HABAK_LABORATORY_SPEC.closingQuestion}”
+                </blockquote>
+              </aside>
+            </div>
+
+            <div
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t"
+              style={{ borderColor: 'var(--hd-rule)' }}
+            >
+              {HABAK_LABORATORY_SPEC.publicationHierarchy.map((item) => (
+                <div
+                  key={item.level}
+                  className="p-5 border flex flex-col justify-between space-y-3"
+                  style={{
+                    borderColor: 'var(--hd-rule)',
+                    backgroundColor: 'var(--hd-bg)',
+                  }}
+                >
+                  <div className="space-y-2">
+                    <p className="hd-kicker">{item.level}</p>
+                    <h4
+                      className="hd-font-display text-xl font-semibold"
+                      style={{ color: 'var(--hd-fg)' }}
+                    >
+                      {item.title}
+                    </h4>
+                    <p
+                      className="hd-font-body text-xs leading-relaxed"
+                      style={{ color: 'var(--hd-fg-secondary)' }}
+                    >
+                      {item.detail}
+                    </p>
+                  </div>
+                  <Link
+                    href={item.href}
+                    className="hd-kicker inline-flex items-center gap-1.5 hover:underline pt-1"
                   >
                     <span>{item.ctaLabel}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -1285,6 +1493,141 @@ export function CurrentEditionExperience({
       )}
 
       {/* ═══════════════════════════════════════════════════════════════════════
+          SPECIAL INTERNATIONAL FEATURE (DISPATCH 14 + MONOGRAPH 08)
+          "South Asia's Environmental Vanguard" — Four Professional Mirrors
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {specialSouthAsianVanguardFeature && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: 'var(--hd-bg-elevated)',
+          }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-8 space-y-5">
+                <span className="hd-kicker">
+                  {southAsianVanguardNo} &nbsp;·&nbsp;{' '}
+                  {SOUTH_ASIAN_VANGUARD_MONOGRAPH_SPEC.editionKicker}
+                </span>
+
+                <Link
+                  href={resolveCanonicalStoryUrl(specialSouthAsianVanguardFeature)}
+                  className="block group space-y-2"
+                >
+                  <h2
+                    className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.0] group-hover:underline underline-offset-4"
+                    style={{ color: 'var(--hd-fg)' }}
+                  >
+                    {SOUTH_ASIAN_VANGUARD_MONOGRAPH_SPEC.title}
+                  </h2>
+                  <p
+                    className="hd-font-display text-2xl sm:text-3xl italic"
+                    style={{ color: 'var(--hd-copper)' }}
+                  >
+                    {SOUTH_ASIAN_VANGUARD_MONOGRAPH_SPEC.subtitle}
+                  </p>
+                </Link>
+
+                <p
+                  className="hd-font-body text-base sm:text-lg italic leading-relaxed max-w-3xl"
+                  style={{ color: 'var(--hd-fg-secondary)' }}
+                >
+                  {SOUTH_ASIAN_VANGUARD_MONOGRAPH_SPEC.editionDeck}
+                </p>
+
+                <div
+                  className="grid grid-cols-3 gap-6 py-5 border-y"
+                  style={{ borderColor: 'var(--hd-rule-strong)' }}
+                >
+                  {SOUTH_ASIAN_VANGUARD_MONOGRAPH_SPEC.heroStats.map((st) => (
+                    <div key={st.label} className="space-y-1">
+                      <div
+                        className="hd-font-display text-3xl sm:text-5xl font-semibold"
+                        style={{ color: 'var(--hd-fg)' }}
+                      >
+                        {st.value}
+                      </div>
+                      <div className="hd-folio-meta">{st.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="hd-folio-meta">
+                  BY {SOUTH_ASIAN_VANGUARD_MONOGRAPH_SPEC.proposedByline} &nbsp;·&nbsp;{' '}
+                  {SOUTH_ASIAN_VANGUARD_MONOGRAPH_SPEC.geographicScope}
+                </p>
+              </div>
+
+              <aside
+                className="lg:col-span-4 p-6 sm:p-8 border space-y-4"
+                style={{
+                  borderColor: 'var(--hd-rule-strong)',
+                  backgroundColor: 'var(--hd-bg)',
+                }}
+              >
+                <p className="hd-kicker">FOUR PROFESSIONAL MIRRORS (32)</p>
+                <p
+                  className="hd-font-display text-2xl italic font-medium leading-snug"
+                  style={{ color: 'var(--hd-fg)' }}
+                >
+                  “{SOUTH_ASIAN_VANGUARD_MONOGRAPH_SPEC.closingPhilosophicalQuestion}”
+                </p>
+                <p
+                  className="hd-font-body text-xs italic pt-3 border-t"
+                  style={{ borderColor: 'var(--hd-rule)', color: 'var(--hd-fg-muted)' }}
+                >
+                  8 Advocates · 8 NGO Institution-Builders · 8 Journalists · 8 Scientists (4 India +
+                  4 Pakistan in each cohort) · 2027–2035 Leadership Agenda &amp; KEW Green Heroes
+                  Educational Collection.
+                </p>
+              </aside>
+            </div>
+
+            <div
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t"
+              style={{ borderColor: 'var(--hd-rule)' }}
+            >
+              {SOUTH_ASIAN_VANGUARD_MONOGRAPH_SPEC.publicationHierarchy.map((item) => (
+                <div
+                  key={item.level}
+                  className="p-5 border flex flex-col justify-between space-y-3"
+                  style={{
+                    borderColor: 'var(--hd-rule)',
+                    backgroundColor: 'var(--hd-bg)',
+                  }}
+                >
+                  <div className="space-y-2">
+                    <p className="hd-kicker">{item.level}</p>
+                    <h4
+                      className="hd-font-display text-xl font-semibold"
+                      style={{ color: 'var(--hd-fg)' }}
+                    >
+                      {item.title}
+                    </h4>
+                    <p
+                      className="hd-font-body text-xs leading-relaxed"
+                      style={{ color: 'var(--hd-fg-secondary)' }}
+                    >
+                      {item.detail}
+                    </p>
+                  </div>
+                  <Link
+                    href={item.href}
+                    className="hd-kicker inline-flex items-center gap-1.5 hover:underline pt-1"
+                  >
+                    <span>{item.ctaLabel}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
           COMPOSITION 06 — BEYOND THE CONFERENCE: INDEPENDENT RESPONSE SERIES
           Five Original Scientific, Engineering & Governance Advancement Folios
           ═══════════════════════════════════════════════════════════════════════ */}
@@ -1377,7 +1720,7 @@ export function CurrentEditionExperience({
                     >
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <span className="hd-kicker">
-                          {meta?.dispatchNumber || '—'} · {meta?.conferenceReference || st.departmentRubric}
+                          {dispatchNoOf(st.slug)} · {meta?.conferenceReference || st.departmentRubric}
                         </span>
                         <span className="hd-folio-meta">
                           {st.readingTimeMinutes} MIN READ
@@ -1472,6 +1815,287 @@ export function CurrentEditionExperience({
       )}
 
       {/* ═══════════════════════════════════════════════════════════════════════
+          SPECIAL SCIENTIFIC & GEOPOLITICAL INVESTIGATION (MONOGRAPH 12)
+          "The Price of Power: When Mountains Generate Electricity but Their People Remain in Darkness"
+          Positioned immediately after "Who Gave Development the Right to Exceed the Mountain?"
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {specialPriceOfPowerInvestigation && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: '#191816',
+            color: '#F2EFE7',
+          }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-7 space-y-5">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="hd-font-sans text-[11px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
+                    {priceOfPowerNo} &nbsp;·&nbsp; {PRICE_OF_POWER_MONOGRAPH_SPEC.editionRubric}
+                  </span>
+                </div>
+
+                <Link
+                  href={resolveCanonicalStoryUrl(specialPriceOfPowerInvestigation)}
+                  className="block group space-y-2"
+                >
+                  <h2 className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.0] text-[#F2EFE7] group-hover:underline underline-offset-4">
+                    {PRICE_OF_POWER_MONOGRAPH_SPEC.title}
+                  </h2>
+                  <p className="hd-font-display text-2xl sm:text-3xl italic text-[#D8C3A5]">
+                    {PRICE_OF_POWER_MONOGRAPH_SPEC.subtitle}
+                  </p>
+                </Link>
+
+                <p className="hd-font-body text-base sm:text-lg italic leading-relaxed text-[#F2EFE7]/85 max-w-3xl">
+                  {PRICE_OF_POWER_MONOGRAPH_SPEC.italicDeck}
+                </p>
+
+                <div className="grid grid-cols-3 gap-6 py-5 border-y border-[#F2EFE7]/20">
+                  {PRICE_OF_POWER_MONOGRAPH_SPEC.heroStats.map((st) => (
+                    <div key={st.label} className="space-y-1">
+                      <div className="hd-font-display text-3xl sm:text-5xl font-semibold text-[#F2EFE7]">
+                        {st.value}
+                      </div>
+                      <div className="hd-font-sans text-[10px] sm:text-xs tracking-[0.2em] uppercase text-[#D8C3A5]">
+                        {st.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="hd-font-sans text-[11px] tracking-[0.16em] uppercase text-[#F2EFE7]/70">
+                  BY {PRICE_OF_POWER_MONOGRAPH_SPEC.proposedByline} &nbsp;·&nbsp;{' '}
+                  {PRICE_OF_POWER_MONOGRAPH_SPEC.geographicScope}
+                </p>
+
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <Link
+                    href={resolveCanonicalStoryUrl(specialPriceOfPowerInvestigation)}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: '#8C3125' }}
+                  >
+                    <span>
+                      Read Dispatch {priceOfPowerNo} (
+                      {specialPriceOfPowerInvestigation.readingTimeMinutes} min)
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+
+                  <Link
+                    href={HD_ROUTES.monographPriceOfPower}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-5 py-3.5 border border-[#F2EFE7]/45 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] hover:bg-[#F2EFE7]/10 transition-colors"
+                  >
+                    <span>Explore Monograph 12 (20 Volumes · 120 Chapters)</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              <aside className="lg:col-span-5 border border-[#F2EFE7]/25 p-6 sm:p-7 space-y-4 bg-[#201F1D]">
+                <p className="hd-font-sans text-[10px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
+                  THREE-PART MOUNTAIN INFRASTRUCTURE PROGRESSION
+                </p>
+                <div className="space-y-3 text-xs">
+                  <div className="p-3.5 border border-[#F2EFE7]/15 bg-[#171717] space-y-1">
+                    <span className="hd-font-sans text-[10px] uppercase tracking-wider text-[#D8C3A5]">
+                      {dispatchNoOf('when-the-mountain-rejects-the-engineer')} · Geological Limits
+                    </span>
+                    <p className="hd-font-body text-[#F2EFE7]/85">
+                      <em>When the Mountain Rejects the Engineer</em> — slope mechanics, fractured
+                      lithology, and mountain engineering thresholds.
+                    </p>
+                  </div>
+                  <div className="p-3.5 border border-[#F2EFE7]/15 bg-[#171717] space-y-1">
+                    <span className="hd-font-sans text-[10px] uppercase tracking-wider text-[#D8C3A5]">
+                      {dispatchNoOf('who-gave-development-the-right-to-exceed-the-mountain')} · Ecological Limits
+                    </span>
+                    <p className="hd-font-body text-[#F2EFE7]/85">
+                      <em>Who Gave Development the Right to Exceed the Mountain?</em> — carrying
+                      capacity and ecological boundaries.
+                    </p>
+                  </div>
+                  <div className="p-3.5 border border-[#8C3125] bg-[#171717] space-y-1">
+                    <span className="hd-font-sans text-[10px] uppercase tracking-wider text-[#D8C3A5]">
+                      {priceOfPowerNo} · Hydropower &amp; Energy Justice (Monograph 12)
+                    </span>
+                    <p className="hd-font-body text-[#F2EFE7]/90">
+                      <em>The Price of Power</em> — practical test of both geological and ecological
+                      limits across 5 regions, paired with the 16-registry{' '}
+                      <Link
+                        href="/earth-human-impact/hydropower-energy-justice-observatory"
+                        className="underline text-[#D8C3A5]"
+                      >
+                        KEW Hydropower Observatory
+                      </Link>
+                      .
+                    </p>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          FLAGSHIP DISASTER VULNERABILITY INVESTIGATION (DISPATCH 22 + MONOGRAPH 13)
+          "The Western Himalayas Are Sitting on a Time Bomb"
+          Placed immediately after Dispatch 21 ("The Price of Power") and before
+          Dispatch 23 ("Nature Is Not a Contractor")
+          ═══════════════════════════════════════════════════════════════════════ */}
+      {specialTimeBombInvestigation && (
+        <section
+          className="w-full px-4 sm:px-8 lg:px-14 py-16 sm:py-24 border-t"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: '#141312',
+            color: '#F2EFE7',
+          }}
+        >
+          <div className="max-w-[1440px] mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="lg:col-span-7 space-y-5">
+                <span className="hd-font-sans text-[11px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
+                  {timeBombNo} &nbsp;·&nbsp; {THE_TIME_BOMB_SPEC.kicker}
+                </span>
+
+                <Link
+                  href={resolveCanonicalStoryUrl(specialTimeBombInvestigation)}
+                  className="block group space-y-2"
+                >
+                  <h2 className="hd-font-display text-4xl sm:text-6xl font-semibold leading-[1.0] text-[#F2EFE7] group-hover:underline underline-offset-4">
+                    {THE_TIME_BOMB_SPEC.title}
+                  </h2>
+                  <p className="hd-font-display text-2xl sm:text-3xl italic text-[#D8C3A5]">
+                    {THE_TIME_BOMB_SPEC.subtitle}
+                  </p>
+                </Link>
+
+                <p className="hd-font-body text-base sm:text-lg leading-relaxed text-[#F2EFE7]/85 max-w-3xl">
+                  {THE_TIME_BOMB_SPEC.tocTeaser}
+                </p>
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-5 border-y border-[#F2EFE7]/20">
+                  {THE_TIME_BOMB_SPEC.heroStats.map((st) => (
+                    <div key={st.label} className="space-y-1">
+                      <div className="hd-font-display text-3xl sm:text-5xl font-semibold text-[#F2EFE7]">
+                        {st.value}
+                      </div>
+                      <div className="hd-font-sans text-[10px] sm:text-xs tracking-[0.2em] uppercase text-[#D8C3A5]">
+                        {st.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-1.5 text-xs text-[#F2EFE7]/75">
+                  <p className="hd-font-body">
+                    By {THE_TIME_BOMB_SPEC.proposedByline}
+                  </p>
+                  <p className="hd-font-body italic text-[#F2EFE7]/65">
+                    {THE_TIME_BOMB_SPEC.geographicalCoverage}
+                  </p>
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <Link
+                    href={resolveCanonicalStoryUrl(specialTimeBombInvestigation)}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: '#8C3125' }}
+                  >
+                    <span>
+                      Read Dispatch {timeBombNo} ({specialTimeBombInvestigation.readingTimeMinutes} min)
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+
+                  <Link
+                    href={HD_ROUTES.monograph13}
+                    className="hd-font-sans inline-flex items-center gap-2.5 px-5 py-3.5 border border-[#F2EFE7]/45 text-xs font-semibold tracking-[0.2em] uppercase text-[#F2EFE7] hover:bg-[#F2EFE7]/10 transition-colors"
+                  >
+                    <span>Explore Monograph 13 (25 Volumes · 150 Chapters)</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              <aside className="lg:col-span-5 border border-[#F2EFE7]/25 p-6 sm:p-7 space-y-4 bg-[#1E1D1B]">
+                <p className="hd-font-sans text-[10px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
+                  FOUR STAGES OF INVESTIGATION · DISPATCHES 19 TO 22
+                </p>
+                <div className="space-y-2.5 text-xs">
+                  {FOUR_STAGE_DEVELOPMENT_PROGRESSION.map((st) => (
+                    <div
+                      key={st.dispatchNumber}
+                      className={`p-3 border space-y-0.5 ${
+                        st.dispatchNumber === '22'
+                          ? 'border-[#8C3125] bg-[#141312]'
+                          : 'border-[#F2EFE7]/15 bg-[#141312]/70'
+                      }`}
+                    >
+                      <span className="hd-font-sans text-[10px] uppercase tracking-wider text-[#D8C3A5]">
+                        {st.dispatchNumber} · {st.title}
+                      </span>
+                      <p className="hd-font-body text-[#F2EFE7]/88">
+                        {st.investigativeStage}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-2 gap-2.5 pt-2 border-t border-[#F2EFE7]/15">
+                  {KASHMIR_SEISMIC_GAP_METRICS.map((m) => (
+                    <div
+                      key={m.label}
+                      className="p-2.5 border border-[#F2EFE7]/15 bg-[#141312]"
+                    >
+                      <div className="hd-font-display text-xl font-semibold text-[#D8C3A5]">
+                        {m.value}
+                      </div>
+                      <div className="hd-font-sans text-[10px] uppercase tracking-wider text-[#F2EFE7]/75">
+                        {m.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </aside>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-[#F2EFE7]/20">
+              {THE_TIME_BOMB_SPEC.publicationHierarchy.map((item) => (
+                <div
+                  key={item.level}
+                  className="p-5 border border-[#F2EFE7]/20 bg-[#1E1D1B] flex flex-col justify-between space-y-3"
+                >
+                  <div className="space-y-2">
+                    <p className="hd-font-sans text-[10px] font-semibold tracking-[0.22em] uppercase text-[#D8C3A5]">
+                      {item.level}
+                    </p>
+                    <h4 className="hd-font-display text-xl font-semibold text-[#F2EFE7]">
+                      {item.title}
+                    </h4>
+                    <p className="hd-font-body text-xs leading-relaxed text-[#F2EFE7]/75">
+                      {item.detail}
+                    </p>
+                  </div>
+                  <Link
+                    href={item.href}
+                    className="hd-font-sans inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#D8C3A5] hover:underline pt-1"
+                  >
+                    <span>{item.ctaLabel}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════════
           SPECIAL SCIENTIFIC INVESTIGATION FLAGSHIP (DISPATCH 17 + MONOGRAPH 01)
           "The Atmosphere Has No Borders: The Air We Breathe, the Numbers We Cannot Trust"
           ═══════════════════════════════════════════════════════════════════════ */}
@@ -1489,7 +2113,7 @@ export function CurrentEditionExperience({
               <div className="lg:col-span-7 space-y-5">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="hd-font-sans text-[11px] font-semibold tracking-[0.24em] uppercase text-[#D8C3A5]">
-                    19 &nbsp;·&nbsp; {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.kicker}
+                    {dispatchNoOf('the-atmosphere-has-no-borders')} &nbsp;·&nbsp; {SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17.kicker}
                   </span>
                 </div>
 
@@ -1794,7 +2418,7 @@ export function CurrentEditionExperience({
                     className="hd-font-display text-2xl font-semibold leading-snug"
                     style={{ color: 'var(--hd-fg)' }}
                   >
-                    24 Inaugural Dispatches Across Six Stages
+                    {stories.length} Inaugural Dispatches Across Six Stages
                   </h3>
                   <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">

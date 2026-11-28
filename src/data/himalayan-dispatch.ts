@@ -24,18 +24,24 @@ import { MONOGRAPH_00_WATERSHED_VOICES_STORY } from './himalayan-dispatch-waters
 import { STORY_02_MOUNTAINS_SPEAK } from './himalayan-dispatch-stories/story-02-mountains-speak';
 import { STORY_03_FORGOTTEN_WATER } from './himalayan-dispatch-stories/story-03-forgotten-water';
 import { THE_MATHEMATICS_OF_A_DYING_LAKE_STORY } from './himalayan-dispatch-dying-lake-story';
+import { THE_LABORATORY_THAT_KASHMIR_LOST_STORY } from './himalayan-dispatch-habak-laboratory-story';
+import { THE_ART_OF_ENCROACHMENT_STORY } from './himalayan-dispatch-art-of-encroachment-story';
 import { STORY_04_WILD_WATERS } from './himalayan-dispatch-stories/story-04-wild-waters';
 import { THE_SKY_HAS_NO_BORDERS_STORY } from './himalayan-dispatch-sky-has-no-borders-story';
 import { STORY_05_FOREST_GUARDIANS } from './himalayan-dispatch-stories/story-05-forest-guardians';
+import { THE_NATIONAL_PARK_THAT_BECAME_A_GOLF_COURSE_STORY } from './himalayan-dispatch-salim-ali-park-story';
 import { STORY_06_ELEGY_WINTER } from './himalayan-dispatch-stories/story-06-elegy-winter';
 import { STORY_07_VANISHING_FLOODPLAIN } from './himalayan-dispatch-stories/story-07-vanishing-floodplain';
 import { STORY_08_SNOWLINE_RETREAT } from './himalayan-dispatch-stories/story-08-snowline-retreat';
 import { STORY_09_GLACIER_DIALOGUE } from './himalayan-dispatch-stories/story-09-glacier-dialogue';
 import { STORY_10_SLOW_JOURNALISM } from './himalayan-dispatch-stories/story-10-slow-journalism';
 import { WHO_ARE_WE_RESEARCHING_FOR_STORY } from './himalayan-dispatch-research-accountability-story';
+import { SOUTH_ASIAN_VANGUARD_STORY } from './himalayan-dispatch-south-asian-vanguard-story';
 import { STORY_11_SCIENCE_GOVERNANCE } from './himalayan-dispatch-stories/story-11-science-diagnosed-valley-governance';
 import { STORY_12_MOUNTAIN_REJECTS_ENGINEER } from './himalayan-dispatch-stories/story-12-when-mountain-rejects-engineer';
 import { STORY_13_ECOLOGICAL_LIMITS_DEVELOPMENT } from './himalayan-dispatch-stories/story-13-who-gave-development-right-exceed-mountain';
+import { THE_PRICE_OF_POWER_STORY } from './himalayan-dispatch-price-of-power-story';
+import { THE_WESTERN_HIMALAYAS_TIME_BOMB_STORY } from './himalayan-dispatch-time-bomb-story';
 import { STORY_14_NATURE_NOT_CONTRACTOR } from './himalayan-dispatch-stories/story-14-nature-is-not-a-contractor';
 import { STORY_15_CLIMATE_AGRICULTURAL_SCIENCE } from './himalayan-dispatch-stories/story-15-climate-has-changed-has-agricultural-science';
 import { STORY_16_SIX_YEARS_WARNINGS_AIR } from './himalayan-dispatch-stories/story-16-six-years-of-warnings-kashmir-cannot-breathe';
@@ -402,10 +408,34 @@ export const MAGAZINE_EDITIONS: MagazineEdition[] = [
     coverCredit: 'Kashmir EcoWatch Visual Archive',
     editorsNoteTitle: 'A Quiet Room Beside the Instruments',
     editorsNoteBody: [
-      'Across Kashmir EcoWatch, sensors, satellite passes, and hydrological ledgers measure the Western Himalayas with necessary precision. Yet numbers alone rarely explain the human cost of keeping a mountain watershed standing, or what happens to a home in Verinag or Doda when a forest guard never returns from duty.',
-      'Himalayan Dispatch was founded to build a different kind of room: unhurried, literary, visually uncompromising, and anchored in verifiable truth. Our inaugural cover story—The Price of Protecting Paradise—turns toward the forgotten guardians of Kashmir’s forests, reconciling official memorials with lived occupational realities and asking who protects the protectors.',
-      'Beside it across Volume 01, our correspondents listen to high cirque lakes beneath Haramukh, trace Srinagar’s buried waterways, stand at dawn along Hokersar’s reedlines, and examine thirty-eight winters of snowline retreat.',
-      'Completing this twenty-four-dispatch inaugural architecture, Dispatch 04 (The Mathematics of a Dying Lake) reconstructs the unresolved engineering and eight mass balances of Dal Lake conservation; Dispatch 12 (Who Are We Researching For?) establishes our five-region academic and scientific accountability census immediately ahead of Series II (Beyond the Conference, Dispatches 13–17); Dispatch 19 (The Atmosphere Has No Borders) examines transboundary atmospheric physics and measurement integrity; and Dispatches 18 and 20–24 interrogate civil society, legal enforcement, lake recovery, public declarations, and our closing flagship investigation—Selective Environmental Consciousness—exempting neither universities, regulators, businesses, religious institutions, communities, nor Kashmir EcoWatch itself from universal accountability.',
+      'Across Kashmir EcoWatch, sensors, satellite passes, geospatial models and hydrological ledgers measure the Western Himalayas with necessary precision. Yet numbers alone rarely explain the human cost of keeping a mountain watershed standing, or what happens to a home in Verinag or Doda when a forest guard never returns from duty.',
+      'Himalayan Dispatch was founded to build a different kind of room: unhurried, intellectually independent, literary, visually uncompromising and anchored in verifiable truth. A room where scientific evidence meets human experience, where historical decisions encounter contemporary consequences, and where environmental responsibility extends beyond institutional declarations.',
+      'Our inaugural cover story, The Price of Protecting Paradise, turns towards the forgotten guardians of Kashmir’s forests, reconciling official memorials with lived occupational realities and asking who protects the protectors.',
+      'Across this inaugural volume of thirty-two dispatches, our correspondents listen to high cirque lakes beneath Haramukh, trace Srinagar’s buried waterways, stand at dawn along Hokersar’s reedlines, follow migratory birds across political boundaries and examine thirty-eight winters of snowline retreat.',
+      'But this edition also enters less comfortable territory.',
+      'The Mathematics of a Dying Lake reconstructs the unresolved engineering questions and eight mass balances of Dal Lake conservation. The Laboratory That Kashmir Lost investigates the displacement and deterioration of the scientific infrastructure established to understand the very ecosystem Kashmir continues attempting to restore. The Art of Encroachment examines the historical transformation of water into land, the pressures of property development, the consequences of political instability and documented allegations of administrative collusion.',
+      'The National Park That Became a Golf Course revisits the transformation of part of Srinagar’s Sálim Ali National Park, asking what protected status means when conservation landscapes become available for competing development priorities.',
+      'Our investigation into academic responsibility, Who Are We Researching For? The World Knows Our Mountains. Do We?, examines the relationship between scientific production, original knowledge, public understanding and measurable environmental outcomes across Kashmir, Jammu, Ladakh, Azad Jammu & Kashmir and Gilgit-Baltistan.',
+      'Alongside it, South Asia’s Environmental Vanguard looks beyond our mountains to the extraordinary environmental advocates, journalists, scientists and conservation leaders of India and Pakistan. Their journeys were not always easy. Neither are those of our own professionals. Their struggles, contributions and achievements invite us towards respectful introspection, renewed intellectual ambition and a deeper understanding of professional responsibility.',
+      'Through Beyond the Conference, we examine the distance between scientific recommendations and environmental governance, between engineering ambition and geological reality, between development expenditure and ecological recovery, and between agricultural research and a changing mountain climate.',
+      'The Price of Power investigates the geographical distribution of hydropower benefits and environmental burdens. It asks who receives the electricity, who receives the revenue, and who lives with submerged forests, displaced wildlife, altered rivers and geological uncertainty. It also examines the contradiction of electricity-generating mountain regions experiencing persistent power shortages.',
+      'The Western Himalayas Are Sitting on a Time Bomb brings these concerns into a wider scientific examination of tectonic instability, accumulated seismic strain, glacial lake outbursts, landslides, extreme weather, vulnerable settlements and interdependent critical infrastructure. Its purpose is not to predict catastrophe or cultivate fear, but to investigate whether our societies are adequately preparing for the natural hazards and human-created vulnerabilities that increasingly coexist within these mountains.',
+      'Our atmospheric investigations examine the persistence of unhealthy air, transboundary pollution transport, the integrity of environmental measurements and the limitations of explanations confined within political borders.',
+      'Our legal and civil society investigations ask whether environmental legislation is producing environmental protection, whether lake restoration extends beyond recurring cleanup operations, whether activism is generating measurable outcomes, and whether public declarations are being translated into institutional action.',
+      'When Politics Promises Green examines environmental commitments against the documentary record of governance, expenditure, implementation and ecological outcomes.',
+      'Finally, our closing flagship investigation, Selective Environmental Consciousness, asks whether environmental principles are applied consistently, irrespective of political allegiance, religious affiliation, institutional loyalty, commercial interest or geographical jurisdiction.',
+      'No institution should be exempt from legitimate environmental scrutiny.',
+      'Neither universities nor regulators. Neither governments nor opposition parties. Neither businesses nor civil society organizations. Neither religious institutions nor communities. And certainly not Himalayan Dispatch or Kashmir EcoWatch itself.',
+      'We do not claim that every question raised in these pages has already been answered. Some require historical records that remain inaccessible. Others demand independent scientific measurements, authenticated legal documents, field investigations and responses from the institutions concerned.',
+      'Where evidence is incomplete, uncertainty must be acknowledged. Where allegations remain unresolved, they must not be presented as established facts. Where our own interpretations require correction, we must possess the intellectual humility to correct them.',
+      'This publication is neither an instrument of political convenience nor a platform for environmental condemnation without evidence.',
+      'It is an invitation to examine what we have inherited, what we have transformed, what we have neglected, what we have protected and what we may still be capable of recovering.',
+      'The Western Himalayas deserve more than periodic expressions of environmental concern. They deserve sustained scientific attention, independent journalism, responsible engineering, institutional memory and a society willing to examine its own decisions.',
+      'The mountains were here before our institutions.',
+      'They will remain long after our professional titles, political affiliations and administrative tenures have disappeared.',
+      'What remains uncertain is the ecological condition in which we will leave them.',
+      'Himalayan Dispatch begins with that responsibility.',
+      'Not with the ambition to speak louder than others, but with the determination to listen longer, investigate deeper, remember what has been forgotten and ask the questions that environmental responsibility demands.',
     ],
     editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
     editorsNoteRole: 'Founding Editor-in-Chief',
@@ -414,18 +444,24 @@ export const MAGAZINE_EDITIONS: MagazineEdition[] = [
       'when-mountains-speak-who-is-listening',
       'the-water-we-have-forgotten',
       'the-mathematics-of-a-dying-lake',
+      'the-laboratory-that-kashmir-lost',
+      'the-art-of-encroachment',
       'where-the-wild-waters-end',
       'the-sky-has-no-borders',
       'the-people-who-guard-the-forest',
+      'the-national-park-that-became-a-golf-course',
       'an-elegy-for-winter',
       'gravel-concrete-and-the-vanishing-floodplain',
       'thirty-eight-winters-of-snowline-retreat',
       'a-glacier-does-not-negotiate-with-five-year-plans',
       'why-the-western-himalayas-demand-slow-journalism',
       'who-are-we-researching-for',
+      'south-asias-environmental-vanguard',
       'science-has-diagnosed-the-valley-who-will-prescribe-its-governance',
       'when-the-mountain-rejects-the-engineer',
       'who-gave-development-the-right-to-exceed-the-mountain',
+      'the-price-of-power',
+      'the-western-himalayas-are-sitting-on-a-time-bomb',
       'nature-is-not-a-contractor',
       'the-climate-has-changed-has-agricultural-science',
       'six-years-of-warnings-and-kashmir-still-cannot-breathe',
@@ -687,6 +723,178 @@ export const MAGAZINE_EDITIONS: MagazineEdition[] = [
     editorsNoteRole: 'Founding Editor-in-Chief',
     storySlugs: ['when-environmental-laws-exist-but-the-environment-has-no-defence'],
   },
+  {
+    id: 'ed-monograph-south-asian-vanguard',
+    slug: 'monograph-08-south-asias-environmental-vanguard',
+    volumeLabel: 'MONOGRAPH 08 · ENVIRONMENTAL LEADERSHIP',
+    issueNumberLabel: 'SPECIAL INTERNATIONAL MONOGRAPH',
+    status: 'archived',
+    title: 'South Asia’s Environmental Vanguard',
+    themeKicker:
+      'ENVIRONMENTAL LEADERSHIP · PROFESSIONAL INTROSPECTION · SCIENTIFIC INTEGRITY · INTELLECTUAL LEGACY',
+    subtitle:
+      'India and Pakistan’s Environmental Giants: Extraordinary Minds and the Lessons They Hold for Kashmir — 32 Personalities, 7 Thematic Volumes & 60 Proposed Chapters.',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Biographical & Leadership Research Framework)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/publications/kolahoi-glacier-cryosphere.jpg',
+    coverLocation:
+      'India · Pakistan · Kashmir · Jammu · Ladakh · Azad Jammu & Kashmir · Gilgit-Baltistan',
+    coverCaption:
+      'Glaciated headwaters and high mountain ridges of the Western Himalayas—reflecting four professional mirrors across South Asian environmental pioneers (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'It Was Not Easy for Them. It Is Not Easy for Us.',
+    editorsNoteBody: [
+      'Companion to Dispatch 14 in Vol. 01 / No. 01, Monograph 08 sets out a seven-volume, sixty-chapter editorial and biographical architecture examining thirty-two distinguished Indian and Pakistani environmental advocates, NGO institution-builders, investigative journalists, and scientists across four professional mirrors.',
+      'Connected permanently with KEW Green Heroes (/resources/kew-green-heroes/south-asian-vanguard) and the Student Action Hub, it applies a non-ranking twenty-section biographical standard and advances the ten-part Western Himalayan Environmental Leadership Agenda (2027–2035).',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['south-asias-environmental-vanguard'],
+  },
+  {
+    id: 'ed-monograph-09-salim-ali-park',
+    slug: 'monograph-09-the-national-park-that-became-a-golf-course',
+    volumeLabel: 'MONOGRAPH 09 · PROTECTED AREA GOVERNANCE & JURISPRUDENCE',
+    issueNumberLabel: 'SPECIAL HISTORICAL & SCIENTIFIC MONOGRAPH',
+    status: 'archived',
+    title: 'The National Park That Became a Golf Course',
+    themeKicker:
+      'PROTECTED AREA GOVERNANCE · ENVIRONMENTAL JURISPRUDENCE · POLITICAL ECOLOGY · INSTITUTIONAL ACCOUNTABILITY',
+    subtitle:
+      'When Recreation Replaced Conservation: The Forgotten Environmental, Legal and Institutional Legacy of Srinagar’s Sálim Ali National Park — 10 Thematic Volumes & 75 Investigative Chapters.',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Primary Gazette & Cadastral Retrieval Ongoing)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/protected-network/protected-conservation-reserves-shikargah.jpg',
+    coverLocation:
+      'Srinagar · Dal Lake Foothills · Zabarwan Range · Western Himalayan Protected Area Network',
+    coverCaption:
+      'Temperate broadleaf and mixed foothill woodland representative of Western Himalayan protected forest reserves (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'What Does Protected Really Mean?',
+    editorsNoteBody: [
+      'Companion to Dispatch 10 in Vol. 01 / No. 01, Monograph 09 sets out a ten-volume, seventy-five-chapter investigation into the historical conversion of part of Srinagar’s City Forest (Sálim Ali) National Park—reconciling conflicting 8.69–9.07 km² baselines, 2003–2005 IBWL/NBWL post-construction objections, PIL No. 115/99, Dal Lake irrigation and nutrient questions, and the fate of 723 remaining hectares.',
+      'Paired permanently with Kashmir EcoWatch’s Protected Area Integrity & Historical Transformation Observatory (/protected-network/protected-area-integrity-observatory), it advances the twelve-requirement Western Himalayan Protected Area Integrity Protocol across all five regions while guaranteeing full Institutional Right of Response.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['the-national-park-that-became-a-golf-course'],
+  },
+  {
+    id: 'ed-monograph-10-habak-laboratory',
+    slug: 'monograph-10-the-laboratory-that-kashmir-lost',
+    volumeLabel: 'MONOGRAPH 10 · SCIENTIFIC INSTITUTIONS & LIMNOLOGY',
+    issueNumberLabel: 'SPECIAL HISTORICAL & SCIENTIFIC MONOGRAPH',
+    status: 'archived',
+    title: 'The Laboratory That Kashmir Lost',
+    themeKicker:
+      'INSTITUTIONAL NEGLIGENCE · LIMNOLOGY · SCIENTIFIC INDEPENDENCE · PUBLIC ASSET ACCOUNTABILITY · ENVIRONMENTAL GOVERNANCE',
+    subtitle:
+      'When a Dying Lake Lost Its Scientific Institution: The Forgotten Legacy of Habak, the Displacement of Environmental Research and the Institutional Contradictions Behind Kashmir’s Lake Conservation Crisis — 12 Thematic Volumes & 90 Proposed Chapters (1990s–2026).',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Historical File Verification & Research Protocols Ongoing)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/environmental-calendar/calendar-hero-scientists-lab.jpg',
+    coverLocation: 'Habak · Hazratbal · Dal–Nigeen Lake System · Srinagar · Western Himalayas',
+    coverCaption:
+      'Freshwater chemistry analysis and aquatic diagnostic instrumentation context—illustrating the indispensable role of permanent limnological infrastructure in saving Dal Lake (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'The Lake Was Not the Only Thing That Was Dying',
+    editorsNoteBody: [
+      'Positioned immediately after Dispatch 04 (The Mathematics of a Dying Lake) as Dispatch 05 in Vol. 01 / No. 01, Monograph 10 sets out a twelve-volume, ninety-chapter historical and scientific investigation into the displacement of the Habak Ecological Monitoring Laboratory, CAG 2011 and 2025 audit findings, J&K High Court interventions, missing phosphorus mass balances, and thirty years of scientific opportunity costs.',
+      'Paired permanently with Kashmir EcoWatch’s Environmental Scientific Infrastructure & Institutional Legacy Observatory (/governance/scientific-infrastructure-observatory), it advances the proposed 16-division Western Himalayan Institute of Aquatic Sciences and Environmental Engineering while affording formal Right of Response across all twelve decision-making institutions.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['the-laboratory-that-kashmir-lost'],
+  },
+  {
+    id: 'ed-monograph-11-art-of-encroachment',
+    slug: 'monograph-11-the-art-of-encroachment',
+    volumeLabel: 'MONOGRAPH 11 · ENVIRONMENTAL CRIMINOLOGY & LAND GOVERNANCE',
+    issueNumberLabel: 'SPECIAL HISTORICAL & GEOSPATIAL MONOGRAPH',
+    status: 'archived',
+    title: 'The Art of Encroachment',
+    themeKicker:
+      'ENVIRONMENTAL CRIMINOLOGY · LAND GOVERNANCE · POLITICAL ECOLOGY · GEOSPATIAL INTELLIGENCE · REGULATORY ACCOUNTABILITY',
+    subtitle:
+      'How Dal Lake Is Being Turned into Real Estate: A Historical Investigation into Land Appropriation, Administrative Complicity and the Disappearing Waters of Kashmir — 15 Thematic Volumes & 100 Research Chapters (1859–2026).',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Matched-Season Satellite & Parcel Verification Ongoing)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/publications/dal-lake-lacustrine-houseboats.jpg',
+    coverLocation: 'Dal–Nigeen Lake System · Srinagar · Western Himalayas',
+    coverCaption:
+      'Lacustrine channels, shoreline embankments, and Zabarwan backdrop across Dal Lake—where 167 years of internal water-to-land transformation meet law, property, and hydrology (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'The Lake That Could Disappear Without Its Boundary Disappearing',
+    editorsNoteBody: [
+      'Positioned immediately after The Laboratory That Kashmir Lost as Dispatch 06 in Vol. 01 / No. 01, Monograph 11 establishes a fifteen-volume, hundred-chapter research repository examining Dal Lake from 1859 to 2026—from 49.0% historical open-water loss, CAG’s 2007–2020 249.8-hectare balance sheet, and tributary narrowing at Chatterhama and Saidnar to ACB FIR No. 48/2015, flood-damaged LCMA enforcement archives, and the Net Aquatic Area Recovered standard.',
+      'Expanded directly within Kashmir EcoWatch’s Lake Encroachment & Administrative Accountability Observatory (/earth-human-impact/aquatic-cryosphere/lake-encroachment), it protects generational lake-dweller households from scapegoating while applying symmetric scientific verification to both official (>20.3 km²) and KEW (13.95 km²) contemporary water-area estimates.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['the-art-of-encroachment'],
+  },
+  {
+    id: 'ed-monograph-12-price-of-power',
+    slug: 'monograph-12-the-price-of-power',
+    volumeLabel: 'MONOGRAPH 12 · HYDROPOWER & ENERGY JUSTICE',
+    issueNumberLabel: 'SPECIAL SCIENTIFIC & GEOPOLITICAL MONOGRAPH',
+    status: 'archived',
+    title: 'The Price of Power',
+    themeKicker:
+      'HYDROPOWER ENGINEERING · FOREST SUBMERGENCE · WILDLIFE DISPLACEMENT · TECTONIC HAZARDS · ENERGY JUSTICE',
+    subtitle:
+      'When Mountains Generate Electricity but Their People Remain in Darkness — 20 Thematic Volumes, 120 Proposed Chapters & 15-Gate Hydropower Integrity Protocol Across Five Western Himalayan Regions.',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Project-by-Project Primary File Authentication Ongoing)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/earth-human-impact/ehii-riverbed-infrastructure-monitoring.jpg',
+    coverLocation:
+      'Kashmir · Jammu · Ladakh · Azad Jammu & Kashmir · Gilgit-Baltistan · Upper Indus Basin',
+    coverCaption:
+      'Steep Western Himalayan river-gorge and mountain infrastructure corridor—where thousand-megawatt cascades intersect forest submergence, tunnel hydrogeology, tectonic loading, and winter electricity curtailment (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'Who Receives the Power, and Who Inherits the Risk?',
+    editorsNoteBody: [
+      'Positioned immediately after "Who Gave Development the Right to Exceed the Mountain?" in Vol. 01 / No. 01, Monograph 12 sets out a twenty-volume, hundred-and-twenty-chapter scientific and energy-justice investigation examining hydropower across Kashmir, Jammu, Ladakh, Azad Jammu & Kashmir, and Gilgit-Baltistan—from November 2026 winter deficits and flood-damaged generating channels to Sawalkote forest submergence, Ratle muck-disposal dockets, Neelum–Jhelum tunnel shutdowns, Kishanganga minimum flows, and Reservoir-Triggered Seismicity mechanics.',
+      'Paired permanently with Kashmir EcoWatch’s sixteen-registry Hydropower, Environmental Impact & Energy Justice Observatory (/earth-human-impact/hydropower-energy-justice-observatory), it strictly separates installed megawatts from delivered local power and quarantines eight unestablished regional totals until complete project-by-project primary records are authenticated.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['the-price-of-power'],
+  },
+  {
+    id: 'ed-monograph-13-time-bomb',
+    slug: 'monograph-13-the-western-himalayas-are-sitting-on-a-time-bomb',
+    volumeLabel: 'MONOGRAPH 13 · MULTI-HAZARD & DISASTER INTELLIGENCE',
+    issueNumberLabel: 'SPECIAL SCIENTIFIC MONOGRAPH',
+    status: 'archived',
+    title: 'The Western Himalayas Are Sitting on a Time Bomb',
+    themeKicker:
+      'TECTONIC INSTABILITY · MULTI-HAZARD INTELLIGENCE · CASCADING DISASTERS · CRITICAL INFRASTRUCTURE · DISASTER GOVERNANCE',
+    subtitle:
+      'The Convergence of Tectonic Instability, Climate Extremes, Ecological Destruction and Unprepared Human Settlements — 25 Thematic Volumes, 150 Proposed Chapters & 80 Hazard Categories.',
+    publicationDateLabel:
+      'Inaugural Companion Monograph Architecture · November 28, 2026 (Multi-Hazard & Preparedness Research Framework)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/hazard-intelligence/hazard-command-center.jpg',
+    coverLocation:
+      'Kashmir · Jammu · Ladakh · Azad Jammu & Kashmir · Gilgit-Baltistan · Western Himalayas & Karakoram',
+    coverCaption:
+      'High-relief Western Himalayan mountain, glacier, and valley-corridor terrain—where locked thrust structures, cryospheric change, steep fractured slopes, contracted floodplains, and critical lifelines converge (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'The Disaster May Be Natural. The Vulnerability Is Not Always Natural.',
+    editorsNoteBody: [
+      'Placed at Dispatch 22 immediately after The Price of Power and before Nature Is Not a Contractor in Vol. 01 / No. 01, Monograph 13 sets out a twenty-five-volume, hundred-and-fifty-chapter scientific architecture examining cascading multi-hazard vulnerability across Kashmir, Jammu, Ladakh, Azad Jammu & Kashmir, Gilgit-Baltistan, and the Karakoram—from the 250–270 km Kashmir seismic gap (~11 ± 1 mm/yr convergence), ICIMOD 2026 cryosphere indicators, and J&K’s 616 mapped glacial lakes to 2014 Jhelum hydraulic benchmarks, 739 Kashmir landslides, permafrost thaw, Srinagar Mw 6.0–7.5 liquefaction maps, and twelve interdependent critical lifelines.',
+      'Connected permanently with Kashmir EcoWatch’s twenty-pillar Multi-Hazard & Critical Infrastructure Resilience Command Center (/hazard-intelligence/multi-hazard-resilience-command-center), it strictly prohibits deterministic earthquake date predictions, enforces regional scope boundaries, and evaluates institutional readiness from Planned to Demonstrably Effective.',
+    ],
+    editorsNoteAuthor: 'Dr. Fayaz Ahmad Khan',
+    editorsNoteRole: 'Founding Editor-in-Chief',
+    storySlugs: ['the-western-himalayas-are-sitting-on-a-time-bomb'],
+  },
 ];
 
 export const MAGAZINE_STORIES: MagazineStory[] = [
@@ -695,22 +903,28 @@ export const MAGAZINE_STORIES: MagazineStory[] = [
   STORY_02_MOUNTAINS_SPEAK,
   STORY_03_FORGOTTEN_WATER,
   THE_MATHEMATICS_OF_A_DYING_LAKE_STORY,
+  THE_LABORATORY_THAT_KASHMIR_LOST_STORY,
+  THE_ART_OF_ENCROACHMENT_STORY,
   STORY_04_WILD_WATERS,
   THE_SKY_HAS_NO_BORDERS_STORY,
   STORY_05_FOREST_GUARDIANS,
+  THE_NATIONAL_PARK_THAT_BECAME_A_GOLF_COURSE_STORY,
   STORY_06_ELEGY_WINTER,
   STORY_07_VANISHING_FLOODPLAIN,
   STORY_08_SNOWLINE_RETREAT,
   STORY_09_GLACIER_DIALOGUE,
   STORY_10_SLOW_JOURNALISM,
 
-  // ── 12: ACADEMIC & SCIENTIFIC ACCOUNTABILITY FLAGSHIP ─────────────────────
+  // ── 13–14: ACADEMIC ACCOUNTABILITY & SOUTH ASIAN VANGUARD FLAGSHIPS ────────
   WHO_ARE_WE_RESEARCHING_FOR_STORY,
+  SOUTH_ASIAN_VANGUARD_STORY,
 
-  // ── 13–17: BEYOND THE CONFERENCE — INDEPENDENT RESPONSE SERIES (VOL. 01) ──
+  // ── BEYOND THE CONFERENCE, HYDROPOWER & MULTI-HAZARD CONVERGENCE (18–24) ───
   STORY_11_SCIENCE_GOVERNANCE,
   STORY_12_MOUNTAIN_REJECTS_ENGINEER,
   STORY_13_ECOLOGICAL_LIMITS_DEVELOPMENT,
+  THE_PRICE_OF_POWER_STORY,
+  THE_WESTERN_HIMALAYAS_TIME_BOMB_STORY,
   STORY_14_NATURE_NOT_CONTRACTOR,
   STORY_15_CLIMATE_AGRICULTURAL_SCIENCE,
 

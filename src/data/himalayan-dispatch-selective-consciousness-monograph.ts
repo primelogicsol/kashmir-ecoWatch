@@ -163,6 +163,16 @@ export const HIMALAYAN_DISPATCH_FIVE_FLAGSHIP_INVESTIGATIONS = [
     companionHref: '/research-library/environmental-research-observatory',
   },
   {
+    dispatchLabel: 'HYDROPOWER, TECTONIC HAZARDS & ENERGY JUSTICE',
+    foundationPillar: 'THE MOUNTAIN INFRASTRUCTURE & ENERGY JUSTICE FOUNDATION',
+    title: 'The Price of Power',
+    subtitle:
+      'When Mountains Generate Electricity but Their People Remain in Darkness',
+    href: '/himalayan-dispatch/issues/volume-01-issue-01/the-price-of-power',
+    companionLabel: 'Monograph 12 (20 Vols · 120 Chapters) & 16-Registry Hydropower Observatory',
+    companionHref: '/earth-human-impact/hydropower-energy-justice-observatory',
+  },
+  {
     dispatchLabel: 'ATMOSPHERIC AND TRANSBOUNDARY ACCOUNTABILITY',
     foundationPillar: 'THE ATMOSPHERIC SCIENTIFIC FOUNDATION',
     title: 'The Atmosphere Has No Borders',

@@ -37,6 +37,7 @@ import {
   SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_06,
   SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_17,
 } from '@/data/himalayan-dispatch-beyond-conference';
+import { PRICE_OF_POWER_MONOGRAPH_SPEC } from '@/data/himalayan-dispatch-price-of-power-monograph';
 import { formatPublicReadingDuration } from '@/lib/himalayan-dispatch-metrics';
 
 export function generateStaticParams() {
@@ -258,7 +259,7 @@ export default async function HimalayanDispatchMonthlyIssuePage({
         {/* Editor's Note + Complete Issue Table of Contents */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-4 space-y-4">
-            <p className="hd-kicker">FROM THE MASTHEAD</p>
+            <p className="hd-kicker">LETTER FROM THE MASTHEAD</p>
             <h2 className="hd-font-display text-3xl font-semibold" style={{ color: 'var(--hd-fg)' }}>
               {edition.editorsNoteTitle}
             </h2>
@@ -269,9 +270,13 @@ export default async function HimalayanDispatchMonthlyIssuePage({
                 </p>
               ))}
             </div>
-            <div className="pt-2 border-t" style={{ borderColor: 'var(--hd-rule)' }}>
+            <div className="pt-3 border-t space-y-1" style={{ borderColor: 'var(--hd-rule)' }}>
               <p className="hd-font-display text-xl italic font-semibold">{edition.editorsNoteAuthor}</p>
               <p className="hd-folio-meta">{edition.editorsNoteRole}</p>
+              <p className="hd-font-sans text-[11px] tracking-[0.16em] uppercase pt-1" style={{ color: 'var(--hd-copper)' }}>
+                Himalayan Dispatch
+              </p>
+              <p className="hd-folio-meta">Kashmir EcoWatch &nbsp;·&nbsp; Western Himalayan</p>
             </div>
           </div>
 
@@ -403,6 +408,50 @@ export default async function HimalayanDispatchMonthlyIssuePage({
                         </h3>
                       </Link>
 
+                      {st.slug === 'the-art-of-encroachment' && (
+                        <div className="space-y-2 pt-0.5">
+                          <p
+                            className="hd-font-display text-base sm:text-lg italic"
+                            style={{ color: 'var(--hd-copper)' }}
+                          >
+                            Proposed 15-volume, 100-chapter historical &amp; geospatial dossier · 1859–2026 Dal–Nigeen conversion audit
+                          </p>
+                          <div className="flex flex-wrap items-center gap-4 text-xs">
+                            <span className="hd-folio-meta">15 Volumes</span>
+                            <span className="hd-folio-meta">100 Chapters</span>
+                            <span className="hd-folio-meta">−49.0% Open Water (1859–2013)</span>
+                            <Link
+                              href={HD_ROUTES.monograph11}
+                              className="hd-kicker underline hover:opacity-80"
+                            >
+                              Open Monograph 11 →
+                            </Link>
+                          </div>
+                        </div>
+                      )}
+
+                      {st.slug === 'the-national-park-that-became-a-golf-course' && (
+                        <div className="space-y-2 pt-0.5">
+                          <p
+                            className="hd-font-display text-base sm:text-lg italic"
+                            style={{ color: 'var(--hd-copper)' }}
+                          >
+                            Proposed 10-volume, 75-chapter protected-area &amp; jurisprudence investigation · Primary gazette retrieval ongoing
+                          </p>
+                          <div className="flex flex-wrap items-center gap-4 text-xs">
+                            <span className="hd-folio-meta">10 Volumes</span>
+                            <span className="hd-folio-meta">75 Chapters</span>
+                            <span className="hd-folio-meta">723 ha Unresolved Remainder</span>
+                            <Link
+                              href={HD_ROUTES.monograph09}
+                              className="hd-kicker underline hover:opacity-80"
+                            >
+                              Open Monograph 09 →
+                            </Link>
+                          </div>
+                        </div>
+                      )}
+
                       {st.slug === SPECIAL_SCIENTIFIC_INVESTIGATION_DISPATCH_06.slug && (
                         <div className="space-y-2 pt-0.5">
                           <p
@@ -446,6 +495,31 @@ export default async function HimalayanDispatchMonthlyIssuePage({
                               className="hd-kicker underline hover:opacity-80"
                             >
                               Open Monograph 01 →
+                            </Link>
+                          </div>
+                        </div>
+                      )}
+
+                      {st.slug === PRICE_OF_POWER_MONOGRAPH_SPEC.dispatchSlug && (
+                        <div className="space-y-2 pt-0.5">
+                          <p
+                            className="hd-font-display text-base sm:text-lg italic"
+                            style={{ color: 'var(--hd-copper)' }}
+                          >
+                            {PRICE_OF_POWER_MONOGRAPH_SPEC.subtitle} —{' '}
+                            {PRICE_OF_POWER_MONOGRAPH_SPEC.italicDeck}
+                          </p>
+                          <div className="flex flex-wrap items-center gap-4 text-xs">
+                            {PRICE_OF_POWER_MONOGRAPH_SPEC.heroStats.map((hs) => (
+                              <span key={hs.label} className="hd-folio-meta">
+                                {hs.value} {hs.label}
+                              </span>
+                            ))}
+                            <Link
+                              href={HD_ROUTES.monographPriceOfPower}
+                              className="hd-kicker underline hover:opacity-80"
+                            >
+                              Open 20-Volume Monograph 12 →
                             </Link>
                           </div>
                         </div>

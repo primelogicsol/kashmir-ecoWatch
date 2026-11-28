@@ -36,6 +36,12 @@ import { ResearchAccountabilityWorkbench } from './ResearchAccountabilityWorkben
 import { AvianMigrationRefugiaWorkbench } from './AvianMigrationRefugiaWorkbench';
 import { WhempManifestoWorkbench } from './WhempManifestoWorkbench';
 import { EnvironmentalLawAccountabilityWorkbench } from './EnvironmentalLawAccountabilityWorkbench';
+import { SouthAsianVanguardWorkbench } from './SouthAsianVanguardWorkbench';
+import { SalimAliParkForensicWorkbench } from './SalimAliParkForensicWorkbench';
+import { HabakLaboratoryWorkbench } from './HabakLaboratoryWorkbench';
+import { DalLakeEncroachmentWorkbench } from './DalLakeEncroachmentWorkbench';
+import { HydropowerEnergyJusticeWorkbench } from './HydropowerEnergyJusticeWorkbench';
+import { HimalayanTimeBombWorkbench } from './HimalayanTimeBombWorkbench';
 
 export function StoryReaderClient({
   story,
@@ -773,6 +779,29 @@ export function StoryReaderClient({
                   ch.numberRoman === 'VI' && (
                     <EnvironmentalLawAccountabilityWorkbench variant="editorial" />
                   )}
+                {story.slug === 'south-asias-environmental-vanguard' &&
+                  ch.numberRoman === 'V' && (
+                    <SouthAsianVanguardWorkbench variant="editorial" />
+                  )}
+                {story.slug === 'the-national-park-that-became-a-golf-course' &&
+                  ch.numberRoman === 'VI' && (
+                    <SalimAliParkForensicWorkbench variant="editorial" />
+                  )}
+                {story.slug === 'the-art-of-encroachment' &&
+                  ch.numberRoman === 'VI' && (
+                    <DalLakeEncroachmentWorkbench variant="editorial" />
+                  )}
+                {story.slug === 'the-laboratory-that-kashmir-lost' &&
+                  ch.numberRoman === 'VI' && <HabakLaboratoryWorkbench />}
+                {story.slug === 'the-price-of-power' &&
+                  ch.numberRoman === 'V' && (
+                    <HydropowerEnergyJusticeWorkbench variant="editorial" />
+                  )}
+                {story.slug ===
+                  'the-western-himalayas-are-sitting-on-a-time-bomb' &&
+                  ch.numberRoman === 'VIII' && (
+                    <HimalayanTimeBombWorkbench variant="editorial" />
+                  )}
               </section>
               );
             })}
@@ -1233,7 +1262,7 @@ export function StoryReaderClient({
             )}
 
             {/* Transparent Corrections & Post-Publication Clarifications Ledger */}
-            {story.corrections.length > 0 && (
+            {(story.corrections?.length ?? 0) > 0 && (
               <section
                 aria-label="Corrections and Clarifications"
                 className="p-5 sm:p-6 border space-y-3"
@@ -1251,7 +1280,7 @@ export function StoryReaderClient({
                     Public Corrections Register →
                   </Link>
                 </div>
-                {story.corrections.map((c) => (
+                {(story.corrections ?? []).map((c) => (
                   <div key={c.id} className="space-y-1 text-xs sm:text-sm">
                     <p className="hd-folio-meta">
                       <Link href={HD_ROUTES.correctionRecord(c.id)} className="hover:underline">

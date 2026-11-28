@@ -347,6 +347,38 @@ export const HD_ROUTES = {
   },
   monographEnvironmentalLawChapter: (chapterSlug: string) =>
     hdRoute(`/issues/monograph-07-when-environmental-laws-exist/chapters/${chapterSlug}`),
+  get monographSouthAsianVanguard() {
+    return hdRoute('/issues/monograph-08-south-asias-environmental-vanguard');
+  },
+  monographSouthAsianVanguardChapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-08-south-asias-environmental-vanguard/chapters/${chapterSlug}`),
+  get monograph09() {
+    return hdRoute('/issues/monograph-09-the-national-park-that-became-a-golf-course');
+  },
+  monograph09Chapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-09-the-national-park-that-became-a-golf-course/chapters/${chapterSlug}`),
+  get monograph10() {
+    return hdRoute('/issues/monograph-10-the-laboratory-that-kashmir-lost');
+  },
+  monograph10Chapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-10-the-laboratory-that-kashmir-lost/chapters/${chapterSlug}`),
+  get monograph11() {
+    return hdRoute('/issues/monograph-11-the-art-of-encroachment');
+  },
+  monograph11Chapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-11-the-art-of-encroachment/chapters/${chapterSlug}`),
+  get monographPriceOfPower() {
+    return hdRoute('/issues/monograph-12-the-price-of-power');
+  },
+  monographPriceOfPowerChapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-12-the-price-of-power/chapters/${chapterSlug}`),
+  get monograph13() {
+    return hdRoute('/issues/monograph-13-the-western-himalayas-are-sitting-on-a-time-bomb');
+  },
+  monograph13Chapter: (chapterSlug: string) =>
+    hdRoute(
+      `/issues/monograph-13-the-western-himalayas-are-sitting-on-a-time-bomb/chapters/${chapterSlug}`
+    ),
   get forthcoming() {
     return hdRoute('/forthcoming');
   },
@@ -646,6 +678,17 @@ export const CANONICAL_EDITION_SLUG_MAP: Record<string, string> = {
     'monograph-06-when-politics-promises-green',
   'monograph-07-when-environmental-laws-exist':
     'monograph-07-when-environmental-laws-exist',
+  'monograph-08-south-asias-environmental-vanguard':
+    'monograph-08-south-asias-environmental-vanguard',
+  'monograph-09-the-national-park-that-became-a-golf-course':
+    'monograph-09-the-national-park-that-became-a-golf-course',
+  'monograph-10-the-laboratory-that-kashmir-lost':
+    'monograph-10-the-laboratory-that-kashmir-lost',
+  'monograph-11-the-art-of-encroachment':
+    'monograph-11-the-art-of-encroachment',
+  'monograph-12-the-price-of-power': 'monograph-12-the-price-of-power',
+  'monograph-13-the-western-himalayas-are-sitting-on-a-time-bomb':
+    'monograph-13-the-western-himalayas-are-sitting-on-a-time-bomb',
   'issue-02-a-world-in-transition': 'issue-02-a-world-in-transition',
 };
 

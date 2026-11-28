@@ -27,6 +27,7 @@ const NAV_LINKS = [
   { href: '/environmental-calendar/outdoor-classroom/student-observations', label: 'Field Telemetry', icon: Activity },
   { href: '/environmental-calendar/outdoor-classroom/certificates', label: 'Certificates', icon: Award },
   { href: '/environmental-calendar/outdoor-classroom/annual-report', label: 'Annual Pilot Report', icon: FileSpreadsheet },
+  { href: '/resources/kew-green-heroes/south-asian-vanguard', label: "South Asia's Vanguard (32)", icon: Sparkles },
 ];
 
 export function OutdoorClassroomNav() {

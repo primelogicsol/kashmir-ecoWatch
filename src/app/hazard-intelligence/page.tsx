@@ -30,6 +30,7 @@ const submodules = [
   { name: 'GLOFs', href: '/hazard-intelligence/glofs', icon: Droplets, color: 'from-teal-500 to-emerald-600', status: '4 GLOF risks', statusColor: 'warning', desc: 'Glacial lake outburst flood risk assessment' },
   { name: 'Forest Fires', href: '/hazard-intelligence/forest-fires', icon: Flame, color: 'from-orange-500 to-red-600', status: '6 hotspots', statusColor: 'danger', desc: 'Active fire detection, burn severity and forest loss' },
   { name: 'Dashboards', href: '/hazard-intelligence/dashboards', icon: BarChart3, color: 'from-violet-500 to-purple-600', status: 'Analytics', statusColor: 'default', desc: 'Multi-hazard analytics and district comparison' },
+  { name: 'Multi-Hazard & Lifeline Command Center', href: '/hazard-intelligence/multi-hazard-resilience-command-center', icon: Shield, color: 'from-red-600 to-amber-500', status: '20 Pillars · 80 Classes', statusColor: 'danger', desc: 'Tectonic strain, GLOFs, 6 compound scenarios & 12 critical lifelines' },
 ];
 
 // ─── District Hazard Exposure ────────────────────────────────────────────────

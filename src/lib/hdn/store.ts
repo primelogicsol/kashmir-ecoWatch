@@ -907,7 +907,7 @@ function projectCanonicalStoriesToManuscripts(): HdnArticleManuscript[] {
           blocksSnapshot: blocks,
         },
       ],
-      corrections: st.corrections,
+      corrections: Array.isArray(st.corrections) ? st.corrections : [],
     };
   });
 }
@@ -1064,7 +1064,7 @@ export function projectAnieDraftToHdnManuscript(draft: AnieEditorialDraft): HdnA
 
 function createInitialHdnStore(): HdnPersistentStore {
   return {
-    schemaVersion: 8,
+    schemaVersion: 9,
     accounts: buildSeededAccounts(),
     manuscripts: projectCanonicalStoriesToManuscripts(),
     assignments: buildSeededAssignments(),
@@ -1326,11 +1326,15 @@ export function readHdnStore(): HdnPersistentStore {
         const cleanedCorrections = (m.corrections || []).filter((c) => c.id !== 'corr-hd-06-1');
         return {
           ...seed,
-          corrections: cleanedCorrections.length ? cleanedCorrections : seed.corrections,
+          corrections: cleanedCorrections.length ? cleanedCorrections : (seed.corrections || []),
           comments: m.comments || [],
         };
       }
-      return m;
+      return {
+        ...m,
+        corrections: Array.isArray(m.corrections) ? m.corrections : [],
+        comments: Array.isArray(m.comments) ? m.comments : [],
+      };
     });
     const seenMsIds = new Set(refreshedMs.map((m) => m.id));
     for (const seedMs of defaults.manuscripts) {
@@ -1349,7 +1353,7 @@ export function readHdnStore(): HdnPersistentStore {
       ...existingMedia.filter((m) => !seenMediaUrls.has(m.url)),
     ];
 
-    const isSchemaUpgrade = (parsed.schemaVersion || 1) < 8;
+    const isSchemaUpgrade = (parsed.schemaVersion || 1) < 9;
     const defaultEditionsById = new Map(defaults.editions.map((e) => [e.id, e]));
     const existingEditions = Array.isArray(parsed.editions) ? parsed.editions : [];
     const mergedEditions = [
@@ -1357,7 +1361,7 @@ export function readHdnStore(): HdnPersistentStore {
       ...existingEditions.filter((e) => !defaultEditionsById.has(e.id)),
     ];
     const store: HdnPersistentStore = {
-      schemaVersion: 8,
+      schemaVersion: 9,
       accounts: existingAccs,
       manuscripts: refreshedMs,
       assignments:
@@ -2886,8 +2890,8 @@ export function getHdnPublishedMagazineStories(): MagazineStory[] {
             : undefined,
         interviewExchanges: interviewBlock?.interviewExchanges,
         interviewSubjectBio: interviewBlock?.interviewSubjectBio,
-        corrections: m.corrections,
-        relatedKewModule: m.relatedKewModules[0],
+        corrections: Array.isArray(m.corrections) ? m.corrections : [],
+        relatedKewModule: m.relatedKewModules?.[0],
         seoTitle: m.seoTitle,
         seoKeywords: m.seoKeywords,
         reportingBeatSlug: m.reportingBeatSlug,
@@ -2957,7 +2961,7 @@ export function getHdnPublishedDailyDispatches(): DailyDispatchArticle[] {
               context: beat.summary,
             },
         isPublished: true,
-        corrections: m.corrections,
+        corrections: Array.isArray(m.corrections) ? m.corrections : [],
       };
     });
 }

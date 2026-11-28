@@ -138,31 +138,31 @@ const PARK_INTELLIGENCE: Record<string, {
     ],
   },
   'salim-ali-national-park': {
-    iucnCategory: 'None (De-notified)',
-    biogeographicZone: 'Western Himalaya (Valley Floor)',
-    watersheds: ['Dal Lake Catchment', 'Brane Nallah Drainage', 'Jhelum Wetland System'],
+    iucnCategory: 'Historic Category II (Partial 1.62 km² Reported Denotified 2005; Remainder Under Audit)',
+    biogeographicZone: 'Western Himalaya (Zabarwan Foothills & Dal Lake Basin)',
+    watersheds: ['Dal Lake Catchment', 'Zabarwan Foothill Springs & Drainage', 'Jhelum Wetland System'],
     conservationSignificance: [
-      'Original notification protected critical urban wetlands and riverine groves on Dal Lake\'s shore.',
-      'Represented a vital urban forest lung regulating Srinagar\'s microclimate and pollution.',
-      'Key historic staging ground for waterfowl and migratory birds in the Jhelum valley.',
+      'Recorded in the WII Protected Area Gazette archive (reported 8.69–9.07 km²; 8.85 km² in 2005 NBWL minutes) protecting Zabarwan foothill woodlands and Dal Lake margins.',
+      'Documented in 2003–2005 IBWL/NBWL Standing Committee proceedings for post-construction wildlife, pesticide, fertilizer, and Dal Lake effluent concerns.',
+      'Central Western Himalayan case study in protected-area downgrading, downsizing, and degazettement (PADDD) and the fate of 723 remaining hectares.',
     ],
     connectedAreas: [
       { name: 'Dachigam National Park Buffer', type: 'Wildlife Corridor', distance: '~8 km E' },
       { name: 'Dal Lake Wetlands', type: 'Ecological Continuum', distance: 'Adjacent' },
-      { name: 'Mirgund Wetland Reserve', type: 'Migratory Route Link', distance: '~15 km W' },
+      { name: 'Shankaracharya Reserve Forest', type: 'Adjacent Foothill Reserve (NBWL 2005 Record)', distance: '~4 km W' },
     ],
     threats: [
-      { name: 'Urban Expansion', score: 95, trend: 'increasing' },
-      { name: 'Land Conversion', score: 98, trend: 'stable' },
+      { name: 'Recreational Land Conversion (1998–2001)', score: 98, trend: 'stable' },
+      { name: 'Cadastral & Statutory Boundary Ambiguity', score: 92, trend: 'stable' },
       { name: 'Habitat Fragmentation', score: 90, trend: 'increasing' },
-      { name: 'Landscape Modification', score: 92, trend: 'stable' },
-      { name: 'Biodiversity Reduction', score: 85, trend: 'increasing' },
+      { name: 'Unquantified Irrigation & Nutrient Footprint', score: 78, trend: 'stable' },
+      { name: 'Biodiversity Displacement', score: 85, trend: 'increasing' },
     ],
     monitoring: [
-      { method: 'Satellite Monitoring', coverage: 100, lastUpdate: '2025' },
-      { method: 'Land Cover Monitoring', coverage: 95, lastUpdate: '2025' },
-      { method: 'Change Detection', coverage: 90, lastUpdate: '2024' },
-      { method: 'Field Surveys (Ornithological)', coverage: 15, lastUpdate: '2023' },
+      { method: 'Multi-Temporal Satellite Archive (1960–2026)', coverage: 90, lastUpdate: '2026' },
+      { method: 'Statutory Gazette & NBWL Proceedings Audit', coverage: 75, lastUpdate: '2026' },
+      { method: 'Cadastral Remainder Verification (723 ha)', coverage: 30, lastUpdate: '2026' },
+      { method: 'Hydrological & Nutrient Monitoring (Pending)', coverage: 15, lastUpdate: '2026' },
     ],
     dashboard: {
       conservationStatus: 0,
@@ -173,24 +173,24 @@ const PARK_INTELLIGENCE: Record<string, {
       researchCoverage: 0
     },
     dataSources: [
-      'J&K Wildlife Protection Department Records',
-      'Jammu & Kashmir Government Gazette Notification SRO-321',
-      'Court Rulings & Public Interest Litigations (PILs)',
-      'EIA Reports for Royal Springs Development',
-      'Scientific Literature on Srinagar Urban Wetland Loss'
+      'WII Protected Area Gazette Notification Database',
+      'J&K Wildlife (Protection) Act, 1978 (Section 35)',
+      'PIL No. 115/99 (Wildlife Protection Society of India — IGNFA Archive)',
+      'IBWL & NBWL Standing Committee Minutes (May 2003, Aug 2004, Apr 2005, Oct 2005)',
+      'Protected Area Update (July 1999) & Kalpavriksh Archival Correspondence'
     ],
-    visitorAccess: 'Golf Course Members / Public with Entry Fee',
+    visitorAccess: 'Golf Course Managed Footprint (~121.4 ha) / Remaining Parcels Under Audit',
     researchHighlights: [
-      { type: 'Historical Appraisals', count: 8 },
-      { type: 'Urban Ecology Studies', count: 14 },
-      { type: 'Ornithological Records', count: 22 },
-      { type: 'Policy & Legal Analysis Papers', count: 6 },
+      { type: 'Monograph 09 Investigative Chapters', count: 75 },
+      { type: 'Priority Statutory & Financial Records Sought', count: 20 },
+      { type: 'NBWL Expert Recommendations Audited (2005)', count: 8 },
+      { type: 'Geospatial Reconstruction Windows (1960–2026)', count: 9 },
     ],
     ecologicalTrends: [
-      { metric: 'Natural Cover', trend: 'negative', note: 'Replaced by managed turfgrass and ornamentals' },
-      { metric: 'Avian Diversity', trend: 'negative', note: 'Significant decline in wetland bird species abundance' },
-      { metric: 'Wetland Hydrology', trend: 'negative', note: 'Dredged and canalized water bodies for course design' },
-      { metric: 'Urban Heat Island Mitigation', trend: 'negative', note: 'Reduced forest canopy leads to local heat increase' },
+      { metric: 'Converted Footprint (~121.4 ha)', trend: 'negative', note: 'Natural woodland replaced by managed golf turf (1998–2001)' },
+      { metric: 'Reported Denotification (Oct 2005)', trend: 'negative', note: '162 ha (18.3% of 885 ha) stated in NBWL minutes; gazette instrument sought' },
+      { metric: 'Remaining 723 Hectares (81.7%)', trend: 'stable', note: 'Requires parcel-wise cadastral, ecological, and jurisdictional verification' },
+      { metric: 'Dal Lake Runoff & Nutrient Question', trend: 'negative', note: 'Flagged by NBWL (2003–2005); requires direct CSIR/field water measurements' },
     ]
   },
   'kishtwar-national-park': {
@@ -1104,6 +1104,46 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
 
         {area.id === 'salim-ali' ? (
           <>
+            {/* Companion Himalayan Dispatch & Protected Area Integrity Observatory Banner */}
+            <div className="mb-8 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-emerald-950/60 via-slate-900/95 to-amber-950/30 border border-emerald-500/35 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+              <div className="space-y-1.5 max-w-3xl">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-emerald-400">
+                    Protected Area Integrity &amp; Historical Transformation Observatory
+                  </span>
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-amber-500/15 border border-amber-400/30 text-amber-300 font-medium">
+                    Dispatch 10 &amp; 10-Volume / 75-Chapter Monograph 09
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Explore our comprehensive investigation <strong>The National Park That Became a Golf Course</strong>: reconciling the 907 ha / 885 ha park extent, October 2005 NBWL proceedings (162 ha reported denotified vs. 121.4 ha golf course and 723 ha remainder; 4 of 8 expert recommendations accepted), PIL No. 115/99, and interactive irrigation &amp; nutrient calculators.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+                <a
+                  href="/protected-network/protected-area-integrity-observatory"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition"
+                >
+                  <span>Open Integrity Observatory</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href="/himalayan-dispatch/issues/volume-01-issue-01/the-national-park-that-became-a-golf-course"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg bg-amber-600/90 hover:bg-amber-500 text-white text-xs font-semibold transition"
+                >
+                  <span>Read Dispatch 10</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href="/himalayan-dispatch/issues/monograph-09-the-national-park-that-became-a-golf-course"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-white/15 text-slate-200 text-xs font-medium transition"
+                >
+                  <span>75-Chapter Monograph</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
             {/* ── HISTORY & ARCHIVE TAB ── */}
             {activeTab === 'history' && (
               <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
@@ -1112,14 +1152,14 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                     {/* Historical Overview */}
                     <Card className={`${CARD} p-6`}>
                       <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                        <Book className="w-5 h-5 text-emerald-500" /> Historical Overview
+                        <Book className="w-5 h-5 text-emerald-500" /> Historical Overview &amp; Extent Discrepancies
                       </h2>
                       <div className="space-y-4 text-sm text-slate-300 leading-relaxed">
                         <p>
-                          Salim Ali National Park, originally established as <strong>City Forest National Park</strong>, was notified in 1986 to preserve a critical urban wetland and riverine forest system in close proximity to Dal Lake in Srinagar. Named in honor of Dr. Salim Ali, India's most celebrated ornithologist, the park served as a sanctuary for avian diversity, seasonal waterfowl, and riverine woodlands in an otherwise rapidly urbanizing landscape.
+                          Recorded in the Wildlife Institute of India&apos;s Protected Area Gazette Notification Database as <strong>City Forest (Sálim Ali) National Park</strong>, Srinagar&apos;s Zabarwan–Dal Lake foothill national park carries conflicting establishment dates and areas across official sources: 1986 (Government of India tourism portal and historical inventories at 9 km²), 1992 (WII database at 9 km²), 9.07 km² (J&amp;K inventories), 8.85 km² (2005 National Board for Wildlife proceedings), and 8.69 km² (recent ornithological literature).
                         </p>
                         <p>
-                          The park spanned 9.07 km² of low-lying floodplains, deltaic marshlands, and dense willow-poplar canopy. It acted as an ecological buffer for the Dal Lake ecosystem, filtering run-off, recharging aquifers, and regulating microclimatic temperature before its controversial conversion.
+                          Following 1998 administrative approval for golf course development and completion of the Royal Springs Golf Course (~121.4 ha / 300 acres) around 2001, official IBWL/NBWL Standing Committee proceedings in 2003, 2004, and 2005 documented unresolved concerns over chemical pesticides, fertilizers, Dal Lake effluent monitoring, and partial compliance (4 of 8 expert recommendations accepted in October 2005). Authenticated original gazette, legislative boundary-alteration resolutions under Section 35 of the J&amp;K Wildlife (Protection) Act, 1978, and cadastral maps for the remaining 723 hectares remain under active forensic retrieval.
                         </p>
                       </div>
                     </Card>
@@ -1127,28 +1167,22 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                     {/* Legal Archive */}
                     <Card className={`${CARD} p-6`}>
                       <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                        <FileText className="w-5 h-5 text-emerald-500" /> Legal & Administrative Archive
+                        <FileText className="w-5 h-5 text-emerald-500" /> Documented Primary Legal &amp; Institutional Records
                       </h2>
                       <div className="space-y-3">
                         {[
-                          { title: 'Original Notification SRO-321', type: 'Government Order', detail: '1986 — Formally declaring City Forest as a National Park under Section 35 of Wildlife Protection Act.', docId: 'SRO-321/1986' },
-                          { title: 'Cabinet De-notification Decision', type: 'Cabinet Order', detail: '2001 — Directing the transfer of the 9.07 km² park to the Tourism Department for recreation design.', docId: 'Cabinet Res. 12/2001' },
-                          { title: 'High Court Public Interest Litigation (PIL)', type: 'Judicial Record', detail: '2001–2003 — Environmental coalitions challenging the de-notification of a designated Category II National Park.', docId: 'PIL No. 427/2001' },
-                          { title: 'Official Land Allocation Order', type: 'Administrative Order', detail: '2001 — Handing over land parcels to Jammu & Kashmir Tourism Development Corp for golf course construction.', docId: 'Govt Order No. 84-TSM' },
+                          { title: 'WII Protected Area Gazette Entry — City Forest (Sálim Ali) NP', detail: '1986 / 1992 records — Official gazette archive entry; authenticated original boundary notification under retrieval.', docId: 'WII-PA-JK' },
+                          { title: 'PIL No. 115/99 — Wildlife Protection Society of India', detail: 'January 1999 — Public interest litigation challenging golf course construction and retrospective clearance (IGNFA legal archive).', docId: 'PIL-115/1999' },
+                          { title: 'IBWL Standing Committee Site Inspection Review', detail: 'May 6, 2003 — Deferred denotification after Dr. M. K. Ranjitsinh & Aseem Srivastav inspection due to unresolved fertilizer/pesticide questions.', docId: 'IBWL-060503' },
+                          { title: 'NBWL Standing Committee Proceedings (Aug 2004, Apr 2005 & Oct 2005)', detail: 'Oct 4, 2005 — Recorded 1.62 km² reported denotified out of 8.85 km², 4/8 expert recommendations accepted, Shankaracharya transfer not approved, and Supreme Court objection filing.', docId: 'NBWL-041005' },
                         ].map((doc, idx) => (
-                          <div key={idx} className="p-3 bg-white/3 border border-white/5 rounded-xl flex items-center justify-between text-xs hover:border-emerald-500/30 transition-all">
+                          <div key={idx} className="p-3 bg-white/3 border border-white/5 rounded-xl flex items-center justify-between gap-4 text-xs hover:border-emerald-500/30 transition-all">
                             <div>
                               <div className="font-bold text-white mb-0.5">{doc.title}</div>
                               <div className="text-slate-400">{doc.detail}</div>
                             </div>
                             <div className="text-right shrink-0">
                               <Badge variant="secondary" className="font-mono text-[9px] mb-1">{doc.docId}</Badge>
-                              <div 
-                                onClick={(e) => handleDownload(e, doc.title, doc.docId)}
-                                className="text-[10px] text-emerald-400 font-semibold cursor-pointer hover:underline"
-                              >
-                                Download Record
-                              </div>
                             </div>
                           </div>
                         ))}
@@ -1175,20 +1209,20 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                     {/* Historical Maps */}
                     <Card className={`${CARD} p-5`}>
                       <h3 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
-                        <Layers className="w-4 h-4 text-emerald-500" /> Historical Maps & Imagery
+                        <Layers className="w-4 h-4 text-emerald-500" /> Geospatial Reconstruction Series (1960–2026)
                       </h3>
                       <div className="space-y-3">
-                        <div className="p-3 bg-white/5 border border-white/5 rounded-xl hover:border-emerald-500/30 transition-all cursor-pointer">
-                          <div className="text-xs font-bold text-white">Original Boundary Map (1986)</div>
-                          <div className="text-[10px] text-slate-500 mt-0.5">Scale 1:10,000 · Survey of India Gazette</div>
+                        <div className="p-3 bg-white/5 border border-white/5 rounded-xl">
+                          <div className="text-xs font-bold text-white">Declassified Imagery Baseline (1960–1972)</div>
+                          <div className="text-[10px] text-slate-500 mt-0.5">Pre-notification Zabarwan–Dal Lake foothill woodland structure</div>
                         </div>
-                        <div className="p-3 bg-white/5 border border-white/5 rounded-xl hover:border-emerald-500/30 transition-all cursor-pointer">
-                          <div className="text-xs font-bold text-white">CORONA Satellite Aerial Photo (1990)</div>
-                          <div className="text-[10px] text-slate-500 mt-0.5">Declassified US satellite photo showing dense canopy cover</div>
+                        <div className="p-3 bg-white/5 border border-white/5 rounded-xl">
+                          <div className="text-xs font-bold text-white">Landsat Establishment &amp; Pre-Clearance Series (1986–1997)</div>
+                          <div className="text-[10px] text-slate-500 mt-0.5">Baseline forest cover prior to 1998–2001 turf conversion</div>
                         </div>
-                        <div className="p-3 bg-white/5 border border-white/5 rounded-xl hover:border-emerald-500/30 transition-all cursor-pointer">
-                          <div className="text-xs font-bold text-white">Landsat Land Cover Map (1995)</div>
-                          <div className="text-[10px] text-slate-500 mt-0.5">Vegetation cover showing marshlands & floodplains</div>
+                        <div className="p-3 bg-white/5 border border-white/5 rounded-xl">
+                          <div className="text-xs font-bold text-white">Sentinel-2 &amp; Cadastral Remainder Overlay (2015–2026)</div>
+                          <div className="text-[10px] text-slate-500 mt-0.5">Auditing 121.4 ha golf footprint, 162 ha reported area &amp; 723 ha remainder</div>
                         </div>
                       </div>
                     </Card>
@@ -1196,20 +1230,20 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                     {/* Media Archive */}
                     <Card className={`${CARD} p-5`}>
                       <h3 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
-                        <Camera className="w-4 h-4 text-emerald-500" /> Media & Reports Archive
+                        <Camera className="w-4 h-4 text-emerald-500" /> Documented Conservation Reporting
                       </h3>
                       <div className="space-y-3">
                         {[
-                          { outlet: 'The Kashmir Gazette', title: 'Cabinet Approves Srinagar Golf Course at City Forest Site', date: 'June 2001' },
-                          { outlet: 'Kashmir Environmental Society', title: 'A Loss of Srinagar\'s Green Lung: Salim Ali National Park Conversion', date: 'Sept 2001' },
-                          { outlet: 'Civil Society Action Group', title: 'Citizen Protest Outside Former National Park Gates', date: 'Oct 2001' },
+                          { outlet: 'The Indian Express (Vikram Jit Singh)', title: 'Contemporary investigative reporting on tree removal & park conversion', date: 'Feb 1999' },
+                          { outlet: 'Protected Area Update (Kalpavriksh / IISc Archive)', title: 'Documented tree-felling allegations & Wildlife Department objections', date: 'July 1999' },
+                          { outlet: 'Kalpavriksh Archival Correspondence (Milli Archives)', title: 'Conservation correspondence & snow leopard facility relocation concerns', date: 'Oct 1998 – 2000' },
                         ].map((media, idx) => (
                           <div key={idx} className="pb-2 border-b border-white/5 last:border-0 last:pb-0">
                             <div className="flex justify-between text-[9px] text-slate-500 mb-0.5">
                               <span>{media.outlet}</span>
                               <span>{media.date}</span>
                             </div>
-                            <div className="text-xs font-semibold text-white hover:text-emerald-400 cursor-pointer transition-colors leading-snug">{media.title}</div>
+                            <div className="text-xs font-semibold text-white leading-snug">{media.title}</div>
                           </div>
                         ))}
                       </div>
@@ -1916,7 +1950,7 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-amber-500 font-bold">•</span>
-                        <span>Chemical fertilizer and pesticide runoff introduced into regional groundwater.</span>
+                        <span>Potential nutrient, fertilizer, and pesticide transport pathways toward Dal Lake flagged for measurement by NBWL (2003–2005).</span>
                       </li>
                     </ul>
                   </Card>
@@ -1926,24 +1960,24 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                   <div className="lg:col-span-2 space-y-6">
                     {/* Detailed Ecological Impact & Habitat Change */}
                     <Card className={`${CARD} p-6`}>
-                      <h2 className="text-lg font-bold text-white mb-4">Habitat Change & Ecological Impact</h2>
+                      <h2 className="text-lg font-bold text-white mb-4">Habitat Change &amp; Ecological Investigation</h2>
                       <p className="text-sm text-slate-300 leading-relaxed mb-4">
-                        The physical transformation of Salim Ali National Park is one of the most drastic examples of ecosystem modification in the valley floor. High-density tree canopy was clear-cut, and low-lying swamps were dredged and backfilled with stone and soil to build the golf course.
+                        Converting Zabarwan–Dal Lake foothill woodland into ~121.4 ha (~300 acres) of managed golf turf replaced multi-layered native habitat with irrigated fairways and landscaped greens. While visually green, natural protected woodland and intensively managed recreational turf differ across soil biology, hydrological infiltration, chemical inputs, and ecological succession.
                       </p>
                       <p className="text-sm text-slate-300 leading-relaxed mb-4">
-                        This had two primary ecological consequences:
+                        Two principal scientific questions anchor our ongoing forensic audit:
                       </p>
                       <div className="space-y-3">
                         <div className="p-3.5 bg-white/3 border border-white/5 rounded-xl">
-                          <strong className="text-white text-xs block mb-1">1. Avian Migration Disruption</strong>
+                          <strong className="text-white text-xs block mb-1">1. Fate of the Remaining 723 Hectares</strong>
                           <p className="text-xs text-slate-400 leading-relaxed">
-                            The elimination of shallow, reed-filled ponds removed key feeding and breeding refuges for migratory ducks. Bird counts logged a drop from thousands of wintering waterfowl down to a few dozens, shifting migration concentrations toward peripheral wetlands like Hokersar.
+                            Using the 885-hectare baseline stated in the 2005 NBWL proceedings and 162 hectares reported denotified (18.3%), an arithmetic remainder of 723 hectares (81.7%) requires parcel-by-parcel cadastral, statutory, and ecological verification.
                           </p>
                         </div>
                         <div className="p-3.5 bg-white/3 border border-white/5 rounded-xl">
-                          <strong className="text-white text-xs block mb-1">2. Loss of Srinagar's Green Lung</strong>
+                          <strong className="text-white text-xs block mb-1">2. Dal Lake Hydrological &amp; Nutrient Connectivity</strong>
                           <p className="text-xs text-slate-400 leading-relaxed">
-                            Urban forests filter air pollution and mitigate the urban heat island effect. The canopy removal resulted in localized summer temperature rises and reduced particulate absorption along the busy Boulevard corridor.
+                            NBWL Standing Committee proceedings (2003–2005) repeatedly sought pesticide, fertilizer, and CSIR effluent monitoring data. Establishing actual water withdrawal and nutrient delivery requires primary pumping logs, procurement registers, and field water measurements.
                           </p>
                         </div>
                       </div>
@@ -1951,12 +1985,12 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
 
                     {/* Governance Lessons */}
                     <Card className={`${CARD} p-6`}>
-                      <h2 className="text-lg font-bold text-white mb-4">Governance & Legal Lessons</h2>
+                      <h2 className="text-lg font-bold text-white mb-4">Statutory Sequence &amp; Jurisprudence Questions</h2>
                       <p className="text-sm text-slate-300 leading-relaxed mb-4">
-                        The case of Salim Ali National Park highlights the vulnerability of protected areas in South Asia. Under the Wildlife Protection Act, a national park represents the highest level of legal conservation protection. However, the J&K State Cabinet utilized specific clauses to de-notify the park in the name of "tourism promotion and economic development."
+                        Under Section 35 of the historical Jammu and Kashmir Wildlife (Protection) Act, 1978, altering national park boundaries required specific statutory recommendations and legislative approval. Documented chronology indicates that golf course construction (1998–2001) concluded before several 2003–2005 IBWL/NBWL Standing Committee deliberations on denotification and environmental safeguards.
                       </p>
                       <p className="text-sm text-slate-300 leading-relaxed">
-                        This event underlines the importance of absolute statutory protections. It shows that without strict judicial oversight and local community stewardship, even prime national parks are susceptible to administrative conversion. The litigation that followed showed that environmental groups lacked the quick-injunction legal tools necessary to halt physical earth-movers before conversion was finalized.
+                        In October 2005, the NBWL Standing Committee recorded that the state government had accepted 4 of 8 expert recommendations (deferring 3 and not approving the transfer of Shankaracharya Reserve to the Wildlife Department) and resolved to include its objections in submissions to the Supreme Court. Authenticated gazettes, legislative resolutions, and complete PIL No. 115/99 court records remain sought before reaching final legal conclusions.
                       </p>
                     </Card>
                   </div>
@@ -1965,30 +1999,30 @@ export function ProtectedAreaDetailPage({ area, relatedAreas = [] }: ProtectedAr
                   <div className="space-y-6">
                     <Card className={`${CARD} p-5 bg-slate-900 border-emerald-500/15`}>
                       <h3 className="text-sm font-bold text-emerald-400 mb-3 flex items-center gap-2">
-                        <Globe className="w-4 h-4" /> Global Relevance
+                        <Globe className="w-4 h-4" /> PADDD Case Study
                       </h3>
                       <p className="text-xs text-slate-300 leading-relaxed mb-3">
-                        Environmental observatories globally catalog Salim Ali National Park under the PADDD (Protected Area Downgrading, Downsizing, and De-gazettement) framework.
+                        Sálim Ali National Park represents a foundational Western Himalayan case study in Protected Area Downgrading, Downsizing, and Degazettement (PADDD)—testing whether post-construction environmental review can substitute for prior statutory protection.
                       </p>
                       <p className="text-xs text-slate-300 leading-relaxed">
-                        It serves as a warning case study for conservationists worldwide: when high-value real estate overlaps with critical urban biodiversity hotspots, economic and tourist interests often out-compete long-term conservation targets.
+                        Whether the conversion constituted a legally completed downsizing or an unresolved boundary alteration depends on the authenticated statutory instruments under retrieval.
                       </p>
                     </Card>
 
                     <Card className={`${CARD} p-5`}>
-                      <h3 className="text-sm font-bold text-white mb-2">Key Metrics Shift</h3>
+                      <h3 className="text-sm font-bold text-white mb-2">Forensic Audit Status</h3>
                       <div className="space-y-2 text-xs text-slate-400">
                         <div className="flex justify-between border-b border-white/5 pb-1">
-                          <span>Biodiversity Value</span>
-                          <span className="text-red-400 font-bold">High → Low</span>
+                          <span>Reported Denotification (2005)</span>
+                          <span className="text-amber-400 font-bold">162 ha (18.3%)</span>
                         </div>
                         <div className="flex justify-between border-b border-white/5 pb-1">
-                          <span>Ecotourism Focus</span>
-                          <span className="text-emerald-400 font-bold">Ecological → Premium Recreational</span>
+                          <span>Advertised Golf Footprint</span>
+                          <span className="text-emerald-400 font-bold">121.4 ha (~300 ac)</span>
                         </div>
                         <div className="flex justify-between">
-                          <span>Legal Integrity Status</span>
-                          <span className="text-red-400 font-bold">Revoked</span>
+                          <span>Statutory Gazette Proof</span>
+                          <span className="text-amber-400 font-bold">Under Verification</span>
                         </div>
                       </div>
                     </Card>

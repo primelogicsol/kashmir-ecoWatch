@@ -126,6 +126,13 @@ const intelligenceCards = [
     href: '/protected-network/reports-and-plans',
     metrics: { value: '156', label: 'Documents' },
   },
+  {
+    title: 'Protected Area Integrity Observatory',
+    description: 'Gazette archive, PADDD audit, Sálim Ali NP investigation & statutory integrity protocol',
+    icon: Compass,
+    href: '/protected-network/protected-area-integrity-observatory',
+    metrics: { value: '12 Modules', label: '5-Region PADDD Audit' },
+  },
 ];
 
 export default function ProtectedNetworkPage() {

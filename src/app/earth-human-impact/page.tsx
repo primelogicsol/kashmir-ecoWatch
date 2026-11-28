@@ -152,6 +152,12 @@ export default function EarthHumanImpactHubPage() {
                 Cumulative Matrix
               </Button>
             </Link>
+            <Link href="/earth-human-impact/hydropower-energy-justice-observatory">
+              <Button size="sm" variant="outline" className="border-amber-500/40 text-amber-300 hover:bg-amber-500/10 font-bold">
+                <Zap className="w-4 h-4 mr-1.5" />
+                Hydropower &amp; Energy Justice
+              </Button>
+            </Link>
           </div>
         }
       />

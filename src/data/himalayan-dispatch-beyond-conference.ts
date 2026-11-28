@@ -96,37 +96,37 @@ export const BEYOND_THE_CONFERENCE_SERIES_META: Record<
   }
 > = {
   'science-has-diagnosed-the-valley-who-will-prescribe-its-governance': {
-    dispatchNumber: '14',
+    dispatchNumber: '18',
     conferenceReference: 'Independent Response · ECSSPP 2026, University of Kashmir',
     proposedFramework: 'Scientific Evidence-to-Governance Protocol for the Western Himalayas',
   },
   'when-the-mountain-rejects-the-engineer': {
-    dispatchNumber: '15',
+    dispatchNumber: '19',
     conferenceReference: 'Independent Response · RECLAIM 2026, NIT Srinagar',
     proposedFramework: 'Western Himalayan Environmental Engineering Standard',
   },
   'who-gave-development-the-right-to-exceed-the-mountain': {
-    dispatchNumber: '16',
+    dispatchNumber: '20',
     conferenceReference: 'Independent Response · 13th Sustainable Mountain Development Summit (SMDS-XIII)',
     proposedFramework: 'Western Himalayan Ecological Limits and Development Authorization Framework',
   },
   'nature-is-not-a-contractor': {
-    dispatchNumber: '17',
+    dispatchNumber: '23',
     conferenceReference: 'Independent Response · International Conference on Nature-Based Solutions, IUST',
     proposedFramework: 'Long-Term Ecosystem Recovery and Restoration Accountability Framework',
   },
   'the-climate-has-changed-has-agricultural-science': {
-    dispatchNumber: '18',
+    dispatchNumber: '24',
     conferenceReference: "Independent Response · Indian Ecological Society's 2026 Conference (IESCCC 2026)",
     proposedFramework: 'Western Himalayan Adaptive Agroecological Zoning Framework',
   },
 };
 
 export const BEYOND_THE_CONFERENCE_DEFINING_PRINCIPLE = {
-  kicker: 'BEYOND THE CONFERENCE · SERIES II (DISPATCHES 14–18) · SCIENTIFIC & INSTITUTIONAL RESPONSE',
+  kicker: 'BEYOND THE CONFERENCE · SERIES II (DISPATCHES 18–20 & 23–24) · SCIENTIFIC & INSTITUTIONAL RESPONSE',
   headline: 'Our Editorials Begin Where Academic Conferences End',
   standfirst:
-    'Himalayan Dispatch does not reproduce conference themes, summarize presentations, or amplify institutional publicity. Building directly upon Dispatch 13 ("Who Are We Researching For?"), where conferences diagnose isolated components or issue non-binding declarations, this five-part response series interrogates systemic blind spots, legal enforceability, and engineering reality—advancing five original governance frameworks for the Western Himalayas.',
+    'Himalayan Dispatch does not reproduce conference themes, summarize presentations, or amplify institutional publicity. Building directly upon "Who Are We Researching For?" and "South Asia’s Environmental Vanguard", and bridged at its centre by "The Price of Power" (Dispatch 21) and "The Western Himalayas Are Sitting on a Time Bomb" (Dispatch 22), this five-part response series interrogates systemic blind spots, legal enforceability, and engineering reality—advancing five original governance frameworks for the Western Himalayas.',
   epigraph:
     'Himalayan Dispatch should not merely ask what scientists said about Kashmir. It should ask whether what they said is sufficient to protect Kashmir.',
 };
@@ -388,7 +388,7 @@ export const CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META: Record<
   }
 > = {
   'six-years-of-warnings-and-kashmir-still-cannot-breathe': {
-    dispatchNumber: '18',
+    dispatchNumber: '25',
     institutionalContext: "Peoples' Environmental Council Air-Quality Webinars (2020–2026)",
     proposedFramework:
       'Regional Atmospheric Source-Apportionment, Sensor-Validation and Clean-Air Accountability Framework (RASS-CAF)',
@@ -396,7 +396,7 @@ export const CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META: Record<
       'Why does environmental knowledge continue to accumulate while clean air remains increasingly uncertain?',
   },
   'when-environmental-laws-exist-but-the-environment-has-no-defence': {
-    dispatchNumber: '21',
+    dispatchNumber: '27',
     institutionalContext:
       'Special Legal & Scientific Investigation · Five-Region Statutory Architecture, CAG/NGT Audits & KCEF–JKCAG Legal Forums',
     proposedFramework:
@@ -405,7 +405,7 @@ export const CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META: Record<
       'What were the region’s environmental laws intended to protect, where did protection break down across enforcement versus statutory design, and what must change?',
   },
   'a-lake-cannot-be-rescued-by-an-annual-cleanup': {
-    dispatchNumber: '21',
+    dispatchNumber: '28',
     institutionalContext:
       'Nigeen Lake Conservation Organisation (NLCO), Rotary Club & Civic Lake Initiatives',
     proposedFramework:
@@ -414,7 +414,7 @@ export const CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META: Record<
       "Are we cleaning the surface of Kashmir's lakes while allowing the processes that destroy them to continue?",
   },
   'who-measures-the-success-of-environmental-activism': {
-    dispatchNumber: '22',
+    dispatchNumber: '29',
     institutionalContext:
       'Environmental NGOs, Civil Society Forums & Self-Scrutiny Across Kashmir',
     proposedFramework:
@@ -423,7 +423,7 @@ export const CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META: Record<
       'Should environmental organizations themselves be evaluated using the same standards of accountability they demand from governments?',
   },
   'the-mountains-have-heard-enough-declarations': {
-    dispatchNumber: '23',
+    dispatchNumber: '30',
     institutionalContext:
       'Climate Consultations, Civil Society Declarations & Environmental Advocacy Programmes',
     proposedFramework:
@@ -432,7 +432,7 @@ export const CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META: Record<
       'When does an environmental declaration cease to be a commitment and become merely a record of good intentions?',
   },
   'when-politics-promises-green': {
-    dispatchNumber: '24',
+    dispatchNumber: '31',
     institutionalContext:
       'Special Investigation · Five-Region Electoral Manifestos, Budgets & Ground Realities (2000–2026)',
     proposedFramework:
@@ -441,7 +441,7 @@ export const CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META: Record<
       'If every political party can explain what it intends to build during the next five years, should it not also explain what it intends to preserve for the next hundred?',
   },
   'selective-environmental-consciousness': {
-    dispatchNumber: '25',
+    dispatchNumber: '32',
     institutionalContext:
       'Special Flagship Investigation · Political Ecology, Environmental Ethics & Universal Accountability',
     proposedFramework:
@@ -450,9 +450,9 @@ export const CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META: Record<
       'The central issue is not whether environmentalism should engage with politics—it is whether environmental responsibility survives when political attention disappears.',
   },
   'who-speaks-for-the-environment-when-politics-chooses-the-landscape': {
-    dispatchNumber: '24',
+    dispatchNumber: '32',
     institutionalContext:
-      'Introductory Cover Essay within Dispatch 24 (Selective Environmental Consciousness)',
+      'Introductory Cover Essay within Dispatch 32 (Selective Environmental Consciousness)',
     proposedFramework:
       'Politically Neutral, Evidence-Driven Environmental Assessment Charter (PNEEAC)',
     centralQuestion:
@@ -461,10 +461,10 @@ export const CIVIL_SOCIETY_ACCOUNTABILITY_SERIES_META: Record<
 };
 
 export const CIVIL_SOCIETY_DEFINING_PRINCIPLE = {
-  kicker: 'DISPATCHES 18 & 20–24 · CIVIL SOCIETY & ENVIRONMENTAL ACCOUNTABILITY',
+  kicker: 'DISPATCHES 25 & 27–32 · CIVIL SOCIETY, ENVIRONMENTAL LAW & UNIVERSAL ACCOUNTABILITY',
   headline: 'From Public Advocacy to Measurable Ecological Outcomes',
   standfirst:
-    'While our university response editorials interrogate scientific methodologies and statutory policy gaps—and Dispatches 04, 12, and 19 investigate Dal Lake engineering math, twenty-five years of regional research, and the transboundary atmosphere—this six-part series examines environmental advocacy, civic cleanups, legal literacy, public declarations, and selective consciousness, evaluating documented achievements fairly while asking whether civil society, regulators, and citizens are achieving measurable recovery.',
+    'While our university response editorials interrogate scientific methodologies and statutory policy gaps—and Dispatches 04, 05, 06, 10, 16, 17, 21, 22, and 26 investigate Dal Lake engineering math, Habak’s lost laboratory, encroachment, Sálim Ali National Park, twenty-five years of regional research, South Asia’s environmental vanguard, hydropower, multi-hazard disaster convergence, and the transboundary atmosphere—this series examines environmental advocacy, statutory enforcement, civic cleanups, public declarations, electoral manifestos, and selective consciousness.',
   nonExemptionClause:
     'Himalayan Dispatch recognizes genuine environmental achievements wherever they exist, but no university, government department, NGO, corporation, or even Kashmir EcoWatch itself is exempt from scientific and institutional scrutiny.',
   evidentiaryNotice:
@@ -477,34 +477,36 @@ export const HIMALAYAN_DISPATCH_COMPLETE_EDITORIAL_ARCHITECTURE: Array<{
   primaryFocus: string;
 }> = [
   {
-    series: 'Environmental Condition, Dal Math & Avian Connectivity',
-    dispatches: '01–11',
+    series: 'Environmental Condition, Lake Forensics, Protected Areas & Cryosphere',
+    dispatches: '01–14',
     primaryFocus:
-      'Environmental legacy, Dal Lake math (04), Western Himalayan birds (06), field science & visual journalism',
+      'Conservation martyrs (01), Dal Lake math (04), Habak laboratory (05), encroachment (06), avian connectivity (08), Sálim Ali National Park (10) & snowline science',
   },
   {
     series: 'Editorial Philosophy',
-    dispatches: '12',
+    dispatches: '15',
     primaryFocus: 'Founding manifesto on slow, fearless Western Himalayan journalism',
   },
   {
-    series: 'Academic & Scientific Accountability',
-    dispatches: '13',
-    primaryFocus: 'Five-region 2001–2026 research census & Research-to-Society Protocol',
+    series: 'Academic Accountability & South Asian Vanguard',
+    dispatches: '16–17',
+    primaryFocus:
+      'Five-region research census (16) & 32 Indian/Pakistani pioneers across four professional mirrors (17)',
   },
   {
-    series: 'Beyond the Conference',
-    dispatches: '14–18',
-    primaryFocus: 'Specific academic conferences, scientific disciplines & statutory governance',
+    series: 'Beyond the Conference, Hydropower & Multi-Hazard Convergence',
+    dispatches: '18–24',
+    primaryFocus:
+      'Geological & ecological limits (19–20), The Price of Power (21), The Western Himalayas Are Sitting on a Time Bomb (22 · Monograph 13) & restoration/agroecology (23–24)',
   },
   {
-    series: 'Governance, Atmosphere & Civil Society',
-    dispatches: '19–25',
-    primaryFocus: 'Transboundary atmosphere (20), environmental law, NGOs & electoral manifestos (25)',
+    series: 'Atmosphere, Jurisprudence, Civil Society & Manifestos',
+    dispatches: '25–31',
+    primaryFocus: 'Transboundary atmosphere (26), environmental law (27), NGOs & electoral manifestos (31)',
   },
   {
     series: 'Universal Ethical Accountability',
-    dispatches: '26',
+    dispatches: '32',
     primaryFocus: 'Selective Environmental Consciousness & universal responsibility',
   },
 ];

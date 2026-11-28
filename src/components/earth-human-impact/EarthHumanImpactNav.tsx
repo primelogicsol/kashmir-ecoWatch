@@ -39,6 +39,7 @@ export function EarthHumanImpactNav() {
     { label: 'Detection Alerts', href: '/earth-human-impact/change-detection-observatory/detection-alerts', icon: BellRing },
     { label: 'Verification Queue', href: '/earth-human-impact/change-detection-observatory/verification-queue', icon: ShieldCheck },
     { label: 'Loss & Recovery Ledger', href: '/earth-human-impact/aquatic-cryosphere/loss-recovery-ledger', icon: BookOpen },
+    { label: 'Hydropower & Energy Justice', href: '/earth-human-impact/hydropower-energy-justice-observatory', icon: Zap, highlight: true },
     { label: 'Dossiers', href: '/earth-human-impact/change-detection-observatory/scientific-dossiers', icon: FileText },
   ];
 

@@ -838,6 +838,13 @@ export function GovernancePortalView({ canonicalPath }: GovernancePortalViewProp
                 <Scale className="w-3.5 h-3.5 text-amber-400" />
                 <span>Legislation &amp; Enforcement Observatory (16 Registries)</span>
               </Link>
+              <Link
+                href="/governance/scientific-infrastructure-observatory"
+                className="px-4 py-2 rounded-md bg-teal-500/10 hover:bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-semibold transition-colors flex items-center gap-1.5"
+              >
+                <Activity className="w-3.5 h-3.5 text-teal-400" />
+                <span>Scientific Infrastructure Observatory (Habak &amp; 12 Engines)</span>
+              </Link>
             </div>
 
             <div className="pt-4 mt-2 border-t border-white/10 text-xs text-slate-400 leading-relaxed">
