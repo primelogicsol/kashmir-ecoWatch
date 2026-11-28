@@ -15,6 +15,9 @@ const nextConfig = {
 
   experimental: {
     optimizePackageImports: ['lucide-react'],
+    ...(process.env.KEW_VPS_BUILD === '1'
+      ? { cpus: 1, workerThreads: false }
+      : {}),
   },
 
   images: {
