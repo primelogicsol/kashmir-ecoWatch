@@ -56,6 +56,10 @@ import { STORY_19_SUCCESS_ENVIRONMENTAL_ACTIVISM } from './himalayan-dispatch-st
 import { STORY_20_ENOUGH_DECLARATIONS } from './himalayan-dispatch-stories/story-20-mountains-have-heard-enough-declarations';
 import { WHEN_POLITICS_PROMISES_GREEN_STORY } from './himalayan-dispatch-when-politics-promises-green-story';
 import { STORY_21_POLITICS_CHOOSES_LANDSCAPE } from './himalayan-dispatch-stories/story-21-who-speaks-for-environment-when-politics-chooses-landscape';
+import { JAMMU_FRONTIERS_STORIES } from './himalayan-dispatch-jammu-frontiers-stories';
+import { LADAKH_GLACIERS_STOP_GIVING_STORY } from './himalayan-dispatch-ladakh-glaciers-story';
+import { LADAKH_CARRYING_CAPACITY_STORY } from './himalayan-dispatch-ladakh-carrying-capacity-story';
+import { LADAKH_DESERT_NOT_EMPTY_STORY } from './himalayan-dispatch-ladakh-desert-not-empty-story';
 import { buildPreReleaseStage08GateLedger } from '@/lib/himalayan-dispatch-metrics';
 
 export const EDITORIAL_WORKFLOW_STAGES: Array<{
@@ -1042,6 +1046,75 @@ export const MAGAZINE_EDITIONS: MagazineEdition[] = [
       'Geological Sciences, Extractive Economics & Mineral Resource Governance · Editorial Oversight: Dr. Fayaz Ahmad Khan',
     storySlugs: ['the-wealth-beneath-the-mountains'],
   },
+  {
+    id: 'ed-monograph-18-jammu-frontiers',
+    slug: 'monograph-18-jammus-ecological-frontiers',
+    volumeLabel: 'MONOGRAPH 18 · JAMMU DIVISION SCIENTIFIC INVESTIGATIONS',
+    issueNumberLabel: 'DEDICATED THEMATIC SCIENTIFIC ISSUE',
+    status: 'archived',
+    title: "Jammu's Ecological Frontiers",
+    themeKicker:
+      'RIVER BASIN HYDROLOGY · HIMALAYAN TECTONICS · RIVERBED MINING · RAMSAR & FLOODPLAIN WETLANDS · GOVERNANCE',
+    subtitle:
+      'Three Scientific Investigations into the Rivers, Mountains and Wetlands That Sustain Jammu Division — 45 Proposed Research Chapters, 20 Original Scientific Experiments & 41-Year (1985–2026) Baseline.',
+    publicationDateLabel:
+      'Dedicated Thematic Scientific Issue · November 28, 2026 (Proposed Research Targets · Empirical Execution Pending)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/earth-human-impact/ehii-riverbed-infrastructure-monitoring.jpg',
+    coverLocation:
+      'Chenab Basin · Tawi, Ravi, Ujh & Basantar Rivers · Surinsar–Mansar, Gharana, Pargwal, Kukarian & Sanasar · Jammu Division',
+    coverCaption:
+      'Himalayan river-gorge, Siwalik piedmont, and floodplain hydrological continuum sustaining Jammu Division (Illustrative archival plate — Kashmir EcoWatch Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Visual Archive',
+    editorsNoteTitle: 'Scientific Discovery Before Editorial Conclusions',
+    editorsNoteBody: [
+      'Modelled on the scientific and editorial architecture of "The Atmosphere Has No Borders", Jammu’s Ecological Frontiers unites three interconnected Jammu Division investigations: The Chenab Has a Breaking Point (Dulhasti, Baglihar, Salal & proposed Sawalkote cascade carrying capacity), A River Is Not a Construction Site (mechanized riverbed mining & bridge/aquifer vulnerability across the Tawi, Ravi, Ujh & Basantar), and The Wetlands That Protect Jammu (Surinsar–Mansar 350 ha Ramsar complex alongside Gharana, Pargwal, Kukarian & Sanasar).',
+      'All 45 research chapters, 20 original scientific experiments, and the 41-year (1985–2026) multi-sensor baseline are published transparently as proposed research targets awaiting primary satellite processing, hydrological modelling, and field calibration under our 10-stage publication standard.',
+    ],
+    editorsNoteAuthor: 'Himalayan Dispatch Research Desk | Jammu Division Scientific Investigations',
+    editorsNoteRole:
+      'Jammu Bureau Scientific Desk · Oversight: Dr. Fayaz Ahmad Khan & Scientific Review Council',
+    storySlugs: [
+      'the-chenab-has-a-breaking-point',
+      'a-river-is-not-a-construction-site',
+      'the-wetlands-that-protect-jammu',
+    ],
+  },
+  {
+    id: 'ed-issue-ladakh-ecological-frontiers',
+    slug: 'ladakhs-ecological-frontiers',
+    volumeLabel: 'SPECIAL REGIONAL SCIENTIFIC ISSUE · LADAKH',
+    issueNumberLabel: 'DEDICATED SCIENTIFIC ISSUE · COLD-DESERT ECOLOGY',
+    status: 'archived',
+    title: "Ladakh's Ecological Frontiers",
+    themeKicker:
+      'TRANS-HIMALAYAN CRYOSPHERE · COLD-DESERT HYDROLOGY · ECOLOGICAL CARRYING CAPACITY · HIGH-ALTITUDE BIODIVERSITY',
+    subtitle:
+      'The Fragile Balance Between Climate, Water, Development and High-Altitude Survival — Three Flagship Cold-Desert Investigations, 45 Research Chapters & 21 Proposed Original Scientific Experiments.',
+    publicationDateLabel:
+      'Dedicated Regional Scientific Issue · November 28, 2026 (2025–2026 Literature Synthesis & Prospective Experimental Protocols)',
+    publishedIsoDate: '2026-11-28',
+    coverImage: '/images/earth-human-impact/ehii-cryosphere-glacier-station.jpg',
+    coverLocation:
+      'Zanskar · Suru · Nubra · Leh · Kargil · Drass · Changthang · Pangong Tso · Tso Moriri · Tso Kar · Hemis · Karakoram · Hanle',
+    coverCaption:
+      'High-altitude Trans-Himalayan glacier ablation zone, moraine threshold, and cold-desert headwaters across Ladakh (Illustrative archival plate — Kashmir EcoWatch Cryosphere Visual Archive).',
+    coverCredit: 'Kashmir EcoWatch Cryosphere Visual Archive',
+    editorsNoteTitle: 'Why a Cold Desert Cannot Be Studied Like a Monsoon Valley',
+    editorsNoteBody: [
+      'Following our Jammu Division investigations, Ladakh’s Ecological Frontiers establishes a dedicated Trans-Himalayan scientific issue tailored to Ladakh’s rain-shadow aridity, cryospheric water dependence, compressed seasonal tourism pressures, permafrost microbiomes, and high-altitude Ramsar wetlands. Three interlocking investigations—When the Glaciers Stop Giving, How Many People Can a Cold Desert Sustain?, and The Desert Is Not Empty—trace one continuous physical and ecological equation from cirque ice above 5,400 metres to gravity-fed village yuras, urban borewells, and Changthang sedge meadows.',
+      'Grounded in 2025–2026 scientific syntheses (~0.02°C/yr regional warming, 0.21–0.37 m w.e./yr glacier mass loss, parliamentary warnings on water and waste, June 2026 plastic restrictions, 65 high-concern bird species, and Changthang permafrost microbial diversity), all 45 research chapters and 21 Proposed Original Scientific Experiments are paired permanently with the 12-module KEW Ladakh Cold-Desert Observatory (/earth-human-impact/ladakh-cold-desert-observatory).',
+    ],
+    editorsNoteAuthor:
+      'Dr. Fayaz Ahmad Khan & Himalayan Dispatch Ladakh Cryosphere, Cold-Desert Ecology, Carrying Capacity and Geospatial Intelligence Desk',
+    editorsNoteRole:
+      'Ladakh Bureau Scientific Desk · Founding Editor-in-Chief Oversight & Scientific Review Council',
+    storySlugs: [
+      'when-the-glaciers-stop-giving',
+      'how-many-people-can-a-cold-desert-sustain',
+      'the-desert-is-not-empty',
+    ],
+  },
 ];
 
 export const MAGAZINE_STORIES: MagazineStory[] = [
@@ -1091,6 +1164,14 @@ export const MAGAZINE_STORIES: MagazineStory[] = [
 
   // ── FOUNDATIONAL WATERSHED MONOGRAPH (MONOGRAPH 00 · WATERSHED VOICES) ────
   MONOGRAPH_00_WATERSHED_VOICES_STORY,
+
+  // ── JAMMU DIVISION SCIENTIFIC INVESTIGATIONS (MONOGRAPH 18 · 01, 02 & 03) ──
+  ...JAMMU_FRONTIERS_STORIES,
+
+  // ── LADAKH COLD-DESERT SCIENTIFIC INVESTIGATIONS (LADAKH'S ECOLOGICAL FRONTIERS · 01, 02 & 03) ──
+  LADAKH_GLACIERS_STOP_GIVING_STORY,
+  LADAKH_CARRYING_CAPACITY_STORY,
+  LADAKH_DESERT_NOT_EMPTY_STORY,
 ];
 
 /**
@@ -1486,10 +1567,32 @@ export const REGIONAL_REPORTING_BUREAUS: RegionalBureauSpec[] = [
     operationalStatus: 'active_reporting_desk',
     publicStatusBadge: 'Established Reporting Desk',
     editorialMandate:
-      'Focuses on Chenab cascade hydropower, Ramban–Kishtwar slope instability, Pir Panjal old-growth temperate forests, Tawi watershed hydrology, and transhumant pastoral corridors.',
+      'Focuses on Chenab cascade hydropower (Dulhasti, Baglihar, Salal & proposed Sawalkote), Ramban–Kishtwar slope instability, mechanized riverbed mining across the Tawi, Ravi, Ujh & Basantar rivers, Ramsar and floodplain wetlands (Surinsar–Mansar, Gharana, Pargwal, Kukarian & Sanasar), and transhumant Pir Panjal corridors.',
     physicalOfficeDisclosure:
       'Operates as an established distributed regional correspondent desk coordinated with the Fairfax, VA publishing headquarters rather than a physical street office.',
-    storyRegionKeywords: ['Jammu', 'Chenab', 'Kishtwar', 'Doda', 'Ramban', 'Rajouri', 'Poonch', 'Pir Panjal'],
+    storyRegionKeywords: [
+      'Jammu',
+      'Chenab',
+      'Kishtwar',
+      'Doda',
+      'Ramban',
+      'Reasi',
+      'Udhampur',
+      'Samba',
+      'Kathua',
+      'Rajouri',
+      'Poonch',
+      'Tawi',
+      'Basantar',
+      'Ujh',
+      'Ravi',
+      'Surinsar',
+      'Mansar',
+      'Gharana',
+      'Pargwal',
+      'Sanasar',
+      'Pir Panjal',
+    ],
   },
   {
     id: 'ladakh',

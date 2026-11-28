@@ -109,6 +109,7 @@ export const ALLOWED_DISPATCH_ROOT_SEGMENTS = new Set<string>([
   'rights-permissions',
   'robots.txt',
   'scientific-review',
+  'search',
   'sitemap.xml',
   'source-protection-verification',
 ]);
@@ -405,6 +406,16 @@ export const HD_ROUTES = {
     hdRoute(
       `/issues/monograph-17-the-rivers-that-no-longer-belong-to-their-valleys/chapters/${chapterSlug}`
     ),
+  get monograph18() {
+    return hdRoute('/issues/monograph-18-jammus-ecological-frontiers');
+  },
+  monograph18Chapter: (chapterSlug: string) =>
+    hdRoute(`/issues/monograph-18-jammus-ecological-frontiers/chapters/${chapterSlug}`),
+  get ladakhEcologicalFrontiers() {
+    return hdRoute('/issues/ladakhs-ecological-frontiers');
+  },
+  ladakhEcologicalFrontiersChapter: (chapterSlug: string) =>
+    hdRoute(`/issues/ladakhs-ecological-frontiers/chapters/${chapterSlug}`),
   get forthcoming() {
     return hdRoute('/forthcoming');
   },
@@ -500,6 +511,9 @@ export const HD_ROUTES = {
   },
 
   // 7. Supporting Editorial Pages & Syndication
+  get search() {
+    return hdRoute('/search');
+  },
   get readerComplaints() {
     return hdRoute('/reader-complaints');
   },
@@ -723,6 +737,9 @@ export const CANONICAL_EDITION_SLUG_MAP: Record<string, string> = {
     'monograph-16-the-wealth-beneath-the-mountains',
   'monograph-17-the-rivers-that-no-longer-belong-to-their-valleys':
     'monograph-17-the-rivers-that-no-longer-belong-to-their-valleys',
+  'monograph-18-jammus-ecological-frontiers':
+    'monograph-18-jammus-ecological-frontiers',
+  'ladakhs-ecological-frontiers': 'ladakhs-ecological-frontiers',
   'issue-02-a-world-in-transition': 'issue-02-a-world-in-transition',
 };
 

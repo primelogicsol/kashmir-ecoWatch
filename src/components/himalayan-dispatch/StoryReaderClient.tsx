@@ -46,6 +46,8 @@ import { NaseemBaghChinarWorkbench } from './NaseemBaghChinarWorkbench';
 import { MediaFinancialDependencyWorkbench } from './MediaFinancialDependencyWorkbench';
 import { GilgitBaltistanMineralWorkbench } from './GilgitBaltistanMineralWorkbench';
 import { AjkRiverJusticeWorkbench } from './AjkRiverJusticeWorkbench';
+import { JammuEcologicalFrontiersWorkbench } from './JammuEcologicalFrontiersWorkbench';
+import { LadakhEcologicalFrontiersWorkbench } from './LadakhEcologicalFrontiersWorkbench';
 
 export function StoryReaderClient({
   story,
@@ -835,6 +837,39 @@ export function StoryReaderClient({
                 {story.slug === 'the-wealth-beneath-the-mountains' &&
                   ch.numberRoman === 'IV' && (
                     <GilgitBaltistanMineralWorkbench variant="editorial" />
+                  )}
+                {story.slug === 'the-chenab-has-a-breaking-point' &&
+                  ch.numberRoman === 'II' && (
+                    <JammuEcologicalFrontiersWorkbench defaultInvestigation="01" />
+                  )}
+                {story.slug === 'a-river-is-not-a-construction-site' &&
+                  ch.numberRoman === 'II' && (
+                    <JammuEcologicalFrontiersWorkbench defaultInvestigation="02" />
+                  )}
+                {story.slug === 'the-wetlands-that-protect-jammu' &&
+                  ch.numberRoman === 'II' && (
+                    <JammuEcologicalFrontiersWorkbench defaultInvestigation="03" />
+                  )}
+                {story.slug === 'when-the-glaciers-stop-giving' &&
+                  ch.numberRoman === 'IV' && (
+                    <LadakhEcologicalFrontiersWorkbench
+                      variant="editorial"
+                      defaultTab="cryosphere"
+                    />
+                  )}
+                {story.slug === 'how-many-people-can-a-cold-desert-sustain' &&
+                  ch.numberRoman === 'IV' && (
+                    <LadakhEcologicalFrontiersWorkbench
+                      variant="editorial"
+                      defaultTab="carrying_capacity"
+                    />
+                  )}
+                {story.slug === 'the-desert-is-not-empty' &&
+                  ch.numberRoman === 'IV' && (
+                    <LadakhEcologicalFrontiersWorkbench
+                      variant="editorial"
+                      defaultTab="ecological_integrity"
+                    />
                   )}
               </section>
               );

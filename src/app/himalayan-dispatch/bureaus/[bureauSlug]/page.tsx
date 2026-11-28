@@ -14,6 +14,14 @@ import {
 } from '@/lib/himalayan-dispatch-routes';
 import { EditorialBreadcrumbs } from '@/components/himalayan-dispatch/EditorialBreadcrumbs';
 import { EditorialInquiryFormClient } from '@/components/himalayan-dispatch/EditorialInquiryFormClient';
+import {
+  JAMMU_FLAGSHIP_INVESTIGATIONS,
+  JAMMU_FRONTIERS_ISSUE_IDENTITY,
+} from '@/data/himalayan-dispatch-jammu-frontiers-monograph';
+import {
+  LADAKH_ECOLOGICAL_FRONTIERS_SPEC,
+  LADAKH_INVESTIGATIONS_3,
+} from '@/data/himalayan-dispatch-ladakh-frontiers-monograph';
 
 export const dynamic = 'force-dynamic';
 
@@ -54,10 +62,12 @@ const KEW_REGIONAL_LINKS: Record<
   ],
   jammu: [
     { label: 'Landslide & Chenab Gorge Slope Intelligence', href: '/hazard-intelligence/landslides', note: 'Susceptibility & Corridors' },
-    { label: 'Energy, Tunnels & Hydropower Observatory', href: '/earth-human-impact/energy-infrastructure', note: 'Cascade Impact Records' },
+    { label: 'Hydropower, Energy & Cascade Justice Observatory', href: '/earth-human-impact/hydropower-energy-justice-observatory', note: 'Cascade Impact Records' },
+    { label: 'Wetlands, Lakes & Migratory Corridors', href: '/water-systems/wetlands', note: 'Surinsar–Mansar & Plains Marshes' },
     { label: 'Forest Fires & Pir Panjal Escarpment Watch', href: '/hazard-intelligence/forest-fires', note: 'Seasonal Burn Monitoring' },
   ],
   ladakh: [
+    { label: 'Ladakh Cold-Desert Cryosphere & Carrying Capacity Observatory', href: '/earth-human-impact/ladakh-cold-desert-observatory', note: '12 Modules · 21 Experiments' },
     { label: 'Glaciers & Trans-Himalayan Cryosphere', href: '/water-systems/glaciers', note: 'Mass Balance & Snowline' },
     { label: 'Western Disturbances & Cold-Desert Extremes', href: '/hazard-intelligence/atmospheric-systems/western-disturbances', note: 'Atmospheric Tracking' },
     { label: 'High-Altitude Biodiversity & Rangelands', href: '/biodiversity', note: 'Trans-Himalayan Taxa' },
@@ -188,6 +198,201 @@ export default async function RegionalBureauIndependentPage({
             </div>
           </aside>
         </header>
+
+        {/* Jammu Division Scientific Investigations Flagship Thematic Issue Showcase */}
+        {bureau.id === 'jammu' && (
+          <section
+            aria-label="Jammu's Ecological Frontiers — Scientific Investigations"
+            className="border p-6 sm:p-10 space-y-8"
+            style={{
+              borderColor: 'var(--hd-rule-strong)',
+              backgroundColor: '#171717',
+              color: '#F2EFE7',
+            }}
+          >
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#F2EFE7]/15 pb-4">
+              <span className="hd-font-sans text-[11px] font-semibold tracking-[0.22em] uppercase text-[#D8C3A5]">
+                DEDICATED THEMATIC SCIENTIFIC ISSUE &nbsp;·&nbsp; {JAMMU_FRONTIERS_ISSUE_IDENTITY.volumeLabel}
+              </span>
+              <span className="hd-font-sans text-[10px] tracking-[0.18em] uppercase text-[#A39B8B]">
+                3 INVESTIGATIONS · 45 PROPOSED CHAPTERS · 20 EXPERIMENTS · 1985–2026 BASELINE
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+              <div className="lg:col-span-8 space-y-3">
+                <h2 className="hd-font-display text-3xl sm:text-5xl font-semibold leading-[1.02] text-[#F2EFE7]">
+                  {JAMMU_FRONTIERS_ISSUE_IDENTITY.title}
+                </h2>
+                <p className="hd-font-display text-xl sm:text-2xl italic text-[#D8C3A5]">
+                  {JAMMU_FRONTIERS_ISSUE_IDENTITY.subtitle}
+                </p>
+                <p className="hd-font-body text-sm sm:text-base text-[#F2EFE7]/80 leading-relaxed max-w-3xl">
+                  Following the scientific and editorial architecture of{' '}
+                  <em>The Atmosphere Has No Borders</em>, these three interconnected investigations
+                  establish a rigorous discovery-first framework across the Chenab hydroelectric
+                  gorge, Jammu’s mined gravel-bed rivers, and the Ramsar and floodplain wetlands
+                  sustaining the Jammu plains.
+                </p>
+              </div>
+              <div className="lg:col-span-4 flex lg:justify-end">
+                <Link
+                  href={HD_ROUTES.monograph18}
+                  className="hd-font-sans inline-flex items-center gap-2 px-5 py-3 text-xs font-semibold tracking-[0.18em] uppercase text-[#F2EFE7]"
+                  style={{ backgroundColor: '#8C3125' }}
+                >
+                  <span>Open Thematic Issue &amp; 45 Chapters</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
+              {JAMMU_FLAGSHIP_INVESTIGATIONS.map((inv) => (
+                <div
+                  key={inv.number}
+                  className="p-5 border border-[#F2EFE7]/15 bg-[#1F2226] flex flex-col justify-between space-y-4"
+                >
+                  <div className="space-y-2">
+                    <span className="hd-font-sans text-[10px] font-semibold tracking-[0.18em] uppercase text-[#D8C3A5]">
+                      INVESTIGATION {inv.number} · {inv.chapterCount} CHAPTERS · {inv.experimentCount} EXPERIMENTS
+                    </span>
+                    <Link
+                      href={HD_ROUTES.issueArticle(
+                        JAMMU_FRONTIERS_ISSUE_IDENTITY.editionSlug,
+                        inv.storySlug
+                      )}
+                      className="block group"
+                    >
+                      <h3 className="hd-font-display text-2xl font-semibold text-[#F2EFE7] group-hover:underline">
+                        {inv.title}
+                      </h3>
+                    </Link>
+                    <p className="hd-font-body text-xs text-[#F2EFE7]/75 leading-relaxed">
+                      {inv.centralScientificQuestion}
+                    </p>
+                  </div>
+                  <Link
+                    href={HD_ROUTES.issueArticle(
+                      JAMMU_FRONTIERS_ISSUE_IDENTITY.editionSlug,
+                      inv.storySlug
+                    )}
+                    className="hd-font-sans inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.16em] uppercase text-[#D8C3A5] hover:underline"
+                  >
+                    <span>Read Investigation {inv.number}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+
+            <p className="hd-font-body text-xs italic text-[#A39B8B] border-t border-[#F2EFE7]/15 pt-4">
+              Evidentiary Standard: Chapter counts, experiments, and the 41-year (1985–2026)
+              historical baseline are proposed research targets; no original satellite processing,
+              hydrological simulations, or field verification has yet been completed.
+            </p>
+          </section>
+        )}
+
+        {/* Ladakh Cold-Desert Scientific Investigations Flagship Thematic Issue Showcase */}
+        {bureau.id === 'ladakh' && (
+          <section
+            aria-label="Ladakh's Ecological Frontiers — Cold-Desert Scientific Investigations"
+            className="border p-6 sm:p-10 space-y-8"
+            style={{
+              borderColor: 'var(--hd-rule-strong)',
+              backgroundColor: '#171717',
+              color: '#F2EFE7',
+            }}
+          >
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#F2EFE7]/15 pb-4">
+              <span className="hd-font-sans text-[11px] font-semibold tracking-[0.22em] uppercase text-[#D8C3A5]">
+                DEDICATED THEMATIC SCIENTIFIC ISSUE &nbsp;·&nbsp; {LADAKH_ECOLOGICAL_FRONTIERS_SPEC.volumeLabel}
+              </span>
+              <span className="hd-font-sans text-[10px] tracking-[0.18em] uppercase text-[#A39B8B]">
+                3 INVESTIGATIONS · 45 RESEARCH CHAPTERS · 21 PROPOSED EXPERIMENTS · COLD-DESERT ECOLOGY
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+              <div className="lg:col-span-8 space-y-3">
+                <h2 className="hd-font-display text-3xl sm:text-5xl font-semibold leading-[1.02] text-[#F2EFE7]">
+                  {LADAKH_ECOLOGICAL_FRONTIERS_SPEC.title}
+                </h2>
+                <p className="hd-font-display text-xl sm:text-2xl italic text-[#D8C3A5]">
+                  {LADAKH_ECOLOGICAL_FRONTIERS_SPEC.subtitle}
+                </p>
+                <p className="hd-font-body text-sm sm:text-base text-[#F2EFE7]/80 leading-relaxed max-w-3xl">
+                  {LADAKH_ECOLOGICAL_FRONTIERS_SPEC.extendedSubtitle}
+                </p>
+              </div>
+              <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-end">
+                <Link
+                  href={HD_ROUTES.ladakhEcologicalFrontiers}
+                  className="hd-font-sans inline-flex items-center gap-2 px-5 py-3 text-xs font-semibold tracking-[0.18em] uppercase text-[#F2EFE7]"
+                  style={{ backgroundColor: '#8C3125' }}
+                >
+                  <span>Open Thematic Issue &amp; 45 Chapters</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <a
+                  href={toKewPlatformUrl(LADAKH_ECOLOGICAL_FRONTIERS_SPEC.kewObservatoryPath)}
+                  className="hd-font-sans inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.16em] uppercase text-[#D8C3A5] hover:underline"
+                >
+                  <span>KEW Cold-Desert Observatory (12 Modules)</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
+              {LADAKH_INVESTIGATIONS_3.map((inv) => (
+                <div
+                  key={inv.id}
+                  className="p-5 border border-[#F2EFE7]/15 bg-[#1F2226] flex flex-col justify-between space-y-4"
+                >
+                  <div className="space-y-2">
+                    <span className="hd-font-sans text-[10px] font-semibold tracking-[0.18em] uppercase text-[#D8C3A5]">
+                      INVESTIGATION {inv.investigationNumber} · 15 CHAPTERS · {inv.proposedExperiments.length} EXPERIMENTS
+                    </span>
+                    <Link
+                      href={HD_ROUTES.issueArticle(
+                        LADAKH_ECOLOGICAL_FRONTIERS_SPEC.issueSlug,
+                        inv.dispatchSlug
+                      )}
+                      className="block group"
+                    >
+                      <h3 className="hd-font-display text-2xl font-semibold text-[#F2EFE7] group-hover:underline">
+                        {inv.title}
+                      </h3>
+                    </Link>
+                    <p className="hd-font-body text-xs text-[#F2EFE7]/75 leading-relaxed">
+                      {inv.centralHypothesis}
+                    </p>
+                  </div>
+                  <Link
+                    href={HD_ROUTES.issueArticle(
+                      LADAKH_ECOLOGICAL_FRONTIERS_SPEC.issueSlug,
+                      inv.dispatchSlug
+                    )}
+                    className="hd-font-sans inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.16em] uppercase text-[#D8C3A5] hover:underline"
+                  >
+                    <span>Read Investigation {inv.investigationNumber}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+
+            <p className="hd-font-body text-xs italic text-[#A39B8B] border-t border-[#F2EFE7]/15 pt-4">
+              Evidentiary Standard: All 21 proposed scientific experiments and 45 chapter protocols
+              are structured research specifications grounded in cited 2025–2026 syntheses (~0.02°C/yr
+              regional warming, 0.21–0.37 m w.e./yr glacier mass loss, 65 high-concern bird species,
+              and Changthang permafrost soil microbial diversity); no unexecuted field instrumentation
+              is represented as completed.
+            </p>
+          </section>
+        )}
 
         {/* Main Content Grid: Dispatches & Features + Leadership & Beats */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">

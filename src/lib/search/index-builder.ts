@@ -102,7 +102,8 @@ export function getCompiledSearchCorpus(forceRebuild = false): CompiledSearchCor
     !forceRebuild &&
     globalForSearch.__kewCompiledSearchCorpus &&
     globalForSearch.__kewCorpusBuiltAtMs &&
-    now - globalForSearch.__kewCorpusBuiltAtMs < CACHE_TTL_MS
+    now - globalForSearch.__kewCorpusBuiltAtMs < CACHE_TTL_MS &&
+    globalForSearch.__kewCompiledSearchCorpus.adapters.every((a) => a.sourceHealthy)
   ) {
     return globalForSearch.__kewCompiledSearchCorpus;
   }

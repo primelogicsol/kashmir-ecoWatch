@@ -10,8 +10,10 @@ import React, {
 } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Search, X, ArrowUpRight, Sparkles, FileText } from 'lucide-react';
+import { Search, X, ArrowUpRight, Sparkles, FileText, Newspaper, Layers } from 'lucide-react';
 import { isScientificQuestionLike } from '@/lib/search/scientific-qa-types';
+import { getKewToDispatchUrl } from '@/lib/himalayan-dispatch-routes';
+import type { SearchScopeMode } from '@/lib/search/federated-knowledge-types';
 
 interface HeaderSearchProps {
   isOpen: boolean;
@@ -19,14 +21,14 @@ interface HeaderSearchProps {
 }
 
 const QUICK_CHIPS = [
-  'Himalayan Dispatch',
-  'EcoVoices',
-  'Student Action Hub',
-  'Webinars & Conferences',
+  'Air Pollution',
+  'Sheshnag',
+  'Glacial Lakes',
+  'Gilgit-Baltistan',
+  'Water Security',
+  'Climate Change',
   'Hangul',
   'Wular Lake',
-  'Western Disturbances',
-  'Environmental PIL',
 ];
 
 interface PanelGeometry {
@@ -37,7 +39,9 @@ interface PanelGeometry {
 
 export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
   const [query, setQuery] = useState('');
+  const [scope, setScope] = useState<SearchScopeMode>('kashmir_ecowatch');
   const [groups, setGroups] = useState<any[]>([]);
+  const [federatedSuggestions, setFederatedSuggestions] = useState<any[]>([]);
   const [totalHits, setTotalHits] = useState(0);
   const [loading, setLoading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -138,7 +142,9 @@ export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
       setTimeout(() => inputRef.current?.focus(), 40);
     } else {
       setQuery('');
+      setScope('kashmir_ecowatch');
       setGroups([]);
+      setFederatedSuggestions([]);
       setTotalHits(0);
       setActiveIndex(-1);
     }
@@ -153,6 +159,7 @@ export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
   useEffect(() => {
     if (!isOpen || query.trim().length < 2) {
       setGroups([]);
+      setFederatedSuggestions([]);
       setTotalHits(0);
       setActiveIndex(-1);
       return;
@@ -161,34 +168,88 @@ export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
     const ctrl = new AbortController();
     setLoading(true);
     const timer = setTimeout(() => {
-      fetch(`/api/search/suggest?q=${encodeURIComponent(query.trim())}&limit=3`, {
-        signal: ctrl.signal,
-      })
-        .then((r) => (r.ok ? r.json() : null))
-        .then((data) => {
-          if (data) {
-            setGroups(data.groups || []);
-            setTotalHits(data.totalHits || 0);
-            setActiveIndex(-1);
-          }
+      if (scope === 'kashmir_ecowatch') {
+        fetch(`/api/search/suggest?q=${encodeURIComponent(query.trim())}&limit=3`, {
+          signal: ctrl.signal,
         })
-        .catch(() => {})
-        .finally(() => setLoading(false));
+          .then((r) => (r.ok ? r.json() : null))
+          .then((data) => {
+            if (data) {
+              const filteredGroups = (data.groups || [])
+                .map((g: any) => ({
+                  ...g,
+                  items: (g.items || []).filter(
+                    (it: any) => !String(it.canonicalUrl || '').startsWith('/himalayan-dispatch')
+                  ),
+                }))
+                .filter((g: any) => g.items.length > 0);
+              setGroups(filteredGroups);
+              setFederatedSuggestions([]);
+              setTotalHits(data.totalHits || 0);
+              setActiveIndex(-1);
+            }
+          })
+          .catch(() => {})
+          .finally(() => setLoading(false));
+      } else {
+        fetch(
+          `/api/search/federated/suggest?q=${encodeURIComponent(query.trim())}&scope=${scope}&limit=7`,
+          { signal: ctrl.signal }
+        )
+          .then((r) => (r.ok ? r.json() : null))
+          .then((data) => {
+            if (data) {
+              setFederatedSuggestions(data.suggestions || []);
+              setGroups([]);
+              setTotalHits(data.totalHits || 0);
+              setActiveIndex(-1);
+            }
+          })
+          .catch(() => {})
+          .finally(() => setLoading(false));
+      }
     }, 100);
 
     return () => {
       clearTimeout(timer);
       ctrl.abort();
     };
-  }, [query, isOpen]);
+  }, [query, scope, isOpen]);
 
   const flatItems = useMemo(() => {
+    if (scope !== 'kashmir_ecowatch') {
+      return federatedSuggestions.map((s) => ({
+        ...s,
+        resolvedHref:
+          s.platform === 'himalayan_dispatch'
+            ? getKewToDispatchUrl(s.canonicalUrl)
+            : s.canonicalUrl,
+      }));
+    }
     const out: any[] = [];
     for (const g of groups) {
-      for (const it of g.items || []) out.push(it);
+      for (const it of g.items || []) out.push({ ...it, resolvedHref: it.canonicalUrl });
     }
     return out;
-  }, [groups]);
+  }, [groups, federatedSuggestions, scope]);
+
+  const buildFullSearchHref = useCallback(
+    (qStr: string) => {
+      const trimmed = qStr.trim();
+      if (scope === 'himalayan_dispatch') {
+        return getKewToDispatchUrl(trimmed ? `/search?q=${encodeURIComponent(trimmed)}` : '/search');
+      }
+      if (scope === 'both') {
+        return trimmed
+          ? `/search?scope=both&q=${encodeURIComponent(trimmed)}`
+          : '/search?scope=both';
+      }
+      if (!trimmed) return '/search';
+      const modeParam = isScientificQuestionLike(trimmed) ? '&mode=ask' : '';
+      return `/search?q=${encodeURIComponent(trimmed)}${modeParam}`;
+    },
+    [scope]
+  );
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
@@ -206,14 +267,10 @@ export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
     } else if (e.key === 'Enter') {
       e.preventDefault();
       if (activeIndex >= 0 && flatItems[activeIndex]) {
-        router.push(flatItems[activeIndex].canonicalUrl);
-        onClose();
-      } else if (query.trim()) {
-        const modeParam = isScientificQuestionLike(query.trim()) ? '&mode=ask' : '';
-        router.push(`/search?q=${encodeURIComponent(query.trim())}${modeParam}`);
+        router.push(flatItems[activeIndex].resolvedHref);
         onClose();
       } else {
-        router.push('/search');
+        router.push(buildFullSearchHref(query));
         onClose();
       }
     }
@@ -279,16 +336,47 @@ export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
         </button>
       </div>
 
+      {/* Three Selectable Search Scopes (Defaults to Kashmir EcoWatch when accessed from KEW) */}
+      <div className="shrink-0 px-3 py-2 border-b border-white/10 bg-slate-950/60 flex flex-wrap items-center gap-1.5">
+        {[
+          { id: 'kashmir_ecowatch' as const, label: 'Kashmir EcoWatch' },
+          { id: 'himalayan_dispatch' as const, label: 'Himalayan Dispatch' },
+          { id: 'both' as const, label: 'Search Across Both Platforms' },
+        ].map((sc) => {
+          const active = scope === sc.id;
+          return (
+            <button
+              key={sc.id}
+              type="button"
+              onClick={() => setScope(sc.id)}
+              className={`px-2.5 py-1 rounded text-[10px] font-semibold uppercase tracking-wider border transition-colors cursor-pointer ${
+                active
+                  ? sc.id === 'himalayan_dispatch'
+                    ? 'bg-[#8C3125] text-[#F2EFE7] border-[#8C3125]'
+                    : 'bg-emerald-600 text-white border-emerald-500'
+                  : 'bg-slate-900/80 text-slate-300 border-white/10 hover:text-white'
+              }`}
+            >
+              {sc.label}
+            </button>
+          );
+        })}
+      </div>
+
       {/* Results & Suggestions Body */}
       <div className="kew-search-content-body kew-menu-scroll flex-1 min-h-0 overflow-y-auto overscroll-contain divide-y divide-[var(--kew-menu-border)] p-2">
         {query.trim().length < 2 ? (
           <div className="p-4 sm:p-5 text-center space-y-3">
             <div className="kew-search-inst-heading inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400">
               <Sparkles className="w-3.5 h-3.5 shrink-0" />
-              <span>Western Himalayan Knowledge &amp; Intelligence Index</span>
+              <span>Western Himalayan Knowledge Search</span>
             </div>
             <p className="kew-search-supporting-text text-xs leading-relaxed">
-              Search modules, scientific records, 6 subregions, 44 districts, PIL dockets, EIAs &amp; live hazards
+              {scope === 'himalayan_dispatch'
+                ? 'Explore Himalayan Dispatch journalism, investigations, editorials, monographs & regional bureaus'
+                : scope === 'both'
+                ? 'Federated search across Himalayan Dispatch journalism and Kashmir EcoWatch science, live datasets & GIS'
+                : 'Search KEW scientific assessments, live datasets, sensor stations, 6 subregions, PIL dockets & GIS'}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-1.5 pt-1">
               {QUICK_CHIPS.map((tag) => (
@@ -306,23 +394,74 @@ export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
               ))}
             </div>
           </div>
-        ) : loading && groups.length === 0 ? (
+        ) : loading && flatItems.length === 0 ? (
           <div className="kew-search-supporting-text p-6 text-center text-xs">
             Searching canonical index...
           </div>
-        ) : groups.length === 0 ? (
+        ) : flatItems.length === 0 ? (
           <div className="p-6 text-center space-y-2">
             <p className="text-sm font-semibold text-white">
-              No instant matches for &ldquo;{query}&rdquo;
+              No instant matches for &ldquo;{query}&rdquo; in selected scope
             </p>
-            <Link
-              href={`/search?q=${encodeURIComponent(query.trim())}`}
-              onClick={onClose}
-              className="kew-search-full-link inline-flex items-center gap-1 text-xs text-emerald-400 hover:underline font-medium"
-            >
-              <span>Open Full Search Workbench</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </Link>
+            {scope !== 'both' ? (
+              <button
+                type="button"
+                onClick={() => setScope('both')}
+                className="inline-flex items-center gap-1 text-xs text-emerald-400 hover:underline font-medium cursor-pointer"
+              >
+                <span>Search Across Both Platforms</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </button>
+            ) : (
+              <Link
+                href={buildFullSearchHref(query)}
+                onClick={onClose}
+                className="kew-search-full-link inline-flex items-center gap-1 text-xs text-emerald-400 hover:underline font-medium"
+              >
+                <span>Open Full Search Workbench</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
+            )}
+          </div>
+        ) : scope !== 'kashmir_ecowatch' ? (
+          <div className="space-y-1 py-1">
+            {federatedSuggestions.map((item: any) => {
+              runningIdx++;
+              const isFocused = runningIdx === activeIndex;
+              const isHd = item.platform === 'himalayan_dispatch';
+              const href = isHd
+                ? getKewToDispatchUrl(item.canonicalUrl)
+                : item.canonicalUrl;
+              return (
+                <Link
+                  key={item.id}
+                  ref={isFocused ? activeItemRef : undefined}
+                  href={href}
+                  onClick={onClose}
+                  data-focused={isFocused ? 'true' : undefined}
+                  className={`kew-search-result-item flex items-center justify-between gap-2 p-2.5 rounded-lg transition-colors group ${
+                    isFocused ? 'kew-search-result-item--focused' : ''
+                  }`}
+                >
+                  <div className="min-w-0 flex-1 space-y-0.5">
+                    <div className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-wider">
+                      {isHd ? (
+                        <Newspaper className="w-3 h-3 text-amber-400 shrink-0" />
+                      ) : (
+                        <Layers className="w-3 h-3 text-emerald-400 shrink-0" />
+                      )}
+                      <span className={isHd ? 'text-amber-300' : 'text-emerald-400'}>
+                        {item.institutionalRubric}
+                      </span>
+                    </div>
+                    <p className="kew-search-result-title text-xs font-bold text-white group-hover:text-emerald-300 truncate">
+                      {item.title}
+                    </p>
+                  </div>
+                  <ArrowUpRight className="kew-search-result-arrow w-3.5 h-3.5 shrink-0" />
+                </Link>
+              );
+            })}
           </div>
         ) : (
           <div className="space-y-3 py-1">
@@ -384,7 +523,7 @@ export function HeaderSearch({ isOpen, onClose }: HeaderSearchProps) {
           </span>
         </Link>
         <Link
-          href={query.trim() ? `/search?q=${encodeURIComponent(query.trim())}` : '/search'}
+          href={buildFullSearchHref(query)}
           onClick={onClose}
           className="kew-search-full-link text-emerald-400 hover:text-emerald-300 font-semibold inline-flex items-center gap-1 transition-colors"
         >

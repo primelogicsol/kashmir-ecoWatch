@@ -31,6 +31,12 @@ import {
   SearchResultClass,
   TemporalClassification,
 } from '@/lib/search/types';
+import {
+  FederatedSearchResponse,
+  SearchScopeMode,
+  SUGGESTED_KNOWLEDGE_SEARCHES,
+} from '@/lib/search/federated-knowledge-types';
+import { getKewToDispatchUrl } from '@/lib/himalayan-dispatch-routes';
 
 const SearchMapExplorer = dynamic(
   () => import('@/components/search/SearchMapExplorer').then((m) => ({ default: m.SearchMapExplorer })),
@@ -142,6 +148,13 @@ function SearchWorkbench() {
   const suggestBoxRef = useRef<HTMLDivElement>(null);
 
   const [query, setQuery] = useState(() => searchParams.get('q') || '');
+  const [platformScope, setPlatformScope] = useState<SearchScopeMode>(() => {
+    const raw = searchParams.get('scope');
+    if (raw === 'himalayan_dispatch' || raw === 'both') return raw;
+    return 'kashmir_ecowatch';
+  });
+  const [federatedData, setFederatedData] = useState<FederatedSearchResponse | null>(null);
+  const [federatedLoading, setFederatedLoading] = useState<boolean>(false);
   const [searchMode, setSearchMode] = useState<'search' | 'ask'>(() =>
     searchParams.get('mode') === 'ask' ? 'ask' : 'search'
   );
@@ -191,11 +204,15 @@ function SearchWorkbench() {
   // Sync URL -> local state when navigating from external header/hero links
   useEffect(() => {
     const urlQ = searchParams.get('q') || '';
+    const urlScope = searchParams.get('scope');
     const urlMode = searchParams.get('mode') === 'ask' ? 'ask' : 'search';
     const urlDomain = (searchParams.get('domain') as SearchDomain) || 'all';
     const urlClass = (searchParams.get('resultClass') as SearchResultClass) || 'all';
     const urlSub = searchParams.get('subregion') || 'all';
     setQuery(urlQ);
+    setPlatformScope(
+      urlScope === 'himalayan_dispatch' || urlScope === 'both' ? urlScope : 'kashmir_ecowatch'
+    );
     setSearchMode(urlMode);
     setDomain(urlDomain);
     setResultClass(urlClass);
@@ -262,6 +279,45 @@ function SearchWorkbench() {
     },
     [router]
   );
+
+  // Execute federated Western Himalayan Knowledge Search when platformScope is 'both' or 'himalayan_dispatch'
+  useEffect(() => {
+    if (platformScope === 'kashmir_ecowatch') {
+      setFederatedData(null);
+      return;
+    }
+    const ctrl = new AbortController();
+    const timer = setTimeout(async () => {
+      setFederatedLoading(true);
+      try {
+        const sp = new URLSearchParams();
+        if (query.trim()) sp.set('q', query.trim());
+        sp.set('scope', platformScope);
+        if (subregion !== 'all') sp.set('region', subregion);
+        if (dateFrom) sp.set('dateFrom', dateFrom);
+        if (dateTo) sp.set('dateTo', dateTo);
+        sp.set('sort', sort === 'updated' ? 'newest' : sort);
+        sp.set('page', String(page));
+        sp.set('limit', '24');
+        const res = await fetch(`/api/search/federated?${sp.toString()}`, {
+          signal: ctrl.signal,
+        });
+        if (res.ok) {
+          const json: FederatedSearchResponse = await res.json();
+          setFederatedData(json);
+        }
+      } catch {
+        // ignore abort
+      } finally {
+        setFederatedLoading(false);
+      }
+    }, 120);
+
+    return () => {
+      clearTimeout(timer);
+      ctrl.abort();
+    };
+  }, [platformScope, query, subregion, dateFrom, dateTo, sort, page]);
 
   // Execute main search query whenever criteria change
   useEffect(() => {
@@ -652,6 +708,91 @@ function SearchWorkbench() {
         id="kew-search-workbench"
         className="flex-1 relative z-10 pt-4 page-content__inner w-full"
       >
+
+        {/* Western Himalayan Knowledge Search — 3-Scope Platform Selector (Defaults to Kashmir EcoWatch on KEW) */}
+        <div className="mb-5 p-4 rounded-xl border border-white/15 bg-slate-900/90 space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-widest text-emerald-400">
+                Western Himalayan Knowledge Search · Selectable Platform Scope
+              </p>
+              <p className="text-xs text-slate-300">
+                Connects Kashmir EcoWatch scientific assessments, live datasets, sensor stations &amp; GIS with Himalayan Dispatch journalism and accountability.
+              </p>
+            </div>
+            <a
+              href={getKewToDispatchUrl(
+                query.trim() ? `/search?q=${encodeURIComponent(query.trim())}` : '/search'
+              )}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200"
+            >
+              <span>Open Himalayan Dispatch Search Folio</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+            {[
+              {
+                id: 'kashmir_ecowatch' as const,
+                label: 'Kashmir EcoWatch',
+                desc: 'Science, environmental intelligence, live datasets, sensor telemetry & GIS (Default)',
+              },
+              {
+                id: 'himalayan_dispatch' as const,
+                label: 'Himalayan Dispatch',
+                desc: 'Journalism, investigations, editorials, monographs & regional bureaus',
+              },
+              {
+                id: 'both' as const,
+                label: 'Search Across Both Platforms',
+                desc: 'Federated results with distinct institutional attribution',
+              },
+            ].map((sc) => {
+              const selected = platformScope === sc.id;
+              return (
+                <button
+                  key={sc.id}
+                  type="button"
+                  onClick={() => {
+                    setPlatformScope(sc.id);
+                    setPage(1);
+                    syncUrlParams({
+                      scope: sc.id === 'kashmir_ecowatch' ? null : sc.id,
+                      page: null,
+                    });
+                  }}
+                  className={`text-left p-3 rounded-lg border transition-all cursor-pointer ${
+                    selected
+                      ? sc.id === 'himalayan_dispatch'
+                        ? 'bg-[#8C3125] border-[#8C3125] text-[#F2EFE7]'
+                        : 'bg-emerald-600/25 border-emerald-400 text-white'
+                      : 'bg-slate-950/70 border-white/10 text-slate-300 hover:text-white hover:border-white/25'
+                  }`}
+                >
+                  <div className="text-xs font-bold uppercase tracking-wider">{sc.label}</div>
+                  <div className="text-[11px] opacity-80 mt-0.5 leading-snug">{sc.desc}</div>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-1.5 pt-1">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mr-1">
+              Suggested searches:
+            </span>
+            {SUGGESTED_KNOWLEDGE_SEARCHES.map((chip) => (
+              <button
+                key={chip}
+                type="button"
+                onClick={() => applyQuery(chip)}
+                className="px-2.5 py-1 rounded text-[11px] font-medium border border-white/10 bg-slate-950 text-slate-300 hover:text-white hover:border-emerald-500/40 cursor-pointer"
+              >
+                {chip}
+              </button>
+            ))}
+          </div>
+        </div>
 
         {/* Mode Switcher: Standard Index Search vs Evidence-Grounded Scientific Q&A */}
         <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -1223,8 +1364,96 @@ function SearchWorkbench() {
           </div>
         )}
 
+        {/* Federated Cross-Platform Results when scope is 'both' or 'himalayan_dispatch' */}
+        {searchMode === 'search' && platformScope !== 'kashmir_ecowatch' && federatedData && (
+          <div className="mb-8 space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-300 px-1 pb-2 border-b border-white/10">
+              <div>
+                Showing <strong className="text-white">{federatedData.totalHits.toLocaleString()}</strong>{' '}
+                published record{federatedData.totalHits === 1 ? '' : 's'}
+                {federatedData.query ? (
+                  <>
+                    {' '}for &ldquo;<span className="text-emerald-400 font-semibold">{federatedData.query}</span>&rdquo;
+                  </>
+                ) : null}{' '}
+                <span className="text-slate-400">
+                  ({federatedData.dispatchCount} Himalayan Dispatch · {federatedData.kewCount} Kashmir EcoWatch ·{' '}
+                  {federatedData.liveDatasetsAndRegistriesCount} Live Datasets / Sensor / GIS Registries)
+                </span>
+              </div>
+              <span className="font-mono text-[11px] text-slate-400">
+                Federated Deduplicated Index • {federatedData.latencyMs} ms
+              </span>
+            </div>
+
+            {federatedLoading && federatedData.hits.length === 0 ? (
+              <div className="p-8 text-center text-sm text-slate-400">
+                Querying federated Western Himalayan Knowledge Search...
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {federatedData.hits.map((hit) => {
+                  const isHd = hit.platform === 'himalayan_dispatch';
+                  const href = isHd
+                    ? getKewToDispatchUrl(hit.canonicalUrl)
+                    : hit.canonicalUrl;
+                  return (
+                    <Card key={hit.id} className="kew-card-shell h-full p-5 flex flex-col justify-between gap-3">
+                      <div className="space-y-2">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <span
+                            className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded border ${
+                              isHd
+                                ? 'bg-[#8C3125]/20 text-amber-200 border-[#8C3125]/60'
+                                : 'bg-emerald-500/15 text-emerald-300 border-emerald-500/40'
+                            }`}
+                          >
+                            {hit.institutionalRubric}
+                          </span>
+                          {hit.isLiveDatasetOrRegistry && (
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-sky-300 border border-white/10">
+                              {hit.recordKindLabel}
+                            </span>
+                          )}
+                        </div>
+                        <h3 className="text-base sm:text-lg font-bold text-white leading-snug">
+                          <a href={href} className="hover:underline">
+                            {hit.title}
+                          </a>
+                        </h3>
+                        {hit.subtitle && (
+                          <p className="text-xs text-slate-300 italic">{hit.subtitle}</p>
+                        )}
+                        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-3">
+                          {hit.description}
+                        </p>
+                      </div>
+
+                      <div className="pt-2 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-400">
+                        <span>
+                          {hit.subregion || 'Western Himalayas'}
+                          {hit.readingDurationLabel ? ` · ${hit.readingDurationLabel}` : ''}
+                        </span>
+                        <a
+                          href={href}
+                          className={`inline-flex items-center gap-1 font-semibold ${
+                            isHd ? 'text-amber-300 hover:text-amber-200' : 'text-emerald-400 hover:text-emerald-300'
+                          }`}
+                        >
+                          <span>{isHd ? 'Read in Himalayan Dispatch' : 'Open in Kashmir EcoWatch'}</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </a>
+                      </div>
+                    </Card>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Results Area */}
-        {hasActiveCriteria && data ? (
+        {platformScope === 'kashmir_ecowatch' && hasActiveCriteria && data ? (
           data.totalHits > 0 ? (
             <div className="space-y-6">
               {viewMode === 'map' && (
@@ -1642,14 +1871,26 @@ function SearchWorkbench() {
                     <div className="text-slate-400">
                       Connected: <strong className="text-white">{String(healthReport.postgresSearchIndex?.connected)}</strong> ·
                       Synced Rows: <strong className="text-white">{healthReport.postgresSearchIndex?.indexedRowCount?.toLocaleString()}</strong> ·
-                      Extensions: <strong className="text-emerald-400">{(healthReport.postgresSearchIndex?.extensions || []).join(', ') || 'Initializing'}</strong>
+                      Extensions:{' '}
+                      <strong className="text-emerald-400">
+                        {(Array.isArray(healthReport.postgresSearchIndex?.extensions)
+                          ? healthReport.postgresSearchIndex.extensions
+                          : typeof healthReport.postgresSearchIndex?.extensions === 'string'
+                          ? healthReport.postgresSearchIndex.extensions
+                              .replace(/^\{|\}$/g, '')
+                              .split(',')
+                              .map((s: string) => s.trim())
+                              .filter(Boolean)
+                          : []
+                        ).join(', ') || 'Initializing'}
+                      </strong>
                     </div>
                   </div>
 
                   <div>
                     <div className="font-bold text-white mb-2">Adapter Health &amp; Record Counts</div>
                     <div className="space-y-1.5">
-                      {(healthReport.adapters || []).map((ad: any) => (
+                      {(Array.isArray(healthReport.adapters) ? healthReport.adapters : []).map((ad: any) => (
                         <div
                           key={ad.adapterId}
                           className="flex items-center justify-between px-3 py-2 rounded bg-slate-950 border border-white/5"

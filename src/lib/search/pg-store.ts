@@ -388,11 +388,17 @@ export async function getPostgresSearchHealth(): Promise<PostgresSearchStatus> {
       pool.query(`
         SELECT
           (SELECT COUNT(*)::int FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'kew_search_documents') AS has_table,
-          ARRAY(SELECT extname FROM pg_extension WHERE extname IN ('pg_trgm', 'unaccent', 'postgis') ORDER BY extname) AS exts
+          ARRAY(SELECT extname::text FROM pg_extension WHERE extname IN ('pg_trgm', 'unaccent', 'postgis') ORDER BY extname) AS exts
       `),
       2000
     );
     const hasTable = (res.rows[0]?.has_table || 0) > 0;
+    const rawExts = res.rows[0]?.exts;
+    const extensions: string[] = Array.isArray(rawExts)
+      ? rawExts.map(String)
+      : typeof rawExts === 'string'
+      ? rawExts.replace(/^\{|\}$/g, '').split(',').map((s) => s.trim()).filter(Boolean)
+      : [];
     let count = 0;
     let lastSyncAt: string | null = null;
     let lastSyncStatus: string | null = null;
@@ -417,7 +423,7 @@ export async function getPostgresSearchHealth(): Promise<PostgresSearchStatus> {
       connected: true,
       schemaInitialized: hasTable,
       indexedRowCount: count,
-      extensions: res.rows[0]?.exts || [],
+      extensions,
       lastSyncAt,
       lastSyncStatus,
       dbSubmissionsIngested: dbSub,

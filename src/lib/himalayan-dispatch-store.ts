@@ -502,6 +502,9 @@ export function getPublicPublishedStories(): MagazineStory[] {
   return combined;
 }
 
+/** Backwards-compatible alias for `getPublicPublishedStories`. */
+export const getPublicStories = getPublicPublishedStories;
+
 /**
  * STREAM 01: THE DAILY DISPATCH — Chronological stream of administrator-approved
  * Daily Dispatch articles, alongside published field/regional dispatches.

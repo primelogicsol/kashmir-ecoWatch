@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   ArrowLeft,
   ArrowRight,
@@ -19,10 +19,15 @@ import { REGIONAL_REPORTING_BUREAUS } from '@/data/himalayan-dispatch';
 import {
   FOOTER_DEPARTMENT_LINKS,
   HD_ROUTES,
+  hdRoute,
   stripDispatchPrefix,
   toKewPlatformUrl,
   type BureauRouteSlug,
 } from '@/lib/himalayan-dispatch-routes';
+import {
+  SUGGESTED_KNOWLEDGE_SEARCHES,
+  type SearchScopeMode,
+} from '@/lib/search/federated-knowledge-types';
 
 const PRE_DEPT_LINKS = [
   { label: 'DAILY DISPATCH', get href() { return HD_ROUTES.dailyDispatch; }, exact: false },
@@ -351,6 +356,7 @@ function EditorialNavDropdown({
 
 export function HimalayanDispatchMasthead() {
   const pathname = usePathname();
+  const router = useRouter();
   const { theme, toggleTheme } = useDispatchTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -358,6 +364,11 @@ export function HimalayanDispatchMasthead() {
   const [bureausOpen, setBureausOpen] = useState(false);
   const [mobileDeptsOpen, setMobileDeptsOpen] = useState(false);
   const [mobileBureausOpen, setMobileBureausOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [quickQuery, setQuickQuery] = useState('');
+  const [quickScope, setQuickScope] = useState<SearchScopeMode>('himalayan_dispatch');
+  const [quickSuggestions, setQuickSuggestions] = useState<any[]>([]);
+  const quickSearchInputRef = useRef<HTMLInputElement>(null);
 
   const navRootRef = useRef<HTMLElement>(null);
   const isScrolledRef = useRef(false);
@@ -395,7 +406,37 @@ export function HimalayanDispatchMasthead() {
     setDrawerOpen(false);
     setDeptsOpen(false);
     setBureausOpen(false);
+    setSearchOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (searchOpen) {
+      setTimeout(() => quickSearchInputRef.current?.focus(), 40);
+    }
+  }, [searchOpen]);
+
+  useEffect(() => {
+    if (!searchOpen || quickQuery.trim().length < 2) {
+      setQuickSuggestions([]);
+      return;
+    }
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => {
+      fetch(
+        `/api/search/federated/suggest?q=${encodeURIComponent(quickQuery.trim())}&scope=${quickScope}&limit=5`,
+        { signal: ctrl.signal }
+      )
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => {
+          if (d?.suggestions) setQuickSuggestions(d.suggestions);
+        })
+        .catch(() => {});
+    }, 90);
+    return () => {
+      clearTimeout(timer);
+      ctrl.abort();
+    };
+  }, [quickQuery, quickScope, searchOpen]);
 
   useEffect(() => {
     const onOutsidePointer = (e: MouseEvent | TouchEvent) => {
@@ -409,6 +450,7 @@ export function HimalayanDispatchMasthead() {
         setDeptsOpen(false);
         setBureausOpen(false);
         setDrawerOpen(false);
+        setSearchOpen(false);
       }
     };
     document.addEventListener('mousedown', onOutsidePointer);
@@ -523,15 +565,18 @@ export function HimalayanDispatchMasthead() {
               Pitch a Story
             </Link>
 
-            <a
-              href={toKewPlatformUrl('/search?q=Himalayan+Dispatch')}
-              className="hd-font-sans inline-flex items-center gap-1.5 text-[10px] tracking-[0.16em] uppercase transition-opacity hover:opacity-75"
-              style={{ color: 'var(--hd-fg-muted)' }}
-              aria-label="Search Himalayan Dispatch and KEW Archive"
+            <button
+              type="button"
+              onClick={() => setSearchOpen((prev) => !prev)}
+              aria-expanded={searchOpen}
+              aria-controls="hd-masthead-search-drawer"
+              aria-label="Open Himalayan Dispatch and Western Himalayan Knowledge Search"
+              className="hd-font-sans inline-flex items-center gap-1.5 text-[10px] font-medium tracking-[0.16em] uppercase transition-opacity hover:opacity-80 cursor-pointer"
+              style={{ color: searchOpen ? 'var(--hd-copper)' : 'var(--hd-fg-muted)' }}
             >
-              <Search className="w-3.5 h-3.5" />
-              <span className="hidden md:inline">Index</span>
-            </a>
+              <Search className="w-3.5 h-3.5" style={{ color: 'var(--hd-copper)' }} />
+              <span className="hidden md:inline">Search</span>
+            </button>
 
             <button
               type="button"
@@ -558,6 +603,159 @@ export function HimalayanDispatchMasthead() {
           </div>
         </div>
       </div>
+
+      {/* Expandable Unified Search & Discover Drawer (Defaults to Himalayan Dispatch Scope) */}
+      {searchOpen && (
+        <div
+          id="hd-masthead-search-drawer"
+          className="w-full border-b px-4 sm:px-8 lg:px-14 py-5"
+          style={{
+            borderColor: 'var(--hd-rule-strong)',
+            backgroundColor: 'var(--hd-bg-elevated)',
+          }}
+        >
+          <div className="max-w-[1120px] mx-auto space-y-4">
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <p className="hd-kicker">SEARCH &amp; DISCOVER · WESTERN HIMALAYAN KNOWLEDGE SEARCH</p>
+                <p className="hd-font-body text-xs sm:text-sm" style={{ color: 'var(--hd-fg-secondary)' }}>
+                  Explore journalism, environmental intelligence, scientific research and regional knowledge.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSearchOpen(false)}
+                className="p-1.5 border hover:opacity-75 cursor-pointer"
+                style={{ borderColor: 'var(--hd-rule)', color: 'var(--hd-fg-muted)' }}
+                aria-label="Close search drawer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const sp = new URLSearchParams();
+                if (quickQuery.trim()) sp.set('q', quickQuery.trim());
+                if (quickScope !== 'himalayan_dispatch') sp.set('scope', quickScope);
+                const target = sp.toString()
+                  ? `${HD_ROUTES.search}?${sp.toString()}`
+                  : HD_ROUTES.search;
+                setSearchOpen(false);
+                router.push(target);
+              }}
+              className="flex items-center gap-2.5 px-3.5 py-2.5 border"
+              style={{
+                borderColor: 'var(--hd-rule-strong)',
+                backgroundColor: 'var(--hd-bg)',
+              }}
+            >
+              <Search className="w-4 h-4 shrink-0" style={{ color: 'var(--hd-copper)' }} />
+              <input
+                ref={quickSearchInputRef}
+                type="text"
+                value={quickQuery}
+                onChange={(e) => setQuickQuery(e.target.value)}
+                placeholder="Search dispatches, monographs, bureaus, scientific assessments, live datasets..."
+                className="flex-1 bg-transparent border-none outline-none hd-font-body text-sm sm:text-base min-w-0"
+                style={{ color: 'var(--hd-fg)' }}
+              />
+              <button
+                type="submit"
+                className="hd-font-sans px-4 py-1.5 text-[10px] font-semibold tracking-[0.18em] uppercase text-[#F2EFE7] shrink-0 cursor-pointer"
+                style={{ backgroundColor: '#8C3125' }}
+              >
+                Search
+              </button>
+            </form>
+
+            {/* Three Selectable Scopes */}
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap items-center gap-2">
+                {[
+                  { id: 'himalayan_dispatch' as const, label: 'Himalayan Dispatch' },
+                  { id: 'kashmir_ecowatch' as const, label: 'Kashmir EcoWatch' },
+                  { id: 'both' as const, label: 'Search Across Both Platforms' },
+                ].map((sc) => {
+                  const active = quickScope === sc.id;
+                  return (
+                    <button
+                      key={sc.id}
+                      type="button"
+                      onClick={() => setQuickScope(sc.id)}
+                      className="hd-font-sans px-3 py-1.5 border text-[10px] font-semibold tracking-[0.16em] uppercase cursor-pointer"
+                      style={{
+                        borderColor: active ? '#8C3125' : 'var(--hd-rule)',
+                        backgroundColor: active ? '#8C3125' : 'var(--hd-bg)',
+                        color: active ? '#F2EFE7' : 'var(--hd-fg-secondary)',
+                      }}
+                    >
+                      {sc.label}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="hd-folio-meta mr-1">Suggested:</span>
+                {SUGGESTED_KNOWLEDGE_SEARCHES.map((chip) => (
+                  <Link
+                    key={chip}
+                    href={`${HD_ROUTES.search}?q=${encodeURIComponent(chip)}${
+                      quickScope !== 'himalayan_dispatch' ? `&scope=${quickScope}` : ''
+                    }`}
+                    onClick={() => setSearchOpen(false)}
+                    className="hd-font-sans px-2.5 py-1 border text-[10px] tracking-[0.12em] uppercase hover:opacity-80"
+                    style={{
+                      borderColor: 'var(--hd-rule)',
+                      color: 'var(--hd-fg-secondary)',
+                    }}
+                  >
+                    {chip}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {quickSuggestions.length > 0 && (
+              <div
+                className="border divide-y"
+                style={{
+                  borderColor: 'var(--hd-rule)',
+                  backgroundColor: 'var(--hd-bg)',
+                }}
+              >
+                {quickSuggestions.map((s) => {
+                  const isHd = s.platform === 'himalayan_dispatch';
+                  const href = isHd ? hdRoute(s.canonicalUrl) : toKewPlatformUrl(s.canonicalUrl);
+                  return (
+                    <a
+                      key={s.id}
+                      href={href}
+                      onClick={() => setSearchOpen(false)}
+                      className="px-4 py-2.5 flex items-center justify-between gap-3 hover:opacity-80"
+                    >
+                      <div className="min-w-0">
+                        <span
+                          className="hd-font-sans text-[9px] font-bold tracking-[0.18em] uppercase block"
+                          style={{ color: isHd ? '#8C3125' : '#2E6F56' }}
+                        >
+                          {s.institutionalRubric}
+                        </span>
+                        <span className="hd-font-display text-base font-semibold truncate block">
+                          {s.title}
+                        </span>
+                      </div>
+                      <ArrowRight className="w-3.5 h-3.5 shrink-0" style={{ color: 'var(--hd-copper)' }} />
+                    </a>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Grand Magazine Masthead (Preserved Luxury Editorial Identity) */}
       <header
@@ -1018,6 +1216,22 @@ export function HimalayanDispatchMasthead() {
                   </Link>
                 );
               })}
+
+              <Link
+                href={HD_ROUTES.search}
+                className="hd-font-display text-2xl font-medium tracking-[0.06em] py-1.5 border-b flex items-center justify-between"
+                style={{
+                  borderColor: 'var(--hd-rule)',
+                  color: 'var(--hd-fg)',
+                }}
+              >
+                <span>SEARCH &amp; DISCOVER</span>
+                <Search
+                  className="w-4 h-4 shrink-0"
+                  style={{ color: 'var(--hd-copper)' }}
+                  aria-hidden="true"
+                />
+              </Link>
 
               <Link
                 href={HD_ROUTES.ourStory}

@@ -869,7 +869,7 @@ export function buildResearchAccountabilityIndex(): SearchAdapterOutput {
           'Environmental Journalism',
           story.departmentRubric,
           story.bylineDisplay,
-          ...story.seoKeywords,
+          ...(story.seoKeywords || []),
         ])
       ),
       synonyms: ['Himalayan Dispatch', 'magazine', story.folioCode],
